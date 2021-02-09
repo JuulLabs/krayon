@@ -1,7 +1,6 @@
 package com.juul.krayon.canvas
 
 import android.graphics.Region
-import android.graphics.pdf.PdfDocument
 import android.os.Build
 import java.util.WeakHashMap
 
@@ -26,7 +25,6 @@ public class AndroidCanvas(
         useCenter: Boolean,
         paint: Paint
     ) {
-        PdfDocument().startPage(PdfDocument.PageInfo.Builder(1, 1, 1).create()).canvas
         androidCanvas.drawArc(left, top, right, bottom, startAngle, sweepAngle, useCenter, paint.asAndroid())
     }
 
