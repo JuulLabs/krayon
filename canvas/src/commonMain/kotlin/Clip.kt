@@ -1,6 +1,5 @@
 package com.juul.krayon.canvas
 
-
 /** Describes an area to be included or excluded in future draw calls. */
 public sealed class Clip<out PATH> {
 

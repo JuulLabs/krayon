@@ -1,7 +1,6 @@
 package com.juul.krayon.canvas
 
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import kotlin.test.fail
 
 interface CallRecord {
     val functionCalls: List<FunctionCall>
@@ -11,7 +10,9 @@ inline fun CallRecord.verify(
     expectation: String,
     crossinline condition: (functionCalls: List<FunctionCall>) -> Boolean
 ) {
-    assertTrue("Unable to verify `$expectation`.") { functionCalls.run(condition) }
+    if (!functionCalls.run(condition)) {
+        fail("Unable to verify `$expectation`. Recorded calls:\n${functionCalls.joinToString(separator = "\n")}")
+    }
 }
 
 inline fun CallRecord.verifyAll(
@@ -25,7 +26,7 @@ inline fun CallRecord.verifyAny(
 ) = verify(expectation) { it.any(predicate) }
 
 fun CallRecord.verifyCallCount(expectedCount: Int) {
-    assertEquals(expectedCount, functionCalls.size, "Unable to verify `recorded call count is $expectedCount`.")
+    verify("call count is $expectedCount") { it.size == expectedCount }
 }
 
 inline fun CallRecord.verifyFirst(
