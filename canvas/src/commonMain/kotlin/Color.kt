@@ -11,7 +11,12 @@ private const val BLUE_SHIFT = 0
 public inline class Color(public val argb: Int) {
 
     public constructor(alpha: Int, red: Int, green: Int, blue: Int) :
-        this((alpha shl ALPHA_SHIFT) or (red shl RED_SHIFT) or (green shl GREEN_SHIFT) or (blue shl BLUE_SHIFT))
+        this(
+            ((alpha and COMPONENT_MASK) shl ALPHA_SHIFT) or
+                ((red and COMPONENT_MASK) shl RED_SHIFT) or
+                ((green and COMPONENT_MASK) shl GREEN_SHIFT) or
+                ((blue and COMPONENT_MASK) shl BLUE_SHIFT)
+        )
 
     public constructor(red: Int, green: Int, blue: Int) :
         this(alpha = 0xFF, red, green, blue)

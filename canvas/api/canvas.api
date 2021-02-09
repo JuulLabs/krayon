@@ -1,0 +1,282 @@
+public abstract interface class com/juul/krayon/canvas/Canvas {
+	public abstract fun buildPath (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/canvas/Path;
+	public abstract fun drawArc (FFFFFFZLcom/juul/krayon/canvas/Paint;)V
+	public abstract fun drawCircle (FFFLcom/juul/krayon/canvas/Paint;)V
+	public abstract fun drawLine (FFFFLcom/juul/krayon/canvas/Paint$Stroke;)V
+	public abstract fun drawOval (FFFFLcom/juul/krayon/canvas/Paint;)V
+	public abstract fun drawPath (Lcom/juul/krayon/canvas/Path;Lcom/juul/krayon/canvas/Paint;)V
+	public abstract fun drawText (Ljava/lang/CharSequence;FFLcom/juul/krayon/canvas/Paint$Text;)V
+	public abstract fun pop ()V
+	public abstract fun pushClip (Lcom/juul/krayon/canvas/Clip;)V
+	public abstract fun pushTransform (Lcom/juul/krayon/canvas/Transform;)V
+}
+
+public final class com/juul/krayon/canvas/CanvasKt {
+	public static final fun withClip (Lcom/juul/krayon/canvas/Canvas;Lcom/juul/krayon/canvas/Clip;Lkotlin/jvm/functions/Function1;)V
+	public static final fun withTransform (Lcom/juul/krayon/canvas/Canvas;Lcom/juul/krayon/canvas/Transform;Lkotlin/jvm/functions/Function1;)V
+}
+
+public abstract class com/juul/krayon/canvas/Clip {
+}
+
+public final class com/juul/krayon/canvas/Clip$Operation : java/lang/Enum {
+	public static final field Difference Lcom/juul/krayon/canvas/Clip$Operation;
+	public static final field Intersection Lcom/juul/krayon/canvas/Clip$Operation;
+	public static fun valueOf (Ljava/lang/String;)Lcom/juul/krayon/canvas/Clip$Operation;
+	public static fun values ()[Lcom/juul/krayon/canvas/Clip$Operation;
+}
+
+public final class com/juul/krayon/canvas/Clip$Path : com/juul/krayon/canvas/Clip {
+	public fun <init> (Lcom/juul/krayon/canvas/Path;Lcom/juul/krayon/canvas/Clip$Operation;)V
+	public synthetic fun <init> (Lcom/juul/krayon/canvas/Path;Lcom/juul/krayon/canvas/Clip$Operation;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/juul/krayon/canvas/Path;
+	public final fun component2 ()Lcom/juul/krayon/canvas/Clip$Operation;
+	public final fun copy (Lcom/juul/krayon/canvas/Path;Lcom/juul/krayon/canvas/Clip$Operation;)Lcom/juul/krayon/canvas/Clip$Path;
+	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Clip$Path;Lcom/juul/krayon/canvas/Path;Lcom/juul/krayon/canvas/Clip$Operation;ILjava/lang/Object;)Lcom/juul/krayon/canvas/Clip$Path;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOperation ()Lcom/juul/krayon/canvas/Clip$Operation;
+	public final fun getPath ()Lcom/juul/krayon/canvas/Path;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/Clip$Rect : com/juul/krayon/canvas/Clip {
+	public fun <init> (FFFFLcom/juul/krayon/canvas/Clip$Operation;)V
+	public synthetic fun <init> (FFFFLcom/juul/krayon/canvas/Clip$Operation;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun component4 ()F
+	public final fun component5 ()Lcom/juul/krayon/canvas/Clip$Operation;
+	public final fun copy (FFFFLcom/juul/krayon/canvas/Clip$Operation;)Lcom/juul/krayon/canvas/Clip$Rect;
+	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Clip$Rect;FFFFLcom/juul/krayon/canvas/Clip$Operation;ILjava/lang/Object;)Lcom/juul/krayon/canvas/Clip$Rect;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBottom ()F
+	public final fun getLeft ()F
+	public final fun getOperation ()Lcom/juul/krayon/canvas/Clip$Operation;
+	public final fun getRight ()F
+	public final fun getTop ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/Color {
+	public static final field Companion Lcom/juul/krayon/canvas/Color$Companion;
+	public static final synthetic fun box-impl (I)Lcom/juul/krayon/canvas/Color;
+	public static fun constructor-impl (I)I
+	public static fun constructor-impl (III)I
+	public static fun constructor-impl (IIII)I
+	public static final fun copy-6Vs19M8 (IIIII)I
+	public static synthetic fun copy-6Vs19M8$default (IIIIIILjava/lang/Object;)I
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (ILjava/lang/Object;)Z
+	public static final fun equals-impl0 (II)Z
+	public static final fun getAlpha-impl (I)I
+	public final fun getArgb ()I
+	public static final fun getBlue-impl (I)I
+	public static final fun getGreen-impl (I)I
+	public static final fun getRed-impl (I)I
+	public fun hashCode ()I
+	public static fun hashCode-impl (I)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (I)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()I
+}
+
+public final class com/juul/krayon/canvas/Color$Companion {
+	public final fun getBlack-6Vs19M8 ()I
+	public final fun getBlue-6Vs19M8 ()I
+	public final fun getCyan-6Vs19M8 ()I
+	public final fun getGreen-6Vs19M8 ()I
+	public final fun getMagenta-6Vs19M8 ()I
+	public final fun getRed-6Vs19M8 ()I
+	public final fun getTransparent-6Vs19M8 ()I
+	public final fun getWhite-6Vs19M8 ()I
+	public final fun getYellow-6Vs19M8 ()I
+}
+
+public abstract class com/juul/krayon/canvas/Paint {
+}
+
+public final class com/juul/krayon/canvas/Paint$Fill : com/juul/krayon/canvas/Paint {
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-6Vs19M8 ()I
+	public final fun copy-odXFuBg (I)Lcom/juul/krayon/canvas/Paint$Fill;
+	public static synthetic fun copy-odXFuBg$default (Lcom/juul/krayon/canvas/Paint$Fill;IILjava/lang/Object;)Lcom/juul/krayon/canvas/Paint$Fill;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getColor-6Vs19M8 ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/Paint$Stroke : com/juul/krayon/canvas/Paint {
+	public synthetic fun <init> (IFLcom/juul/krayon/canvas/Paint$Stroke$Cap;Lcom/juul/krayon/canvas/Paint$Stroke$Join;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (IFLcom/juul/krayon/canvas/Paint$Stroke$Cap;Lcom/juul/krayon/canvas/Paint$Stroke$Join;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-6Vs19M8 ()I
+	public final fun component2 ()F
+	public final fun component3 ()Lcom/juul/krayon/canvas/Paint$Stroke$Cap;
+	public final fun component4 ()Lcom/juul/krayon/canvas/Paint$Stroke$Join;
+	public final fun copy-GAoJeQU (IFLcom/juul/krayon/canvas/Paint$Stroke$Cap;Lcom/juul/krayon/canvas/Paint$Stroke$Join;)Lcom/juul/krayon/canvas/Paint$Stroke;
+	public static synthetic fun copy-GAoJeQU$default (Lcom/juul/krayon/canvas/Paint$Stroke;IFLcom/juul/krayon/canvas/Paint$Stroke$Cap;Lcom/juul/krayon/canvas/Paint$Stroke$Join;ILjava/lang/Object;)Lcom/juul/krayon/canvas/Paint$Stroke;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCap ()Lcom/juul/krayon/canvas/Paint$Stroke$Cap;
+	public final fun getColor-6Vs19M8 ()I
+	public final fun getJoin ()Lcom/juul/krayon/canvas/Paint$Stroke$Join;
+	public final fun getWidth ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/Paint$Stroke$Cap : java/lang/Enum {
+	public static final field Butt Lcom/juul/krayon/canvas/Paint$Stroke$Cap;
+	public static final field Round Lcom/juul/krayon/canvas/Paint$Stroke$Cap;
+	public static final field Square Lcom/juul/krayon/canvas/Paint$Stroke$Cap;
+	public static fun valueOf (Ljava/lang/String;)Lcom/juul/krayon/canvas/Paint$Stroke$Cap;
+	public static fun values ()[Lcom/juul/krayon/canvas/Paint$Stroke$Cap;
+}
+
+public abstract class com/juul/krayon/canvas/Paint$Stroke$Join {
+}
+
+public final class com/juul/krayon/canvas/Paint$Stroke$Join$Bevel : com/juul/krayon/canvas/Paint$Stroke$Join {
+	public static final field INSTANCE Lcom/juul/krayon/canvas/Paint$Stroke$Join$Bevel;
+}
+
+public final class com/juul/krayon/canvas/Paint$Stroke$Join$Miter : com/juul/krayon/canvas/Paint$Stroke$Join {
+	public fun <init> ()V
+	public fun <init> (F)V
+	public synthetic fun <init> (FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()F
+	public final fun copy (F)Lcom/juul/krayon/canvas/Paint$Stroke$Join$Miter;
+	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Paint$Stroke$Join$Miter;FILjava/lang/Object;)Lcom/juul/krayon/canvas/Paint$Stroke$Join$Miter;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLimit ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/Paint$Stroke$Join$Round : com/juul/krayon/canvas/Paint$Stroke$Join {
+	public static final field INSTANCE Lcom/juul/krayon/canvas/Paint$Stroke$Join$Round;
+}
+
+public final class com/juul/krayon/canvas/Paint$Text : com/juul/krayon/canvas/Paint {
+	public synthetic fun <init> (IFLcom/juul/krayon/canvas/Paint$Text$Alignment;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-6Vs19M8 ()I
+	public final fun component2 ()F
+	public final fun component3 ()Lcom/juul/krayon/canvas/Paint$Text$Alignment;
+	public final fun copy-Hco4Vsw (IFLcom/juul/krayon/canvas/Paint$Text$Alignment;)Lcom/juul/krayon/canvas/Paint$Text;
+	public static synthetic fun copy-Hco4Vsw$default (Lcom/juul/krayon/canvas/Paint$Text;IFLcom/juul/krayon/canvas/Paint$Text$Alignment;ILjava/lang/Object;)Lcom/juul/krayon/canvas/Paint$Text;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlignment ()Lcom/juul/krayon/canvas/Paint$Text$Alignment;
+	public final fun getColor-6Vs19M8 ()I
+	public final fun getSize ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/Paint$Text$Alignment : java/lang/Enum {
+	public static final field Center Lcom/juul/krayon/canvas/Paint$Text$Alignment;
+	public static final field Left Lcom/juul/krayon/canvas/Paint$Text$Alignment;
+	public static final field Right Lcom/juul/krayon/canvas/Paint$Text$Alignment;
+	public static fun valueOf (Ljava/lang/String;)Lcom/juul/krayon/canvas/Paint$Text$Alignment;
+	public static fun values ()[Lcom/juul/krayon/canvas/Paint$Text$Alignment;
+}
+
+public abstract interface class com/juul/krayon/canvas/Path {
+}
+
+public abstract interface class com/juul/krayon/canvas/Path$Builder {
+	public abstract fun arcTo (FFFFFFZ)V
+	public abstract fun build ()Lcom/juul/krayon/canvas/Path;
+	public abstract fun close ()V
+	public abstract fun cubicTo (FFFFFF)V
+	public abstract fun lineTo (FF)V
+	public abstract fun moveTo (FF)V
+	public abstract fun quadraticTo (FFFF)V
+	public abstract fun relativeCubicTo (FFFFFF)V
+	public abstract fun relativeLineTo (FF)V
+	public abstract fun relativeMoveTo (FF)V
+	public abstract fun relativeQuadraticTo (FFFF)V
+	public abstract fun reset ()V
+}
+
+public abstract class com/juul/krayon/canvas/Transform {
+}
+
+public final class com/juul/krayon/canvas/Transform$InOrder : com/juul/krayon/canvas/Transform {
+	public fun <init> (Ljava/util/List;)V
+	public fun <init> ([Lcom/juul/krayon/canvas/Transform;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/juul/krayon/canvas/Transform$InOrder;
+	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Transform$InOrder;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/canvas/Transform$InOrder;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getTransformations ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/Transform$Rotate : com/juul/krayon/canvas/Transform {
+	public fun <init> (FFF)V
+	public synthetic fun <init> (FFFILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun copy (FFF)Lcom/juul/krayon/canvas/Transform$Rotate;
+	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Transform$Rotate;FFFILjava/lang/Object;)Lcom/juul/krayon/canvas/Transform$Rotate;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDegrees ()F
+	public final fun getPivotX ()F
+	public final fun getPivotY ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/Transform$Scale : com/juul/krayon/canvas/Transform {
+	public fun <init> ()V
+	public fun <init> (FFFF)V
+	public synthetic fun <init> (FFFFILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun component4 ()F
+	public final fun copy (FFFF)Lcom/juul/krayon/canvas/Transform$Scale;
+	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Transform$Scale;FFFFILjava/lang/Object;)Lcom/juul/krayon/canvas/Transform$Scale;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHorizontal ()F
+	public final fun getPivotX ()F
+	public final fun getPivotY ()F
+	public final fun getVertical ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/Transform$Skew : com/juul/krayon/canvas/Transform {
+	public fun <init> ()V
+	public fun <init> (FF)V
+	public synthetic fun <init> (FFILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun copy (FF)Lcom/juul/krayon/canvas/Transform$Skew;
+	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Transform$Skew;FFILjava/lang/Object;)Lcom/juul/krayon/canvas/Transform$Skew;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHorizontal ()F
+	public final fun getVertical ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/Transform$Translate : com/juul/krayon/canvas/Transform {
+	public fun <init> ()V
+	public fun <init> (FF)V
+	public synthetic fun <init> (FFILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun copy (FF)Lcom/juul/krayon/canvas/Transform$Translate;
+	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Transform$Translate;FFILjava/lang/Object;)Lcom/juul/krayon/canvas/Transform$Translate;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHorizontal ()F
+	public final fun getVertical ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
