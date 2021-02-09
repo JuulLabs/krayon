@@ -6,7 +6,9 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-18.04, macos-10.15]
+        os: [ubuntu-18.04]
+        # Use the following line instead if we add an OSX target.
+        # os: [ubuntu-18.04, macos-10.15]
     runs-on: ${{ matrix.os }}
 
     env:
@@ -36,13 +38,14 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Compile (macOS)
-        if: runner.os == 'macOS'
-        run: ./gradlew $GRADLE_ARGS compileKotlinMacosX64
-
-      - name: Test (macOS)
-        if: runner.os == 'macOS'
-        run: ./gradlew $GRADLE_ARGS macosX64Test
+      # Uncomment the following to add an OSX target
+      # - name: Compile (macOS)
+      #   if: runner.os == 'macOS'
+      #   run: ./gradlew $GRADLE_ARGS compileKotlinMacosX64
+      #
+      # - name: Test (macOS)
+      #   if: runner.os == 'macOS'
+      #   run: ./gradlew $GRADLE_ARGS macosX64Test
 
       - name: Assemble (Linux)
         if: runner.os == 'Linux'
