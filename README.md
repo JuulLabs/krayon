@@ -1,9 +1,8 @@
-![badge][badge-js]
 ![badge][badge-jvm]
-![badge][badge-mac]
+![badge][badge-android]
 [![codecov](https://codecov.io/gh/JuulLabs/krayon/branch/main/graph/badge.svg?token=24ilSLPwN2)](https://codecov.io/gh/JuulLabs/krayon)
 
-Toolbox of utilities/helpers for Kotlin development.
+Multiplatform canvas drawing library with additional components built on top.
 
 # Krayon
 
