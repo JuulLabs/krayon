@@ -12,9 +12,9 @@ apply(from = rootProject.file("gradle/publish.gradle.kts"))
 
 kotlin {
     explicitApi()
-    android {
-        publishAllLibraryVariants()
-    }
+
+    android { publishAllLibraryVariants() }
+    jvm()
 
     sourceSets {
         val commonMain by getting {
