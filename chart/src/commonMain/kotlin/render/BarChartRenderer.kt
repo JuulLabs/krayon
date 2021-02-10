@@ -7,7 +7,7 @@ import com.juul.krayon.chart.style.BarChartStyle
 public open class BarChartRenderer(
     public val style: BarChartStyle
 ) : Renderer<ClusteredDataSet<Float>> {
-    override fun render(dataSet: ClusteredDataSet<Float>, canvas: Canvas) {
+    override fun <PAINT, PATH> render(dataSet: ClusteredDataSet<Float>, canvas: Canvas<PAINT, PATH>) {
         TODO("Not yet implemented")
     }
 }

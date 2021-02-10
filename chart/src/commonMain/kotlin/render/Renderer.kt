@@ -10,5 +10,5 @@ import com.juul.krayon.chart.data.DataSet
  */
 public interface Renderer<DATA> where DATA : DataSet<*> {
     /** Render [dataSet] to the [canvas]. */
-    public fun render(dataSet: DATA, canvas: Canvas)
+    public fun <PAINT, PATH> render(dataSet: DATA, canvas: Canvas<PAINT, PATH>)
 }

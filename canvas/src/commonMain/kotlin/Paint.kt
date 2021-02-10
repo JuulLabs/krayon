@@ -45,7 +45,8 @@ public sealed class Paint {
     public data class Text(
         public val color: Color,
         public val size: Float,
-        public val alignment: Alignment
+        public val alignment: Alignment,
+        public val font: Font
     ) : Paint() {
         public enum class Alignment { Left, Center, Right }
     }
