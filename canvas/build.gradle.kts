@@ -17,8 +17,13 @@ kotlin {
     jvm()
 
     sourceSets {
+        all {
+            languageSettings.enableLanguageFeature("InlineClasses")
+        }
+
         val commonMain by getting {
             dependencies {
+                implementation(kotlin("stdlib"))
             }
         }
 
@@ -36,6 +41,12 @@ kotlin {
         }
 
         val androidTest by getting {
+            dependencies {
+                implementation(kotlin("test-junit"))
+            }
+        }
+
+        val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
             }
