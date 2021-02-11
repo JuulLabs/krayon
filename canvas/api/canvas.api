@@ -104,6 +104,17 @@ public final class com/juul/krayon/canvas/ColorKt {
 	public static synthetic fun nextColor$default (Lkotlin/random/Random;ZILjava/lang/Object;)I
 }
 
+public final class com/juul/krayon/canvas/Font {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/juul/krayon/canvas/Font;
+	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Font;Ljava/lang/String;ILjava/lang/Object;)Lcom/juul/krayon/canvas/Font;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public abstract class com/juul/krayon/canvas/Paint {
 }
 
@@ -169,15 +180,17 @@ public final class com/juul/krayon/canvas/Paint$Stroke$Join$Round : com/juul/kra
 }
 
 public final class com/juul/krayon/canvas/Paint$Text : com/juul/krayon/canvas/Paint {
-	public synthetic fun <init> (IFLcom/juul/krayon/canvas/Paint$Text$Alignment;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (IFLcom/juul/krayon/canvas/Paint$Text$Alignment;Lcom/juul/krayon/canvas/Font;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-6Vs19M8 ()I
 	public final fun component2 ()F
 	public final fun component3 ()Lcom/juul/krayon/canvas/Paint$Text$Alignment;
-	public final fun copy-Hco4Vsw (IFLcom/juul/krayon/canvas/Paint$Text$Alignment;)Lcom/juul/krayon/canvas/Paint$Text;
-	public static synthetic fun copy-Hco4Vsw$default (Lcom/juul/krayon/canvas/Paint$Text;IFLcom/juul/krayon/canvas/Paint$Text$Alignment;ILjava/lang/Object;)Lcom/juul/krayon/canvas/Paint$Text;
+	public final fun component4 ()Lcom/juul/krayon/canvas/Font;
+	public final fun copy-oQB-ygg (IFLcom/juul/krayon/canvas/Paint$Text$Alignment;Lcom/juul/krayon/canvas/Font;)Lcom/juul/krayon/canvas/Paint$Text;
+	public static synthetic fun copy-oQB-ygg$default (Lcom/juul/krayon/canvas/Paint$Text;IFLcom/juul/krayon/canvas/Paint$Text$Alignment;Lcom/juul/krayon/canvas/Font;ILjava/lang/Object;)Lcom/juul/krayon/canvas/Paint$Text;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAlignment ()Lcom/juul/krayon/canvas/Paint$Text$Alignment;
 	public final fun getColor-6Vs19M8 ()I
+	public final fun getFont ()Lcom/juul/krayon/canvas/Font;
 	public final fun getSize ()F
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;

@@ -32,7 +32,7 @@ public inline class Color(public val argb: Int) {
         alpha: Int = this.alpha,
         red: Int = this.red,
         green: Int = this.green,
-        blue: Int = this.blue
+        blue: Int = this.blue,
     ): Color = Color(alpha, red, green, blue)
 
     public companion object {
