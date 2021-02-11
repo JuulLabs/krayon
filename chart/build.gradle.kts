@@ -12,14 +12,14 @@ apply(from = rootProject.file("gradle/publish.gradle.kts"))
 
 kotlin {
     explicitApi()
-    android {
-        publishAllLibraryVariants()
-    }
+
+    android { publishAllLibraryVariants() }
+    jvm()
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":canvas"))
+                api(project(":canvas"))
                 implementation(kotlin("stdlib"))
             }
         }
@@ -38,6 +38,12 @@ kotlin {
         }
 
         val androidTest by getting {
+            dependencies {
+                implementation(kotlin("test-junit"))
+            }
+        }
+
+        val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
             }

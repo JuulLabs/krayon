@@ -25,7 +25,7 @@ public interface PathBuilder<out P> {
         bottom: Float,
         startAngle: Float,
         sweepAngle: Float,
-        forceMoveTo: Boolean
+        forceMoveTo: Boolean,
     )
 
     /**
@@ -48,7 +48,7 @@ public interface PathBuilder<out P> {
         endControlX: Float,
         endControlY: Float,
         endX: Float,
-        endY: Float
+        endY: Float,
     )
 
     /** Same as [cubicTo], except coordinates are relative to the current location. */
@@ -58,7 +58,7 @@ public interface PathBuilder<out P> {
         endControlX: Float,
         endControlY: Float,
         endX: Float,
-        endY: Float
+        endY: Float,
     )
 
     /** Close the current contour. */

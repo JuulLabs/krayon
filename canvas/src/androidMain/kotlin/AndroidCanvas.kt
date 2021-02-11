@@ -7,7 +7,7 @@ import android.graphics.Path as AndroidPath
 
 /** Implementation of [Canvas] which wraps a native Android [Canvas][android.graphics.Canvas]. */
 public class AndroidCanvas(
-    private val androidCanvas: android.graphics.Canvas
+    private val androidCanvas: android.graphics.Canvas,
 ) : Canvas<AndroidPaint, AndroidPath> {
 
     override fun buildPaint(paint: Paint): AndroidPaint = paint.toAndroid()
@@ -23,7 +23,7 @@ public class AndroidCanvas(
         startAngle: Float,
         sweepAngle: Float,
         useCenter: Boolean,
-        paint: AndroidPaint
+        paint: AndroidPaint,
     ) {
         androidCanvas.drawArc(left, top, right, bottom, startAngle, sweepAngle, useCenter, paint)
     }
