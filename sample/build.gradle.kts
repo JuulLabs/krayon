@@ -4,6 +4,8 @@ plugins {
     id("org.jmailen.kotlinter")
 }
 
+// TODO: When we add other platforms, this should become a multiplatform module.
+
 android {
     compileSdkVersion(30)
 
@@ -12,15 +14,6 @@ android {
         targetSdkVersion(30)
         versionCode = 1
         versionName = "sample"
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    java {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
 

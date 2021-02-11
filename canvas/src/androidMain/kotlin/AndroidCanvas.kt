@@ -23,10 +23,10 @@ public class AndroidCanvas(
     private val preTransform = Transform.Scale(horizontal = scalingFactor, vertical = scalingFactor)
 
     override val width: Float
-        get() = androidCanvas?.width?.toFloat() ?: 0 / scalingFactor
+        get() = (androidCanvas?.width ?: 0) / scalingFactor
 
     override val height: Float
-        get() = androidCanvas?.height?.toFloat() ?: 0 / scalingFactor
+        get() = (androidCanvas?.height ?: 0) / scalingFactor
 
     init {
         pushTransform(preTransform)
