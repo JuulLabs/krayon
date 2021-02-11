@@ -19,7 +19,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":canvas")) // exposed as API in `Renderer.render`
+                implementation(project(":canvas"))
                 implementation(kotlin("stdlib"))
             }
         }

@@ -25,5 +25,5 @@ android {
 }
 
 dependencies {
-    implementation(project(":chart"))
+    implementation(project(":canvas"))
 }
