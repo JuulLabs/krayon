@@ -15,8 +15,13 @@ android {
         versionCode = 1
         versionName = "sample"
     }
+
+    buildFeatures {
+        resValues = true
+        viewBinding = true
+    }
 }
 
 dependencies {
-    implementation(project(":canvas"))
+    implementation(project(":chart"))
 }

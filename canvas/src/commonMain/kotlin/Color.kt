@@ -1,8 +1,10 @@
 package com.juul.krayon.canvas
 
+import kotlin.math.roundToInt
 import kotlin.random.Random
 
 private const val COMPONENT_MASK = 0xFF
+private const val RGB_MASK = 0xFFFFFF
 
 private const val ALPHA_SHIFT = 24
 private const val RED_SHIFT = 16
@@ -23,6 +25,16 @@ public inline class Color(public val argb: Int) {
     public constructor(red: Int, green: Int, blue: Int) :
         this(alpha = 0xFF, red, green, blue)
 
+    public constructor(alpha: Float, red: Float, green: Float, blue: Float) : this(
+        (alpha * 0xFF).roundToInt(),
+        (red * 0xFF).roundToInt(),
+        (green * 0xFF).roundToInt(),
+        (blue * 0xFF).roundToInt()
+    )
+
+    public constructor(red: Float, green: Float, blue: Float) :
+        this(alpha = 1f, red, green, blue)
+
     public val alpha: Int get() = (argb ushr ALPHA_SHIFT) and COMPONENT_MASK
     public val red: Int get() = (argb ushr RED_SHIFT) and COMPONENT_MASK
     public val green: Int get() = (argb ushr GREEN_SHIFT) and COMPONENT_MASK
@@ -34,6 +46,14 @@ public inline class Color(public val argb: Int) {
         green: Int = this.green,
         blue: Int = this.blue,
     ): Color = Color(alpha, red, green, blue)
+
+    /** Linear interpolate towards another color. */
+    public fun lerp(other: Color, percent: Float): Color = Color(
+        alpha = (this.alpha + (other.alpha - this.alpha) * percent).roundToInt(),
+        red = (this.red + (other.red - this.red) * percent).roundToInt(),
+        green = (this.green + (other.green - this.green) * percent).roundToInt(),
+        blue = (this.blue + (other.blue - this.blue) * percent).roundToInt()
+    )
 
     public companion object {
         public val transparent: Color = Color(0x00, 0x00, 0x00, 0x00)
@@ -53,6 +73,6 @@ public inline class Color(public val argb: Int) {
 
 /** Get a random [Color]. If [isOpaque] is `true` (the default), then alpha is guaranteed to be `0xFF`. */
 public fun Random.nextColor(isOpaque: Boolean = true): Color = when (isOpaque) {
-    true -> Color((0xFF shl ALPHA_SHIFT) or (nextInt() and 0xFFFFFF))
+    true -> Color((0xFF shl ALPHA_SHIFT) or (nextInt() and RGB_MASK))
     false -> Color(nextInt())
 }
