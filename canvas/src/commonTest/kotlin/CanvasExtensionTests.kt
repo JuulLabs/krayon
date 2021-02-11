@@ -6,7 +6,7 @@ class CanvasExtensionTests {
 
     @Test
     fun checkWithClipMakesCorrectCalls() {
-        val canvas = CallRecordingCanvas()
+        val canvas = CallRecordingCanvas(100f, 100f)
         canvas.withClip(Clip.Rect(0f, 0f, 5f, 5f)) {
             val paint = canvas.buildPaint(Paint.Stroke(Color.black, 1f))
             canvas.drawLine(0f, 0f, 10f, 10f, paint)
@@ -20,7 +20,7 @@ class CanvasExtensionTests {
 
     @Test
     fun checkWithTransformMakesCorrectCalls() {
-        val canvas = CallRecordingCanvas()
+        val canvas = CallRecordingCanvas(100f, 100f)
         canvas.withTransform(Transform.Scale(horizontal = 2f)) {
             val paint = canvas.buildPaint(Paint.Stroke(Color.black, 1f))
             canvas.drawLine(0f, 0f, 10f, 10f, paint)

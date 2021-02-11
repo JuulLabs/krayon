@@ -2,6 +2,8 @@ package com.juul.krayon.canvas
 
 import android.graphics.Region
 import android.os.Build
+import android.util.DisplayMetrics
+import android.util.TypedValue
 import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
 
@@ -9,6 +11,12 @@ import android.graphics.Path as AndroidPath
 public class AndroidCanvas(
     private val androidCanvas: android.graphics.Canvas
 ) : Canvas<AndroidPaint, AndroidPath> {
+
+    override val width: Float
+        get() = androidCanvas.width.toFloat()
+
+    override val height: Float
+        get() = androidCanvas.height.toFloat()
 
     override fun buildPaint(paint: Paint): AndroidPaint = paint.toAndroid()
 
@@ -106,5 +114,25 @@ public class AndroidCanvas(
 
     override fun pop() {
         androidCanvas.restore()
+    }
+}
+
+/**
+ * Transforms a [Canvas] with a [Transform.Scale] such that 1 unit is equal to 1dp. Unlike [withTransform],
+ * calls to [Canvas.width] and [Canvas.height] inside this space are adjusted to account for the scale.
+ */
+inline fun <PAINT, PATH> Canvas<PAINT, PATH>.withDpScale(
+    displayMetrics: DisplayMetrics,
+    block: Canvas<PAINT, PATH>.() -> Unit
+) {
+    val scale = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1f, displayMetrics)
+    val width = this.width / scale
+    val height = this.height / scale
+    withTransform(Transform.Scale(horizontal = scale, vertical = scale)) {
+        val receiver = object : Canvas<PAINT, PATH> by this {
+            override val width: Float get() = width
+            override val height: Float get() = height
+        }
+        with(receiver) { block() }
     }
 }

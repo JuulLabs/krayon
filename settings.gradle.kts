@@ -23,5 +23,6 @@ pluginManagement {
 
 include(
     "canvas",
-    "chart"
+    "chart",
+    "sample-android"
 )

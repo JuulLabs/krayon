@@ -2,6 +2,12 @@ package com.juul.krayon.canvas
 
 public interface Canvas<PAINT, PATH> {
 
+    /** Gets the width of the canvas. */
+    public val width: Float
+
+    /** Gets the height of the canvas. */
+    public val height: Float
+
     /** Create a [PAINT] understood by this canvas. The returned paint must NOT have a reference to the canvas. */
     public fun buildPaint(paint: Paint): PAINT
 

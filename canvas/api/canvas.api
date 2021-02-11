@@ -7,6 +7,8 @@ public abstract interface class com/juul/krayon/canvas/Canvas {
 	public abstract fun drawOval (FFFFLjava/lang/Object;)V
 	public abstract fun drawPath (Ljava/lang/Object;Ljava/lang/Object;)V
 	public abstract fun drawText (Ljava/lang/CharSequence;FFLjava/lang/Object;)V
+	public abstract fun getHeight ()F
+	public abstract fun getWidth ()F
 	public abstract fun pop ()V
 	public abstract fun pushClip (Lcom/juul/krayon/canvas/Clip;)V
 	public abstract fun pushTransform (Lcom/juul/krayon/canvas/Transform;)V
