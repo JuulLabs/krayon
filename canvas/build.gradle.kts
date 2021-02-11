@@ -30,6 +30,7 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(tuulbox.test())
+                implementation(kotlin("reflect"))
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
