@@ -21,6 +21,7 @@ abstract class CanvasView(
     final override fun onDraw(canvas: android.graphics.Canvas) {
         krayonCanvas.setCanvas(canvas)
         onDraw(krayonCanvas)
+        krayonCanvas.setCanvas(null)
     }
 
     /**

@@ -131,6 +131,7 @@ public class AndroidCanvas(
     }
 
     public fun setCanvas(androidCanvas: android.graphics.Canvas?) {
+        pop()
         this.androidCanvas = androidCanvas
         pushTransform(preTransform)
     }
