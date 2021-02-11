@@ -9,7 +9,7 @@ import android.graphics.Path as AndroidPath
 public fun AndroidCanvas(
     sourceCanvas: android.graphics.Canvas,
     scalingFactor: Float = 1f,
-): AndroidCanvas = AndroidCanvas(sourceCanvas, scalingFactor)
+): AndroidCanvas = AndroidCanvas(sourceCanvas as android.graphics.Canvas?, scalingFactor)
 
 /**
  * Implementation of [Canvas] which wraps a native Android [Canvas][android.graphics.Canvas].
