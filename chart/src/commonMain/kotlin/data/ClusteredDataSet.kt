@@ -1,6 +1,7 @@
 package com.juul.krayon.chart.data
 
 import com.juul.krayon.chart.checkRectangular
+import kotlin.jvm.JvmName
 
 /** A collection of data which can be grouped into [Cluster]s. */
 public interface ClusteredDataSet<out T> : DataSet<T> {
@@ -45,18 +46,28 @@ internal class RectangularClusteredDataSet<T> private constructor(
     }
 }
 
+/** Creates [ClusteredDataSet] with a single [Series]. */
+public fun <T> Series<T>.toClusteredDataSet(): ClusteredDataSet<T> =
+    RectangularClusteredDataSet.fromSeriesData(listOf(this))
+
 /** Creates a [ClusteredDataSet] from one or more [Series]. Each series must have the same length. */
 public fun <T> rectangularDataSetOf(firstSeries: Series<T>, vararg moreSeries: Series<T>): ClusteredDataSet<T> =
     RectangularClusteredDataSet.fromSeriesData(listOf(firstSeries, *moreSeries))
 
-/** Creates [ClusteredDataSet] with a single [Series]. */
-public fun <T> Series<T>.toClusteredDataSet(): ClusteredDataSet<T> =
-    RectangularClusteredDataSet.fromSeriesData(listOf(this))
+/** Creates [ClusteredDataSet] with a list of [Series]s. Each series must have the same length */
+@JvmName("seriesToRectangularDataSet")
+public fun <T> Iterable<Series<T>>.toRectangularDataSet(): ClusteredDataSet<T> =
+    RectangularClusteredDataSet.fromSeriesData(this.toList())
+
+/** Creates [ClusteredDataSet] with a single [Cluster]. */
+public fun <T> Cluster<T>.toClusteredDataSet(): ClusteredDataSet<T> =
+    RectangularClusteredDataSet.fromClusterData(listOf(this))
 
 /** Creates a [ClusteredDataSet] from one or more [Cluster]s. Each cluster must have the same length. */
 public fun <T> rectangularDataSetOf(firstCluster: Cluster<T>, vararg moreClusters: Cluster<T>): ClusteredDataSet<T> =
     RectangularClusteredDataSet.fromClusterData(listOf(firstCluster, *moreClusters))
 
-/** Creates [ClusteredDataSet] with a single [Cluster]. */
-public fun <T> Cluster<T>.toClusteredDataSet(): ClusteredDataSet<T> =
-    RectangularClusteredDataSet.fromClusterData(listOf(this))
+/** Creates [ClusteredDataSet] with a list of [Cluster]s. Each cluster must have the same length */
+@JvmName("clustersToRectangularDataSet")
+public fun <T> Iterable<Cluster<T>>.toRectangularDataSet(): ClusteredDataSet<T> =
+    RectangularClusteredDataSet.fromClusterData(this.toList())

@@ -17,7 +17,7 @@ public open class BarChartRenderer(
             .map { color -> canvas.buildPaint(Paint.Stroke(color, 8f, Paint.Stroke.Cap.Round)) }
             .toList()
 
-        val scale = canvas.height / dataSet.maxValue()
+        val scale = canvas.height / dataSet.maxValue() / 2
 
         canvas.withTransform(Transform.Scale(vertical = -1f, pivotY = canvas.height / 2f)) {
             var offset = 24f
@@ -26,7 +26,7 @@ public open class BarChartRenderer(
                     drawLine(offset, 0f, offset, value * scale, paints[index])
                     offset += 8f
                 }
-                offset += 8f
+                offset += 16f
             }
         }
     }

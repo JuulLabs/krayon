@@ -9,10 +9,16 @@ internal fun defaultFont(): Font = Font("sans-serif")
 internal fun defaultIndexLabelFactory() = IndexLabelFactory { null }
 
 internal fun defaultSeriesColors(): Sequence<Color> = sequenceOf(
-    Color.red,
-    Color.green,
-    Color.blue,
-    Color.cyan,
-    Color.magenta,
-    Color.yellow
+    Color.red.lerp(Color.white, 0.375f),
+    Color.green.lerp(Color.white, 0.375f),
+    Color.blue.lerp(Color.white, 0.375f),
+    Color.cyan.lerp(Color.white, 0.375f),
+    Color.magenta.lerp(Color.white, 0.375f),
+    Color.yellow.lerp(Color.white, 0.375f),
+    Color.red.lerp(Color.white, 0.75f),
+    Color.green.lerp(Color.white, 0.75f),
+    Color.blue.lerp(Color.white, 0.75f),
+    Color.cyan.lerp(Color.white, 0.75f),
+    Color.magenta.lerp(Color.white, 0.75f),
+    Color.yellow.lerp(Color.white, 0.75f)
 )
