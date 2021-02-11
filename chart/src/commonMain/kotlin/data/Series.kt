@@ -2,7 +2,7 @@ package com.juul.krayon.chart.data
 
 /** A non-empty [List]. A series is usually used to represent multiple states or subsets of a single noun. */
 public data class Series<out T>(
-    private val entries: List<T>
+    private val entries: List<T>,
 ) : List<T> by entries {
     init {
         require(entries.isNotEmpty()) { "A series must have at least 1 entry." }

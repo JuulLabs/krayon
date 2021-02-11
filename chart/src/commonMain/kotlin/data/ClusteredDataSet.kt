@@ -10,7 +10,7 @@ public interface ClusteredDataSet<out T> : DataSet<T> {
 
 internal class RectangularClusteredDataSet<T> private constructor(
     override val seriesData: List<Series<T>>,
-    override val clusterData: List<Cluster<T>>
+    override val clusterData: List<Cluster<T>>,
 ) : ClusteredDataSet<T> {
 
     init {

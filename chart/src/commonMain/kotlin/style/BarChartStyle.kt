@@ -18,6 +18,7 @@ public class BarChartStyle(
     public enum class ClusterKind {
         /** Each series should be its own bar, grouped next to each other. */
         Grouped,
+
         /** Each series should stacked to make a larger bar. */
         Stacked
     }

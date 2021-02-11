@@ -7,7 +7,7 @@ public interface DataSet<out T> {
 }
 
 private class SimpleDataSet<T>(
-    override val seriesData: List<Series<T>>
+    override val seriesData: List<Series<T>>,
 ) : DataSet<T> {
     init {
         require(seriesData.isNotEmpty()) { "Must have at least one series." }

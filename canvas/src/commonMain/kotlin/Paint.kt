@@ -5,7 +5,7 @@ public sealed class Paint {
 
     /** Fills the inside of shape with a color. */
     public data class Fill(
-        public val color: Color
+        public val color: Color,
     ) : Paint()
 
     /** Draws a color around the outside of a shape. */
@@ -13,7 +13,7 @@ public sealed class Paint {
         public val color: Color,
         public val width: Float,
         public val cap: Cap = Cap.Butt,
-        public val join: Join = Join.Miter()
+        public val join: Join = Join.Miter(),
     ) : Paint() {
 
         /** Shape behavior for end of a line. */
@@ -25,7 +25,7 @@ public sealed class Paint {
             Round,
 
             /** Squared off end, extending past the edge of the line by half the stroke width. */
-            Square
+            Square,
         }
 
         /** Shape behavior for the corners in a poly-line. */
@@ -46,7 +46,7 @@ public sealed class Paint {
         public val color: Color,
         public val size: Float,
         public val alignment: Alignment,
-        public val font: Font
+        public val font: Font,
     ) : Paint() {
         public enum class Alignment { Left, Center, Right }
     }

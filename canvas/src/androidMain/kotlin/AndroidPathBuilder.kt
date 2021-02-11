@@ -28,7 +28,7 @@ internal class AndroidPathBuilder : PathBuilder<AndroidPath> {
         bottom: Float,
         startAngle: Float,
         sweepAngle: Float,
-        forceMoveTo: Boolean
+        forceMoveTo: Boolean,
     ) {
         pathBuffer.arcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo)
     }
@@ -37,7 +37,7 @@ internal class AndroidPathBuilder : PathBuilder<AndroidPath> {
         controlX: Float,
         controlY: Float,
         endX: Float,
-        endY: Float
+        endY: Float,
     ) {
         pathBuffer.quadTo(controlX, controlY, endX, endY)
     }
@@ -46,7 +46,7 @@ internal class AndroidPathBuilder : PathBuilder<AndroidPath> {
         controlX: Float,
         controlY: Float,
         endX: Float,
-        endY: Float
+        endY: Float,
     ) {
         pathBuffer.rQuadTo(controlX, controlY, endX, endY)
     }
@@ -57,7 +57,7 @@ internal class AndroidPathBuilder : PathBuilder<AndroidPath> {
         endControlX: Float,
         endControlY: Float,
         endX: Float,
-        endY: Float
+        endY: Float,
     ) {
         pathBuffer.cubicTo(beginControlX, beginControlY, endControlX, endControlY, endX, endY)
     }
@@ -68,7 +68,7 @@ internal class AndroidPathBuilder : PathBuilder<AndroidPath> {
         endControlX: Float,
         endControlY: Float,
         endX: Float,
-        endY: Float
+        endY: Float,
     ) {
         pathBuffer.rCubicTo(beginControlX, beginControlY, endControlX, endControlY, endX, endY)
     }

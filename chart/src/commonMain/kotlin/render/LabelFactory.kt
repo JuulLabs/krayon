@@ -6,5 +6,5 @@ public fun interface LabelFactory<T> {
     public fun createLabel(value: T): CharSequence?
 }
 
-/** It's basically `(Int) -> String?` but now you know what the `Int` represents. */
-public fun interface IndexLabelFactory : LabelFactory<Int>
+/** Type alias of LabelFactory<Int> for documentation purposes: the value represents an index. */
+public typealias IndexLabelFactory = LabelFactory<Int>
