@@ -44,7 +44,7 @@ class CallRecordingCanvas(
         startAngle: Float,
         sweepAngle: Float,
         useCenter: Boolean,
-        paint: UnitPaint
+        paint: UnitPaint,
     ) {
         recorder.record(this::drawArc, left, top, right, bottom, startAngle, sweepAngle, useCenter, paint)
     }

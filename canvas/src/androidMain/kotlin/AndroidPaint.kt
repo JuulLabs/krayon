@@ -40,6 +40,7 @@ private fun androidPaint(source: Paint.Text) = AndroidPaint().apply {
     isAntiAlias = true
     color = source.color.argb
     textSize = source.size
+    // FIXME: Font is currently ignored.
     textAlign = when (source.alignment) {
         Paint.Text.Alignment.Left -> AndroidPaint.Align.LEFT
         Paint.Text.Alignment.Center -> AndroidPaint.Align.CENTER

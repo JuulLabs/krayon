@@ -28,7 +28,7 @@ public interface Canvas<PAINT, PATH> {
         startAngle: Float,
         sweepAngle: Float,
         useCenter: Boolean,
-        paint: PAINT
+        paint: PAINT,
     )
 
     /** Draw a circle at [centerX], [centerY] with size defined by its [radius]. */
@@ -59,7 +59,7 @@ public interface Canvas<PAINT, PATH> {
 /** Invokes [actions] inside of a [Canvas.pushClip]/[Canvas.pop] pair. */
 public inline fun <PAINT, PATH> Canvas<PAINT, PATH>.withClip(
     clip: Clip<PATH>,
-    actions: Canvas<PAINT, PATH>.() -> Unit
+    actions: Canvas<PAINT, PATH>.() -> Unit,
 ) {
     pushClip(clip)
     try {
@@ -72,7 +72,7 @@ public inline fun <PAINT, PATH> Canvas<PAINT, PATH>.withClip(
 /** Invokes [actions] inside of a [Canvas.pushTransform]/[Canvas.pop] pair. */
 public inline fun <PAINT, PATH> Canvas<PAINT, PATH>.withTransform(
     transform: Transform,
-    actions: Canvas<PAINT, PATH>.() -> Unit
+    actions: Canvas<PAINT, PATH>.() -> Unit,
 ) {
     pushTransform(transform)
     try {
