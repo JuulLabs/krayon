@@ -5,17 +5,19 @@ import android.os.Build
 import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
 
+/** Create an [AndroidCanvas]. */
+public fun AndroidCanvas(
+    sourceCanvas: android.graphics.Canvas,
+    scalingFactor: Float = 1f,
+): AndroidCanvas = AndroidCanvas(sourceCanvas, scalingFactor)
+
 /**
  * Implementation of [Canvas] which wraps a native Android [Canvas][android.graphics.Canvas].
  *
  * It may be pre-scaled by a [scalingFactor]. If it is, [width] and [height] are adjusted to
  * account for this scaling factor.
- *
- * Note that the backing canvas for this object is mutable, and can be replaced with [setCanvas].
- * This is provided as an optimization for cases where allocation should be strongly avoided,
- * such as for [CanvasView].
  */
-public class AndroidCanvas(
+public class AndroidCanvas internal constructor(
     private var androidCanvas: android.graphics.Canvas?,
     private val scalingFactor: Float = 1f,
 ) : Canvas<AndroidPaint, AndroidPath> {
@@ -23,19 +25,23 @@ public class AndroidCanvas(
     private val preTransform = Transform.Scale(horizontal = scalingFactor, vertical = scalingFactor)
 
     override val width: Float
-        get() = (androidCanvas?.width ?: 0) / scalingFactor
+        get() = requireCanvas().width / scalingFactor
 
     override val height: Float
-        get() = (androidCanvas?.height ?: 0) / scalingFactor
+        get() = requireCanvas().height / scalingFactor
 
     init {
-        pushTransform(preTransform)
+        if (androidCanvas != null) {
+            pushTransform(preTransform)
+        }
     }
 
     override fun buildPaint(paint: Paint): AndroidPaint = paint.toAndroid()
 
     override fun buildPath(actions: PathBuilder<*>.() -> Unit): AndroidPath =
         AndroidPathBuilder().apply(actions).build()
+
+    private fun requireCanvas(): android.graphics.Canvas = checkNotNull(androidCanvas)
 
     override fun drawArc(
         left: Float,
@@ -47,51 +53,51 @@ public class AndroidCanvas(
         useCenter: Boolean,
         paint: AndroidPaint,
     ) {
-        androidCanvas?.drawArc(left, top, right, bottom, startAngle, sweepAngle, useCenter, paint)
+        requireCanvas().drawArc(left, top, right, bottom, startAngle, sweepAngle, useCenter, paint)
     }
 
     override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: AndroidPaint) {
-        androidCanvas?.drawCircle(centerX, centerY, radius, paint)
+        requireCanvas().drawCircle(centerX, centerY, radius, paint)
     }
 
     override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: AndroidPaint) {
-        androidCanvas?.drawLine(startX, startY, endX, endY, paint)
+        requireCanvas().drawLine(startX, startY, endX, endY, paint)
     }
 
     override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: AndroidPaint) {
-        androidCanvas?.drawOval(left, top, right, bottom, paint)
+        requireCanvas().drawOval(left, top, right, bottom, paint)
     }
 
     override fun drawPath(path: AndroidPath, paint: AndroidPaint) {
-        androidCanvas?.drawPath(path, paint)
+        requireCanvas().drawPath(path, paint)
     }
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: AndroidPaint) {
-        androidCanvas?.drawText(text, 0, text.length, x, y, paint)
+        requireCanvas().drawText(text, 0, text.length, x, y, paint)
     }
 
     @Suppress("DEPRECATION")
     override fun pushClip(clip: Clip<AndroidPath>) {
-        androidCanvas?.save()
+        requireCanvas().save()
         when (clip) {
             is Clip.Rect -> when (clip.operation) {
                 Clip.Operation.Intersection ->
-                    androidCanvas?.clipRect(clip.left, clip.top, clip.right, clip.bottom)
+                    requireCanvas().clipRect(clip.left, clip.top, clip.right, clip.bottom)
                 Clip.Operation.Difference ->
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                        androidCanvas?.clipRect(clip.left, clip.top, clip.right, clip.bottom, Region.Op.DIFFERENCE)
+                        requireCanvas().clipRect(clip.left, clip.top, clip.right, clip.bottom, Region.Op.DIFFERENCE)
                     } else {
-                        androidCanvas?.clipOutRect(clip.left, clip.top, clip.right, clip.bottom)
+                        requireCanvas().clipOutRect(clip.left, clip.top, clip.right, clip.bottom)
                     }
             }
             is Clip.Path -> when (clip.operation) {
                 Clip.Operation.Intersection ->
-                    androidCanvas?.clipPath(clip.path)
+                    requireCanvas().clipPath(clip.path)
                 Clip.Operation.Difference ->
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                        androidCanvas?.clipPath(clip.path, Region.Op.DIFFERENCE)
+                        requireCanvas().clipPath(clip.path, Region.Op.DIFFERENCE)
                     } else {
-                        androidCanvas?.clipOutPath(clip.path)
+                        requireCanvas().clipOutPath(clip.path)
                     }
             }
         }
@@ -106,33 +112,38 @@ public class AndroidCanvas(
                     transform.transformations.forEach(::applyTransform)
                 is Transform.Scale ->
                     if (transform.pivotX == 0f && transform.pivotY == 0f) {
-                        androidCanvas?.scale(transform.horizontal, transform.vertical)
+                        requireCanvas().scale(transform.horizontal, transform.vertical)
                     } else {
-                        androidCanvas?.scale(transform.horizontal, transform.vertical, transform.pivotX, transform.pivotY)
+                        requireCanvas().scale(transform.horizontal, transform.vertical, transform.pivotX, transform.pivotY)
                     }
                 is Transform.Rotate ->
                     if (transform.pivotX == 0f && transform.pivotY == 0f) {
-                        androidCanvas?.rotate(transform.degrees)
+                        requireCanvas().rotate(transform.degrees)
                     } else {
-                        androidCanvas?.rotate(transform.degrees, transform.pivotX, transform.pivotY)
+                        requireCanvas().rotate(transform.degrees, transform.pivotX, transform.pivotY)
                     }
                 is Transform.Translate ->
-                    androidCanvas?.translate(transform.horizontal, transform.vertical)
+                    requireCanvas().translate(transform.horizontal, transform.vertical)
                 is Transform.Skew ->
-                    androidCanvas?.skew(transform.horizontal, transform.vertical)
+                    requireCanvas().skew(transform.horizontal, transform.vertical)
             }
         }
-        androidCanvas?.save()
+        requireCanvas().save()
         applyTransform(transform)
     }
 
     override fun pop() {
-        androidCanvas?.restore()
+        requireCanvas().restore()
     }
 
-    public fun setCanvas(androidCanvas: android.graphics.Canvas?) {
-        pop()
+    /** Mutability on this class is to power [CanvasView] without allocations. Otherwise we should consider this immutable. */
+    internal fun setCanvas(androidCanvas: android.graphics.Canvas?) {
+        if (this.androidCanvas != null) {
+            pop()
+        }
         this.androidCanvas = androidCanvas
-        pushTransform(preTransform)
+        if (androidCanvas != null) {
+            pushTransform(preTransform)
+        }
     }
 }
