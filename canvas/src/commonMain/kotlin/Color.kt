@@ -1,5 +1,7 @@
 package com.juul.krayon.canvas
 
+import kotlin.random.Random
+
 private const val COMPONENT_MASK = 0xFF
 
 private const val ALPHA_SHIFT = 24
@@ -47,4 +49,10 @@ public inline class Color(public val argb: Int) {
         public val magenta: Color = Color(0xFF, 0x00, 0xFF)
         public val yellow: Color = Color(0xFF, 0xFF, 0x00)
     }
+}
+
+/** Get a random [Color]. If [isOpaque] is `true` (the default), then alpha is guaranteed to be `0xFF`. */
+public fun Random.nextColor(isOpaque: Boolean = true): Color = when (isOpaque) {
+    true -> Color((0xFF shl ALPHA_SHIFT) or (nextInt() and 0xFFFFFF))
+    false -> Color(nextInt())
 }

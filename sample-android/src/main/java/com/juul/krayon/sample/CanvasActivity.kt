@@ -7,6 +7,8 @@ import com.juul.krayon.canvas.Canvas
 import com.juul.krayon.canvas.CanvasView
 import com.juul.krayon.canvas.Color
 import com.juul.krayon.canvas.Paint
+import com.juul.krayon.canvas.nextColor
+import com.juul.krayon.canvas.toAndroid
 import kotlin.random.Random
 import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
@@ -19,23 +21,17 @@ class CanvasActivity : Activity() {
     }
 
     class DemoView(context: Context) : CanvasView(context) {
-        private lateinit var linePaint: AndroidPaint
-        private lateinit var circlePaint: AndroidPaint
+        private val linePaint = Paint.Stroke(Color.black, 1f, Paint.Stroke.Cap.Round).toAndroid()
+        private var circlePaint = Paint.Stroke(Random.nextColor(), 4f).toAndroid()
 
         init {
-            setOnClickListener { invalidateKrayonState() }
+            setOnClickListener {
+                circlePaint = Paint.Stroke(Random.nextColor(), 4f).toAndroid()
+                invalidate()
+            }
         }
 
-        override fun onKrayonSetup(canvas: Canvas<AndroidPaint, AndroidPath>) {
-            linePaint = canvas.buildPaint(Paint.Stroke(Color.black, 1f, Paint.Stroke.Cap.Round))
-        }
-
-        override fun onKrayonStateChange(canvas: Canvas<AndroidPaint, AndroidPath>) {
-            val color = Color(0xFF000000.toInt() or Random.nextInt(0xFFFFFF))
-            circlePaint = canvas.buildPaint(Paint.Stroke(color, 4f, Paint.Stroke.Cap.Round))
-        }
-
-        override fun onKrayonDraw(canvas: Canvas<AndroidPaint, AndroidPath>) = with(canvas) {
+        override fun onDraw(canvas: Canvas<AndroidPaint, AndroidPath>) = with(canvas) {
             drawLine(16f, 16f, width - 16f, height - 16f, linePaint)
             val vScale = (height - 32f) / (width - 32f)
             var hOffset = 0f
