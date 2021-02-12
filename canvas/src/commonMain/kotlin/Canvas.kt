@@ -1,5 +1,6 @@
 package com.juul.krayon.canvas
 
+/** Something to draw on. Implementations are not required to be safe across multiple threads. */
 public interface Canvas<PAINT, PATH> {
 
     /** Gets the width of the canvas. */
