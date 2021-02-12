@@ -1,4 +1,4 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 /** Builds paths. */
 public interface PathBuilder<out P> {

@@ -1,9 +1,9 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 object UnitPaint
 object UnitPath
 
-class CallRecordingCanvas : Canvas<UnitPaint, UnitPath>, CallRecord {
+class CallRecordingKanvas : Kanvas<UnitPaint, UnitPath>, CallRecord {
 
     private val recorder = CallRecorder()
     override val functionCalls: List<FunctionCall>

@@ -1,8 +1,8 @@
 package com.juul.krayon.chart.render
 
-import com.juul.krayon.canvas.Canvas
 import com.juul.krayon.chart.data.ClusteredDataSet
 import com.juul.krayon.chart.data.DataSet
+import com.juul.krayon.kanvas.Kanvas
 
 /**
  * Interface rendering charts. Generally, [DATA] will be simply [DataSet]`<Foo>` or
@@ -10,5 +10,5 @@ import com.juul.krayon.chart.data.DataSet
  */
 public interface Renderer<DATA> where DATA : DataSet<*> {
     /** Render [dataSet] to the [canvas]. */
-    public fun <PAINT, PATH> render(dataSet: DATA, canvas: Canvas<PAINT, PATH>)
+    public fun <PAINT, PATH> render(dataSet: DATA, canvas: Kanvas<PAINT, PATH>)
 }

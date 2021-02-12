@@ -1,14 +1,15 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
+import android.graphics.Canvas
 import android.graphics.Region
 import android.os.Build
 import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
 
-/** Implementation of [Canvas] which wraps a native Android [Canvas][android.graphics.Canvas]. */
-public class AndroidCanvas(
-    private val androidCanvas: android.graphics.Canvas,
-) : Canvas<AndroidPaint, AndroidPath> {
+/** Implementation of [Kanvas] which wraps a native Android [Canvas]. */
+public class AndroidKanvas(
+    private val sourceCanvas: Canvas,
+) : Kanvas<AndroidPaint, AndroidPath> {
 
     override fun buildPaint(paint: Paint): AndroidPaint = paint.toAndroid()
 
@@ -25,51 +26,51 @@ public class AndroidCanvas(
         useCenter: Boolean,
         paint: AndroidPaint,
     ) {
-        androidCanvas.drawArc(left, top, right, bottom, startAngle, sweepAngle, useCenter, paint)
+        sourceCanvas.drawArc(left, top, right, bottom, startAngle, sweepAngle, useCenter, paint)
     }
 
     override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: AndroidPaint) {
-        androidCanvas.drawCircle(centerX, centerY, radius, paint)
+        sourceCanvas.drawCircle(centerX, centerY, radius, paint)
     }
 
     override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: AndroidPaint) {
-        androidCanvas.drawLine(startX, startY, endX, endY, paint)
+        sourceCanvas.drawLine(startX, startY, endX, endY, paint)
     }
 
     override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: AndroidPaint) {
-        androidCanvas.drawOval(left, top, right, bottom, paint)
+        sourceCanvas.drawOval(left, top, right, bottom, paint)
     }
 
     override fun drawPath(path: AndroidPath, paint: AndroidPaint) {
-        androidCanvas.drawPath(path, paint)
+        sourceCanvas.drawPath(path, paint)
     }
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: AndroidPaint) {
-        androidCanvas.drawText(text, 0, text.length, x, y, paint)
+        sourceCanvas.drawText(text, 0, text.length, x, y, paint)
     }
 
     @Suppress("DEPRECATION")
     override fun pushClip(clip: Clip<AndroidPath>) {
-        androidCanvas.save()
+        sourceCanvas.save()
         when (clip) {
             is Clip.Rect -> when (clip.operation) {
                 Clip.Operation.Intersection ->
-                    androidCanvas.clipRect(clip.left, clip.top, clip.right, clip.bottom)
+                    sourceCanvas.clipRect(clip.left, clip.top, clip.right, clip.bottom)
                 Clip.Operation.Difference ->
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                        androidCanvas.clipRect(clip.left, clip.top, clip.right, clip.bottom, Region.Op.DIFFERENCE)
+                        sourceCanvas.clipRect(clip.left, clip.top, clip.right, clip.bottom, Region.Op.DIFFERENCE)
                     } else {
-                        androidCanvas.clipOutRect(clip.left, clip.top, clip.right, clip.bottom)
+                        sourceCanvas.clipOutRect(clip.left, clip.top, clip.right, clip.bottom)
                     }
             }
             is Clip.Path -> when (clip.operation) {
                 Clip.Operation.Intersection ->
-                    androidCanvas.clipPath(clip.path)
+                    sourceCanvas.clipPath(clip.path)
                 Clip.Operation.Difference ->
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                        androidCanvas.clipPath(clip.path, Region.Op.DIFFERENCE)
+                        sourceCanvas.clipPath(clip.path, Region.Op.DIFFERENCE)
                     } else {
-                        androidCanvas.clipOutPath(clip.path)
+                        sourceCanvas.clipOutPath(clip.path)
                     }
             }
         }
@@ -84,27 +85,27 @@ public class AndroidCanvas(
                     transform.transformations.forEach(::applyTransform)
                 is Transform.Scale ->
                     if (transform.pivotX == 0f && transform.pivotY == 0f) {
-                        androidCanvas.scale(transform.horizontal, transform.vertical)
+                        sourceCanvas.scale(transform.horizontal, transform.vertical)
                     } else {
-                        androidCanvas.scale(transform.horizontal, transform.vertical, transform.pivotX, transform.pivotY)
+                        sourceCanvas.scale(transform.horizontal, transform.vertical, transform.pivotX, transform.pivotY)
                     }
                 is Transform.Rotate ->
                     if (transform.pivotX == 0f && transform.pivotY == 0f) {
-                        androidCanvas.rotate(transform.degrees)
+                        sourceCanvas.rotate(transform.degrees)
                     } else {
-                        androidCanvas.rotate(transform.degrees, transform.pivotX, transform.pivotY)
+                        sourceCanvas.rotate(transform.degrees, transform.pivotX, transform.pivotY)
                     }
                 is Transform.Translate ->
-                    androidCanvas.translate(transform.horizontal, transform.vertical)
+                    sourceCanvas.translate(transform.horizontal, transform.vertical)
                 is Transform.Skew ->
-                    androidCanvas.skew(transform.horizontal, transform.vertical)
+                    sourceCanvas.skew(transform.horizontal, transform.vertical)
             }
         }
-        androidCanvas.save()
+        sourceCanvas.save()
         applyTransform(transform)
     }
 
     override fun pop() {
-        androidCanvas.restore()
+        sourceCanvas.restore()
     }
 }

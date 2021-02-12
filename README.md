@@ -8,7 +8,7 @@ Multiplatform canvas drawing library with additional components built on top.
 
 | Module             | Description           |
 |--------------------|-----------------------|
-| [`canvas`](canvas) | Multiplatform canvas. |
+| [`kanvas`](kanvas) | Multiplatform canvas. |
 | [`chart`](chart)   | Multiplatform charts. |
 
 # License

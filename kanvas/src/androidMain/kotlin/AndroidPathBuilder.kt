@@ -1,4 +1,4 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 import android.graphics.Path as AndroidPath
 

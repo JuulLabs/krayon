@@ -1,6 +1,7 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
-public interface Canvas<PAINT, PATH> {
+/** Something to draw on. */
+public interface Kanvas<PAINT, PATH> {
 
     /** Create a [PAINT] understood by this canvas. The returned paint must NOT have a reference to the canvas. */
     public fun buildPaint(paint: Paint): PAINT
@@ -50,10 +51,10 @@ public interface Canvas<PAINT, PATH> {
     public fun pop()
 }
 
-/** Invokes [actions] inside of a [Canvas.pushClip]/[Canvas.pop] pair. */
-public inline fun <PAINT, PATH> Canvas<PAINT, PATH>.withClip(
+/** Invokes [actions] inside of a [Kanvas.pushClip]/[Kanvas.pop] pair. */
+public inline fun <PAINT, PATH> Kanvas<PAINT, PATH>.withClip(
     clip: Clip<PATH>,
-    actions: Canvas<PAINT, PATH>.() -> Unit,
+    actions: Kanvas<PAINT, PATH>.() -> Unit,
 ) {
     pushClip(clip)
     try {
@@ -63,10 +64,10 @@ public inline fun <PAINT, PATH> Canvas<PAINT, PATH>.withClip(
     }
 }
 
-/** Invokes [actions] inside of a [Canvas.pushTransform]/[Canvas.pop] pair. */
-public inline fun <PAINT, PATH> Canvas<PAINT, PATH>.withTransform(
+/** Invokes [actions] inside of a [Kanvas.pushTransform]/[Kanvas.pop] pair. */
+public inline fun <PAINT, PATH> Kanvas<PAINT, PATH>.withTransform(
     transform: Transform,
-    actions: Canvas<PAINT, PATH>.() -> Unit,
+    actions: Kanvas<PAINT, PATH>.() -> Unit,
 ) {
     pushTransform(transform)
     try {

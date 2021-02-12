@@ -1,9 +1,7 @@
 ![badge-android]
-![badge-js]
 ![badge-jvm]
-![badge-mac]
 
-# Chart
+# Kanvas
 
 Multiplatform canvas
 
@@ -11,9 +9,9 @@ Multiplatform canvas
 
 ### Gradle
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.juul.krayon/canvas/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.juul.krayon/canvas)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.juul.krayon/kanvas/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.juul.krayon/kanvas)
 
-Canvas can be configured via Gradle Kotlin DSL as follows:
+Kanvas can be configured via Gradle Kotlin DSL as follows:
 
 #### Multiplatform
 
@@ -35,7 +33,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("com.juul.krayon:canvas:$version")
+                implementation("com.juul.krayon:kanvas:$version")
             }
         }
     }
@@ -54,7 +52,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.juul.krayon:canvas-$platform:$version")
+    implementation("com.juul.krayon:kanvas-$platform:$version")
 }
 ```
 

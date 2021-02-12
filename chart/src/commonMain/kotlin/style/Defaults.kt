@@ -1,8 +1,8 @@
 package com.juul.krayon.chart.style
 
-import com.juul.krayon.canvas.Color
-import com.juul.krayon.canvas.Font
 import com.juul.krayon.chart.render.IndexLabelFactory
+import com.juul.krayon.kanvas.Color
+import com.juul.krayon.kanvas.Font
 
 internal fun defaultFont(): Font = TODO()
 

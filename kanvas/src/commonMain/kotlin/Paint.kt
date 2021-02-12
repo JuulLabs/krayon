@@ -1,4 +1,4 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 /** A descriptor for how shapes should be painted. */
 public sealed class Paint {

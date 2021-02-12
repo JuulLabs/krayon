@@ -1,4 +1,4 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 /** Represents a transformation. Usually, these will boil down to matrix operations. */
 public sealed class Transform {

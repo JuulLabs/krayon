@@ -1,4 +1,4 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 private const val COMPONENT_MASK = 0xFF
 
