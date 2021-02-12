@@ -105,9 +105,6 @@ public class com/juul/krayon/chart/render/BarChartRenderer : com/juul/krayon/cha
 	public synthetic fun render (Lcom/juul/krayon/chart/data/DataSet;Lcom/juul/krayon/canvas/Canvas;)V
 }
 
-public abstract interface class com/juul/krayon/chart/render/IndexLabelFactory : com/juul/krayon/chart/render/LabelFactory {
-}
-
 public abstract interface class com/juul/krayon/chart/render/LabelFactory {
 	public abstract fun createLabel (Ljava/lang/Object;)Ljava/lang/CharSequence;
 }
@@ -118,14 +115,14 @@ public abstract interface class com/juul/krayon/chart/render/Renderer {
 
 public final class com/juul/krayon/chart/style/BarChartStyle {
 	public fun <init> ()V
-	public fun <init> (Lkotlin/sequences/Sequence;Lcom/juul/krayon/canvas/Font;Lcom/juul/krayon/chart/style/Orientation;Lcom/juul/krayon/chart/style/BarChartStyle$ClusterKind;Lcom/juul/krayon/chart/render/IndexLabelFactory;Lcom/juul/krayon/chart/render/IndexLabelFactory;)V
-	public synthetic fun <init> (Lkotlin/sequences/Sequence;Lcom/juul/krayon/canvas/Font;Lcom/juul/krayon/chart/style/Orientation;Lcom/juul/krayon/chart/style/BarChartStyle$ClusterKind;Lcom/juul/krayon/chart/render/IndexLabelFactory;Lcom/juul/krayon/chart/render/IndexLabelFactory;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lkotlin/sequences/Sequence;Lcom/juul/krayon/canvas/Font;Lcom/juul/krayon/chart/style/Orientation;Lcom/juul/krayon/chart/style/BarChartStyle$ClusterKind;Lcom/juul/krayon/chart/render/LabelFactory;Lcom/juul/krayon/chart/render/LabelFactory;)V
+	public synthetic fun <init> (Lkotlin/sequences/Sequence;Lcom/juul/krayon/canvas/Font;Lcom/juul/krayon/chart/style/Orientation;Lcom/juul/krayon/chart/style/BarChartStyle$ClusterKind;Lcom/juul/krayon/chart/render/LabelFactory;Lcom/juul/krayon/chart/render/LabelFactory;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun getAxisLabelFont ()Lcom/juul/krayon/canvas/Font;
-	public final fun getCategoryLabelFactory ()Lcom/juul/krayon/chart/render/IndexLabelFactory;
+	public final fun getCategoryLabelFactory ()Lcom/juul/krayon/chart/render/LabelFactory;
 	public final fun getClusterKind ()Lcom/juul/krayon/chart/style/BarChartStyle$ClusterKind;
 	public final fun getOrientation ()Lcom/juul/krayon/chart/style/Orientation;
 	public final fun getSeriesColors ()Lkotlin/sequences/Sequence;
-	public final fun getSeriesLabelFactory ()Lcom/juul/krayon/chart/render/IndexLabelFactory;
+	public final fun getSeriesLabelFactory ()Lcom/juul/krayon/chart/render/LabelFactory;
 }
 
 public final class com/juul/krayon/chart/style/BarChartStyle$ClusterKind : java/lang/Enum {

@@ -7,6 +7,8 @@ public abstract interface class com/juul/krayon/canvas/Canvas {
 	public abstract fun drawOval (FFFFLjava/lang/Object;)V
 	public abstract fun drawPath (Ljava/lang/Object;Ljava/lang/Object;)V
 	public abstract fun drawText (Ljava/lang/CharSequence;FFLjava/lang/Object;)V
+	public abstract fun getHeight ()F
+	public abstract fun getWidth ()F
 	public abstract fun pop ()V
 	public abstract fun pushClip (Lcom/juul/krayon/canvas/Clip;)V
 	public abstract fun pushTransform (Lcom/juul/krayon/canvas/Transform;)V
@@ -95,6 +97,11 @@ public final class com/juul/krayon/canvas/Color$Companion {
 	public final fun getTransparent-6Vs19M8 ()I
 	public final fun getWhite-6Vs19M8 ()I
 	public final fun getYellow-6Vs19M8 ()I
+}
+
+public final class com/juul/krayon/canvas/ColorKt {
+	public static final fun nextColor (Lkotlin/random/Random;Z)I
+	public static synthetic fun nextColor$default (Lkotlin/random/Random;ZILjava/lang/Object;)I
 }
 
 public final class com/juul/krayon/canvas/Font {

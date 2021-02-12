@@ -3,11 +3,28 @@ package com.juul.krayon.canvas
 object UnitPaint
 object UnitPath
 
-class CallRecordingCanvas : Canvas<UnitPaint, UnitPath>, CallRecord {
+class CallRecordingCanvas(
+    width: Float,
+    height: Float
+) : Canvas<UnitPaint, UnitPath>, CallRecord {
 
     private val recorder = CallRecorder()
     override val functionCalls: List<FunctionCall>
         get() = recorder.functionCalls
+
+    private val _width = width
+    override val width: Float
+        get() {
+            recorder.record(this::width.getter)
+            return _width
+        }
+
+    private val _height = height
+    override val height: Float
+        get() {
+            recorder.record(this::height.getter)
+            return _height
+        }
 
     override fun buildPaint(paint: Paint): UnitPaint {
         recorder.record(this::buildPaint, paint)

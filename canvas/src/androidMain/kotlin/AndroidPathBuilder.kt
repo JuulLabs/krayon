@@ -2,6 +2,11 @@ package com.juul.krayon.canvas
 
 import android.graphics.Path as AndroidPath
 
+/** Create an Android [Path][AndroidPath] from path builder actions. */
+inline fun androidPath(builder: (PathBuilder<*>) -> Unit): AndroidPath =
+    AndroidPathBuilder().apply(builder).build()
+
+@PublishedApi
 internal class AndroidPathBuilder : PathBuilder<AndroidPath> {
     private val pathBuffer = android.graphics.Path()
 
