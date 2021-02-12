@@ -1,8 +1,24 @@
-package com.juul.krayon.chart.style
+package com.juul.krayon.chart.render
 
 import com.juul.krayon.canvas.Color
 import com.juul.krayon.canvas.Font
-import com.juul.krayon.chart.render.IndexLabelFactory
+import com.juul.krayon.canvas.Paint
+import com.juul.krayon.chart.render.composite.AxisRenderer
+import com.juul.krayon.chart.render.composite.BarRenderer
+
+internal fun defaultAxisStyle(
+    orientation: Orientation
+): AxisRenderer.Style = AxisRenderer.Style(
+    orientation,
+    Paint.Stroke(Color.black, 1f)
+)
+internal fun defaultBarStyle(
+    orientation: Orientation
+): BarRenderer.Style = BarRenderer.Style(
+    orientation,
+    defaultSeriesColors(),
+    BarRenderer.ClusterBehavior.Grouped
+)
 
 internal fun defaultFont(): Font = Font("sans-serif")
 
