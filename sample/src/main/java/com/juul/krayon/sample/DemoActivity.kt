@@ -8,7 +8,6 @@ import com.juul.krayon.chart.data.ClusteredDataSet
 import com.juul.krayon.chart.data.toCluster
 import com.juul.krayon.chart.data.toRectangularDataSet
 import com.juul.krayon.chart.render.BarChartRenderer
-import com.juul.krayon.chart.render.Orientation
 import com.juul.krayon.sample.databinding.ActivityDemoBinding
 import kotlin.random.Random
 

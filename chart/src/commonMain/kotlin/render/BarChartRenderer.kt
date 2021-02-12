@@ -16,8 +16,7 @@ public open class BarChartRenderer(
         public val xAxisStyle: AxisRenderer.Style = defaultAxisStyle(Orientation.Horizontal),
         public val yAxisStyle: AxisRenderer.Style = defaultAxisStyle(Orientation.Vertical),
         public val barStyle: BarRenderer.Style = defaultBarStyle(Orientation.Vertical),
-    ) {
-    }
+    )
 
     private val xAxisRenderer = AxisRenderer(style.xAxisStyle)
     private val yAxisRenderer = AxisRenderer(style.yAxisStyle)
