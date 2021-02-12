@@ -43,14 +43,21 @@ public abstract interface class com/juul/krayon/chart/data/ClusteredDataSet : co
 }
 
 public final class com/juul/krayon/chart/data/ClusteredDataSetKt {
+	public static final fun clustersToRectangularDataSet (Ljava/lang/Iterable;)Lcom/juul/krayon/chart/data/ClusteredDataSet;
 	public static final fun rectangularDataSetOf (Lcom/juul/krayon/chart/data/Cluster;[Lcom/juul/krayon/chart/data/Cluster;)Lcom/juul/krayon/chart/data/ClusteredDataSet;
 	public static final fun rectangularDataSetOf (Lcom/juul/krayon/chart/data/Series;[Lcom/juul/krayon/chart/data/Series;)Lcom/juul/krayon/chart/data/ClusteredDataSet;
+	public static final fun seriesToRectangularDataSet (Ljava/lang/Iterable;)Lcom/juul/krayon/chart/data/ClusteredDataSet;
 	public static final fun toClusteredDataSet (Lcom/juul/krayon/chart/data/Cluster;)Lcom/juul/krayon/chart/data/ClusteredDataSet;
 	public static final fun toClusteredDataSet (Lcom/juul/krayon/chart/data/Series;)Lcom/juul/krayon/chart/data/ClusteredDataSet;
 }
 
 public abstract interface class com/juul/krayon/chart/data/DataSet {
 	public abstract fun getSeriesData ()Ljava/util/List;
+}
+
+public final class com/juul/krayon/chart/data/DataSetExtensionsKt {
+	public static final fun maxValue (Lcom/juul/krayon/chart/data/DataSet;)F
+	public static final fun minValue (Lcom/juul/krayon/chart/data/DataSet;)F
 }
 
 public final class com/juul/krayon/chart/data/DataSetKt {

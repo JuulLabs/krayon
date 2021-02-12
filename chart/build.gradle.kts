@@ -34,6 +34,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
+                implementation(kotlinx.coroutines("android"))
             }
         }
 

@@ -1,8 +1,10 @@
 package com.juul.krayon.canvas
 
+import kotlin.math.roundToInt
 import kotlin.random.Random
 
 private const val COMPONENT_MASK = 0xFF
+private const val RGB_MASK = 0xFFFFFF
 
 private const val ALPHA_SHIFT = 24
 private const val RED_SHIFT = 16
@@ -12,6 +14,7 @@ private const val BLUE_SHIFT = 0
 /** A color in ARGB color space. */
 public inline class Color(public val argb: Int) {
 
+    /** Create a color from component integers. Components are masked to their last eight bits. */
     public constructor(alpha: Int, red: Int, green: Int, blue: Int) :
         this(
             ((alpha and COMPONENT_MASK) shl ALPHA_SHIFT) or
@@ -20,20 +23,49 @@ public inline class Color(public val argb: Int) {
                 ((blue and COMPONENT_MASK) shl BLUE_SHIFT)
         )
 
+    /** Create an opaque color from component integers. Components are masked to their last eight bits. */
     public constructor(red: Int, green: Int, blue: Int) :
         this(alpha = 0xFF, red, green, blue)
 
+    /** Create a color from component floats. Components are coerced to [0, 1] then multiplied by 255 and rounded. */
+    public constructor(alpha: Float, red: Float, green: Float, blue: Float) : this(
+        (alpha.coerceIn(0f, 1f) * 0xFF).roundToInt(),
+        (red.coerceIn(0f, 1f) * 0xFF).roundToInt(),
+        (green.coerceIn(0f, 1f) * 0xFF).roundToInt(),
+        (blue.coerceIn(0f, 1f) * 0xFF).roundToInt()
+    )
+
+    /** Create an opaque color from component floats. Components are coerced to [0, 1] then multiplied by 255 and rounded. */
+    public constructor(red: Float, green: Float, blue: Float) :
+        this(alpha = 1f, red, green, blue)
+
+    /** Gets the alpha component of this color as an eight bit integer. */
     public val alpha: Int get() = (argb ushr ALPHA_SHIFT) and COMPONENT_MASK
+
+    /** Gets the red component of this color as an eight bit integer. */
     public val red: Int get() = (argb ushr RED_SHIFT) and COMPONENT_MASK
+
+    /** Gets the green component of this color as an eight bit integer. */
     public val green: Int get() = (argb ushr GREEN_SHIFT) and COMPONENT_MASK
+
+    /** Gets the blue component of this color as an eight bit integer. */
     public val blue: Int get() = (argb ushr BLUE_SHIFT) and COMPONENT_MASK
 
+    /** Creates a copy of this color. */
     public fun copy(
         alpha: Int = this.alpha,
         red: Int = this.red,
         green: Int = this.green,
         blue: Int = this.blue,
     ): Color = Color(alpha, red, green, blue)
+
+    /** Linear interpolate towards another color. */
+    public fun lerp(other: Color, percent: Float): Color = Color(
+        alpha = (this.alpha + (other.alpha - this.alpha) * percent).roundToInt(),
+        red = (this.red + (other.red - this.red) * percent).roundToInt(),
+        green = (this.green + (other.green - this.green) * percent).roundToInt(),
+        blue = (this.blue + (other.blue - this.blue) * percent).roundToInt()
+    )
 
     public companion object {
         public val transparent: Color = Color(0x00, 0x00, 0x00, 0x00)
@@ -53,6 +85,6 @@ public inline class Color(public val argb: Int) {
 
 /** Get a random [Color]. If [isOpaque] is `true` (the default), then alpha is guaranteed to be `0xFF`. */
 public fun Random.nextColor(isOpaque: Boolean = true): Color = when (isOpaque) {
-    true -> Color((0xFF shl ALPHA_SHIFT) or (nextInt() and 0xFFFFFF))
+    true -> Color((0xFF shl ALPHA_SHIFT) or (nextInt() and RGB_MASK))
     false -> Color(nextInt())
 }
