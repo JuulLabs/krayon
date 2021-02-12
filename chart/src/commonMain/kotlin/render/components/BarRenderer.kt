@@ -1,4 +1,4 @@
-package com.juul.krayon.chart.render.composite
+package com.juul.krayon.chart.render.components
 
 import com.juul.krayon.canvas.Canvas
 import com.juul.krayon.canvas.Clip
@@ -43,9 +43,7 @@ public class BarRenderer(
             .map { color -> canvas.buildPaint(Paint.Stroke(color, strokeWidth, Paint.Stroke.Cap.Round)) }
             .toList()
 
-        val clip = Clip.Rect<PATH>(data.left, data.top, data.right, data.bottom)
-        println(clip)
-        canvas.withClip(clip) {
+        canvas.withClip(Clip.Rect(data.left, data.top, data.right, data.bottom)) {
             val scale = -1 * ((data.bottom - data.top - strokeWidth / 2) / data.bars.maxValue())
             var offset = data.left + 16f
             for (cluster in data.bars.clusterData) {

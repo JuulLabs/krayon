@@ -11,6 +11,13 @@ private const val RED_SHIFT = 16
 private const val GREEN_SHIFT = 8
 private const val BLUE_SHIFT = 0
 
+private val FLOAT_COMPONENT_RANGE = 0f..1f
+
+private fun requireInRange(float: Float): Float {
+    require(float in FLOAT_COMPONENT_RANGE)
+    return float
+}
+
 /** A color in ARGB color space. */
 public inline class Color(public val argb: Int) {
 
@@ -27,15 +34,15 @@ public inline class Color(public val argb: Int) {
     public constructor(red: Int, green: Int, blue: Int) :
         this(alpha = 0xFF, red, green, blue)
 
-    /** Create a color from component floats. Components are coerced to [0, 1] then multiplied by 255 and rounded. */
+    /** Create a color from component floats. Components are multiplied by 255 and rounded. */
     public constructor(alpha: Float, red: Float, green: Float, blue: Float) : this(
-        (alpha.coerceIn(0f, 1f) * 0xFF).roundToInt(),
-        (red.coerceIn(0f, 1f) * 0xFF).roundToInt(),
-        (green.coerceIn(0f, 1f) * 0xFF).roundToInt(),
-        (blue.coerceIn(0f, 1f) * 0xFF).roundToInt()
+        (requireInRange(alpha) * 0xFF).roundToInt(),
+        (requireInRange(red) * 0xFF).roundToInt(),
+        (requireInRange(green) * 0xFF).roundToInt(),
+        (requireInRange(alpha) * 0xFF).roundToInt()
     )
 
-    /** Create an opaque color from component floats. Components are coerced to [0, 1] then multiplied by 255 and rounded. */
+    /** Create an opaque color from component floats. Components are multiplied by 255 and rounded. */
     public constructor(red: Float, green: Float, blue: Float) :
         this(alpha = 1f, red, green, blue)
 
@@ -59,14 +66,6 @@ public inline class Color(public val argb: Int) {
         blue: Int = this.blue,
     ): Color = Color(alpha, red, green, blue)
 
-    /** Linear interpolate towards another color. */
-    public fun lerp(other: Color, percent: Float): Color = Color(
-        alpha = (this.alpha + (other.alpha - this.alpha) * percent).roundToInt(),
-        red = (this.red + (other.red - this.red) * percent).roundToInt(),
-        green = (this.green + (other.green - this.green) * percent).roundToInt(),
-        blue = (this.blue + (other.blue - this.blue) * percent).roundToInt()
-    )
-
     public companion object {
         public val transparent: Color = Color(0x00, 0x00, 0x00, 0x00)
 
@@ -82,6 +81,14 @@ public inline class Color(public val argb: Int) {
         public val yellow: Color = Color(0xFF, 0xFF, 0x00)
     }
 }
+
+/** Linear interpolate towards another color. */
+public fun Color.lerp(other: Color, percent: Float): Color = Color(
+    alpha = (this.alpha + (other.alpha - this.alpha) * percent).roundToInt(),
+    red = (this.red + (other.red - this.red) * percent).roundToInt(),
+    green = (this.green + (other.green - this.green) * percent).roundToInt(),
+    blue = (this.blue + (other.blue - this.blue) * percent).roundToInt()
+)
 
 /** Get a random [Color]. If [isOpaque] is `true` (the default), then alpha is guaranteed to be `0xFF`. */
 public fun Random.nextColor(isOpaque: Boolean = true): Color = when (isOpaque) {

@@ -3,14 +3,15 @@ package com.juul.krayon.chart.render
 import com.juul.krayon.canvas.Color
 import com.juul.krayon.canvas.Font
 import com.juul.krayon.canvas.Paint
-import com.juul.krayon.chart.render.composite.AxisRenderer
-import com.juul.krayon.chart.render.composite.BarRenderer
+import com.juul.krayon.canvas.lerp
+import com.juul.krayon.chart.render.components.AxisRenderer
+import com.juul.krayon.chart.render.components.BarRenderer
 
 internal fun defaultAxisStyle(
     orientation: Orientation
 ): AxisRenderer.Style = AxisRenderer.Style(
     orientation,
-    Paint.Stroke(Color.black, 1f)
+    Paint.Stroke(Color.black, 1f, Paint.Stroke.Cap.Square)
 )
 internal fun defaultBarStyle(
     orientation: Orientation

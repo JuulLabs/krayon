@@ -84,7 +84,6 @@ public final class com/juul/krayon/canvas/Color {
 	public static final fun getRed-impl (I)I
 	public fun hashCode ()I
 	public static fun hashCode-impl (I)I
-	public static final fun lerp-jtiydQE (IIF)I
 	public fun toString ()Ljava/lang/String;
 	public static fun toString-impl (I)Ljava/lang/String;
 	public final synthetic fun unbox-impl ()I
@@ -103,6 +102,7 @@ public final class com/juul/krayon/canvas/Color$Companion {
 }
 
 public final class com/juul/krayon/canvas/ColorKt {
+	public static final fun lerp-uwvQmQg (IIF)I
 	public static final fun nextColor (Lkotlin/random/Random;Z)I
 	public static synthetic fun nextColor$default (Lkotlin/random/Random;ZILjava/lang/Object;)I
 }

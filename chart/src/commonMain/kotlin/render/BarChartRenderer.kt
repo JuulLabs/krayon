@@ -2,8 +2,8 @@ package com.juul.krayon.chart.render
 
 import com.juul.krayon.canvas.Canvas
 import com.juul.krayon.chart.data.ClusteredDataSet
-import com.juul.krayon.chart.render.composite.AxisRenderer
-import com.juul.krayon.chart.render.composite.BarRenderer
+import com.juul.krayon.chart.render.components.AxisRenderer
+import com.juul.krayon.chart.render.components.BarRenderer
 
 private const val AXIS_PAD = 24f
 

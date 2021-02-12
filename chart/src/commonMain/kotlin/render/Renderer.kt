@@ -10,6 +10,11 @@ import com.juul.krayon.chart.data.DataSet
  * of several internal, focused renderers with [DATA] as a more specialized type.
  */
 public interface Renderer<DATA> {
-    /** Render [data] to the [canvas]. */
+
+    /**
+     * Render [data] to the [canvas]. Generally, this render is optimized for quality and not speed.
+     * If this is used as a live UI component, it is important to call this in a background thread,
+     * cache results, or take other precautions to avoid UI hangs.
+     */
     public fun <PAINT, PATH> render(data: DATA, canvas: Canvas<PAINT, PATH>)
 }

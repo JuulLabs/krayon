@@ -20,7 +20,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
-/** Displays charts! */
+/**
+ * Displays charts via use of an [Adapter]. The [Adapter] guarantees that [Renderer.render]
+ * will not be called on the main thread, and render results are re-used between multiple
+ * calls to [onDraw]. Until at least one call to [Renderer.render] finishes, the chart will
+ * not draw anything.
+ *
+ * TODO: The chart currently does not measure itself or respect padding. The easiest way to
+ *       handle this is to fully constrain the size of the chart.
+ */
 public class ChartView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

@@ -1,4 +1,4 @@
-package com.juul.krayon.chart.render.composite
+package com.juul.krayon.chart.render.components
 
 import com.juul.krayon.canvas.Canvas
 import com.juul.krayon.canvas.Paint
