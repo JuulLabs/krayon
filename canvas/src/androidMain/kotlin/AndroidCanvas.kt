@@ -43,7 +43,8 @@ public class AndroidCanvas internal constructor(
 
     private fun requireCanvas(): android.graphics.Canvas = checkNotNull(androidCanvas)
 
-    override fun drawArc(
+    // FIXME: Would like to have this be crossplatform.
+    fun drawArc(
         left: Float,
         top: Float,
         right: Float,
@@ -64,12 +65,18 @@ public class AndroidCanvas internal constructor(
         requireCanvas().drawLine(startX, startY, endX, endY, paint)
     }
 
-    override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: AndroidPaint) {
+    // FIXME: Would like to have this be crossplatform.
+    fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: AndroidPaint) {
         requireCanvas().drawOval(left, top, right, bottom, paint)
     }
 
     override fun drawPath(path: AndroidPath, paint: AndroidPaint) {
         requireCanvas().drawPath(path, paint)
+    }
+
+    /** Draws the rectangle [left], [top], [right], [bottom]. */
+    override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: AndroidPaint) {
+        requireCanvas().drawRect(left, top, right, bottom, paint)
     }
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: AndroidPaint) {
