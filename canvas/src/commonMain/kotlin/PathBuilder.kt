@@ -17,7 +17,6 @@ public interface PathBuilder<out P> {
     /** Same as [lineTo], except coordinates are relative to the current location. */
     public fun relativeLineTo(x: Float, y: Float)
 
-    /* FIXME: Arcs temporarily removed because of platform differences.
     /** Append the specified arc to the path as a new contour. */
     public fun arcTo(
         left: Float,
@@ -28,7 +27,6 @@ public interface PathBuilder<out P> {
         sweepAngle: Float,
         forceMoveTo: Boolean,
     )
-     */
 
     /**
      * Add a quadratic bezier from the last point, approaching control point

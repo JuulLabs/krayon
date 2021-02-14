@@ -55,6 +55,34 @@ public class HtmlCanvas(
         }
     }
 
+    override fun drawArc(
+        left: Float,
+        top: Float,
+        right: Float,
+        bottom: Float,
+        startAngle: Float,
+        sweepAngle: Float,
+        useCenter: Boolean,
+        paint: Paint,
+    ) {
+        // STOPSHIP: Warn that useCenter is unsupported or remove it from interface.
+        require(paint !is Paint.Text)
+        applyPaint(paint)
+        context.beginPath()
+        val radiusX = (right - left) / 2.0
+        val radiusY = (bottom - top) / 2.0
+        val x = left + radiusX
+        val y = top + radiusY
+        val startAngleRadians = startAngle * PI / 180f
+        val endAngleRadians = (startAngle + sweepAngle) * PI / 180f
+        context.ellipse(x, y, radiusX, radiusY, rotation = 0.0, startAngleRadians, endAngleRadians)
+        when (paint) {
+            is Paint.Stroke -> context.stroke()
+            is Paint.Fill -> context.fill()
+            else -> error("unreachable")
+        }
+    }
+
     override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: Paint) {
         require(paint !is Paint.Text)
         applyPaint(paint)
@@ -78,6 +106,10 @@ public class HtmlCanvas(
             is Paint.Fill -> context.fill()
             else -> error("unreachable")
         }
+    }
+
+    override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
+        drawArc(left, top, right, bottom, 0f, 360f, false, paint)
     }
 
     override fun drawPath(path: Path2D, paint: Paint) {

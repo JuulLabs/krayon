@@ -26,8 +26,7 @@ internal class AndroidPathBuilder : PathBuilder<AndroidPath> {
         pathBuffer.rLineTo(x, y)
     }
 
-    // FIXME: Would like to have this be crossplatform.
-    fun arcTo(
+    override fun arcTo(
         left: Float,
         top: Float,
         right: Float,

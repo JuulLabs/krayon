@@ -14,7 +14,6 @@ public interface Canvas<PAINT, PATH> {
     /** Create a [PATH] understood by this canvas. The returned path must NOT have a reference to the canvas. */
     public fun buildPath(actions: PathBuilder<*>.() -> Unit): PATH
 
-    /* FIXME: Arcs temporarily removed because of platform differences.
     /**
      * Draw an arc that fits in the oval defined by the rectangle [left], [top], [right], and [bottom], from
      * [startAngle] (in degrees, with 0 at the right) to [startAngle] + [sweepAngle].
@@ -31,7 +30,6 @@ public interface Canvas<PAINT, PATH> {
         useCenter: Boolean,
         paint: PAINT,
     )
-     */
 
     /** Draw a circle at [centerX], [centerY] with size defined by its [radius]. */
     public fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: PAINT)
@@ -39,10 +37,8 @@ public interface Canvas<PAINT, PATH> {
     /** Draw a line from [startX], [startY] to [endX], [endY]. */
     public fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: PAINT)
 
-    /* FIXME: Ovals temporarily removed because of platform differences.
     /** Draw an oval defined by the rectangle [left], [top], [right], and [bottom]. */
     public fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: PAINT)
-     */
 
     /** Draws a path returned by [buildPath]. */
     public fun drawPath(path: PATH, paint: PAINT)

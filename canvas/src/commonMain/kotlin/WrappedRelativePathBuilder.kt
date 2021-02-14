@@ -1,5 +1,10 @@
 package com.juul.krayon.canvas
 
+import kotlin.math.PI
+import kotlin.math.pow
+import kotlin.math.sqrt
+import kotlin.math.tan
+
 public abstract class WrappedRelativePathBuilder<P> : PathBuilder<P> {
 
     private var closeToX: Float = 0f
@@ -29,6 +34,21 @@ public abstract class WrappedRelativePathBuilder<P> : PathBuilder<P> {
 
     override fun relativeLineTo(x: Float, y: Float) {
         lineTo(lastX + x, lastY + y)
+    }
+
+    override fun arcTo(left: Float, top: Float, right: Float, bottom: Float, startAngle: Float, sweepAngle: Float, forceMoveTo: Boolean) {
+        // TODO: Test this equation from math.stackexchange.com, and see about optimizing.
+        // https://math.stackexchange.com/questions/22064/calculating-a-point-that-lies-on-an-ellipse-given-an-anglev
+        val a = (right - left) / 2.0
+        val b = (bottom - top) / 2.0
+        val centerX = left + a
+        val centerY = top + b
+        val theta = (startAngle + sweepAngle) * PI / 180f
+        val signX = if (theta.rem(2 * PI) !in (PI / 2)..(PI * 3 / 2)) 1 else -1
+        val signY = if (theta.rem(2 * PI) in 0.0..PI) 1 else -1
+        val dX = signX * a * b / sqrt(b.pow(2) + a.pow(2) * tan(theta).pow(2))
+        val dY = signY * a * b / sqrt(a.pow(2) + b.pow(2) / tan(theta).pow(2))
+        updatePosition((centerX + dX).toFloat(), (centerY + dY).toFloat())
     }
 
     override fun quadraticTo(controlX: Float, controlY: Float, endX: Float, endY: Float) {
