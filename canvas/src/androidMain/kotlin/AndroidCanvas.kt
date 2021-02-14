@@ -1,5 +1,6 @@
 package com.juul.krayon.canvas
 
+import android.graphics.RectF
 import android.graphics.Region
 import android.os.Build
 import android.graphics.Paint as AndroidPaint
@@ -23,6 +24,9 @@ public class AndroidCanvas internal constructor(
 ) : Canvas<AndroidPaint, AndroidPath> {
 
     private val preTransform = Transform.Scale(horizontal = scalingFactor, vertical = scalingFactor)
+
+    /** On API 19 & 20, [drawArc] and [drawOval] must use [RectF]. */
+    private val compatRectF = RectF()
 
     override val width: Float
         get() = requireCanvas().width / scalingFactor
@@ -53,7 +57,8 @@ public class AndroidCanvas internal constructor(
         useCenter: Boolean,
         paint: AndroidPaint,
     ) {
-        requireCanvas().drawArc(left, top, right, bottom, startAngle, sweepAngle, useCenter, paint)
+        compatRectF.set(left, top, right, bottom)
+        requireCanvas().drawArc(compatRectF, startAngle, sweepAngle, useCenter, paint)
     }
 
     override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: AndroidPaint) {
@@ -65,7 +70,8 @@ public class AndroidCanvas internal constructor(
     }
 
     override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: AndroidPaint) {
-        requireCanvas().drawOval(left, top, right, bottom, paint)
+        compatRectF.set(left, top, right, bottom)
+        requireCanvas().drawOval(compatRectF, paint)
     }
 
     override fun drawPath(path: AndroidPath, paint: AndroidPaint) {
