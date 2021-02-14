@@ -125,6 +125,7 @@ public class HtmlCanvas(
 
     override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
         require(paint !is Paint.Text)
+        applyPaint(paint)
         when (paint) {
             is Paint.Stroke -> context.strokeRect(left.toDouble(), top.toDouble(), right.toDouble() - left, bottom.toDouble() - top)
             is Paint.Fill -> context.fillRect(left.toDouble(), top.toDouble(), right.toDouble() - left, bottom.toDouble() - top)

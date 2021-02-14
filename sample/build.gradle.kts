@@ -13,7 +13,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":canvas"))
+                api(project(":chart"))
                 implementation(kotlin("stdlib"))
             }
         }
@@ -59,8 +59,4 @@ android {
         resValues = true
         viewBinding = true
     }
-}
-
-dependencies {
-    implementation(project(":chart"))
 }

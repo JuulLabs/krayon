@@ -31,14 +31,4 @@ class DemoActivity : Activity() {
             adapter.dataSet = getRandomData()
         }
     }
-
-    private fun getRandomData(): ClusteredDataSet<Float> {
-        val numClusters = Random.nextInt(1, 5)
-        val numSeries = Random.nextInt(4, 13)
-        return (0 until numClusters).map {
-            (0 until numSeries).map {
-                Random.nextFloat()
-            }.toCluster()
-        }.toRectangularDataSet()
-    }
 }
