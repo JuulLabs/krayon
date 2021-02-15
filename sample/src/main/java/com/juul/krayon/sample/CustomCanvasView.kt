@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import com.juul.krayon.canvas.Canvas
 import com.juul.krayon.canvas.CanvasView
 import com.juul.krayon.canvas.Color
-import com.juul.krayon.canvas.Font
 import com.juul.krayon.canvas.Paint
 import com.juul.krayon.canvas.toAndroid
 import android.graphics.Paint as AndroidPaint
@@ -17,7 +16,7 @@ class CustomCanvasView @JvmOverloads constructor(
 ) : CanvasView(context, attrs) {
 
     private val linePaint = Paint.Stroke(Color.black, 1f, Paint.Stroke.Cap.Round).toAndroid(context)
-    private val textPaint = Paint.Text(Color.black, 18f, Paint.Text.Alignment.Left, Font("roboto_slab")).toAndroid(context)
+    private val textPaint = Paint.Text(Color.black, 18f, Paint.Text.Alignment.Left, Fonts.robotoSlab).toAndroid(context)
     private var circlePaint = Paint.Stroke(Color.black, 4f).toAndroid(context)
 
     var circleColor: Color

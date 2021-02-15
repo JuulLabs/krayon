@@ -3,16 +3,21 @@ package com.juul.krayon.canvas
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Typeface
+import androidx.annotation.FontRes
 import androidx.core.content.res.ResourcesCompat
 import android.graphics.Paint as AndroidPaint
 
-/**
- * Cache for font name to identifier, since calling [Resources.getIdentifier] is expensive.
- *
- * TODO: Provide a way to pre-load into this map to avoid ever calling [Resources.getIdentifier]. This
- *       should also handle the use case where the font's logical name doesn't match the resource name.
- */
+/** Cache from [Font.name] to [FontRes] id. */
 private val fontResources = mutableMapOf<String, Int>()
+
+/**
+ * Associate a [Font.name] to a [FontRes] id. As a best-practice, do this up front for any
+ * fonts that might be used, as calls to [addFontAssociation] are cheap and the behavior
+ * for missing associations is expensive ([Resources.getIdentifier]).
+ */
+public fun addFontAssociation(fontName: String, @FontRes fontRes: Int) {
+    fontResources[fontName] = fontRes
+}
 
 /** Converts a Krayon [Paint] into an [AndroidPaint] used by [AndroidCanvas]. */
 public fun Paint.toAndroid(context: Context): AndroidPaint = when (this) {
@@ -64,17 +69,20 @@ private fun androidPaint(context: Context, source: Paint.Text) = AndroidPaint().
 }
 
 private fun getTypeface(context: Context, font: Font): Typeface =
-    when (font.name) {
-        "sans-serif" -> Typeface.SANS_SERIF
-        "serif" -> Typeface.SERIF
-        else -> {
-            val fontResource = fontResources.getOrPut(font.name) {
-                context.resources.getIdentifier(font.name, "font", context.packageName)
-            }
+    font.names.asSequence()
+        .mapNotNull { name ->
+            val resource = fontResources[name]
+                ?: when (name) {
+                    serif -> return@mapNotNull Typeface.SERIF
+                    sansSerif -> return@mapNotNull Typeface.SANS_SERIF
+                    monospace -> return@mapNotNull Typeface.MONOSPACE
+                    else -> fontResources.getOrPut(name) {
+                        context.resources.getIdentifier(name, "font", context.packageName)
+                    }
+                }
             try {
-                ResourcesCompat.getFont(context, fontResource)
+                ResourcesCompat.getFont(context, resource)
             } catch (e: Resources.NotFoundException) {
                 null
             }
-        }
-    } ?: Typeface.DEFAULT
+        }.firstOrNull() ?: Typeface.DEFAULT
