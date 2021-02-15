@@ -2,12 +2,16 @@ package com.juul.krayon.canvas
 
 import org.w3c.dom.BEVEL
 import org.w3c.dom.BUTT
+import org.w3c.dom.CENTER
 import org.w3c.dom.CanvasLineCap
 import org.w3c.dom.CanvasLineJoin
 import org.w3c.dom.CanvasRenderingContext2D
+import org.w3c.dom.CanvasTextAlign
 import org.w3c.dom.HTMLCanvasElement
+import org.w3c.dom.LEFT
 import org.w3c.dom.MITER
 import org.w3c.dom.Path2D
+import org.w3c.dom.RIGHT
 import org.w3c.dom.ROUND
 import org.w3c.dom.SQUARE
 import kotlin.math.PI
@@ -29,6 +33,7 @@ public class HtmlCanvas(
     override fun buildPath(actions: PathBuilder<*>.() -> Unit): Path2D =
         Path2DBuilder().apply(actions).build()
 
+    /** TODO: This can be cleaned up. */
     private fun applyPaint(paint: Paint): Unit = when (paint) {
         is Paint.Stroke -> {
             context.strokeStyle = "rgba(${paint.color.red}, ${paint.color.green}, ${paint.color.blue}, ${paint.color.alpha})"
@@ -51,7 +56,13 @@ public class HtmlCanvas(
             context.fillStyle = "rgba(${paint.color.red}, ${paint.color.green}, ${paint.color.blue}, ${paint.color.alpha})"
         }
         is Paint.Text -> {
-            TODO()
+            context.fillStyle = "rgba(${paint.color.red}, ${paint.color.green}, ${paint.color.blue}, ${paint.color.alpha})"
+            context.textAlign = when (paint.alignment) {
+                Paint.Text.Alignment.Left -> CanvasTextAlign.LEFT
+                Paint.Text.Alignment.Center -> CanvasTextAlign.CENTER
+                Paint.Text.Alignment.Right -> CanvasTextAlign.RIGHT
+            }
+            context.font = "${paint.size}px ${paint.font.names.joinToString { "\"$it\"" }}"
         }
     }
 
@@ -134,7 +145,9 @@ public class HtmlCanvas(
     }
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint) {
-        TODO("Not yet implemented")
+        require(paint is Paint.Text)
+        applyPaint(paint)
+        context.fillText(text.toString(), x.toDouble(), y.toDouble())
     }
 
     override fun pushClip(clip: Clip<Path2D>) {

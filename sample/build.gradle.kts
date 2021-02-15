@@ -37,6 +37,12 @@ kotlin {
             }
         }
 
+        val jsMain by getting {
+            dependencies {
+                implementation(kotlinx.coroutines("core-js"))
+            }
+        }
+
         val jsTest by getting {
             dependencies {
                 implementation(kotlin("test-js"))
