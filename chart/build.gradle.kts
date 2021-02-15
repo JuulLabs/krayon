@@ -34,6 +34,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
+                implementation(kotlinx.coroutines("android"))
             }
         }
 
@@ -52,11 +53,11 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdkVersion(AndroidSdk.Compile)
 
     defaultConfig {
-        minSdkVersion(24)
-        targetSdkVersion(30)
+        minSdkVersion(AndroidSdk.Minimum)
+        targetSdkVersion(AndroidSdk.Target)
     }
 
     lintOptions {

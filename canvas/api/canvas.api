@@ -67,6 +67,8 @@ public final class com/juul/krayon/canvas/Clip$Rect : com/juul/krayon/canvas/Cli
 public final class com/juul/krayon/canvas/Color {
 	public static final field Companion Lcom/juul/krayon/canvas/Color$Companion;
 	public static final synthetic fun box-impl (I)Lcom/juul/krayon/canvas/Color;
+	public static fun constructor-impl (FFF)I
+	public static fun constructor-impl (FFFF)I
 	public static fun constructor-impl (I)I
 	public static fun constructor-impl (III)I
 	public static fun constructor-impl (IIII)I
@@ -100,6 +102,7 @@ public final class com/juul/krayon/canvas/Color$Companion {
 }
 
 public final class com/juul/krayon/canvas/ColorKt {
+	public static final fun lerp-uwvQmQg (IIF)I
 	public static final fun nextColor (Lkotlin/random/Random;Z)I
 	public static synthetic fun nextColor$default (Lkotlin/random/Random;ZILjava/lang/Object;)I
 }

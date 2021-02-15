@@ -7,16 +7,21 @@ plugins {
 // TODO: When we add other platforms, this should become a multiplatform module.
 
 android {
-    compileSdkVersion(30)
+    compileSdkVersion(AndroidSdk.Compile)
 
     defaultConfig {
-        minSdkVersion(24)
-        targetSdkVersion(30)
+        minSdkVersion(AndroidSdk.Minimum)
+        targetSdkVersion(AndroidSdk.Target)
         versionCode = 1
         versionName = "sample"
+    }
+
+    buildFeatures {
+        resValues = true
+        viewBinding = true
     }
 }
 
 dependencies {
-    implementation(project(":canvas"))
+    implementation(project(":chart"))
 }
