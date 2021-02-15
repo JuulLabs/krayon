@@ -15,8 +15,9 @@ class CustomCanvasView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
 ) : CanvasView(context, attrs) {
 
-    private val linePaint = Paint.Stroke(Color.black, 1f, Paint.Stroke.Cap.Round).toAndroid()
-    private var circlePaint = Paint.Stroke(Color.black, 4f).toAndroid()
+    private val linePaint = Paint.Stroke(Color.black, 1f, Paint.Stroke.Cap.Round).toAndroid(context)
+    private val textPaint = Paint.Text(Color.black, 18f, Paint.Text.Alignment.Left, Fonts.robotoSlab).toAndroid(context)
+    private var circlePaint = Paint.Stroke(Color.black, 4f).toAndroid(context)
 
     var circleColor: Color
         get() = Color(circlePaint.color)
@@ -35,5 +36,6 @@ class CustomCanvasView @JvmOverloads constructor(
             hOffset += 24
             vOffset += 24 * vScale
         }
+        canvas.drawText("Show off text rendering", 16f, height - 32f, textPaint)
     }
 }

@@ -110,14 +110,21 @@ public final class com/juul/krayon/canvas/ColorKt {
 }
 
 public final class com/juul/krayon/canvas/Font {
-	public fun <init> (Ljava/lang/String;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Lcom/juul/krayon/canvas/Font;
-	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Font;Ljava/lang/String;ILjava/lang/Object;)Lcom/juul/krayon/canvas/Font;
+	public fun <init> (Ljava/lang/String;[Ljava/lang/String;)V
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/juul/krayon/canvas/Font;
+	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Font;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/canvas/Font;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getName ()Ljava/lang/String;
+	public final fun getNames ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/FontKt {
+	public static final field monospace Ljava/lang/String;
+	public static final field sansSerif Ljava/lang/String;
+	public static final field serif Ljava/lang/String;
 }
 
 public abstract class com/juul/krayon/canvas/Paint {
