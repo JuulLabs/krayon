@@ -59,4 +59,19 @@ android {
         resValues = true
         viewBinding = true
     }
+
+    lintOptions {
+        // Good habits for a real app, but trying to keep the sample project minimal.
+        disable += "AllowBackup"
+        disable += "MissingApplicationIcon"
+    }
+
+    sourceSets {
+        val main by getting {
+            // FIXME: This feels like I'm working around some other misconfiguration.
+            java.srcDirs("src/androidMain/java")
+            res.srcDirs("src/androidMain/res")
+            manifest.srcFile("src/androidMain/AndroidManifest.xml")
+        }
+    }
 }

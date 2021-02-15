@@ -6,6 +6,7 @@ public abstract interface class com/juul/krayon/canvas/Canvas {
 	public abstract fun drawLine (FFFFLjava/lang/Object;)V
 	public abstract fun drawOval (FFFFLjava/lang/Object;)V
 	public abstract fun drawPath (Ljava/lang/Object;Ljava/lang/Object;)V
+	public abstract fun drawRect (FFFFLjava/lang/Object;)V
 	public abstract fun drawText (Ljava/lang/CharSequence;FFLjava/lang/Object;)V
 	public abstract fun getHeight ()F
 	public abstract fun getWidth ()F
@@ -20,6 +21,7 @@ public final class com/juul/krayon/canvas/CanvasKt {
 }
 
 public abstract class com/juul/krayon/canvas/Clip {
+	public abstract fun getOperation ()Lcom/juul/krayon/canvas/Clip$Operation;
 }
 
 public final class com/juul/krayon/canvas/Clip$Operation : java/lang/Enum {
@@ -37,7 +39,7 @@ public final class com/juul/krayon/canvas/Clip$Path : com/juul/krayon/canvas/Cli
 	public final fun copy (Ljava/lang/Object;Lcom/juul/krayon/canvas/Clip$Operation;)Lcom/juul/krayon/canvas/Clip$Path;
 	public static synthetic fun copy$default (Lcom/juul/krayon/canvas/Clip$Path;Ljava/lang/Object;Lcom/juul/krayon/canvas/Clip$Operation;ILjava/lang/Object;)Lcom/juul/krayon/canvas/Clip$Path;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getOperation ()Lcom/juul/krayon/canvas/Clip$Operation;
+	public fun getOperation ()Lcom/juul/krayon/canvas/Clip$Operation;
 	public final fun getPath ()Ljava/lang/Object;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -57,7 +59,7 @@ public final class com/juul/krayon/canvas/Clip$Rect : com/juul/krayon/canvas/Cli
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getBottom ()F
 	public final fun getLeft ()F
-	public final fun getOperation ()Lcom/juul/krayon/canvas/Clip$Operation;
+	public fun getOperation ()Lcom/juul/krayon/canvas/Clip$Operation;
 	public final fun getRight ()F
 	public final fun getTop ()F
 	public fun hashCode ()I
@@ -300,5 +302,20 @@ public final class com/juul/krayon/canvas/Transform$Translate : com/juul/krayon/
 	public final fun getVertical ()F
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class com/juul/krayon/canvas/WrappedRelativePathBuilder : com/juul/krayon/canvas/PathBuilder {
+	public fun <init> ()V
+	public fun arcTo (FFFFFFZ)V
+	public fun close ()V
+	public fun cubicTo (FFFFFF)V
+	public fun lineTo (FF)V
+	public fun moveTo (FF)V
+	public fun quadraticTo (FFFF)V
+	public fun relativeCubicTo (FFFFFF)V
+	public fun relativeLineTo (FF)V
+	public fun relativeMoveTo (FF)V
+	public fun relativeQuadraticTo (FFFF)V
+	public fun reset ()V
 }
 

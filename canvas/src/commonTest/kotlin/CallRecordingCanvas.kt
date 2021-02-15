@@ -9,20 +9,20 @@ class CallRecordingCanvas(
 ) : Canvas<UnitPaint, UnitPath>, CallRecord {
 
     private val recorder = CallRecorder()
-    override val functionCalls: List<FunctionCall>
-        get() = recorder.functionCalls
+    override val calls: List<Call>
+        get() = recorder.calls
 
     private val _width = width
     override val width: Float
         get() {
-            recorder.record(this::width.getter)
+            recorder.record(this::width)
             return _width
         }
 
     private val _height = height
     override val height: Float
         get() {
-            recorder.record(this::height.getter)
+            recorder.record(this::height)
             return _height
         }
 
@@ -63,6 +63,10 @@ class CallRecordingCanvas(
 
     override fun drawPath(path: UnitPath, paint: UnitPaint) {
         recorder.record(this::drawPath, path, paint)
+    }
+
+    override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: UnitPaint) {
+        recorder.record(this::drawRect, left, top, right, bottom, paint)
     }
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: UnitPaint) {
