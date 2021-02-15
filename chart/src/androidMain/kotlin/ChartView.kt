@@ -151,7 +151,8 @@ public class ChartView @JvmOverloads constructor(
             if (width > 0 && height > 0) {
                 launch {
                     val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-                    val canvas = AndroidCanvas(Canvas(bitmap), scalingFactor = applyDimension(COMPLEX_UNIT_DIP, 1f, displayMetrics))
+                    val scalingFactor = applyDimension(COMPLEX_UNIT_DIP, 1f, displayMetrics)
+                    val canvas = AndroidCanvas(attachedView.context, Canvas(bitmap), scalingFactor)
                     renderer.render(dataSet, canvas)
                     (this@Adapter).bitmap = bitmap
                     withContext(Dispatchers.Main) {
