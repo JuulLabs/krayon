@@ -1,6 +1,6 @@
 ![badge][badge-jvm]
 ![badge][badge-android]
-[![codecov](https://codecov.io/gh/JuulLabs/krayon/branch/main/graph/badge.svg?token=24ilSLPwN2)](https://codecov.io/gh/JuulLabs/krayon)
+[![codecov](https://codecov.io/gh/JuulLabs/krayon/branch/main/graph/badge.svg?token=y8btx3pTlr)](https://codecov.io/gh/JuulLabs/krayon)
 
 Multiplatform canvas drawing library with additional components built on top.
 
