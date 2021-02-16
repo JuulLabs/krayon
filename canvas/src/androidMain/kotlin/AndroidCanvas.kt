@@ -2,8 +2,6 @@ package com.juul.krayon.canvas
 
 import android.content.Context
 import android.graphics.RectF
-import android.graphics.Region
-import android.os.Build
 import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
 
