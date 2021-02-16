@@ -1,30 +1,31 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 import android.content.Context
+import android.graphics.Canvas
 import android.graphics.RectF
 import android.graphics.Region
 import android.os.Build
 import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
 
-/** Create an [AndroidCanvas]. */
-public fun AndroidCanvas(
+/** Create an [AndroidKanvas]. */
+public fun AndroidKanvas(
     context: Context,
-    sourceCanvas: android.graphics.Canvas,
+    canvas: Canvas,
     scalingFactor: Float = 1f,
-): AndroidCanvas = AndroidCanvas(context, sourceCanvas as android.graphics.Canvas?, scalingFactor)
+): AndroidKanvas = AndroidKanvas(context, canvas as Canvas?, scalingFactor)
 
 /**
- * Implementation of [Canvas] which wraps a native Android [Canvas][android.graphics.Canvas].
+ * Implementation of [Kanvas] which wraps a native Android [Canvas].
  *
  * It may be pre-scaled by a [scalingFactor]. If it is, [width] and [height] are adjusted to
  * account for this scaling factor.
  */
-public class AndroidCanvas internal constructor(
+public class AndroidKanvas internal constructor(
     private val context: Context,
-    private var androidCanvas: android.graphics.Canvas?,
+    private var canvas: android.graphics.Canvas?,
     private val scalingFactor: Float = 1f,
-) : Canvas<AndroidPaint, AndroidPath> {
+) : Kanvas<AndroidPaint, AndroidPath> {
 
     private val preTransform = Transform.Scale(horizontal = scalingFactor, vertical = scalingFactor)
 
@@ -38,7 +39,7 @@ public class AndroidCanvas internal constructor(
         get() = requireCanvas().height / scalingFactor
 
     init {
-        if (androidCanvas != null) {
+        if (canvas != null) {
             pushTransform(preTransform)
         }
     }
@@ -48,7 +49,7 @@ public class AndroidCanvas internal constructor(
     override fun buildPath(actions: PathBuilder<*>.() -> Unit): AndroidPath =
         AndroidPathBuilder().apply(actions).build()
 
-    private fun requireCanvas(): android.graphics.Canvas = checkNotNull(androidCanvas)
+    private fun requireCanvas(): Canvas = checkNotNull(canvas)
 
     override fun drawArc(
         left: Float,
@@ -146,12 +147,12 @@ public class AndroidCanvas internal constructor(
     }
 
     /** Mutability on this class is to power [CanvasView] without allocations. Otherwise we should consider this immutable. */
-    internal fun setCanvas(androidCanvas: android.graphics.Canvas?) {
-        if (this.androidCanvas != null) {
+    internal fun setCanvas(canvas: Canvas?) {
+        if (this.canvas != null) {
             pop()
         }
-        this.androidCanvas = androidCanvas
-        if (androidCanvas != null) {
+        this.canvas = canvas
+        if (canvas != null) {
             pushTransform(preTransform)
         }
     }

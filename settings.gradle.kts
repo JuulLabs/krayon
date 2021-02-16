@@ -22,7 +22,7 @@ pluginManagement {
 }
 
 include(
-    "canvas",
     "chart",
+    "kanvas",
     "sample"
 )
