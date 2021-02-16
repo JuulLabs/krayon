@@ -6,7 +6,7 @@ import com.juul.krayon.canvas.serif
 
 object Fonts {
     val robotoSlab by lazy {
-        addFontAssociation("Roboto Slab", R.font.roboto_slab)
-        Font("Roboto Slab", serif)
+        addFontAssociation("roboto_slab", R.font.roboto_slab)
+        Font("roboto_slab", serif)
     }
 }
