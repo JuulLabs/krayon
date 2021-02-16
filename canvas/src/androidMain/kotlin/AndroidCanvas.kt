@@ -1,5 +1,6 @@
 package com.juul.krayon.canvas
 
+import android.content.Context
 import android.graphics.RectF
 import android.graphics.Region
 import android.os.Build
@@ -8,9 +9,10 @@ import android.graphics.Path as AndroidPath
 
 /** Create an [AndroidCanvas]. */
 public fun AndroidCanvas(
+    context: Context,
     sourceCanvas: android.graphics.Canvas,
     scalingFactor: Float = 1f,
-): AndroidCanvas = AndroidCanvas(sourceCanvas as android.graphics.Canvas?, scalingFactor)
+): AndroidCanvas = AndroidCanvas(context, sourceCanvas as android.graphics.Canvas?, scalingFactor)
 
 /**
  * Implementation of [Canvas] which wraps a native Android [Canvas][android.graphics.Canvas].
@@ -19,6 +21,7 @@ public fun AndroidCanvas(
  * account for this scaling factor.
  */
 public class AndroidCanvas internal constructor(
+    private val context: Context,
     private var androidCanvas: android.graphics.Canvas?,
     private val scalingFactor: Float = 1f,
 ) : Canvas<AndroidPaint, AndroidPath> {
@@ -40,7 +43,7 @@ public class AndroidCanvas internal constructor(
         }
     }
 
-    override fun buildPaint(paint: Paint): AndroidPaint = paint.toAndroid()
+    override fun buildPaint(paint: Paint): AndroidPaint = paint.toAndroid(context)
 
     override fun buildPath(actions: PathBuilder<*>.() -> Unit): AndroidPath =
         AndroidPathBuilder().apply(actions).build()

@@ -15,7 +15,7 @@ abstract class CanvasView(
     attrs: AttributeSet? = null,
 ) : View(context, attrs) {
 
-    private val krayonCanvas = AndroidCanvas(null, scalingFactor = applyDimension(COMPLEX_UNIT_DIP, 1f, resources.displayMetrics))
+    private val krayonCanvas = AndroidCanvas(context, null, scalingFactor = applyDimension(COMPLEX_UNIT_DIP, 1f, resources.displayMetrics))
 
     @SuppressLint("WrongCall") // false positive because our custom draw function shares the name `onDraw`
     final override fun onDraw(canvas: android.graphics.Canvas) {

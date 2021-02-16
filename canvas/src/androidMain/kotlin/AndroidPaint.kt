@@ -1,12 +1,29 @@
 package com.juul.krayon.canvas
 
+import android.content.Context
+import android.content.res.Resources
+import android.graphics.Typeface
+import androidx.annotation.FontRes
+import androidx.core.content.res.ResourcesCompat
 import android.graphics.Paint as AndroidPaint
 
+/** Cache from [Font.name] to [FontRes] id. */
+private val fontResources = mutableMapOf<String, Int>()
+
+/**
+ * Associate a [Font.name] to a [FontRes] id. As a best-practice, do this up front for any
+ * fonts that might be used, as calls to [addFontAssociation] are cheap and the behavior
+ * for missing associations is expensive ([Resources.getIdentifier]).
+ */
+public fun addFontAssociation(fontName: String, @FontRes fontRes: Int) {
+    fontResources[fontName] = fontRes
+}
+
 /** Converts a Krayon [Paint] into an [AndroidPaint] used by [AndroidCanvas]. */
-public fun Paint.toAndroid(): AndroidPaint = when (this) {
+public fun Paint.toAndroid(context: Context): AndroidPaint = when (this) {
     is Paint.Fill -> androidPaint(this)
     is Paint.Stroke -> androidPaint(this)
-    is Paint.Text -> androidPaint(this)
+    is Paint.Text -> androidPaint(context, this)
 }
 
 private fun androidPaint(source: Paint.Fill) = AndroidPaint().apply {
@@ -35,15 +52,37 @@ private fun androidPaint(source: Paint.Stroke) = AndroidPaint().apply {
     }
 }
 
-private fun androidPaint(source: Paint.Text) = AndroidPaint().apply {
+private fun androidPaint(context: Context, source: Paint.Text) = AndroidPaint().apply {
     style = AndroidPaint.Style.FILL
     isAntiAlias = true
     color = source.color.argb
-    textSize = source.size
-    // FIXME: Font is currently ignored.
+    // Scale text by the difference between dp and sp. By applying this globally, it means that
+    // Krayon respect's a user's font scaling even in non-dp environments, like PDF rendering.
+    val scale = with(context.resources.displayMetrics) { scaledDensity / density }
+    textSize = source.size * scale
+    typeface = getTypeface(context, source.font)
     textAlign = when (source.alignment) {
         Paint.Text.Alignment.Left -> AndroidPaint.Align.LEFT
         Paint.Text.Alignment.Center -> AndroidPaint.Align.CENTER
         Paint.Text.Alignment.Right -> AndroidPaint.Align.RIGHT
     }
 }
+
+private fun getTypeface(context: Context, font: Font): Typeface =
+    font.names.asSequence()
+        .mapNotNull { name ->
+            val resource = fontResources[name]
+                ?: when (name) {
+                    serif -> return@mapNotNull Typeface.SERIF
+                    sansSerif -> return@mapNotNull Typeface.SANS_SERIF
+                    monospace -> return@mapNotNull Typeface.MONOSPACE
+                    else -> fontResources.getOrPut(name) {
+                        context.resources.getIdentifier(name, "font", context.packageName)
+                    }
+                }
+            try {
+                ResourcesCompat.getFont(context, resource)
+            } catch (e: Resources.NotFoundException) {
+                null
+            }
+        }.firstOrNull() ?: Typeface.DEFAULT
