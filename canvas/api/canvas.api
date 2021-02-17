@@ -82,6 +82,7 @@ public final class com/juul/krayon/canvas/Color {
 	public static final fun getBlue-impl (I)I
 	public static final fun getGreen-impl (I)I
 	public static final fun getRed-impl (I)I
+	public static final fun getRgb-impl (I)I
 	public fun hashCode ()I
 	public static fun hashCode-impl (I)I
 	public fun toString ()Ljava/lang/String;
@@ -307,5 +308,47 @@ public final class com/juul/krayon/canvas/Transform$Translate : com/juul/krayon/
 	public final fun getVertical ()F
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/svg/PathString {
+	public static final synthetic fun box-impl (Ljava/lang/String;)Lcom/juul/krayon/canvas/svg/PathString;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getString ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/svg/SvgCanvas : com/juul/krayon/canvas/Canvas {
+	public fun <init> (FFI)V
+	public synthetic fun <init> (FFIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun build ()Ljava/lang/String;
+	public fun buildPaint (Lcom/juul/krayon/canvas/Paint;)Lcom/juul/krayon/canvas/Paint;
+	public synthetic fun buildPaint (Lcom/juul/krayon/canvas/Paint;)Ljava/lang/Object;
+	public synthetic fun buildPath (Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public fun buildPath-4hQa1g4 (Lkotlin/jvm/functions/Function1;)Ljava/lang/String;
+	public final fun close ()V
+	public fun drawArc (FFFFFFZLcom/juul/krayon/canvas/Paint;)V
+	public synthetic fun drawArc (FFFFFFZLjava/lang/Object;)V
+	public fun drawCircle (FFFLcom/juul/krayon/canvas/Paint;)V
+	public synthetic fun drawCircle (FFFLjava/lang/Object;)V
+	public fun drawLine (FFFFLcom/juul/krayon/canvas/Paint;)V
+	public synthetic fun drawLine (FFFFLjava/lang/Object;)V
+	public fun drawOval (FFFFLcom/juul/krayon/canvas/Paint;)V
+	public synthetic fun drawOval (FFFFLjava/lang/Object;)V
+	public synthetic fun drawPath (Ljava/lang/Object;Ljava/lang/Object;)V
+	public fun drawPath-KJV2v9k (Ljava/lang/String;Lcom/juul/krayon/canvas/Paint;)V
+	public fun drawText (Ljava/lang/CharSequence;FFLcom/juul/krayon/canvas/Paint;)V
+	public synthetic fun drawText (Ljava/lang/CharSequence;FFLjava/lang/Object;)V
+	public fun getHeight ()F
+	public fun getWidth ()F
+	public fun pop ()V
+	public fun pushClip (Lcom/juul/krayon/canvas/Clip;)V
+	public fun pushTransform (Lcom/juul/krayon/canvas/Transform;)V
 }
 

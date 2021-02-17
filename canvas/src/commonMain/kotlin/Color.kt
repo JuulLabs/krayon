@@ -39,7 +39,7 @@ public inline class Color(public val argb: Int) {
         (requireInRange(alpha) * 0xFF).roundToInt(),
         (requireInRange(red) * 0xFF).roundToInt(),
         (requireInRange(green) * 0xFF).roundToInt(),
-        (requireInRange(alpha) * 0xFF).roundToInt()
+        (requireInRange(blue) * 0xFF).roundToInt()
     )
 
     /** Create an opaque color from component floats. Components are multiplied by 255 and rounded. */
@@ -58,6 +58,9 @@ public inline class Color(public val argb: Int) {
     /** Gets the blue component of this color as an eight bit integer. */
     public val blue: Int get() = (argb ushr BLUE_SHIFT) and COMPONENT_MASK
 
+    /** Gets the rgb component of this color as a 24 bit integer. */
+    public val rgb: Int get() = argb and RGB_MASK
+
     /** Creates a copy of this color. */
     public fun copy(
         alpha: Int = this.alpha,
@@ -65,6 +68,8 @@ public inline class Color(public val argb: Int) {
         green: Int = this.green,
         blue: Int = this.blue,
     ): Color = Color(alpha, red, green, blue)
+
+    override fun toString(): String = "Color(${argb.toString(16).padStart(8, '0')})"
 
     public companion object {
         public val transparent: Color = Color(0x00, 0x00, 0x00, 0x00)
