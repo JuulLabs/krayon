@@ -39,7 +39,7 @@ public inline class Color(public val argb: Int) {
         (requireInRange(alpha) * 0xFF).roundToInt(),
         (requireInRange(red) * 0xFF).roundToInt(),
         (requireInRange(green) * 0xFF).roundToInt(),
-        (requireInRange(alpha) * 0xFF).roundToInt()
+        (requireInRange(blue) * 0xFF).roundToInt()
     )
 
     /** Create an opaque color from component floats. Components are multiplied by 255 and rounded. */

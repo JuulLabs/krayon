@@ -1,42 +1,29 @@
 public abstract class com/juul/krayon/kanvas/Clip {
 }
 
-public final class com/juul/krayon/kanvas/Clip$Operation : java/lang/Enum {
-	public static final field Difference Lcom/juul/krayon/kanvas/Clip$Operation;
-	public static final field Intersection Lcom/juul/krayon/kanvas/Clip$Operation;
-	public static fun valueOf (Ljava/lang/String;)Lcom/juul/krayon/kanvas/Clip$Operation;
-	public static fun values ()[Lcom/juul/krayon/kanvas/Clip$Operation;
-}
-
 public final class com/juul/krayon/kanvas/Clip$Path : com/juul/krayon/kanvas/Clip {
-	public fun <init> (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Clip$Operation;)V
-	public synthetic fun <init> (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Clip$Operation;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/Object;)V
 	public final fun component1 ()Ljava/lang/Object;
-	public final fun component2 ()Lcom/juul/krayon/kanvas/Clip$Operation;
-	public final fun copy (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Clip$Operation;)Lcom/juul/krayon/kanvas/Clip$Path;
-	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Clip$Path;Ljava/lang/Object;Lcom/juul/krayon/kanvas/Clip$Operation;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Clip$Path;
+	public final fun copy (Ljava/lang/Object;)Lcom/juul/krayon/kanvas/Clip$Path;
+	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Clip$Path;Ljava/lang/Object;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Clip$Path;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getOperation ()Lcom/juul/krayon/kanvas/Clip$Operation;
 	public final fun getPath ()Ljava/lang/Object;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/juul/krayon/kanvas/Clip$Rect : com/juul/krayon/kanvas/Clip {
-	public fun <init> (FFFFLcom/juul/krayon/kanvas/Clip$Operation;)V
-	public synthetic fun <init> (FFFFLcom/juul/krayon/kanvas/Clip$Operation;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (FFFF)V
 	public final fun cast ()Lcom/juul/krayon/kanvas/Clip$Rect;
 	public final fun component1 ()F
 	public final fun component2 ()F
 	public final fun component3 ()F
 	public final fun component4 ()F
-	public final fun component5 ()Lcom/juul/krayon/kanvas/Clip$Operation;
-	public final fun copy (FFFFLcom/juul/krayon/kanvas/Clip$Operation;)Lcom/juul/krayon/kanvas/Clip$Rect;
-	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Clip$Rect;FFFFLcom/juul/krayon/kanvas/Clip$Operation;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Clip$Rect;
+	public final fun copy (FFFF)Lcom/juul/krayon/kanvas/Clip$Rect;
+	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Clip$Rect;FFFFILjava/lang/Object;)Lcom/juul/krayon/kanvas/Clip$Rect;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getBottom ()F
 	public final fun getLeft ()F
-	public final fun getOperation ()Lcom/juul/krayon/kanvas/Clip$Operation;
 	public final fun getRight ()F
 	public final fun getTop ()F
 	public fun hashCode ()I
@@ -107,11 +94,13 @@ public final class com/juul/krayon/kanvas/FontKt {
 public abstract interface class com/juul/krayon/kanvas/Kanvas {
 	public abstract fun buildPaint (Lcom/juul/krayon/kanvas/Paint;)Ljava/lang/Object;
 	public abstract fun buildPath (Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public abstract fun drawArc (FFFFFFZLjava/lang/Object;)V
+	public abstract fun drawArc (FFFFFFLjava/lang/Object;)V
 	public abstract fun drawCircle (FFFLjava/lang/Object;)V
+	public abstract fun drawColor-IvQpv0M (I)V
 	public abstract fun drawLine (FFFFLjava/lang/Object;)V
 	public abstract fun drawOval (FFFFLjava/lang/Object;)V
 	public abstract fun drawPath (Ljava/lang/Object;Ljava/lang/Object;)V
+	public abstract fun drawRect (FFFFLjava/lang/Object;)V
 	public abstract fun drawText (Ljava/lang/CharSequence;FFLjava/lang/Object;)V
 	public abstract fun getHeight ()F
 	public abstract fun getWidth ()F
