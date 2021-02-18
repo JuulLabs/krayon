@@ -1,20 +1,21 @@
 package com.juul.krayon.chart.render
 
-import com.juul.krayon.canvas.Color
-import com.juul.krayon.canvas.Font
-import com.juul.krayon.canvas.Paint
-import com.juul.krayon.canvas.lerp
 import com.juul.krayon.chart.render.components.AxisRenderer
 import com.juul.krayon.chart.render.components.BarRenderer
+import com.juul.krayon.kanvas.Color
+import com.juul.krayon.kanvas.Font
+import com.juul.krayon.kanvas.Paint
+import com.juul.krayon.kanvas.lerp
 
 internal fun defaultAxisStyle(
-    orientation: Orientation
+    orientation: Orientation,
 ): AxisRenderer.Style = AxisRenderer.Style(
     orientation,
     Paint.Stroke(Color.black, 1f, Paint.Stroke.Cap.Square)
 )
+
 internal fun defaultBarStyle(
-    orientation: Orientation
+    orientation: Orientation,
 ): BarRenderer.Style = BarRenderer.Style(
     orientation,
     defaultSeriesColors(),

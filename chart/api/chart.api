@@ -109,8 +109,8 @@ public class com/juul/krayon/chart/render/BarChartRenderer : com/juul/krayon/cha
 	public fun <init> ()V
 	public fun <init> (Lcom/juul/krayon/chart/render/BarChartRenderer$Style;)V
 	public synthetic fun <init> (Lcom/juul/krayon/chart/render/BarChartRenderer$Style;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun render (Lcom/juul/krayon/chart/data/ClusteredDataSet;Lcom/juul/krayon/canvas/Canvas;)V
-	public synthetic fun render (Ljava/lang/Object;Lcom/juul/krayon/canvas/Canvas;)V
+	public fun render (Lcom/juul/krayon/chart/data/ClusteredDataSet;Lcom/juul/krayon/kanvas/Kanvas;)V
+	public synthetic fun render (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Kanvas;)V
 }
 
 public final class com/juul/krayon/chart/render/BarChartRenderer$Style {
@@ -134,13 +134,13 @@ public final class com/juul/krayon/chart/render/Orientation : java/lang/Enum {
 }
 
 public abstract interface class com/juul/krayon/chart/render/Renderer {
-	public abstract fun render (Ljava/lang/Object;Lcom/juul/krayon/canvas/Canvas;)V
+	public abstract fun render (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Kanvas;)V
 }
 
 public final class com/juul/krayon/chart/render/components/AxisRenderer : com/juul/krayon/chart/render/Renderer {
 	public fun <init> (Lcom/juul/krayon/chart/render/components/AxisRenderer$Style;)V
-	public fun render (Lcom/juul/krayon/chart/render/components/AxisRenderer$Specification;Lcom/juul/krayon/canvas/Canvas;)V
-	public synthetic fun render (Ljava/lang/Object;Lcom/juul/krayon/canvas/Canvas;)V
+	public fun render (Lcom/juul/krayon/chart/render/components/AxisRenderer$Specification;Lcom/juul/krayon/kanvas/Kanvas;)V
+	public synthetic fun render (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Kanvas;)V
 }
 
 public final class com/juul/krayon/chart/render/components/AxisRenderer$Specification {
@@ -159,15 +159,15 @@ public final class com/juul/krayon/chart/render/components/AxisRenderer$Specific
 }
 
 public final class com/juul/krayon/chart/render/components/AxisRenderer$Style {
-	public fun <init> (Lcom/juul/krayon/chart/render/Orientation;Lcom/juul/krayon/canvas/Paint$Stroke;)V
+	public fun <init> (Lcom/juul/krayon/chart/render/Orientation;Lcom/juul/krayon/kanvas/Paint$Stroke;)V
 	public final fun getOrientation ()Lcom/juul/krayon/chart/render/Orientation;
-	public final fun getStroke ()Lcom/juul/krayon/canvas/Paint$Stroke;
+	public final fun getStroke ()Lcom/juul/krayon/kanvas/Paint$Stroke;
 }
 
 public final class com/juul/krayon/chart/render/components/BarRenderer : com/juul/krayon/chart/render/Renderer {
 	public fun <init> (Lcom/juul/krayon/chart/render/components/BarRenderer$Style;)V
-	public fun render (Lcom/juul/krayon/chart/render/components/BarRenderer$Specification;Lcom/juul/krayon/canvas/Canvas;)V
-	public synthetic fun render (Ljava/lang/Object;Lcom/juul/krayon/canvas/Canvas;)V
+	public fun render (Lcom/juul/krayon/chart/render/components/BarRenderer$Specification;Lcom/juul/krayon/kanvas/Kanvas;)V
+	public synthetic fun render (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Kanvas;)V
 }
 
 public final class com/juul/krayon/chart/render/components/BarRenderer$ClusterBehavior : java/lang/Enum {

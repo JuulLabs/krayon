@@ -1,7 +1,5 @@
 ![badge-android]
-![badge-js]
 ![badge-jvm]
-![badge-mac]
 
 # Chart
 
@@ -24,13 +22,12 @@ plugins {
 }
 
 repositories {
-    jcenter() // or mavenCentral()
+    mavenCentral()
 }
 
 kotlin {
     android()
-    js().browser() // and/or js().node()
-    macosX64()
+    jvm()
 
     sourceSets {
         val commonMain by getting {
@@ -50,7 +47,7 @@ android {
 
 ```kotlin
 repositories {
-    jcenter() // or mavenCentral()
+    mavenCentral()
 }
 
 dependencies {

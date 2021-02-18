@@ -1,7 +1,7 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 /** Something to draw on. Implementations are not required to be safe across multiple threads. */
-public interface Canvas<PAINT, PATH> {
+public interface Kanvas<PAINT, PATH> {
 
     /** Gets the width of the canvas. */
     public val width: Float
@@ -60,10 +60,10 @@ public interface Canvas<PAINT, PATH> {
     public fun pop()
 }
 
-/** Invokes [actions] inside of a [Canvas.pushClip]/[Canvas.pop] pair. */
-public inline fun <PAINT, PATH> Canvas<PAINT, PATH>.withClip(
+/** Invokes [actions] inside of a [Kanvas.pushClip]/[Kanvas.pop] pair. */
+public inline fun <PAINT, PATH> Kanvas<PAINT, PATH>.withClip(
     clip: Clip<PATH>,
-    actions: Canvas<PAINT, PATH>.() -> Unit,
+    actions: Kanvas<PAINT, PATH>.() -> Unit,
 ) {
     pushClip(clip)
     try {
@@ -73,10 +73,10 @@ public inline fun <PAINT, PATH> Canvas<PAINT, PATH>.withClip(
     }
 }
 
-/** Invokes [actions] inside of a [Canvas.pushTransform]/[Canvas.pop] pair. */
-public inline fun <PAINT, PATH> Canvas<PAINT, PATH>.withTransform(
+/** Invokes [actions] inside of a [Kanvas.pushTransform]/[Kanvas.pop] pair. */
+public inline fun <PAINT, PATH> Kanvas<PAINT, PATH>.withTransform(
     transform: Transform,
-    actions: Canvas<PAINT, PATH>.() -> Unit,
+    actions: Kanvas<PAINT, PATH>.() -> Unit,
 ) {
     pushTransform(transform)
     try {

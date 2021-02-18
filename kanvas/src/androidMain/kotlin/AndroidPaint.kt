@@ -1,4 +1,4 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 import android.content.Context
 import android.content.res.Resources
@@ -19,7 +19,7 @@ public fun addFontAssociation(fontName: String, @FontRes fontRes: Int) {
     fontResources[fontName] = fontRes
 }
 
-/** Converts a Krayon [Paint] into an [AndroidPaint] used by [AndroidCanvas]. */
+/** Converts a Krayon [Paint] into an [AndroidPaint]. */
 public fun Paint.toAndroid(context: Context): AndroidPaint = when (this) {
     is Paint.Fill -> androidPaint(this)
     is Paint.Stroke -> androidPaint(this)

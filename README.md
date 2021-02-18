@@ -2,14 +2,14 @@
 ![badge][badge-android]
 [![codecov](https://codecov.io/gh/JuulLabs/krayon/branch/main/graph/badge.svg?token=y8btx3pTlr)](https://codecov.io/gh/JuulLabs/krayon)
 
-Multiplatform canvas drawing library with additional components built on top.
+Multiplatform drawing library. Provides a multiplatform canvas and chart rendering framework.
 
 # Krayon
 
 | Module             | Description           |
 |--------------------|-----------------------|
-| [`canvas`](canvas) | Multiplatform canvas. |
 | [`chart`](chart)   | Multiplatform charts. |
+| [`kanvas`](kanvas) | Multiplatform canvas. |
 
 # License
 

@@ -2,18 +2,18 @@ package com.juul.krayon.sample
 
 import android.content.Context
 import android.util.AttributeSet
-import com.juul.krayon.canvas.Canvas
-import com.juul.krayon.canvas.CanvasView
-import com.juul.krayon.canvas.Color
-import com.juul.krayon.canvas.Paint
-import com.juul.krayon.canvas.toAndroid
+import com.juul.krayon.kanvas.Color
+import com.juul.krayon.kanvas.Kanvas
+import com.juul.krayon.kanvas.KanvasView
+import com.juul.krayon.kanvas.Paint
+import com.juul.krayon.kanvas.toAndroid
 import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
 
 class CustomCanvasView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-) : CanvasView(context, attrs) {
+) : KanvasView(context, attrs) {
 
     private val linePaint = Paint.Stroke(Color.black, 1f, Paint.Stroke.Cap.Round).toAndroid(context)
     private val textPaint = Paint.Text(Color.black, 18f, Paint.Text.Alignment.Left, Fonts.robotoSlab).toAndroid(context)
@@ -26,7 +26,7 @@ class CustomCanvasView @JvmOverloads constructor(
             invalidate()
         }
 
-    override fun onDraw(canvas: Canvas<AndroidPaint, AndroidPath>) = with(canvas) {
+    override fun onDraw(canvas: Kanvas<AndroidPaint, AndroidPath>) = with(canvas) {
         drawLine(16f, 16f, width - 16f, height - 16f, linePaint)
         val vScale = (height - 32f) / (width - 32f)
         var hOffset = 0f
