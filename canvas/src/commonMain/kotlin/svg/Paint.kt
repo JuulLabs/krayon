@@ -2,58 +2,64 @@ package com.juul.krayon.canvas.svg
 
 import com.juul.krayon.canvas.Color
 import com.juul.krayon.canvas.Paint
-import kotlin.math.roundToInt
+import com.juul.krayon.canvas.xml.XmlElement
+import com.juul.krayon.canvas.xml.escape
 
-// FIXME: This could be cleaned up a lot
-internal fun Paint.toAttributeString(): String = when (this) {
-    is Paint.Stroke -> buildString {
-        appendColorAttributes("stroke", color)
-        append("""stroke-width="${width.toDouble()}px" """)
-        val cap = when (cap) {
-            Paint.Stroke.Cap.Butt -> null // defaults to "butt"
-            Paint.Stroke.Cap.Round -> "round"
-            Paint.Stroke.Cap.Square -> "square"
-        }
-        if (cap != null) {
-            append("""stroke-linecap="$cap" """)
-        }
-        if (join is Paint.Stroke.Join.Miter) {
-            TODO("the math. SVG uses a weird non-angular format. See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit")
-        }
-        val join = when (join) {
-            Paint.Stroke.Join.Bevel -> "bevel"
-            Paint.Stroke.Join.Round -> "round"
-            is Paint.Stroke.Join.Miter -> null // defaults to "miter"
-        }
-        if (join != null) {
-            append("""stroke-linejoin="$join" """)
-        }
-    }
-    is Paint.Fill -> buildString {
-        appendColorAttributes("fill", color)
-    }
-    is Paint.Text -> buildString {
-        val anchor = when (alignment) {
-            Paint.Text.Alignment.Left -> "start"
-            Paint.Text.Alignment.Center -> "middle"
-            Paint.Text.Alignment.Right -> "end"
-        }
-        append("""text-anchor="$anchor" """)
-        // STOPSHIP: text must be escaped or else we can break the SVG pretty easily
-        append("""font-family="${font.names.joinToString { "\\\"$it\\\"" }}" """)
-        append("""font-size="${size.toDouble()}px" """)
-        appendColorAttributes("fill", color)
-    }
-}.trimEnd()
-
-private fun StringBuilder.appendColorAttributes(attribute: String, color: Color) {
-    append("""$attribute="${color.asSvgColor()}" """)
-    if (color.alpha != 0xFF) {
-        append("""$attribute-opacity="${color.asSvgOpacity()}" """)
+internal fun XmlElement.setPaintAttributes(paint: Paint) = apply {
+    when (paint) {
+        is Paint.Stroke -> setStrokeAttributes(paint)
+        is Paint.Fill -> setFillAttributes(paint)
+        is Paint.Text -> setTextAttributes(paint)
     }
 }
 
-private fun Color.asSvgColor(): String = "#${rgb.toString(16)}"
+private fun XmlElement.setStrokeAttributes(paint: Paint.Stroke) = apply {
+    val cap = when (paint.cap) {
+        Paint.Stroke.Cap.Butt -> "butt"
+        Paint.Stroke.Cap.Round -> "round"
+        Paint.Stroke.Cap.Square -> "square"
+    }
+    if (cap != "butt") { // Don't bother writing the default
+        setAttribute("stroke-linecap", cap)
+    }
+    val join = when (paint.join) {
+        Paint.Stroke.Join.Bevel -> "bevel"
+        Paint.Stroke.Join.Round -> "round"
+        is Paint.Stroke.Join.Miter -> {
+            val miterLimit: Double = TODO("See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit for the math")
+            setAttribute("stroke-miterlimit", miterLimit)
+            "miter"
+        }
+    }
+    if (join != "miter") { // Don't bother writing the default
+        setAttribute("stroke-linejoin", join)
+    }
+    setColorAttributes("stroke", paint.color)
+    setAttribute("stroke-width", "${paint.width.toDouble()}px")
+}
 
-// TODO: There's probably a way cleaner way to do this. The goal is just not using WAY more decimals than can be represented.
-private fun Color.asSvgOpacity(): String = ((alpha / 0.0255).roundToInt() / 10000.0).toString()
+private fun XmlElement.setFillAttributes(paint: Paint.Fill) = apply {
+    setColorAttributes("fill", paint.color)
+}
+
+private fun XmlElement.setTextAttributes(paint: Paint.Text) = apply {
+    val anchor = when (paint.alignment) {
+        Paint.Text.Alignment.Left -> "start"
+        Paint.Text.Alignment.Center -> "middle"
+        Paint.Text.Alignment.Right -> "end"
+    }
+    setAttribute("text-anchor", anchor)
+    for (name in paint.font.names) {
+        require(name.escape().toString() == name) { "Font names cannot contain characters that must be escaped." }
+    }
+    setAttribute("font-family", paint.font.names.joinToString { if (it.contains("""\s""".toRegex())) "\"$it\"" else it })
+    setAttribute("font-size", "${paint.size.toDouble()}px")
+    setColorAttributes("fill", paint.color)
+}
+
+private fun XmlElement.setColorAttributes(id: String, color: Color) = apply {
+    setAttribute(id, "#${color.rgb.toString(16).padStart(6, '0')}")
+    if (color.alpha != 0xFF) {
+        setAttribute("$id-opacity", color.alpha / 255.0)
+    }
+}
