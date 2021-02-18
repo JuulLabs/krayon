@@ -2,8 +2,6 @@ package com.juul.krayon.canvas
 
 import android.content.Context
 import android.graphics.RectF
-import android.graphics.Region
-import android.os.Build
 import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
 
@@ -57,15 +55,18 @@ public class AndroidCanvas internal constructor(
         bottom: Float,
         startAngle: Float,
         sweepAngle: Float,
-        useCenter: Boolean,
         paint: AndroidPaint,
     ) {
         compatRectF.set(left, top, right, bottom)
-        requireCanvas().drawArc(compatRectF, startAngle, sweepAngle, useCenter, paint)
+        requireCanvas().drawArc(compatRectF, startAngle, sweepAngle, false, paint)
     }
 
     override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: AndroidPaint) {
         requireCanvas().drawCircle(centerX, centerY, radius, paint)
+    }
+
+    override fun drawColor(color: Color) {
+        requireCanvas().drawColor(color.argb)
     }
 
     override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: AndroidPaint) {
@@ -81,6 +82,10 @@ public class AndroidCanvas internal constructor(
         requireCanvas().drawPath(path, paint)
     }
 
+    override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: AndroidPaint) {
+        requireCanvas().drawRect(left, top, right, bottom, paint)
+    }
+
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: AndroidPaint) {
         requireCanvas().drawText(text, 0, text.length, x, y, paint)
     }
@@ -89,26 +94,8 @@ public class AndroidCanvas internal constructor(
     override fun pushClip(clip: Clip<AndroidPath>) {
         requireCanvas().save()
         when (clip) {
-            is Clip.Rect -> when (clip.operation) {
-                Clip.Operation.Intersection ->
-                    requireCanvas().clipRect(clip.left, clip.top, clip.right, clip.bottom)
-                Clip.Operation.Difference ->
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                        requireCanvas().clipRect(clip.left, clip.top, clip.right, clip.bottom, Region.Op.DIFFERENCE)
-                    } else {
-                        requireCanvas().clipOutRect(clip.left, clip.top, clip.right, clip.bottom)
-                    }
-            }
-            is Clip.Path -> when (clip.operation) {
-                Clip.Operation.Intersection ->
-                    requireCanvas().clipPath(clip.path)
-                Clip.Operation.Difference ->
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                        requireCanvas().clipPath(clip.path, Region.Op.DIFFERENCE)
-                    } else {
-                        requireCanvas().clipOutPath(clip.path)
-                    }
-            }
+            is Clip.Rect -> requireCanvas().clipRect(clip.left, clip.top, clip.right, clip.bottom)
+            is Clip.Path -> requireCanvas().clipPath(clip.path)
         }
     }
 

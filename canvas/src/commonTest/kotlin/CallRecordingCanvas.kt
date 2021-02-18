@@ -43,14 +43,17 @@ class CallRecordingCanvas(
         bottom: Float,
         startAngle: Float,
         sweepAngle: Float,
-        useCenter: Boolean,
         paint: UnitPaint,
     ) {
-        recorder.record(this::drawArc, left, top, right, bottom, startAngle, sweepAngle, useCenter, paint)
+        recorder.record(this::drawArc, left, top, right, bottom, startAngle, sweepAngle, paint)
     }
 
     override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: UnitPaint) {
         recorder.record(this::drawCircle, centerX, centerY, radius, paint)
+    }
+
+    override fun drawColor(color: Color) {
+        recorder.record(this::drawColor, color)
     }
 
     override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: UnitPaint) {
@@ -63,6 +66,10 @@ class CallRecordingCanvas(
 
     override fun drawPath(path: UnitPath, paint: UnitPaint) {
         recorder.record(this::drawPath, path, paint)
+    }
+
+    override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: UnitPaint) {
+        recorder.record(this::drawRect, left, top, right, bottom, paint)
     }
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: UnitPaint) {
