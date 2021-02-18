@@ -1,8 +1,8 @@
 package com.juul.krayon.sample
 
-import com.juul.krayon.canvas.Font
-import com.juul.krayon.canvas.addFontAssociation
-import com.juul.krayon.canvas.serif
+import com.juul.krayon.kanvas.Font
+import com.juul.krayon.kanvas.addFontAssociation
+import com.juul.krayon.kanvas.serif
 
 object Fonts {
     val robotoSlab by lazy {
