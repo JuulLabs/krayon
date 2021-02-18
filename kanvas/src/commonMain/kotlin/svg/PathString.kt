@@ -1,8 +1,8 @@
-package com.juul.krayon.canvas.svg
+package com.juul.krayon.kanvas.svg
 
-import com.juul.krayon.canvas.PathBuilder
-import com.juul.krayon.canvas.getEllipseX
-import com.juul.krayon.canvas.getEllipseY
+import com.juul.krayon.kanvas.PathBuilder
+import com.juul.krayon.kanvas.getEllipseX
+import com.juul.krayon.kanvas.getEllipseY
 import kotlin.math.abs
 
 public inline class PathString(public val string: String)

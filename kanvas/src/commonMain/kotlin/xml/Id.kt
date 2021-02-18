@@ -1,4 +1,4 @@
-package com.juul.krayon.canvas.xml
+package com.juul.krayon.kanvas.xml
 
 private val NUMBERS = '0'..'9'
 private val ALLOWED_KEY_CHARS = (('a'..'z') + ('A'..'Z') + NUMBERS + '_' + '-').toHashSet()

@@ -1,4 +1,4 @@
-package com.juul.krayon.canvas.xml
+package com.juul.krayon.kanvas.xml
 
 private const val INDENTATION_STEP = "  "
 

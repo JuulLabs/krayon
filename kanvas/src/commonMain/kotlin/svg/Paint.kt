@@ -1,10 +1,10 @@
-package com.juul.krayon.canvas.svg
+package com.juul.krayon.kanvas.svg
 
-import com.juul.krayon.canvas.Color
-import com.juul.krayon.canvas.DEFAULT_MITER_LIMIT
-import com.juul.krayon.canvas.Paint
-import com.juul.krayon.canvas.xml.XmlElement
-import com.juul.krayon.canvas.xml.escape
+import com.juul.krayon.kanvas.Color
+import com.juul.krayon.kanvas.DEFAULT_MITER_LIMIT
+import com.juul.krayon.kanvas.Paint
+import com.juul.krayon.kanvas.xml.XmlElement
+import com.juul.krayon.kanvas.xml.escape
 
 internal fun XmlElement.setPaintAttributes(paint: Paint) = apply {
     when (paint) {

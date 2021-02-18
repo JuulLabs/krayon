@@ -1,19 +1,19 @@
-package com.juul.krayon.canvas.svg
+package com.juul.krayon.kanvas.svg
 
-import com.juul.krayon.canvas.Canvas
-import com.juul.krayon.canvas.Clip
-import com.juul.krayon.canvas.Color
-import com.juul.krayon.canvas.Paint
-import com.juul.krayon.canvas.PathBuilder
-import com.juul.krayon.canvas.Transform
-import com.juul.krayon.canvas.split
-import com.juul.krayon.canvas.xml.XmlElement
-import com.juul.krayon.canvas.xml.escape
+import com.juul.krayon.kanvas.Clip
+import com.juul.krayon.kanvas.Color
+import com.juul.krayon.kanvas.Kanvas
+import com.juul.krayon.kanvas.Paint
+import com.juul.krayon.kanvas.PathBuilder
+import com.juul.krayon.kanvas.Transform
+import com.juul.krayon.kanvas.split
+import com.juul.krayon.kanvas.xml.XmlElement
+import com.juul.krayon.kanvas.xml.escape
 
-public class SvgCanvas(
+public class SvgKanvas(
     override val width: Float,
     override val height: Float,
-) : Canvas<Paint, PathString> {
+) : Kanvas<Paint, PathString> {
 
     /** Root XML element. */
     private val root = XmlElement("svg")

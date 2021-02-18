@@ -1,4 +1,4 @@
-package com.juul.krayon.canvas.xml
+package com.juul.krayon.kanvas.xml
 
 internal class EscapedString private constructor(private val string: String) {
     override fun toString(): String = string

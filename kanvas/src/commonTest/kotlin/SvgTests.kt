@@ -1,6 +1,6 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
-import com.juul.krayon.canvas.svg.SvgCanvas
+import com.juul.krayon.kanvas.svg.SvgKanvas
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -27,7 +27,7 @@ class SvgTests {
             </svg>
         """.trimIndent()
         val actual = run {
-            val svg = SvgCanvas(width = 100f, height = 100f)
+            val svg = SvgKanvas(width = 100f, height = 100f)
             val blackFill = Paint.Fill(Color.black)
             val redStroke = Paint.Stroke(Color.red, width = 2f)
             val greenStroke = Paint.Stroke(Color.green, width = 1f)
