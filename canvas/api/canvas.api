@@ -325,14 +325,12 @@ public final class com/juul/krayon/canvas/svg/PathString {
 }
 
 public final class com/juul/krayon/canvas/svg/SvgCanvas : com/juul/krayon/canvas/Canvas {
-	public fun <init> (FFI)V
-	public synthetic fun <init> (FFIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (FF)V
 	public final fun build ()Ljava/lang/String;
 	public fun buildPaint (Lcom/juul/krayon/canvas/Paint;)Lcom/juul/krayon/canvas/Paint;
 	public synthetic fun buildPaint (Lcom/juul/krayon/canvas/Paint;)Ljava/lang/Object;
 	public synthetic fun buildPath (Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public fun buildPath-4hQa1g4 (Lkotlin/jvm/functions/Function1;)Ljava/lang/String;
-	public final fun close ()V
 	public fun drawArc (FFFFFFZLcom/juul/krayon/canvas/Paint;)V
 	public synthetic fun drawArc (FFFFFFZLjava/lang/Object;)V
 	public fun drawCircle (FFFLcom/juul/krayon/canvas/Paint;)V
