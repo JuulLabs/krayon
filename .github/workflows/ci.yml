@@ -53,4 +53,11 @@ jobs:
 
       - name: Check (Linux)
         if: runner.os == 'Linux'
-        run: ./gradlew $GRADLE_ARGS check
+        run: ./gradlew $GRADLE_ARGS check jacocoTestReport
+
+      - name: Codecov (Linux)
+        if: runner.os == 'Linux'
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
