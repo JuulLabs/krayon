@@ -2,6 +2,7 @@ package com.juul.krayon.canvas.svg
 
 import com.juul.krayon.canvas.Canvas
 import com.juul.krayon.canvas.Clip
+import com.juul.krayon.canvas.Color
 import com.juul.krayon.canvas.Paint
 import com.juul.krayon.canvas.PathBuilder
 import com.juul.krayon.canvas.Transform
@@ -37,7 +38,6 @@ public class SvgCanvas(
         bottom: Float,
         startAngle: Float,
         sweepAngle: Float,
-        useCenter: Boolean,
         paint: Paint,
     ) {
         drawPath(buildPath { arcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo = true) }, paint)
@@ -49,6 +49,14 @@ public class SvgCanvas(
             .setAttribute("cy", centerY)
             .setAttribute("r", radius)
             .setPaintAttributes(paint)
+        xmlAncestors.last().addContent(element)
+    }
+
+    override fun drawColor(color: Color) {
+        val element = XmlElement("rect")
+            .setAttribute("width", "100%")
+            .setAttribute("height", "100%")
+            .setPaintAttributes(Paint.Fill(color))
         xmlAncestors.last().addContent(element)
     }
 
@@ -80,6 +88,16 @@ public class SvgCanvas(
     override fun drawPath(path: PathString, paint: Paint) {
         val element = XmlElement("path")
             .setAttribute("d", path.string)
+            .setPaintAttributes(paint)
+        xmlAncestors.last().addContent(element)
+    }
+
+    override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
+        val element = XmlElement("rect")
+            .setAttribute("x", left)
+            .setAttribute("y", top)
+            .setAttribute("width", right - left)
+            .setAttribute("height", bottom - top)
             .setPaintAttributes(paint)
         xmlAncestors.last().addContent(element)
     }

@@ -37,8 +37,8 @@ class SvgTests {
                 drawLine(0f, 100f, 100f, 0f, redStroke)
             }
             svg.drawText("Example", 50f, 50f, blueText)
-            svg.drawArc(-50f, 0f, 50f, 100f, 270f, 90f, false, greenStroke) // Quarter circle from top-left to center
-            svg.drawArc(25f, 50f, 75f, 100f, 270f, 180f, false, greenStroke) // Half circle from center to bottom
+            svg.drawArc(-50f, 0f, 50f, 100f, 270f, 90f, greenStroke) // Quarter circle from top-left to center
+            svg.drawArc(25f, 50f, 75f, 100f, 270f, 180f, greenStroke) // Half circle from center to bottom
             svg.build()
         }
         assertEquals(expected, actual)
