@@ -38,6 +38,8 @@ public sealed class Paint {
                 /**
                  * The maximum ratio of miter length to stroke width to render miters.
                  * If the ratio exceeds this limit, then a [Bevel] is rendered instead.
+                 *
+                 * Defaults to 4, which uses a miter at 90 degrees or more and a bevel below 90 degrees.
                  */
                 public val limit: Float = DEFAULT_MITER_LIMIT
             ) : Join()

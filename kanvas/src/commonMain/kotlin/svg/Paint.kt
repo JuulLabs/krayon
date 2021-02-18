@@ -20,7 +20,8 @@ private fun XmlElement.setStrokeAttributes(paint: Paint.Stroke) = apply {
         Paint.Stroke.Cap.Round -> "round"
         Paint.Stroke.Cap.Square -> "square"
     }
-    if (cap != "butt") { // Don't bother writing the default
+    if (cap != "butt") {
+        // SVG stroke line cap defaults to "butt"; set the attribute only when the specified value is not the default.
         setAttribute("stroke-linecap", cap)
     }
     val join = when (paint.join) {
@@ -28,17 +29,20 @@ private fun XmlElement.setStrokeAttributes(paint: Paint.Stroke) = apply {
         Paint.Stroke.Join.Round -> "round"
         is Paint.Stroke.Join.Miter -> {
             if (paint.join.limit != DEFAULT_MITER_LIMIT) {
+                // SVG stroke miter limit defaults to 4; set the attribute only when the specified value is not the default.
                 setAttribute("stroke-miterlimit", paint.join.limit)
             }
             "miter"
         }
     }
-    if (join != "miter") { // Don't bother writing the default
+    if (join != "miter") {
+        // SVG stroke line join defaults to "miter"; set the attribute only when the specified value is not the default.
         setAttribute("stroke-linejoin", join)
     }
     setAttribute("stroke-width", "${paint.width.toDouble()}px")
     setColorAttributes("stroke", paint.color)
-    setAttribute("fill", "none") // SVG defaults to a black fill. Explicitly remove it.
+    // SVG defaults to a black fill. Explicitly set it as "none" since this is a stroke-only paint.
+    setAttribute("fill", "none")
 }
 
 private fun XmlElement.setFillAttributes(paint: Paint.Fill) = apply {
