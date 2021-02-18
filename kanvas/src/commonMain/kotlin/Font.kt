@@ -1,4 +1,4 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 public const val serif: String = "serif"
 public const val sansSerif: String = "sans-serif"

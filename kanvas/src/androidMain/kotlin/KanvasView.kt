@@ -1,7 +1,8 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Canvas
 import android.util.AttributeSet
 import android.util.TypedValue.COMPLEX_UNIT_DIP
 import android.util.TypedValue.applyDimension
@@ -10,15 +11,15 @@ import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
 
 /** Base class for custom [View]s implemented using Krayon. */
-abstract class CanvasView(
+abstract class KanvasView(
     context: Context,
     attrs: AttributeSet? = null,
 ) : View(context, attrs) {
 
-    private val krayonCanvas = AndroidCanvas(context, null, scalingFactor = applyDimension(COMPLEX_UNIT_DIP, 1f, resources.displayMetrics))
+    private val krayonCanvas = AndroidKanvas(context, null, scalingFactor = applyDimension(COMPLEX_UNIT_DIP, 1f, resources.displayMetrics))
 
     @SuppressLint("WrongCall") // false positive because our custom draw function shares the name `onDraw`
-    final override fun onDraw(canvas: android.graphics.Canvas) {
+    final override fun onDraw(canvas: Canvas) {
         krayonCanvas.setCanvas(canvas)
         onDraw(krayonCanvas)
         krayonCanvas.setCanvas(null)
@@ -32,5 +33,5 @@ abstract class CanvasView(
      * Unlike [View.onDraw], you should use [Canvas.width] and [Canvas.height] instead of the view's
      * width and height.
      */
-    protected abstract fun onDraw(canvas: Canvas<AndroidPaint, AndroidPath>)
+    protected abstract fun onDraw(canvas: Kanvas<AndroidPaint, AndroidPath>)
 }
