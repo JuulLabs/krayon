@@ -1,6 +1,7 @@
 package com.juul.krayon.canvas.svg
 
 import com.juul.krayon.canvas.Color
+import com.juul.krayon.canvas.DEFAULT_MITER_LIMIT
 import com.juul.krayon.canvas.Paint
 import com.juul.krayon.canvas.xml.XmlElement
 import com.juul.krayon.canvas.xml.escape
@@ -26,16 +27,18 @@ private fun XmlElement.setStrokeAttributes(paint: Paint.Stroke) = apply {
         Paint.Stroke.Join.Bevel -> "bevel"
         Paint.Stroke.Join.Round -> "round"
         is Paint.Stroke.Join.Miter -> {
-            val miterLimit: Double = TODO("See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit for the math")
-            setAttribute("stroke-miterlimit", miterLimit)
+            if (paint.join.limit != DEFAULT_MITER_LIMIT) {
+                setAttribute("stroke-miterlimit", paint.join.limit)
+            }
             "miter"
         }
     }
     if (join != "miter") { // Don't bother writing the default
         setAttribute("stroke-linejoin", join)
     }
-    setColorAttributes("stroke", paint.color)
     setAttribute("stroke-width", "${paint.width.toDouble()}px")
+    setColorAttributes("stroke", paint.color)
+    setAttribute("fill", "none") // SVG defaults to a black fill. Explicitly remove it.
 }
 
 private fun XmlElement.setFillAttributes(paint: Paint.Fill) = apply {

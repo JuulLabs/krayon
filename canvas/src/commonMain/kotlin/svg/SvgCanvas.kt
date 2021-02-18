@@ -5,6 +5,7 @@ import com.juul.krayon.canvas.Clip
 import com.juul.krayon.canvas.Paint
 import com.juul.krayon.canvas.PathBuilder
 import com.juul.krayon.canvas.Transform
+import com.juul.krayon.canvas.split
 import com.juul.krayon.canvas.xml.XmlElement
 import com.juul.krayon.canvas.xml.escape
 
@@ -13,10 +14,15 @@ public class SvgCanvas(
     override val height: Float,
 ) : Canvas<Paint, PathString> {
 
+    /** Root XML element. */
     private val root = XmlElement("svg")
         .setAttribute("xmlns", "http://www.w3.org/2000/svg")
         .setAttribute("viewBox", "0 0 $width $height")
+
+    /** Current path to the root element, with root and index [0] and the current group as the last. */
     private val xmlAncestors = ArrayDeque<XmlElement>().apply { addLast(root) }
+
+    /** ID to use for the next clip path. */
     private var clipCount = 0
 
     override fun buildPaint(paint: Paint): Paint = paint
@@ -53,6 +59,7 @@ public class SvgCanvas(
             .setAttribute("x2", endX)
             .setAttribute("y2", endY)
             .setPaintAttributes(paint)
+            .unsetAttribute("fill") // lines have no area to fill
         xmlAncestors.last().addContent(element)
     }
 
@@ -87,6 +94,7 @@ public class SvgCanvas(
     }
 
     override fun pushClip(clip: Clip<PathString>) {
+        // TODO: As an optimization, it should be possible to use a single `defs` object for the whole vector.
         val pathName = "c$clipCount"
         clipCount += 1
         val clipPathElement = when (clip) {
@@ -113,31 +121,32 @@ public class SvgCanvas(
     }
 
     override fun pushTransform(transform: Transform) {
-        // TODO: This can definitely be cleaned up.
+        // Recursively create a transformation string.
+        // See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
         fun stringify(t: Transform): String = when (t) {
             is Transform.InOrder ->
                 t.transformations.joinToString(separator = " ") { stringify(t) }
             is Transform.Translate ->
-                """translate(${t.horizontal} ${t.vertical})"""
+                "translate(${t.horizontal} ${t.vertical})"
             is Transform.Scale ->
                 if (t.pivotX != 0f || t.pivotY != 0f) {
-                    """translate(${t.pivotX} ${t.pivotY}) scale(${t.horizontal} ${t.vertical}) translate(${-t.pivotX} ${-t.pivotY})"""
+                    stringify(t.split())
                 } else {
-                    """scale(${t.horizontal} ${t.vertical})"""
+                    "scale(${t.horizontal} ${t.vertical})"
                 }
             is Transform.Rotate ->
                 if (t.pivotX != 0f || t.pivotY != 0f) {
-                    """rotate(${t.degrees} ${t.pivotX} ${t.pivotY})"""
+                    "rotate(${t.degrees} ${t.pivotX} ${t.pivotY})"
                 } else {
-                    """rotate(${t.degrees})"""
+                    "rotate(${t.degrees})"
                 }
             is Transform.Skew ->
                 if (t.horizontal != 0f && t.vertical != 0f) {
-                    """skewX(${t.horizontal}) skewY(${t.vertical})"""
+                    stringify(t.split())
                 } else if (t.horizontal != 0f) {
-                    """skewX(${t.horizontal})"""
+                    "skewX(${t.horizontal})"
                 } else {
-                    """skewY(${t.vertical})"""
+                    "skewY(${t.vertical})"
                 }
         }
 
@@ -152,5 +161,6 @@ public class SvgCanvas(
         xmlAncestors.removeLast()
     }
 
+    /** Dump the SVG as an XML string. */
     public fun build(): String = root.toString()
 }

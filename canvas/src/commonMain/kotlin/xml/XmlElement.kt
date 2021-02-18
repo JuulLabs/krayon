@@ -18,6 +18,12 @@ internal class XmlElement(
     fun setAttribute(id: String, value: Double) = setAttribute(id, value.toString())
     fun setAttribute(id: String, value: Float) = setAttribute(id, value.toDouble().toString())
 
+    fun unsetAttribute(id: Id) = apply {
+        attributes.remove(id)
+    }
+
+    fun unsetAttribute(id: String) = unsetAttribute(id.toId())
+
     fun addContent(content: Content) = apply {
         this.contents += content
     }

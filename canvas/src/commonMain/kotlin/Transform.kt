@@ -43,3 +43,16 @@ public sealed class Transform {
         public val vertical: Float = 0f,
     ) : Transform()
 }
+
+/** Converts a pivoted scale into an ordered transformation of translate, scale, translate. */
+public fun Transform.Scale.split(): Transform.InOrder = Transform.InOrder(
+    Transform.Translate(pivotX, pivotY),
+    Transform.Scale(horizontal, vertical),
+    Transform.Translate(-pivotX, -pivotY)
+)
+
+/** Converts a bi-direction skew into an ordered transformation of horizontal skew and vertical skew. */
+public fun Transform.Skew.split(): Transform.InOrder = Transform.InOrder(
+    Transform.Skew(horizontal = horizontal),
+    Transform.Skew(vertical = vertical)
+)

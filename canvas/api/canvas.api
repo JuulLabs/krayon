@@ -215,6 +215,10 @@ public final class com/juul/krayon/canvas/Paint$Text$Alignment : java/lang/Enum 
 	public static fun values ()[Lcom/juul/krayon/canvas/Paint$Text$Alignment;
 }
 
+public final class com/juul/krayon/canvas/PaintKt {
+	public static final field DEFAULT_MITER_LIMIT F
+}
+
 public abstract interface class com/juul/krayon/canvas/PathBuilder {
 	public abstract fun arcTo (FFFFFFZ)V
 	public abstract fun build ()Ljava/lang/Object;
@@ -308,6 +312,11 @@ public final class com/juul/krayon/canvas/Transform$Translate : com/juul/krayon/
 	public final fun getVertical ()F
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/canvas/TransformKt {
+	public static final fun split (Lcom/juul/krayon/canvas/Transform$Scale;)Lcom/juul/krayon/canvas/Transform$InOrder;
+	public static final fun split (Lcom/juul/krayon/canvas/Transform$Skew;)Lcom/juul/krayon/canvas/Transform$InOrder;
 }
 
 public final class com/juul/krayon/canvas/svg/PathString {

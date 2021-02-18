@@ -37,7 +37,6 @@ internal class PathStringBuilder : PathBuilder<PathString> {
     }
 
     override fun arcTo(left: Float, top: Float, right: Float, bottom: Float, startAngle: Float, sweepAngle: Float, forceMoveTo: Boolean) {
-        // TODO: Double check all this works.
         separate()
         val startX = getEllipseX(left, top, right, bottom, startAngle)
         val startY = getEllipseY(left, top, right, bottom, startAngle)
@@ -46,8 +45,10 @@ internal class PathStringBuilder : PathBuilder<PathString> {
         } else {
             lineTo(startX, startY)
         }
-        val rx = left + (right - left) / 2f
-        val ry = top + (bottom - top) / 2f
+
+        separate()
+        val rx = (right - left) / 2f
+        val ry = (bottom - top) / 2f
         val sweep = if (sweepAngle >= 0f) 1 else 0
         val large = if (abs(sweepAngle) > 180f) 1 else 0
         val endX = getEllipseX(left, top, right, bottom, startAngle + sweepAngle)
