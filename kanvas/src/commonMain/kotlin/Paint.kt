@@ -1,5 +1,8 @@
 package com.juul.krayon.kanvas
 
+/** Default chosen to match SVG. See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit */
+public const val DEFAULT_MITER_LIMIT: Float = 4f
+
 /** A descriptor for how shapes should be painted. */
 public sealed class Paint {
 
@@ -31,7 +34,15 @@ public sealed class Paint {
         /** Shape behavior for the corners in a poly-line. */
         public sealed class Join {
             /** Corners should make nice pointy points. */
-            public data class Miter(public val limit: Float = 0f) : Join()
+            public data class Miter(
+                /**
+                 * The maximum ratio of miter length to stroke width to render miters.
+                 * If the ratio exceeds this limit, then a [Bevel] is rendered instead.
+                 *
+                 * Defaults to 4, which uses a miter at 90 degrees or more and a bevel below 90 degrees.
+                 */
+                public val limit: Float = DEFAULT_MITER_LIMIT
+            ) : Join()
 
             /** Corners should be rounded off. */
             public object Round : Join()
