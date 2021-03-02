@@ -79,7 +79,7 @@ public class ChartView @JvmOverloads constructor(
      * will be canceled and a new one will start. This means the current approach is
      * not particularly animation friendly. In the future I'll see if I can improve this.
      */
-    class Adapter<DATA> where DATA : DataSet<*> {
+    class Adapter<DATA> {
 
         /** The chart renderer. */
         var renderer: Renderer<DATA>? = null

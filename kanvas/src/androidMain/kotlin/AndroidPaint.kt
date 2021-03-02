@@ -27,7 +27,7 @@ public fun Paint.toAndroid(context: Context): AndroidPaint = when (this) {
 }
 
 private fun androidPaint(source: Paint.Fill) = AndroidPaint().apply {
-    style = AndroidPaint.Style.STROKE
+    style = AndroidPaint.Style.FILL
     isAntiAlias = true
     color = source.color.argb
 }
