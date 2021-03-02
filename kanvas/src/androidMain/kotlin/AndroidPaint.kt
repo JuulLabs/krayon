@@ -26,8 +26,14 @@ public fun Paint.toAndroid(context: Context): AndroidPaint = when (this) {
     is Paint.Text -> androidPaint(context, this)
 }
 
+/** Converts a Krayon [Paint] into an [AndroidPaint]. */
+public fun Paint.Fill.toAndroid(): AndroidPaint = androidPaint(this)
+
+/** Converts a Krayon [Paint] into an [AndroidPaint]. */
+public fun Paint.Stroke.toAndroid(): AndroidPaint = androidPaint(this)
+
 private fun androidPaint(source: Paint.Fill) = AndroidPaint().apply {
-    style = AndroidPaint.Style.STROKE
+    style = AndroidPaint.Style.FILL
     isAntiAlias = true
     color = source.color.argb
 }
