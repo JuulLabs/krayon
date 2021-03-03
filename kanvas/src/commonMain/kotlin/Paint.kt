@@ -17,6 +17,7 @@ public sealed class Paint {
         public val width: Float,
         public val cap: Cap = Cap.Butt,
         public val join: Join = Join.Miter(),
+        public val dash: Dash = Dash.None,
     ) : Paint() {
 
         /** Shape behavior for end of a line. */
@@ -41,7 +42,7 @@ public sealed class Paint {
                  *
                  * Defaults to 4, which uses a miter at 90 degrees or more and a bevel below 90 degrees.
                  */
-                public val limit: Float = DEFAULT_MITER_LIMIT
+                public val limit: Float = DEFAULT_MITER_LIMIT,
             ) : Join()
 
             /** Corners should be rounded off. */
@@ -49,6 +50,18 @@ public sealed class Paint {
 
             /** Corners should be squared off. */
             public object Bevel : Join()
+        }
+
+        public sealed class Dash {
+            public object None : Dash()
+            public data class Pattern(val intervals: List<Float>) : Dash() {
+                public constructor(vararg intervals: Float) : this(intervals.toList())
+
+                init {
+                    check(intervals.isNotEmpty()) { "Cannot construct pattern without intervals. Use Dash.None instead." }
+                    check(intervals.size % 2 == 0) { "Patterns must contain an even number of items. An interval is created for each even/odd index pair." }
+                }
+            }
         }
     }
 

@@ -130,17 +130,19 @@ public final class com/juul/krayon/kanvas/Paint$Fill : com/juul/krayon/kanvas/Pa
 }
 
 public final class com/juul/krayon/kanvas/Paint$Stroke : com/juul/krayon/kanvas/Paint {
-	public synthetic fun <init> (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-Zb52D8Y ()I
 	public final fun component2 ()F
 	public final fun component3 ()Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
 	public final fun component4 ()Lcom/juul/krayon/kanvas/Paint$Stroke$Join;
-	public final fun copy-54tA8Kc (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;)Lcom/juul/krayon/kanvas/Paint$Stroke;
-	public static synthetic fun copy-54tA8Kc$default (Lcom/juul/krayon/kanvas/Paint$Stroke;IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Stroke;
+	public final fun component5 ()Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;
+	public final fun copy-ePyPsWE (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;)Lcom/juul/krayon/kanvas/Paint$Stroke;
+	public static synthetic fun copy-ePyPsWE$default (Lcom/juul/krayon/kanvas/Paint$Stroke;IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Stroke;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCap ()Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
 	public final fun getColor-Zb52D8Y ()I
+	public final fun getDash ()Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;
 	public final fun getJoin ()Lcom/juul/krayon/kanvas/Paint$Stroke$Join;
 	public final fun getWidth ()F
 	public fun hashCode ()I
@@ -153,6 +155,25 @@ public final class com/juul/krayon/kanvas/Paint$Stroke$Cap : java/lang/Enum {
 	public static final field Square Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
 	public static fun valueOf (Ljava/lang/String;)Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
 	public static fun values ()[Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
+}
+
+public abstract class com/juul/krayon/kanvas/Paint$Stroke$Dash {
+}
+
+public final class com/juul/krayon/kanvas/Paint$Stroke$Dash$None : com/juul/krayon/kanvas/Paint$Stroke$Dash {
+	public static final field INSTANCE Lcom/juul/krayon/kanvas/Paint$Stroke$Dash$None;
+}
+
+public final class com/juul/krayon/kanvas/Paint$Stroke$Dash$Pattern : com/juul/krayon/kanvas/Paint$Stroke$Dash {
+	public fun <init> (Ljava/util/List;)V
+	public fun <init> ([F)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/juul/krayon/kanvas/Paint$Stroke$Dash$Pattern;
+	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Paint$Stroke$Dash$Pattern;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Stroke$Dash$Pattern;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIntervals ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public abstract class com/juul/krayon/kanvas/Paint$Stroke$Join {
