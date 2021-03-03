@@ -2,6 +2,7 @@ package com.juul.krayon.kanvas
 
 import android.content.Context
 import android.content.res.Resources
+import android.graphics.DashPathEffect
 import android.graphics.Typeface
 import androidx.annotation.FontRes
 import androidx.core.content.res.ResourcesCompat
@@ -55,6 +56,9 @@ private fun androidPaint(source: Paint.Stroke) = AndroidPaint().apply {
     }
     if (source.join is Paint.Stroke.Join.Miter) {
         strokeMiter = source.join.limit
+    }
+    if (source.dash is Paint.Stroke.Dash.Pattern) {
+        pathEffect = DashPathEffect(source.dash.intervals.toFloatArray(), 0f)
     }
 }
 

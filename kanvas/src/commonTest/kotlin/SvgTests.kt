@@ -1,5 +1,6 @@
 package com.juul.krayon.kanvas
 
+import com.juul.krayon.kanvas.Paint.Stroke.Dash.Pattern
 import com.juul.krayon.kanvas.svg.SvgKanvas
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -23,7 +24,7 @@ class SvgTests {
                 Example
               </text>
               <path d="M -9.184851E-15 0.0 A 50.0 50.0 0 0 1 50.0 50.0" stroke-width="1.0px" stroke="#00ff00" fill="none" />
-              <path d="M 50.0 50.0 A 25.0 25.0 0 0 1 50.0 100.0" stroke-width="1.0px" stroke="#00ff00" fill="none" />
+              <path d="M 50.0 50.0 A 25.0 25.0 0 0 1 50.0 100.0" stroke-dasharray="2.0 1.0" stroke-width="1.0px" stroke="#00ff00" fill="none" />
             </svg>
         """.trimIndent()
         val actual = run {
@@ -31,6 +32,7 @@ class SvgTests {
             val blackFill = Paint.Fill(Color.black)
             val redStroke = Paint.Stroke(Color.red, width = 2f)
             val greenStroke = Paint.Stroke(Color.green, width = 1f)
+            val dashedGreenStroke = greenStroke.copy(dash = Pattern(2f, 1f))
             val blueText = Paint.Text(Color.blue, size = 16f, Paint.Text.Alignment.Center, Font("Times New Roman", serif))
             svg.drawCircle(16f, 84f, 8f, blackFill)
             svg.withClip(Clip.Rect(16f, 16f, 84f, 84f)) {
@@ -38,7 +40,7 @@ class SvgTests {
             }
             svg.drawText("Example", 50f, 50f, blueText)
             svg.drawArc(-50f, 0f, 50f, 100f, 270f, 90f, greenStroke) // Quarter circle from top-left to center
-            svg.drawArc(25f, 50f, 75f, 100f, 270f, 180f, greenStroke) // Half circle from center to bottom
+            svg.drawArc(25f, 50f, 75f, 100f, 270f, 180f, dashedGreenStroke) // Half circle from center to bottom
             svg.build()
         }
         assertEquals(expected, actual)

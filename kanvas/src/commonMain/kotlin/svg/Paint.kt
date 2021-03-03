@@ -39,6 +39,9 @@ private fun XmlElement.setStrokeAttributes(paint: Paint.Stroke) = apply {
         // SVG stroke line join defaults to "miter"; set the attribute only when the specified value is not the default.
         setAttribute("stroke-linejoin", join)
     }
+    if (paint.dash is Paint.Stroke.Dash.Pattern) {
+        setAttribute("stroke-dasharray", paint.dash.intervals.joinToString(separator = " ") { it.toDouble().toString() })
+    }
     setAttribute("stroke-width", "${paint.width.toDouble()}px")
     setColorAttributes("stroke", paint.color)
     // SVG defaults to a black fill. Explicitly set it as "none" since this is a stroke-only paint.
