@@ -1,6 +1,9 @@
 package com.juul.krayon.kanvas
 
-import com.juul.krayon.color.Color
+import com.juul.krayon.color.black
+import com.juul.krayon.color.blue
+import com.juul.krayon.color.lime
+import com.juul.krayon.color.red
 import com.juul.krayon.kanvas.Paint.Stroke.Dash.Pattern
 import com.juul.krayon.kanvas.svg.SvgKanvas
 import kotlin.test.Test
@@ -30,11 +33,11 @@ class SvgTests {
         """.trimIndent()
         val actual = run {
             val svg = SvgKanvas(width = 100f, height = 100f)
-            val blackFill = Paint.Fill(Color.black)
-            val redStroke = Paint.Stroke(Color.red, width = 2f)
-            val greenStroke = Paint.Stroke(Color.green, width = 1f)
+            val blackFill = Paint.Fill(black)
+            val redStroke = Paint.Stroke(red, width = 2f)
+            val greenStroke = Paint.Stroke(lime, width = 1f)
             val dashedGreenStroke = greenStroke.copy(dash = Pattern(2f, 1f))
-            val blueText = Paint.Text(Color.blue, size = 16f, Paint.Text.Alignment.Center, Font("Times New Roman", serif))
+            val blueText = Paint.Text(blue, size = 16f, Paint.Text.Alignment.Center, Font("Times New Roman", serif))
             svg.drawCircle(16f, 84f, 8f, blackFill)
             svg.withClip(Clip.Rect(16f, 16f, 84f, 84f)) {
                 drawLine(0f, 100f, 100f, 0f, redStroke)

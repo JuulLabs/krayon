@@ -3,6 +3,7 @@ package com.juul.krayon.sample
 import android.content.Context
 import android.util.AttributeSet
 import com.juul.krayon.color.Color
+import com.juul.krayon.color.black
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.KanvasView
 import com.juul.krayon.kanvas.Paint
@@ -18,9 +19,9 @@ class CustomCanvasView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
 ) : KanvasView(context, attrs) {
 
-    private val linePaint = Paint.Stroke(Color.black, width = 2f, cap = Round, dash = Pattern(0f, 4f)).toAndroid()
-    private val textPaint = Paint.Text(Color.black, size = 18f, alignment = Left, Fonts.robotoSlab).toAndroid(context)
-    private var circlePaint = Paint.Stroke(Color.black, width = 4f).toAndroid()
+    private val linePaint = Paint.Stroke(black, width = 2f, cap = Round, dash = Pattern(0f, 4f)).toAndroid()
+    private val textPaint = Paint.Text(black, size = 18f, alignment = Left, Fonts.robotoSlab).toAndroid(context)
+    private var circlePaint = Paint.Stroke(black, width = 4f).toAndroid()
 
     var circleColor: Color
         get() = Color(circlePaint.color)

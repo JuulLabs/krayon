@@ -1,5 +1,4 @@
 public final class com/juul/krayon/color/Color {
-	public static final field Companion Lcom/juul/krayon/color/Color$Companion;
 	public static final synthetic fun box-impl (I)Lcom/juul/krayon/color/Color;
 	public static fun constructor-impl (FFF)I
 	public static fun constructor-impl (FFFF)I
@@ -24,21 +23,156 @@ public final class com/juul/krayon/color/Color {
 	public final synthetic fun unbox-impl ()I
 }
 
-public final class com/juul/krayon/color/Color$Companion {
-	public final fun getBlack-b4wfQcs ()I
-	public final fun getBlue-b4wfQcs ()I
-	public final fun getCyan-b4wfQcs ()I
-	public final fun getGreen-b4wfQcs ()I
-	public final fun getMagenta-b4wfQcs ()I
-	public final fun getRed-b4wfQcs ()I
-	public final fun getTransparent-b4wfQcs ()I
-	public final fun getWhite-b4wfQcs ()I
-	public final fun getYellow-b4wfQcs ()I
+public final class com/juul/krayon/color/OperationsKt {
+	public static final fun lerp-Lm3R1AU (IIF)I
 }
 
-public final class com/juul/krayon/color/ColorKt {
-	public static final fun lerp-Lm3R1AU (IIF)I
+public final class com/juul/krayon/color/RandomKt {
 	public static final fun nextColor (Lkotlin/random/Random;Z)I
 	public static synthetic fun nextColor$default (Lkotlin/random/Random;ZILjava/lang/Object;)I
+}
+
+public final class com/juul/krayon/color/WebColorsKt {
+	public static final fun getAliceBlue ()I
+	public static final fun getAntiqueWhite ()I
+	public static final fun getAqua ()I
+	public static final fun getAquamarine ()I
+	public static final fun getAzure ()I
+	public static final fun getBeige ()I
+	public static final fun getBisque ()I
+	public static final fun getBlack ()I
+	public static final fun getBlanchedAlmond ()I
+	public static final fun getBlue ()I
+	public static final fun getBlueViolet ()I
+	public static final fun getBrown ()I
+	public static final fun getBurlywood ()I
+	public static final fun getCadetBlue ()I
+	public static final fun getChartreuse ()I
+	public static final fun getChocolate ()I
+	public static final fun getCoral ()I
+	public static final fun getCornflowerBlue ()I
+	public static final fun getCornsilk ()I
+	public static final fun getCrimson ()I
+	public static final fun getCyan ()I
+	public static final fun getDarkBlue ()I
+	public static final fun getDarkCyan ()I
+	public static final fun getDarkGoldenrod ()I
+	public static final fun getDarkGray ()I
+	public static final fun getDarkGreen ()I
+	public static final fun getDarkKhaki ()I
+	public static final fun getDarkMagenta ()I
+	public static final fun getDarkOliveGreen ()I
+	public static final fun getDarkOrange ()I
+	public static final fun getDarkOrchid ()I
+	public static final fun getDarkRed ()I
+	public static final fun getDarkSeaGreen ()I
+	public static final fun getDarkSlateBlue ()I
+	public static final fun getDarkSlateGray ()I
+	public static final fun getDarkTurquoise ()I
+	public static final fun getDarkViolet ()I
+	public static final fun getDeepPink ()I
+	public static final fun getDeepSkyBlue ()I
+	public static final fun getDimGray ()I
+	public static final fun getDodgerBlue ()I
+	public static final fun getFirebrick ()I
+	public static final fun getFloralWhite ()I
+	public static final fun getForestGreen ()I
+	public static final fun getFuchsia ()I
+	public static final fun getGainsboro ()I
+	public static final fun getGhostWhite ()I
+	public static final fun getGold ()I
+	public static final fun getGoldenrod ()I
+	public static final fun getGray ()I
+	public static final fun getGreen ()I
+	public static final fun getGreenYellow ()I
+	public static final fun getHoneydew ()I
+	public static final fun getHotPink ()I
+	public static final fun getIndianRed ()I
+	public static final fun getIndigo ()I
+	public static final fun getIvory ()I
+	public static final fun getKhaki ()I
+	public static final fun getLavender ()I
+	public static final fun getLavenderBlush ()I
+	public static final fun getLawnGreen ()I
+	public static final fun getLemonChiffon ()I
+	public static final fun getLightBlue ()I
+	public static final fun getLightCoral ()I
+	public static final fun getLightCyan ()I
+	public static final fun getLightGoldenrodYellow ()I
+	public static final fun getLightGray ()I
+	public static final fun getLightGreen ()I
+	public static final fun getLightPink ()I
+	public static final fun getLightSalmon ()I
+	public static final fun getLightSeaGreen ()I
+	public static final fun getLightSkyBlue ()I
+	public static final fun getLightSlateGray ()I
+	public static final fun getLightSteelBlue ()I
+	public static final fun getLightYellow ()I
+	public static final fun getLime ()I
+	public static final fun getLimeGreen ()I
+	public static final fun getLinen ()I
+	public static final fun getMagenta ()I
+	public static final fun getMaroon ()I
+	public static final fun getMediumAquamarine ()I
+	public static final fun getMediumBlue ()I
+	public static final fun getMediumOrchid ()I
+	public static final fun getMediumPurple ()I
+	public static final fun getMediumSeaGreen ()I
+	public static final fun getMediumSlateBlue ()I
+	public static final fun getMediumSpringGreen ()I
+	public static final fun getMediumTurquoise ()I
+	public static final fun getMediumVioletRed ()I
+	public static final fun getMidnightBlue ()I
+	public static final fun getMintCream ()I
+	public static final fun getMistyRose ()I
+	public static final fun getMoccasin ()I
+	public static final fun getNavajoWhite ()I
+	public static final fun getNavy ()I
+	public static final fun getOldLace ()I
+	public static final fun getOlive ()I
+	public static final fun getOliveDrab ()I
+	public static final fun getOrange ()I
+	public static final fun getOrangeRed ()I
+	public static final fun getOrchid ()I
+	public static final fun getPaleGoldenrod ()I
+	public static final fun getPaleGreen ()I
+	public static final fun getPaleTurquoise ()I
+	public static final fun getPaleVioletRed ()I
+	public static final fun getPapayaWhip ()I
+	public static final fun getPeachPuff ()I
+	public static final fun getPeru ()I
+	public static final fun getPink ()I
+	public static final fun getPlum ()I
+	public static final fun getPowderBlue ()I
+	public static final fun getPurple ()I
+	public static final fun getRebeccaPurple ()I
+	public static final fun getRed ()I
+	public static final fun getRosyBrown ()I
+	public static final fun getRoyalBlue ()I
+	public static final fun getSaddleBrown ()I
+	public static final fun getSalmon ()I
+	public static final fun getSandyBrown ()I
+	public static final fun getSeaGreen ()I
+	public static final fun getSeashell ()I
+	public static final fun getSienna ()I
+	public static final fun getSilver ()I
+	public static final fun getSkyBlue ()I
+	public static final fun getSlateBlue ()I
+	public static final fun getSlateGray ()I
+	public static final fun getSnow ()I
+	public static final fun getSpringGreen ()I
+	public static final fun getSteelBlue ()I
+	public static final fun getTan ()I
+	public static final fun getTeal ()I
+	public static final fun getThistle ()I
+	public static final fun getTomato ()I
+	public static final fun getTransparent ()I
+	public static final fun getTurquoise ()I
+	public static final fun getViolet ()I
+	public static final fun getWheat ()I
+	public static final fun getWhite ()I
+	public static final fun getWhiteSmoke ()I
+	public static final fun getYellow ()I
+	public static final fun getYellowGreen ()I
 }
 
