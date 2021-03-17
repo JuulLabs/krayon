@@ -1,6 +1,7 @@
 package com.juul.krayon.kanvas
 
 import androidx.test.core.app.ApplicationProvider
+import com.juul.krayon.color.Color
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config

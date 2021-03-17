@@ -9,6 +9,7 @@ Multiplatform drawing library. Provides a multiplatform canvas and chart renderi
 | Module             | Description           |
 |--------------------|-----------------------|
 | [`chart`](chart)   | Multiplatform charts. |
+| [`color`](color)   | Multiplatform colors. |
 | [`kanvas`](kanvas) | Multiplatform canvas. |
 
 # License

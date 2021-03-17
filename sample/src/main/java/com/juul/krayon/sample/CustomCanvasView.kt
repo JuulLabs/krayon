@@ -2,7 +2,7 @@ package com.juul.krayon.sample
 
 import android.content.Context
 import android.util.AttributeSet
-import com.juul.krayon.kanvas.Color
+import com.juul.krayon.color.Color
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.KanvasView
 import com.juul.krayon.kanvas.Paint

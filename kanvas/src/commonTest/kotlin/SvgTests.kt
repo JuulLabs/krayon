@@ -1,5 +1,6 @@
 package com.juul.krayon.kanvas
 
+import com.juul.krayon.color.Color
 import com.juul.krayon.kanvas.Paint.Stroke.Dash.Pattern
 import com.juul.krayon.kanvas.svg.SvgKanvas
 import kotlin.test.Test

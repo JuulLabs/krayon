@@ -30,50 +30,6 @@ public final class com/juul/krayon/kanvas/Clip$Rect : com/juul/krayon/kanvas/Cli
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/juul/krayon/kanvas/Color {
-	public static final field Companion Lcom/juul/krayon/kanvas/Color$Companion;
-	public static final synthetic fun box-impl (I)Lcom/juul/krayon/kanvas/Color;
-	public static fun constructor-impl (FFF)I
-	public static fun constructor-impl (FFFF)I
-	public static fun constructor-impl (I)I
-	public static fun constructor-impl (III)I
-	public static fun constructor-impl (IIII)I
-	public static final fun copy-Zb52D8Y (IIIII)I
-	public static synthetic fun copy-Zb52D8Y$default (IIIIIILjava/lang/Object;)I
-	public fun equals (Ljava/lang/Object;)Z
-	public static fun equals-impl (ILjava/lang/Object;)Z
-	public static final fun equals-impl0 (II)Z
-	public static final fun getAlpha-impl (I)I
-	public final fun getArgb ()I
-	public static final fun getBlue-impl (I)I
-	public static final fun getGreen-impl (I)I
-	public static final fun getRed-impl (I)I
-	public static final fun getRgb-impl (I)I
-	public fun hashCode ()I
-	public static fun hashCode-impl (I)I
-	public fun toString ()Ljava/lang/String;
-	public static fun toString-impl (I)Ljava/lang/String;
-	public final synthetic fun unbox-impl ()I
-}
-
-public final class com/juul/krayon/kanvas/Color$Companion {
-	public final fun getBlack-Zb52D8Y ()I
-	public final fun getBlue-Zb52D8Y ()I
-	public final fun getCyan-Zb52D8Y ()I
-	public final fun getGreen-Zb52D8Y ()I
-	public final fun getMagenta-Zb52D8Y ()I
-	public final fun getRed-Zb52D8Y ()I
-	public final fun getTransparent-Zb52D8Y ()I
-	public final fun getWhite-Zb52D8Y ()I
-	public final fun getYellow-Zb52D8Y ()I
-}
-
-public final class com/juul/krayon/kanvas/ColorKt {
-	public static final fun lerp-as0DGr8 (IIF)I
-	public static final fun nextColor (Lkotlin/random/Random;Z)I
-	public static synthetic fun nextColor$default (Lkotlin/random/Random;ZILjava/lang/Object;)I
-}
-
 public final class com/juul/krayon/kanvas/Font {
 	public fun <init> (Ljava/lang/String;[Ljava/lang/String;)V
 	public fun <init> (Ljava/util/List;)V
@@ -97,7 +53,7 @@ public abstract interface class com/juul/krayon/kanvas/Kanvas {
 	public abstract fun buildPath (Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public abstract fun drawArc (FFFFFFLjava/lang/Object;)V
 	public abstract fun drawCircle (FFFLjava/lang/Object;)V
-	public abstract fun drawColor-IvQpv0M (I)V
+	public abstract fun drawColor-Z7dcaks (I)V
 	public abstract fun drawLine (FFFFLjava/lang/Object;)V
 	public abstract fun drawOval (FFFFLjava/lang/Object;)V
 	public abstract fun drawPath (Ljava/lang/Object;Ljava/lang/Object;)V
@@ -120,11 +76,11 @@ public abstract class com/juul/krayon/kanvas/Paint {
 
 public final class com/juul/krayon/kanvas/Paint$Fill : com/juul/krayon/kanvas/Paint {
 	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-Zb52D8Y ()I
-	public final fun copy-IvQpv0M (I)Lcom/juul/krayon/kanvas/Paint$Fill;
-	public static synthetic fun copy-IvQpv0M$default (Lcom/juul/krayon/kanvas/Paint$Fill;IILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Fill;
+	public final fun component1-b4wfQcs ()I
+	public final fun copy-Z7dcaks (I)Lcom/juul/krayon/kanvas/Paint$Fill;
+	public static synthetic fun copy-Z7dcaks$default (Lcom/juul/krayon/kanvas/Paint$Fill;IILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Fill;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getColor-Zb52D8Y ()I
+	public final fun getColor-b4wfQcs ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -132,16 +88,16 @@ public final class com/juul/krayon/kanvas/Paint$Fill : com/juul/krayon/kanvas/Pa
 public final class com/juul/krayon/kanvas/Paint$Stroke : com/juul/krayon/kanvas/Paint {
 	public synthetic fun <init> (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-Zb52D8Y ()I
+	public final fun component1-b4wfQcs ()I
 	public final fun component2 ()F
 	public final fun component3 ()Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
 	public final fun component4 ()Lcom/juul/krayon/kanvas/Paint$Stroke$Join;
 	public final fun component5 ()Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;
-	public final fun copy-ePyPsWE (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;)Lcom/juul/krayon/kanvas/Paint$Stroke;
-	public static synthetic fun copy-ePyPsWE$default (Lcom/juul/krayon/kanvas/Paint$Stroke;IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Stroke;
+	public final fun copy-DBKG9Vw (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;)Lcom/juul/krayon/kanvas/Paint$Stroke;
+	public static synthetic fun copy-DBKG9Vw$default (Lcom/juul/krayon/kanvas/Paint$Stroke;IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Stroke;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCap ()Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
-	public final fun getColor-Zb52D8Y ()I
+	public final fun getColor-b4wfQcs ()I
 	public final fun getDash ()Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;
 	public final fun getJoin ()Lcom/juul/krayon/kanvas/Paint$Stroke$Join;
 	public final fun getWidth ()F
@@ -202,15 +158,15 @@ public final class com/juul/krayon/kanvas/Paint$Stroke$Join$Round : com/juul/kra
 
 public final class com/juul/krayon/kanvas/Paint$Text : com/juul/krayon/kanvas/Paint {
 	public synthetic fun <init> (IFLcom/juul/krayon/kanvas/Paint$Text$Alignment;Lcom/juul/krayon/kanvas/Font;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-Zb52D8Y ()I
+	public final fun component1-b4wfQcs ()I
 	public final fun component2 ()F
 	public final fun component3 ()Lcom/juul/krayon/kanvas/Paint$Text$Alignment;
 	public final fun component4 ()Lcom/juul/krayon/kanvas/Font;
-	public final fun copy-pHt_YaU (IFLcom/juul/krayon/kanvas/Paint$Text$Alignment;Lcom/juul/krayon/kanvas/Font;)Lcom/juul/krayon/kanvas/Paint$Text;
-	public static synthetic fun copy-pHt_YaU$default (Lcom/juul/krayon/kanvas/Paint$Text;IFLcom/juul/krayon/kanvas/Paint$Text$Alignment;Lcom/juul/krayon/kanvas/Font;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Text;
+	public final fun copy-ErPXEY4 (IFLcom/juul/krayon/kanvas/Paint$Text$Alignment;Lcom/juul/krayon/kanvas/Font;)Lcom/juul/krayon/kanvas/Paint$Text;
+	public static synthetic fun copy-ErPXEY4$default (Lcom/juul/krayon/kanvas/Paint$Text;IFLcom/juul/krayon/kanvas/Paint$Text$Alignment;Lcom/juul/krayon/kanvas/Font;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Text;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAlignment ()Lcom/juul/krayon/kanvas/Paint$Text$Alignment;
-	public final fun getColor-Zb52D8Y ()I
+	public final fun getColor-b4wfQcs ()I
 	public final fun getFont ()Lcom/juul/krayon/kanvas/Font;
 	public final fun getSize ()F
 	public fun hashCode ()I
@@ -354,7 +310,7 @@ public final class com/juul/krayon/kanvas/svg/SvgKanvas : com/juul/krayon/kanvas
 	public synthetic fun drawArc (FFFFFFLjava/lang/Object;)V
 	public fun drawCircle (FFFLcom/juul/krayon/kanvas/Paint;)V
 	public synthetic fun drawCircle (FFFLjava/lang/Object;)V
-	public fun drawColor-IvQpv0M (I)V
+	public fun drawColor-Z7dcaks (I)V
 	public fun drawLine (FFFFLcom/juul/krayon/kanvas/Paint;)V
 	public synthetic fun drawLine (FFFFLjava/lang/Object;)V
 	public fun drawOval (FFFFLcom/juul/krayon/kanvas/Paint;)V

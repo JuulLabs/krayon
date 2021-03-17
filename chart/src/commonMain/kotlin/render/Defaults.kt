@@ -2,10 +2,10 @@ package com.juul.krayon.chart.render
 
 import com.juul.krayon.chart.render.components.AxisRenderer
 import com.juul.krayon.chart.render.components.BarRenderer
-import com.juul.krayon.kanvas.Color
+import com.juul.krayon.color.Color
+import com.juul.krayon.color.lerp
 import com.juul.krayon.kanvas.Font
 import com.juul.krayon.kanvas.Paint
-import com.juul.krayon.kanvas.lerp
 
 internal fun defaultAxisStyle(
     orientation: Orientation,

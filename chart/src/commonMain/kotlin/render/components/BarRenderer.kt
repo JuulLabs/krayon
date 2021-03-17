@@ -4,8 +4,8 @@ import com.juul.krayon.chart.data.ClusteredDataSet
 import com.juul.krayon.chart.data.maxValue
 import com.juul.krayon.chart.render.Orientation
 import com.juul.krayon.chart.render.Renderer
+import com.juul.krayon.color.Color
 import com.juul.krayon.kanvas.Clip
-import com.juul.krayon.kanvas.Color
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.withClip

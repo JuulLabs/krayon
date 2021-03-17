@@ -2,8 +2,8 @@ public final class com/juul/krayon/sample/CustomCanvasView : com/juul/krayon/kan
 	public fun <init> (Landroid/content/Context;)V
 	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
 	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun getCircleColor-Zb52D8Y ()I
-	public final fun setCircleColor-IvQpv0M (I)V
+	public final fun getCircleColor-b4wfQcs ()I
+	public final fun setCircleColor-Z7dcaks (I)V
 }
 
 public final class com/juul/krayon/sample/DemoActivity : android/app/Activity {

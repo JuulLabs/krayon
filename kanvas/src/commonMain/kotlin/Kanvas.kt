@@ -1,5 +1,7 @@
 package com.juul.krayon.kanvas
 
+import com.juul.krayon.color.Color
+
 /** Something to draw on. Implementations are not required to be safe across multiple threads. */
 public interface Kanvas<PAINT, PATH> {
 

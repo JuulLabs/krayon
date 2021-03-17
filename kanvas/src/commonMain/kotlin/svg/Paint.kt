@@ -1,6 +1,6 @@
 package com.juul.krayon.kanvas.svg
 
-import com.juul.krayon.kanvas.Color
+import com.juul.krayon.color.Color
 import com.juul.krayon.kanvas.DEFAULT_MITER_LIMIT
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.xml.XmlElement

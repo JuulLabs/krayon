@@ -1,4 +1,4 @@
-package com.juul.krayon.kanvas
+package com.juul.krayon.color
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -1,5 +1,6 @@
 package com.juul.krayon.kanvas
 
+import com.juul.krayon.color.Color
 import kotlin.test.Test
 
 class KanvasExtensionTests {

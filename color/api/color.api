@@ -1,0 +1,44 @@
+public final class com/juul/krayon/color/Color {
+	public static final field Companion Lcom/juul/krayon/color/Color$Companion;
+	public static final synthetic fun box-impl (I)Lcom/juul/krayon/color/Color;
+	public static fun constructor-impl (FFF)I
+	public static fun constructor-impl (FFFF)I
+	public static fun constructor-impl (I)I
+	public static fun constructor-impl (III)I
+	public static fun constructor-impl (IIII)I
+	public static final fun copy-b4wfQcs (IIIII)I
+	public static synthetic fun copy-b4wfQcs$default (IIIIIILjava/lang/Object;)I
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (ILjava/lang/Object;)Z
+	public static final fun equals-impl0 (II)Z
+	public static final fun getAlpha-impl (I)I
+	public final fun getArgb ()I
+	public static final fun getBlue-impl (I)I
+	public static final fun getGreen-impl (I)I
+	public static final fun getRed-impl (I)I
+	public static final fun getRgb-impl (I)I
+	public fun hashCode ()I
+	public static fun hashCode-impl (I)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (I)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()I
+}
+
+public final class com/juul/krayon/color/Color$Companion {
+	public final fun getBlack-b4wfQcs ()I
+	public final fun getBlue-b4wfQcs ()I
+	public final fun getCyan-b4wfQcs ()I
+	public final fun getGreen-b4wfQcs ()I
+	public final fun getMagenta-b4wfQcs ()I
+	public final fun getRed-b4wfQcs ()I
+	public final fun getTransparent-b4wfQcs ()I
+	public final fun getWhite-b4wfQcs ()I
+	public final fun getYellow-b4wfQcs ()I
+}
+
+public final class com/juul/krayon/color/ColorKt {
+	public static final fun lerp-Lm3R1AU (IIF)I
+	public static final fun nextColor (Lkotlin/random/Random;Z)I
+	public static synthetic fun nextColor$default (Lkotlin/random/Random;ZILjava/lang/Object;)I
+}
+
