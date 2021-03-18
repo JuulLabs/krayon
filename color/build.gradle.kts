@@ -1,4 +1,5 @@
 plugins {
+    // Android plugin must be before multiplatform plugin until https://youtrack.jetbrains.com/issue/KT-34038 is fixed.
     id("com.android.library")
     kotlin("multiplatform")
     id("org.jmailen.kotlinter")
