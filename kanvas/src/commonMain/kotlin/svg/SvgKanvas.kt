@@ -1,7 +1,7 @@
 package com.juul.krayon.kanvas.svg
 
+import com.juul.krayon.color.Color
 import com.juul.krayon.kanvas.Clip
-import com.juul.krayon.kanvas.Color
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.PathBuilder

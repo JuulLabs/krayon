@@ -2,16 +2,24 @@ package com.juul.krayon.chart.render
 
 import com.juul.krayon.chart.render.components.AxisRenderer
 import com.juul.krayon.chart.render.components.BarRenderer
-import com.juul.krayon.kanvas.Color
+import com.juul.krayon.color.Color
+import com.juul.krayon.color.black
+import com.juul.krayon.color.blue
+import com.juul.krayon.color.cyan
+import com.juul.krayon.color.lerp
+import com.juul.krayon.color.lime
+import com.juul.krayon.color.magenta
+import com.juul.krayon.color.red
+import com.juul.krayon.color.white
+import com.juul.krayon.color.yellow
 import com.juul.krayon.kanvas.Font
 import com.juul.krayon.kanvas.Paint
-import com.juul.krayon.kanvas.lerp
 
 internal fun defaultAxisStyle(
     orientation: Orientation,
 ): AxisRenderer.Style = AxisRenderer.Style(
     orientation,
-    Paint.Stroke(Color.black, 1f, Paint.Stroke.Cap.Square)
+    Paint.Stroke(black, 1f, Paint.Stroke.Cap.Square)
 )
 
 internal fun defaultBarStyle(
@@ -27,16 +35,16 @@ internal fun defaultFont(): Font = Font("sans-serif")
 internal fun defaultIndexLabelFactory() = IndexLabelFactory { null }
 
 internal fun defaultSeriesColors(): Sequence<Color> = sequenceOf(
-    Color.red.lerp(Color.white, 0.375f),
-    Color.green.lerp(Color.white, 0.375f),
-    Color.blue.lerp(Color.white, 0.375f),
-    Color.cyan.lerp(Color.white, 0.375f),
-    Color.magenta.lerp(Color.white, 0.375f),
-    Color.yellow.lerp(Color.white, 0.375f),
-    Color.red.lerp(Color.white, 0.75f),
-    Color.green.lerp(Color.white, 0.75f),
-    Color.blue.lerp(Color.white, 0.75f),
-    Color.cyan.lerp(Color.white, 0.75f),
-    Color.magenta.lerp(Color.white, 0.75f),
-    Color.yellow.lerp(Color.white, 0.75f)
+    lerp(red, white, 0.375f),
+    lerp(lime, white, 0.375f),
+    lerp(blue, white, 0.375f),
+    lerp(cyan, white, 0.375f),
+    lerp(magenta, white, 0.375f),
+    lerp(yellow, white, 0.375f),
+    lerp(red, white, 0.75f),
+    lerp(lime, white, 0.75f),
+    lerp(blue, white, 0.75f),
+    lerp(cyan, white, 0.75f),
+    lerp(magenta, white, 0.75f),
+    lerp(yellow, white, 0.75f)
 )

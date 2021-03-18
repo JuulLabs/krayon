@@ -1,5 +1,7 @@
 package com.juul.krayon.kanvas
 
+import com.juul.krayon.color.Color
+
 /** Default chosen to match SVG. See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit */
 public const val DEFAULT_MITER_LIMIT: Float = 4f
 

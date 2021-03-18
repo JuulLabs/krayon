@@ -3,6 +3,7 @@ package com.juul.krayon.kanvas
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.RectF
+import com.juul.krayon.color.Color
 import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
 

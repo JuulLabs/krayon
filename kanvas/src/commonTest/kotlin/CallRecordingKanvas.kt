@@ -1,5 +1,7 @@
 package com.juul.krayon.kanvas
 
+import com.juul.krayon.color.Color
+
 object UnitPaint
 object UnitPath
 
