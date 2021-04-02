@@ -13,7 +13,6 @@ public fun String.toColor(): Color =
         else -> keywordMap[this.toLowerCase()]
     } ?: throw IllegalArgumentException("Unknown color: `$this`.")
 
-
 public fun String.toColorOrNull(): Color? =
     try {
         toColor()
