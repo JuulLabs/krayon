@@ -8,7 +8,11 @@ private val RRGGBB = """($HEX{2})($HEX{2})($HEX{2})""".toRegex(RegexOption.IGNOR
 private val RRGGBBAA = """($HEX{2})($HEX{2})($HEX{2})($HEX{2})""".toRegex(RegexOption.IGNORE_CASE)
 
 public fun String.toColor(): Color =
-    keywordMap[this.toLowerCase()] ?: parseHexNotation(this)
+    when {
+        this.startsWith("#") -> parseHexNotation(this)
+        else -> keywordMap[this.toLowerCase()]
+    } ?: throw IllegalArgumentException("Unknown color: `$this`.")
+
 
 public fun String.toColorOrNull(): Color? =
     try {
