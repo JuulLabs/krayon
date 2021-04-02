@@ -135,6 +135,8 @@ $dokka.location:com.juul.krayon.color//steelBlue/#/PointingToDeclaration/color/
 $dokka.location:com.juul.krayon.color//tan/#/PointingToDeclaration/color/com.juul.krayon.color/tan.html
 $dokka.location:com.juul.krayon.color//teal/#/PointingToDeclaration/color/com.juul.krayon.color/teal.html
 $dokka.location:com.juul.krayon.color//thistle/#/PointingToDeclaration/color/com.juul.krayon.color/thistle.html
+$dokka.location:com.juul.krayon.color//toColor/kotlin.String#/PointingToDeclaration/color/com.juul.krayon.color/to-color.html
+$dokka.location:com.juul.krayon.color//toColorOrNull/kotlin.String#/PointingToDeclaration/color/com.juul.krayon.color/to-color-or-null.html
 $dokka.location:com.juul.krayon.color//tomato/#/PointingToDeclaration/color/com.juul.krayon.color/tomato.html
 $dokka.location:com.juul.krayon.color//transparent/#/PointingToDeclaration/color/com.juul.krayon.color/transparent.html
 $dokka.location:com.juul.krayon.color//turquoise/#/PointingToDeclaration/color/com.juul.krayon.color/turquoise.html
@@ -157,6 +159,7 @@ $dokka.location:com.juul.krayon.color/Color/copy/#kotlin.Int#kotlin.Int#kotlin.I
 $dokka.location:com.juul.krayon.color/Color/green/#/PointingToDeclaration/color/com.juul.krayon.color/-color/green.html
 $dokka.location:com.juul.krayon.color/Color/red/#/PointingToDeclaration/color/com.juul.krayon.color/-color/red.html
 $dokka.location:com.juul.krayon.color/Color/rgb/#/PointingToDeclaration/color/com.juul.krayon.color/-color/rgb.html
+$dokka.location:com.juul.krayon.color/Color/toHexString/#/PointingToDeclaration/color/com.juul.krayon.color/-color/to-hex-string.html
 $dokka.location:com.juul.krayon.color/Color/toString/#/PointingToDeclaration/color/com.juul.krayon.color/-color/to-string.html
 com.juul.krayon.color
 
