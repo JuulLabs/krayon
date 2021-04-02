@@ -18,6 +18,7 @@ public final class com/juul/krayon/color/Color {
 	public static final fun getRgb-impl (I)I
 	public fun hashCode ()I
 	public static fun hashCode-impl (I)I
+	public static final fun toHexString-impl (I)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
 	public static fun toString-impl (I)Ljava/lang/String;
 	public final synthetic fun unbox-impl ()I
@@ -30,6 +31,11 @@ public final class com/juul/krayon/color/OperationsKt {
 public final class com/juul/krayon/color/RandomKt {
 	public static final fun nextColor (Lkotlin/random/Random;Z)I
 	public static synthetic fun nextColor$default (Lkotlin/random/Random;ZILjava/lang/Object;)I
+}
+
+public final class com/juul/krayon/color/ToColorKt {
+	public static final fun toColor (Ljava/lang/String;)I
+	public static final fun toColorOrNull (Ljava/lang/String;)Lcom/juul/krayon/color/Color;
 }
 
 public final class com/juul/krayon/color/WebColorsKt {

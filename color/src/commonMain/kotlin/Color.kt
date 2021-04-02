@@ -50,7 +50,18 @@ public inline class Color(public val argb: Int) {
         blue: Int = this.blue,
     ): Color = Color(alpha, red, green, blue)
 
-    override fun toString(): String = "Color(#${argb.toString(HEX_BASE).padStart(HEX_LENGTH, '0')})"
+    /** Returns this as a string in web-friendly hex notation. */
+    public fun toHexString(): String = buildString {
+        append('#')
+        append(red.toString(HEX_BASE).padStart(2, '0'))
+        append(green.toString(HEX_BASE).padStart(2, '0'))
+        append(blue.toString(HEX_BASE).padStart(2, '0'))
+        if (alpha != 0xFF) {
+            append(alpha.toString(HEX_BASE).padStart(2, '0'))
+        }
+    }
+
+    override fun toString(): String = "Color(${toHexString()})"
 }
 
 private fun Float.toColorComponent(): Int {

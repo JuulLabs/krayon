@@ -9,7 +9,6 @@ internal const val SHIFT_GREEN = 8
 internal const val SHIFT_BLUE = 0
 
 internal const val HEX_BASE = 16
-internal const val HEX_LENGTH = 8
 
 internal const val COMPONENT_MIN = 0x00
 internal const val COMPONENT_MAX = 0xFF
