@@ -2,6 +2,7 @@ package com.juul.krayon.color
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class ColorTests {
 
@@ -28,5 +29,30 @@ class ColorTests {
     @Test
     fun checkComponentsAreMasked() {
         assertEquals((0x23456789).toInt(), Color(alpha = 0x123, red = 0x345, green = 0x567, blue = 0x789).argb)
+    }
+
+    @Test
+    fun colorConstructor_withFloatInput_matchesIntegerInput() {
+        assertEquals(red, Color(red = 1f, green = 0f, blue = 0f))
+    }
+
+    @Test
+    fun colorConstructor_withNegativeFloatInput_throwsException() {
+        assertFailsWith<IllegalArgumentException> { Color(red = -1f, green = 0f, blue = 0f) }
+    }
+
+    @Test
+    fun colorConstructor_withLargeFloatInput_throwsException() {
+        assertFailsWith<IllegalArgumentException> { Color(red = 2f, green = 0f, blue = 0f) }
+    }
+
+    @Test
+    fun toHexString_withNoTransparency_omitsAlpha() {
+        assertEquals("#ff0000", red.toHexString())
+    }
+
+    @Test
+    fun toHexString_withTransparency_includesAlpha() {
+        assertEquals("#ff000080", red.copy(alpha = 0x80).toHexString())
     }
 }
