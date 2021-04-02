@@ -15,23 +15,16 @@ plugins {
     id("kotlinx-atomicfu") version "0.14.4" apply false
     id("org.jmailen.kotlinter") version "3.2.0" apply false
     id("binary-compatibility-validator") version "0.2.3"
-    id("org.jetbrains.dokka") version "1.4.10.2" apply false
+    id("org.jetbrains.dokka") version "1.4.30"
     id("com.vanniktech.maven.publish") version "0.13.0" apply false
     id("net.mbonnin.one.eight") version "0.1"
 }
 
-subprojects {
+allprojects {
     repositories {
         google()
         jcenter()
-        maven(url = "https://kotlin.bintray.com/kotlinx/")
-        maven {
-            url = URI("https://maven.pkg.github.com/juullabs/android-github-packages")
-            credentials {
-                username = findProperty("github.packages.username") as? String
-                password = findProperty("github.packages.password") as? String
-            }
-        }
+        maven("https://kotlin.bintray.com/kotlinx/")
     }
 
     tasks.withType<Test>().configureEach {
@@ -43,4 +36,8 @@ subprojects {
             showCauses = true
         }
     }
+}
+
+tasks.dokkaHtmlMultiModule.configure {
+    outputDirectory.set(buildDir.resolve("gh-pages"))
 }
