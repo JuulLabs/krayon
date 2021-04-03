@@ -5,8 +5,8 @@ public final class com/juul/krayon/color/Color {
 	public static fun constructor-impl (I)I
 	public static fun constructor-impl (III)I
 	public static fun constructor-impl (IIII)I
-	public static final fun copy-b4wfQcs (IIIII)I
-	public static synthetic fun copy-b4wfQcs$default (IIIIIILjava/lang/Object;)I
+	public static final fun copy-VL1fjKE (IIIII)I
+	public static synthetic fun copy-VL1fjKE$default (IIIIIILjava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
 	public static fun equals-impl (ILjava/lang/Object;)Z
 	public static final fun equals-impl0 (II)Z
@@ -25,7 +25,7 @@ public final class com/juul/krayon/color/Color {
 }
 
 public final class com/juul/krayon/color/OperationsKt {
-	public static final fun lerp-Lm3R1AU (IIF)I
+	public static final fun lerp-5Jni88Q (IIF)I
 }
 
 public final class com/juul/krayon/color/RandomKt {

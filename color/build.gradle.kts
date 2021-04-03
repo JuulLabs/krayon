@@ -1,6 +1,4 @@
 plugins {
-    // Android plugin must be before multiplatform plugin until https://youtrack.jetbrains.com/issue/KT-34038 is fixed.
-    id("com.android.library")
     kotlin("multiplatform")
     id("org.jmailen.kotlinter")
     jacoco
@@ -14,18 +12,12 @@ apply(from = rootProject.file("gradle/publish.gradle.kts"))
 kotlin {
     explicitApi()
 
-    android { publishAllLibraryVariants() }
     jvm()
+    js().browser()
 
     sourceSets {
         all {
             languageSettings.enableLanguageFeature("InlineClasses")
-        }
-
-        val commonMain by getting {
-            dependencies {
-                implementation(kotlin("stdlib"))
-            }
         }
 
         val commonTest by getting {
@@ -36,36 +28,16 @@ kotlin {
             }
         }
 
-        val androidTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-            }
-        }
-
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
             }
         }
-    }
-}
 
-android {
-    compileSdkVersion(AndroidSdk.Compile)
-
-    defaultConfig {
-        minSdkVersion(AndroidSdk.Minimum)
-        targetSdkVersion(AndroidSdk.Target)
-    }
-
-    lintOptions {
-        isAbortOnError = true
-        isWarningsAsErrors = true
-    }
-
-    sourceSets {
-        val main by getting {
-            manifest.srcFile("src/androidMain/AndroidManifest.xml")
+        val jsTest by getting {
+            dependencies {
+                implementation(kotlin("test-js"))
+            }
         }
     }
 }
