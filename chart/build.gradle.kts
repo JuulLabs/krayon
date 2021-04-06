@@ -20,7 +20,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":kanvas"))
-                implementation(kotlin("stdlib"))
             }
         }
 

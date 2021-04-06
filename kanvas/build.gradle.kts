@@ -24,7 +24,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":color"))
-                implementation(kotlin("stdlib"))
             }
         }
 

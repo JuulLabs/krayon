@@ -93,8 +93,8 @@ public final class com/juul/krayon/kanvas/Paint$Stroke : com/juul/krayon/kanvas/
 	public final fun component3 ()Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
 	public final fun component4 ()Lcom/juul/krayon/kanvas/Paint$Stroke$Join;
 	public final fun component5 ()Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;
-	public final fun copy-DBKG9Vw (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;)Lcom/juul/krayon/kanvas/Paint$Stroke;
-	public static synthetic fun copy-DBKG9Vw$default (Lcom/juul/krayon/kanvas/Paint$Stroke;IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Stroke;
+	public final fun copy-Z8wwC0M (IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;)Lcom/juul/krayon/kanvas/Paint$Stroke;
+	public static synthetic fun copy-Z8wwC0M$default (Lcom/juul/krayon/kanvas/Paint$Stroke;IFLcom/juul/krayon/kanvas/Paint$Stroke$Cap;Lcom/juul/krayon/kanvas/Paint$Stroke$Join;Lcom/juul/krayon/kanvas/Paint$Stroke$Dash;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Stroke;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCap ()Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
 	public final fun getColor-b4wfQcs ()I
@@ -162,8 +162,8 @@ public final class com/juul/krayon/kanvas/Paint$Text : com/juul/krayon/kanvas/Pa
 	public final fun component2 ()F
 	public final fun component3 ()Lcom/juul/krayon/kanvas/Paint$Text$Alignment;
 	public final fun component4 ()Lcom/juul/krayon/kanvas/Font;
-	public final fun copy-ErPXEY4 (IFLcom/juul/krayon/kanvas/Paint$Text$Alignment;Lcom/juul/krayon/kanvas/Font;)Lcom/juul/krayon/kanvas/Paint$Text;
-	public static synthetic fun copy-ErPXEY4$default (Lcom/juul/krayon/kanvas/Paint$Text;IFLcom/juul/krayon/kanvas/Paint$Text$Alignment;Lcom/juul/krayon/kanvas/Font;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Text;
+	public final fun copy-jDi6J3E (IFLcom/juul/krayon/kanvas/Paint$Text$Alignment;Lcom/juul/krayon/kanvas/Font;)Lcom/juul/krayon/kanvas/Paint$Text;
+	public static synthetic fun copy-jDi6J3E$default (Lcom/juul/krayon/kanvas/Paint$Text;IFLcom/juul/krayon/kanvas/Paint$Text$Alignment;Lcom/juul/krayon/kanvas/Font;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Text;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAlignment ()Lcom/juul/krayon/kanvas/Paint$Text$Alignment;
 	public final fun getColor-b4wfQcs ()I
@@ -305,7 +305,7 @@ public final class com/juul/krayon/kanvas/svg/SvgKanvas : com/juul/krayon/kanvas
 	public fun buildPaint (Lcom/juul/krayon/kanvas/Paint;)Lcom/juul/krayon/kanvas/Paint;
 	public synthetic fun buildPaint (Lcom/juul/krayon/kanvas/Paint;)Ljava/lang/Object;
 	public synthetic fun buildPath (Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public fun buildPath-vNHZNVA (Lkotlin/jvm/functions/Function1;)Ljava/lang/String;
+	public fun buildPath-tG2Avo8 (Lkotlin/jvm/functions/Function1;)Ljava/lang/String;
 	public fun drawArc (FFFFFFLcom/juul/krayon/kanvas/Paint;)V
 	public synthetic fun drawArc (FFFFFFLjava/lang/Object;)V
 	public fun drawCircle (FFFLcom/juul/krayon/kanvas/Paint;)V
@@ -316,7 +316,7 @@ public final class com/juul/krayon/kanvas/svg/SvgKanvas : com/juul/krayon/kanvas
 	public fun drawOval (FFFFLcom/juul/krayon/kanvas/Paint;)V
 	public synthetic fun drawOval (FFFFLjava/lang/Object;)V
 	public synthetic fun drawPath (Ljava/lang/Object;Ljava/lang/Object;)V
-	public fun drawPath-E0N_TaA (Ljava/lang/String;Lcom/juul/krayon/kanvas/Paint;)V
+	public fun drawPath-tz8rt4E (Ljava/lang/String;Lcom/juul/krayon/kanvas/Paint;)V
 	public fun drawRect (FFFFLcom/juul/krayon/kanvas/Paint;)V
 	public synthetic fun drawRect (FFFFLjava/lang/Object;)V
 	public fun drawText (Ljava/lang/CharSequence;FFLcom/juul/krayon/kanvas/Paint;)V

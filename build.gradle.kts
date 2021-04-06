@@ -9,14 +9,14 @@ buildscript {
 }
 
 plugins {
-    kotlin("multiplatform") version "1.4.10" apply false
-    id("com.android.application") version "4.1.0" apply false
-    id("com.android.library") version "4.1.0" apply false
+    kotlin("multiplatform") version "1.4.32" apply false
+    id("com.android.application") version "4.1.3" apply false
+    id("com.android.library") version "4.1.3" apply false
     id("kotlinx-atomicfu") version "0.14.4" apply false
     id("org.jmailen.kotlinter") version "3.2.0" apply false
     id("binary-compatibility-validator") version "0.2.3"
     id("org.jetbrains.dokka") version "1.4.30"
-    id("com.vanniktech.maven.publish") version "0.13.0" apply false
+    id("com.vanniktech.maven.publish") version "0.14.0" apply false
     id("net.mbonnin.one.eight") version "0.1"
 }
 
