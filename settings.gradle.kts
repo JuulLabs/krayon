@@ -22,7 +22,8 @@ pluginManagement {
 }
 
 include(
-    "canvas",
     "chart",
+    "color",
+    "kanvas",
     "sample"
 )

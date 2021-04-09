@@ -8,9 +8,9 @@ import android.util.AttributeSet
 import android.util.TypedValue.COMPLEX_UNIT_DIP
 import android.util.TypedValue.applyDimension
 import android.view.View
-import com.juul.krayon.canvas.AndroidCanvas
 import com.juul.krayon.chart.data.DataSet
 import com.juul.krayon.chart.render.Renderer
+import com.juul.krayon.kanvas.AndroidKanvas
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -79,7 +79,7 @@ public class ChartView @JvmOverloads constructor(
      * will be canceled and a new one will start. This means the current approach is
      * not particularly animation friendly. In the future I'll see if I can improve this.
      */
-    class Adapter<DATA> where DATA : DataSet<*> {
+    class Adapter<DATA> {
 
         /** The chart renderer. */
         var renderer: Renderer<DATA>? = null
@@ -152,7 +152,7 @@ public class ChartView @JvmOverloads constructor(
                 launch {
                     val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
                     val scalingFactor = applyDimension(COMPLEX_UNIT_DIP, 1f, displayMetrics)
-                    val canvas = AndroidCanvas(attachedView.context, Canvas(bitmap), scalingFactor)
+                    val canvas = AndroidKanvas(attachedView.context, Canvas(bitmap), scalingFactor)
                     renderer.render(dataSet, canvas)
                     (this@Adapter).bitmap = bitmap
                     withContext(Dispatchers.Main) {

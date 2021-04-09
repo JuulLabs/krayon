@@ -1,11 +1,9 @@
 package com.juul.krayon.chart.render
 
-import com.juul.krayon.canvas.Canvas
-import com.juul.krayon.canvas.Color
-import com.juul.krayon.canvas.Paint
 import com.juul.krayon.chart.data.ClusteredDataSet
 import com.juul.krayon.chart.render.components.AxisRenderer
 import com.juul.krayon.chart.render.components.BarRenderer
+import com.juul.krayon.kanvas.Kanvas
 
 private const val AXIS_PAD = 24f
 
@@ -24,7 +22,7 @@ public open class BarChartRenderer(
     private val yAxisRenderer = AxisRenderer(style.yAxisStyle)
     private val barRenderer = BarRenderer(style.barStyle)
 
-    override fun <PAINT, PATH> render(data: ClusteredDataSet<Float>, canvas: Canvas<PAINT, PATH>) {
+    override fun <PAINT, PATH> render(data: ClusteredDataSet<Float>, canvas: Kanvas<PAINT, PATH>) {
         val dataAreaLeft = AXIS_PAD
         val dataAreaTop = AXIS_PAD
         val dataAreaRight = canvas.width - AXIS_PAD

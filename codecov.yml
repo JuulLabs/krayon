@@ -2,5 +2,6 @@ coverage:
   status:
     patch: off
 fixes:
-  - "com/juul/krayon/canvas::"
   - "com/juul/krayon/chart::"
+  - "com/juul/krayon/color::"
+  - "com/juul/krayon/kanvas::"

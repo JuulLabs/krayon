@@ -2,22 +2,26 @@ package com.juul.krayon.sample
 
 import android.content.Context
 import android.util.AttributeSet
-import com.juul.krayon.canvas.Canvas
-import com.juul.krayon.canvas.CanvasView
-import com.juul.krayon.canvas.Color
-import com.juul.krayon.canvas.Paint
-import com.juul.krayon.canvas.toAndroid
+import com.juul.krayon.color.Color
+import com.juul.krayon.color.black
+import com.juul.krayon.kanvas.Kanvas
+import com.juul.krayon.kanvas.KanvasView
+import com.juul.krayon.kanvas.Paint
+import com.juul.krayon.kanvas.Paint.Stroke.Cap.Round
+import com.juul.krayon.kanvas.Paint.Stroke.Dash.Pattern
+import com.juul.krayon.kanvas.Paint.Text.Alignment.Left
+import com.juul.krayon.kanvas.toAndroid
 import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
 
 class CustomCanvasView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-) : CanvasView(context, attrs) {
+) : KanvasView(context, attrs) {
 
-    private val linePaint = Paint.Stroke(Color.black, 1f, Paint.Stroke.Cap.Round).toAndroid(context)
-    private val textPaint = Paint.Text(Color.black, 18f, Paint.Text.Alignment.Left, Fonts.robotoSlab).toAndroid(context)
-    private var circlePaint = Paint.Stroke(Color.black, 4f).toAndroid(context)
+    private val linePaint = Paint.Stroke(black, width = 2f, cap = Round, dash = Pattern(0f, 4f)).toAndroid()
+    private val textPaint = Paint.Text(black, size = 18f, alignment = Left, Fonts.robotoSlab).toAndroid(context)
+    private var circlePaint = Paint.Stroke(black, width = 4f).toAndroid()
 
     var circleColor: Color
         get() = Color(circlePaint.color)
@@ -26,7 +30,7 @@ class CustomCanvasView @JvmOverloads constructor(
             invalidate()
         }
 
-    override fun onDraw(canvas: Canvas<AndroidPaint, AndroidPath>) = with(canvas) {
+    override fun onDraw(canvas: Kanvas<AndroidPaint, AndroidPath>) = with(canvas) {
         drawLine(16f, 16f, width - 16f, height - 16f, linePaint)
         val vScale = (height - 32f) / (width - 32f)
         var hOffset = 0f

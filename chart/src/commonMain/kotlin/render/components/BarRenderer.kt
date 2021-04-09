@@ -1,14 +1,14 @@
 package com.juul.krayon.chart.render.components
 
-import com.juul.krayon.canvas.Canvas
-import com.juul.krayon.canvas.Clip
-import com.juul.krayon.canvas.Color
-import com.juul.krayon.canvas.Paint
-import com.juul.krayon.canvas.withClip
 import com.juul.krayon.chart.data.ClusteredDataSet
 import com.juul.krayon.chart.data.maxValue
 import com.juul.krayon.chart.render.Orientation
 import com.juul.krayon.chart.render.Renderer
+import com.juul.krayon.color.Color
+import com.juul.krayon.kanvas.Clip
+import com.juul.krayon.kanvas.Kanvas
+import com.juul.krayon.kanvas.Paint
+import com.juul.krayon.kanvas.withClip
 
 public class BarRenderer(
     private val style: Style,
@@ -37,7 +37,7 @@ public class BarRenderer(
         public val bars: ClusteredDataSet<Float>,
     )
 
-    override fun <PAINT, PATH> render(data: Specification, canvas: Canvas<PAINT, PATH>) {
+    override fun <PAINT, PATH> render(data: Specification, canvas: Kanvas<PAINT, PATH>) {
         val strokeWidth = 8f
         val paints = style.colors.take(data.bars.seriesData.size)
             .map { color -> canvas.buildPaint(Paint.Stroke(color, strokeWidth, Paint.Stroke.Cap.Round)) }

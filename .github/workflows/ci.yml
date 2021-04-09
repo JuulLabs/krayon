@@ -53,4 +53,25 @@ jobs:
 
       - name: Check (Linux)
         if: runner.os == 'Linux'
-        run: ./gradlew $GRADLE_ARGS check
+        run: ./gradlew $GRADLE_ARGS check jacocoTestReport
+
+      - name: Keyring
+        run: echo "${{ secrets.SIGNING_SECRET_KEY_RING }}" | base64 --decode > "$HOME/secring.gpg"
+
+      - name: Publish Locally
+        run: >-
+          ./gradlew
+          $GRADLE_ARGS
+          --no-parallel
+          -PVERSION_NAME=unspecified
+          -Psigning.keyId="${{ secrets.SIGNING_KEY_ID }}"
+          -Psigning.password="${{ secrets.SIGNING_PASSWORD }}"
+          -Psigning.secretKeyRingFile="$HOME/secring.gpg"
+          publishToMavenLocal
+
+      - name: Codecov (Linux)
+        if: runner.os == 'Linux'
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
