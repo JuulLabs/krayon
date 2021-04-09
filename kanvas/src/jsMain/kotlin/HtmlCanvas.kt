@@ -4,7 +4,6 @@ import com.juul.krayon.color.Color
 import org.w3c.dom.BEVEL
 import org.w3c.dom.BUTT
 import org.w3c.dom.CENTER
-import org.w3c.dom.CanvasFillRule
 import org.w3c.dom.CanvasLineCap
 import org.w3c.dom.CanvasLineJoin
 import org.w3c.dom.CanvasRenderingContext2D

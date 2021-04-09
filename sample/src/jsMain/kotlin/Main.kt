@@ -1,11 +1,12 @@
 package com.juul.krayon.sample
 
-import com.juul.krayon.canvas.Color
-import com.juul.krayon.canvas.Font
-import com.juul.krayon.canvas.HtmlCanvas
-import com.juul.krayon.canvas.Paint
-import com.juul.krayon.canvas.serif
 import com.juul.krayon.chart.render.BarChartRenderer
+import com.juul.krayon.color.black
+import com.juul.krayon.color.white
+import com.juul.krayon.kanvas.Font
+import com.juul.krayon.kanvas.HtmlCanvas
+import com.juul.krayon.kanvas.Paint
+import com.juul.krayon.kanvas.serif
 import kotlinx.browser.document
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.await
@@ -20,9 +21,9 @@ fun main() {
 
     fun render() {
         // TODO: should probably add a "clear" function of "fillWithColor" or something.
-        kanvas.drawRect(0f, 0f, kanvas.width, kanvas.height, kanvas.buildPaint(Paint.Fill(Color.white)))
+        kanvas.drawRect(0f, 0f, kanvas.width, kanvas.height, kanvas.buildPaint(Paint.Fill(white)))
         renderer.render(getRandomData(), kanvas)
-        val textPaint = Paint.Text(Color.black, 18f, Paint.Text.Alignment.Left, Font("Roboto Slab", serif))
+        val textPaint = Paint.Text(black, 18f, Paint.Text.Alignment.Left, Font("Roboto Slab", serif))
         kanvas.drawText("This is a test", 32f, 32f, textPaint)
     }
 
