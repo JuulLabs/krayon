@@ -1,4 +1,4 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
 import org.w3c.dom.Path2D
 import kotlin.math.PI

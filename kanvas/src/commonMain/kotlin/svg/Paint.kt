@@ -6,15 +6,15 @@ import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.xml.XmlElement
 import com.juul.krayon.kanvas.xml.escape
 
-internal fun XmlElement.setPaintAttributes(paint: Paint) = apply {
+internal fun XmlElement.setPaintAttributes(paint: Paint, precision: Int) = apply {
     when (paint) {
-        is Paint.Stroke -> setStrokeAttributes(paint)
+        is Paint.Stroke -> setStrokeAttributes(paint, precision)
         is Paint.Fill -> setFillAttributes(paint)
-        is Paint.Text -> setTextAttributes(paint)
+        is Paint.Text -> setTextAttributes(paint, precision)
     }
 }
 
-private fun XmlElement.setStrokeAttributes(paint: Paint.Stroke) = apply {
+private fun XmlElement.setStrokeAttributes(paint: Paint.Stroke, precision: Int) = apply {
     val cap = when (paint.cap) {
         Paint.Stroke.Cap.Butt -> "butt"
         Paint.Stroke.Cap.Round -> "round"
@@ -30,7 +30,7 @@ private fun XmlElement.setStrokeAttributes(paint: Paint.Stroke) = apply {
         is Paint.Stroke.Join.Miter -> {
             if (paint.join.limit != DEFAULT_MITER_LIMIT) {
                 // SVG stroke miter limit defaults to 4; set the attribute only when the specified value is not the default.
-                setAttribute("stroke-miterlimit", paint.join.limit)
+                setAttribute("stroke-miterlimit", paint.join.limit, precision)
             }
             "miter"
         }
@@ -40,9 +40,9 @@ private fun XmlElement.setStrokeAttributes(paint: Paint.Stroke) = apply {
         setAttribute("stroke-linejoin", join)
     }
     if (paint.dash is Paint.Stroke.Dash.Pattern) {
-        setAttribute("stroke-dasharray", paint.dash.intervals.joinToString(separator = " ") { it.toDouble().toString() })
+        setAttribute("stroke-dasharray", paint.dash.intervals.joinToString(separator = " ") { it.scientificNotation(precision) })
     }
-    setAttribute("stroke-width", "${paint.width.toDouble()}px")
+    setAttribute("stroke-width", "${paint.width.scientificNotation(precision)}px")
     setColorAttributes("stroke", paint.color)
     // SVG defaults to a black fill. Explicitly set it as "none" since this is a stroke-only paint.
     setAttribute("fill", "none")
@@ -52,7 +52,7 @@ private fun XmlElement.setFillAttributes(paint: Paint.Fill) = apply {
     setColorAttributes("fill", paint.color)
 }
 
-private fun XmlElement.setTextAttributes(paint: Paint.Text) = apply {
+private fun XmlElement.setTextAttributes(paint: Paint.Text, precision: Int) = apply {
     val anchor = when (paint.alignment) {
         Paint.Text.Alignment.Left -> "start"
         Paint.Text.Alignment.Center -> "middle"
@@ -63,13 +63,14 @@ private fun XmlElement.setTextAttributes(paint: Paint.Text) = apply {
         require(name.escape().toString() == name) { "Font names cannot contain characters that must be escaped." }
     }
     setAttribute("font-family", paint.font.names.joinToString { if (it.contains("""\s""".toRegex())) "\"$it\"" else it })
-    setAttribute("font-size", "${paint.size.toDouble()}px")
+    setAttribute("font-size", "${paint.size.scientificNotation(precision)}px")
     setColorAttributes("fill", paint.color)
 }
 
 private fun XmlElement.setColorAttributes(id: String, color: Color) = apply {
     setAttribute(id, "#${color.rgb.toString(16).padStart(6, '0')}")
     if (color.alpha != 0xFF) {
-        setAttribute("$id-opacity", color.alpha / 255.0)
+        // Precision can be hard-coded here since accuracy of 1/1000 is more accurate than the 1/255 precision that will be used in parsing.
+        setAttribute("$id-opacity", color.alpha / 255.0, precision = 4)
     }
 }

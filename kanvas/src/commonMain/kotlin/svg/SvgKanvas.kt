@@ -13,12 +13,13 @@ import com.juul.krayon.kanvas.xml.escape
 public class SvgKanvas(
     override val width: Float,
     override val height: Float,
+    private val precision: Int = 6,
 ) : Kanvas<Paint, PathString> {
 
     /** Root XML element. */
     private val root = XmlElement("svg")
         .setAttribute("xmlns", "http://www.w3.org/2000/svg")
-        .setAttribute("viewBox", "0 0 $width $height")
+        .setAttribute("viewBox", "0 0 ${width.scientificNotation(precision)} ${height.scientificNotation(precision)}")
 
     /** Current path to the root element, with root and index [0] and the current group as the last. */
     private val xmlAncestors = ArrayDeque<XmlElement>().apply { addLast(root) }
@@ -29,7 +30,7 @@ public class SvgKanvas(
     override fun buildPaint(paint: Paint): Paint = paint
 
     override fun buildPath(actions: PathBuilder<*>.() -> Unit): PathString =
-        PathStringBuilder().apply(actions).build()
+        PathStringBuilder(precision).apply(actions).build()
 
     override fun drawArc(
         left: Float,
@@ -181,4 +182,7 @@ public class SvgKanvas(
 
     /** Dump the SVG as an XML string. */
     public fun build(): String = root.toString()
+
+    private fun XmlElement.setAttribute(id: String, value: Number) = setAttribute(id, value, precision)
+    private fun XmlElement.setPaintAttributes(paint: Paint) = setPaintAttributes(paint, precision)
 }

@@ -1,8 +1,10 @@
-package com.juul.krayon.canvas
+package com.juul.krayon.kanvas
 
+import com.juul.krayon.color.Color
 import org.w3c.dom.BEVEL
 import org.w3c.dom.BUTT
 import org.w3c.dom.CENTER
+import org.w3c.dom.CanvasFillRule
 import org.w3c.dom.CanvasLineCap
 import org.w3c.dom.CanvasLineJoin
 import org.w3c.dom.CanvasRenderingContext2D
@@ -18,7 +20,7 @@ import kotlin.math.PI
 
 public class HtmlCanvas(
     element: HTMLCanvasElement,
-) : Canvas<Paint, Path2D> {
+) : Kanvas<Paint, Path2D> {
 
     private val context = element.getContext("2d") as CanvasRenderingContext2D
 
@@ -73,10 +75,8 @@ public class HtmlCanvas(
         bottom: Float,
         startAngle: Float,
         sweepAngle: Float,
-        useCenter: Boolean,
         paint: Paint,
     ) {
-        // STOPSHIP: Warn that useCenter is unsupported or remove it from interface.
         require(paint !is Paint.Text)
         applyPaint(paint)
         context.beginPath()
@@ -106,6 +106,10 @@ public class HtmlCanvas(
         }
     }
 
+    override fun drawColor(color: Color) {
+        drawRect(0f, 0f, width, height, Paint.Fill(color))
+    }
+
     override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: Paint) {
         require(paint !is Paint.Text)
         applyPaint(paint)
@@ -120,7 +124,7 @@ public class HtmlCanvas(
     }
 
     override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
-        drawArc(left, top, right, bottom, 0f, 360f, false, paint)
+        drawArc(left, top, right, bottom, 0f, 360f, paint)
     }
 
     override fun drawPath(path: Path2D, paint: Paint) {
@@ -151,15 +155,8 @@ public class HtmlCanvas(
     }
 
     override fun pushClip(clip: Clip<Path2D>) {
-        // TODO: This function needs heavy testing. It's likely bugged.
         context.save()
         context.beginPath()
-        if (clip.operation == Clip.Operation.Difference) {
-            context.save()
-            context.resetTransform()
-            context.rect(0.0, 0.0, width.toDouble(), height.toDouble())
-            context.restore()
-        }
         when (clip) {
             is Clip.Rect -> {
                 context.rect(
