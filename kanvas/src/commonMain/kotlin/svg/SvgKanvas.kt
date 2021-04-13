@@ -7,19 +7,21 @@ import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.PathBuilder
 import com.juul.krayon.kanvas.Transform
 import com.juul.krayon.kanvas.split
+import com.juul.krayon.kanvas.xml.NumberFormatter
+import com.juul.krayon.kanvas.xml.ToStringFormatter
 import com.juul.krayon.kanvas.xml.XmlElement
 import com.juul.krayon.kanvas.xml.escape
 
 public class SvgKanvas(
     override val width: Float,
     override val height: Float,
-    private val precision: Int = 6,
+    private val formatter: NumberFormatter = ToStringFormatter()
 ) : Kanvas<Paint, PathString> {
 
     /** Root XML element. */
     private val root = XmlElement("svg")
         .setAttribute("xmlns", "http://www.w3.org/2000/svg")
-        .setAttribute("viewBox", "0 0 ${width.scientificNotation(precision)} ${height.scientificNotation(precision)}")
+        .setAttribute("viewBox", "0 0 ${formatter(width)} ${formatter(height)}")
 
     /** Current path to the root element, with root and index [0] and the current group as the last. */
     private val xmlAncestors = ArrayDeque<XmlElement>().apply { addLast(root) }
@@ -30,7 +32,7 @@ public class SvgKanvas(
     override fun buildPaint(paint: Paint): Paint = paint
 
     override fun buildPath(actions: PathBuilder<*>.() -> Unit): PathString =
-        PathStringBuilder(precision).apply(actions).build()
+        PathStringBuilder(formatter).apply(actions).build()
 
     override fun drawArc(
         left: Float,
@@ -46,10 +48,10 @@ public class SvgKanvas(
 
     override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: Paint) {
         val element = XmlElement("circle")
-            .setAttribute("cx", centerX)
-            .setAttribute("cy", centerY)
-            .setAttribute("r", radius)
-            .setPaintAttributes(paint)
+            .setAttribute("cx", centerX, formatter)
+            .setAttribute("cy", centerY, formatter)
+            .setAttribute("r", radius, formatter)
+            .setPaintAttributes(paint, formatter)
         xmlAncestors.last().addContent(element)
     }
 
@@ -57,17 +59,17 @@ public class SvgKanvas(
         val element = XmlElement("rect")
             .setAttribute("width", "100%")
             .setAttribute("height", "100%")
-            .setPaintAttributes(Paint.Fill(color))
+            .setPaintAttributes(Paint.Fill(color), formatter)
         xmlAncestors.last().addContent(element)
     }
 
     override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: Paint) {
         val element = XmlElement("line")
-            .setAttribute("x1", startX)
-            .setAttribute("y1", startY)
-            .setAttribute("x2", endX)
-            .setAttribute("y2", endY)
-            .setPaintAttributes(paint)
+            .setAttribute("x1", startX, formatter)
+            .setAttribute("y1", startY, formatter)
+            .setAttribute("x2", endX, formatter)
+            .setAttribute("y2", endY, formatter)
+            .setPaintAttributes(paint, formatter)
             .unsetAttribute("fill") // lines have no area to fill
         xmlAncestors.last().addContent(element)
     }
@@ -78,36 +80,36 @@ public class SvgKanvas(
         val cx = left + rx
         val cy = top + ry
         val element = XmlElement("ellipse")
-            .setAttribute("cx", cx)
-            .setAttribute("cy", cy)
-            .setAttribute("rx", rx)
-            .setAttribute("ry", ry)
-            .setPaintAttributes(paint)
+            .setAttribute("cx", cx, formatter)
+            .setAttribute("cy", cy, formatter)
+            .setAttribute("rx", rx, formatter)
+            .setAttribute("ry", ry, formatter)
+            .setPaintAttributes(paint, formatter)
         xmlAncestors.last().addContent(element)
     }
 
     override fun drawPath(path: PathString, paint: Paint) {
         val element = XmlElement("path")
             .setAttribute("d", path.string)
-            .setPaintAttributes(paint)
+            .setPaintAttributes(paint, formatter)
         xmlAncestors.last().addContent(element)
     }
 
     override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
         val element = XmlElement("rect")
-            .setAttribute("x", left)
-            .setAttribute("y", top)
-            .setAttribute("width", right - left)
-            .setAttribute("height", bottom - top)
-            .setPaintAttributes(paint)
+            .setAttribute("x", left, formatter)
+            .setAttribute("y", top, formatter)
+            .setAttribute("width", right - left, formatter)
+            .setAttribute("height", bottom - top, formatter)
+            .setPaintAttributes(paint, formatter)
         xmlAncestors.last().addContent(element)
     }
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint) {
         val element = XmlElement("text")
-            .setAttribute("x", x)
-            .setAttribute("y", y)
-            .setPaintAttributes(paint)
+            .setAttribute("x", x, formatter)
+            .setAttribute("y", y, formatter)
+            .setPaintAttributes(paint, formatter)
             .addContent(text.toString().escape())
         xmlAncestors.last().addContent(element)
     }
@@ -119,10 +121,10 @@ public class SvgKanvas(
         val clipPathElement = when (clip) {
             is Clip.Rect ->
                 XmlElement("rect")
-                    .setAttribute("x", clip.left)
-                    .setAttribute("y", clip.top)
-                    .setAttribute("width", clip.right - clip.left)
-                    .setAttribute("height", clip.bottom - clip.top)
+                    .setAttribute("x", clip.left, formatter)
+                    .setAttribute("y", clip.top, formatter)
+                    .setAttribute("width", clip.right - clip.left, formatter)
+                    .setAttribute("height", clip.bottom - clip.top, formatter)
             is Clip.Path ->
                 XmlElement("path")
                     .setAttribute("d", clip.path.string)
@@ -182,7 +184,4 @@ public class SvgKanvas(
 
     /** Dump the SVG as an XML string. */
     public fun build(): String = root.toString()
-
-    private fun XmlElement.setAttribute(id: String, value: Number) = setAttribute(id, value, precision)
-    private fun XmlElement.setPaintAttributes(paint: Paint) = setPaintAttributes(paint, precision)
 }

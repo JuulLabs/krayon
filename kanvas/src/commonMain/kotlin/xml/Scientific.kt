@@ -1,4 +1,4 @@
-package com.juul.krayon.kanvas.svg
+package com.juul.krayon.kanvas.xml
 
 import kotlin.math.log
 import kotlin.math.nextUp

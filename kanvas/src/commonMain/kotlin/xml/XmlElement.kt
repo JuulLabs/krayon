@@ -1,7 +1,5 @@
 package com.juul.krayon.kanvas.xml
 
-import com.juul.krayon.kanvas.svg.scientificNotation
-
 private const val INDENTATION_STEP = "  "
 
 internal class XmlElement(
@@ -17,7 +15,10 @@ internal class XmlElement(
     }
 
     fun setAttribute(id: String, value: String) = setAttribute(id.toId(), value.escape())
-    fun setAttribute(id: String, value: Number, precision: Int) = setAttribute(id, value.scientificNotation(precision))
+    fun setAttribute(id: String, value: Double, formatter: NumberFormatter) = setAttribute(id, formatter(value))
+    fun setAttribute(id: String, value: Float, formatter: NumberFormatter) = setAttribute(id, formatter(value))
+    fun setAttribute(id: String, value: Int, formatter: NumberFormatter) = setAttribute(id, formatter(value))
+    fun setAttribute(id: String, value: Long, formatter: NumberFormatter) = setAttribute(id, formatter(value))
 
     fun unsetAttribute(id: Id) = apply {
         attributes.remove(id)

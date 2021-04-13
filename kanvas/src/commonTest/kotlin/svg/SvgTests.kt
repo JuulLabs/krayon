@@ -10,6 +10,7 @@ import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Paint.Stroke.Dash.Pattern
 import com.juul.krayon.kanvas.serif
 import com.juul.krayon.kanvas.withClip
+import com.juul.krayon.kanvas.xml.ScientificFormatter
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -36,7 +37,7 @@ class SvgTests {
             </svg>
         """.trimIndent()
         val actual = run {
-            val svg = SvgKanvas(width = 100f, height = 100f)
+            val svg = SvgKanvas(width = 100f, height = 100f, ScientificFormatter(precision = 6))
             val blackFill = Paint.Fill(black)
             val redStroke = Paint.Stroke(red, width = 2f)
             val greenStroke = Paint.Stroke(lime, width = 1f)
