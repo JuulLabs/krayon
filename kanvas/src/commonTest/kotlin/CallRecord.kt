@@ -38,3 +38,8 @@ inline fun CallRecord.verifyLast(
     expectation: String,
     crossinline predicate: (Call) -> Boolean,
 ) = verify(expectation) { it.last().run(predicate) }
+
+inline fun CallRecord.verifySingle(
+    expectation: String,
+    crossinline predicate: (Call) -> Boolean,
+) = verify(expectation) { it.count(predicate) == 1 }

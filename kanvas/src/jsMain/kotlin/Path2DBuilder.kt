@@ -3,7 +3,7 @@ package com.juul.krayon.kanvas
 import org.w3c.dom.Path2D
 import kotlin.math.PI
 
-public class Path2DBuilder : WrappedRelativePathBuilder<Path2D>() {
+public class Path2DBuilder : RelativePathBuilder<Path2D>() {
     private var buffer = Path2D()
 
     override fun moveTo(x: Float, y: Float) {

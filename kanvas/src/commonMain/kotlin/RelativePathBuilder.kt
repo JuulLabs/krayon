@@ -5,7 +5,8 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 import kotlin.math.tan
 
-public abstract class WrappedRelativePathBuilder<P> : PathBuilder<P> {
+/** Handles relative path building when the underlying output type can't. */
+public abstract class RelativePathBuilder<P> : PathBuilder<P> {
 
     private var closeToX: Float = 0f
     private var closeToY: Float = 0f
@@ -37,6 +38,7 @@ public abstract class WrappedRelativePathBuilder<P> : PathBuilder<P> {
     }
 
     override fun arcTo(left: Float, top: Float, right: Float, bottom: Float, startAngle: Float, sweepAngle: Float, forceMoveTo: Boolean) {
+        // FIXME: Implement `forceMoveTo` correctly.
         // TODO: Test this equation from math.stackexchange.com, and see about optimizing.
         // https://math.stackexchange.com/questions/22064/calculating-a-point-that-lies-on-an-ellipse-given-an-anglev
         val a = (right - left) / 2.0
@@ -56,7 +58,7 @@ public abstract class WrappedRelativePathBuilder<P> : PathBuilder<P> {
     }
 
     override fun relativeQuadraticTo(controlX: Float, controlY: Float, endX: Float, endY: Float) {
-        quadraticTo(lastX + controlX, lastY + controlX, lastX + endX, lastY + endY)
+        quadraticTo(lastX + controlX, lastY + controlY, lastX + endX, lastY + endY)
     }
 
     override fun cubicTo(beginControlX: Float, beginControlY: Float, endControlX: Float, endControlY: Float, endX: Float, endY: Float) {
@@ -91,4 +93,15 @@ public abstract class WrappedRelativePathBuilder<P> : PathBuilder<P> {
         closeToX = 0f
         closeToY = 0f
     }
+
+    /** No @TestOnly or @VisibleForTesting or anything in Kotlin Multiplatform. */
+    internal fun getTestState() = TestState(closeToX, closeToY, lastX, lastY)
+
+    /** No @TestOnly or @VisibleForTesting or anything in Kotlin Multiplatform. */
+    internal data class TestState(
+        val closeToX: Float = 0f,
+        val closeToY: Float = 0f,
+        val lastX: Float = 0f,
+        val lastY: Float = 0f,
+    )
 }
