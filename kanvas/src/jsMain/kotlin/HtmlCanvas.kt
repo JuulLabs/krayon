@@ -34,39 +34,6 @@ public class HtmlCanvas(
     override fun buildPath(actions: PathBuilder<*>.() -> Unit): Path2D =
         Path2DBuilder().apply(actions).build()
 
-    /** TODO: This can be cleaned up. */
-    private fun applyPaint(paint: Paint): Unit = when (paint) {
-        is Paint.Stroke -> {
-            context.strokeStyle = "rgba(${paint.color.red}, ${paint.color.green}, ${paint.color.blue}, ${paint.color.alpha})"
-            context.lineWidth = paint.width.toDouble()
-            context.lineCap = when (paint.cap) {
-                Paint.Stroke.Cap.Butt -> CanvasLineCap.BUTT
-                Paint.Stroke.Cap.Round -> CanvasLineCap.ROUND
-                Paint.Stroke.Cap.Square -> CanvasLineCap.SQUARE
-            }
-            context.lineJoin = when (paint.join) {
-                Paint.Stroke.Join.Bevel -> CanvasLineJoin.BEVEL
-                Paint.Stroke.Join.Round -> CanvasLineJoin.ROUND
-                is Paint.Stroke.Join.Miter -> {
-                    context.miterLimit = paint.join.limit.toDouble()
-                    CanvasLineJoin.MITER
-                }
-            }
-        }
-        is Paint.Fill -> {
-            context.fillStyle = "rgba(${paint.color.red}, ${paint.color.green}, ${paint.color.blue}, ${paint.color.alpha})"
-        }
-        is Paint.Text -> {
-            context.fillStyle = "rgba(${paint.color.red}, ${paint.color.green}, ${paint.color.blue}, ${paint.color.alpha})"
-            context.textAlign = when (paint.alignment) {
-                Paint.Text.Alignment.Left -> CanvasTextAlign.LEFT
-                Paint.Text.Alignment.Center -> CanvasTextAlign.CENTER
-                Paint.Text.Alignment.Right -> CanvasTextAlign.RIGHT
-            }
-            context.font = "${paint.size}px ${paint.font.names.joinToString { "\"$it\"" }}"
-        }
-    }
-
     override fun drawArc(
         left: Float,
         top: Float,
@@ -77,7 +44,7 @@ public class HtmlCanvas(
         paint: Paint,
     ) {
         require(paint !is Paint.Text)
-        applyPaint(paint)
+        applyBrush(paint)
         context.beginPath()
         val radiusX = (right - left) / 2.0
         val radiusY = (bottom - top) / 2.0
@@ -88,20 +55,18 @@ public class HtmlCanvas(
         context.ellipse(x, y, radiusX, radiusY, rotation = 0.0, startAngleRadians, endAngleRadians)
         when (paint) {
             is Paint.Stroke -> context.stroke()
-            is Paint.Fill -> context.fill()
-            else -> error("unreachable")
+            else -> context.fill()
         }
     }
 
     override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: Paint) {
         require(paint !is Paint.Text)
-        applyPaint(paint)
+        applyBrush(paint)
         context.beginPath()
         context.arc(centerX.toDouble(), centerY.toDouble(), radius.toDouble(), 0.0, 2 * PI)
         when (paint) {
             is Paint.Stroke -> context.stroke()
-            is Paint.Fill -> context.fill()
-            else -> error("unreachable")
+            else -> context.fill()
         }
     }
 
@@ -111,14 +76,13 @@ public class HtmlCanvas(
 
     override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: Paint) {
         require(paint !is Paint.Text)
-        applyPaint(paint)
+        applyBrush(paint)
         context.beginPath()
         context.moveTo(startX.toDouble(), startY.toDouble())
         context.lineTo(endX.toDouble(), endY.toDouble())
         when (paint) {
             is Paint.Stroke -> context.stroke()
-            is Paint.Fill -> context.fill()
-            else -> error("unreachable")
+            else -> context.fill()
         }
     }
 
@@ -128,28 +92,26 @@ public class HtmlCanvas(
 
     override fun drawPath(path: Path2D, paint: Paint) {
         require(paint !is Paint.Text)
-        applyPaint(paint)
+        applyBrush(paint)
         context.beginPath() // TODO: Look up if this is necessary.
         when (paint) {
             is Paint.Stroke -> context.stroke(path)
-            is Paint.Fill -> context.fill(path)
-            else -> error("unreachable")
+            else -> context.fill(path)
         }
     }
 
     override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
         require(paint !is Paint.Text)
-        applyPaint(paint)
+        applyBrush(paint)
         when (paint) {
             is Paint.Stroke -> context.strokeRect(left.toDouble(), top.toDouble(), right.toDouble() - left, bottom.toDouble() - top)
-            is Paint.Fill -> context.fillRect(left.toDouble(), top.toDouble(), right.toDouble() - left, bottom.toDouble() - top)
-            else -> error("unreachable")
+            else -> context.fillRect(left.toDouble(), top.toDouble(), right.toDouble() - left, bottom.toDouble() - top)
         }
     }
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint) {
         require(paint is Paint.Text)
-        applyPaint(paint)
+        applyBrush(paint)
         context.fillText(text.toString(), x.toDouble(), y.toDouble())
     }
 
@@ -222,5 +184,43 @@ public class HtmlCanvas(
 
     override fun pop() {
         context.restore()
+    }
+
+    private fun applyBrush(paint: Paint) = when (paint) {
+        is Paint.Fill -> applyBrush(paint)
+        is Paint.Stroke -> applyBrush(paint)
+        is Paint.Text -> applyBrush(paint)
+    }
+
+    private fun applyBrush(paint: Paint.Fill) {
+        context.fillStyle = paint.color.toHexString()
+    }
+
+    private fun applyBrush(paint: Paint.Stroke) {
+        context.strokeStyle = paint.color.toHexString()
+        context.lineWidth = paint.width.toDouble()
+        context.lineCap = when (paint.cap) {
+            Paint.Stroke.Cap.Butt -> CanvasLineCap.BUTT
+            Paint.Stroke.Cap.Round -> CanvasLineCap.ROUND
+            Paint.Stroke.Cap.Square -> CanvasLineCap.SQUARE
+        }
+        context.lineJoin = when (paint.join) {
+            Paint.Stroke.Join.Bevel -> CanvasLineJoin.BEVEL
+            Paint.Stroke.Join.Round -> CanvasLineJoin.ROUND
+            is Paint.Stroke.Join.Miter -> {
+                context.miterLimit = paint.join.limit.toDouble()
+                CanvasLineJoin.MITER
+            }
+        }
+    }
+
+    private fun applyBrush(paint: Paint.Text) {
+        context.fillStyle = paint.color.toHexString()
+        context.textAlign = when (paint.alignment) {
+            Paint.Text.Alignment.Left -> CanvasTextAlign.LEFT
+            Paint.Text.Alignment.Center -> CanvasTextAlign.CENTER
+            Paint.Text.Alignment.Right -> CanvasTextAlign.RIGHT
+        }
+        context.font = "${paint.size}px ${paint.font.names.joinToString { "\"$it\"" }}"
     }
 }

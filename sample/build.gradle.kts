@@ -4,10 +4,8 @@ plugins {
     id("org.jmailen.kotlinter")
 }
 
-// TODO: When we add other platforms, this should become a multiplatform module.
-
 kotlin {
-    android { publishAllLibraryVariants() }
+    android()
     js().browser()
 
     sourceSets {
@@ -74,9 +72,6 @@ android {
 
     sourceSets {
         val main by getting {
-            // FIXME: This feels like I'm working around some other misconfiguration.
-            java.srcDirs("src/androidMain/java")
-            res.srcDirs("src/androidMain/res")
             manifest.srcFile("src/androidMain/AndroidManifest.xml")
         }
     }

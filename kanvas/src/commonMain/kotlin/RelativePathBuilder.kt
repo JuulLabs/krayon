@@ -1,10 +1,5 @@
 package com.juul.krayon.kanvas
 
-import kotlin.math.PI
-import kotlin.math.pow
-import kotlin.math.sqrt
-import kotlin.math.tan
-
 /** Handles relative path building when the underlying output type can't. */
 public abstract class RelativePathBuilder<P> : PathBuilder<P> {
 
@@ -38,19 +33,21 @@ public abstract class RelativePathBuilder<P> : PathBuilder<P> {
     }
 
     override fun arcTo(left: Float, top: Float, right: Float, bottom: Float, startAngle: Float, sweepAngle: Float, forceMoveTo: Boolean) {
-        // FIXME: Implement `forceMoveTo` correctly.
-        // TODO: Test this equation from math.stackexchange.com, and see about optimizing.
-        // https://math.stackexchange.com/questions/22064/calculating-a-point-that-lies-on-an-ellipse-given-an-anglev
-        val a = (right - left) / 2.0
-        val b = (bottom - top) / 2.0
-        val centerX = left + a
-        val centerY = top + b
-        val theta = (startAngle + sweepAngle) * PI / 180f
-        val signX = if (theta.rem(2 * PI) !in (PI / 2)..(PI * 3 / 2)) 1 else -1
-        val signY = if (theta.rem(2 * PI) in 0.0..PI) 1 else -1
-        val dX = signX * a * b / sqrt(b.pow(2) + a.pow(2) * tan(theta).pow(2))
-        val dY = signY * a * b / sqrt(a.pow(2) + b.pow(2) / tan(theta).pow(2))
-        updatePosition((centerX + dX).toFloat(), (centerY + dY).toFloat())
+        // TODO: Benchmark this. There's a lot of duplicated math between the calls to getEllipseX/Y. Might make more
+        //       sense to have an `Ellipse` class that can cache intermediate results (less math, but an extra allocation).
+        val startX = getEllipseX(left, top, right, bottom, startAngle)
+        val startY = getEllipseY(left, top, right, bottom, startAngle)
+        if (startX != lastX || startY != lastY) {
+            if (forceMoveTo) {
+                moveTo(startX, startY)
+            } else {
+                lineTo(startX, startY)
+            }
+        }
+
+        val endX = getEllipseX(left, top, right, bottom, startAngle + sweepAngle)
+        val endY = getEllipseY(left, top, right, bottom, startAngle + sweepAngle)
+        updatePosition(endX, endY)
     }
 
     override fun quadraticTo(controlX: Float, controlY: Float, endX: Float, endY: Float) {

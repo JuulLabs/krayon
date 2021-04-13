@@ -8,42 +8,31 @@ private const val EPSILON = 0.125f
 
 class RelativePathBuilderTests {
 
-    // Test all four cardinal directions to improve branch coverage (since we manually check quadrant)
-
     @Test
     fun arcTo_fromRightToBottom_hasCorrectEndPosition() {
         val pathBuilder = CallRecordingPathBuilder()
-        pathBuilder.arcTo(0f, 0f, 100f, 100f, 0f, 90f, true)
+        pathBuilder.arcTo(0f, 0f, 100f, 100f, 0f, 90f, false)
         val state = pathBuilder.getTestState()
         assertSimilar(target = 50f, EPSILON, value = state.lastX)
         assertSimilar(target = 100f, EPSILON, value = state.lastY)
     }
 
     @Test
-    fun arcTo_fromBottomToLeft_hasCorrectEndPosition() {
+    fun arcTo_withForceMove_changesContourStart() {
         val pathBuilder = CallRecordingPathBuilder()
-        pathBuilder.arcTo(0f, 0f, 100f, 100f, 90f, 90f, true)
+        pathBuilder.arcTo(0f, 0f, 100f, 100f, 0f, 90f, true)
         val state = pathBuilder.getTestState()
-        assertSimilar(target = 0f, EPSILON, value = state.lastX)
-        assertSimilar(target = 50f, EPSILON, value = state.lastY)
+        assertSimilar(target = 100f, EPSILON, value = state.closeToX)
+        assertSimilar(target = 50f, EPSILON, value = state.closeToY)
     }
 
     @Test
-    fun arcTo_fromLeftToTop_hasCorrectEndPosition() {
+    fun arcTo_withoutForceMove_doesNotChangeContourStart() {
         val pathBuilder = CallRecordingPathBuilder()
-        pathBuilder.arcTo(0f, 0f, 100f, 100f, 180f, 90f, true)
+        pathBuilder.arcTo(0f, 0f, 100f, 100f, 0f, 90f, false)
         val state = pathBuilder.getTestState()
-        assertSimilar(target = 50f, EPSILON, value = state.lastX)
-        assertSimilar(target = 0f, EPSILON, value = state.lastY)
-    }
-
-    @Test
-    fun arcTo_fromTopToRight_hasCorrectEndPosition() {
-        val pathBuilder = CallRecordingPathBuilder()
-        pathBuilder.arcTo(0f, 0f, 100f, 100f, 270f, 90f, true)
-        val state = pathBuilder.getTestState()
-        assertSimilar(target = 100f, EPSILON, value = state.lastX)
-        assertSimilar(target = 50f, EPSILON, value = state.lastY)
+        assertEquals(0f, state.closeToX)
+        assertEquals(0f, state.closeToY)
     }
 
     @Test
@@ -62,8 +51,7 @@ class RelativePathBuilderTests {
         pathBuilder.moveTo(50f, 50f)
         pathBuilder.relativeCubicTo(10f, 0f, 20f, 30f, 30f, 30f)
         pathBuilder.verifySingle("called cubicTo with correct arguments") { call ->
-            call.callable.name == PathBuilder<*>::cubicTo.name
-                && call.arguments == listOf(60f, 50f, 70f, 80f, 80f, 80f)
+            call.callable.name == PathBuilder<*>::cubicTo.name && call.arguments == listOf(60f, 50f, 70f, 80f, 80f, 80f)
         }
     }
 
@@ -83,8 +71,7 @@ class RelativePathBuilderTests {
         pathBuilder.moveTo(50f, 50f)
         pathBuilder.relativeLineTo(30f, 30f)
         pathBuilder.verifySingle("called lineTo with correct arguments") { call ->
-            call.callable.name == PathBuilder<*>::lineTo.name
-                && call.arguments == listOf(80f, 80f)
+            call.callable.name == PathBuilder<*>::lineTo.name && call.arguments == listOf(80f, 80f)
         }
     }
 
@@ -113,8 +100,7 @@ class RelativePathBuilderTests {
         pathBuilder.moveTo(50f, 50f)
         pathBuilder.relativeMoveTo(30f, 30f)
         pathBuilder.verifySingle("called moveTo with correct arguments") { call ->
-            call.callable.name == PathBuilder<*>::moveTo.name
-                && call.arguments == listOf(80f, 80f)
+            call.callable.name == PathBuilder<*>::moveTo.name && call.arguments == listOf(80f, 80f)
         }
     }
 
@@ -134,8 +120,7 @@ class RelativePathBuilderTests {
         pathBuilder.moveTo(50f, 50f)
         pathBuilder.relativeQuadraticTo(10f, 0f, 30f, 30f)
         pathBuilder.verifySingle("called quadraticTo with correct arguments") { call ->
-            call.callable.name == PathBuilder<*>::quadraticTo.name
-                && call.arguments == listOf(60f, 50f, 80f, 80f)
+            call.callable.name == PathBuilder<*>::quadraticTo.name && call.arguments == listOf(60f, 50f, 80f, 80f)
         }
     }
 
