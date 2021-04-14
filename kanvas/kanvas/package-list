@@ -5,7 +5,7 @@ $dokka.location:com.juul.krayon.kanvas.svg/PathString///PointingToDeclaration/k
 $dokka.location:com.juul.krayon.kanvas.svg/PathString/PathString/#kotlin.String/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.svg/-path-string/-path-string.html
 $dokka.location:com.juul.krayon.kanvas.svg/PathString/string/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.svg/-path-string/string.html
 $dokka.location:com.juul.krayon.kanvas.svg/SvgKanvas///PointingToDeclaration/kanvas/com.juul.krayon.kanvas.svg/-svg-kanvas/index.html
-$dokka.location:com.juul.krayon.kanvas.svg/SvgKanvas/SvgKanvas/#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.svg/-svg-kanvas/-svg-kanvas.html
+$dokka.location:com.juul.krayon.kanvas.svg/SvgKanvas/SvgKanvas/#kotlin.Float#kotlin.Float#com.juul.krayon.kanvas.xml.NumberFormatter/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.svg/-svg-kanvas/-svg-kanvas.html
 $dokka.location:com.juul.krayon.kanvas.svg/SvgKanvas/build/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.svg/-svg-kanvas/build.html
 $dokka.location:com.juul.krayon.kanvas.svg/SvgKanvas/buildPaint/#com.juul.krayon.kanvas.Paint/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.svg/-svg-kanvas/build-paint.html
 $dokka.location:com.juul.krayon.kanvas.svg/SvgKanvas/buildPath/#kotlin.Function1[com.juul.krayon.kanvas.PathBuilder[*],kotlin.Unit]/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.svg/-svg-kanvas/build-path.html
@@ -22,6 +22,24 @@ $dokka.location:com.juul.krayon.kanvas.svg/SvgKanvas/pop/#/PointingToDeclaration
 $dokka.location:com.juul.krayon.kanvas.svg/SvgKanvas/pushClip/#com.juul.krayon.kanvas.Clip[com.juul.krayon.kanvas.svg.PathString]/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.svg/-svg-kanvas/push-clip.html
 $dokka.location:com.juul.krayon.kanvas.svg/SvgKanvas/pushTransform/#com.juul.krayon.kanvas.Transform/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.svg/-svg-kanvas/push-transform.html
 $dokka.location:com.juul.krayon.kanvas.svg/SvgKanvas/width/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.svg/-svg-kanvas/width.html
+$dokka.location:com.juul.krayon.kanvas.xml////PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/index.html
+$dokka.location:com.juul.krayon.kanvas.xml/NumberFormatter///PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-number-formatter/index.html
+$dokka.location:com.juul.krayon.kanvas.xml/NumberFormatter/invoke/#kotlin.Double/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-number-formatter/invoke.html
+$dokka.location:com.juul.krayon.kanvas.xml/NumberFormatter/invoke/#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-number-formatter/invoke.html
+$dokka.location:com.juul.krayon.kanvas.xml/NumberFormatter/invoke/#kotlin.Int/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-number-formatter/invoke.html
+$dokka.location:com.juul.krayon.kanvas.xml/NumberFormatter/invoke/#kotlin.Long/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-number-formatter/invoke.html
+$dokka.location:com.juul.krayon.kanvas.xml/ScientificFormatter///PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-scientific-formatter/index.html
+$dokka.location:com.juul.krayon.kanvas.xml/ScientificFormatter/ScientificFormatter/#kotlin.Int/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-scientific-formatter/-scientific-formatter.html
+$dokka.location:com.juul.krayon.kanvas.xml/ScientificFormatter/invoke/#kotlin.Double/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-scientific-formatter/invoke.html
+$dokka.location:com.juul.krayon.kanvas.xml/ScientificFormatter/invoke/#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-scientific-formatter/invoke.html
+$dokka.location:com.juul.krayon.kanvas.xml/ScientificFormatter/invoke/#kotlin.Int/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-scientific-formatter/invoke.html
+$dokka.location:com.juul.krayon.kanvas.xml/ScientificFormatter/invoke/#kotlin.Long/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-scientific-formatter/invoke.html
+$dokka.location:com.juul.krayon.kanvas.xml/ToStringFormatter///PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-to-string-formatter/index.html
+$dokka.location:com.juul.krayon.kanvas.xml/ToStringFormatter/ToStringFormatter/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-to-string-formatter/-to-string-formatter.html
+$dokka.location:com.juul.krayon.kanvas.xml/ToStringFormatter/invoke/#kotlin.Double/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-to-string-formatter/invoke.html
+$dokka.location:com.juul.krayon.kanvas.xml/ToStringFormatter/invoke/#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-to-string-formatter/invoke.html
+$dokka.location:com.juul.krayon.kanvas.xml/ToStringFormatter/invoke/#kotlin.Int/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-to-string-formatter/invoke.html
+$dokka.location:com.juul.krayon.kanvas.xml/ToStringFormatter/invoke/#kotlin.Long/PointingToDeclaration/kanvas/com.juul.krayon.kanvas.xml/-to-string-formatter/invoke.html
 $dokka.location:com.juul.krayon.kanvas////PointingToDeclaration/kanvas/com.juul.krayon.kanvas/index.html
 $dokka.location:com.juul.krayon.kanvas//AndroidKanvas/#android.content.Context#android.graphics.Canvas#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-android-kanvas.html
 $dokka.location:com.juul.krayon.kanvas//DEFAULT_MITER_LIMIT/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-d-e-f-a-u-l-t_-m-i-t-e-r_-l-i-m-i-t.html
@@ -68,6 +86,23 @@ $dokka.location:com.juul.krayon.kanvas/Font///PointingToDeclaration/kanvas/com.
 $dokka.location:com.juul.krayon.kanvas/Font/Font/#kotlin.String#kotlin.Array[kotlin.String]/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-font/-font.html
 $dokka.location:com.juul.krayon.kanvas/Font/Font/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-font/-font.html
 $dokka.location:com.juul.krayon.kanvas/Font/names/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-font/names.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas///PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/index.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/HtmlCanvas/#org.w3c.dom.HTMLCanvasElement/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/-html-canvas.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/buildPaint/#com.juul.krayon.kanvas.Paint/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/build-paint.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/buildPath/#kotlin.Function1[com.juul.krayon.kanvas.PathBuilder[*],kotlin.Unit]/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/build-path.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/drawArc/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#com.juul.krayon.kanvas.Paint/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/draw-arc.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/drawCircle/#kotlin.Float#kotlin.Float#kotlin.Float#com.juul.krayon.kanvas.Paint/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/draw-circle.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/drawColor/#com.juul.krayon.color.Color/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/draw-color.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/drawLine/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#com.juul.krayon.kanvas.Paint/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/draw-line.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/drawOval/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#com.juul.krayon.kanvas.Paint/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/draw-oval.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/drawPath/#org.w3c.dom.Path2D#com.juul.krayon.kanvas.Paint/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/draw-path.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/drawRect/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#com.juul.krayon.kanvas.Paint/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/draw-rect.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/drawText/#kotlin.CharSequence#kotlin.Float#kotlin.Float#com.juul.krayon.kanvas.Paint/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/draw-text.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/height/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/height.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/pop/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/pop.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/pushClip/#com.juul.krayon.kanvas.Clip[org.w3c.dom.Path2D]/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/push-clip.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/pushTransform/#com.juul.krayon.kanvas.Transform/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/push-transform.html
+$dokka.location:com.juul.krayon.kanvas/HtmlCanvas/width/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-html-canvas/width.html
 $dokka.location:com.juul.krayon.kanvas/Kanvas///PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-kanvas/index.html
 $dokka.location:com.juul.krayon.kanvas/Kanvas/buildPaint/#com.juul.krayon.kanvas.Paint/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-kanvas/build-paint.html
 $dokka.location:com.juul.krayon.kanvas/Kanvas/buildPath/#kotlin.Function1[com.juul.krayon.kanvas.PathBuilder[*],kotlin.Unit]/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-kanvas/build-path.html
@@ -135,6 +170,16 @@ $dokka.location:com.juul.krayon.kanvas/Paint.Text/color/#/PointingToDeclaration/
 $dokka.location:com.juul.krayon.kanvas/Paint.Text/font/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-paint/-text/font.html
 $dokka.location:com.juul.krayon.kanvas/Paint.Text/size/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-paint/-text/size.html
 $dokka.location:com.juul.krayon.kanvas/Paint///PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-paint/index.html
+$dokka.location:com.juul.krayon.kanvas/Path2DBuilder///PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path2-d-builder/index.html
+$dokka.location:com.juul.krayon.kanvas/Path2DBuilder/Path2DBuilder/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path2-d-builder/-path2-d-builder.html
+$dokka.location:com.juul.krayon.kanvas/Path2DBuilder/arcTo/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Boolean/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path2-d-builder/arc-to.html
+$dokka.location:com.juul.krayon.kanvas/Path2DBuilder/build/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path2-d-builder/build.html
+$dokka.location:com.juul.krayon.kanvas/Path2DBuilder/close/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path2-d-builder/close.html
+$dokka.location:com.juul.krayon.kanvas/Path2DBuilder/cubicTo/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path2-d-builder/cubic-to.html
+$dokka.location:com.juul.krayon.kanvas/Path2DBuilder/lineTo/#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path2-d-builder/line-to.html
+$dokka.location:com.juul.krayon.kanvas/Path2DBuilder/moveTo/#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path2-d-builder/move-to.html
+$dokka.location:com.juul.krayon.kanvas/Path2DBuilder/quadraticTo/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path2-d-builder/quadratic-to.html
+$dokka.location:com.juul.krayon.kanvas/Path2DBuilder/reset/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path2-d-builder/reset.html
 $dokka.location:com.juul.krayon.kanvas/PathBuilder///PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path-builder/index.html
 $dokka.location:com.juul.krayon.kanvas/PathBuilder/arcTo/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Boolean/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path-builder/arc-to.html
 $dokka.location:com.juul.krayon.kanvas/PathBuilder/build/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path-builder/build.html
@@ -148,6 +193,19 @@ $dokka.location:com.juul.krayon.kanvas/PathBuilder/relativeLineTo/#kotlin.Float#
 $dokka.location:com.juul.krayon.kanvas/PathBuilder/relativeMoveTo/#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path-builder/relative-move-to.html
 $dokka.location:com.juul.krayon.kanvas/PathBuilder/relativeQuadraticTo/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path-builder/relative-quadratic-to.html
 $dokka.location:com.juul.krayon.kanvas/PathBuilder/reset/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-path-builder/reset.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder///PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/index.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/RelativePathBuilder/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/-relative-path-builder.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/arcTo/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Boolean/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/arc-to.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/close/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/close.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/cubicTo/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/cubic-to.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/lineTo/#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/line-to.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/moveTo/#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/move-to.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/quadraticTo/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/quadratic-to.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/relativeCubicTo/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/relative-cubic-to.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/relativeLineTo/#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/relative-line-to.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/relativeMoveTo/#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/relative-move-to.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/relativeQuadraticTo/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/relative-quadratic-to.html
+$dokka.location:com.juul.krayon.kanvas/RelativePathBuilder/reset/#/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-relative-path-builder/reset.html
 $dokka.location:com.juul.krayon.kanvas/Transform.InOrder///PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-transform/-in-order/index.html
 $dokka.location:com.juul.krayon.kanvas/Transform.InOrder/InOrder/#kotlin.Array[com.juul.krayon.kanvas.Transform]/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-transform/-in-order/-in-order.html
 $dokka.location:com.juul.krayon.kanvas/Transform.InOrder/InOrder/#kotlin.collections.List[com.juul.krayon.kanvas.Transform]/PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-transform/-in-order/-in-order.html
@@ -174,4 +232,5 @@ $dokka.location:com.juul.krayon.kanvas/Transform.Translate/vertical/#/PointingTo
 $dokka.location:com.juul.krayon.kanvas/Transform///PointingToDeclaration/kanvas/com.juul.krayon.kanvas/-transform/index.html
 com.juul.krayon.kanvas
 com.juul.krayon.kanvas.svg
+com.juul.krayon.kanvas.xml
 
