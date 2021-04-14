@@ -15,6 +15,7 @@ kotlin {
 
     android { publishAllLibraryVariants() }
     jvm()
+    js().browser()
 
     sourceSets {
         val commonMain by getting {
@@ -46,6 +47,12 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
+            }
+        }
+
+        val jsTest by getting {
+            dependencies {
+                implementation(kotlin("test-js"))
             }
         }
     }

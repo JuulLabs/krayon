@@ -56,7 +56,7 @@ public inline class Color(public val argb: Int) {
         append(red.toString(HEX_BASE).padStart(2, '0'))
         append(green.toString(HEX_BASE).padStart(2, '0'))
         append(blue.toString(HEX_BASE).padStart(2, '0'))
-        if (alpha != 0xFF) {
+        if (alpha != COMPONENT_MAX) {
             append(alpha.toString(HEX_BASE).padStart(2, '0'))
         }
     }

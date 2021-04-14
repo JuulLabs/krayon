@@ -200,6 +200,21 @@ public abstract interface class com/juul/krayon/kanvas/PathBuilder {
 	public abstract fun reset ()V
 }
 
+public abstract class com/juul/krayon/kanvas/RelativePathBuilder : com/juul/krayon/kanvas/PathBuilder {
+	public fun <init> ()V
+	public fun arcTo (FFFFFFZ)V
+	public fun close ()V
+	public fun cubicTo (FFFFFF)V
+	public fun lineTo (FF)V
+	public fun moveTo (FF)V
+	public fun quadraticTo (FFFF)V
+	public fun relativeCubicTo (FFFFFF)V
+	public fun relativeLineTo (FF)V
+	public fun relativeMoveTo (FF)V
+	public fun relativeQuadraticTo (FFFF)V
+	public fun reset ()V
+}
+
 public abstract class com/juul/krayon/kanvas/Transform {
 }
 
@@ -300,7 +315,8 @@ public final class com/juul/krayon/kanvas/svg/PathString {
 }
 
 public final class com/juul/krayon/kanvas/svg/SvgKanvas : com/juul/krayon/kanvas/Kanvas {
-	public fun <init> (FF)V
+	public fun <init> (FFLcom/juul/krayon/kanvas/xml/NumberFormatter;)V
+	public synthetic fun <init> (FFLcom/juul/krayon/kanvas/xml/NumberFormatter;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun build ()Ljava/lang/String;
 	public fun buildPaint (Lcom/juul/krayon/kanvas/Paint;)Lcom/juul/krayon/kanvas/Paint;
 	public synthetic fun buildPaint (Lcom/juul/krayon/kanvas/Paint;)Ljava/lang/Object;
@@ -326,5 +342,28 @@ public final class com/juul/krayon/kanvas/svg/SvgKanvas : com/juul/krayon/kanvas
 	public fun pop ()V
 	public fun pushClip (Lcom/juul/krayon/kanvas/Clip;)V
 	public fun pushTransform (Lcom/juul/krayon/kanvas/Transform;)V
+}
+
+public abstract interface class com/juul/krayon/kanvas/xml/NumberFormatter {
+	public abstract fun invoke (D)Ljava/lang/String;
+	public abstract fun invoke (F)Ljava/lang/String;
+	public abstract fun invoke (I)Ljava/lang/String;
+	public abstract fun invoke (J)Ljava/lang/String;
+}
+
+public final class com/juul/krayon/kanvas/xml/ScientificFormatter : com/juul/krayon/kanvas/xml/NumberFormatter {
+	public fun <init> (I)V
+	public fun invoke (D)Ljava/lang/String;
+	public fun invoke (F)Ljava/lang/String;
+	public fun invoke (I)Ljava/lang/String;
+	public fun invoke (J)Ljava/lang/String;
+}
+
+public final class com/juul/krayon/kanvas/xml/ToStringFormatter : com/juul/krayon/kanvas/xml/NumberFormatter {
+	public fun <init> ()V
+	public fun invoke (D)Ljava/lang/String;
+	public fun invoke (F)Ljava/lang/String;
+	public fun invoke (I)Ljava/lang/String;
+	public fun invoke (J)Ljava/lang/String;
 }
 

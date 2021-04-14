@@ -3,11 +3,12 @@ package com.juul.krayon.kanvas.svg
 import com.juul.krayon.kanvas.PathBuilder
 import com.juul.krayon.kanvas.getEllipseX
 import com.juul.krayon.kanvas.getEllipseY
+import com.juul.krayon.kanvas.xml.NumberFormatter
 import kotlin.math.abs
 
 public inline class PathString(public val string: String)
 
-internal class PathStringBuilder : PathBuilder<PathString> {
+internal class PathStringBuilder(private val fmt: NumberFormatter) : PathBuilder<PathString> {
     private val buffer = StringBuilder()
 
     private fun separate() {
@@ -18,22 +19,22 @@ internal class PathStringBuilder : PathBuilder<PathString> {
 
     override fun moveTo(x: Float, y: Float) {
         separate()
-        buffer.append("M $x $y")
+        buffer.append("M ${fmt(x)} ${fmt(y)}")
     }
 
     override fun relativeMoveTo(x: Float, y: Float) {
         separate()
-        buffer.append("m $x $y")
+        buffer.append("m ${fmt(x)} ${fmt(y)}")
     }
 
     override fun lineTo(x: Float, y: Float) {
         separate()
-        buffer.append("L $x $y")
+        buffer.append("L ${fmt(x)} ${fmt(y)}")
     }
 
     override fun relativeLineTo(x: Float, y: Float) {
         separate()
-        buffer.append("l $x $y")
+        buffer.append("l ${fmt(x)} ${fmt(y)}")
     }
 
     override fun arcTo(left: Float, top: Float, right: Float, bottom: Float, startAngle: Float, sweepAngle: Float, forceMoveTo: Boolean) {
@@ -53,22 +54,22 @@ internal class PathStringBuilder : PathBuilder<PathString> {
         val large = if (abs(sweepAngle) > 180f) 1 else 0
         val endX = getEllipseX(left, top, right, bottom, startAngle + sweepAngle)
         val endY = getEllipseY(left, top, right, bottom, startAngle + sweepAngle)
-        buffer.append("A $rx $ry 0 $large $sweep $endX $endY")
+        buffer.append("A ${fmt(rx)} ${fmt(ry)} 0 $large $sweep ${fmt(endX)} ${fmt(endY)}")
     }
 
     override fun quadraticTo(controlX: Float, controlY: Float, endX: Float, endY: Float) {
         separate()
-        buffer.append("Q $controlX $controlY $endX $endY")
+        buffer.append("Q ${fmt(controlX)} ${fmt(controlY)} ${fmt(endX)} ${fmt(endY)}")
     }
 
     override fun relativeQuadraticTo(controlX: Float, controlY: Float, endX: Float, endY: Float) {
         separate()
-        buffer.append("q $controlX $controlY $endX $endY")
+        buffer.append("q ${fmt(controlX)} ${fmt(controlY)} ${fmt(endX)} ${fmt(endY)}")
     }
 
     override fun cubicTo(beginControlX: Float, beginControlY: Float, endControlX: Float, endControlY: Float, endX: Float, endY: Float) {
         separate()
-        buffer.append("C $beginControlX $beginControlY $endControlX $endControlY $endX $endY")
+        buffer.append("C ${fmt(beginControlX)} ${fmt(beginControlY)} ${fmt(endControlX)} ${fmt(endControlY)} ${fmt(endX)} ${fmt(endY)}")
     }
 
     override fun relativeCubicTo(
@@ -80,7 +81,7 @@ internal class PathStringBuilder : PathBuilder<PathString> {
         endY: Float,
     ) {
         separate()
-        buffer.append("c $beginControlX $beginControlY $endControlX $endControlY $endX $endY")
+        buffer.append("c ${fmt(beginControlX)} ${fmt(beginControlY)} ${fmt(endControlX)} ${fmt(endControlY)} ${fmt(endX)} ${fmt(endY)}")
     }
 
     override fun close() {

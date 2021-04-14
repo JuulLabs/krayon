@@ -5,7 +5,7 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 import kotlin.math.tan
 
-// TODO: Test these equation from math.stackexchange.com, and see about optimizing.
+// TODO: Test these equations from math.stackexchange.com, and see about optimizing.
 // https://math.stackexchange.com/questions/22064/calculating-a-point-that-lies-on-an-ellipse-given-an-anglev
 
 /** Angle in degrees. */

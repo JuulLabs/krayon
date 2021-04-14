@@ -27,7 +27,6 @@ public open class BarChartRenderer(
         val dataAreaTop = AXIS_PAD
         val dataAreaRight = canvas.width - AXIS_PAD
         val dataAreaBottom = canvas.height - AXIS_PAD
-
         barRenderer.render(BarRenderer.Specification(dataAreaLeft, dataAreaTop, dataAreaRight, dataAreaBottom, data), canvas)
         xAxisRenderer.render(AxisRenderer.Specification(dataAreaLeft, dataAreaBottom, dataAreaRight), canvas)
         yAxisRenderer.render(AxisRenderer.Specification(dataAreaLeft, dataAreaBottom, dataAreaTop), canvas)
