@@ -16,7 +16,7 @@ plugins {
     id("org.jmailen.kotlinter") version "3.4.5" apply false
     id("org.jetbrains.dokka") version "1.4.30"
     id("com.vanniktech.maven.publish") version "0.17.0" apply false
-    id("net.mbonnin.one.eight") version "0.1"
+    id("net.mbonnin.one.eight") version "0.2"
 
     // Breaks with:
     // A problem occurred configuring project ':registration'.
@@ -30,7 +30,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven(url = "https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
+        maven("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
         maven("https://kotlin.bintray.com/kotlinx/")
     }
 
