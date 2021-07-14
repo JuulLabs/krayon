@@ -10,6 +10,10 @@ plugins {
 apply(from = rootProject.file("gradle/jacoco.gradle.kts"))
 apply(from = rootProject.file("gradle/publish.gradle.kts"))
 
+jacoco {
+    toolVersion = "0.8.7"
+}
+
 kotlin {
     explicitApi()
 
@@ -39,14 +43,14 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                implementation("androidx.appcompat:appcompat:1.2.0")
+                implementation("androidx.appcompat:appcompat:1.3.0")
             }
         }
 
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
-                implementation("androidx.test:core:1.3.0")
+                implementation("androidx.test:core:1.4.0")
                 implementation("org.robolectric:robolectric:4.5.1")
             }
         }

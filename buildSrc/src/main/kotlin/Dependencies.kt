@@ -2,11 +2,11 @@ object kotlinx {
 
     fun coroutines(
         module: String = "core",
-        version: String = "1.4.0"
+        version: String = "1.5.1"
     ) = "org.jetbrains.kotlinx:kotlinx-coroutines-$module:$version"
 
     fun datetime(
-        version: String = "0.1.1"
+        version: String = "0.2.1"
     ) = "org.jetbrains.kotlinx:kotlinx-datetime:$version"
 }
 
@@ -18,7 +18,7 @@ object androidx {
 }
 
 object tuulbox {
-    private const val version = "3.1.0"
+    private const val version = "4.2.0"
 
     fun test(
         version: String = this.version
