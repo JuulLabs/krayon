@@ -1,6 +1,3 @@
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
-import java.net.URI
-
 buildscript {
     repositories {
         google()
@@ -14,7 +11,7 @@ plugins {
     id("com.android.library") version "4.2.0" apply false
     id("kotlinx-atomicfu") version "0.16.2" apply false
     id("org.jmailen.kotlinter") version "3.4.5" apply false
-    id("org.jetbrains.dokka") version "1.4.30"
+    id("org.jetbrains.dokka") version "1.5.0"
     id("com.vanniktech.maven.publish") version "0.17.0" apply false
     id("net.mbonnin.one.eight") version "0.2"
 
@@ -23,21 +20,19 @@ plugins {
     // > org.gradle.api.internal.tasks.DefaultTaskContainer$DuplicateTaskException: Cannot add task 'apiBuild' as a task with that name already exists.
     //
     // Disabling until https://github.com/Kotlin/binary-compatibility-validator/issues/38 is fixed.
-    //    id("binary-compatibility-validator") version "0.6.0"
+//    id("binary-compatibility-validator") version "0.6.0"
 }
 
 allprojects {
     repositories {
         google()
         mavenCentral()
-        maven("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
-        maven("https://kotlin.bintray.com/kotlinx/")
     }
 
     tasks.withType<Test>().configureEach {
         testLogging {
             events("started", "passed", "skipped", "failed", "standardOut", "standardError")
-            exceptionFormat = FULL
+            exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
             showExceptions = true
             showStackTraces = true
             showCauses = true
