@@ -10,14 +10,14 @@ public abstract class Element {
     private val _children: MutableList<Element> = mutableListOf()
     public val children: List<Element> = _children
 
-    public open fun appendChild(child: Element): Element {
+    public open fun <E: Element> appendChild(child: E): E {
         child.parent?.removeChild(child)
         child.parent = this
         _children.add(child)
         return child
     }
 
-    public open fun insertBefore(child: Element, reference: Element?): Element {
+    public open fun <E: Element> insertBefore(child: E, reference: Element?): E {
         child.parent?.removeChild(child)
         child.parent = this
         when (reference) {
@@ -30,7 +30,7 @@ public abstract class Element {
         return child
     }
 
-    public fun removeChild(child: Element): Element {
+    public fun <E: Element> removeChild(child: E): E {
         _children.remove(child)
         return child
     }

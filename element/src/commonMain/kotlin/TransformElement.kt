@@ -4,7 +4,7 @@ import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Transform
 import com.juul.krayon.kanvas.withTransform
 
-public class GroupElement(
+public class TransformElement(
     public var transform: Transform
 ) : Element() {
 

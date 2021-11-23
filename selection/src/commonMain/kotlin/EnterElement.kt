@@ -6,10 +6,10 @@ import com.juul.krayon.kanvas.Kanvas
 public class EnterElement: Element() {
     public var next: Element? = null
 
-    override fun appendChild(child: Element): Element =
+    override fun <E: Element> appendChild(child: E): E =
         checkNotNull(parent).insertBefore(child, next)
 
-    override fun insertBefore(child: Element, reference: Element?): Element =
+    override fun <E: Element> insertBefore(child: E, reference: Element?): E =
         checkNotNull(parent).insertBefore(child, reference)
 
     override fun <PAINT, PATH> applyTo(canvas: Kanvas<PAINT, PATH>) {

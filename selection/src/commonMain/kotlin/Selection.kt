@@ -1,5 +1,6 @@
 package com.juul.krayon.selection
 
+import com.juul.krayon.element.Element
 import com.juul.krayon.element.RootElement
 
 public open class Selection<T>(
@@ -20,5 +21,5 @@ public class ExitSelection<T>(
     groups: List<Group<T>>
 ) : Selection<T>(groups)
 
-public fun RootElement.selection(): Selection<Nothing?> =
+public fun Element.asSelection(): Selection<Nothing?> =
     Selection(listOf(Group(null, listOf(this))))
