@@ -1,9 +1,12 @@
 package com.juul.krayon.element
 
 import com.juul.krayon.kanvas.Kanvas
+import kotlin.random.Random
 
 public abstract class Element {
-    public var data: Any? = null
+    protected val attributes: MutableMap<String, Any?> = mutableMapOf()
+
+    public var data: Any? by attributes.withDefault { null }
 
     public open var parent: Element? = null
 
@@ -31,11 +34,25 @@ public abstract class Element {
     }
 
     public fun <E: Element> removeChild(child: E): E {
+        child.parent = null
         _children.remove(child)
         return child
     }
 
-    public abstract fun <PAINT, PATH> applyTo(canvas: Kanvas<PAINT, PATH>)
+    public abstract fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>)
+
+    override fun toString(): String = buildString {
+        append('(')
+        append(this@Element::class.simpleName)
+        for ((key, value) in attributes) {
+            append(" :$key $value")
+        }
+        for (child in children) {
+            append(' ')
+            append(child)
+        }
+        append(')')
+    }
 }
 
 public val Element.descendents: Sequence<Element>

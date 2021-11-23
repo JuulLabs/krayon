@@ -4,15 +4,15 @@ import com.juul.krayon.color.black
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 
-public class RectangleElement(
-    public var left: Float = 0f,
-    public var top: Float = 0f,
-    public var right: Float = 0f,
-    public var bottom: Float = 0f,
-    public var paint: Paint = Paint.Fill(black),
-) : Element() {
+public class RectangleElement : Element() {
 
-    override fun <PAINT, PATH> applyTo(canvas: Kanvas<PAINT, PATH>) {
+    public var left: Float by attributes.withDefault { 0f }
+    public var top: Float by attributes.withDefault { 0f }
+    public var right: Float by attributes.withDefault { 0f }
+    public var bottom: Float by attributes.withDefault { 0f }
+    public var paint: Paint by attributes.withDefault { Paint.Fill(black) }
+
+    override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
         canvas.drawRect(left, top, right, bottom, canvas.buildPaint(paint))
     }
 

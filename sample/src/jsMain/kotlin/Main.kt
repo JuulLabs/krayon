@@ -34,20 +34,21 @@ fun main() {
 
     // Selection
     val root = RootElement()
-    val transform = root.appendChild(TransformElement(Transform.Scale()))
+    val transform = root.appendChild(TransformElement())
 
     GlobalScope.launch {
         awaitWebFonts("Roboto Slab")
         launch {
             while (true) {
                 data.value = when (data.value.size) {
+                    0 -> listOf(1f)
                     else -> when (Random.nextDouble()) {
-                        in 0.0..0.25 -> ArrayList(data.value).also { it.removeAt(Random.nextInt(data.value.size)) }
-                        in 0.25..0.5 -> ArrayList(data.value).also { it.add(1f) }
+                        in 0.0..0.1 -> ArrayList(data.value).also { it.removeAt(Random.nextInt(data.value.size)) }
+                        in 0.1..0.2 -> ArrayList(data.value).also { it.add(1f) }
                         else -> ArrayList(data.value).also { it[Random.nextInt(data.value.size)] += 1f }
                     }
                 }
-                delay(5000)
+                delay(16)
             }
         }
         launch {
@@ -69,10 +70,7 @@ fun main() {
                     .each { right = left + 10f }
                     .each { top = bottom - it.datum }
 
-                root.applyTo(kanvas)
-
-                println(data)
-                println(root)
+                root.draw(kanvas)
             }
         }
     }

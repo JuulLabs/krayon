@@ -4,13 +4,12 @@ import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Transform
 import com.juul.krayon.kanvas.withTransform
 
-public class TransformElement(
-    public var transform: Transform = Transform.Translate()
-) : Element() {
+public class TransformElement : Element() {
+    public var transform: Transform by attributes.withDefault { Transform.Translate() }
 
-    override fun <PAINT, PATH> applyTo(canvas: Kanvas<PAINT, PATH>) {
+    override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
         canvas.withTransform(transform) {
-            descendents.forEach { it.applyTo(canvas) }
+            descendents.forEach { it.draw(canvas) }
         }
     }
 

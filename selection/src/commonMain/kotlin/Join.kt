@@ -14,6 +14,6 @@ public inline fun <E : Element, D> UpdateSelection<E, D>.join(
 ): Selection<E, D> {
     val enter = enter.onEnter()
     val update = onUpdate()
-    onExit()
+    exit.onExit()
     return enter.merge(update).order()
 }

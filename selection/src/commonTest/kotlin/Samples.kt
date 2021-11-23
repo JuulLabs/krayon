@@ -23,7 +23,7 @@ class Samples {
                         .each { radius = 1f }
                 },
             ).each { (datum) -> centerX = datum }
-        root.applyTo(canvas)
+        root.draw(canvas)
         assertEquals(
             """
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500.0 100.0">

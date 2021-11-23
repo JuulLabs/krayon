@@ -4,8 +4,8 @@ import com.juul.krayon.kanvas.Kanvas
 
 public class RootElement : Element() {
 
-    override fun <PAINT, PATH> applyTo(canvas: Kanvas<PAINT, PATH>) {
-        descendents.forEach { it.applyTo(canvas) }
+    override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
+        descendents.forEach { it.draw(canvas) }
     }
 
     public companion object : TypeSelector<RootElement> {
