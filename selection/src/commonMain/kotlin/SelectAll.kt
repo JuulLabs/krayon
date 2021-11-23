@@ -6,10 +6,10 @@ import com.juul.krayon.element.descendents
 
 public fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(
     selector: TypeSelector<E2>,
-): Selection<E2, D> = selectAll { _, _, _ -> descendents.mapNotNull { selector.trySelect(it) } }
+): Selection<E2, D> = selectAll { descendents.mapNotNull { selector.trySelect(it) } }
 
 public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(
-    crossinline select: Element.(datum: D, index: Int, group: List<E1?>) -> Sequence<E2>,
+    crossinline select: E1.(Arguments<E1, D>) -> Sequence<E2>,
 ): Selection<E2, D> = Selection(
     groups.flatMap { group ->
         group.nodes.asSequence()
@@ -19,7 +19,7 @@ public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(
                 node as Element
                 Group(
                     node,
-                    node.select(node.data as D, index, group.nodes)
+                    node.select(Arguments(node.data as D, index, group.nodes))
                         .onEach { it.data = node.data }
                         .toList()
                 )

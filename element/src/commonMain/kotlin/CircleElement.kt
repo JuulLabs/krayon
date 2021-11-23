@@ -15,7 +15,8 @@ public class CircleElement(
         canvas.drawCircle(centerX, centerY, radius, canvas.buildPaint(paint))
     }
 
-    public companion object : TypeSelector<CircleElement> {
+    public companion object : ElementBuilder<CircleElement>, TypeSelector<CircleElement> {
+        override fun build(): CircleElement = CircleElement()
         override fun trySelect(element: Element): CircleElement? = element as? CircleElement
     }
 }

@@ -11,7 +11,8 @@ import com.juul.krayon.kanvas.Transform
 import com.juul.krayon.selection.append
 import com.juul.krayon.selection.asSelection
 import com.juul.krayon.selection.data
-import com.juul.krayon.selection.select
+import com.juul.krayon.selection.each
+import com.juul.krayon.selection.join
 import com.juul.krayon.selection.selectAll
 import kotlinx.browser.document
 import kotlinx.coroutines.GlobalScope
@@ -25,6 +26,7 @@ import kotlin.js.Promise
 import kotlin.random.Random
 
 private val data = MutableStateFlow(listOf(1f, 1f, 1f, 1f, 1f))
+
 fun main() {
     // Kanvas
     val canvasElement = document.getElementById("canvas") as HTMLCanvasElement
@@ -39,14 +41,13 @@ fun main() {
         launch {
             while (true) {
                 data.value = when (data.value.size) {
-                    0 -> listOf(1f)
                     else -> when (Random.nextDouble()) {
-                        in 0.0..0.1 -> ArrayList(data.value).also { it.removeAt(Random.nextInt(data.value.size)) }
-                        in 0.1..0.2 -> ArrayList(data.value).also { it.add(1f) }
+                        in 0.0..0.25 -> ArrayList(data.value).also { it.removeAt(Random.nextInt(data.value.size)) }
+                        in 0.25..0.5 -> ArrayList(data.value).also { it.add(1f) }
                         else -> ArrayList(data.value).also { it[Random.nextInt(data.value.size)] += 1f }
                     }
                 }
-                delay(16)
+                delay(5000)
             }
         }
         launch {
@@ -54,23 +55,24 @@ fun main() {
                 kanvas.drawRect(0f, 0f, kanvas.width, kanvas.height, kanvas.buildPaint(Paint.Fill(white)))
 
                 transform.transform = Transform.Scale(vertical = 480 / (data.maxOrNull() ?: 1f), pivotY = 480f)
-                val bars = transform.asSelection()
+
+                transform.asSelection()
                     .selectAll(RectangleElement)
                     .data(data)
-
-                bars.enter.append { _, _, _ -> RectangleElement(paint = Paint.Fill(Random.nextColor())) }
-                bars.exit.select { _, _, _ -> parent?.removeChild(this) }
-
-                bars.select { datum, index, _ ->
-                    this as RectangleElement
-                    left = index * 10f
-                    right = left + 10f
-                    bottom = kanvas.height
-                    top = bottom - datum
-                    this
-                }
+                    .join(
+                        onEnter = {
+                            append(RectangleElement)
+                                .each { paint = Paint.Fill(Random.nextColor()) }
+                                .each { bottom = kanvas.height }
+                        }
+                    ).each { left = it.index * 10f }
+                    .each { right = left + 10f }
+                    .each { top = bottom - it.datum }
 
                 root.applyTo(kanvas)
+
+                println(data)
+                println(root)
             }
         }
     }

@@ -5,7 +5,7 @@ import com.juul.krayon.kanvas.Transform
 import com.juul.krayon.kanvas.withTransform
 
 public class TransformElement(
-    public var transform: Transform
+    public var transform: Transform = Transform.Translate()
 ) : Element() {
 
     override fun <PAINT, PATH> applyTo(canvas: Kanvas<PAINT, PATH>) {
@@ -14,7 +14,8 @@ public class TransformElement(
         }
     }
 
-    public companion object : TypeSelector<TransformElement> {
+    public companion object : ElementBuilder<TransformElement>, TypeSelector<TransformElement> {
+        override fun build(): TransformElement = TransformElement()
         override fun trySelect(element: Element): TransformElement? = element as? TransformElement
     }
 }

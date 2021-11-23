@@ -1,10 +1,7 @@
 package com.juul.krayon.selection
 
-import com.juul.krayon.color.black
 import com.juul.krayon.element.CircleElement
 import com.juul.krayon.element.RootElement
-import com.juul.krayon.element.descendents
-import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.svg.SvgKanvas
 import com.juul.tuulbox.test.runTest
 import kotlin.test.Test
@@ -16,10 +13,16 @@ class Samples {
     fun svgTest() = runTest {
         val canvas = SvgKanvas(width = 500f, height = 100f)
         val root = RootElement()
-        val update = root.asSelection()
+        root.asSelection()
             .selectAll(CircleElement)
             .data(listOf(100f, 250f, 400f))
-        update.enter.append { datum, _, _ -> CircleElement(centerX = datum, centerY = 50f, radius = 1f) }
+            .join(
+                onEnter = {
+                    append(CircleElement)
+                        .each { centerY = 50f }
+                        .each { radius = 1f }
+                },
+            ).each { (datum) -> centerX = datum }
         root.applyTo(canvas)
         assertEquals(
             """
