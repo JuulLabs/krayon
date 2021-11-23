@@ -1,11 +1,16 @@
 package com.juul.krayon.selection
 
 import com.juul.krayon.element.Element
+import com.juul.krayon.element.TypeSelector
 import com.juul.krayon.element.descendents
 
-public inline fun <T> Selection<T>.selectAll(
-    crossinline select: Element.(datum: T, index: Int, group: Group<T>) -> List<Element>,
-): Selection<T> = Selection(
+public fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(
+    selector: TypeSelector<E2>,
+): Selection<E2, D> = selectAll { _, _, _ -> descendents.mapNotNull { selector.trySelect(it) } }
+
+public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(
+    crossinline select: Element.(datum: D, index: Int, group: List<E1?>) -> Sequence<E2>,
+): Selection<E2, D> = Selection(
     groups.flatMap { group ->
         group.nodes.asSequence()
             .withIndex()
@@ -14,15 +19,10 @@ public inline fun <T> Selection<T>.selectAll(
                 node as Element
                 Group(
                     node,
-                    node.select(node.data as T, index, group)
+                    node.select(node.data as D, index, group.nodes)
                         .onEach { it.data = node.data }
+                        .toList()
                 )
             }
     }
 )
-
-public inline fun <T> Selection<T>.selectAllDescendents(
-    crossinline select: Element.() -> Boolean,
-): Selection<T> = selectAll { _, _, _ ->
-    descendents.filter { it.select() }.toList()
-}

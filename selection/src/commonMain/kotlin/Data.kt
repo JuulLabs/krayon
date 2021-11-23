@@ -2,16 +2,16 @@ package com.juul.krayon.selection
 
 import com.juul.krayon.element.Element
 
-public fun <P, C> Selection<P>.data(
-    value: List<C>,
-): UpdateSelection<C> = data { _, _ -> value }
+public fun <E: Element, D1, D2> Selection<E, D1>.data(
+    value: List<D2>,
+): UpdateSelection<E, D2> = data { _, _ -> value }
 
-public fun <P, C> Selection<P>.data(
-    value: (index: Int, group: Group<P>) -> List<C>,
-): UpdateSelection<C> {
-    val update = ArrayList<Group<C>>(groups.size)
-    val enter = ArrayList<Group<C>>(groups.size)
-    val exit = ArrayList<Group<C>>(groups.size)
+public fun <E: Element, D1, D2> Selection<E, D1>.data(
+    value: (index: Int, group: Group<E, D1>) -> List<D2>,
+): UpdateSelection<E, D2> {
+    val update = ArrayList<Group<E, D2>>(groups.size)
+    val enter = ArrayList<Group<EnterElement, D2>>(groups.size)
+    val exit = ArrayList<Group<E, D2>>(groups.size)
 
     for ((index, group) in groups.withIndex()) {
         val data = value(index, group)
@@ -38,13 +38,13 @@ public fun <P, C> Selection<P>.data(
     return UpdateSelection(update, EnterSelection(enter), ExitSelection(exit))
 }
 
-private fun <P, C> bindIndex(
-    group: Group<P>,
-    data: List<C>,
-): Triple<List<Element?>, List<EnterElement?>, List<Element?>> {
-    val update = ArrayList<Element?>(data.size)
+private fun <E: Element, D1, D2> bindIndex(
+    group: Group<E, D1>,
+    data: List<D2>,
+): Triple<List<E?>, List<EnterElement?>, List<E?>> {
+    val update = ArrayList<E?>(data.size)
     val enter = ArrayList<EnterElement?>(data.size)
-    val exit = ArrayList<Element?>(maxOf(data.size, group.nodes.size))
+    val exit = ArrayList<E?>(maxOf(data.size, group.nodes.size))
     data.withIndex().forEach { (index, value) ->
         val node = group.nodes.getOrNull(index)
         if (node != null) {

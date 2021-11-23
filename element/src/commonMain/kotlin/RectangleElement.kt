@@ -15,4 +15,8 @@ public class RectangleElement(
     override fun <PAINT, PATH> applyTo(canvas: Kanvas<PAINT, PATH>) {
         canvas.drawRect(left, top, right, bottom, canvas.buildPaint(paint))
     }
+
+    public companion object : TypeSelector<RectangleElement> {
+        override fun trySelect(element: Element): RectangleElement? = element as? RectangleElement
+    }
 }

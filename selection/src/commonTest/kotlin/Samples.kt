@@ -17,7 +17,7 @@ class Samples {
         val canvas = SvgKanvas(width = 500f, height = 100f)
         val root = RootElement()
         val update = root.asSelection()
-            .selectAllDescendents { this is CircleElement }
+            .selectAll(CircleElement)
             .data(listOf(100f, 250f, 400f))
         update.enter.append { datum, _, _ -> CircleElement(centerX = datum, centerY = 50f, radius = 1f) }
         root.applyTo(canvas)

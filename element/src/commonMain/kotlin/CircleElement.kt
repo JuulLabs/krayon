@@ -10,7 +10,12 @@ public class CircleElement(
     public var radius: Float = 0f,
     public var paint: Paint = Paint.Fill(black),
 ) : Element() {
+
     override fun <PAINT, PATH> applyTo(canvas: Kanvas<PAINT, PATH>) {
         canvas.drawCircle(centerX, centerY, radius, canvas.buildPaint(paint))
+    }
+
+    public companion object : TypeSelector<CircleElement> {
+        override fun trySelect(element: Element): CircleElement? = element as? CircleElement
     }
 }

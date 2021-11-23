@@ -13,4 +13,8 @@ public class TransformElement(
             descendents.forEach { it.applyTo(canvas) }
         }
     }
+
+    public companion object : TypeSelector<TransformElement> {
+        override fun trySelect(element: Element): TransformElement? = element as? TransformElement
+    }
 }

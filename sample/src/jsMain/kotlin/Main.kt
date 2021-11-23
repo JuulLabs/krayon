@@ -13,7 +13,6 @@ import com.juul.krayon.selection.asSelection
 import com.juul.krayon.selection.data
 import com.juul.krayon.selection.select
 import com.juul.krayon.selection.selectAll
-import com.juul.krayon.selection.selectAllDescendents
 import kotlinx.browser.document
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.await
@@ -56,7 +55,7 @@ fun main() {
 
                 transform.transform = Transform.Scale(vertical = 480 / (data.maxOrNull() ?: 1f), pivotY = 480f)
                 val bars = transform.asSelection()
-                    .selectAllDescendents { this is RectangleElement }
+                    .selectAll(RectangleElement)
                     .data(data)
 
                 bars.enter.append { _, _, _ -> RectangleElement(paint = Paint.Fill(Random.nextColor())) }
