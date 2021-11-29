@@ -4,6 +4,9 @@ import com.juul.krayon.element.Element
 import com.juul.krayon.kanvas.Kanvas
 
 public class EnterElement : Element() {
+
+    override val tag: String get() = "enter"
+
     public var next: Element? = null
 
     override fun <E : Element> appendChild(child: E): E =
@@ -13,6 +16,6 @@ public class EnterElement : Element() {
         checkNotNull(parent).insertBefore(child, reference)
 
     override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
-        error("EnterElement should not be present in the DOM.")
+        error("$tag should not be present in the DOM.")
     }
 }

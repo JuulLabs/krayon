@@ -4,6 +4,8 @@ import com.juul.krayon.kanvas.Kanvas
 
 public class RootElement : Element() {
 
+    override val tag: String get() = "root"
+
     override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
         descendents.forEach { it.draw(canvas) }
     }

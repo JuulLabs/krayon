@@ -6,6 +6,8 @@ import com.juul.krayon.kanvas.Paint
 
 public class RectangleElement : Element() {
 
+    override val tag: String get() = "rectangle"
+
     public var left: Float by attributes.withDefault { 0f }
     public var top: Float by attributes.withDefault { 0f }
     public var right: Float by attributes.withDefault { 0f }

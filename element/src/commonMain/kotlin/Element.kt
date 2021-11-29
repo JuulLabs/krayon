@@ -3,6 +3,9 @@ package com.juul.krayon.element
 import com.juul.krayon.kanvas.Kanvas
 
 public abstract class Element {
+
+    public abstract val tag: String
+
     protected val attributes: MutableMap<String, Any?> = mutableMapOf()
 
     public var data: Any? by attributes.withDefault { null }
@@ -33,8 +36,9 @@ public abstract class Element {
     }
 
     public fun <E : Element> removeChild(child: E): E {
-        child.parent = null
-        _children.remove(child)
+        if (_children.remove(child)) {
+            child.parent = null
+        }
         return child
     }
 
@@ -42,7 +46,7 @@ public abstract class Element {
 
     override fun toString(): String = buildString {
         append('(')
-        append(this@Element::class.simpleName)
+        append(tag)
         for ((key, value) in attributes) {
             append(" :$key $value")
         }

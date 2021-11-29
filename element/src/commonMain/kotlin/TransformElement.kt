@@ -5,6 +5,9 @@ import com.juul.krayon.kanvas.Transform
 import com.juul.krayon.kanvas.withTransform
 
 public class TransformElement : Element() {
+
+    override val tag: String get() = "transform"
+
     public var transform: Transform by attributes.withDefault { Transform.Translate() }
 
     override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
