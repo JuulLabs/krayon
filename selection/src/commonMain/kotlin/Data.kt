@@ -2,11 +2,11 @@ package com.juul.krayon.selection
 
 import com.juul.krayon.element.Element
 
-public fun <E: Element, D1, D2> Selection<E, D1>.data(
+public fun <E : Element, D1, D2> Selection<E, D1>.data(
     value: List<D2>,
 ): UpdateSelection<E, D2> = data { _, _ -> value }
 
-public fun <E: Element, D1, D2> Selection<E, D1>.data(
+public fun <E : Element, D1, D2> Selection<E, D1>.data(
     value: (index: Int, group: Group<E, D1>) -> List<D2>,
 ): UpdateSelection<E, D2> {
     val update = ArrayList<Group<E, D2>>(groups.size)
@@ -38,7 +38,7 @@ public fun <E: Element, D1, D2> Selection<E, D1>.data(
     return UpdateSelection(update, EnterSelection(enter), ExitSelection(exit))
 }
 
-private fun <E: Element, D1, D2> bindIndex(
+private fun <E : Element, D1, D2> bindIndex(
     group: Group<E, D1>,
     data: List<D2>,
 ): Triple<List<E?>, List<EnterElement?>, List<E?>> {

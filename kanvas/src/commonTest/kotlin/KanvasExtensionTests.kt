@@ -12,10 +12,10 @@ class KanvasExtensionTests {
             val paint = canvas.buildPaint(Paint.Stroke(black, 1f))
             canvas.drawLine(0f, 0f, 10f, 10f, paint)
         }
-        canvas.verifyFirst("pushClip called first") { it.callable.name == canvas::pushClip.name }
-        canvas.verifyAny("lambda was called") { it.callable.name == canvas::buildPaint.name }
-        canvas.verifyAny("lambda was called") { it.callable.name == canvas::drawLine.name }
-        canvas.verifyLast("pop was called last") { it.callable.name == canvas::pop.name }
+        canvas.verifyFirst("pushClip called first") { it.callableName == "pushClip" }
+        canvas.verifyAny("lambda was called") { it.callableName == "buildPaint" }
+        canvas.verifyAny("lambda was called") { it.callableName == "drawLine" }
+        canvas.verifyLast("pop was called last") { it.callableName == "pop" }
         canvas.verifyCallCount(4)
     }
 
@@ -26,10 +26,10 @@ class KanvasExtensionTests {
             val paint = canvas.buildPaint(Paint.Stroke(black, 1f))
             canvas.drawLine(0f, 0f, 10f, 10f, paint)
         }
-        canvas.verifyFirst("pushTransform called first") { it.callable.name == canvas::pushTransform.name }
-        canvas.verifyAny("lambda was called") { it.callable.name == canvas::buildPaint.name }
-        canvas.verifyAny("lambda was called") { it.callable.name == canvas::drawLine.name }
-        canvas.verifyLast("pop was called last") { it.callable.name == canvas::pop.name }
+        canvas.verifyFirst("pushTransform called first") { it.callableName == "pushTransform" }
+        canvas.verifyAny("lambda was called") { it.callableName == "buildPaint" }
+        canvas.verifyAny("lambda was called") { it.callableName == "drawLine" }
+        canvas.verifyLast("pop was called last") { it.callableName == "pop" }
         canvas.verifyCallCount(4)
     }
 }

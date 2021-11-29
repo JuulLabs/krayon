@@ -3,6 +3,7 @@ package com.juul.krayon.selection
 import com.juul.krayon.element.CircleElement
 import com.juul.krayon.element.RootElement
 import com.juul.krayon.kanvas.svg.SvgKanvas
+import com.juul.krayon.kanvas.xml.ScientificFormatter
 import com.juul.tuulbox.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -11,7 +12,7 @@ class Samples {
 
     @Test
     fun svgTest() = runTest {
-        val canvas = SvgKanvas(width = 500f, height = 100f)
+        val canvas = SvgKanvas(width = 500f, height = 100f, formatter = ScientificFormatter(4))
         val root = RootElement()
         root.asSelection()
             .selectAll(CircleElement)
@@ -26,10 +27,10 @@ class Samples {
         root.draw(canvas)
         assertEquals(
             """
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500.0 100.0">
-              <circle cx="100.0" cy="50.0" r="1.0" fill="#000000" />
-              <circle cx="250.0" cy="50.0" r="1.0" fill="#000000" />
-              <circle cx="400.0" cy="50.0" r="1.0" fill="#000000" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5e2 1e2">
+              <circle cx="1e2" cy="5e1" r="1" fill="#000000" />
+              <circle cx="2.5e2" cy="5e1" r="1" fill="#000000" />
+              <circle cx="4e2" cy="5e1" r="1" fill="#000000" />
             </svg>
             """.trimIndent(),
             canvas.build()

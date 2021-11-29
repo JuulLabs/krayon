@@ -8,7 +8,7 @@ public fun <E1 : Element, E2 : Element, D> Selection<E1, D>.select(
     selector: TypeSelector<E2>,
 ): Selection<E2, D> = select { descendents.mapNotNull { selector.trySelect(it) }.firstOrNull() }
 
-public inline fun <E1: Element, E2: Element, D> Selection<E1, D>.select(
+public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.select(
     crossinline select: E1.(Arguments<E1, D>) -> E2?,
 ): Selection<E2, D> = Selection(
     groups.map { group ->
