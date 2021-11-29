@@ -28,11 +28,9 @@ import kotlin.random.Random
 private val data = MutableStateFlow(listOf(1f, 1f, 1f, 1f, 1f))
 
 fun main() {
-    // Kanvas
     val canvasElement = document.getElementById("canvas") as HTMLCanvasElement
     val kanvas = HtmlCanvas(canvasElement)
 
-    // Selection
     val root = RootElement()
     val transform = root.appendChild(TransformElement())
 
@@ -40,17 +38,11 @@ fun main() {
         awaitWebFonts("Roboto Slab")
         launch {
             while (true) {
-                data.value = when (data.value.size) {
-                    0 -> listOf(1f)
-                    else -> when (Random.nextDouble()) {
-                        in 0.0..0.1 -> ArrayList(data.value).also { it.removeAt(Random.nextInt(data.value.size)) }
-                        in 0.1..0.2 -> ArrayList(data.value).also { it.add(1f) }
-                        else -> ArrayList(data.value).also { it[Random.nextInt(data.value.size)] += 1f }
-                    }
-                }
+                data.value = newData()
                 delay(16)
             }
         }
+
         launch {
             data.collect { data ->
                 kanvas.drawRect(0f, 0f, kanvas.width, kanvas.height, kanvas.buildPaint(Paint.Fill(white)))
@@ -73,6 +65,19 @@ fun main() {
                 root.draw(kanvas)
             }
         }
+    }
+}
+
+private fun newData(): List<Float> = when (data.value.size) {
+    0 -> listOf(1f)
+    in 1..5 -> when (Random.nextDouble()) {
+        in 0.0..0.2 -> ArrayList(data.value).also { it.add(1f) }
+        else -> ArrayList(data.value).also { it[Random.nextInt(data.value.size)] += 1f }
+    }
+    else -> when (Random.nextDouble()) {
+        in 0.0..0.1 -> ArrayList(data.value).also { it.removeAt(Random.nextInt(data.value.size)) }
+        in 0.1..0.2 -> ArrayList(data.value).also { it.add(1f) }
+        else -> ArrayList(data.value).also { it[Random.nextInt(data.value.size)] += 1f }
     }
 }
 
