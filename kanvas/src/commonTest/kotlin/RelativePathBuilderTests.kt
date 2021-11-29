@@ -11,7 +11,7 @@ class RelativePathBuilderTests {
     fun arcTo_fromRightToBottom_hasCorrectEndPosition() {
         val pathBuilder = CallRecordingPathBuilder()
         pathBuilder.arcTo(0f, 0f, 100f, 100f, 0f, 90f, false)
-        val state = pathBuilder.getState()
+        val state = pathBuilder.state
         assertEquals(50f, actual = state.lastX, absoluteTolerance = EPSILON)
         assertEquals(100f, actual = state.lastY, absoluteTolerance = EPSILON)
     }
@@ -20,7 +20,7 @@ class RelativePathBuilderTests {
     fun arcTo_withForceMove_changesContourStart() {
         val pathBuilder = CallRecordingPathBuilder()
         pathBuilder.arcTo(0f, 0f, 100f, 100f, 0f, 90f, true)
-        val state = pathBuilder.getState()
+        val state = pathBuilder.state
         assertEquals(100f, actual = state.closeToX, absoluteTolerance = EPSILON)
         assertEquals(50f, actual = state.closeToY, absoluteTolerance = EPSILON)
     }
@@ -29,7 +29,7 @@ class RelativePathBuilderTests {
     fun arcTo_withoutForceMove_doesNotChangeContourStart() {
         val pathBuilder = CallRecordingPathBuilder()
         pathBuilder.arcTo(0f, 0f, 100f, 100f, 0f, 90f, false)
-        val state = pathBuilder.getState()
+        val state = pathBuilder.state
         assertEquals(0f, state.closeToX)
         assertEquals(0f, state.closeToY)
     }
@@ -39,7 +39,7 @@ class RelativePathBuilderTests {
         val pathBuilder = CallRecordingPathBuilder()
         pathBuilder.moveTo(50f, 50f)
         pathBuilder.relativeCubicTo(10f, 0f, 20f, 30f, 30f, 30f)
-        val state = pathBuilder.getState()
+        val state = pathBuilder.state
         assertEquals(80f, state.lastX)
         assertEquals(80f, state.lastY)
     }
@@ -59,7 +59,7 @@ class RelativePathBuilderTests {
         val pathBuilder = CallRecordingPathBuilder()
         pathBuilder.moveTo(50f, 50f)
         pathBuilder.relativeLineTo(30f, 30f)
-        val state = pathBuilder.getState()
+        val state = pathBuilder.state
         assertEquals(80f, state.lastX)
         assertEquals(80f, state.lastY)
     }
@@ -78,7 +78,7 @@ class RelativePathBuilderTests {
     fun moveTo_startsNewContour() {
         val pathBuilder = CallRecordingPathBuilder()
         pathBuilder.moveTo(50f, 50f)
-        val state = pathBuilder.getState()
+        val state = pathBuilder.state
         assertEquals(50f, state.closeToX)
         assertEquals(50f, state.closeToY)
     }
@@ -88,7 +88,7 @@ class RelativePathBuilderTests {
         val pathBuilder = CallRecordingPathBuilder()
         pathBuilder.moveTo(50f, 50f)
         pathBuilder.relativeMoveTo(30f, 30f)
-        val state = pathBuilder.getState()
+        val state = pathBuilder.state
         assertEquals(80f, state.lastX)
         assertEquals(80f, state.lastY)
     }
@@ -108,7 +108,7 @@ class RelativePathBuilderTests {
         val pathBuilder = CallRecordingPathBuilder()
         pathBuilder.moveTo(50f, 50f)
         pathBuilder.relativeQuadraticTo(10f, 0f, 30f, 30f)
-        val state = pathBuilder.getState()
+        val state = pathBuilder.state
         assertEquals(80f, state.lastX)
         assertEquals(80f, state.lastY)
     }
@@ -129,7 +129,7 @@ class RelativePathBuilderTests {
         pathBuilder.moveTo(50f, 50f)
         pathBuilder.lineTo(100f, 100f)
         pathBuilder.close()
-        val state = pathBuilder.getState()
+        val state = pathBuilder.state
         assertEquals(50f, state.lastX)
         assertEquals(50f, state.lastY)
     }
@@ -139,7 +139,7 @@ class RelativePathBuilderTests {
         val pathBuilder = CallRecordingPathBuilder()
         pathBuilder.moveTo(50f, 50f)
         pathBuilder.reset()
-        val state = pathBuilder.getState()
+        val state = pathBuilder.state
         assertEquals(0f, state.closeToX)
         assertEquals(0f, state.closeToY)
     }
@@ -149,7 +149,7 @@ class RelativePathBuilderTests {
         val pathBuilder = CallRecordingPathBuilder()
         pathBuilder.moveTo(50f, 50f)
         pathBuilder.reset()
-        val state = pathBuilder.getState()
+        val state = pathBuilder.state
         assertEquals(0f, state.lastX)
         assertEquals(0f, state.lastY)
     }

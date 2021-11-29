@@ -27,5 +27,5 @@ include(
     "element",
     "kanvas",
     "sample",
-    "selection"
+    "selection",
 )

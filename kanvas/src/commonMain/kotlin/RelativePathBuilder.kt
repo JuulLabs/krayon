@@ -16,7 +16,8 @@ public abstract class RelativePathBuilder<P> : PathBuilder<P> {
     private var lastX: Float = 0f
     private var lastY: Float = 0f
 
-    public fun getState(): State = State(closeToX, closeToY, lastX, lastY)
+    public val state: State
+        get() = State(closeToX, closeToY, lastX, lastY)
 
     private fun updatePosition(x: Float, y: Float) {
         lastX = x

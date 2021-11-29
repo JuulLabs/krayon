@@ -19,10 +19,6 @@ kotlin {
     js().browser()
 
     sourceSets {
-        all {
-            languageSettings.enableLanguageFeature("InlineClasses")
-        }
-
         val commonTest by getting {
             dependencies {
                 implementation(tuulbox.test())

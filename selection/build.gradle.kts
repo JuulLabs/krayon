@@ -19,10 +19,6 @@ kotlin {
     js().browser()
 
     sourceSets {
-        all {
-            languageSettings.enableLanguageFeature("InlineClasses")
-        }
-
         val commonMain by getting {
             dependencies {
                 api(project(":element"))
