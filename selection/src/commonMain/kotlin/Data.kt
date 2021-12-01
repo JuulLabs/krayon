@@ -2,10 +2,12 @@ package com.juul.krayon.selection
 
 import com.juul.krayon.element.Element
 
+/** See analogous [d3 function](https://github.com/d3/d3-selection#selection_data). */
 public fun <E : Element, D1, D2> Selection<E, D1>.data(
     value: List<D2>,
 ): UpdateSelection<E, D2> = data { _, _ -> value }
 
+/** See analogous [d3 function](https://github.com/d3/d3-selection#selection_data). */
 public fun <E : Element, D1, D2> Selection<E, D1>.data(
     value: (index: Int, group: Group<E, D1>) -> List<D2>,
 ): UpdateSelection<E, D2> {

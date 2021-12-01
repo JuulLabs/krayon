@@ -31,8 +31,7 @@ fun main() {
     val canvasElement = document.getElementById("canvas") as HTMLCanvasElement
     val kanvas = HtmlCanvas(canvasElement)
 
-    val root = RootElement()
-    val transform = root.appendChild(TransformElement())
+    val root = TransformElement()
 
     GlobalScope.launch {
         awaitWebFonts("Roboto Slab")
@@ -43,27 +42,25 @@ fun main() {
             }
         }
 
-        launch {
-            data.collect { data ->
-                kanvas.drawRect(0f, 0f, kanvas.width, kanvas.height, kanvas.buildPaint(Paint.Fill(white)))
+        data.collect { data ->
+            kanvas.drawRect(0f, 0f, kanvas.width, kanvas.height, kanvas.buildPaint(Paint.Fill(white)))
 
-                transform.transform = Transform.Scale(vertical = 480 / (data.maxOrNull() ?: 1f), pivotY = 480f)
+            root.transform = Transform.Scale(vertical = 480 / (data.maxOrNull() ?: 1f), pivotY = 480f)
 
-                transform.asSelection()
-                    .selectAll(RectangleElement)
-                    .data(data)
-                    .join(
-                        onEnter = {
-                            append(RectangleElement)
-                                .each { paint = Paint.Fill(Random.nextColor()) }
-                                .each { bottom = kanvas.height }
-                        }
-                    ).each { left = it.index * 10f }
-                    .each { right = left + 10f }
-                    .each { top = bottom - it.datum }
+            root.asSelection()
+                .selectAll(RectangleElement)
+                .data(data)
+                .join(
+                    onEnter = {
+                        append(RectangleElement)
+                            .each { paint = Paint.Fill(Random.nextColor()) }
+                            .each { bottom = kanvas.height }
+                    }
+                ).each { left = it.index * 10f }
+                .each { right = left + 10f }
+                .each { top = bottom - it.datum }
 
-                root.draw(kanvas)
-            }
+            root.draw(kanvas)
         }
     }
 }

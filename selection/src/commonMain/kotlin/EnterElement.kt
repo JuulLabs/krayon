@@ -16,6 +16,6 @@ public class EnterElement : Element() {
         checkNotNull(parent).insertBefore(child, reference)
 
     override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
-        error("$tag should not be present in the DOM.")
+        error("$tag should not be present in the element tree.")
     }
 }
