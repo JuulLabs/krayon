@@ -24,9 +24,11 @@ pluginManagement {
 include(
     "chart",
     "color",
+    "element",
     "kanvas",
     "interpolate",
-    "scale",
     "sample",
+    "scale",
     "shape",
+    "selection",
 )

@@ -19,6 +19,12 @@ kotlin {
     js().browser()
 
     sourceSets {
+        val commonMain by getting {
+            dependencies {
+                api(project(":kanvas"))
+            }
+        }
+
         val commonTest by getting {
             dependencies {
                 implementation(tuulbox.test())

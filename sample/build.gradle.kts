@@ -14,7 +14,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":chart"))
+                implementation(project(":selection"))
                 implementation(project(":scale"))
                 implementation(project(":shape"))
                 implementation(kotlin("stdlib"))
