@@ -58,10 +58,10 @@ public abstract class Element {
     }
 }
 
-public val Element.descendents: Sequence<Element>
+public val Element.descendants: Sequence<Element>
     get() = sequence {
         for (child in children) {
             yield(child)
-            yieldAll(child.descendents)
+            yieldAll(child.descendants)
         }
     }
