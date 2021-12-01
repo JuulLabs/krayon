@@ -12,7 +12,7 @@ public class TransformElement : Element() {
 
     override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
         canvas.withTransform(transform) {
-            descendents.forEach { it.draw(canvas) }
+            children.forEach { it.draw(canvas) }
         }
     }
 
