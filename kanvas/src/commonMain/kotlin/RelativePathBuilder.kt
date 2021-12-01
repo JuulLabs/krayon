@@ -3,11 +3,21 @@ package com.juul.krayon.kanvas
 /** Handles relative path building when the underlying output type can't. */
 public abstract class RelativePathBuilder<P> : PathBuilder<P> {
 
+    public data class State(
+        val closeToX: Float = 0f,
+        val closeToY: Float = 0f,
+        val lastX: Float = 0f,
+        val lastY: Float = 0f,
+    )
+
     private var closeToX: Float = 0f
     private var closeToY: Float = 0f
 
     private var lastX: Float = 0f
     private var lastY: Float = 0f
+
+    public val state: State
+        get() = State(closeToX, closeToY, lastX, lastY)
 
     private fun updatePosition(x: Float, y: Float) {
         lastX = x
@@ -90,15 +100,4 @@ public abstract class RelativePathBuilder<P> : PathBuilder<P> {
         closeToX = 0f
         closeToY = 0f
     }
-
-    /** No @TestOnly or @VisibleForTesting or anything in Kotlin Multiplatform. */
-    internal fun getTestState() = TestState(closeToX, closeToY, lastX, lastY)
-
-    /** No @TestOnly or @VisibleForTesting or anything in Kotlin Multiplatform. */
-    internal data class TestState(
-        val closeToX: Float = 0f,
-        val closeToY: Float = 0f,
-        val lastX: Float = 0f,
-        val lastY: Float = 0f,
-    )
 }

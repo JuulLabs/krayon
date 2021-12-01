@@ -6,40 +6,40 @@ interface CallRecord {
     val calls: List<Call>
 }
 
-inline fun CallRecord.verify(
+fun CallRecord.verify(
     expectation: String,
-    crossinline condition: (calls: List<Call>) -> Boolean,
+    condition: (calls: List<Call>) -> Boolean,
 ) {
     if (!calls.run(condition)) {
         fail("Unable to verify `$expectation`. Recorded calls:\n${calls.joinToString(separator = "\n")}")
     }
 }
 
-inline fun CallRecord.verifyAll(
+fun CallRecord.verifyAll(
     expectation: String,
-    crossinline predicate: (Call) -> Boolean,
+    predicate: (Call) -> Boolean,
 ) = verify(expectation) { it.all(predicate) }
 
-inline fun CallRecord.verifyAny(
+fun CallRecord.verifyAny(
     expectation: String,
-    crossinline predicate: (Call) -> Boolean,
+    predicate: (Call) -> Boolean,
 ) = verify(expectation) { it.any(predicate) }
 
 fun CallRecord.verifyCallCount(expectedCount: Int) {
     verify("call count is $expectedCount") { it.size == expectedCount }
 }
 
-inline fun CallRecord.verifyFirst(
+fun CallRecord.verifyFirst(
     expectation: String,
-    crossinline predicate: (Call) -> Boolean,
+    predicate: (Call) -> Boolean,
 ) = verify(expectation) { it.first().run(predicate) }
 
-inline fun CallRecord.verifyLast(
+fun CallRecord.verifyLast(
     expectation: String,
-    crossinline predicate: (Call) -> Boolean,
+    predicate: (Call) -> Boolean,
 ) = verify(expectation) { it.last().run(predicate) }
 
-inline fun CallRecord.verifySingle(
+fun CallRecord.verifySingle(
     expectation: String,
-    crossinline predicate: (Call) -> Boolean,
+    predicate: (Call) -> Boolean,
 ) = verify(expectation) { it.count(predicate) == 1 }
