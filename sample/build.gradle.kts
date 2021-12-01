@@ -31,6 +31,9 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
+                implementation(androidx.appCompat())
+                implementation(androidx.lifecycle("runtime-ktx"))
+                implementation(kotlinx.coroutines("android"))
             }
         }
 

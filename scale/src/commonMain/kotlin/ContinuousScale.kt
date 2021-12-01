@@ -6,6 +6,7 @@ import com.juul.krayon.interpolate.Inverter
 import com.juul.krayon.interpolate.interpolator
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
+import kotlin.jvm.JvmName
 
 private val DEFAULT_DOMAIN = listOf(0f, 1f)
 private val DEFAULT_RANGE = listOf(0f, 1f)
@@ -31,9 +32,16 @@ public fun <R> ContinuousScale<*, R>.domain(vararg domain: Instant): ContinuousS
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: LocalDateTime): ContinuousScale<LocalDateTime, R> = domain(domain.toList())
 
 // List domains
+@JvmName("domainInt")
 public fun <R> ContinuousScale<*, R>.domain(domain: List<Int>): ContinuousScale<Int, R> = domain(domain.toList(), ::interpolator)
+
+@JvmName("domainFloat")
 public fun <R> ContinuousScale<*, R>.domain(domain: List<Float>): ContinuousScale<Float, R> = domain(domain.toList(), ::interpolator)
+
+@JvmName("domainInstant")
 public fun <R> ContinuousScale<*, R>.domain(domain: List<Instant>): ContinuousScale<Instant, R> = domain(domain.toList(), ::interpolator)
+
+@JvmName("domainLocalDateTime")
 public fun <R> ContinuousScale<*, R>.domain(domain: List<LocalDateTime>): ContinuousScale<LocalDateTime, R> = domain(domain.toList(), ::interpolator)
 
 // Vararg ranges
@@ -46,10 +54,19 @@ public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: LocalDa
 // public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Color): ContinuousScale<D, Color> = range(range.toList())
 
 // List ranges
+@JvmName("rangeInt")
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Int>): ContinuousScale<D, Int> = range(range, ::interpolator)
+
+@JvmName("rangeFloat")
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Float>): ContinuousScale<D, Float> = range(range, ::interpolator)
+
+@JvmName("rangeInstant")
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Instant>): ContinuousScale<D, Instant> = range(range, ::interpolator)
+
+@JvmName("rangeLocalDateTime")
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<LocalDateTime>): ContinuousScale<D, LocalDateTime> = range(range, ::interpolator)
+
+@JvmName("rangeColor")
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Color>): ContinuousScale<D, Color> = range(range, ::interpolator)
 
 public class ContinuousScale<D : Comparable<D>, R> internal constructor(
