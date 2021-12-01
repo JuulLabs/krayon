@@ -42,7 +42,7 @@ public abstract class Element {
         return child
     }
 
-    public abstract fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>)
+    public abstract fun <PATH> draw(canvas: Kanvas<PATH>)
 
     override fun toString(): String = buildString {
         append('(')

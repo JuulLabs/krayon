@@ -12,7 +12,8 @@ public fun AndroidKanvas(
     context: Context,
     canvas: Canvas,
     scalingFactor: Float = 1f,
-): AndroidKanvas = AndroidKanvas(context, canvas as Canvas?, scalingFactor)
+    paintCache: PaintCache = PaintCache(context),
+): AndroidKanvas = AndroidKanvas(context, canvas as Canvas?, scalingFactor, paintCache)
 
 /**
  * Implementation of [Kanvas] which wraps a native Android [Canvas].
@@ -22,9 +23,10 @@ public fun AndroidKanvas(
  */
 public class AndroidKanvas internal constructor(
     private val context: Context,
-    private var canvas: android.graphics.Canvas?,
+    private var canvas: Canvas?,
     private val scalingFactor: Float = 1f,
-) : Kanvas<AndroidPaint, AndroidPath> {
+    private val paintCache: PaintCache = PaintCache(context),
+) : Kanvas<AndroidPath> {
 
     private val preTransform = Transform.Scale(horizontal = scalingFactor, vertical = scalingFactor)
 
@@ -43,12 +45,22 @@ public class AndroidKanvas internal constructor(
         }
     }
 
-    override fun buildPaint(paint: Paint): AndroidPaint = paint.toAndroid(context)
-
     override fun buildPath(actions: PathBuilder<*>.() -> Unit): AndroidPath =
         AndroidPathBuilder().apply(actions).build()
 
     private fun requireCanvas(): Canvas = checkNotNull(canvas)
+
+    private inline fun withPaint(
+        paint: Paint,
+        crossinline action: Canvas.(AndroidPaint) -> Unit,
+    ) {
+        if (paint is Paint.FillAndStroke) {
+            requireCanvas().action(paintCache[paint.fill])
+            requireCanvas().action(paintCache[paint.stroke])
+        } else {
+            requireCanvas().action(paintCache[paint])
+        }
+    }
 
     override fun drawArc(
         left: Float,
@@ -57,39 +69,46 @@ public class AndroidKanvas internal constructor(
         bottom: Float,
         startAngle: Float,
         sweepAngle: Float,
-        paint: AndroidPaint,
+        paint: Paint,
     ) {
+        require(paint !is Paint.Text)
         compatRectF.set(left, top, right, bottom)
-        requireCanvas().drawArc(compatRectF, startAngle, sweepAngle, false, paint)
+        withPaint(paint) { drawArc(compatRectF, startAngle, sweepAngle, false, it) }
     }
 
-    override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: AndroidPaint) {
-        requireCanvas().drawCircle(centerX, centerY, radius, paint)
+    override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: Paint) {
+        require(paint !is Paint.Text)
+        withPaint(paint) { drawCircle(centerX, centerY, radius, it) }
     }
 
     override fun drawColor(color: Color) {
         requireCanvas().drawColor(color.argb)
     }
 
-    override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: AndroidPaint) {
-        requireCanvas().drawLine(startX, startY, endX, endY, paint)
+    override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: Paint) {
+        require(paint !is Paint.Text)
+        withPaint(paint) { drawLine(startX, startY, endX, endY, it) }
     }
 
-    override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: AndroidPaint) {
+    override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
+        require(paint !is Paint.Text)
         compatRectF.set(left, top, right, bottom)
-        requireCanvas().drawOval(compatRectF, paint)
+        withPaint(paint) { drawOval(compatRectF, it) }
     }
 
-    override fun drawPath(path: AndroidPath, paint: AndroidPaint) {
-        requireCanvas().drawPath(path, paint)
+    override fun drawPath(path: AndroidPath, paint: Paint) {
+        require(paint !is Paint.Text)
+        withPaint(paint) { drawPath(path, it) }
     }
 
-    override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: AndroidPaint) {
-        requireCanvas().drawRect(left, top, right, bottom, paint)
+    override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
+        require(paint !is Paint.Text)
+        withPaint(paint) { drawRect(left, top, right, bottom, it) }
     }
 
-    override fun drawText(text: CharSequence, x: Float, y: Float, paint: AndroidPaint) {
-        requireCanvas().drawText(text, 0, text.length, x, y, paint)
+    override fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint) {
+        require(paint is Paint.Text)
+        withPaint(paint) { drawText(text, 0, text.length, x, y, it) }
     }
 
     @Suppress("DEPRECATION")

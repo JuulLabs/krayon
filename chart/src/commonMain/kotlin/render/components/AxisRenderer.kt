@@ -20,12 +20,12 @@ public class AxisRenderer(
         val end: Float,
     )
 
-    override fun <PAINT, PATH> render(data: Specification, canvas: Kanvas<PAINT, PATH>) {
+    override fun <PATH> render(data: Specification, canvas: Kanvas<PATH>) {
         val strokePaint = style.stroke ?: return
         val (endX, endY) = when (style.orientation) {
             Orientation.Horizontal -> data.end to data.startY
             Orientation.Vertical -> data.startX to data.end
         }
-        canvas.drawLine(data.startX, data.startY, endX, endY, canvas.buildPaint(strokePaint))
+        canvas.drawLine(data.startX, data.startY, endX, endY, strokePaint)
     }
 }

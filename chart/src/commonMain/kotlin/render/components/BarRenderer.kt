@@ -37,10 +37,10 @@ public class BarRenderer(
         public val bars: ClusteredDataSet<Float>,
     )
 
-    override fun <PAINT, PATH> render(data: Specification, canvas: Kanvas<PAINT, PATH>) {
+    override fun <PATH> render(data: Specification, canvas: Kanvas<PATH>) {
         val strokeWidth = 8f
         val paints = style.colors.take(data.bars.seriesData.size)
-            .map { color -> canvas.buildPaint(Paint.Stroke(color, strokeWidth, Paint.Stroke.Cap.Round)) }
+            .map { color -> Paint.Stroke(color, strokeWidth, Paint.Stroke.Cap.Round) }
             .toList()
 
         canvas.withClip(Clip.Rect(data.left, data.top, data.right, data.bottom)) {

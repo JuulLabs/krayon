@@ -1,12 +1,12 @@
 package com.juul.krayon.sample
 
+import com.juul.krayon.color.black
 import com.juul.krayon.color.nextColor
 import com.juul.krayon.color.white
 import com.juul.krayon.element.RectangleElement
-import com.juul.krayon.element.TransformElement
+import com.juul.krayon.element.RootElement
 import com.juul.krayon.kanvas.HtmlCanvas
 import com.juul.krayon.kanvas.Paint
-import com.juul.krayon.kanvas.Transform
 import com.juul.krayon.selection.append
 import com.juul.krayon.selection.asSelection
 import com.juul.krayon.selection.data
@@ -30,7 +30,7 @@ fun main() {
     val canvasElement = document.getElementById("canvas") as HTMLCanvasElement
     val kanvas = HtmlCanvas(canvasElement)
 
-    val root = TransformElement()
+    val root = RootElement()
 
     GlobalScope.launch {
         awaitWebFonts("Roboto Slab")
@@ -42,9 +42,7 @@ fun main() {
         }
 
         data.collect { data ->
-            kanvas.drawRect(0f, 0f, kanvas.width, kanvas.height, kanvas.buildPaint(Paint.Fill(white)))
-
-            root.transform = Transform.Scale(vertical = 480 / (data.maxOrNull() ?: 1f), pivotY = 480f)
+            kanvas.drawRect(0f, 0f, kanvas.width, kanvas.height, Paint.Fill(white))
 
             root.asSelection()
                 .selectAll(RectangleElement)
@@ -52,12 +50,12 @@ fun main() {
                 .join(
                     onEnter = {
                         append(RectangleElement)
-                            .each { paint = Paint.Fill(Random.nextColor()) }
-                            .each { bottom = kanvas.height }
+                            .each { paint = Paint.FillAndStroke(Paint.Fill(Random.nextColor()), Paint.Stroke(black, 2f)) }
+                            .each { bottom = kanvas.height - 1f }
                     }
-                ).each { left = it.index * 10f }
+                ).each { left = 1f + it.index * 10f }
                 .each { right = left + 10f }
-                .each { top = bottom - it.datum }
+                .each { top = bottom - (5 * it.datum) }
 
             root.draw(kanvas)
         }

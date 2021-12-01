@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.util.TypedValue.COMPLEX_UNIT_DIP
 import android.util.TypedValue.applyDimension
 import android.view.View
-import android.graphics.Paint as AndroidPaint
 import android.graphics.Path as AndroidPath
 
 /** Base class for custom [View]s implemented using Krayon. */
@@ -33,5 +32,5 @@ abstract class KanvasView(
      * Unlike [View.onDraw], you should use [Canvas.width] and [Canvas.height] instead of the view's
      * width and height.
      */
-    protected abstract fun onDraw(canvas: Kanvas<AndroidPaint, AndroidPath>)
+    protected abstract fun onDraw(canvas: Kanvas<AndroidPath>)
 }

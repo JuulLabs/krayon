@@ -19,7 +19,7 @@ import kotlin.math.PI
 
 public class HtmlCanvas(
     element: HTMLCanvasElement,
-) : Kanvas<Paint, Path2D> {
+) : Kanvas<Path2D> {
 
     private val context = element.getContext("2d") as CanvasRenderingContext2D
 
@@ -28,8 +28,6 @@ public class HtmlCanvas(
 
     override val height: Float
         get() = context.canvas.height.toFloat()
-
-    override fun buildPaint(paint: Paint): Paint = paint
 
     override fun buildPath(actions: PathBuilder<*>.() -> Unit): Path2D =
         Path2DBuilder().apply(actions).build()
@@ -53,10 +51,8 @@ public class HtmlCanvas(
         val startAngleRadians = startAngle * PI / 180f
         val endAngleRadians = (startAngle + sweepAngle) * PI / 180f
         context.ellipse(x, y, radiusX, radiusY, rotation = 0.0, startAngleRadians, endAngleRadians)
-        when (paint) {
-            is Paint.Stroke -> context.stroke()
-            else -> context.fill()
-        }
+        if (paint !is Paint.Stroke) context.fill()
+        if (paint !is Paint.Fill) context.stroke()
     }
 
     override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: Paint) {
@@ -64,10 +60,8 @@ public class HtmlCanvas(
         applyBrush(paint)
         context.beginPath()
         context.arc(centerX.toDouble(), centerY.toDouble(), radius.toDouble(), 0.0, 2 * PI)
-        when (paint) {
-            is Paint.Stroke -> context.stroke()
-            else -> context.fill()
-        }
+        if (paint !is Paint.Stroke) context.fill()
+        if (paint !is Paint.Fill) context.stroke()
     }
 
     override fun drawColor(color: Color) {
@@ -80,10 +74,8 @@ public class HtmlCanvas(
         context.beginPath()
         context.moveTo(startX.toDouble(), startY.toDouble())
         context.lineTo(endX.toDouble(), endY.toDouble())
-        when (paint) {
-            is Paint.Stroke -> context.stroke()
-            else -> context.fill()
-        }
+        if (paint !is Paint.Stroke) context.fill()
+        if (paint !is Paint.Fill) context.stroke()
     }
 
     override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
@@ -94,19 +86,15 @@ public class HtmlCanvas(
         require(paint !is Paint.Text)
         applyBrush(paint)
         context.beginPath() // TODO: Look up if this is necessary.
-        when (paint) {
-            is Paint.Stroke -> context.stroke(path)
-            else -> context.fill(path)
-        }
+        if (paint !is Paint.Stroke) context.fill(path)
+        if (paint !is Paint.Fill) context.stroke(path)
     }
 
     override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
         require(paint !is Paint.Text)
         applyBrush(paint)
-        when (paint) {
-            is Paint.Stroke -> context.strokeRect(left.toDouble(), top.toDouble(), right.toDouble() - left, bottom.toDouble() - top)
-            else -> context.fillRect(left.toDouble(), top.toDouble(), right.toDouble() - left, bottom.toDouble() - top)
-        }
+        if (paint !is Paint.Stroke) context.fillRect(left.toDouble(), top.toDouble(), right.toDouble() - left, bottom.toDouble() - top)
+        if (paint !is Paint.Fill) context.strokeRect(left.toDouble(), top.toDouble(), right.toDouble() - left, bottom.toDouble() - top)
     }
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint) {
@@ -186,10 +174,16 @@ public class HtmlCanvas(
         context.restore()
     }
 
-    private fun applyBrush(paint: Paint) = when (paint) {
-        is Paint.Fill -> applyBrush(paint)
-        is Paint.Stroke -> applyBrush(paint)
-        is Paint.Text -> applyBrush(paint)
+    private fun applyBrush(paint: Paint) {
+        when (paint) {
+            is Paint.Fill -> applyBrush(paint)
+            is Paint.Stroke -> applyBrush(paint)
+            is Paint.FillAndStroke -> {
+                applyBrush(paint.fill)
+                applyBrush(paint.stroke)
+            }
+            is Paint.Text -> applyBrush(paint)
+        }
     }
 
     private fun applyBrush(paint: Paint.Fill) {
@@ -197,6 +191,7 @@ public class HtmlCanvas(
     }
 
     private fun applyBrush(paint: Paint.Stroke) {
+        context.fillStyle
         context.strokeStyle = paint.color.toHexString()
         context.lineWidth = paint.width.toDouble()
         context.lineCap = when (paint.cap) {

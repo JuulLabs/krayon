@@ -22,7 +22,7 @@ public open class BarChartRenderer(
     private val yAxisRenderer = AxisRenderer(style.yAxisStyle)
     private val barRenderer = BarRenderer(style.barStyle)
 
-    override fun <PAINT, PATH> render(data: ClusteredDataSet<Float>, canvas: Kanvas<PAINT, PATH>) {
+    override fun <PATH> render(data: ClusteredDataSet<Float>, canvas: Kanvas<PATH>) {
         val dataAreaLeft = AXIS_PAD
         val dataAreaTop = AXIS_PAD
         val dataAreaRight = canvas.width - AXIS_PAD

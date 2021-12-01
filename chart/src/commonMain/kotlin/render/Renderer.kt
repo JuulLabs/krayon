@@ -16,5 +16,5 @@ public interface Renderer<DATA> {
      * If this is used as a live UI component, it is important to call this in a background thread,
      * cache results, or take other precautions to avoid UI hangs.
      */
-    public fun <PAINT, PATH> render(data: DATA, canvas: Kanvas<PAINT, PATH>)
+    public fun <PATH> render(data: DATA, canvas: Kanvas<PATH>)
 }

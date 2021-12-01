@@ -6,7 +6,7 @@ public class RootElement : Element() {
 
     override val tag: String get() = "root"
 
-    override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
+    override fun <PATH> draw(canvas: Kanvas<PATH>) {
         children.forEach { it.draw(canvas) }
     }
 

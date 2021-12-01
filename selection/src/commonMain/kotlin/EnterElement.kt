@@ -15,7 +15,7 @@ public class EnterElement : Element() {
     override fun <E : Element> insertBefore(child: E, reference: Element?): E =
         checkNotNull(parent).insertBefore(child, reference)
 
-    override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
+    override fun <PATH> draw(canvas: Kanvas<PATH>) {
         error("$tag should not be present in the element tree.")
     }
 }

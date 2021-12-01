@@ -67,6 +67,11 @@ public sealed class Paint {
         }
     }
 
+    public data class FillAndStroke(
+        public val fill: Fill,
+        public val stroke: Stroke
+    ) : Paint()
+
     /** Similar to [Fill], but carrying additional information necessary for text. */
     public data class Text(
         public val color: Color,
