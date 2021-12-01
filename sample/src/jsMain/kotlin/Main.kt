@@ -3,7 +3,6 @@ package com.juul.krayon.sample
 import com.juul.krayon.color.nextColor
 import com.juul.krayon.color.white
 import com.juul.krayon.element.RectangleElement
-import com.juul.krayon.element.RootElement
 import com.juul.krayon.element.TransformElement
 import com.juul.krayon.kanvas.HtmlCanvas
 import com.juul.krayon.kanvas.Paint
