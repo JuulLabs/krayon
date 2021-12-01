@@ -11,7 +11,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":chart"))
+                implementation(project(":chart"))
+                implementation(project(":scale"))
                 implementation(kotlin("stdlib"))
             }
         }

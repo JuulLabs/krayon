@@ -6,7 +6,7 @@ object kotlinx {
     ) = "org.jetbrains.kotlinx:kotlinx-coroutines-$module:$version"
 
     fun datetime(
-        version: String = "0.2.1"
+        version: String = "0.3.1"
     ) = "org.jetbrains.kotlinx:kotlinx-datetime:$version"
 }
 

@@ -7,12 +7,20 @@ import com.juul.krayon.kanvas.Font
 import com.juul.krayon.kanvas.HtmlCanvas
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.serif
+import com.juul.krayon.scale.range
+import com.juul.krayon.scale.scale
 import kotlinx.browser.document
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.await
 import kotlinx.coroutines.launch
 import org.w3c.dom.HTMLCanvasElement
 import kotlin.js.Promise
+import kotlin.math.sin
+
+private data class Point(
+    val x: Double,
+    val y: Double,
+)
 
 fun main() {
     val canvasElement = document.getElementById("canvas") as HTMLCanvasElement
@@ -32,6 +40,14 @@ fun main() {
         render()
         canvasElement.onclick = { render() }
     }
+
+    val data = (0 until 40).map { i ->
+        Point(x = i / 39.0, y = (sin(i / 3.0) + 2) / 4)
+            .takeUnless { i % 5 == 0 }
+    }
+
+    val x = scale().range(0f, kanvas.width)
+    val y = scale().range(kanvas.height, 0f)
 }
 
 private suspend fun awaitWebFonts(vararg fonts: String) {

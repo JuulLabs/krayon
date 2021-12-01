@@ -25,5 +25,8 @@ include(
     "chart",
     "color",
     "kanvas",
-    "sample"
+    "interpolate",
+    "scale",
+    "sample",
+    "shape",
 )
