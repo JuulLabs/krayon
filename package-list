@@ -8,7 +8,11 @@ com.juul.krayon.chart.render
 com.juul.krayon.chart.render.components
 module:color
 com.juul.krayon.color
+module:element
+com.juul.krayon.element
 module:kanvas
 com.juul.krayon.kanvas
 com.juul.krayon.kanvas.svg
 com.juul.krayon.kanvas.xml
+module:selection
+com.juul.krayon.selection
