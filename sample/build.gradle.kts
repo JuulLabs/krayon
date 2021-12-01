@@ -6,12 +6,16 @@ plugins {
 
 kotlin {
     android()
-    js().browser()
+    js {
+        browser()
+        binaries.executable()
+    }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
                 api(project(":chart"))
+                api(project(":selection"))
                 implementation(kotlin("stdlib"))
             }
         }

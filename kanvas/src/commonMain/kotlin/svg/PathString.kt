@@ -4,9 +4,11 @@ import com.juul.krayon.kanvas.PathBuilder
 import com.juul.krayon.kanvas.getEllipseX
 import com.juul.krayon.kanvas.getEllipseY
 import com.juul.krayon.kanvas.xml.NumberFormatter
+import kotlin.jvm.JvmInline
 import kotlin.math.abs
 
-public inline class PathString(public val string: String)
+@JvmInline
+public value class PathString(public val string: String)
 
 internal class PathStringBuilder(private val fmt: NumberFormatter) : PathBuilder<PathString> {
     private val buffer = StringBuilder()

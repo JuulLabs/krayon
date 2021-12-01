@@ -1,9 +1,11 @@
 package com.juul.krayon.color
 
+import kotlin.jvm.JvmInline
 import kotlin.math.roundToInt
 
 /** A color in ARGB color space. */
-public inline class Color(public val argb: Int) {
+@JvmInline
+public value class Color(public val argb: Int) {
 
     /** Create a color from component integers. Components are masked to their last eight bits. */
     public constructor(alpha: Int, red: Int, green: Int, blue: Int) :
