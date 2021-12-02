@@ -3,7 +3,12 @@ package com.juul.krayon.scale
 public inline fun <I, O : Comparable<O>> List<I>.extent(
     crossinline selector: (I) -> O?,
 ): List<O> {
-    // TODO: make this more efficient even though it'll be more lines
-    val buffer = mapNotNull(selector)
-    return listOf(buffer.minOf { it }, buffer.maxOf { it })
+    var min: O? = null
+    var max: O? = null
+    for (input in this) {
+        val output = selector(input) ?: continue
+        if (min == null || min > output) min = output
+        if (max == null || max < output) max = output
+    }
+    return listOf(checkNotNull(min), checkNotNull(max))
 }
