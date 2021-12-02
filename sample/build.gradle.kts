@@ -18,6 +18,8 @@ kotlin {
                 implementation(project(":scale"))
                 implementation(project(":shape"))
                 implementation(kotlin("stdlib"))
+                implementation(kotlinx.coroutines())
+                implementation(kotlinx.datetime())
             }
         }
 
@@ -31,6 +33,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
+                implementation(project(":element-view"))
                 implementation(androidx.appCompat())
                 implementation(androidx.lifecycle("runtime-ktx"))
                 implementation(kotlinx.coroutines("android"))

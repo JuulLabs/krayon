@@ -4,8 +4,9 @@ import com.juul.krayon.color.Color
 import com.juul.krayon.kanvas.Clip
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
-import com.juul.krayon.kanvas.PathBuilder
+import com.juul.krayon.kanvas.Path
 import com.juul.krayon.kanvas.Transform
+import com.juul.krayon.kanvas.build
 import com.juul.krayon.kanvas.split
 import com.juul.krayon.kanvas.xml.NumberFormatter
 import com.juul.krayon.kanvas.xml.ToStringFormatter
@@ -15,7 +16,7 @@ import com.juul.krayon.kanvas.xml.escape
 public class SvgKanvas(
     override val width: Float,
     override val height: Float,
-    private val formatter: NumberFormatter = ToStringFormatter()
+    private val formatter: NumberFormatter = ToStringFormatter(),
 ) : Kanvas<Paint, PathString> {
 
     /** Root XML element. */
@@ -31,8 +32,8 @@ public class SvgKanvas(
 
     override fun buildPaint(paint: Paint): Paint = paint
 
-    override fun buildPath(actions: PathBuilder<*>.() -> Unit): PathString =
-        PathStringBuilder(formatter).apply(actions).build()
+    override fun buildPath(actions: Path): PathString =
+        PathStringBuilder(formatter).build(actions)
 
     override fun drawArc(
         left: Float,

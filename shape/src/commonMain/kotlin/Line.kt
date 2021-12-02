@@ -1,6 +1,6 @@
 package com.juul.krayon.shape
 
-import com.juul.krayon.kanvas.PathBuilder
+import com.juul.krayon.kanvas.Path
 import com.juul.krayon.shape.curve.Curve
 import com.juul.krayon.shape.curve.Linear
 
@@ -23,7 +23,7 @@ public class Line<D : Any> internal constructor() : Shape<D> {
     public fun y(y: Float): Line<D> = this.apply { this.y = { y } }
     public fun y(y: (Arguments<D>) -> Float): Line<D> = this.apply { this.y = y }
 
-    override fun render(data: List<D?>): PathBuilder<*>.() -> Unit = {
+    override fun render(data: List<D?>): Path = Path {
         var currentlyDefined = false
         val arguments = Arguments(Unit, -1, data)
         for ((index, datum) in data.withIndex()) {
