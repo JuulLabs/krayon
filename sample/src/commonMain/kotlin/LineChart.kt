@@ -23,8 +23,12 @@ private val dashedLinePaint = Paint.Stroke(darkSlateBlue, 0.5f, dash = Paint.Str
 private val circlePaint = Paint.Stroke(steelBlue, 1f)
 
 internal fun lineChart(root: RootElement, width: Float, height: Float, data: List<Point?>) {
-    val x = scale().domain(data.extent { it?.x }).range(10f, width - 10)
-    val y = scale().domain(-1f, 1f).range(height - 10, 0f + 10)
+    val x = scale()
+        .domain(data.extent { it?.x })
+        .range(10f, width - 10)
+    val y = scale()
+        .domain(-1f, 1f)
+        .range(height - 10, 0f + 10)
 
     val line = line<Point>()
         .x { (p) -> x.scale(p.x) }
@@ -35,10 +39,13 @@ internal fun lineChart(root: RootElement, width: Float, height: Float, data: Lis
         .data(listOf(data.filterNotNull(), data))
         .join(
             onEnter = {
-                append(PathElement)
-                    .each { (_, i) -> paint = if (i == 0) dashedLinePaint else solidLinePaint }
+                append(PathElement).each { (_, i) ->
+                    paint = if (i == 0) dashedLinePaint else solidLinePaint
+                }
             }
-        ).each { (d) -> path = line.render(d) }
+        ).each { (d) ->
+            path = line.render(d)
+        }
 
     // TODO: Update with FillAndStroke
     root.asSelection()
@@ -46,9 +53,10 @@ internal fun lineChart(root: RootElement, width: Float, height: Float, data: Lis
         .data(data.filterNotNull())
         .join(
             onEnter = {
-                append(CircleElement)
-                    .each { radius = 3f }
-                    .each { paint = circlePaint }
+                append(CircleElement).each {
+                    radius = 3f
+                    paint = circlePaint
+                }
             }
         ).each { (d) ->
             centerX = x.scale(d.x)
