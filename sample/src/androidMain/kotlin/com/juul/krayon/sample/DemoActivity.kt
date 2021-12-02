@@ -13,8 +13,6 @@ class DemoActivity : AppCompatActivity() {
         val binding = ActivityDemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         @OptIn(ExperimentalTime::class)
         binding.sineView.adapter = ElementView.Adapter(
             dataSource = movingSineWave(),

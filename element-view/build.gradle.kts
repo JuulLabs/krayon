@@ -2,15 +2,8 @@ plugins {
     id("com.android.library")
     kotlin("multiplatform")
     id("org.jmailen.kotlinter")
-    jacoco
     id("org.jetbrains.dokka")
     id("com.vanniktech.maven.publish")
-}
-
-apply(from = rootProject.file("gradle/jacoco.gradle.kts"))
-
-jacoco {
-    toolVersion = "0.8.7"
 }
 
 kotlin {
