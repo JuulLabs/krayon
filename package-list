@@ -5,6 +5,8 @@ module:color
 com.juul.krayon.color
 module:element
 com.juul.krayon.element
+module:element-view
+com.juul.krayon.element.view
 module:interpolate
 com.juul.krayon.interpolate
 module:kanvas
