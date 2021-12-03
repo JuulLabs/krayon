@@ -1,8 +1,10 @@
 package com.juul.krayon.sample
 
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.isActive
 import kotlin.math.PI
 import kotlin.math.sin
 import kotlin.time.Duration
@@ -18,7 +20,7 @@ internal fun movingSineWave(
 ): Flow<List<Point?>> = flow {
     var offset = 0f
     var time = TimeSource.Monotonic.markNow()
-    while (true) {
+    while (currentCoroutineContext().isActive) {
         emit(sineWave(offset, samples))
         offset += ((time.elapsedNow() / period) * 2 * PI).toFloat()
         time = TimeSource.Monotonic.markNow()

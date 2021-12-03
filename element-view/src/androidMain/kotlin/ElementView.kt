@@ -3,7 +3,6 @@ package com.juul.krayon.element.view
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
 import android.util.AttributeSet
 import android.util.TypedValue.COMPLEX_UNIT_DIP
 import android.util.TypedValue.applyDimension
@@ -14,6 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.channels.BufferOverflow.SUSPEND
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,8 +21,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.CoroutineContext
 import android.graphics.Paint as AndroidPaint
 
@@ -120,9 +118,8 @@ public class ElementView @JvmOverloads constructor(
             state.value = EMPTY_STATE
         }
 
-        private fun launchRenderingIn(scope: CoroutineScope) = scope.launch {
-            // Unlimited buffer looks scary, but collection has way higher throughput than emission, so this doesn't grow large.
-            val buffer = MutableSharedFlow<Bitmap>(extraBufferCapacity = Int.MAX_VALUE)
+        private fun launchRenderingIn(scope: CoroutineScope) {
+            val buffer = MutableSharedFlow<Bitmap>(extraBufferCapacity = 4, onBufferOverflow = SUSPEND)
             val pool = BitmapPool()
             scope.launch(Dispatchers.Main.immediate) {
                 buffer.collect { bitmap ->
@@ -131,46 +128,19 @@ public class ElementView @JvmOverloads constructor(
                     state.value.view?.invalidate()
                 }
             }
-            state.collectLatest { state ->
-                if (state.view == null) return@collectLatest
-                if (state.width == 0 || state.height == 0) return@collectLatest
-                val scalingFactor = applyDimension(COMPLEX_UNIT_DIP, 1f, state.view.resources.displayMetrics)
-                dataSource.conflate().collect { data ->
-                    updater.update(state.root, state.width / scalingFactor, state.height / scalingFactor, data)
-                    val bitmap = pool.acquire(state.width, state.height)
-                    state.root.draw(AndroidKanvas(state.view.context, Canvas(bitmap), scalingFactor))
-                    buffer.emit(bitmap)
+            scope.launch {
+                state.collectLatest { state ->
+                    if (state.view == null) return@collectLatest
+                    if (state.width == 0 || state.height == 0) return@collectLatest
+                    val scalingFactor = applyDimension(COMPLEX_UNIT_DIP, 1f, state.view.resources.displayMetrics)
+                    dataSource.conflate().collect { data ->
+                        updater.update(state.root, state.width / scalingFactor, state.height / scalingFactor, data)
+                        val bitmap = pool.acquire(state.width, state.height)
+                        state.root.draw(AndroidKanvas(state.view.context, Canvas(bitmap), scalingFactor))
+                        buffer.emit(bitmap)
+                    }
                 }
             }
-        }
-    }
-}
-
-/** Cache of no-longer-used [Bitmap] that might be useful in the future, to avoid allocating on every draw. */
-private class BitmapPool(
-    private val config: Bitmap.Config = Bitmap.Config.ARGB_8888,
-) {
-    /** Pixel count of the most recently requested bitmap. Used to clear old entries from the pool when an [ElementView] grows. */
-    private var size: Long = 0
-    private val mutex = Mutex()
-    private val pool = ArrayDeque<Bitmap>()
-
-    suspend fun acquire(width: Int, height: Int): Bitmap = mutex.withLock {
-        val newSize = width.toLong() * height
-        if (size > newSize) {
-            pool.forEach { it.recycle() }
-            pool.clear()
-        }
-        size = newSize
-        pool.removeFirstOrNull() ?: Bitmap.createBitmap(width, height, config)
-    }
-
-    suspend fun release(bitmap: Bitmap) = mutex.withLock {
-        if (bitmap.width.toLong() * bitmap.height >= size) {
-            bitmap.eraseColor(Color.TRANSPARENT)
-            pool.addLast(bitmap)
-        } else {
-            bitmap.recycle()
         }
     }
 }
