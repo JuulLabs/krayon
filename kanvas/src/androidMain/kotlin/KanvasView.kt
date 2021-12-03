@@ -29,7 +29,7 @@ abstract class KanvasView(
      *
      * Like [View.onDraw], you should avoid allocation in this function.
      *
-     * Unlike [View.onDraw], you should use [Canvas.width] and [Canvas.height] instead of the view's
+     * Unlike [View.onDraw], you should use [Kanvas.width] and [Kanvas.height] instead of the view's
      * width and height.
      */
     protected abstract fun onDraw(canvas: Kanvas<AndroidPath>)

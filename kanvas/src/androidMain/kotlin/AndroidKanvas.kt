@@ -53,12 +53,12 @@ public class AndroidKanvas internal constructor(
     private inline fun withPaint(
         paint: Paint,
         crossinline action: Canvas.(AndroidPaint) -> Unit,
-    ) {
+    ) = with(requireCanvas()) {
         if (paint is Paint.FillAndStroke) {
-            requireCanvas().action(paintCache[paint.fill])
-            requireCanvas().action(paintCache[paint.stroke])
+            action(paintCache[paint.fill])
+            action(paintCache[paint.stroke])
         } else {
-            requireCanvas().action(paintCache[paint])
+            action(paintCache[paint])
         }
     }
 
