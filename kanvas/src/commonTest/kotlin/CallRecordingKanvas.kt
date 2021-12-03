@@ -33,7 +33,7 @@ class CallRecordingKanvas(
         return UnitPaint
     }
 
-    override fun buildPath(actions: PathBuilder<*>.() -> Unit): UnitPath {
+    override fun buildPath(actions: Path): UnitPath {
         recorder.record("buildPath", actions)
         return UnitPath
     }

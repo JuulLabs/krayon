@@ -1,6 +1,5 @@
 package com.juul.krayon.element
 
-import com.juul.krayon.color.black
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 
@@ -12,7 +11,7 @@ public class RectangleElement : Element() {
     public var top: Float by attributes.withDefault { 0f }
     public var right: Float by attributes.withDefault { 0f }
     public var bottom: Float by attributes.withDefault { 0f }
-    public var paint: Paint by attributes.withDefault { Paint.Fill(black) }
+    public var paint: Paint by attributes.withDefault { DEFAULT_PAINT }
 
     override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
         canvas.drawRect(left, top, right, bottom, canvas.buildPaint(paint))

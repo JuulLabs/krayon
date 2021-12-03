@@ -24,6 +24,7 @@ pluginManagement {
 include(
     "color",
     "element",
+    "element-view",
     "kanvas",
     "interpolate",
     "sample",

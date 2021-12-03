@@ -45,8 +45,8 @@ public class AndroidKanvas internal constructor(
 
     override fun buildPaint(paint: Paint): AndroidPaint = paint.toAndroid(context)
 
-    override fun buildPath(actions: PathBuilder<*>.() -> Unit): AndroidPath =
-        AndroidPathBuilder().apply(actions).build()
+    override fun buildPath(actions: Path): AndroidPath =
+        AndroidPathBuilder().build(actions)
 
     private fun requireCanvas(): Canvas = checkNotNull(canvas)
 

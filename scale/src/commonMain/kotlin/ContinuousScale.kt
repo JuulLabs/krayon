@@ -105,6 +105,7 @@ public class ContinuousScale<D : Comparable<D>, R> internal constructor(
                 else -> 0
             }
         }
+        check(index >= 0) { "No matching subdomain found for input $input in subdomains $subdomains." }
         return interpolators[index].interpolate(inverters[index].invert(input))
     }
 
