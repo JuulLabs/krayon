@@ -1,32 +1,45 @@
 package com.juul.krayon.sample
 
-import android.app.Activity
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Bundle
-import com.juul.krayon.chart.ChartView
-import com.juul.krayon.chart.data.ClusteredDataSet
-import com.juul.krayon.chart.render.BarChartRenderer
-import com.juul.krayon.color.nextColor
+import android.util.TypedValue.COMPLEX_UNIT_DIP
+import android.util.TypedValue.applyDimension
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.juul.krayon.kanvas.AndroidKanvas
 import com.juul.krayon.sample.databinding.ActivityDemoBinding
-import kotlin.random.Random
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class DemoActivity : Activity() {
+class DemoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityDemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.customCanvasView.setOnClickListener {
-            binding.customCanvasView.circleColor = Random.nextColor()
-        }
-
-        val adapter = ChartView.Adapter<ClusteredDataSet<Float>>().apply {
-            renderer = BarChartRenderer()
-            dataSet = getRandomData()
-        }
-        binding.chartView.adapter = adapter
-        binding.chartView.setOnClickListener {
-            adapter.dataSet = getRandomData()
+        var job: Job? = null
+        binding.sineView.addOnLayoutChangeListener { _, left, top, right, bottom, _, _, _, _ ->
+            job?.cancel()
+            job = lifecycleScope.launch {
+                val bitmap: Bitmap
+                withContext(Dispatchers.IO) {
+                    bitmap = Bitmap.createBitmap(
+                        binding.sineView.width,
+                        binding.sineView.height,
+                        Bitmap.Config.ARGB_8888
+                    )
+                    AndroidKanvas(
+                        context = this@DemoActivity,
+                        canvas = Canvas(bitmap),
+                        scalingFactor = applyDimension(COMPLEX_UNIT_DIP, 1f, resources.displayMetrics)
+                    ).renderSineWave()
+                }
+                binding.sineView.setImageBitmap(bitmap)
+            }
         }
     }
 }

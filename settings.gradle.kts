@@ -22,10 +22,12 @@ pluginManagement {
 }
 
 include(
-    "chart",
     "color",
     "element",
     "kanvas",
+    "interpolate",
     "sample",
+    "scale",
+    "shape",
     "selection",
 )

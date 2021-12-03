@@ -212,6 +212,14 @@ public class HtmlCanvas(
                 CanvasLineJoin.MITER
             }
         }
+        context.setLineDash(
+            when (paint.dash) {
+                Paint.Stroke.Dash.None -> emptyArray()
+                is Paint.Stroke.Dash.Pattern -> Array(paint.dash.intervals.size) { index ->
+                    paint.dash.intervals[index].toDouble()
+                }
+            }
+        )
     }
 
     private fun applyBrush(paint: Paint.Text) {
