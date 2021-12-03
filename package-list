@@ -1,18 +1,20 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 
-module:chart
-com.juul.krayon.chart
-com.juul.krayon.chart.data
-com.juul.krayon.chart.render
-com.juul.krayon.chart.render.components
 module:color
 com.juul.krayon.color
 module:element
 com.juul.krayon.element
+module:interpolate
+com.juul.krayon.interpolate
 module:kanvas
 com.juul.krayon.kanvas
 com.juul.krayon.kanvas.svg
 com.juul.krayon.kanvas.xml
+module:scale
+com.juul.krayon.scale
 module:selection
 com.juul.krayon.selection
+module:shape
+com.juul.krayon.shape
+com.juul.krayon.shape.curve
