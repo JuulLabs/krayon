@@ -14,8 +14,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":chart"))
-                api(project(":selection"))
+                implementation(project(":selection"))
+                implementation(project(":scale"))
+                implementation(project(":shape"))
                 implementation(kotlin("stdlib"))
             }
         }
@@ -30,6 +31,9 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
+                implementation(androidx.appCompat())
+                implementation(androidx.lifecycle("runtime-ktx"))
+                implementation(kotlinx.coroutines("android"))
             }
         }
 
