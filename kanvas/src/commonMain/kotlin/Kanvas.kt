@@ -12,7 +12,7 @@ public interface Kanvas<PATH> {
     public val height: Float
 
     /** Create a [PATH] understood by this canvas. The returned path must NOT have a reference to the canvas. */
-    public fun buildPath(actions: PathBuilder<*>.() -> Unit): PATH
+    public fun buildPath(actions: Path): PATH
 
     /**
      * Draw an arc that fits in the oval defined by the rectangle [left], [top], [right], and [bottom], from

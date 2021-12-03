@@ -37,8 +37,8 @@ public class HtmlCanvas(
     override val height: Float
         get() = context.canvas.height.toFloat()
 
-    override fun buildPath(actions: PathBuilder<*>.() -> Unit): Path2D =
-        Path2DBuilder().apply(actions).build()
+    override fun buildPath(actions: Path): Path2D =
+        Path2DBuilder().build(actions)
 
     override fun drawArc(
         left: Float,

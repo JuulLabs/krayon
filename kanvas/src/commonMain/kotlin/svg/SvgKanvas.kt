@@ -4,8 +4,9 @@ import com.juul.krayon.color.Color
 import com.juul.krayon.kanvas.Clip
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
-import com.juul.krayon.kanvas.PathBuilder
+import com.juul.krayon.kanvas.Path
 import com.juul.krayon.kanvas.Transform
+import com.juul.krayon.kanvas.build
 import com.juul.krayon.kanvas.split
 import com.juul.krayon.kanvas.xml.NumberFormatter
 import com.juul.krayon.kanvas.xml.ToStringFormatter
@@ -29,8 +30,8 @@ public class SvgKanvas(
     /** ID to use for the next clip path. */
     private var clipCount = 0
 
-    override fun buildPath(actions: PathBuilder<*>.() -> Unit): PathString =
-        PathStringBuilder(formatter).apply(actions).build()
+    override fun buildPath(actions: Path): PathString =
+        PathStringBuilder(formatter).build(actions)
 
     override fun drawArc(
         left: Float,

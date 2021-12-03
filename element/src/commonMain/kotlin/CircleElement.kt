@@ -1,6 +1,5 @@
 package com.juul.krayon.element
 
-import com.juul.krayon.color.black
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 
@@ -11,7 +10,7 @@ public class CircleElement : Element() {
     public var centerX: Float by attributes.withDefault { 0f }
     public var centerY: Float by attributes.withDefault { 0f }
     public var radius: Float by attributes.withDefault { 0f }
-    public var paint: Paint by attributes.withDefault { Paint.Fill(black) }
+    public var paint: Paint by attributes.withDefault { DEFAULT_PAINT }
 
     override fun <PATH> draw(canvas: Kanvas<PATH>) {
         canvas.drawCircle(centerX, centerY, radius, paint)

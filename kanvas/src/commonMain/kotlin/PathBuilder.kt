@@ -1,5 +1,14 @@
 package com.juul.krayon.kanvas
 
+public fun interface Path {
+    public fun PathBuilder<*>.apply()
+}
+
+public fun <P> PathBuilder<P>.build(path: Path): P {
+    with(path) { apply() }
+    return build()
+}
+
 /** Builds paths. */
 public interface PathBuilder<out P> {
 
