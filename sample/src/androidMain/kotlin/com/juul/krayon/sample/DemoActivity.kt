@@ -6,6 +6,7 @@ import com.juul.krayon.element.view.ElementView
 import com.juul.krayon.sample.databinding.ActivityDemoBinding
 import kotlin.time.ExperimentalTime
 
+@OptIn(ExperimentalTime::class)
 class DemoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +14,6 @@ class DemoActivity : AppCompatActivity() {
         val binding = ActivityDemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        @OptIn(ExperimentalTime::class)
         binding.sineView.adapter = ElementView.Adapter(
             dataSource = movingSineWave(),
             updater = ::lineChart
