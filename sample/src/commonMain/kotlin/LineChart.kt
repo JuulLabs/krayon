@@ -2,6 +2,7 @@ package com.juul.krayon.sample
 
 import com.juul.krayon.color.darkSlateBlue
 import com.juul.krayon.color.steelBlue
+import com.juul.krayon.color.white
 import com.juul.krayon.element.CircleElement
 import com.juul.krayon.element.PathElement
 import com.juul.krayon.element.RootElement
@@ -20,7 +21,10 @@ import com.juul.krayon.shape.line
 
 private val solidLinePaint = Paint.Stroke(steelBlue, 1f)
 private val dashedLinePaint = Paint.Stroke(darkSlateBlue, 0.5f, dash = Paint.Stroke.Dash.Pattern(5f, 5.5f))
-private val circlePaint = Paint.Stroke(steelBlue, 1f)
+private val circlePaint = Paint.FillAndStroke(
+    Paint.Fill(white),
+    Paint.Stroke(steelBlue, 1f)
+)
 
 internal fun lineChart(root: RootElement, width: Float, height: Float, data: List<Point?>) {
     val x = scale()

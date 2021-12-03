@@ -10,7 +10,7 @@ public class TransformElement : Element() {
 
     public var transform: Transform by attributes.withDefault { Transform.Translate() }
 
-    override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
+    override fun <PATH> draw(canvas: Kanvas<PATH>) {
         canvas.withTransform(transform) {
             children.forEach { it.draw(canvas) }
         }

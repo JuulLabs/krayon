@@ -2,13 +2,12 @@ package com.juul.krayon.kanvas
 
 import com.juul.krayon.color.Color
 
-object UnitPaint
 object UnitPath
 
 class CallRecordingKanvas(
     width: Float,
     height: Float
-) : Kanvas<UnitPaint, UnitPath>, CallRecord {
+) : Kanvas<UnitPath>, CallRecord {
 
     private val recorder = CallRecorder()
     override val calls: List<Call>
@@ -28,11 +27,6 @@ class CallRecordingKanvas(
             return _height
         }
 
-    override fun buildPaint(paint: Paint): UnitPaint {
-        recorder.record("buildPaint", paint)
-        return UnitPaint
-    }
-
     override fun buildPath(actions: Path): UnitPath {
         recorder.record("buildPath", actions)
         return UnitPath
@@ -45,12 +39,12 @@ class CallRecordingKanvas(
         bottom: Float,
         startAngle: Float,
         sweepAngle: Float,
-        paint: UnitPaint,
+        paint: Paint,
     ) {
         recorder.record("drawArc", left, top, right, bottom, startAngle, sweepAngle, paint)
     }
 
-    override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: UnitPaint) {
+    override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: Paint) {
         recorder.record("drawCircle", centerX, centerY, radius, paint)
     }
 
@@ -58,23 +52,23 @@ class CallRecordingKanvas(
         recorder.record("drawColor", color)
     }
 
-    override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: UnitPaint) {
+    override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: Paint) {
         recorder.record("drawLine", startX, startY, endX, endY, paint)
     }
 
-    override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: UnitPaint) {
+    override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
         recorder.record("drawOval", left, top, right, bottom, paint)
     }
 
-    override fun drawPath(path: UnitPath, paint: UnitPaint) {
+    override fun drawPath(path: UnitPath, paint: Paint) {
         recorder.record("drawPath", path, paint)
     }
 
-    override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: UnitPaint) {
+    override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
         recorder.record("drawRect", left, top, right, bottom, paint)
     }
 
-    override fun drawText(text: CharSequence, x: Float, y: Float, paint: UnitPaint) {
+    override fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint) {
         recorder.record("drawText", text, x, y, paint)
     }
 

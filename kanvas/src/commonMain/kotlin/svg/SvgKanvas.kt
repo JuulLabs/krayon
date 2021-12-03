@@ -16,8 +16,8 @@ import com.juul.krayon.kanvas.xml.escape
 public class SvgKanvas(
     override val width: Float,
     override val height: Float,
-    private val formatter: NumberFormatter = ToStringFormatter(),
-) : Kanvas<Paint, PathString> {
+    private val formatter: NumberFormatter = ToStringFormatter()
+) : Kanvas<PathString> {
 
     /** Root XML element. */
     private val root = XmlElement("svg")
@@ -29,8 +29,6 @@ public class SvgKanvas(
 
     /** ID to use for the next clip path. */
     private var clipCount = 0
-
-    override fun buildPaint(paint: Paint): Paint = paint
 
     override fun buildPath(actions: Path): PathString =
         PathStringBuilder(formatter).build(actions)

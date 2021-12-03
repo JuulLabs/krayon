@@ -25,6 +25,7 @@ public fun Paint.toAndroid(context: Context): AndroidPaint = when (this) {
     is Paint.Fill -> androidPaint(this)
     is Paint.Stroke -> androidPaint(this)
     is Paint.Text -> androidPaint(context, this)
+    else -> throw IllegalArgumentException("Cannot convert `Paint.FillAndStroke` to an Android native `Paint`.")
 }
 
 /** Converts a Krayon [Paint] into an [AndroidPaint]. */

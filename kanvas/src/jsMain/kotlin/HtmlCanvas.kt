@@ -17,9 +17,17 @@ import org.w3c.dom.ROUND
 import org.w3c.dom.SQUARE
 import kotlin.math.PI
 
+/** Helper for the common case of deciding if [CanvasRenderingContext2D] should call a `fill` function or not. */
+private fun shouldFill(paint: Paint): Boolean =
+    paint is Paint.Fill || paint is Paint.FillAndStroke
+
+/** Helper for the common case of deciding if [CanvasRenderingContext2D] should call a `stroke` function or not. */
+private fun shouldStroke(paint: Paint): Boolean =
+    paint is Paint.Stroke || paint is Paint.FillAndStroke
+
 public class HtmlCanvas(
     element: HTMLCanvasElement,
-) : Kanvas<Paint, Path2D> {
+) : Kanvas<Path2D> {
 
     private val context = element.getContext("2d") as CanvasRenderingContext2D
 
@@ -28,8 +36,6 @@ public class HtmlCanvas(
 
     override val height: Float
         get() = context.canvas.height.toFloat()
-
-    override fun buildPaint(paint: Paint): Paint = paint
 
     override fun buildPath(actions: Path): Path2D =
         Path2DBuilder().build(actions)
@@ -44,7 +50,7 @@ public class HtmlCanvas(
         paint: Paint,
     ) {
         require(paint !is Paint.Text)
-        applyBrush(paint)
+        applyStyle(paint)
         context.beginPath()
         val radiusX = (right - left) / 2.0
         val radiusY = (bottom - top) / 2.0
@@ -53,21 +59,17 @@ public class HtmlCanvas(
         val startAngleRadians = startAngle * PI / 180f
         val endAngleRadians = (startAngle + sweepAngle) * PI / 180f
         context.ellipse(x, y, radiusX, radiusY, rotation = 0.0, startAngleRadians, endAngleRadians)
-        when (paint) {
-            is Paint.Stroke -> context.stroke()
-            else -> context.fill()
-        }
+        if (shouldFill(paint)) context.fill()
+        if (shouldStroke(paint)) context.stroke()
     }
 
     override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: Paint) {
         require(paint !is Paint.Text)
-        applyBrush(paint)
+        applyStyle(paint)
         context.beginPath()
         context.arc(centerX.toDouble(), centerY.toDouble(), radius.toDouble(), 0.0, 2 * PI)
-        when (paint) {
-            is Paint.Stroke -> context.stroke()
-            else -> context.fill()
-        }
+        if (shouldFill(paint)) context.fill()
+        if (shouldStroke(paint)) context.stroke()
     }
 
     override fun drawColor(color: Color) {
@@ -76,14 +78,12 @@ public class HtmlCanvas(
 
     override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: Paint) {
         require(paint !is Paint.Text)
-        applyBrush(paint)
+        applyStyle(paint)
         context.beginPath()
         context.moveTo(startX.toDouble(), startY.toDouble())
         context.lineTo(endX.toDouble(), endY.toDouble())
-        when (paint) {
-            is Paint.Stroke -> context.stroke()
-            else -> context.fill()
-        }
+        if (shouldFill(paint)) context.fill()
+        if (shouldStroke(paint)) context.stroke()
     }
 
     override fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
@@ -92,26 +92,24 @@ public class HtmlCanvas(
 
     override fun drawPath(path: Path2D, paint: Paint) {
         require(paint !is Paint.Text)
-        applyBrush(paint)
+        applyStyle(paint)
         context.beginPath() // TODO: Look up if this is necessary.
-        when (paint) {
-            is Paint.Stroke -> context.stroke(path)
-            else -> context.fill(path)
-        }
+        if (shouldFill(paint)) context.fill(path)
+        if (shouldStroke(paint)) context.stroke(path)
     }
 
     override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
         require(paint !is Paint.Text)
-        applyBrush(paint)
-        when (paint) {
-            is Paint.Stroke -> context.strokeRect(left.toDouble(), top.toDouble(), right.toDouble() - left, bottom.toDouble() - top)
-            else -> context.fillRect(left.toDouble(), top.toDouble(), right.toDouble() - left, bottom.toDouble() - top)
-        }
+        applyStyle(paint)
+        val width = right.toDouble() - left
+        val height = bottom.toDouble() - top
+        if (shouldFill(paint)) context.fillRect(left.toDouble(), top.toDouble(), width, height)
+        if (shouldStroke(paint)) context.strokeRect(left.toDouble(), top.toDouble(), width, height)
     }
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint) {
         require(paint is Paint.Text)
-        applyBrush(paint)
+        applyStyle(paint)
         context.fillText(text.toString(), x.toDouble(), y.toDouble())
     }
 
@@ -186,17 +184,24 @@ public class HtmlCanvas(
         context.restore()
     }
 
-    private fun applyBrush(paint: Paint) = when (paint) {
-        is Paint.Fill -> applyBrush(paint)
-        is Paint.Stroke -> applyBrush(paint)
-        is Paint.Text -> applyBrush(paint)
+    /** Sets the [context]'s render style to match [paint] via delegation to strongly typed overloads. */
+    private fun applyStyle(paint: Paint) {
+        when (paint) {
+            is Paint.Fill -> applyStyle(paint)
+            is Paint.Stroke -> applyStyle(paint)
+            is Paint.FillAndStroke -> {
+                applyStyle(paint.fill)
+                applyStyle(paint.stroke)
+            }
+            is Paint.Text -> applyStyle(paint)
+        }
     }
 
-    private fun applyBrush(paint: Paint.Fill) {
+    private fun applyStyle(paint: Paint.Fill) {
         context.fillStyle = paint.color.toHexString()
     }
 
-    private fun applyBrush(paint: Paint.Stroke) {
+    private fun applyStyle(paint: Paint.Stroke) {
         context.strokeStyle = paint.color.toHexString()
         context.lineWidth = paint.width.toDouble()
         context.lineCap = when (paint.cap) {
@@ -222,7 +227,7 @@ public class HtmlCanvas(
         )
     }
 
-    private fun applyBrush(paint: Paint.Text) {
+    private fun applyStyle(paint: Paint.Text) {
         context.fillStyle = paint.color.toHexString()
         context.textAlign = when (paint.alignment) {
             Paint.Text.Alignment.Left -> CanvasTextAlign.LEFT

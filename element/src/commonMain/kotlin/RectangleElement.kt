@@ -13,8 +13,8 @@ public class RectangleElement : Element() {
     public var bottom: Float by attributes.withDefault { 0f }
     public var paint: Paint by attributes.withDefault { DEFAULT_PAINT }
 
-    override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
-        canvas.drawRect(left, top, right, bottom, canvas.buildPaint(paint))
+    override fun <PATH> draw(canvas: Kanvas<PATH>) {
+        canvas.drawRect(left, top, right, bottom, paint)
     }
 
     public companion object : ElementBuilder<RectangleElement>, TypeSelector<RectangleElement> {

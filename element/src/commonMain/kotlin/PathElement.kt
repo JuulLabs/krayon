@@ -11,8 +11,8 @@ public class PathElement : Element() {
     public var path: Path by attributes.withDefault { 0f }
     public var paint: Paint by attributes.withDefault { DEFAULT_PAINT }
 
-    override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
-        canvas.drawPath(canvas.buildPath(path), canvas.buildPaint(paint))
+    override fun <PATH> draw(canvas: Kanvas<PATH>) {
+        canvas.drawPath(canvas.buildPath(path), paint)
     }
 
     public companion object : ElementBuilder<PathElement>, TypeSelector<PathElement> {

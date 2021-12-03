@@ -9,8 +9,12 @@ import com.juul.krayon.kanvas.xml.escape
 
 internal fun XmlElement.setPaintAttributes(paint: Paint, formatter: NumberFormatter) = apply {
     when (paint) {
-        is Paint.Stroke -> setStrokeAttributes(paint, formatter)
         is Paint.Fill -> setFillAttributes(paint, formatter)
+        is Paint.Stroke -> setStrokeAttributes(paint, formatter)
+        is Paint.FillAndStroke -> {
+            setStrokeAttributes(paint.stroke, formatter)
+            setFillAttributes(paint.fill, formatter)
+        }
         is Paint.Text -> setTextAttributes(paint, formatter)
     }
 }

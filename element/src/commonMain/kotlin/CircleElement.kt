@@ -12,8 +12,8 @@ public class CircleElement : Element() {
     public var radius: Float by attributes.withDefault { 0f }
     public var paint: Paint by attributes.withDefault { DEFAULT_PAINT }
 
-    override fun <PAINT, PATH> draw(canvas: Kanvas<PAINT, PATH>) {
-        canvas.drawCircle(centerX, centerY, radius, canvas.buildPaint(paint))
+    override fun <PATH> draw(canvas: Kanvas<PATH>) {
+        canvas.drawCircle(centerX, centerY, radius, paint)
     }
 
     public companion object : ElementBuilder<CircleElement>, TypeSelector<CircleElement> {
