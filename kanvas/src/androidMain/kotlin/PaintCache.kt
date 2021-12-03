@@ -5,8 +5,10 @@ import android.graphics.Paint as AndroidPaint
 
 public class PaintCache(
     private val context: Context,
-    private val backing: MutableMap<Paint, AndroidPaint> = HashMap(),
+    initial: Map<Paint, AndroidPaint> = emptyMap(),
 ) {
+    private val backing = HashMap(initial)
+
     public operator fun get(paint: Paint): AndroidPaint = synchronized(backing) {
         backing.getOrPut(paint) { paint.toAndroid(context) }
     }
