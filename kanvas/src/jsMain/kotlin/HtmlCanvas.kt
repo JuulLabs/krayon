@@ -94,8 +94,8 @@ public class HtmlCanvas(
         require(paint !is Paint.Text)
         applyStyle(paint)
         context.beginPath() // TODO: Look up if this is necessary.
-        if (shouldFill(paint)) context.fill()
-        if (shouldStroke(paint)) context.stroke()
+        if (shouldFill(paint)) context.fill(path)
+        if (shouldStroke(paint)) context.stroke(path)
     }
 
     override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
