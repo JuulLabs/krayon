@@ -6,23 +6,23 @@ import kotlinx.coroutines.flow.flow
 import kotlin.math.PI
 import kotlin.math.sin
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.ExperimentalTime
+import kotlin.time.TimeSource
 
-/**
- * A flow that emits data for a continuously rolling sine wave. By default, updates at 60Hz and takes 10 seconds to complete a cycle.
- */
+/** A flow that emits data for a continuously rolling sine wave. By default, completes a full cycle in 10 seconds. */
+@OptIn(ExperimentalTime::class)
 internal fun movingSineWave(
-    frequency: Duration = 1000.milliseconds / 60,
-    distance: Float = (2 * PI).toFloat() / 600f,
+    period: Duration = 10.seconds,
     samples: Int = 50,
 ): Flow<List<Point?>> = flow {
     var offset = 0f
+    var time = TimeSource.Monotonic.markNow()
     while (true) {
         emit(sineWave(offset, samples))
-        @OptIn(ExperimentalTime::class)
-        delay(frequency)
-        offset += distance
+        offset += ((time.elapsedNow() / period) * 2 * PI).toFloat()
+        time = TimeSource.Monotonic.markNow()
+        delay(1) // make sure we don't absolutely run away with CPU usage
     }
 }
 
