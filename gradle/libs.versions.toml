@@ -1,0 +1,29 @@
+[versions]
+jacoco = "0.8.7"
+kotlin = "1.6.0"
+coroutines = "1.5.1"
+agp = "4.2.0"
+android-compile = "android-31"
+android-min = "19"
+
+[libraries]
+tuulbox-test = { module = "com.juul.tuulbox:test", version = "4.2.0" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+kotlinx-coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.3.1" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.4.0" }
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.4.0" }
+androidx-test = { module = "androidx.test:core", version = "1.4.0" }
+robolectric = { module = "org.robolectric:robolectric", version = "4.5.1" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+atomicfu = { id = "kotlinx-atomicfu", version = "0.16.2" }
+kotlinter = { id = "org.jmailen.kotlinter", version = "3.4.5" }
+dokka = { id = "org.jetbrains.dokka", version = "1.5.0" }
+maven-publish = { id = "com.vanniktech.maven.publish", version = "0.17.0" }
+one-eight = { id = "net.mbonnin.one.eight", version = "0.2" }
+binary-compatibility-validator = { id = "binary-compatibility-validator", version = "0.8.0" }
