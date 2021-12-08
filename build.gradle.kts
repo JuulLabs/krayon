@@ -6,21 +6,19 @@ buildscript {
 }
 
 plugins {
-    kotlin("multiplatform") version "1.6.0" apply false
-    id("com.android.application") version "4.2.0" apply false
-    id("com.android.library") version "4.2.0" apply false
-    id("kotlinx-atomicfu") version "0.16.2" apply false
-    id("org.jmailen.kotlinter") version "3.4.5" apply false
-    id("org.jetbrains.dokka") version "1.5.0"
-    id("com.vanniktech.maven.publish") version "0.17.0" apply false
-    id("net.mbonnin.one.eight") version "0.2"
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.atomicfu) apply false
+    alias(libs.plugins.kotlinter) apply false
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.maven.publish) apply false
+    alias(libs.plugins.one.eight)
+    alias(libs.plugins.binary.compatibility.validator)
+}
 
-    // Breaks with:
-    // A problem occurred configuring project ':registration'.
-    // > org.gradle.api.internal.tasks.DefaultTaskContainer$DuplicateTaskException: Cannot add task 'apiBuild' as a task with that name already exists.
-    //
-    // Disabling until https://github.com/Kotlin/binary-compatibility-validator/issues/38 is fixed.
-//    id("binary-compatibility-validator") version "0.6.0"
+apiValidation {
+    ignoredProjects.addAll(listOf("sample"))
 }
 
 allprojects {

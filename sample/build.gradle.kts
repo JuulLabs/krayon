@@ -18,14 +18,14 @@ kotlin {
                 implementation(project(":scale"))
                 implementation(project(":shape"))
                 implementation(kotlin("stdlib"))
-                implementation(kotlinx.coroutines())
-                implementation(kotlinx.datetime())
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.kotlinx.datetime)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(tuulbox.test())
+                implementation(libs.tuulbox.test)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
@@ -34,9 +34,9 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(project(":element-view"))
-                implementation(androidx.appCompat())
-                implementation(androidx.lifecycle("runtime-ktx"))
-                implementation(kotlinx.coroutines("android"))
+                implementation(libs.androidx.appcompat)
+                implementation(libs.androidx.lifecycle.runtime)
+                implementation(libs.kotlinx.coroutines.android)
             }
         }
 
@@ -48,7 +48,7 @@ kotlin {
 
         val jsMain by getting {
             dependencies {
-                implementation(kotlinx.coroutines("core-js"))
+                implementation(libs.kotlinx.coroutines.js)
             }
         }
 
@@ -61,11 +61,10 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(AndroidSdk.Compile)
+    compileSdkVersion(libs.versions.android.compile.get())
 
     defaultConfig {
-        minSdkVersion(AndroidSdk.Minimum)
-        targetSdkVersion(AndroidSdk.Target)
+        minSdkVersion(libs.versions.android.min.get())
         versionCode = 1
         versionName = "sample"
     }

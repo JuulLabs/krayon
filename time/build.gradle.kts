@@ -9,7 +9,7 @@ plugins {
 apply(from = rootProject.file("gradle/jacoco.gradle.kts"))
 
 jacoco {
-    toolVersion = "0.8.7"
+    toolVersion = libs.versions.jacoco.get()
 }
 
 kotlin {
@@ -21,13 +21,13 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(kotlinx.datetime())
+                api(libs.kotlinx.datetime)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(tuulbox.test())
+                implementation(libs.tuulbox.test)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
