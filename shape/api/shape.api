@@ -1,0 +1,44 @@
+public final class com/juul/krayon/shape/Arguments {
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/util/List;
+	public final fun getData ()Ljava/util/List;
+	public final fun getDatum ()Ljava/lang/Object;
+	public final fun getIndex ()I
+}
+
+public final class com/juul/krayon/shape/Line : com/juul/krayon/shape/Shape {
+	public final fun curve (Lcom/juul/krayon/shape/curve/Curve;)Lcom/juul/krayon/shape/Line;
+	public final fun defined (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Line;
+	public fun render (Ljava/util/List;)Lcom/juul/krayon/kanvas/Path;
+	public final fun x (F)Lcom/juul/krayon/shape/Line;
+	public final fun x (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Line;
+	public final fun y (F)Lcom/juul/krayon/shape/Line;
+	public final fun y (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Line;
+}
+
+public final class com/juul/krayon/shape/LineKt {
+	public static final fun line ()Lcom/juul/krayon/shape/Line;
+}
+
+public abstract interface class com/juul/krayon/shape/Shape {
+	public abstract fun render (Ljava/util/List;)Lcom/juul/krayon/kanvas/Path;
+}
+
+public abstract interface class com/juul/krayon/shape/curve/Curve {
+	public abstract fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public abstract fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public abstract fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public abstract fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public abstract fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/Linear : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/Linear;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+

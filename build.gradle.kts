@@ -17,6 +17,10 @@ plugins {
     alias(libs.plugins.binary.compatibility.validator)
 }
 
+apiValidation {
+    ignoredProjects.addAll(listOf("sample"))
+}
+
 allprojects {
     repositories {
         google()

@@ -1,0 +1,33 @@
+public final class com/juul/krayon/element/view/ElementView : android/view/View {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAdapter ()Lcom/juul/krayon/element/view/ElementView$Adapter;
+	public final fun setAdapter (Lcom/juul/krayon/element/view/ElementView$Adapter;)V
+}
+
+public final class com/juul/krayon/element/view/ElementView$Adapter {
+	public fun <init> (Lkotlinx/coroutines/flow/Flow;Lcom/juul/krayon/element/view/ElementView$Adapter$Updater;)V
+}
+
+public final class com/juul/krayon/element/view/ElementView$Adapter$State {
+	public fun <init> (Lcom/juul/krayon/element/view/ElementView;Lcom/juul/krayon/element/RootElement;II)V
+	public final fun component1 ()Lcom/juul/krayon/element/view/ElementView;
+	public final fun component2 ()Lcom/juul/krayon/element/RootElement;
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun copy (Lcom/juul/krayon/element/view/ElementView;Lcom/juul/krayon/element/RootElement;II)Lcom/juul/krayon/element/view/ElementView$Adapter$State;
+	public static synthetic fun copy$default (Lcom/juul/krayon/element/view/ElementView$Adapter$State;Lcom/juul/krayon/element/view/ElementView;Lcom/juul/krayon/element/RootElement;IIILjava/lang/Object;)Lcom/juul/krayon/element/view/ElementView$Adapter$State;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHeight ()I
+	public final fun getRoot ()Lcom/juul/krayon/element/RootElement;
+	public final fun getView ()Lcom/juul/krayon/element/view/ElementView;
+	public final fun getWidth ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/juul/krayon/element/view/ElementView$Adapter$Updater {
+	public abstract fun update (Lcom/juul/krayon/element/RootElement;FFLjava/lang/Object;)V
+}
+
