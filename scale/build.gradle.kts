@@ -23,7 +23,7 @@ kotlin {
             dependencies {
                 api(project(":interpolate"))
                 api(project(":kanvas"))
-                api(kotlinx.datetime())
+                api(libs.kotlinx.datetime)
                 implementation(project(":time"))
             }
         }
