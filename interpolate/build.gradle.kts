@@ -23,6 +23,7 @@ kotlin {
             dependencies {
                 api(project(":kanvas"))
                 api(kotlinx.datetime())
+                implementation(project(":time"))
             }
         }
 

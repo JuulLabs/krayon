@@ -21,10 +21,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":interpolate"))
-                api(project(":kanvas"))
                 api(kotlinx.datetime())
-                implementation(project(":time"))
             }
         }
 
