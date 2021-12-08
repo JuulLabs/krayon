@@ -14,13 +14,11 @@ plugins {
     id("org.jetbrains.dokka") version "1.5.0"
     id("com.vanniktech.maven.publish") version "0.17.0" apply false
     id("net.mbonnin.one.eight") version "0.2"
+    id("binary-compatibility-validator") version "0.8.0"
+}
 
-    // Breaks with:
-    // A problem occurred configuring project ':registration'.
-    // > org.gradle.api.internal.tasks.DefaultTaskContainer$DuplicateTaskException: Cannot add task 'apiBuild' as a task with that name already exists.
-    //
-    // Disabling until https://github.com/Kotlin/binary-compatibility-validator/issues/38 is fixed.
-//    id("binary-compatibility-validator") version "0.6.0"
+apiValidation {
+    ignoredProjects.addAll(listOf("sample"))
 }
 
 allprojects {
