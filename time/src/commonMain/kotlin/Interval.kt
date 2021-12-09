@@ -31,7 +31,7 @@ public interface Interval {
     /** See equivalent [d3 function](https://github.com/d3/d3-time#interval_range). */
     public fun range(start: LocalDateTime, stop: LocalDateTime, step: Int = 1): List<LocalDateTime> {
         require(step > 0) { "Step must be positive, but was $step." }
-        var next = floor(start)
+        var next = ceil(start)
         if (stop <= next) return emptyList()
         return buildList {
             do {
