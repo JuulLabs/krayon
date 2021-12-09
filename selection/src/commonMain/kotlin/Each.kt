@@ -10,7 +10,7 @@ import com.juul.krayon.element.Element
  * of CSS, respectively.
  */
 public inline fun <E : Element, D, S : Selection<E, D>> S.each(
-    crossinline action: E.(Arguments<E, D>) -> Unit,
+    crossinline action: E.(Arguments<D, E?>) -> Unit,
 ): S {
     groups.forEach { group ->
         group.nodes.forEachIndexed { index, node ->

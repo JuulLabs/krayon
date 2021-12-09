@@ -11,7 +11,7 @@ public fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(
 
 /** See analogous [d3 function](https://github.com/d3/d3-selection#selection_selectAll). */
 public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(
-    crossinline select: E1.(Arguments<E1, D>) -> Sequence<E2>,
+    crossinline select: E1.(Arguments<D, E1?>) -> Sequence<E2>,
 ): Selection<E2, D> = Selection(
     groups.flatMap { group ->
         group.nodes.asSequence()
