@@ -8,6 +8,9 @@ public abstract class Element {
 
     protected val attributes: MutableMap<String, Any?> = mutableMapOf()
 
+    /** Analogous to an HTML class, except you can only have one. */
+    public var kind: String? by attributes.withDefault { null }
+
     public var data: Any? by attributes.withDefault { null }
 
     public open var parent: Element? = null
