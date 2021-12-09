@@ -2,8 +2,8 @@ package com.juul.krayon.interpolate
 
 import com.juul.krayon.color.Color
 import com.juul.krayon.color.lerp
-import com.juul.krayon.time.LocalDateTimeArithmeticSystem.minus
-import com.juul.krayon.time.LocalDateTimeArithmeticSystem.plus
+import com.juul.krayon.time.minus
+import com.juul.krayon.time.plus
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlin.time.ExperimentalTime

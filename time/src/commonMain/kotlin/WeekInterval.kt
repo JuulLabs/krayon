@@ -7,8 +7,8 @@ import kotlinx.datetime.atTime
 import kotlinx.datetime.minus
 import kotlin.time.Duration.Companion.days
 
-public class WeekInterval private constructor(
-    private val dayOfWeek: DayOfWeek
+public class WeekInterval(
+    private val dayOfWeek: DayOfWeek,
 ) : Interval, Interval.Count {
 
     // TODO: Optimize this via math

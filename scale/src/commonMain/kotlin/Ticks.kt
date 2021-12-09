@@ -59,7 +59,7 @@ public fun tickIncrement(start: Double, stop: Double, count: Int): Int {
     if (start == stop) return 0
     require(start < stop) { "Start must be less than or equal to stop, but values were $start and $stop." }
     val step = (stop - start) / count
-    val power = floor(ln(step) / ln10)
+    val power = floor(log10(step))
     val error = step / (10.0).pow(power)
     return if (power >= 0) {
         errorScaleOf(error) * (10.0).pow(power)
@@ -77,7 +77,7 @@ public fun tickStep(start: Double, stop: Double, count: Int): Double {
     require(count > 0) { "Count must be positive, but was $count." }
     if (start == stop) return 0.0
     val preciseStep = abs(stop - start) / count
-    val roundedStep = (10.0).pow(floor(log10(preciseStep) / ln10))
+    val roundedStep = (10.0).pow(floor(log10(preciseStep)))
     val error = preciseStep / roundedStep
     val finalStep = errorScaleOf(error) * roundedStep
     return if (start < stop) finalStep else -finalStep
