@@ -78,8 +78,8 @@ public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<LocalDate
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Color>): ContinuousScale<D, Color> = range(range, ::interpolator)
 
 public class ContinuousScale<D : Comparable<D>, R> internal constructor(
-    private val domain: List<D>,
-    private val range: List<R>,
+    public val domain: List<D>,
+    public val range: List<R>,
     private val getInverter: (start: D, stop: D) -> Inverter<D>,
     private val getInterpolator: (start: R, stop: R) -> Interpolator<R>,
 ) : Scale<D, R> {

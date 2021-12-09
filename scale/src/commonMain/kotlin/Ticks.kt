@@ -2,7 +2,6 @@ package com.juul.krayon.scale
 
 import kotlin.math.abs
 import kotlin.math.floor
-import kotlin.math.ln
 import kotlin.math.log10
 import kotlin.math.pow
 import kotlin.math.roundToInt
@@ -13,7 +12,6 @@ import kotlin.math.sqrt
 private val sqrt50 = sqrt(50.0)
 private val sqrt10 = sqrt(10.0)
 private val sqrt2 = sqrt(2.0)
-private val ln10 = ln(10.0)
 
 /** See equivalent [d3 function](https://github.com/d3/d3-array#tick). */
 public fun ticks(start: Float, stop: Float, count: Int): List<Float> =

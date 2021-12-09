@@ -26,6 +26,7 @@ pluginManagement {
 }
 
 include(
+    "axis",
     "color",
     "element",
     "element-view",
