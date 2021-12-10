@@ -56,7 +56,7 @@ internal fun lineChart(root: RootElement, width: Float, height: Float, data: Lis
     val body = root.asSelection()
         .selectAll(TransformElement.withKind("body"))
         .data(listOf(null))
-        .join(onEnter = { append(TransformElement).each { kind = "body" } })
+        .join { append(TransformElement).each { kind = "body" } }
         .each {
             transform = Transform.Translate(
                 horizontal = leftMargin,
@@ -66,39 +66,34 @@ internal fun lineChart(root: RootElement, width: Float, height: Float, data: Lis
 
     body.selectAll(TransformElement.withKind("x-axis"))
         .data(listOf(null))
-        .join(onEnter = { append(TransformElement).each { kind = "x-axis" } })
+        .join { append(TransformElement).each { kind = "x-axis" } }
         .each { transform = Transform.Translate(vertical = innerHeight) }
         .call(axisBottom(x))
 
     body.selectAll(GroupElement.withKind("y-axis"))
         .data(listOf(null))
-        .join(onEnter = { append(GroupElement).each { kind = "y-axis" } })
+        .join { append(GroupElement).each { kind = "y-axis" } }
         .call(axisLeft(y))
 
     body.selectAll(PathElement.withKind("line"))
         .data(listOf(data.filterNotNull(), data))
-        .join(
-            onEnter = {
-                append(PathElement).each { (_, i) ->
-                    kind = "line"
-                    paint = if (i == 0) dashedLinePaint else solidLinePaint
-                }
+        .join {
+            append(PathElement).each { (_, i) ->
+                kind = "line"
+                paint = if (i == 0) dashedLinePaint else solidLinePaint
             }
-        )
-        .each { (d) ->
+        }.each { (d) ->
             path = line.render(d)
         }
 
     body.selectAll(CircleElement)
         .data(data.filterNotNull())
-        .join(
-            onEnter = {
-                append(CircleElement).each {
-                    radius = 3f
-                    paint = circlePaint
-                }
+        .join {
+            append(CircleElement).each {
+                radius = 3f
+                paint = circlePaint
             }
-        ).each { (d) ->
+        }.each { (d) ->
             centerX = x.scale(d.x)
             centerY = y.scale(d.y)
         }
