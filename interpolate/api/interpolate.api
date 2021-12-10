@@ -14,6 +14,7 @@ public abstract interface class com/juul/krayon/interpolate/Inverter {
 }
 
 public final class com/juul/krayon/interpolate/LinearInterpolatorKt {
+	public static final fun interpolator (DD)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator (FF)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator (II)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator (Lkotlinx/datetime/Instant;Lkotlinx/datetime/Instant;)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;

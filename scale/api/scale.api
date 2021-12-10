@@ -1,24 +1,30 @@
 public final class com/juul/krayon/scale/ContinuousScale : com/juul/krayon/scale/Scale {
 	public final fun domain (Ljava/util/List;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/scale/ContinuousScale;
+	public final fun getDomain ()Ljava/util/List;
+	public final fun getRange ()Ljava/util/List;
 	public final fun range (Ljava/util/List;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/scale/ContinuousScale;
 	public fun scale (Ljava/lang/Comparable;)Ljava/lang/Object;
 	public synthetic fun scale (Ljava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class com/juul/krayon/scale/ContinuousScaleKt {
+	public static final fun domain (Lcom/juul/krayon/scale/ContinuousScale;[D)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun domain (Lcom/juul/krayon/scale/ContinuousScale;[F)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun domain (Lcom/juul/krayon/scale/ContinuousScale;[I)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun domain (Lcom/juul/krayon/scale/ContinuousScale;[Lkotlinx/datetime/Instant;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun domain (Lcom/juul/krayon/scale/ContinuousScale;[Lkotlinx/datetime/LocalDateTime;)Lcom/juul/krayon/scale/ContinuousScale;
+	public static final fun domainDouble (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun domainFloat (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun domainInstant (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun domainInt (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun domainLocalDateTime (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
+	public static final fun range (Lcom/juul/krayon/scale/ContinuousScale;[D)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun range (Lcom/juul/krayon/scale/ContinuousScale;[F)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun range (Lcom/juul/krayon/scale/ContinuousScale;[I)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun range (Lcom/juul/krayon/scale/ContinuousScale;[Lkotlinx/datetime/Instant;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun range (Lcom/juul/krayon/scale/ContinuousScale;[Lkotlinx/datetime/LocalDateTime;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun rangeColor (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
+	public static final fun rangeDouble (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun rangeFloat (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun rangeInstant (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun rangeInt (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
@@ -33,5 +39,23 @@ public final class com/juul/krayon/scale/ExtentKt {
 
 public abstract interface class com/juul/krayon/scale/Scale {
 	public abstract fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public abstract interface class com/juul/krayon/scale/Ticker {
+	public abstract fun ticks (Ljava/lang/Object;Ljava/lang/Object;I)Ljava/util/List;
+}
+
+public final class com/juul/krayon/scale/TicksKt {
+	public static final fun tickIncrement (DDI)I
+	public static final fun tickIncrement (FFI)I
+	public static final fun tickStep (DDI)D
+	public static final fun tickStep (FFI)F
+	public static final fun ticks (DDI)Ljava/util/List;
+	public static final fun ticks (FFI)Ljava/util/List;
+}
+
+public final class com/juul/krayon/scale/TimeTicksKt {
+	public static final fun tickInterval (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Lcom/juul/krayon/time/Interval;
+	public static final fun ticks (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
 }
 

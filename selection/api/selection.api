@@ -4,23 +4,25 @@ public final class com/juul/krayon/selection/AppendKt {
 }
 
 public final class com/juul/krayon/selection/Arguments {
-	public fun <init> (Ljava/lang/Object;ILjava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/Object;ILjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/Object;
 	public final fun component2 ()I
 	public final fun component3 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/Object;ILjava/util/List;)Lcom/juul/krayon/selection/Arguments;
-	public static synthetic fun copy$default (Lcom/juul/krayon/selection/Arguments;Ljava/lang/Object;ILjava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/selection/Arguments;
-	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/util/List;
 	public final fun getDatum ()Ljava/lang/Object;
-	public final fun getGroup ()Ljava/util/List;
 	public final fun getIndex ()I
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/selection/Arguments$Buffer {
+	public fun <init> ()V
+	public final fun invoke (Ljava/lang/Object;ILjava/util/List;)Lcom/juul/krayon/selection/Arguments;
 }
 
 public final class com/juul/krayon/selection/DataKt {
 	public static final fun data (Lcom/juul/krayon/selection/Selection;Ljava/util/List;)Lcom/juul/krayon/selection/UpdateSelection;
 	public static final fun data (Lcom/juul/krayon/selection/Selection;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/selection/UpdateSelection;
+	public static final fun keyedData (Lcom/juul/krayon/selection/Selection;Ljava/util/List;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/selection/UpdateSelection;
+	public static final fun keyedData (Lcom/juul/krayon/selection/Selection;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/selection/UpdateSelection;
 }
 
 public final class com/juul/krayon/selection/EachKt {
@@ -34,6 +36,8 @@ public final class com/juul/krayon/selection/EnterElement : com/juul/krayon/elem
 	public final fun getNext ()Lcom/juul/krayon/element/Element;
 	public fun getTag ()Ljava/lang/String;
 	public fun insertBefore (Lcom/juul/krayon/element/Element;Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
+	public fun query (Lcom/juul/krayon/element/ElementSelector;)Lcom/juul/krayon/element/Element;
+	public fun queryAll (Lcom/juul/krayon/element/ElementSelector;)Lkotlin/sequences/Sequence;
 	public final fun setNext (Lcom/juul/krayon/element/Element;)V
 }
 
@@ -43,6 +47,10 @@ public final class com/juul/krayon/selection/EnterSelection : com/juul/krayon/se
 
 public final class com/juul/krayon/selection/ExitSelection : com/juul/krayon/selection/Selection {
 	public fun <init> (Ljava/util/List;)V
+}
+
+public final class com/juul/krayon/selection/FilterKt {
+	public static final fun filter (Lcom/juul/krayon/selection/Selection;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/selection/Selection;
 }
 
 public final class com/juul/krayon/selection/Group {
@@ -56,6 +64,11 @@ public final class com/juul/krayon/selection/Group {
 	public final fun getParent ()Lcom/juul/krayon/element/Element;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/selection/InsertKt {
+	public static final fun insert (Lcom/juul/krayon/selection/Selection;Lcom/juul/krayon/element/ElementBuilder;Lcom/juul/krayon/element/ElementSelector;)Lcom/juul/krayon/selection/Selection;
+	public static final fun insert (Lcom/juul/krayon/selection/Selection;Lkotlin/jvm/functions/Function2;Lcom/juul/krayon/element/ElementSelector;)Lcom/juul/krayon/selection/Selection;
 }
 
 public final class com/juul/krayon/selection/JoinKt {
@@ -77,12 +90,12 @@ public final class com/juul/krayon/selection/RemoveKt {
 }
 
 public final class com/juul/krayon/selection/SelectAllKt {
-	public static final fun selectAll (Lcom/juul/krayon/selection/Selection;Lcom/juul/krayon/element/TypeSelector;)Lcom/juul/krayon/selection/Selection;
+	public static final fun selectAll (Lcom/juul/krayon/selection/Selection;Lcom/juul/krayon/element/ElementSelector;)Lcom/juul/krayon/selection/Selection;
 	public static final fun selectAll (Lcom/juul/krayon/selection/Selection;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/selection/Selection;
 }
 
 public final class com/juul/krayon/selection/SelectKt {
-	public static final fun select (Lcom/juul/krayon/selection/Selection;Lcom/juul/krayon/element/TypeSelector;)Lcom/juul/krayon/selection/Selection;
+	public static final fun select (Lcom/juul/krayon/selection/Selection;Lcom/juul/krayon/element/ElementSelector;)Lcom/juul/krayon/selection/Selection;
 	public static final fun select (Lcom/juul/krayon/selection/Selection;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/selection/Selection;
 }
 
