@@ -39,7 +39,7 @@ private class LinearDoubleInterpolator(
 ) : BidirectionalInterpolator<Double> {
     private val range = stop - start
     override fun interpolate(fraction: Float): Double = start + (range * fraction)
-    override fun invert(value: Double): Float =( (value - start) / range).toFloat()
+    override fun invert(value: Double): Float = ((value - start) / range).toFloat()
 }
 
 @OptIn(ExperimentalTime::class)
