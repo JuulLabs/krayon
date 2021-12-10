@@ -10,7 +10,7 @@ public class RootElement : Element() {
         children.forEach { it.draw(canvas) }
     }
 
-    public companion object : TypeSelector<RootElement> {
+    public companion object : ElementSelector<RootElement> {
         override fun trySelect(element: Element): RootElement? = element as? RootElement
     }
 }

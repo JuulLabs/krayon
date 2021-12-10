@@ -20,7 +20,7 @@ public fun <E : Element, D1, D2> Selection<E, D1>.data(
  */
 public fun <E : Element, D1, D2> Selection<E, D1>.keyedData(
     value: List<D2>,
-    key: Element?.(Arguments<Any?, Any?>) -> String?,
+    key: Element?.(Arguments<Any?, Any?>) -> Any?,
 ): UpdateSelection<E, D2> =
     keyedData(value = { _, _ -> value }, key)
 
@@ -32,12 +32,12 @@ public fun <E : Element, D1, D2> Selection<E, D1>.keyedData(
  */
 public fun <E : Element, D1, D2> Selection<E, D1>.keyedData(
     value: (index: Int, group: Group<E, D1>) -> List<D2>,
-    key: Element?.(Arguments<Any?, Any?>) -> String?,
+    key: Element?.(Arguments<Any?, Any?>) -> Any?,
 ): UpdateSelection<E, D2> = dataImpl(value, key)
 
 private fun <E : Element, D1, D2> Selection<E, D1>.dataImpl(
     value: (index: Int, group: Group<E, D1>) -> List<D2>,
-    key: (Element?.(Arguments<Any?, Any?>) -> String?)?,
+    key: (Element?.(Arguments<Any?, Any?>) -> Any?)?,
 ): UpdateSelection<E, D2> {
     val update = ArrayList<Group<E, D2>>(groups.size)
     val enter = ArrayList<Group<EnterElement, D2>>(groups.size)
@@ -107,27 +107,28 @@ private fun <E : Element, D1, D2> bindIndex(
 private fun <E : Element, D1, D2> bindKey(
     group: Group<E, D1>,
     data: List<D2>,
-    key: Element?.(Arguments<Any?, Any?>) -> String?,
+    key: Element?.(Arguments<Any?, Any?>) -> Any?,
 ): Triple<List<E?>, List<EnterElement?>, List<E?>> {
     val update = ArrayList<E?>(data.size)
     val enter = ArrayList<EnterElement?>(data.size)
     val exit = ArrayList<E?>(group.nodes.size)
 
-    val nodeByKeyValue = HashMap<String?, E>()
-    val keys = ArrayList<String?>(group.nodes.size)
+    val nodeByKeyValue = HashMap<Any?, E>()
+    val keys = ArrayList<Any?>(group.nodes.size)
 
     // Compute keys for existing nodes.
     // If multiple nodes share a key, nodes after the first are added to exit.
     group.nodes.forEachIndexed { index, node ->
         if (node == null) {
-            keys[index] = null
+            keys.add(null)
+            exit.add(null)
         } else {
             val keyValue = node.key(Arguments(node.data, index, group.nodes))
-            keys[index] = keyValue
+            keys.add(keyValue)
             if (keyValue in nodeByKeyValue) {
-                exit[index] = node
+                exit.add(node)
             } else {
-                exit[index] = null
+                exit.add(null)
                 nodeByKeyValue[keyValue] = node
             }
         }
@@ -141,17 +142,21 @@ private fun <E : Element, D1, D2> bindKey(
         val keyValue = group.parent.key(Arguments(value, index, data))
         val node = nodeByKeyValue[keyValue]
         if (node == null) {
-            enter[index] = EnterElement().also {
-                it.parent = group.parent
-                it.data = value
-            }
-            update[index] = null
+            enter.add(
+                EnterElement().also {
+                    it.parent = group.parent
+                    it.data = value
+                }
+            )
+            update.add(null)
             nodeByKeyValue.remove(keyValue)
         } else {
-            enter[index] = null
-            update[index] = node.also {
-                it.data = value
-            }
+            enter.add(null)
+            update.add(
+                node.also {
+                    it.data = value
+                }
+            )
         }
     }
 

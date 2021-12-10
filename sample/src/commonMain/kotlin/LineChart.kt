@@ -1,16 +1,21 @@
 package com.juul.krayon.sample
 
+import com.juul.krayon.axis.ContinuousAxis
+import com.juul.krayon.axis.Edge
 import com.juul.krayon.color.darkSlateBlue
 import com.juul.krayon.color.steelBlue
 import com.juul.krayon.color.white
 import com.juul.krayon.element.CircleElement
+import com.juul.krayon.element.GroupElement
 import com.juul.krayon.element.PathElement
 import com.juul.krayon.element.RootElement
+import com.juul.krayon.element.withKind
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.scale.domain
 import com.juul.krayon.scale.extent
 import com.juul.krayon.scale.range
 import com.juul.krayon.scale.scale
+import com.juul.krayon.scale.ticks
 import com.juul.krayon.selection.append
 import com.juul.krayon.selection.asSelection
 import com.juul.krayon.selection.data
@@ -27,12 +32,13 @@ private val circlePaint = Paint.FillAndStroke(
 )
 
 internal fun lineChart(root: RootElement, width: Float, height: Float, data: List<Point?>) {
+    val margin = 50f
     val x = scale()
         .domain(data.extent { it?.x })
-        .range(10f, width - 10)
+        .range(margin, width - margin)
     val y = scale()
         .domain(-1f, 1f)
-        .range(height - 10, 0f + 10)
+        .range(height - margin, margin)
 
     val line = line<Point>()
         .x { (p) -> x.scale(p.x) }
@@ -41,17 +47,11 @@ internal fun lineChart(root: RootElement, width: Float, height: Float, data: Lis
     root.asSelection()
         .selectAll(PathElement)
         .data(listOf(data.filterNotNull(), data))
-        .join(
-            onEnter = {
-                append(PathElement).each { (_, i) ->
-                    paint = if (i == 0) dashedLinePaint else solidLinePaint
-                }
-            }
-        ).each { (d) ->
+        .join(onEnter = { append(PathElement).each { (_, i) -> paint = if (i == 0) dashedLinePaint else solidLinePaint } })
+        .each { (d) ->
             path = line.render(d)
         }
 
-    // TODO: Update with FillAndStroke
     root.asSelection()
         .selectAll(CircleElement)
         .data(data.filterNotNull())
@@ -66,4 +66,29 @@ internal fun lineChart(root: RootElement, width: Float, height: Float, data: Lis
             centerX = x.scale(d.x)
             centerY = y.scale(d.y)
         }
+
+    val xAxisGroup = root.asSelection()
+        .selectAll(GroupElement.withKind("x-axis"))
+        .data(listOf(null))
+        .join(onEnter = { append(GroupElement).each { kind = "x-axis" } })
+
+    ContinuousAxis(
+        Edge.Bottom,
+        x,
+        ticker = { start, stop, count -> ticks(start, stop, count) },
+        formatter = { it.toString() }
+    ).applySelection(xAxisGroup)
+
+
+    val yAxisGroup = root.asSelection()
+        .selectAll(GroupElement.withKind("y-axis"))
+        .data(listOf(null))
+        .join(onEnter = { append(GroupElement).each { kind = "y-axis" } })
+
+    ContinuousAxis(
+        Edge.Left,
+        y,
+        ticker = { start, stop, count -> ticks(start, stop, count) },
+        formatter = { it.toString() }
+    ).applySelection(yAxisGroup)
 }

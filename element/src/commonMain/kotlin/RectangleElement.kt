@@ -11,13 +11,13 @@ public class RectangleElement : Element() {
     public var top: Float by attributes.withDefault { 0f }
     public var right: Float by attributes.withDefault { 0f }
     public var bottom: Float by attributes.withDefault { 0f }
-    public var paint: Paint by attributes.withDefault { DEFAULT_PAINT }
+    public var paint: Paint by attributes.withDefault { DEFAULT_FILL }
 
     override fun <PATH> draw(canvas: Kanvas<PATH>) {
         canvas.drawRect(left, top, right, bottom, paint)
     }
 
-    public companion object : ElementBuilder<RectangleElement>, TypeSelector<RectangleElement> {
+    public companion object : ElementBuilder<RectangleElement>, ElementSelector<RectangleElement> {
         override fun build(): RectangleElement = RectangleElement()
         override fun trySelect(element: Element): RectangleElement? = element as? RectangleElement
     }

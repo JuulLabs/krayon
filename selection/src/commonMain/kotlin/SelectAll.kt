@@ -1,13 +1,12 @@
 package com.juul.krayon.selection
 
 import com.juul.krayon.element.Element
-import com.juul.krayon.element.TypeSelector
-import com.juul.krayon.element.descendants
+import com.juul.krayon.element.ElementSelector
 
 /** See analogous [d3 function](https://github.com/d3/d3-selection#selection_selectAll). */
 public fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(
-    selector: TypeSelector<E2>,
-): Selection<E2, D> = selectAll { descendants.mapNotNull { selector.trySelect(it) } }
+    selector: ElementSelector<E2>,
+): Selection<E2, D> = selectAll { queryAll(selector) }
 
 /** See analogous [d3 function](https://github.com/d3/d3-selection#selection_selectAll). */
 public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(

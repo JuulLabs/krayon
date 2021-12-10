@@ -9,13 +9,13 @@ public class PathElement : Element() {
     override val tag: String get() = "path"
 
     public var path: Path by attributes.withDefault { 0f }
-    public var paint: Paint by attributes.withDefault { DEFAULT_PAINT }
+    public var paint: Paint by attributes.withDefault { DEFAULT_STROKE }
 
     override fun <PATH> draw(canvas: Kanvas<PATH>) {
         canvas.drawPath(canvas.buildPath(path), paint)
     }
 
-    public companion object : ElementBuilder<PathElement>, TypeSelector<PathElement> {
+    public companion object : ElementBuilder<PathElement>, ElementSelector<PathElement> {
         override fun build(): PathElement = PathElement()
         override fun trySelect(element: Element): PathElement? = element as? PathElement
     }

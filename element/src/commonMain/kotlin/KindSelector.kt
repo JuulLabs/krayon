@@ -1,15 +1,16 @@
 package com.juul.krayon.element
 
-public fun <E: Element> TypeSelector<E>.withKind(kind: String): TypeSelector<E> =
-    TypeKindSelector(this, kind)
+public fun <E: Element> ElementSelector<E>.withKind(
+    kind: String
+): ElementSelector<E> = KindSelector(this, kind)
 
-internal class TypeKindSelector<E : Element>(
-    val parent: TypeSelector<E>,
+internal class KindSelector<E : Element>(
+    val parent: ElementSelector<E>,
     val kind: String,
-) : TypeSelector<E> {
+) : ElementSelector<E> {
 
     init {
-        require(parent !is TypeKindSelector) {
+        require(parent !is KindSelector) {
             "Elements do not support multiple kinds, so nesting type-kind selectors is almost definitely a bug."
         }
     }

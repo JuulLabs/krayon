@@ -6,7 +6,7 @@ public abstract class Element {
 
     public abstract val tag: String
 
-    protected val attributes: MutableMap<String, Any?> = mutableMapOf()
+    public val attributes: MutableMap<String, Any?> = mutableMapOf()
 
     /** Analogous to an HTML class, except you can only have one. */
     public var kind: String? by attributes.withDefault { null }
@@ -38,6 +38,27 @@ public abstract class Element {
         return child
     }
 
+    public fun matches(selector: ElementSelector<*>): Boolean =
+        selector.trySelect(this) === this
+
+    public open fun <E : Element> query(selector: ElementSelector<E>): E? {
+        var selected = selector.trySelect(this)
+        if (selected != null) return selected
+        for (child in children) {
+            selected = child.query(selector)
+            if (selected != null) return selected
+        }
+        return null
+    }
+
+    public open fun <E : Element> queryAll(selector: ElementSelector<E>): Sequence<E> = sequence {
+        val selected = selector.trySelect(this@Element)
+        if (selected != null) yield(selected)
+        for (child in children) {
+            yieldAll(child.queryAll(selector))
+        }
+    }
+
     public fun <E : Element> removeChild(child: E): E {
         if (_children.remove(child)) {
             child.parent = null
@@ -59,12 +80,8 @@ public abstract class Element {
         }
         append(')')
     }
-}
 
-public val Element.descendants: Sequence<Element>
-    get() = sequence {
-        for (child in children) {
-            yield(child)
-            yieldAll(child.descendants)
-        }
+    public companion object : ElementSelector<Element> {
+        override fun trySelect(element: Element): Element = element
     }
+}
