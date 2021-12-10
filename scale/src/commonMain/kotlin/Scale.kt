@@ -8,3 +8,5 @@ package com.juul.krayon.scale
 public interface Scale<D, R> {
     public fun scale(input: D): R
 }
+
+public operator fun <D, R> Scale<D, R>.invoke(input: D): R = this.scale(input)

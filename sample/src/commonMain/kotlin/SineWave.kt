@@ -1,7 +1,6 @@
 package com.juul.krayon.sample
 
 import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
@@ -24,7 +23,6 @@ internal fun movingSineWave(
         emit(sineWave(offset, samples))
         offset += ((time.elapsedNow() / period) * 2 * PI).toFloat()
         time = TimeSource.Monotonic.markNow()
-        delay(1) // make sure we don't absolutely run away with CPU usage
     }
 }
 

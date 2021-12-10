@@ -1,7 +1,8 @@
 package com.juul.krayon.sample
 
-import com.juul.krayon.axis.ContinuousAxis
-import com.juul.krayon.axis.Edge
+import com.juul.krayon.axis.axisBottom
+import com.juul.krayon.axis.axisLeft
+import com.juul.krayon.axis.call
 import com.juul.krayon.color.darkSlateBlue
 import com.juul.krayon.color.steelBlue
 import com.juul.krayon.color.white
@@ -17,7 +18,6 @@ import com.juul.krayon.scale.domain
 import com.juul.krayon.scale.extent
 import com.juul.krayon.scale.range
 import com.juul.krayon.scale.scale
-import com.juul.krayon.scale.ticks
 import com.juul.krayon.selection.append
 import com.juul.krayon.selection.asSelection
 import com.juul.krayon.selection.data
@@ -64,26 +64,16 @@ internal fun lineChart(root: RootElement, width: Float, height: Float, data: Lis
             )
         }
 
-    val xAxisGroup = body.selectAll(TransformElement.withKind("x-axis"))
+    body.selectAll(TransformElement.withKind("x-axis"))
         .data(listOf(null))
         .join(onEnter = { append(TransformElement).each { kind = "x-axis" } })
         .each { transform = Transform.Translate(vertical = innerHeight) }
+        .call(axisBottom(x))
 
-    ContinuousAxis(
-        Edge.Bottom,
-        x,
-        ticker = { start, stop, count -> ticks(start, stop, count) }
-    ).applySelection(xAxisGroup)
-
-    val yAxisGroup = body.selectAll(GroupElement.withKind("y-axis"))
+    body.selectAll(GroupElement.withKind("y-axis"))
         .data(listOf(null))
         .join(onEnter = { append(GroupElement).each { kind = "y-axis" } })
-
-    ContinuousAxis(
-        Edge.Left,
-        y,
-        ticker = { start, stop, count -> ticks(start, stop, count) }
-    ).applySelection(yAxisGroup)
+        .call(axisLeft(y))
 
     body.selectAll(PathElement.withKind("line"))
         .data(listOf(data.filterNotNull(), data))

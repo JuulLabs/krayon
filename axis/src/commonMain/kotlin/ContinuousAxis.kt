@@ -19,7 +19,12 @@ import com.juul.krayon.kanvas.Path
 import com.juul.krayon.kanvas.Transform
 import com.juul.krayon.kanvas.sansSerif
 import com.juul.krayon.scale.ContinuousScale
+import com.juul.krayon.scale.DoubleTicker
+import com.juul.krayon.scale.FloatTicker
+import com.juul.krayon.scale.InstantTicker
+import com.juul.krayon.scale.LocalDateTimeTicker
 import com.juul.krayon.scale.Ticker
+import com.juul.krayon.scale.invoke
 import com.juul.krayon.selection.Selection
 import com.juul.krayon.selection.append
 import com.juul.krayon.selection.data
@@ -31,13 +36,63 @@ import com.juul.krayon.selection.order
 import com.juul.krayon.selection.remove
 import com.juul.krayon.selection.select
 import com.juul.krayon.selection.selectAll
+import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDateTime
+import kotlin.jvm.JvmName
 import kotlin.math.max
 
-private fun translateX(amount: Float) = Transform.Translate(horizontal = amount)
-private fun translateY(amount: Float) = Transform.Translate(vertical = amount)
+@JvmName("axisLeftFloat")
+public fun axisLeft(scale: ContinuousScale<Float, Float>): ContinuousAxis<Float> = ContinuousAxis(Left, scale, FloatTicker)
+
+@JvmName("axisTopFloat")
+public fun axisTop(scale: ContinuousScale<Float, Float>): ContinuousAxis<Float> = ContinuousAxis(Top, scale, FloatTicker)
+
+@JvmName("axisRightFloat")
+public fun axisRight(scale: ContinuousScale<Float, Float>): ContinuousAxis<Float> = ContinuousAxis(Right, scale, FloatTicker)
+
+@JvmName("axisBottomFloat")
+public fun axisBottom(scale: ContinuousScale<Float, Float>): ContinuousAxis<Float> = ContinuousAxis(Bottom, scale, FloatTicker)
+
+@JvmName("axisLeftDouble")
+public fun axisLeft(scale: ContinuousScale<Double, Float>): ContinuousAxis<Double> = ContinuousAxis(Left, scale, DoubleTicker)
+
+@JvmName("axisTopDouble")
+public fun axisTop(scale: ContinuousScale<Double, Float>): ContinuousAxis<Double> = ContinuousAxis(Top, scale, DoubleTicker)
+
+@JvmName("axisRightDouble")
+public fun axisRight(scale: ContinuousScale<Double, Float>): ContinuousAxis<Double> = ContinuousAxis(Right, scale, DoubleTicker)
+
+@JvmName("axisBottomDouble")
+public fun axisBottom(scale: ContinuousScale<Double, Float>): ContinuousAxis<Double> = ContinuousAxis(Bottom, scale, DoubleTicker)
+
+@JvmName("axisLeftLocalDateTime")
+public fun axisLeft(scale: ContinuousScale<LocalDateTime, Float>): ContinuousAxis<LocalDateTime> = ContinuousAxis(Left, scale, LocalDateTimeTicker)
+
+@JvmName("axisTopLocalDateTime")
+public fun axisTop(scale: ContinuousScale<LocalDateTime, Float>): ContinuousAxis<LocalDateTime> = ContinuousAxis(Top, scale, LocalDateTimeTicker)
+
+@JvmName("axisRightLocalDateTime")
+public fun axisRight(scale: ContinuousScale<LocalDateTime, Float>): ContinuousAxis<LocalDateTime> = ContinuousAxis(Right, scale, LocalDateTimeTicker)
+
+@JvmName("axisBottomLocalDateTime")
+public fun axisBottom(scale: ContinuousScale<LocalDateTime, Float>): ContinuousAxis<LocalDateTime> = ContinuousAxis(Bottom, scale, LocalDateTimeTicker)
+
+@JvmName("axisLeftInstant")
+public fun axisLeft(scale: ContinuousScale<Instant, Float>): ContinuousAxis<Instant> = ContinuousAxis(Left, scale, InstantTicker)
+
+@JvmName("axisTopInstant")
+public fun axisTop(scale: ContinuousScale<Instant, Float>): ContinuousAxis<Instant> = ContinuousAxis(Top, scale, InstantTicker)
+
+@JvmName("axisRightInstant")
+public fun axisRight(scale: ContinuousScale<Instant, Float>): ContinuousAxis<Instant> = ContinuousAxis(Right, scale, InstantTicker)
+
+@JvmName("axisBottomInstant")
+public fun axisBottom(scale: ContinuousScale<Instant, Float>): ContinuousAxis<Instant> = ContinuousAxis(Bottom, scale, InstantTicker)
+
+public fun Selection<*, *>.call(axis: ContinuousAxis<*>): Unit = axis.applySelection(this)
 
 // TODO: Axis should support scales other than ContinuousScale, but since we don't have other scales yet...
-public class ContinuousAxis<D : Comparable<D>>(
+public class ContinuousAxis<D : Comparable<D>> internal constructor(
     private val edge: Edge,
     private val scale: ContinuousScale<D, Float>,
     private val ticker: Ticker<D>,
@@ -56,7 +111,6 @@ public class ContinuousAxis<D : Comparable<D>>(
 
     private val k = if (edge == Top || edge == Left) -1 else 1
     private val isVertical = edge == Left || edge == Right
-    private val transform = if (edge == Top || edge == Bottom) ::translateX else ::translateY
 
     public fun applySelection(selection: Selection<*, *>) {
         val values = ticker.ticks(scale.domain.minOf { it }, scale.domain.maxOf { it }, tickCount)
@@ -65,8 +119,6 @@ public class ContinuousAxis<D : Comparable<D>>(
         val range = scale.range
         val range0 = range.first()
         val range1 = range.last()
-
-        val position = scale::scale
 
         val path = selection.selectAll(PathElement.withKind("domain"))
             .data(listOf(null))
@@ -143,7 +195,10 @@ public class ContinuousAxis<D : Comparable<D>>(
         }
 
         tickMerge.each { (d) ->
-            this.transform = transform(position(d))
+            this.transform = Transform.Translate(
+                horizontal = if (isVertical) 0f else scale(d),
+                vertical = if (isVertical) scale(d) else 0f
+            )
         }
 
         lineMerge.each {

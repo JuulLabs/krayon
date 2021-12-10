@@ -19,7 +19,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 import android.graphics.Paint as AndroidPaint
@@ -133,7 +132,7 @@ public class ElementView @JvmOverloads constructor(
                     if (state.view == null) return@collectLatest
                     if (state.width == 0 || state.height == 0) return@collectLatest
                     val scalingFactor = applyDimension(COMPLEX_UNIT_DIP, 1f, state.view.resources.displayMetrics)
-                    dataSource.conflate().collect { data ->
+                    dataSource.collect { data ->
                         updater.update(state.root, state.width / scalingFactor, state.height / scalingFactor, data)
                         val bitmap = pool.acquire(state.width, state.height)
                         state.root.draw(AndroidKanvas(state.view.context, Canvas(bitmap), scalingFactor))

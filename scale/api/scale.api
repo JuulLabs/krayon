@@ -33,12 +33,40 @@ public final class com/juul/krayon/scale/ContinuousScaleKt {
 	public static synthetic fun scale$default (Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/scale/ContinuousScale;
 }
 
+public final class com/juul/krayon/scale/DoubleTicker : com/juul/krayon/scale/Ticker {
+	public static final field INSTANCE Lcom/juul/krayon/scale/DoubleTicker;
+	public fun ticks (DDI)Ljava/util/List;
+	public synthetic fun ticks (Ljava/lang/Object;Ljava/lang/Object;I)Ljava/util/List;
+}
+
 public final class com/juul/krayon/scale/ExtentKt {
 	public static final fun extent (Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
 }
 
+public final class com/juul/krayon/scale/FloatTicker : com/juul/krayon/scale/Ticker {
+	public static final field INSTANCE Lcom/juul/krayon/scale/FloatTicker;
+	public fun ticks (FFI)Ljava/util/List;
+	public synthetic fun ticks (Ljava/lang/Object;Ljava/lang/Object;I)Ljava/util/List;
+}
+
+public final class com/juul/krayon/scale/InstantTicker : com/juul/krayon/scale/Ticker {
+	public static final field INSTANCE Lcom/juul/krayon/scale/InstantTicker;
+	public synthetic fun ticks (Ljava/lang/Object;Ljava/lang/Object;I)Ljava/util/List;
+	public fun ticks (Lkotlinx/datetime/Instant;Lkotlinx/datetime/Instant;I)Ljava/util/List;
+}
+
+public final class com/juul/krayon/scale/LocalDateTimeTicker : com/juul/krayon/scale/Ticker {
+	public static final field INSTANCE Lcom/juul/krayon/scale/LocalDateTimeTicker;
+	public synthetic fun ticks (Ljava/lang/Object;Ljava/lang/Object;I)Ljava/util/List;
+	public fun ticks (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+}
+
 public abstract interface class com/juul/krayon/scale/Scale {
 	public abstract fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/juul/krayon/scale/ScaleKt {
+	public static final fun invoke (Lcom/juul/krayon/scale/Scale;Ljava/lang/Object;)Ljava/lang/Object;
 }
 
 public abstract interface class com/juul/krayon/scale/Ticker {
