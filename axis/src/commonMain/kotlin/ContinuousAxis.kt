@@ -1,13 +1,23 @@
 package com.juul.krayon.axis
 
+import com.juul.krayon.axis.Edge.Bottom
+import com.juul.krayon.axis.Edge.Left
+import com.juul.krayon.axis.Edge.Right
+import com.juul.krayon.axis.Edge.Top
+import com.juul.krayon.color.Color
+import com.juul.krayon.color.black
 import com.juul.krayon.element.Element
 import com.juul.krayon.element.LineElement
 import com.juul.krayon.element.PathElement
 import com.juul.krayon.element.TextElement
 import com.juul.krayon.element.TransformElement
 import com.juul.krayon.element.withKind
+import com.juul.krayon.kanvas.Font
+import com.juul.krayon.kanvas.Paint
+import com.juul.krayon.kanvas.Paint.Text.Alignment
 import com.juul.krayon.kanvas.Path
 import com.juul.krayon.kanvas.Transform
+import com.juul.krayon.kanvas.sansSerif
 import com.juul.krayon.scale.ContinuousScale
 import com.juul.krayon.scale.Ticker
 import com.juul.krayon.selection.Selection
@@ -31,17 +41,25 @@ public class ContinuousAxis<D : Comparable<D>>(
     private val edge: Edge,
     private val scale: ContinuousScale<D, Float>,
     private val ticker: Ticker<D>,
-    private val formatter: (D) -> String
 ) {
-    private var tickSizeInner = 6f
-    private var tickSizeOuter = 6f
-    private var tickPadding = 3f
-    private val k = if (edge == Edge.Top || edge == Edge.Left) -1 else 1
-    private val isVertical = edge == Edge.Left || edge == Edge.Right
-    private val transform = if (edge == Edge.Top || edge == Edge.Bottom) ::translateX else ::translateY
+    public var tickSizeInner: Float = 6f
+    public var tickSizeOuter: Float = 6f
+    public var tickPadding: Float = 3f
+    public var tickCount: Int = 5
+
+    public var font: Font = Font(sansSerif)
+    public var textSize: Float = 14f
+    public var textColor: Color = black
+    public var lineWidth: Float = 1f
+    public var lineColor: Color = black
+    public var formatter: (D) -> String = { it.toString() }
+
+    private val k = if (edge == Top || edge == Left) -1 else 1
+    private val isVertical = edge == Left || edge == Right
+    private val transform = if (edge == Top || edge == Bottom) ::translateX else ::translateY
 
     public fun applySelection(selection: Selection<*, *>) {
-        val values = ticker.ticks(scale.domain.minOf { it }, scale.domain.maxOf { it }, 10)
+        val values = ticker.ticks(scale.domain.minOf { it }, scale.domain.maxOf { it }, tickCount)
         val spacing = max(tickSizeInner, 0f) + tickPadding
 
         val range = scale.range
@@ -64,23 +82,45 @@ public class ContinuousAxis<D : Comparable<D>>(
 
         val text = tick.select(TextElement)
 
+        val linePaint = Paint.Stroke(lineColor, lineWidth)
         val pathMerge = path.merge(
             path.enter.insert(PathElement, Element.withKind("tick"))
                 .each { kind = "domain" }
-        )
+        ).each { paint = linePaint }
 
         val tickMerge = tick.merge(tickEnter)
 
         val lineMerge = line.merge(
-            tickEnter.append(LineElement)
-                .each { (if (isVertical) ::endX else ::endY).set(k * tickSizeInner) }
-        )
+            tickEnter.append(LineElement).each {
+                if (isVertical) {
+                    endX = k * tickSizeInner
+                } else {
+                    endY = k * tickSizeInner
+                }
+            }
+        ).each { paint = linePaint }
 
+        val alignment = when (edge) {
+            Left -> Alignment.Right
+            Right -> Alignment.Left
+            else -> Alignment.Center
+        }
+        val textPaint = Paint.Text(textColor, textSize, alignment, font)
         val textMerge = text.merge(
-            tickEnter.append(TextElement)
-                .each { (if (isVertical) ::x else ::y).set(k * spacing) }
-            // TODO: Figure out the equivalent of dy here
-        )
+            tickEnter.append(TextElement).each {
+                if (isVertical) {
+                    x = k * spacing
+                } else {
+                    y = k * spacing
+                }
+                // Constants chosen from d3's em value for `dy`
+                verticalAlign = when (edge) {
+                    Top -> 0f
+                    Left, Right -> 0.32f
+                    Bottom -> 0.71f
+                }
+            }
+        ).each { paint = textPaint }
 
         // TODO: animations will live here, once we support animations.
 
@@ -89,25 +129,15 @@ public class ContinuousAxis<D : Comparable<D>>(
         pathMerge.each {
             this.path = Path {
                 if (isVertical) {
-                    if (tickSizeInner != 0f) {
-                        moveTo(k * tickSizeOuter, range0)
-                        lineTo(0f, range0)
-                        lineTo(0f, range1)
-                        lineTo(k * tickSizeOuter, range1)
-                    } else {
-                        moveTo(0f, range0)
-                        lineTo(0f, range1)
-                    }
+                    moveTo(k * tickSizeOuter, range0)
+                    lineTo(0f, range0)
+                    lineTo(0f, range1)
+                    lineTo(k * tickSizeOuter, range1)
                 } else {
-                    if (tickSizeInner != 0f) {
-                        moveTo(range0, k * tickSizeOuter)
-                        lineTo(range0, 0f)
-                        lineTo(range1, 0f)
-                        lineTo(range1, k * tickSizeOuter)
-                    } else {
-                        moveTo(range0, 0f)
-                        lineTo(range1, 0f)
-                    }
+                    moveTo(range0, k * tickSizeOuter)
+                    lineTo(range0, 0f)
+                    lineTo(range1, 0f)
+                    lineTo(range1, k * tickSizeOuter)
                 }
             }
         }
@@ -117,11 +147,19 @@ public class ContinuousAxis<D : Comparable<D>>(
         }
 
         lineMerge.each {
-            (if (isVertical) ::endX else ::endY).set(k * tickSizeInner)
+            if (isVertical) {
+                endX = k * tickSizeInner
+            } else {
+                endY = k * tickSizeInner
+            }
         }
 
         textMerge.each { (d) ->
-            (if (isVertical) ::x else ::y).set(k * spacing)
+            if (isVertical) {
+                x = k * spacing
+            } else {
+                y = k * spacing
+            }
             this.text = formatter(d)
         }
     }
