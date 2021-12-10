@@ -118,12 +118,13 @@ private fun <E : Element, D1, D2> bindKey(
 
     // Compute keys for existing nodes.
     // If multiple nodes share a key, nodes after the first are added to exit.
+    val arguments = Arguments.Buffer<Any?, Any?>()
     group.nodes.forEachIndexed { index, node ->
         if (node == null) {
             keys.add(null)
             exit.add(null)
         } else {
-            val keyValue = node.key(Arguments(node.data, index, group.nodes))
+            val keyValue = node.key(arguments(node.data, index, group.nodes))
             keys.add(keyValue)
             if (keyValue in nodeByKeyValue) {
                 exit.add(node)
@@ -139,7 +140,7 @@ private fun <E : Element, D1, D2> bindKey(
     // If no node matches, add it to enter.
     // If multiple datums share a key, datums after the first are added to enter.
     data.forEachIndexed { index, value ->
-        val keyValue = group.parent.key(Arguments(value, index, data))
+        val keyValue = group.parent.key(arguments(value, index, data))
         val node = nodeByKeyValue[keyValue]
         if (node == null) {
             enter.add(
