@@ -6,6 +6,12 @@ public abstract class Element {
 
     public abstract val tag: String
 
+    /**
+     * This is a delicate API that exposes the raw attribute backing without any type safety. This
+     * is frequently used by the internals of Krayon, but is likely something you shouldn't use as
+     * a library consumer. That said, it's still exposed for the cases where it's necessary.
+     * **When using this, be very careful not to clobber existing attributes.**
+     */
     public val attributes: MutableMap<String, Any?> = mutableMapOf()
 
     /** Analogous to an HTML class, except you can only have one. */

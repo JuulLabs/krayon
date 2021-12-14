@@ -7,6 +7,7 @@ import com.juul.krayon.axis.Edge.Top
 import com.juul.krayon.color.Color
 import com.juul.krayon.color.black
 import com.juul.krayon.element.Element
+import com.juul.krayon.element.GroupElement
 import com.juul.krayon.element.LineElement
 import com.juul.krayon.element.PathElement
 import com.juul.krayon.element.TextElement
@@ -91,22 +92,47 @@ public fun axisBottom(scale: ContinuousScale<Instant, Float>): ContinuousAxis<In
 
 public fun Selection<*, *>.call(axis: ContinuousAxis<*>): Unit = axis.applySelection(this)
 
-// TODO: Axis should support scales other than ContinuousScale, but since we don't have other scales yet...
+/**
+ * Represents an axis over a continuous scale. Generally, this is applied to a drawing by calling [Selection.call] on a selection
+ * of a single [GroupElement] or [TransformElement]. Mutating style properties like [tickCount] should not happen concurrently
+ * with calls to [applySelection] or [Selection.call].
+ *
+ * TODO: Axis should support scales other than ContinuousScale, but since we don't have other scales yet...
+ */
 public class ContinuousAxis<D : Comparable<D>> internal constructor(
     private val edge: Edge,
     private val scale: ContinuousScale<D, Float>,
     private val ticker: Ticker<D>,
 ) {
+
+    /** Length of the tick lines drawn from the axis, for each tick. */
     public var tickSizeInner: Float = 6f
+
+    /** Length of the tick lines drawn from the axis, for the squared ends of the domain path. */
     public var tickSizeOuter: Float = 6f
+
+    /** Padding between tick lines and tick labels. */
     public var tickPadding: Float = 3f
+
+    /** Desired approximate number of ticks. This might not be the exact number actually used if a nearby number would produce nicer ticks. */
     public var tickCount: Int = 5
 
+    /** Font used when drawing tick labels. */
     public var font: Font = Font(sansSerif)
+
+    /** Text size used when drawing tick labels. */
     public var textSize: Float = 14f
+
+    /** Text color used when drawing tick labels. */
     public var textColor: Color = black
+
+    /** Line width used when drawing tick lines & domain path. */
     public var lineWidth: Float = 1f
+
+    /** Line color used when drawing tick lines & domain path. */
     public var lineColor: Color = black
+
+    /** Formatter for converting from the domain values to tick labels. This defaults to [Any.toString]. */
     public var formatter: (D) -> String = { it.toString() }
 
     private val k = if (edge == Top || edge == Left) -1 else 1
