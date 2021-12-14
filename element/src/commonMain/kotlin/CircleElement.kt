@@ -10,13 +10,13 @@ public class CircleElement : Element() {
     public var centerX: Float by attributes.withDefault { 0f }
     public var centerY: Float by attributes.withDefault { 0f }
     public var radius: Float by attributes.withDefault { 0f }
-    public var paint: Paint by attributes.withDefault { DEFAULT_PAINT }
+    public var paint: Paint by attributes.withDefault { DEFAULT_FILL }
 
     override fun <PATH> draw(canvas: Kanvas<PATH>) {
         canvas.drawCircle(centerX, centerY, radius, paint)
     }
 
-    public companion object : ElementBuilder<CircleElement>, TypeSelector<CircleElement> {
+    public companion object : ElementBuilder<CircleElement>, ElementSelector<CircleElement> {
         override fun build(): CircleElement = CircleElement()
         override fun trySelect(element: Element): CircleElement? = element as? CircleElement
     }

@@ -26,6 +26,7 @@ pluginManagement {
 }
 
 include(
+    "axis",
     "color",
     "element",
     "element-view",
@@ -33,6 +34,7 @@ include(
     "interpolate",
     "sample",
     "scale",
-    "shape",
     "selection",
+    "shape",
+    "time",
 )

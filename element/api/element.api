@@ -13,7 +13,7 @@ public final class com/juul/krayon/element/CircleElement : com/juul/krayon/eleme
 	public final fun setRadius (F)V
 }
 
-public final class com/juul/krayon/element/CircleElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/TypeSelector {
+public final class com/juul/krayon/element/CircleElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/ElementSelector {
 	public fun build ()Lcom/juul/krayon/element/CircleElement;
 	public synthetic fun build ()Lcom/juul/krayon/element/Element;
 	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/CircleElement;
@@ -21,27 +21,79 @@ public final class com/juul/krayon/element/CircleElement$Companion : com/juul/kr
 }
 
 public abstract class com/juul/krayon/element/Element {
+	public static final field Companion Lcom/juul/krayon/element/Element$Companion;
 	public fun <init> ()V
 	public fun appendChild (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
 	public abstract fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
-	protected final fun getAttributes ()Ljava/util/Map;
+	public final fun getAttributes ()Ljava/util/Map;
 	public final fun getChildren ()Ljava/util/List;
 	public final fun getData ()Ljava/lang/Object;
+	public final fun getKind ()Ljava/lang/String;
 	public fun getParent ()Lcom/juul/krayon/element/Element;
 	public abstract fun getTag ()Ljava/lang/String;
 	public fun insertBefore (Lcom/juul/krayon/element/Element;Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
+	public final fun matches (Lcom/juul/krayon/element/ElementSelector;)Z
+	public fun query (Lcom/juul/krayon/element/ElementSelector;)Lcom/juul/krayon/element/Element;
+	public fun queryAll (Lcom/juul/krayon/element/ElementSelector;)Lkotlin/sequences/Sequence;
 	public final fun removeChild (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
 	public final fun setData (Ljava/lang/Object;)V
+	public final fun setKind (Ljava/lang/String;)V
 	public fun setParent (Lcom/juul/krayon/element/Element;)V
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/element/Element$Companion : com/juul/krayon/element/ElementSelector {
+	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
 }
 
 public abstract interface class com/juul/krayon/element/ElementBuilder {
 	public abstract fun build ()Lcom/juul/krayon/element/Element;
 }
 
-public final class com/juul/krayon/element/ElementKt {
-	public static final fun getDescendants (Lcom/juul/krayon/element/Element;)Lkotlin/sequences/Sequence;
+public abstract interface class com/juul/krayon/element/ElementSelector {
+	public abstract fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
+}
+
+public final class com/juul/krayon/element/GroupElement : com/juul/krayon/element/Element {
+	public static final field Companion Lcom/juul/krayon/element/GroupElement$Companion;
+	public fun <init> ()V
+	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
+	public fun getTag ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/element/GroupElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/ElementSelector {
+	public synthetic fun build ()Lcom/juul/krayon/element/Element;
+	public fun build ()Lcom/juul/krayon/element/GroupElement;
+	public synthetic fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
+	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/GroupElement;
+}
+
+public final class com/juul/krayon/element/KindSelectorKt {
+	public static final fun withKind (Lcom/juul/krayon/element/ElementSelector;Ljava/lang/String;)Lcom/juul/krayon/element/ElementSelector;
+}
+
+public final class com/juul/krayon/element/LineElement : com/juul/krayon/element/Element {
+	public static final field Companion Lcom/juul/krayon/element/LineElement$Companion;
+	public fun <init> ()V
+	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
+	public final fun getEndX ()F
+	public final fun getEndY ()F
+	public final fun getPaint ()Lcom/juul/krayon/kanvas/Paint;
+	public final fun getStartX ()F
+	public final fun getStartY ()F
+	public fun getTag ()Ljava/lang/String;
+	public final fun setEndX (F)V
+	public final fun setEndY (F)V
+	public final fun setPaint (Lcom/juul/krayon/kanvas/Paint;)V
+	public final fun setStartX (F)V
+	public final fun setStartY (F)V
+}
+
+public final class com/juul/krayon/element/LineElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/ElementSelector {
+	public synthetic fun build ()Lcom/juul/krayon/element/Element;
+	public fun build ()Lcom/juul/krayon/element/LineElement;
+	public synthetic fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
+	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/LineElement;
 }
 
 public final class com/juul/krayon/element/PathElement : com/juul/krayon/element/Element {
@@ -55,7 +107,7 @@ public final class com/juul/krayon/element/PathElement : com/juul/krayon/element
 	public final fun setPath (Lcom/juul/krayon/kanvas/Path;)V
 }
 
-public final class com/juul/krayon/element/PathElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/TypeSelector {
+public final class com/juul/krayon/element/PathElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/ElementSelector {
 	public synthetic fun build ()Lcom/juul/krayon/element/Element;
 	public fun build ()Lcom/juul/krayon/element/PathElement;
 	public synthetic fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
@@ -79,7 +131,7 @@ public final class com/juul/krayon/element/RectangleElement : com/juul/krayon/el
 	public final fun setTop (F)V
 }
 
-public final class com/juul/krayon/element/RectangleElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/TypeSelector {
+public final class com/juul/krayon/element/RectangleElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/ElementSelector {
 	public synthetic fun build ()Lcom/juul/krayon/element/Element;
 	public fun build ()Lcom/juul/krayon/element/RectangleElement;
 	public synthetic fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
@@ -93,9 +145,33 @@ public final class com/juul/krayon/element/RootElement : com/juul/krayon/element
 	public fun getTag ()Ljava/lang/String;
 }
 
-public final class com/juul/krayon/element/RootElement$Companion : com/juul/krayon/element/TypeSelector {
+public final class com/juul/krayon/element/RootElement$Companion : com/juul/krayon/element/ElementSelector {
 	public synthetic fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
 	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/RootElement;
+}
+
+public final class com/juul/krayon/element/TextElement : com/juul/krayon/element/Element {
+	public static final field Companion Lcom/juul/krayon/element/TextElement$Companion;
+	public fun <init> ()V
+	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
+	public final fun getPaint ()Lcom/juul/krayon/kanvas/Paint$Text;
+	public fun getTag ()Ljava/lang/String;
+	public final fun getText ()Ljava/lang/String;
+	public final fun getVerticalAlign ()F
+	public final fun getX ()F
+	public final fun getY ()F
+	public final fun setPaint (Lcom/juul/krayon/kanvas/Paint$Text;)V
+	public final fun setText (Ljava/lang/String;)V
+	public final fun setVerticalAlign (F)V
+	public final fun setX (F)V
+	public final fun setY (F)V
+}
+
+public final class com/juul/krayon/element/TextElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/ElementSelector {
+	public synthetic fun build ()Lcom/juul/krayon/element/Element;
+	public fun build ()Lcom/juul/krayon/element/TextElement;
+	public synthetic fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
+	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/TextElement;
 }
 
 public final class com/juul/krayon/element/TransformElement : com/juul/krayon/element/Element {
@@ -107,14 +183,10 @@ public final class com/juul/krayon/element/TransformElement : com/juul/krayon/el
 	public final fun setTransform (Lcom/juul/krayon/kanvas/Transform;)V
 }
 
-public final class com/juul/krayon/element/TransformElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/TypeSelector {
+public final class com/juul/krayon/element/TransformElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/ElementSelector {
 	public synthetic fun build ()Lcom/juul/krayon/element/Element;
 	public fun build ()Lcom/juul/krayon/element/TransformElement;
 	public synthetic fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
 	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/TransformElement;
-}
-
-public abstract interface class com/juul/krayon/element/TypeSelector {
-	public abstract fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
 }
 

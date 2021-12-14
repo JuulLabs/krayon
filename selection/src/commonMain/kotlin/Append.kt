@@ -10,5 +10,5 @@ public fun <E1 : Element, E2 : Element, D> Selection<E1, D>.append(
 
 /** See analogous [d3 function](https://github.com/d3/d3-selection#selection_append). */
 public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.append(
-    crossinline value: E1.(Arguments<E1, D>) -> E2,
+    crossinline value: E1.(Arguments<D, E1?>) -> E2,
 ): Selection<E2, D> = select { args -> appendChild(value(args)) }

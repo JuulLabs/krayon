@@ -1,0 +1,161 @@
+public final class com/juul/krayon/time/DayInterval : com/juul/krayon/time/Interval, com/juul/krayon/time/Interval$Count, com/juul/krayon/time/Interval$Field {
+	public static final field INSTANCE Lcom/juul/krayon/time/DayInterval;
+	public fun ceil (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun count (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)I
+	public fun every (I)Lcom/juul/krayon/time/Interval;
+	public fun field (Lkotlinx/datetime/LocalDateTime;)I
+	public fun filter (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public fun floor (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun offset (Lkotlinx/datetime/LocalDateTime;I)Lkotlinx/datetime/LocalDateTime;
+	public fun range (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public fun round (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+
+public final class com/juul/krayon/time/HourInterval : com/juul/krayon/time/Interval, com/juul/krayon/time/Interval$Count, com/juul/krayon/time/Interval$Field {
+	public static final field INSTANCE Lcom/juul/krayon/time/HourInterval;
+	public fun ceil (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun count (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)I
+	public fun every (I)Lcom/juul/krayon/time/Interval;
+	public fun field (Lkotlinx/datetime/LocalDateTime;)I
+	public fun filter (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public fun floor (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun offset (Lkotlinx/datetime/LocalDateTime;I)Lkotlinx/datetime/LocalDateTime;
+	public fun range (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public fun round (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+
+public abstract interface class com/juul/krayon/time/Interval {
+	public abstract fun ceil (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public abstract fun filter (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public abstract fun floor (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public abstract fun offset (Lkotlinx/datetime/LocalDateTime;I)Lkotlinx/datetime/LocalDateTime;
+	public abstract fun range (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public abstract fun round (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+
+public abstract interface class com/juul/krayon/time/Interval$Count : com/juul/krayon/time/Interval {
+	public abstract fun count (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)I
+	public abstract fun every (I)Lcom/juul/krayon/time/Interval;
+}
+
+public final class com/juul/krayon/time/Interval$Count$DefaultImpls {
+	public static fun ceil (Lcom/juul/krayon/time/Interval$Count;Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public static fun every (Lcom/juul/krayon/time/Interval$Count;I)Lcom/juul/krayon/time/Interval;
+	public static fun filter (Lcom/juul/krayon/time/Interval$Count;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public static fun range (Lcom/juul/krayon/time/Interval$Count;Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public static fun round (Lcom/juul/krayon/time/Interval$Count;Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+
+public final class com/juul/krayon/time/Interval$DefaultImpls {
+	public static fun ceil (Lcom/juul/krayon/time/Interval;Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public static fun filter (Lcom/juul/krayon/time/Interval;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public static fun range (Lcom/juul/krayon/time/Interval;Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public static synthetic fun range$default (Lcom/juul/krayon/time/Interval;Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;IILjava/lang/Object;)Ljava/util/List;
+	public static fun round (Lcom/juul/krayon/time/Interval;Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+
+public abstract interface class com/juul/krayon/time/Interval$Field : com/juul/krayon/time/Interval {
+	public abstract fun field (Lkotlinx/datetime/LocalDateTime;)I
+}
+
+public final class com/juul/krayon/time/Interval$Field$DefaultImpls {
+	public static fun ceil (Lcom/juul/krayon/time/Interval$Field;Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public static fun filter (Lcom/juul/krayon/time/Interval$Field;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public static fun range (Lcom/juul/krayon/time/Interval$Field;Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public static fun round (Lcom/juul/krayon/time/Interval$Field;Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+
+public final class com/juul/krayon/time/LocalDateTimeMathKt {
+	public static final fun minus (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)J
+	public static final fun minus-HG0u8IE (Lkotlinx/datetime/LocalDateTime;J)Lkotlinx/datetime/LocalDateTime;
+	public static final fun plus-HG0u8IE (Lkotlinx/datetime/LocalDateTime;J)Lkotlinx/datetime/LocalDateTime;
+}
+
+public final class com/juul/krayon/time/MillisecondInterval : com/juul/krayon/time/Interval, com/juul/krayon/time/Interval$Count, com/juul/krayon/time/Interval$Field {
+	public static final field INSTANCE Lcom/juul/krayon/time/MillisecondInterval;
+	public fun ceil (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun count (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)I
+	public fun every (I)Lcom/juul/krayon/time/Interval;
+	public fun field (Lkotlinx/datetime/LocalDateTime;)I
+	public fun filter (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public fun floor (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun offset (Lkotlinx/datetime/LocalDateTime;I)Lkotlinx/datetime/LocalDateTime;
+	public fun range (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public fun round (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+
+public final class com/juul/krayon/time/MinuteInterval : com/juul/krayon/time/Interval, com/juul/krayon/time/Interval$Count, com/juul/krayon/time/Interval$Field {
+	public static final field INSTANCE Lcom/juul/krayon/time/MinuteInterval;
+	public fun ceil (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun count (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)I
+	public fun every (I)Lcom/juul/krayon/time/Interval;
+	public fun field (Lkotlinx/datetime/LocalDateTime;)I
+	public fun filter (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public fun floor (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun offset (Lkotlinx/datetime/LocalDateTime;I)Lkotlinx/datetime/LocalDateTime;
+	public fun range (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public fun round (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+
+public final class com/juul/krayon/time/MonthInterval : com/juul/krayon/time/Interval, com/juul/krayon/time/Interval$Count, com/juul/krayon/time/Interval$Field {
+	public static final field INSTANCE Lcom/juul/krayon/time/MonthInterval;
+	public fun ceil (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun count (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)I
+	public fun every (I)Lcom/juul/krayon/time/Interval;
+	public fun field (Lkotlinx/datetime/LocalDateTime;)I
+	public fun filter (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public fun floor (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun offset (Lkotlinx/datetime/LocalDateTime;I)Lkotlinx/datetime/LocalDateTime;
+	public fun range (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public fun round (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+
+public final class com/juul/krayon/time/SecondInterval : com/juul/krayon/time/Interval, com/juul/krayon/time/Interval$Count, com/juul/krayon/time/Interval$Field {
+	public static final field INSTANCE Lcom/juul/krayon/time/SecondInterval;
+	public fun ceil (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun count (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)I
+	public fun every (I)Lcom/juul/krayon/time/Interval;
+	public fun field (Lkotlinx/datetime/LocalDateTime;)I
+	public fun filter (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public fun floor (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun offset (Lkotlinx/datetime/LocalDateTime;I)Lkotlinx/datetime/LocalDateTime;
+	public fun range (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public fun round (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+
+public final class com/juul/krayon/time/WeekInterval : com/juul/krayon/time/Interval, com/juul/krayon/time/Interval$Count {
+	public static final field Companion Lcom/juul/krayon/time/WeekInterval$Companion;
+	public fun <init> (Ljava/time/DayOfWeek;)V
+	public fun ceil (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun count (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)I
+	public fun every (I)Lcom/juul/krayon/time/Interval;
+	public fun filter (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public fun floor (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun offset (Lkotlinx/datetime/LocalDateTime;I)Lkotlinx/datetime/LocalDateTime;
+	public fun range (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public fun round (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+
+public final class com/juul/krayon/time/WeekInterval$Companion {
+	public final fun getFriday ()Lcom/juul/krayon/time/WeekInterval;
+	public final fun getMonday ()Lcom/juul/krayon/time/WeekInterval;
+	public final fun getSaturday ()Lcom/juul/krayon/time/WeekInterval;
+	public final fun getSunday ()Lcom/juul/krayon/time/WeekInterval;
+	public final fun getThursday ()Lcom/juul/krayon/time/WeekInterval;
+	public final fun getTuesday ()Lcom/juul/krayon/time/WeekInterval;
+	public final fun getWednesday ()Lcom/juul/krayon/time/WeekInterval;
+}
+
+public final class com/juul/krayon/time/YearInterval : com/juul/krayon/time/Interval, com/juul/krayon/time/Interval$Count, com/juul/krayon/time/Interval$Field {
+	public static final field INSTANCE Lcom/juul/krayon/time/YearInterval;
+	public fun ceil (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun count (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)I
+	public fun every (I)Lcom/juul/krayon/time/Interval;
+	public fun field (Lkotlinx/datetime/LocalDateTime;)I
+	public fun filter (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/time/Interval;
+	public fun floor (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public fun offset (Lkotlinx/datetime/LocalDateTime;I)Lkotlinx/datetime/LocalDateTime;
+	public fun range (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
+	public fun round (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+}
+

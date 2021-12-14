@@ -2,12 +2,15 @@ package com.juul.krayon.interpolate
 
 import com.juul.krayon.color.Color
 import com.juul.krayon.color.lerp
+import com.juul.krayon.time.minus
+import com.juul.krayon.time.plus
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlin.time.ExperimentalTime
 
 public fun interpolator(start: Int, stop: Int): BidirectionalInterpolator<Int> = LinearIntInterpolator(start, stop)
 public fun interpolator(start: Float, stop: Float): BidirectionalInterpolator<Float> = LinearFloatInterpolator(start, stop)
+public fun interpolator(start: Double, stop: Double): BidirectionalInterpolator<Double> = LinearDoubleInterpolator(start, stop)
 public fun interpolator(start: Instant, stop: Instant): BidirectionalInterpolator<Instant> = LinearInstantInterpolator(start, stop)
 public fun interpolator(start: LocalDateTime, stop: LocalDateTime): BidirectionalInterpolator<LocalDateTime> = LinearLocalDateTimeInterpolator(start, stop)
 public fun interpolator(start: Color, stop: Color): Interpolator<Color> = ArgbLinearColorInterpolator(start, stop)
@@ -28,6 +31,15 @@ private class LinearFloatInterpolator(
     private val range = stop - start
     override fun interpolate(fraction: Float): Float = start + (range * fraction)
     override fun invert(value: Float): Float = (value - start) / range
+}
+
+private class LinearDoubleInterpolator(
+    private val start: Double,
+    stop: Double,
+) : BidirectionalInterpolator<Double> {
+    private val range = stop - start
+    override fun interpolate(fraction: Float): Double = start + (range * fraction)
+    override fun invert(value: Double): Float = ((value - start) / range).toFloat()
 }
 
 @OptIn(ExperimentalTime::class)

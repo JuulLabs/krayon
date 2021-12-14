@@ -28,6 +28,7 @@ public fun scale(
 // Vararg domains
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: Int): ContinuousScale<Int, R> = domain(domain.toList())
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: Float): ContinuousScale<Float, R> = domain(domain.toList())
+public fun <R> ContinuousScale<*, R>.domain(vararg domain: Double): ContinuousScale<Double, R> = domain(domain.toList())
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: Instant): ContinuousScale<Instant, R> = domain(domain.toList())
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: LocalDateTime): ContinuousScale<LocalDateTime, R> = domain(domain.toList())
 
@@ -38,6 +39,9 @@ public fun <R> ContinuousScale<*, R>.domain(domain: List<Int>): ContinuousScale<
 @JvmName("domainFloat")
 public fun <R> ContinuousScale<*, R>.domain(domain: List<Float>): ContinuousScale<Float, R> = domain(domain.toList(), ::interpolator)
 
+@JvmName("domainDouble")
+public fun <R> ContinuousScale<*, R>.domain(domain: List<Double>): ContinuousScale<Double, R> = domain(domain.toList(), ::interpolator)
+
 @JvmName("domainInstant")
 public fun <R> ContinuousScale<*, R>.domain(domain: List<Instant>): ContinuousScale<Instant, R> = domain(domain.toList(), ::interpolator)
 
@@ -47,6 +51,7 @@ public fun <R> ContinuousScale<*, R>.domain(domain: List<LocalDateTime>): Contin
 // Vararg ranges
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Int): ContinuousScale<D, Int> = range(range.toList())
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Float): ContinuousScale<D, Float> = range(range.toList())
+public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Double): ContinuousScale<D, Double> = range(range.toList())
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Instant): ContinuousScale<D, Instant> = range(range.toList())
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: LocalDateTime): ContinuousScale<D, LocalDateTime> = range(range.toList())
 
@@ -60,6 +65,9 @@ public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Int>): Co
 @JvmName("rangeFloat")
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Float>): ContinuousScale<D, Float> = range(range, ::interpolator)
 
+@JvmName("rangeDouble")
+public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Double>): ContinuousScale<D, Double> = range(range, ::interpolator)
+
 @JvmName("rangeInstant")
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Instant>): ContinuousScale<D, Instant> = range(range, ::interpolator)
 
@@ -70,8 +78,8 @@ public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<LocalDate
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Color>): ContinuousScale<D, Color> = range(range, ::interpolator)
 
 public class ContinuousScale<D : Comparable<D>, R> internal constructor(
-    private val domain: List<D>,
-    private val range: List<R>,
+    public val domain: List<D>,
+    public val range: List<R>,
     private val getInverter: (start: D, stop: D) -> Inverter<D>,
     private val getInterpolator: (start: R, stop: R) -> Interpolator<R>,
 ) : Scale<D, R> {
