@@ -26,6 +26,7 @@ kotlin {
                 api(project(":axis"))
                 api(project(":color"))
                 api(project(":element"))
+                api(project(":hierarchy"))
                 api(project(":interpolate"))
                 api(project(":kanvas"))
                 api(project(":scale"))
