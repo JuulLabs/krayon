@@ -1,0 +1,73 @@
+package com.juul.krayon.hierarchy.treemap
+
+import com.juul.krayon.hierarchy.Node
+import com.juul.krayon.hierarchy.depth
+import com.juul.krayon.hierarchy.eachBefore
+
+public fun <T> Node<T, *>.layoutWith(treemap: Treemap<T>): Node<T, Tile> = treemap.layout(this)
+
+public class Treemap<T> {
+
+    public var tileMethod: TileMethod = Squarify()
+        private set
+
+    public var width: Float = 1f
+        private set
+
+    public var height: Float = 1f
+        private set
+
+    // TODO: Accessors for these
+    public var paddingLeft: (Node<T, Tile>) -> Float = { 0f }
+
+    public var paddingTop: (Node<T, Tile>) -> Float = { 0f }
+        private set
+
+    public var paddingRight: (Node<T, Tile>) -> Float = { 0f }
+        private set
+
+    public var paddingBottom: (Node<T, Tile>) -> Float = { 0f }
+        private set
+
+    public var paddingInner: (Node<T, Tile>) -> Float = { 0f }
+        private set
+
+    public fun tile(method: TileMethod): Treemap<T> {
+        this.tileMethod = method
+        return this
+    }
+
+    public fun size(width: Float = this.width, height: Float = this.height): Treemap<T> {
+        this.width = width
+        this.height = height
+        return this
+    }
+
+    public fun layout(root: Node<T, *>): Node<T, Tile> {
+        (root as Node<T, Tile>).layout = tile(0f, 0f, width, height)
+        val paddingStack = mutableMapOf(0 to 0f)
+        root.eachBefore { node ->
+            var p = paddingStack.getValue(node.depth)
+            val tile = tile(
+                node.layout.left + p,
+                node.layout.top + p,
+                node.layout.right - p,
+                node.layout.bottom - p
+            )
+            if (node.children.isNotEmpty()) {
+                p = paddingInner(node) / 2
+                paddingStack[node.depth + 1] = p
+                node.layout = tile(
+                    tile.left + paddingLeft(node) - p,
+                    tile.top + paddingTop(node) - p,
+                    tile.right - paddingRight(node) + p,
+                    tile.bottom - paddingBottom(node) + p
+                )
+                tileMethod.tile(node)
+            }
+            node.layout = tile
+        }
+        // TODO: Add rounding.
+        return root
+    }
+}
