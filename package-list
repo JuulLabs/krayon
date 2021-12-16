@@ -3,6 +3,11 @@ $dokka.linkExtension:html
 
 module:axis
 com.juul.krayon.axis
+module:chart
+com.juul.krayon.chart
+com.juul.krayon.chart.data
+com.juul.krayon.chart.render
+com.juul.krayon.chart.render.components
 module:color
 com.juul.krayon.color
 module:element
