@@ -27,6 +27,7 @@ pluginManagement {
 
 include(
     "axis",
+    "chart",
     "color",
     "element",
     "element-view",
