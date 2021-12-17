@@ -15,7 +15,7 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 kotlinx-coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.3.1" }
 robolectric = { module = "org.robolectric:robolectric", version = "4.5.1" }
-tuulbox-test = { module = "com.juul.tuulbox:test", version = "4.2.0" }
+tuulbox-test = { module = "com.juul.tuulbox:test", version = "4.8.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
