@@ -2,29 +2,36 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>PathBuilder</title>
-</head><body><link href="../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script><script type="text/javascript" src="../../../scripts/main.js" async></script>
+</head><body><link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script><script type="text/javascript" src="../../../scripts/main.js" async></script><script type="text/javascript" src="../../../scripts/prism.js" async></script><script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+
   
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../../index.html"><span>krayon</span></a></div>
+      <div></div>
+      <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector common-like" data-active="" data-filter=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
     <div id="container">
-      <div id="leftColumn"><a href="../../../index.html">
-            <div id="logo"></div>
-          </a>
-        <div id="paneSearch"></div>
+      <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
-      <div id="main">
-        <script type="text/javascript" src="../../../scripts/main.js"></script><div id="leftToggler"><span class="icon-toggler"></span></div>
-
+      <div id="main"><script type="text/javascript" src="../../../scripts/main.js"></script>
         <div class="main-content" id="content" pageids="kanvas::com.juul.krayon.kanvas/PathBuilder///PointingToDeclaration//506614723">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../index.html">kanvas</a>/<a href="../index.html">com.juul.krayon.kanvas</a>/<a href="index.html">PathBuilder</a></div>
-            <div class="pull-right d-flex">
-              <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector common-like" data-active="" data-filter=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
-              <div id="searchBar"></div>
-            </div>
-          </div>
+          <div class="breadcrumbs"><a href="../../index.html">kanvas</a>/<a href="../index.html">com.juul.krayon.kanvas</a>/<a href="index.html">PathBuilder</a></div>
           <div class="cover ">
-            <h1 class="cover"><span>Path</span><wbr><span>Builder</span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">interface <a href="index.html">PathBuilder</a>&lt;out <a href="index.html">P</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Builds paths.</p></div></div>
+            <h1 class="cover"><span>Path</span><wbr><span><span>Builder</span></span></h1>
+            <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+              <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">PathBuilder</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Builds paths.</p></div>            </div>
           </div>
           <div class="tabbedcontent">
             <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Extensions">Extensions</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
@@ -33,240 +40,180 @@
               <div class="table" data-togglable="Functions"><a data-name="47434076%2FFunctions%2F506614723" anchor-label="arcTo" id="47434076%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="arc-to.html">arcTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="47434076%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="arc-to.html"><span>arc</span><wbr><span><span>To</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="47434076%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="arc-to.html"><span class="token function">arcTo</span></a><span class="token punctuation">(</span>left<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>top<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>right<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>bottom<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>startAngle<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>sweepAngle<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>forceMoveTo<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Append the specified arc to the path as a new contour.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="arc-to.html">arcTo</a>(left: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, top: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, right: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, bottom: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, startAngle: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, sweepAngle: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, forceMoveTo: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="47434076%2FFunctions%2F506614723" anchor-label="arcTo" id="47434076%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="47434076%2FFunctions%2F506614723" anchor-label="arcTo" id="47434076%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Append the specified arc to the path as a new contour.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
 <a data-name="-539065482%2FFunctions%2F506614723" anchor-label="build" id="-539065482%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="build.html">build</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-539065482%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="build.html"><span><span>build</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-539065482%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="build.html"><span class="token function">build</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">P</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Returns the path built by previous function calls. If <a href="index.html">P</a> is mutable, then future builder calls should not modify it and multiple calls to <a href="build.html">build</a> must not return the same instance.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="build.html">build</a>(): <a href="index.html">P</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-539065482%2FFunctions%2F506614723" anchor-label="build" id="-539065482%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="-539065482%2FFunctions%2F506614723" anchor-label="build" id="-539065482%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Returns the path built by previous function calls.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
 <a data-name="-1531765972%2FFunctions%2F506614723" anchor-label="close" id="-1531765972%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="close.html">close</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1531765972%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="close.html"><span><span>close</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1531765972%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="close.html"><span class="token function">close</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Close the current contour.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="close.html">close</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-1531765972%2FFunctions%2F506614723" anchor-label="close" id="-1531765972%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="-1531765972%2FFunctions%2F506614723" anchor-label="close" id="-1531765972%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Close the current contour.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
 <a data-name="-1566659616%2FFunctions%2F506614723" anchor-label="cubicTo" id="-1566659616%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="cubic-to.html">cubicTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1566659616%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="cubic-to.html"><span>cubic</span><wbr><span><span>To</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1566659616%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="cubic-to.html"><span class="token function">cubicTo</span></a><span class="token punctuation">(</span>beginControlX<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>beginControlY<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endControlX<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endControlY<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endX<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endY<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Add a cubic bezier from the last point, approaching control points <a href="cubic-to.html">beginControlX</a>, <a href="cubic-to.html">beginControlY</a> and <a href="cubic-to.html">endControlX</a>, <a href="cubic-to.html">endControlY</a>, and ending at point <a href="cubic-to.html">endX</a>, <a href="cubic-to.html">endY</a>.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="cubic-to.html">cubicTo</a>(beginControlX: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, beginControlY: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endControlX: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endControlY: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endX: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endY: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-1566659616%2FFunctions%2F506614723" anchor-label="cubicTo" id="-1566659616%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="-1566659616%2FFunctions%2F506614723" anchor-label="cubicTo" id="-1566659616%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Add a cubic bezier from the last point, approaching control points <a href="cubic-to.html">beginControlX</a>, <a href="cubic-to.html">beginControlY</a> and <a href="cubic-to.html">endControlX</a>, <a href="cubic-to.html">endControlY</a>, and ending at point <a href="cubic-to.html">endX</a>, <a href="cubic-to.html">endY</a>.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
 <a data-name="489190904%2FFunctions%2F506614723" anchor-label="lineTo" id="489190904%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="line-to.html">lineTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="489190904%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="line-to.html"><span>line</span><wbr><span><span>To</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="489190904%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="line-to.html"><span class="token function">lineTo</span></a><span class="token punctuation">(</span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Add a line from the last point to the specified point <a href="line-to.html">x</a>, <a href="line-to.html">y</a>.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="line-to.html">lineTo</a>(x: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, y: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="489190904%2FFunctions%2F506614723" anchor-label="lineTo" id="489190904%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="489190904%2FFunctions%2F506614723" anchor-label="lineTo" id="489190904%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Add a line from the last point to the specified point <a href="line-to.html">x</a>, <a href="line-to.html">y</a>.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
 <a data-name="-415974059%2FFunctions%2F506614723" anchor-label="moveTo" id="-415974059%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="move-to.html">moveTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-415974059%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="move-to.html"><span>move</span><wbr><span><span>To</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-415974059%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="move-to.html"><span class="token function">moveTo</span></a><span class="token punctuation">(</span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Set the beginning of the next contour to the point <a href="move-to.html">x</a>, <a href="move-to.html">y</a>.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="move-to.html">moveTo</a>(x: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, y: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-415974059%2FFunctions%2F506614723" anchor-label="moveTo" id="-415974059%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="-415974059%2FFunctions%2F506614723" anchor-label="moveTo" id="-415974059%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Set the beginning of the next contour to the point <a href="move-to.html">x</a>, <a href="move-to.html">y</a>.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
 <a data-name="64488622%2FFunctions%2F506614723" anchor-label="quadraticTo" id="64488622%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="quadratic-to.html">quadraticTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="64488622%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="quadratic-to.html"><span>quadratic</span><wbr><span><span>To</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="64488622%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="quadratic-to.html"><span class="token function">quadraticTo</span></a><span class="token punctuation">(</span>controlX<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>controlY<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endX<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endY<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Add a quadratic bezier from the last point, approaching control point <a href="quadratic-to.html">controlX</a>, <a href="quadratic-to.html">controlY</a>, and ending at point <a href="quadratic-to.html">endX</a>, <a href="quadratic-to.html">endY</a>.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="quadratic-to.html">quadraticTo</a>(controlX: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, controlY: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endX: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endY: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="64488622%2FFunctions%2F506614723" anchor-label="quadraticTo" id="64488622%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="64488622%2FFunctions%2F506614723" anchor-label="quadraticTo" id="64488622%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Add a quadratic bezier from the last point, approaching control point <a href="quadratic-to.html">controlX</a>, <a href="quadratic-to.html">controlY</a>, and ending at point <a href="quadratic-to.html">endX</a>, <a href="quadratic-to.html">endY</a>.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
 <a data-name="465376116%2FFunctions%2F506614723" anchor-label="relativeCubicTo" id="465376116%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="relative-cubic-to.html">relativeCubicTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="465376116%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="relative-cubic-to.html"><span>relative</span><wbr><span>Cubic</span><wbr><span><span>To</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="465376116%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="relative-cubic-to.html"><span class="token function">relativeCubicTo</span></a><span class="token punctuation">(</span>beginControlX<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>beginControlY<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endControlX<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endControlY<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endX<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endY<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Same as <a href="cubic-to.html">cubicTo</a>, except coordinates are relative to the current location.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="relative-cubic-to.html">relativeCubicTo</a>(beginControlX: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, beginControlY: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endControlX: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endControlY: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endX: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endY: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="465376116%2FFunctions%2F506614723" anchor-label="relativeCubicTo" id="465376116%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="465376116%2FFunctions%2F506614723" anchor-label="relativeCubicTo" id="465376116%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Same as <a href="cubic-to.html">cubicTo</a>, except coordinates are relative to the current location.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
 <a data-name="538749412%2FFunctions%2F506614723" anchor-label="relativeLineTo" id="538749412%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="relative-line-to.html">relativeLineTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="538749412%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="relative-line-to.html"><span>relative</span><wbr><span>Line</span><wbr><span><span>To</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="538749412%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="relative-line-to.html"><span class="token function">relativeLineTo</span></a><span class="token punctuation">(</span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Same as <a href="line-to.html">lineTo</a>, except coordinates are relative to the current location.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="relative-line-to.html">relativeLineTo</a>(x: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, y: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="538749412%2FFunctions%2F506614723" anchor-label="relativeLineTo" id="538749412%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="538749412%2FFunctions%2F506614723" anchor-label="relativeLineTo" id="538749412%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Same as <a href="line-to.html">lineTo</a>, except coordinates are relative to the current location.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
 <a data-name="-366415551%2FFunctions%2F506614723" anchor-label="relativeMoveTo" id="-366415551%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="relative-move-to.html">relativeMoveTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-366415551%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="relative-move-to.html"><span>relative</span><wbr><span>Move</span><wbr><span><span>To</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-366415551%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="relative-move-to.html"><span class="token function">relativeMoveTo</span></a><span class="token punctuation">(</span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Same as <a href="move-to.html">moveTo</a>, except coordinates are relative to the current location.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="relative-move-to.html">relativeMoveTo</a>(x: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, y: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-366415551%2FFunctions%2F506614723" anchor-label="relativeMoveTo" id="-366415551%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="-366415551%2FFunctions%2F506614723" anchor-label="relativeMoveTo" id="-366415551%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Same as <a href="move-to.html">moveTo</a>, except coordinates are relative to the current location.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
 <a data-name="-879209662%2FFunctions%2F506614723" anchor-label="relativeQuadraticTo" id="-879209662%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="relative-quadratic-to.html">relativeQuadraticTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-879209662%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="relative-quadratic-to.html"><span>relative</span><wbr><span>Quadratic</span><wbr><span><span>To</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-879209662%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="relative-quadratic-to.html"><span class="token function">relativeQuadraticTo</span></a><span class="token punctuation">(</span>controlX<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>controlY<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endX<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>endY<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Same as <a href="quadratic-to.html">quadraticTo</a>, except coordinates are relative to the current location.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="relative-quadratic-to.html">relativeQuadraticTo</a>(controlX: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, controlY: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endX: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>, endY: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-879209662%2FFunctions%2F506614723" anchor-label="relativeQuadraticTo" id="-879209662%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="-879209662%2FFunctions%2F506614723" anchor-label="relativeQuadraticTo" id="-879209662%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Same as <a href="quadratic-to.html">quadraticTo</a>, except coordinates are relative to the current location.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
 <a data-name="1244855221%2FFunctions%2F506614723" anchor-label="reset" id="1244855221%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="reset.html">reset</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1244855221%2FFunctions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="reset.html"><span><span>reset</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1244855221%2FFunctions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="reset.html"><span class="token function">reset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Start over!</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">abstract fun <a href="reset.html">reset</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="1244855221%2FFunctions%2F506614723" anchor-label="reset" id="1244855221%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a><div class="brief "><a data-name="1244855221%2FFunctions%2F506614723" anchor-label="reset" id="1244855221%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>Start over!</div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -286,20 +233,15 @@
               <div class="table" data-togglable="Extensions"><a data-name="-1102132039%2FExtensions%2F506614723" anchor-label="build" id="-1102132039%2FExtensions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
                 <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../build.html">build</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1102132039%2FExtensions%2F506614723"></span>
+                    <div class=""><span class="inline-flex"><a href="../build.html"><span><span>build</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1102132039%2FExtensions%2F506614723"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag common-like">common</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build.html">P</a><span class="token operator">&gt; </span><a href="index.html">PathBuilder</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../build.html"><span class="token function">build</span></a><span class="token punctuation">(</span>path<span class="token operator">: </span><a href="../-path/index.html">Path</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="../build.html">P</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace">fun &lt;<a href="../build.html">P</a>&gt; <a href="index.html">PathBuilder</a>&lt;<a href="../build.html">P</a>&gt;.<a href="../build.html">build</a>(path: <a href="../-path/index.html">Path</a>): <a href="../build.html">P</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -307,7 +249,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
   
