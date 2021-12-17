@@ -2,7 +2,7 @@
 agp = "4.2.0"
 android-compile = "android-31"
 android-min = "19"
-coroutines = "1.5.1"
+coroutines = "1.5.2"
 jacoco = "0.8.7"
 kotlin = "1.6.0"
 
