@@ -29,7 +29,8 @@ public class HtmlCanvas(
     element: HTMLCanvasElement,
 ) : Kanvas<Path2D> {
 
-    private val context = element.getContext("2d") as CanvasRenderingContext2D
+    /** The raw HTMLCanvas's 2d rendering context. */
+    public val context: CanvasRenderingContext2D = element.getContext("2d") as CanvasRenderingContext2D
 
     override val width: Float
         get() = context.canvas.width.toFloat()

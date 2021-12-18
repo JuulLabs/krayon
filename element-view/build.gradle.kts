@@ -10,6 +10,7 @@ kotlin {
     explicitApi()
 
     android { publishAllLibraryVariants() }
+    js().browser()
 
     sourceSets {
         val commonMain by getting {
@@ -41,6 +42,12 @@ kotlin {
                 implementation(kotlin("test-junit"))
                 implementation(libs.androidx.test)
                 implementation(libs.robolectric)
+            }
+        }
+
+        val jsTest by getting {
+            dependencies {
+                implementation(kotlin("test-js"))
             }
         }
     }
