@@ -1,7 +1,7 @@
 [versions]
-agp = "4.2.0"
+agp = "7.0.4"
 android-compile = "android-31"
-android-min = "19"
+android-min = "21"
 coroutines = "1.5.2"
 jacoco = "0.8.7"
 kotlin = "1.6.10"
