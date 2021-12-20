@@ -15,6 +15,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":axis"))
+                implementation(project(":element-view"))
                 implementation(project(":selection"))
                 implementation(project(":scale"))
                 implementation(project(":shape"))
@@ -34,7 +35,6 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                implementation(project(":element-view"))
                 implementation(libs.androidx.appcompat)
                 implementation(libs.androidx.lifecycle.runtime)
                 implementation(libs.kotlinx.coroutines.android)
