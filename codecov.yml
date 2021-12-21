@@ -1,5 +1,6 @@
 coverage:
   status:
+    project: off
     patch: off
 fixes:
   - "com/juul/krayon/chart::"
