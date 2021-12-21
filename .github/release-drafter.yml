@@ -1,8 +1,14 @@
-# https://github.com/release-drafter/release-drafter#configuration-options
-
+categories:
+  - title: '🐛 Bug Fixes'
+    label: 'bug'
+  - title: '🧰 Maintenance'
+    labels:
+      - 'maintenance'
+      - 'renovate'
+change-template: '- $TITLE (#$NUMBER)'
 exclude-labels:
   - 'skip-changelog'
-
-change-template: '- $TITLE (#$NUMBER)'
-
-template: $CHANGES
+template: |
+  ## 🚀 Changes
+  
+  $CHANGES
