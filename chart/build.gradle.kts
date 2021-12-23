@@ -29,7 +29,6 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(libs.tuulbox.test)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
@@ -37,7 +36,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.coroutines.android)
             }
         }
 
