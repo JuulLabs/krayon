@@ -27,7 +27,7 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(libs.tuulbox.test)
+                implementation(libs.coroutines.test)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
