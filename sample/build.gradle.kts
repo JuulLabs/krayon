@@ -20,14 +20,13 @@ kotlin {
                 implementation(project(":scale"))
                 implementation(project(":shape"))
                 implementation(kotlin("stdlib"))
-                implementation(libs.kotlinx.coroutines.core)
-                implementation(libs.kotlinx.datetime)
+                implementation(libs.coroutines.core)
+                implementation(libs.datetime)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(libs.tuulbox.test)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
@@ -37,7 +36,7 @@ kotlin {
             dependencies {
                 implementation(libs.androidx.appcompat)
                 implementation(libs.androidx.lifecycle.runtime)
-                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.coroutines.android)
             }
         }
 
@@ -49,7 +48,7 @@ kotlin {
 
         val jsMain by getting {
             dependencies {
-                implementation(libs.kotlinx.coroutines.js)
+                implementation(libs.coroutines.js)
             }
         }
 

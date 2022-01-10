@@ -4,7 +4,7 @@ import com.juul.krayon.element.CircleElement
 import com.juul.krayon.element.RootElement
 import com.juul.krayon.kanvas.svg.SvgKanvas
 import com.juul.krayon.kanvas.xml.ScientificFormatter
-import com.juul.tuulbox.test.runTest
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

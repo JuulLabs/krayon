@@ -22,14 +22,13 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":kanvas"))
-                api(libs.kotlinx.datetime)
+                api(libs.datetime)
                 implementation(project(":time"))
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(libs.tuulbox.test)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
