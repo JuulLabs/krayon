@@ -40,7 +40,7 @@ public final class com/juul/krayon/scale/DoubleTicker : com/juul/krayon/scale/Ti
 }
 
 public final class com/juul/krayon/scale/ExtentKt {
-	public static final fun extent (Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
+	public static final fun extent (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
 }
 
 public final class com/juul/krayon/scale/FloatTicker : com/juul/krayon/scale/Ticker {
@@ -62,11 +62,11 @@ public final class com/juul/krayon/scale/LocalDateTimeTicker : com/juul/krayon/s
 }
 
 public final class com/juul/krayon/scale/MaxKt {
-	public static final fun max (Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/lang/Comparable;
+	public static final fun max (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Comparable;
 }
 
 public final class com/juul/krayon/scale/MinKt {
-	public static final fun min (Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/lang/Comparable;
+	public static final fun min (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Comparable;
 }
 
 public abstract interface class com/juul/krayon/scale/Scale {

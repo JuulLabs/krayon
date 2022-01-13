@@ -1,6 +1,6 @@
 package com.juul.krayon.scale
 
-public inline fun <I, O : Comparable<O>> List<I>.extent(
+public inline fun <I, O : Comparable<O>> Iterable<I>.extent(
     crossinline selector: (I) -> O?,
 ): List<O> {
     var min: O? = null
