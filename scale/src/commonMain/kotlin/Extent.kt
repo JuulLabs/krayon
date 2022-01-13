@@ -2,7 +2,7 @@ package com.juul.krayon.scale
 
 public inline fun <I, O : Comparable<O>> Iterable<I>.extent(
     crossinline selector: (I) -> O?,
-): List<O> {
+): Iterable<O> {
     var min: O? = null
     var max: O? = null
     for (input in this) {

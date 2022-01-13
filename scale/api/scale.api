@@ -13,11 +13,11 @@ public final class com/juul/krayon/scale/ContinuousScaleKt {
 	public static final fun domain (Lcom/juul/krayon/scale/ContinuousScale;[I)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun domain (Lcom/juul/krayon/scale/ContinuousScale;[Lkotlinx/datetime/Instant;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun domain (Lcom/juul/krayon/scale/ContinuousScale;[Lkotlinx/datetime/LocalDateTime;)Lcom/juul/krayon/scale/ContinuousScale;
-	public static final fun domainDouble (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
-	public static final fun domainFloat (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
-	public static final fun domainInstant (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
-	public static final fun domainInt (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
-	public static final fun domainLocalDateTime (Lcom/juul/krayon/scale/ContinuousScale;Ljava/util/List;)Lcom/juul/krayon/scale/ContinuousScale;
+	public static final fun domainDouble (Lcom/juul/krayon/scale/ContinuousScale;Ljava/lang/Iterable;)Lcom/juul/krayon/scale/ContinuousScale;
+	public static final fun domainFloat (Lcom/juul/krayon/scale/ContinuousScale;Ljava/lang/Iterable;)Lcom/juul/krayon/scale/ContinuousScale;
+	public static final fun domainInstant (Lcom/juul/krayon/scale/ContinuousScale;Ljava/lang/Iterable;)Lcom/juul/krayon/scale/ContinuousScale;
+	public static final fun domainInt (Lcom/juul/krayon/scale/ContinuousScale;Ljava/lang/Iterable;)Lcom/juul/krayon/scale/ContinuousScale;
+	public static final fun domainLocalDateTime (Lcom/juul/krayon/scale/ContinuousScale;Ljava/lang/Iterable;)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun range (Lcom/juul/krayon/scale/ContinuousScale;[D)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun range (Lcom/juul/krayon/scale/ContinuousScale;[F)Lcom/juul/krayon/scale/ContinuousScale;
 	public static final fun range (Lcom/juul/krayon/scale/ContinuousScale;[I)Lcom/juul/krayon/scale/ContinuousScale;
@@ -40,7 +40,7 @@ public final class com/juul/krayon/scale/DoubleTicker : com/juul/krayon/scale/Ti
 }
 
 public final class com/juul/krayon/scale/ExtentKt {
-	public static final fun extent (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
+	public static final fun extent (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Iterable;
 }
 
 public final class com/juul/krayon/scale/FloatTicker : com/juul/krayon/scale/Ticker {
