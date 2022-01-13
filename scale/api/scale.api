@@ -61,6 +61,14 @@ public final class com/juul/krayon/scale/LocalDateTimeTicker : com/juul/krayon/s
 	public fun ticks (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
 }
 
+public final class com/juul/krayon/scale/MaxKt {
+	public static final fun max (Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/lang/Comparable;
+}
+
+public final class com/juul/krayon/scale/MinKt {
+	public static final fun min (Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/lang/Comparable;
+}
+
 public abstract interface class com/juul/krayon/scale/Scale {
 	public abstract fun scale (Ljava/lang/Object;)Ljava/lang/Object;
 }
