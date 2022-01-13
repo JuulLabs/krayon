@@ -38,7 +38,6 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(libs.tuulbox.test)
                 implementation(kotlin("reflect"))
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
@@ -86,8 +85,6 @@ android {
     }
 
     sourceSets {
-        val main by getting {
-            manifest.srcFile("src/androidMain/AndroidManifest.xml")
-        }
+        getByName("main").manifest.srcFile("src/androidMain/AndroidManifest.xml")
     }
 }
