@@ -110,3 +110,13 @@ public inline fun <T, L> Node<T, L>.eachAfterIndexed(
 public inline fun <T, L> Node<T, L>.eachBeforeIndexed(
     crossinline action: (Int, Node<T, L>) -> Unit,
 ): Node<T, L> = apply { traversePreOrder().forEachIndexed(action) }
+
+/**
+ * Returns a breadth-first traversal of nodes, removing those with null data, and pairing the data to the layout.
+ *
+ * Especially useful with [flatHierarchy] after performing a layout, before feeding into selection data.
+ */
+public fun <T, L> Node<T?, L>.removeHierarchy(): Sequence<Pair<T, L>> =
+    traverseBreadthFirst()
+        .filter { it.data != null }
+        .map { checkNotNull(it.data) to it.layout }
