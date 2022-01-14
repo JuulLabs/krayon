@@ -1,6 +1,6 @@
 package com.juul.krayon.scale
 
-public inline fun <I, O : Comparable<O>> List<I>.max(
+public inline fun <I, O : Comparable<O>> Iterable<I>.max(
     crossinline selector: (I) -> O?,
 ): O {
     var max: O? = null

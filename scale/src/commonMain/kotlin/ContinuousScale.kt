@@ -34,19 +34,19 @@ public fun <R> ContinuousScale<*, R>.domain(vararg domain: LocalDateTime): Conti
 
 // List domains
 @JvmName("domainInt")
-public fun <R> ContinuousScale<*, R>.domain(domain: List<Int>): ContinuousScale<Int, R> = domain(domain.toList(), ::interpolator)
+public fun <R> ContinuousScale<*, R>.domain(domain: Iterable<Int>): ContinuousScale<Int, R> = domain(domain.toList(), ::interpolator)
 
 @JvmName("domainFloat")
-public fun <R> ContinuousScale<*, R>.domain(domain: List<Float>): ContinuousScale<Float, R> = domain(domain.toList(), ::interpolator)
+public fun <R> ContinuousScale<*, R>.domain(domain: Iterable<Float>): ContinuousScale<Float, R> = domain(domain.toList(), ::interpolator)
 
 @JvmName("domainDouble")
-public fun <R> ContinuousScale<*, R>.domain(domain: List<Double>): ContinuousScale<Double, R> = domain(domain.toList(), ::interpolator)
+public fun <R> ContinuousScale<*, R>.domain(domain: Iterable<Double>): ContinuousScale<Double, R> = domain(domain.toList(), ::interpolator)
 
 @JvmName("domainInstant")
-public fun <R> ContinuousScale<*, R>.domain(domain: List<Instant>): ContinuousScale<Instant, R> = domain(domain.toList(), ::interpolator)
+public fun <R> ContinuousScale<*, R>.domain(domain: Iterable<Instant>): ContinuousScale<Instant, R> = domain(domain.toList(), ::interpolator)
 
 @JvmName("domainLocalDateTime")
-public fun <R> ContinuousScale<*, R>.domain(domain: List<LocalDateTime>): ContinuousScale<LocalDateTime, R> = domain(domain.toList(), ::interpolator)
+public fun <R> ContinuousScale<*, R>.domain(domain: Iterable<LocalDateTime>): ContinuousScale<LocalDateTime, R> = domain(domain.toList(), ::interpolator)
 
 // Vararg ranges
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Int): ContinuousScale<D, Int> = range(range.toList())
