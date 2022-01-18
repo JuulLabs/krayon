@@ -150,6 +150,38 @@ public final class com/juul/krayon/element/RootElement$Companion : com/juul/kray
 	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/RootElement;
 }
 
+public final class com/juul/krayon/element/RoundedRectangleElement : com/juul/krayon/element/Element {
+	public static final field Companion Lcom/juul/krayon/element/RoundedRectangleElement$Companion;
+	public fun <init> ()V
+	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
+	public final fun getBottom ()F
+	public final fun getBottomLeftRadius ()F
+	public final fun getBottomRightRadius ()F
+	public final fun getLeft ()F
+	public final fun getPaint ()Lcom/juul/krayon/kanvas/Paint;
+	public final fun getRight ()F
+	public fun getTag ()Ljava/lang/String;
+	public final fun getTop ()F
+	public final fun getTopLeftRadius ()F
+	public final fun getTopRightRadius ()F
+	public final fun setBottom (F)V
+	public final fun setBottomLeftRadius (F)V
+	public final fun setBottomRightRadius (F)V
+	public final fun setLeft (F)V
+	public final fun setPaint (Lcom/juul/krayon/kanvas/Paint;)V
+	public final fun setRight (F)V
+	public final fun setTop (F)V
+	public final fun setTopLeftRadius (F)V
+	public final fun setTopRightRadius (F)V
+}
+
+public final class com/juul/krayon/element/RoundedRectangleElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/ElementSelector {
+	public synthetic fun build ()Lcom/juul/krayon/element/Element;
+	public fun build ()Lcom/juul/krayon/element/RoundedRectangleElement;
+	public synthetic fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
+	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/RoundedRectangleElement;
+}
+
 public final class com/juul/krayon/element/TextElement : com/juul/krayon/element/Element {
 	public static final field Companion Lcom/juul/krayon/element/TextElement$Companion;
 	public fun <init> ()V
