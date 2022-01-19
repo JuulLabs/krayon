@@ -33,7 +33,7 @@ public val <T, L> Node<T, L>.height: Int
 
 /** Returns `true` if this node has no children. */
 public val <T, L> Node<T, L>.isLeaf: Boolean
-    get() = this.children.isEmpty()
+    get() = children.isEmpty()
 
 /** Returns ancestor nodes, starting with `this` and then following the [Node.parent] chain. */
 public fun <T, L> Node<T, L>.ancestors(): Sequence<Node<T, L>> = sequence {

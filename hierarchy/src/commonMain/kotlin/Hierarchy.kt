@@ -7,12 +7,10 @@ public fun <T> hierarchy(
     fun addChildren(parentNode: Node<T, Nothing?>) {
         val children = getChildren(parentNode.data)
         parentNode.children = children.map { child ->
-            Node(child, null, parentNode).also { childNode ->
-                addChildren(childNode)
-            }
+            Node(child, null, parentNode).also(::addChildren)
         }
     }
-    return Node(root, null).also { addChildren(it) }
+    return Node(root, null).also(::addChildren)
 }
 
 public fun <T> flatHierarchy(
