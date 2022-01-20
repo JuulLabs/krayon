@@ -27,12 +27,14 @@ pluginManagement {
 
 include(
     "axis",
+    "box",
     "chart",
     "color",
     "element",
     "element-view",
-    "kanvas",
+    "hierarchy",
     "interpolate",
+    "kanvas",
     "sample",
     "scale",
     "selection",
