@@ -14,6 +14,9 @@ module:element
 com.juul.krayon.element
 module:element-view
 com.juul.krayon.element.view
+module:hierarchy
+com.juul.krayon.hierarchy
+com.juul.krayon.hierarchy.treemap
 module:interpolate
 com.juul.krayon.interpolate
 module:kanvas
