@@ -20,16 +20,22 @@ public class RoundedRectangleElement : Element() {
     public var paint: Paint by attributes.withDefault { DEFAULT_FILL }
 
     override fun <PATH> draw(canvas: Kanvas<PATH>) {
+        val width = (right - left).coerceAtLeast(0f)
+        val height = (bottom - top).coerceAtLeast(0f)
+        val tlr = safeRadius(topLeftRadius, horizontalNeighbor = topRightRadius, verticalNeighbor = bottomLeftRadius, width, height)
+        val trr = safeRadius(topRightRadius, horizontalNeighbor = topLeftRadius, verticalNeighbor = bottomRightRadius, width, height)
+        val blr = safeRadius(bottomLeftRadius, horizontalNeighbor = bottomRightRadius, verticalNeighbor = topLeftRadius, width, height)
+        val brr = safeRadius(bottomRightRadius, horizontalNeighbor = bottomLeftRadius, verticalNeighbor = topRightRadius, width, height)
         val path = canvas.buildPath {
-            moveTo(left + topLeftRadius, top)
-            lineTo(right - topRightRadius, top)
-            arcTo(right - 2 * topRightRadius, top, right, top + 2 * topRightRadius, -90f, 90f, false)
-            lineTo(right, bottom - bottomRightRadius)
-            arcTo(right - 2 * bottomRightRadius, bottom - 2 * bottomRightRadius, right, bottom, 0f, 90f, false)
-            lineTo(left + bottomLeftRadius, bottom)
-            arcTo(left, bottom - 2 * bottomLeftRadius, left + 2 * bottomLeftRadius, bottom, 90f, 90f, false)
-            lineTo(left, top + topLeftRadius)
-            arcTo(left, top, left + 2 * topLeftRadius, top + 2 * topLeftRadius, 180f, 90f, false)
+            moveTo(left + tlr, top)
+            lineTo(right - trr, top)
+            arcTo(right - 2 * trr, top, right, top + 2 * trr, -90f, 90f, false)
+            lineTo(right, bottom - brr)
+            arcTo(right - 2 * brr, bottom - 2 * brr, right, bottom, 0f, 90f, false)
+            lineTo(left + blr, bottom)
+            arcTo(left, bottom - 2 * blr, left + 2 * blr, bottom, 90f, 90f, false)
+            lineTo(left, top + tlr)
+            arcTo(left, top, left + 2 * tlr, top + 2 * tlr, 180f, 90f, false)
             close()
         }
         canvas.drawPath(path, paint)
@@ -38,5 +44,23 @@ public class RoundedRectangleElement : Element() {
     public companion object : ElementBuilder<RoundedRectangleElement>, ElementSelector<RoundedRectangleElement> {
         override fun build(): RoundedRectangleElement = RoundedRectangleElement()
         override fun trySelect(element: Element): RoundedRectangleElement? = element as? RoundedRectangleElement
+    }
+}
+
+/** Transforms a radius such that requested radii which are larger than their rectangle behave nicely. */
+private fun safeRadius(desired: Float, horizontalNeighbor: Float, verticalNeighbor: Float, width: Float, height: Float): Float {
+    val safeHorizontal = (desired + horizontalNeighbor) <= width
+    val safeVertical = (desired + verticalNeighbor) <= height
+    return if (safeHorizontal && safeVertical) {
+        desired
+    } else if (!safeHorizontal && !safeVertical) {
+        minOf(
+            width * desired / (desired + horizontalNeighbor),
+            height * desired / (desired + verticalNeighbor)
+        )
+    } else if (!safeHorizontal) {
+        width * desired / (desired + horizontalNeighbor)
+    } else { // !safeVertical
+        height * desired / (desired + verticalNeighbor)
     }
 }
