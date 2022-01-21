@@ -49,18 +49,18 @@ public class RoundedRectangleElement : Element() {
 
 /** Transforms a radius such that requested radii which are larger than their rectangle behave nicely. */
 private fun safeRadius(desired: Float, horizontalNeighbor: Float, verticalNeighbor: Float, width: Float, height: Float): Float {
-    val safeHorizontal = (desired + horizontalNeighbor) <= width
-    val safeVertical = (desired + verticalNeighbor) <= height
-    return if (safeHorizontal && safeVertical) {
-        desired
-    } else if (!safeHorizontal && !safeVertical) {
+    val requiresHorizontalAdjustment = width < (desired + horizontalNeighbor)
+    val requiresVerticalAdjustment = height < (desired + verticalNeighbor)
+    return if (requiresHorizontalAdjustment && requiresVerticalAdjustment) {
         minOf(
             width * desired / (desired + horizontalNeighbor),
             height * desired / (desired + verticalNeighbor)
         )
-    } else if (!safeHorizontal) {
+    } else if (requiresHorizontalAdjustment) {
         width * desired / (desired + horizontalNeighbor)
-    } else { // !safeVertical
+    } else if (requiresVerticalAdjustment) {
         height * desired / (desired + verticalNeighbor)
+    } else {
+        desired
     }
 }
