@@ -145,17 +145,17 @@ public class Arc internal constructor(
 
                 if (rc1 < rc) { // have the corners merged?
                     val start = atan2(t0.y01, t0.x01).toDegrees()
-                    val sweep = atan2(t1.y01, t1.x01).toDegrees() - start
+                    val sweep = (atan2(t1.y01, t1.x01).toDegrees() - start).normalizeDegrees()
                     arcToReversible(t0.cx - rc1, t0.cy - rc1, t0.cx + rc1, t0.cy + rc1, start, sweep, true, !cw)
                 } else { // otherwise, draw the two corners and the outer ring
                     val start0 = atan2(t0.y01, t0.x01).toDegrees()
-                    val sweep0 = atan2(t0.y11, t0.x11).toDegrees() - start0
+                    val sweep0 = (atan2(t0.y11, t0.x11).toDegrees() - start0).normalizeDegrees()
                     arcToReversible(t0.cx - rc1, t0.cy - rc1, t0.cx + rc1, t0.cy + rc1, start0, sweep0, true, !cw)
                     val startR = atan2(t0.cy + t0.y11, t0.cx + t0.x11).toDegrees()
-                    val sweepR = atan2(t1.cy + t1.y11, t1.cx + t1.x11).toDegrees() - startR
+                    val sweepR = (atan2(t1.cy + t1.y11, t1.cx + t1.x11).toDegrees() - startR).normalizeDegrees()
                     arcToReversible(-outerRadius, -outerRadius, outerRadius, outerRadius, startR, sweepR, false, !cw)
                     val start1 = atan2(t1.y11, t1.x11).toDegrees()
-                    val sweep1 = atan2(t1.y01, t1.x01).toDegrees() - start1
+                    val sweep1 = (atan2(t1.y01, t1.x01).toDegrees() - start1).normalizeDegrees()
                     arcToReversible(t1.cx - rc1, t1.cy - rc1, t1.cx + rc1, t1.cy + rc1, start1, sweep1, false, !cw)
                 }
             } else { // the outer ring is a simple circular arc
@@ -262,6 +262,12 @@ private fun cornerTangents(x0: Float, y0: Float, x1: Float, y1: Float, r1: Float
 }
 
 private fun Float.toDegrees(): Float = this * 360 / TAU
+
+private tailrec fun Float.normalizeDegrees(): Float = when {
+    this < 0 -> (this + 360f).normalizeDegrees()
+    this >= 360f -> (this - 360f).normalizeDegrees()
+    else -> this
+}
 
 private fun PathBuilder<*>.arcToReversible(
     left: Float,
