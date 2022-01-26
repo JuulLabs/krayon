@@ -142,25 +142,22 @@ public class Arc internal constructor(
                 moveTo(t0.cx + t0.x01, t0.cy + t0.y01)
 
                 if (rc1 < rc) { // have the corners merged?
-                    // TODO: start and sweep need to be converted to degrees, and likely need an angle adjust or something
                     val start = atan2(t0.y01, t0.x01)
                     val sweep = atan2(t1.y01, t1.x01) - start
-                    arcTo(t0.cx - rc1, t0.cy - rc1, t0.cx + rc1, t0.cy + rc1, start, sweep, false)
+                    arcTo(t0.cx - rc1, t0.cy - rc1, t0.cx + rc1, t0.cy + rc1, start.toDegrees(), sweep.toDegrees(), true)
                 } else { // otherwise, draw the two corners and the outer ring
-                    // TODO: start and sweep need to be converted to degrees, and likely need an angle adjust or something
                     val start0 = atan2(t0.y01, t0.x01)
                     val sweep0 = atan2(t0.y11, t0.x11) - start0
-                    arcTo(t0.cx - rc1, t0.cy - rc1, t0.cx + rc1, t0.cy + rc1, start0, sweep0, false)
+                    arcTo(t0.cx - rc1, t0.cy - rc1, t0.cx + rc1, t0.cy + rc1, start0.toDegrees(), sweep0.toDegrees(), true)
                     val startR = atan2(t0.cy + t0.y11, t0.cx + t0.x11)
                     val sweepR = atan2(t1.cy + t1.y11, t1.cx + t1.x11) - startR
-                    arcTo(-outerRadius, -outerRadius, outerRadius, outerRadius, startR, sweepR, false)
+                    arcTo(-outerRadius, -outerRadius, outerRadius, outerRadius, startR.toDegrees(), sweepR.toDegrees(), false)
                     val start1 = atan2(t1.y11, t1.x11)
                     val sweep1 = atan2(t1.y01, t1.x01) - start1
-                    arcTo(t1.cx - rc1, t1.cy - rc1, t1.cx + rc1, t1.cy + rc1, start1, sweep1, false)
+                    arcTo(t1.cx - rc1, t1.cy - rc1, t1.cx + rc1, t1.cy + rc1, start1.toDegrees(), sweep1.toDegrees(), false)
                 }
             } else { // the outer ring is a simple circular arc
-                moveTo(x01, y01)
-                arcTo(-outerRadius, -outerRadius, outerRadius, outerRadius, a01, a11 - a01, false)
+                arcTo(-outerRadius, -outerRadius, outerRadius, outerRadius, a01.toDegrees(), (a11 - a01).toDegrees(), true)
             }
 
             if (innerRadius <= EPSILON || da0 <= EPSILON) { // is there no inner ring, OR was a donut section collapsed to a triangle?
@@ -172,24 +169,22 @@ public class Arc internal constructor(
                 lineTo(t0.cx + t0.x01, t0.cy + t0.y01)
 
                 if (rc0 < rc) { // have the corners merged?
-                    // TODO: start and sweep need to be converted to degrees, and likely need an angle adjust or something
                     val start = atan2(t0.y01, t0.x01)
                     val sweep = atan2(t1.y01, t1.x01) - start
-                    arcTo(t0.cx - rc0, t0.cy - rc0, t0.cx + rc0, t0.cy + rc0, start, sweep, false)
+                    arcTo(t0.cx - rc0, t0.cy - rc0, t0.cx + rc0, t0.cy + rc0, start.toDegrees(), sweep.toDegrees(), false)
                 } else { // otherwise, draw the two corners and the outer ring
-                    // TODO: start and sweep need to be converted to degrees, and likely need an angle adjust or something
                     val start0 = atan2(t0.y01, t0.x01)
                     val sweep0 = atan2(t0.y11, t0.x11) - start0
-                    arcTo(t0.cx - rc0, t0.cy - rc0, t0.cx + rc0, t0.cy + rc0, start0, sweep0, false)
+                    arcTo(t0.cx - rc0, t0.cy - rc0, t0.cx + rc0, t0.cy + rc0, start0.toDegrees(), sweep0.toDegrees(), false)
                     val startR = atan2(t0.cy + t0.y11, t0.cx + t0.x11)
                     val sweepR = atan2(t1.cy + t1.y11, t1.cx + t1.x11) - startR
-                    arcTo(-innerRadius, -innerRadius, innerRadius, innerRadius, startR, sweepR, false)
+                    arcTo(-innerRadius, -innerRadius, innerRadius, innerRadius, startR.toDegrees(), sweepR.toDegrees(), false)
                     val start1 = atan2(t1.y11, t1.x11)
                     val sweep1 = atan2(t1.y01, t1.x01) - start1
-                    arcTo(t1.cx - rc0, t1.cy - rc0, t1.cx + rc0, t1.cy + rc0, start1, sweep1, false)
+                    arcTo(t1.cx - rc0, t1.cy - rc0, t1.cx + rc0, t1.cy + rc0, start1.toDegrees(), sweep1.toDegrees(), false)
                 }
             } else { // the inner ring is a simple circular arc
-                arcTo(-innerRadius, -innerRadius, innerRadius, innerRadius, a10, a00 - a10, false)
+                arcTo(-innerRadius, -innerRadius, innerRadius, innerRadius, a10.toDegrees(), (a00 - a10).toDegrees(), false)
             }
         }
 
@@ -261,3 +256,5 @@ private fun cornerTangents(x0: Float, y0: Float, x1: Float, y1: Float, r1: Float
         y11 = cy * (r1 / r - 1)
     )
 }
+
+private fun Float.toDegrees(): Float = this * 360 / TAU
