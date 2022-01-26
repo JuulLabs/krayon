@@ -1,6 +1,7 @@
 package com.juul.krayon.shape
 
 import com.juul.krayon.kanvas.Path
+import com.juul.krayon.kanvas.PathBuilder
 import kotlin.math.abs
 import kotlin.math.acos
 import kotlin.math.asin
@@ -15,7 +16,7 @@ private const val PI = kotlin.math.PI.toFloat()
 private const val HALF_PI = PI / 2
 private const val TAU = 2 * PI
 
-private const val EPSILON = 1e-5f // Number that's close to zero
+private const val EPSILON = 1e-6f // Number that's close to zero
 
 public fun arc(
     outerRadius: Float,
@@ -132,33 +133,36 @@ public class Arc internal constructor(
                 }
             }
 
+            // OUTER
 
             if (da1 <= EPSILON) { // is the sector collapsed to a line?
                 moveTo(x01, y01)
             } else if (rc1 > EPSILON) { // does the sector's outer ring have rounded corners
-                val t0 = cornerTangents(x10, y10, x11, y11, outerRadius, -rc0, cw)
-                val t1 = cornerTangents(x01, y01, x00, y00, outerRadius, -rc0, cw)
+                val t0 = cornerTangents(x00, y00, x01, y01, outerRadius, rc1, cw)
+                val t1 = cornerTangents(x11, y11, x10, y10, outerRadius, rc1, cw)
 
                 moveTo(t0.cx + t0.x01, t0.cy + t0.y01)
 
                 if (rc1 < rc) { // have the corners merged?
-                    val start = atan2(t0.y01, t0.x01)
-                    val sweep = atan2(t1.y01, t1.x01) - start
-                    arcTo(t0.cx - rc1, t0.cy - rc1, t0.cx + rc1, t0.cy + rc1, start.toDegrees(), sweep.toDegrees(), true)
+                    val start = atan2(t0.y01, t0.x01).toDegrees()
+                    val sweep = atan2(t1.y01, t1.x01).toDegrees() - start
+                    arcToReversible(t0.cx - rc1, t0.cy - rc1, t0.cx + rc1, t0.cy + rc1, start, sweep, true, !cw)
                 } else { // otherwise, draw the two corners and the outer ring
-                    val start0 = atan2(t0.y01, t0.x01)
-                    val sweep0 = atan2(t0.y11, t0.x11) - start0
-                    arcTo(t0.cx - rc1, t0.cy - rc1, t0.cx + rc1, t0.cy + rc1, start0.toDegrees(), sweep0.toDegrees(), true)
-                    val startR = atan2(t0.cy + t0.y11, t0.cx + t0.x11)
-                    val sweepR = atan2(t1.cy + t1.y11, t1.cx + t1.x11) - startR
-                    arcTo(-outerRadius, -outerRadius, outerRadius, outerRadius, startR.toDegrees(), sweepR.toDegrees(), false)
-                    val start1 = atan2(t1.y11, t1.x11)
-                    val sweep1 = atan2(t1.y01, t1.x01) - start1
-                    arcTo(t1.cx - rc1, t1.cy - rc1, t1.cx + rc1, t1.cy + rc1, start1.toDegrees(), sweep1.toDegrees(), false)
+                    val start0 = atan2(t0.y01, t0.x01).toDegrees()
+                    val sweep0 = atan2(t0.y11, t0.x11).toDegrees() - start0
+                    arcToReversible(t0.cx - rc1, t0.cy - rc1, t0.cx + rc1, t0.cy + rc1, start0, sweep0, true, !cw)
+                    val startR = atan2(t0.cy + t0.y11, t0.cx + t0.x11).toDegrees()
+                    val sweepR = atan2(t1.cy + t1.y11, t1.cx + t1.x11).toDegrees() - startR
+                    arcToReversible(-outerRadius, -outerRadius, outerRadius, outerRadius, startR, sweepR, false, !cw)
+                    val start1 = atan2(t1.y11, t1.x11).toDegrees()
+                    val sweep1 = atan2(t1.y01, t1.x01).toDegrees() - start1
+                    arcToReversible(t1.cx - rc1, t1.cy - rc1, t1.cx + rc1, t1.cy + rc1, start1, sweep1, false, !cw)
                 }
             } else { // the outer ring is a simple circular arc
                 arcTo(-outerRadius, -outerRadius, outerRadius, outerRadius, a01.toDegrees(), (a11 - a01).toDegrees(), true)
             }
+
+            // INNER
 
             if (innerRadius <= EPSILON || da0 <= EPSILON) { // is there no inner ring, OR was a donut section collapsed to a triangle?
                 lineTo(x10, y10)
@@ -169,19 +173,19 @@ public class Arc internal constructor(
                 lineTo(t0.cx + t0.x01, t0.cy + t0.y01)
 
                 if (rc0 < rc) { // have the corners merged?
-                    val start = atan2(t0.y01, t0.x01)
-                    val sweep = atan2(t1.y01, t1.x01) - start
-                    arcTo(t0.cx - rc0, t0.cy - rc0, t0.cx + rc0, t0.cy + rc0, start.toDegrees(), sweep.toDegrees(), false)
-                } else { // otherwise, draw the two corners and the outer ring
-                    val start0 = atan2(t0.y01, t0.x01)
-                    val sweep0 = atan2(t0.y11, t0.x11) - start0
-                    arcTo(t0.cx - rc0, t0.cy - rc0, t0.cx + rc0, t0.cy + rc0, start0.toDegrees(), sweep0.toDegrees(), false)
-                    val startR = atan2(t0.cy + t0.y11, t0.cx + t0.x11)
-                    val sweepR = atan2(t1.cy + t1.y11, t1.cx + t1.x11) - startR
-                    arcTo(-innerRadius, -innerRadius, innerRadius, innerRadius, startR.toDegrees(), sweepR.toDegrees(), false)
-                    val start1 = atan2(t1.y11, t1.x11)
-                    val sweep1 = atan2(t1.y01, t1.x01) - start1
-                    arcTo(t1.cx - rc0, t1.cy - rc0, t1.cx + rc0, t1.cy + rc0, start1.toDegrees(), sweep1.toDegrees(), false)
+                    val start = atan2(t0.y01, t0.x01).toDegrees()
+                    val sweep = atan2(t1.y01, t1.x01).toDegrees() - start
+                    arcToReversible(t0.cx - rc0, t0.cy - rc0, t0.cx + rc0, t0.cy + rc0, start, sweep, false, !cw)
+                } else { // otherwise, draw the two corners and the inner ring
+                    val start0 = atan2(t0.y01, t0.x01).toDegrees()
+                    val sweep0 = atan2(t0.y11, t0.x11).toDegrees() - start0
+                    arcToReversible(t0.cx - rc0, t0.cy - rc0, t0.cx + rc0, t0.cy + rc0, start0, sweep0, false, !cw)
+                    val startR = atan2(t0.cy + t0.y11, t0.cx + t0.x11).toDegrees()
+                    val sweepR = atan2(t1.cy + t1.y11, t1.cx + t1.x11).toDegrees() - startR
+                    arcToReversible(-innerRadius, -innerRadius, innerRadius, innerRadius, startR, sweepR, false, cw)
+                    val start1 = atan2(t1.y11, t1.x11).toDegrees()
+                    val sweep1 = atan2(t1.y01, t1.x01).toDegrees() - start1
+                    arcToReversible(t1.cx - rc0, t1.cy - rc0, t1.cx + rc0, t1.cy + rc0, start1, sweep1, false, !cw)
                 }
             } else { // the inner ring is a simple circular arc
                 arcTo(-innerRadius, -innerRadius, innerRadius, innerRadius, a10.toDegrees(), (a00 - a10).toDegrees(), false)
@@ -258,3 +262,20 @@ private fun cornerTangents(x0: Float, y0: Float, x1: Float, y1: Float, r1: Float
 }
 
 private fun Float.toDegrees(): Float = this * 360 / TAU
+
+private fun PathBuilder<*>.arcToReversible(
+    left: Float,
+    top: Float,
+    right: Float,
+    bottom: Float,
+    startAngle: Float,
+    sweepAngle: Float,
+    forceMoveTo: Boolean,
+    reverse: Boolean
+) {
+    if (reverse) {
+        arcTo(left, top, right, bottom, startAngle + sweepAngle, -sweepAngle, forceMoveTo)
+    } else {
+        arcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo)
+    }
+}
