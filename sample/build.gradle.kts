@@ -37,6 +37,7 @@ kotlin {
                 implementation(libs.androidx.appcompat)
                 implementation(libs.androidx.lifecycle.runtime)
                 implementation(libs.coroutines.android)
+                implementation(libs.material)
             }
         }
 
