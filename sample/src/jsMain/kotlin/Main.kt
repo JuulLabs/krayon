@@ -39,7 +39,6 @@ private fun setupPieChart() {
         }
     }
 
-
     val startAngle = MutableStateFlow(0f)
     val endAngle = MutableStateFlow((PI * 2).toFloat())
     val cornerRadius = MutableStateFlow(0f)
@@ -51,7 +50,6 @@ private fun setupPieChart() {
     configure("pie-corner-radius", min = 0f, max = 32f, state = cornerRadius)
     configure("pie-padding-angle", min = 0f, max = 0.1f, state = paddingAngle)
     configure("pie-inner-radius", min = 0f, max = 192f, state = innerRadius)
-
 
     // Convert state into a flow for consumption by the element view adapter.
     val charts = combine(startAngle, endAngle, cornerRadius, paddingAngle, innerRadius) { startAngle, endAngle, cornerRadius, paddingAngle, innerRadius ->
