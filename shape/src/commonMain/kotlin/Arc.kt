@@ -268,10 +268,9 @@ private fun cornerTangents(x0: Float, y0: Float, x1: Float, y1: Float, r1: Float
 
 private fun Float.toDegrees(): Float = this * 360 / TAU
 
-private tailrec fun Float.normalizeDegrees(): Float = when {
-    this < 0 -> (this + 360f).normalizeDegrees()
-    this >= 360f -> (this - 360f).normalizeDegrees()
-    else -> this
+private fun Float.normalizeDegrees(): Float {
+    val remainder = this % 360
+    return if (remainder < 0f) remainder + 360f else remainder
 }
 
 private fun PathBuilder<*>.arcToReversible(
