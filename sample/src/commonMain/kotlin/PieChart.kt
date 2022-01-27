@@ -20,7 +20,8 @@ import com.juul.krayon.selection.selectAll
 import com.juul.krayon.shape.arc
 import com.juul.krayon.shape.pie
 
-private val fillPaints = listOf(red, blue, green, darkMagenta, darkCyan, olive).map { Paint.Fill(it) }
+private val fillPaints = listOf(red, blue, green, darkMagenta, darkCyan, olive)
+    .map { Paint.Fill(it) }
 
 internal data class PieChart(
     val values: List<Float>,

@@ -7,7 +7,35 @@
     <title>Hello, Kotlin/JS!</title>
 </head>
 <body>
-    <canvas id="canvas" width="854" height="480"></canvas>
+<h1>Krayon Sample</h1>
+<h2>Line Chart</h2>
+<canvas id="line-canvas" width="854" height="480"></canvas>
+<h2>Pie Chart</h2>
+<table>
+    <tr>
+        <td>
+            <canvas id="pie-canvas" width="480" height="480"></canvas>
+        </td>
+        <td>
+            <form>
+                <label for="pie-start-angle">Start Angle</label>
+                <input type="range" id="pie-start-angle"/>
+                <br/>
+                <label for="pie-end-angle">End Angle</label>
+                <input type="range" id="pie-end-angle"/>
+                <br/>
+                <label for="pie-corner-radius">Corner Radius</label>
+                <input type="range" id="pie-corner-radius"/>
+                <br/>
+                <label for="pie-padding-angle">Padding Angle</label>
+                <input type="range" id="pie-padding-angle"/>
+                <br/>
+                <label for="pie-inner-radius">Inner Radius</label>
+                <input type="range" id="pie-inner-radius"/>
+            </form>
+        </td>
+    </tr>
+</table>
 </body>
 <script src="sample.js"></script>
 </html>
