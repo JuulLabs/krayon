@@ -89,8 +89,8 @@ public class Arc internal constructor(
                     a10 -= p0
                 } else {
                     da0 = 0f
-                    a00 = (a0 + a1 / 2)
-                    a10 = a00
+                    a10 = (a0 + a1) / 2
+                    a00 = a10
                 }
                 da1 -= p1 * 2
                 if (da1 > EPSILON) {
@@ -99,15 +99,15 @@ public class Arc internal constructor(
                     a11 -= p1
                 } else {
                     da1 = 0f
-                    a01 = (a0 + a1 / 2)
-                    a11 = a01
+                    a11 = (a0 + a1) / 2
+                    a01 = a11
                 }
             }
 
             val x01 = outerRadius * cos(a01)
             val y01 = outerRadius * sin(a01)
             val x10 = innerRadius * cos(a10)
-            val y10 = innerRadius * cos(a10)
+            val y10 = innerRadius * sin(a10)
             var x11 = 0f
             var y11 = 0f
             var x00 = 0f
@@ -122,12 +122,12 @@ public class Arc internal constructor(
                 // restrict corner radius to fit within sector angle
                 val oc = intersect(x01, y01, x00, y00, x11, y11, x10, y10)
                 if (da < PI && oc != null) {
-                    val ax = x01 - oc.first
-                    val ay = y01 - oc.second
-                    val bx = x11 - oc.first
-                    val by = y11 - oc.second
+                    val ax = x01 - oc.x
+                    val ay = y01 - oc.y
+                    val bx = x11 - oc.x
+                    val by = y11 - oc.y
                     val kc = 1 / sin(acos((ax * bx + ay * by) / (sqrt(ax * ax + ay * ay) * sqrt(bx * bx + by * by))) / 2)
-                    val lc = sqrt(oc.first * oc.first + oc.second * oc.second)
+                    val lc = sqrt(oc.x * oc.x + oc.y * oc.y)
                     rc0 = min(rc, (innerRadius - lc) / (kc - 1))
                     rc1 = min(rc, (outerRadius - lc) / (kc + 1))
                 }
@@ -199,7 +199,12 @@ public class Arc internal constructor(
 private fun defaultPadRadius(arc: Arc, startAngle: Float, endAngle: Float, padAngle: Float): Float =
     sqrt(arc.innerRadius * arc.innerRadius + arc.outerRadius * arc.outerRadius)
 
-private fun intersect(x0: Float, y0: Float, x1: Float, y1: Float, x2: Float, y2: Float, x3: Float, y3: Float): Pair<Float, Float>? {
+private data class Intersection(
+    val x: Float,
+    val y: Float
+)
+
+private fun intersect(x0: Float, y0: Float, x1: Float, y1: Float, x2: Float, y2: Float, x3: Float, y3: Float): Intersection? {
     val x10 = x1 - x0
     val y10 = y1 - y0
     val x32 = x3 - x2
@@ -207,7 +212,7 @@ private fun intersect(x0: Float, y0: Float, x1: Float, y1: Float, x2: Float, y2:
     var t = y32 * x10 - x32 * y10
     if (t * t < EPSILON) return null
     t = (x32 * (y0 - y2) - y32 * (x0 - x2)) / t
-    return (x0 + t * x10) to (y0 + t * y10)
+    return Intersection(x0 + t * x10, y0 + t * y10)
 }
 
 private data class CornerTangents(
