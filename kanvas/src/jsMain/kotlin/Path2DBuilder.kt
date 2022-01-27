@@ -24,7 +24,8 @@ public class Path2DBuilder : RelativePathBuilder<Path2D>() {
         val y = top + radiusY
         val startAngleRadians = startAngle * PI / 180f
         val endAngleRadians = (startAngle + sweepAngle) * PI / 180f
-        buffer.ellipse(x, y, radiusX, radiusY, rotation = 0.0, startAngleRadians, endAngleRadians)
+        val anticlockwise = sweepAngle < 0f
+        buffer.ellipse(x, y, radiusX, radiusY, rotation = 0.0, startAngleRadians, endAngleRadians, anticlockwise)
     }
 
     override fun quadraticTo(controlX: Float, controlY: Float, endX: Float, endY: Float) {
