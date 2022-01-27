@@ -174,17 +174,17 @@ public class Arc internal constructor(
 
                 if (rc0 < rc) { // have the corners merged?
                     val start = atan2(t0.y01, t0.x01).toDegrees()
-                    val sweep = atan2(t1.y01, t1.x01).toDegrees() - start
+                    val sweep = (atan2(t1.y01, t1.x01).toDegrees() - start).normalizeDegrees()
                     arcToReversible(t0.cx - rc0, t0.cy - rc0, t0.cx + rc0, t0.cy + rc0, start, sweep, false, !cw)
                 } else { // otherwise, draw the two corners and the inner ring
                     val start0 = atan2(t0.y01, t0.x01).toDegrees()
-                    val sweep0 = atan2(t0.y11, t0.x11).toDegrees() - start0
+                    val sweep0 = (atan2(t0.y11, t0.x11).toDegrees() - start0).normalizeDegrees()
                     arcToReversible(t0.cx - rc0, t0.cy - rc0, t0.cx + rc0, t0.cy + rc0, start0, sweep0, false, !cw)
                     val startR = atan2(t0.cy + t0.y11, t0.cx + t0.x11).toDegrees()
-                    val sweepR = atan2(t1.cy + t1.y11, t1.cx + t1.x11).toDegrees() - startR
-                    arcToReversible(-innerRadius, -innerRadius, innerRadius, innerRadius, startR, sweepR, false, cw)
+                    val sweepR = (atan2(t1.cy + t1.y11, t1.cx + t1.x11).toDegrees() - startR).normalizeDegrees() - 360f
+                    arcToReversible(-innerRadius, -innerRadius, innerRadius, innerRadius, startR, sweepR, false, !cw)
                     val start1 = atan2(t1.y11, t1.x11).toDegrees()
-                    val sweep1 = atan2(t1.y01, t1.x01).toDegrees() - start1
+                    val sweep1 = (atan2(t1.y01, t1.x01).toDegrees() - start1).normalizeDegrees()
                     arcToReversible(t1.cx - rc0, t1.cy - rc0, t1.cx + rc0, t1.cy + rc0, start1, sweep1, false, !cw)
                 }
             } else { // the inner ring is a simple circular arc
