@@ -58,13 +58,11 @@ public class Arc internal constructor(
         if (outerRadius <= EPSILON) { // arc is a point
             moveTo(0f, 0f)
         } else if (da > (TAU - EPSILON)) { // arc is a full circle or donut
-            moveTo(outerRadius * cos(a0), outerRadius * sin(a0))
-            arcTo(-outerRadius, -outerRadius, outerRadius, outerRadius, a0, PI, false)
-            arcTo(-outerRadius, -outerRadius, outerRadius, outerRadius, a0 + PI, PI, false)
+            arcTo(-outerRadius, -outerRadius, outerRadius, outerRadius, 0f, 180f, true)
+            arcTo(-outerRadius, -outerRadius, outerRadius, outerRadius, 180f, 180f, false)
             if (innerRadius > EPSILON) {
-                moveTo(innerRadius * cos(a0), innerRadius * sin(a0))
-                arcTo(-innerRadius, -innerRadius, innerRadius, innerRadius, a0, PI, false)
-                arcTo(-innerRadius, -innerRadius, innerRadius, innerRadius, a0 + PI, PI, false)
+                arcTo(-innerRadius, -innerRadius, innerRadius, innerRadius, 0f, -180f, true)
+                arcTo(-innerRadius, -innerRadius, innerRadius, innerRadius, 180f, -180f, false)
             }
         } else { // arc is a section of a circle or donut
             var a01 = a0
