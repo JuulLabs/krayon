@@ -14,7 +14,7 @@ internal fun getEllipseX(left: Float, top: Float, right: Float, bottom: Float, a
     val b = (bottom - top) / 2.0
     val centerX = left + a
     val theta = angle * PI / 180f
-    val signX = if (theta.rem(2 * PI) !in (PI / 2)..(PI * 3 / 2)) 1 else -1
+    val signX = if (angle.normalizeDegrees() in 90f..270f) -1 else 1
     val dX = signX * a * b / sqrt(b.pow(2) + a.pow(2) * tan(theta).pow(2))
     return (centerX + dX).toFloat()
 }
@@ -25,7 +25,12 @@ internal fun getEllipseY(left: Float, top: Float, right: Float, bottom: Float, a
     val b = (bottom - top) / 2.0
     val centerY = top + b
     val theta = angle * PI / 180f
-    val signY = if (theta.rem(2 * PI) in 0.0..PI) 1 else -1
+    val signY = if (angle.normalizeDegrees() in 0f..180f) 1 else -1
     val dY = signY * a * b / sqrt(a.pow(2) + b.pow(2) / tan(theta).pow(2))
     return (centerY + dY).toFloat()
+}
+
+private fun Float.normalizeDegrees(): Float {
+    val remainder = this % 360
+    return if (remainder < 0f) remainder + 360f else remainder
 }

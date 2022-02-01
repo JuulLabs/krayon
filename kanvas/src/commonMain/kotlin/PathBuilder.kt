@@ -26,7 +26,7 @@ public interface PathBuilder<out P> {
     /** Same as [lineTo], except coordinates are relative to the current location. */
     public fun relativeLineTo(x: Float, y: Float)
 
-    /** Append the specified arc to the path as a new contour. */
+    /** Append the specified arc to the path as a new contour. [startAngle] and [sweepAngle] are both given in degrees. */
     public fun arcTo(
         left: Float,
         top: Float,
