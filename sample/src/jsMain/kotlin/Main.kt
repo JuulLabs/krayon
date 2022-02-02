@@ -31,7 +31,7 @@ private fun setupPieChart() {
         val input = document.getElementById(id) as HTMLInputElement
         input.min = min.toString()
         input.max = max.toString()
-        input.step = "0.001"
+        input.step = ((max - min) / 1000f).toString()
         input.value = state.value.toString()
         input.oninput = { _ ->
             state.value = input.value.toFloatOrNull() ?: 0f
