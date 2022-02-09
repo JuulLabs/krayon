@@ -43,7 +43,15 @@ public class Arc internal constructor(
 
     public operator fun invoke(slice: Slice<*>): Path = this(slice.startAngle, slice.endAngle, slice.padAngle)
 
-    public operator fun invoke(startAngle: Float, endAngle: Float, padAngle: Float): Path = Path {
+    public operator fun invoke(startAngle: Float, endAngle: Float, padAngle: Float): Path {
+        // Defensively copy, so future mutations aren't reflected in the `Path` object returned.
+        val copy = Arc(outerRadius, innerRadius)
+            .cornerRadius(cornerRadius)
+            .padRadius(padRadius)
+        return copy.createPath(startAngle, endAngle, padAngle)
+    }
+
+    private fun createPath(startAngle: Float, endAngle: Float, padAngle: Float) = Path {
         // Implementation borrowed from D3. https://github.com/d3/d3-shape/blob/main/src/arc.js#L87
         check(innerRadius >= 0f) { "innerRadius must be at least zero, but was `$innerRadius`." }
         check(outerRadius >= 0f) { "outerRadius must be at least zero, but was `$outerRadius`." }
