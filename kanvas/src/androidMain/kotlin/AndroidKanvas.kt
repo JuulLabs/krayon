@@ -57,6 +57,9 @@ public class AndroidKanvas internal constructor(
         if (paint is Paint.FillAndStroke) {
             action(paintCache[paint.fill])
             action(paintCache[paint.stroke])
+        } else if (paint is Paint.GradientAndStroke) {
+            action(paintCache[paint.gradient])
+            action(paintCache[paint.stroke])
         } else {
             action(paintCache[paint])
         }

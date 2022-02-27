@@ -3,10 +3,17 @@ package com.juul.krayon.kanvas
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.DashPathEffect
+import android.graphics.LinearGradient
+import android.graphics.RadialGradient
+import android.graphics.Shader
+import android.graphics.SweepGradient
 import android.graphics.Typeface
 import androidx.annotation.FontRes
 import androidx.core.content.res.ResourcesCompat
 import android.graphics.Paint as AndroidPaint
+
+/** TODO: Double-check that this is the behavior used by other platforms. */
+private val TILE_MODE = Shader.TileMode.CLAMP
 
 /** Cache from [Font.name] to [FontRes] id. */
 private val fontResources = mutableMapOf<String, Int>()
@@ -24,8 +31,9 @@ public fun addFontAssociation(fontName: String, @FontRes fontRes: Int) {
 public fun Paint.toAndroid(context: Context): AndroidPaint = when (this) {
     is Paint.Fill -> androidPaint(this)
     is Paint.Stroke -> androidPaint(this)
+    is Paint.Gradient -> androidPaint(this)
     is Paint.Text -> androidPaint(context, this)
-    else -> throw IllegalArgumentException("Cannot convert `Paint.FillAndStroke` to an Android native `Paint`.")
+    else -> throw IllegalArgumentException("Cannot convert `FillAndStroke` or `GradientAndStroke` paints to a Android native `Paint`.")
 }
 
 /** Converts a Krayon [Paint] into an [AndroidPaint]. */
@@ -33,6 +41,12 @@ public fun Paint.Fill.toAndroid(): AndroidPaint = androidPaint(this)
 
 /** Converts a Krayon [Paint] into an [AndroidPaint]. */
 public fun Paint.Stroke.toAndroid(): AndroidPaint = androidPaint(this)
+
+/** Converts a Krayon [Paint] into an [AndroidPaint]. */
+public fun Paint.Gradient.toAndroid(): AndroidPaint = androidPaint(this)
+
+/** Converts a Krayon [Paint] into an [AndroidPaint]. */
+public fun Paint.Text.toAndroid(context: Context): AndroidPaint = androidPaint(context, this)
 
 private fun androidPaint(source: Paint.Fill) = AndroidPaint().apply {
     style = AndroidPaint.Style.FILL
@@ -60,6 +74,25 @@ private fun androidPaint(source: Paint.Stroke) = AndroidPaint().apply {
     }
     if (source.dash is Paint.Stroke.Dash.Pattern) {
         pathEffect = DashPathEffect(source.dash.intervals.toFloatArray(), 0f)
+    }
+}
+
+private fun androidPaint(source: Paint.Gradient) = AndroidPaint().apply {
+    style = AndroidPaint.Style.FILL
+    isAntiAlias = true
+    val colorStops = IntArray(source.stops.size)
+    val positionStops = FloatArray(source.stops.size)
+    source.stops.forEachIndexed { index, (offset, color) ->
+        colorStops[index] = color.argb
+        positionStops[index] = offset
+    }
+    shader = when (source) {
+        is Paint.Gradient.Linear ->
+            LinearGradient(source.startX, source.startY, source.endX, source.endY, colorStops, positionStops, TILE_MODE)
+        is Paint.Gradient.Radial ->
+            RadialGradient(source.centerX, source.centerY, source.radius, colorStops, positionStops, TILE_MODE)
+        is Paint.Gradient.Sweep ->
+            SweepGradient(source.centerX, source.centerY, colorStops, positionStops)
     }
 }
 
