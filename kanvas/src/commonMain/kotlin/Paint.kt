@@ -69,7 +69,66 @@ public sealed class Paint {
 
     public data class FillAndStroke(
         public val fill: Fill,
-        public val stroke: Stroke
+        public val stroke: Stroke,
+    ) : Paint()
+
+    public sealed class Gradient : Paint() {
+
+        public abstract val stops: List<Stop>
+
+        init {
+            @Suppress("LeakingThis")
+            require(stops.sortedBy { it.offset } == stops) { "Gradient stops must be ascending by offset, but were $stops." }
+        }
+
+        public data class Linear(
+            val startX: Float,
+            val startY: Float,
+            val endX: Float,
+            val endY: Float,
+            override val stops: List<Stop>,
+        ) : Gradient() {
+            public constructor(startX: Float, startY: Float, endX: Float, endY: Float, vararg stops: Stop) :
+                this(startX, startY, endX, endY, stops.toList())
+        }
+
+        public data class Radial(
+            val startX: Float,
+            val startY: Float,
+            val startRadius: Float,
+            val endX: Float,
+            val endY: Float,
+            val endRadius: Float,
+            override val stops: List<Stop>,
+        ) : Gradient() {
+            public constructor(startX: Float, startY: Float, startRadius: Float, endX: Float, endY: Float, endRadius: Float, vararg stops: Stop) :
+                this(startX, startY, startRadius, endX, endY, endRadius, stops.toList())
+
+            public constructor(centerX: Float, centerY: Float, endRadius: Float, stops: List<Stop>) :
+                this(centerX, centerY, startRadius = 0f, centerX, centerY, endRadius, stops)
+
+            public constructor(centerX: Float, centerY: Float, endRadius: Float, vararg stops: Stop) :
+                this(centerX, centerY, startRadius = 0f, centerX, centerY, endRadius, stops.toList())
+        }
+
+        public data class Sweep(
+            val centerX: Float,
+            val centerY: Float,
+            override val stops: List<Stop>,
+        ) : Gradient() {
+            public constructor(centerX: Float, centerY: Float, vararg stops: Stop) :
+                this(centerX, centerY, stops.toList())
+        }
+
+        public data class Stop(
+            val offset: Float,
+            val color: Color,
+        )
+    }
+
+    public data class GradientAndStroke(
+        public val gradient: Gradient,
+        public val stroke: Stroke,
     ) : Paint()
 
     /** Similar to [Fill], but carrying additional information necessary for text. */
