@@ -12,11 +12,12 @@ import com.juul.krayon.kanvas.xml.NumberFormatter
 import com.juul.krayon.kanvas.xml.ToStringFormatter
 import com.juul.krayon.kanvas.xml.XmlElement
 import com.juul.krayon.kanvas.xml.escape
+import kotlin.math.roundToInt
 
 public class SvgKanvas(
     override val width: Float,
     override val height: Float,
-    private val formatter: NumberFormatter = ToStringFormatter()
+    private val formatter: NumberFormatter = ToStringFormatter(),
 ) : Kanvas<PathString> {
 
     /** Root XML element. */
@@ -29,6 +30,9 @@ public class SvgKanvas(
 
     /** ID to use for the next clip path. */
     private var clipCount = 0
+
+    /** ID to use for the next gradient. */
+    private var gradientCount = 0
 
     override fun buildPath(actions: Path): PathString =
         PathStringBuilder(formatter).build(actions)
@@ -50,7 +54,7 @@ public class SvgKanvas(
             .setAttribute("cx", centerX, formatter)
             .setAttribute("cy", centerY, formatter)
             .setAttribute("r", radius, formatter)
-            .setPaintAttributes(paint, formatter)
+            .setPaintAttributes(paint, formatter, injectGradientDef(paint))
         xmlAncestors.last().addContent(element)
     }
 
@@ -58,7 +62,7 @@ public class SvgKanvas(
         val element = XmlElement("rect")
             .setAttribute("width", "100%")
             .setAttribute("height", "100%")
-            .setPaintAttributes(Paint.Fill(color), formatter)
+            .setPaintAttributes(Paint.Fill(color), formatter, null)
         xmlAncestors.last().addContent(element)
     }
 
@@ -68,7 +72,7 @@ public class SvgKanvas(
             .setAttribute("y1", startY, formatter)
             .setAttribute("x2", endX, formatter)
             .setAttribute("y2", endY, formatter)
-            .setPaintAttributes(paint, formatter)
+            .setPaintAttributes(paint, formatter, null)
             .unsetAttribute("fill") // lines have no area to fill
         xmlAncestors.last().addContent(element)
     }
@@ -83,14 +87,14 @@ public class SvgKanvas(
             .setAttribute("cy", cy, formatter)
             .setAttribute("rx", rx, formatter)
             .setAttribute("ry", ry, formatter)
-            .setPaintAttributes(paint, formatter)
+            .setPaintAttributes(paint, formatter, injectGradientDef(paint))
         xmlAncestors.last().addContent(element)
     }
 
     override fun drawPath(path: PathString, paint: Paint) {
         val element = XmlElement("path")
             .setAttribute("d", path.string)
-            .setPaintAttributes(paint, formatter)
+            .setPaintAttributes(paint, formatter, injectGradientDef(paint))
         xmlAncestors.last().addContent(element)
     }
 
@@ -100,7 +104,7 @@ public class SvgKanvas(
             .setAttribute("y", top, formatter)
             .setAttribute("width", right - left, formatter)
             .setAttribute("height", bottom - top, formatter)
-            .setPaintAttributes(paint, formatter)
+            .setPaintAttributes(paint, formatter, injectGradientDef(paint))
         xmlAncestors.last().addContent(element)
     }
 
@@ -108,7 +112,7 @@ public class SvgKanvas(
         val element = XmlElement("text")
             .setAttribute("x", x, formatter)
             .setAttribute("y", y, formatter)
-            .setPaintAttributes(paint, formatter)
+            .setPaintAttributes(paint, formatter, null)
             .addContent(text.toString().escape())
         xmlAncestors.last().addContent(element)
     }
@@ -183,4 +187,50 @@ public class SvgKanvas(
 
     /** Dump the SVG as an XML string. */
     public fun build(): String = root.toString()
+
+    /**
+     * If [paint] is a [Paint.Gradient] or [Paint.GradientAndStroke], adds a `<defs>` element
+     * containing a gradient definition to the XML tree, and returns the id of that definition.
+     *
+     * If [paint] is not a gradient, then returns null.
+     */
+    private fun injectGradientDef(paint: Paint): String? {
+        if (paint is Paint.GradientAndStroke) return injectGradientDef(paint.gradient)
+        if (paint !is Paint.Gradient) return null
+
+        val id = "g$gradientCount"
+        gradientCount += 1
+
+        val gradient = when (paint) {
+            is Paint.Gradient.Linear -> XmlElement("linearGradient")
+                .setAttribute("id", id)
+                .setAttribute("gradientUnits", "userSpaceOnUse")
+                .setAttribute("x1", paint.startX, formatter)
+                .setAttribute("y1", paint.startY, formatter)
+                .setAttribute("x2", paint.endX, formatter)
+                .setAttribute("y2", paint.endY, formatter)
+            is Paint.Gradient.Radial -> XmlElement("radialGradient")
+                .setAttribute("id", id)
+                .setAttribute("gradientUnits", "userSpaceOnUse")
+                .setAttribute("cx", paint.centerX, formatter)
+                .setAttribute("cy", paint.centerY, formatter)
+                .setAttribute("r", paint.radius, formatter)
+            else -> throw UnsupportedOperationException("`SvgKanvas` does not support `Sweep` gradients.")
+        }
+
+        paint.stops.forEach { (offset, color) ->
+            val offsetPercent = (offset * 100).roundToInt()
+            val stop = XmlElement("stop")
+                .setAttribute("offset", "$offsetPercent%")
+                .setColorAttributes("stop-color", "stop-opacity", color, formatter)
+            gradient.addContent(stop)
+        }
+
+        val defs = XmlElement("defs")
+            .addContent(gradient)
+
+        xmlAncestors.last().addContent(defs)
+
+        return id
+    }
 }

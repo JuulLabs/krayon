@@ -5,9 +5,11 @@ import com.juul.krayon.color.blue
 import com.juul.krayon.color.green
 import com.juul.krayon.color.lime
 import com.juul.krayon.color.red
+import com.juul.krayon.color.white
 import com.juul.krayon.kanvas.Clip
 import com.juul.krayon.kanvas.Font
 import com.juul.krayon.kanvas.Paint
+import com.juul.krayon.kanvas.Paint.Gradient.Stop
 import com.juul.krayon.kanvas.Paint.Stroke.Dash.Pattern
 import com.juul.krayon.kanvas.serif
 import com.juul.krayon.kanvas.withClip
@@ -21,6 +23,20 @@ class SvgTests {
     fun output() {
         val expected = """
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1e2 1e2">
+              <defs>
+                <linearGradient id="g0" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1e2" y2="1e2">
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="100%" stop-color="#000000" />
+                </linearGradient>
+              </defs>
+              <path d="M0,0l100,100h-100z" fill="url(#g0)" />
+              <defs>
+                <radialGradient id="g1" gradientUnits="userSpaceOnUse" cx="5e1" cy="5e1" r="7e1">
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="100%" stop-color="#000000" />
+                </radialGradient>
+              </defs>
+              <path d="M0,0h100v100z" stroke-dasharray="2 1" stroke-width="1px" stroke="#00ff00" fill="url(#g1)" />
               <circle cx="1.6e1" cy="8.4e1" r="8" fill="#000000" />
               <defs>
                 <clipPath id="c0">
@@ -46,7 +62,11 @@ class SvgTests {
                 Paint.Stroke(lime, width = 1f)
             )
             val dashedGreenStroke = Paint.Stroke(lime, width = 1f, dash = Pattern(2f, 1f))
+            val linearGradientPaint = Paint.Gradient.Linear(0f, 0f, 100f, 100f, Stop(0f, white), Stop(1f, black))
+            val radialGradientPaint = Paint.Gradient.Radial(50f, 50f, 70f, Stop(0f, white), Stop(1f, black))
             val blueText = Paint.Text(blue, size = 16f, Paint.Text.Alignment.Center, Font("Times New Roman", serif))
+            svg.drawPath(PathString("M0,0l100,100h-100z"), linearGradientPaint)
+            svg.drawPath(PathString("M0,0h100v100z"), Paint.GradientAndStroke(radialGradientPaint, dashedGreenStroke))
             svg.drawCircle(16f, 84f, 8f, blackFill)
             svg.withClip(Clip.Rect(16f, 16f, 84f, 84f)) {
                 drawLine(0f, 100f, 100f, 0f, redStroke)

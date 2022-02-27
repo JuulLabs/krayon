@@ -7,13 +7,18 @@ import com.juul.krayon.kanvas.xml.NumberFormatter
 import com.juul.krayon.kanvas.xml.XmlElement
 import com.juul.krayon.kanvas.xml.escape
 
-internal fun XmlElement.setPaintAttributes(paint: Paint, formatter: NumberFormatter) = apply {
+internal fun XmlElement.setPaintAttributes(paint: Paint, formatter: NumberFormatter, gradientId: String?) = apply {
     when (paint) {
         is Paint.Fill -> setFillAttributes(paint, formatter)
         is Paint.Stroke -> setStrokeAttributes(paint, formatter)
         is Paint.FillAndStroke -> {
             setStrokeAttributes(paint.stroke, formatter)
             setFillAttributes(paint.fill, formatter)
+        }
+        is Paint.Gradient -> setGradientAttributes(paint, checkNotNull(gradientId))
+        is Paint.GradientAndStroke -> {
+            setStrokeAttributes(paint.stroke, formatter)
+            setGradientAttributes(paint.gradient, checkNotNull(gradientId))
         }
         is Paint.Text -> setTextAttributes(paint, formatter)
     }
@@ -48,13 +53,17 @@ private fun XmlElement.setStrokeAttributes(paint: Paint.Stroke, formatter: Numbe
         setAttribute("stroke-dasharray", paint.dash.intervals.joinToString(separator = " ", transform = formatter::invoke))
     }
     setAttribute("stroke-width", "${formatter(paint.width)}px")
-    setColorAttributes("stroke", paint.color, formatter)
+    setColorAttributes("stroke", "stroke-opacity", paint.color, formatter)
     // SVG defaults to a black fill. Explicitly set it as "none" since this is a stroke-only paint.
     setAttribute("fill", "none")
 }
 
 private fun XmlElement.setFillAttributes(paint: Paint.Fill, formatter: NumberFormatter) = apply {
-    setColorAttributes("fill", paint.color, formatter)
+    setColorAttributes("fill", "fill-opacity", paint.color, formatter)
+}
+
+private fun XmlElement.setGradientAttributes(paint: Paint.Gradient, id: String) = apply {
+    setAttribute("fill", "url(#$id)")
 }
 
 private fun XmlElement.setTextAttributes(paint: Paint.Text, formatter: NumberFormatter) = apply {
@@ -69,10 +78,15 @@ private fun XmlElement.setTextAttributes(paint: Paint.Text, formatter: NumberFor
     }
     setAttribute("font-family", paint.font.names.joinToString { if (it.contains("""\s""".toRegex())) "\"$it\"" else it })
     setAttribute("font-size", "${formatter(paint.size)}px")
-    setColorAttributes("fill", paint.color, formatter)
+    setColorAttributes("fill", "fill-opacity", paint.color, formatter)
 }
 
-private fun XmlElement.setColorAttributes(id: String, color: Color, formatter: NumberFormatter) = apply {
+internal fun XmlElement.setColorAttributes(
+    id: String,
+    opacityId: String,
+    color: Color,
+    formatter: NumberFormatter
+) = apply {
     setAttribute(id, "#${color.rgb.toString(16).padStart(6, '0')}")
     if (color.alpha != 0xFF) {
         setAttribute("$id-opacity", color.alpha / 255.0, formatter)
