@@ -54,14 +54,16 @@ public class AndroidKanvas internal constructor(
         paint: Paint,
         crossinline action: Canvas.(AndroidPaint) -> Unit,
     ) = with(requireCanvas()) {
-        if (paint is Paint.FillAndStroke) {
-            action(paintCache[paint.fill])
-            action(paintCache[paint.stroke])
-        } else if (paint is Paint.GradientAndStroke) {
-            action(paintCache[paint.gradient])
-            action(paintCache[paint.stroke])
-        } else {
-            action(paintCache[paint])
+        when (paint) {
+            is Paint.FillAndStroke -> {
+                action(paintCache[paint.fill])
+                action(paintCache[paint.stroke])
+            }
+            is Paint.GradientAndStroke -> {
+                action(paintCache[paint.gradient])
+                action(paintCache[paint.stroke])
+            }
+            else -> action(paintCache[paint])
         }
     }
 
