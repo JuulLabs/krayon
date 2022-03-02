@@ -69,7 +69,52 @@ public sealed class Paint {
 
     public data class FillAndStroke(
         public val fill: Fill,
-        public val stroke: Stroke
+        public val stroke: Stroke,
+    ) : Paint()
+
+    public sealed class Gradient : Paint() {
+
+        public abstract val stops: List<Stop>
+
+        public data class Linear(
+            val startX: Float,
+            val startY: Float,
+            val endX: Float,
+            val endY: Float,
+            override val stops: List<Stop>,
+        ) : Gradient() {
+            public constructor(startX: Float, startY: Float, endX: Float, endY: Float, vararg stops: Stop) :
+                this(startX, startY, endX, endY, stops.toList())
+        }
+
+        public data class Radial(
+            val centerX: Float,
+            val centerY: Float,
+            val radius: Float,
+            override val stops: List<Stop>,
+        ) : Gradient() {
+            public constructor(centerX: Float, centerY: Float, radius: Float, vararg stops: Stop) :
+                this(centerX, centerY, radius, stops.toList())
+        }
+
+        public data class Sweep(
+            val centerX: Float,
+            val centerY: Float,
+            override val stops: List<Stop>,
+        ) : Gradient() {
+            public constructor(centerX: Float, centerY: Float, vararg stops: Stop) :
+                this(centerX, centerY, stops.toList())
+        }
+
+        public data class Stop(
+            val offset: Float,
+            val color: Color,
+        )
+    }
+
+    public data class GradientAndStroke(
+        public val gradient: Gradient,
+        public val stroke: Stroke,
     ) : Paint()
 
     /** Similar to [Fill], but carrying additional information necessary for text. */

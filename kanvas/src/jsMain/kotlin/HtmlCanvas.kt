@@ -19,11 +19,11 @@ import kotlin.math.PI
 
 /** Helper for the common case of deciding if [CanvasRenderingContext2D] should call a `fill` function or not. */
 private fun shouldFill(paint: Paint): Boolean =
-    paint is Paint.Fill || paint is Paint.FillAndStroke
+    paint is Paint.Fill || paint is Paint.FillAndStroke || paint is Paint.Gradient || paint is Paint.GradientAndStroke
 
 /** Helper for the common case of deciding if [CanvasRenderingContext2D] should call a `stroke` function or not. */
 private fun shouldStroke(paint: Paint): Boolean =
-    paint is Paint.Stroke || paint is Paint.FillAndStroke
+    paint is Paint.Stroke || paint is Paint.FillAndStroke || paint is Paint.GradientAndStroke
 
 public class HtmlCanvas(
     element: HTMLCanvasElement,
@@ -194,6 +194,11 @@ public class HtmlCanvas(
                 applyStyle(paint.fill)
                 applyStyle(paint.stroke)
             }
+            is Paint.Gradient -> applyStyle(paint)
+            is Paint.GradientAndStroke -> {
+                applyStyle(paint.gradient)
+                applyStyle(paint.stroke)
+            }
             is Paint.Text -> applyStyle(paint)
         }
     }
@@ -226,6 +231,26 @@ public class HtmlCanvas(
                 }
             }
         )
+    }
+
+    private fun applyStyle(paint: Paint.Gradient) {
+        val gradient = when (paint) {
+            is Paint.Gradient.Linear ->
+                context.createLinearGradient(paint.startX.toDouble(), paint.startY.toDouble(), paint.endX.toDouble(), paint.endY.toDouble())
+            is Paint.Gradient.Radial -> context.createRadialGradient(
+                paint.centerX.toDouble(),
+                paint.centerY.toDouble(),
+                0.0,
+                paint.centerX.toDouble(),
+                paint.centerY.toDouble(),
+                paint.radius.toDouble()
+            )
+            else -> throw UnsupportedOperationException("`HtmlCanvas` does not support `Sweep` gradients.")
+        }
+        paint.stops.forEach { (offset, color) ->
+            gradient.addColorStop(offset.toDouble(), color.toHexString())
+        }
+        context.fillStyle = gradient
     }
 
     private fun applyStyle(paint: Paint.Text) {

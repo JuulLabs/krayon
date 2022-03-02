@@ -25,7 +25,9 @@ public final class com/juul/krayon/kanvas/AndroidKanvasKt {
 public final class com/juul/krayon/kanvas/AndroidPaintKt {
 	public static final fun addFontAssociation (Ljava/lang/String;I)V
 	public static final fun toAndroid (Lcom/juul/krayon/kanvas/Paint$Fill;)Landroid/graphics/Paint;
+	public static final fun toAndroid (Lcom/juul/krayon/kanvas/Paint$Gradient;)Landroid/graphics/Paint;
 	public static final fun toAndroid (Lcom/juul/krayon/kanvas/Paint$Stroke;)Landroid/graphics/Paint;
+	public static final fun toAndroid (Lcom/juul/krayon/kanvas/Paint$Text;Landroid/content/Context;)Landroid/graphics/Paint;
 	public static final fun toAndroid (Lcom/juul/krayon/kanvas/Paint;Landroid/content/Context;)Landroid/graphics/Paint;
 }
 
@@ -151,6 +153,90 @@ public final class com/juul/krayon/kanvas/Paint$FillAndStroke : com/juul/krayon/
 	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Paint$FillAndStroke;Lcom/juul/krayon/kanvas/Paint$Fill;Lcom/juul/krayon/kanvas/Paint$Stroke;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$FillAndStroke;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getFill ()Lcom/juul/krayon/kanvas/Paint$Fill;
+	public final fun getStroke ()Lcom/juul/krayon/kanvas/Paint$Stroke;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class com/juul/krayon/kanvas/Paint$Gradient : com/juul/krayon/kanvas/Paint {
+	public abstract fun getStops ()Ljava/util/List;
+}
+
+public final class com/juul/krayon/kanvas/Paint$Gradient$Linear : com/juul/krayon/kanvas/Paint$Gradient {
+	public fun <init> (FFFFLjava/util/List;)V
+	public fun <init> (FFFF[Lcom/juul/krayon/kanvas/Paint$Gradient$Stop;)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun component4 ()F
+	public final fun component5 ()Ljava/util/List;
+	public final fun copy (FFFFLjava/util/List;)Lcom/juul/krayon/kanvas/Paint$Gradient$Linear;
+	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Paint$Gradient$Linear;FFFFLjava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Gradient$Linear;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEndX ()F
+	public final fun getEndY ()F
+	public final fun getStartX ()F
+	public final fun getStartY ()F
+	public fun getStops ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/kanvas/Paint$Gradient$Radial : com/juul/krayon/kanvas/Paint$Gradient {
+	public fun <init> (FFFLjava/util/List;)V
+	public fun <init> (FFF[Lcom/juul/krayon/kanvas/Paint$Gradient$Stop;)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (FFFLjava/util/List;)Lcom/juul/krayon/kanvas/Paint$Gradient$Radial;
+	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Paint$Gradient$Radial;FFFLjava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Gradient$Radial;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCenterX ()F
+	public final fun getCenterY ()F
+	public final fun getRadius ()F
+	public fun getStops ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/kanvas/Paint$Gradient$Stop {
+	public synthetic fun <init> (FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()F
+	public final fun component2-b4wfQcs ()I
+	public final fun copy-CnFTFKc (FI)Lcom/juul/krayon/kanvas/Paint$Gradient$Stop;
+	public static synthetic fun copy-CnFTFKc$default (Lcom/juul/krayon/kanvas/Paint$Gradient$Stop;FIILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Gradient$Stop;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getColor-b4wfQcs ()I
+	public final fun getOffset ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/kanvas/Paint$Gradient$Sweep : com/juul/krayon/kanvas/Paint$Gradient {
+	public fun <init> (FFLjava/util/List;)V
+	public fun <init> (FF[Lcom/juul/krayon/kanvas/Paint$Gradient$Stop;)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy (FFLjava/util/List;)Lcom/juul/krayon/kanvas/Paint$Gradient$Sweep;
+	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Paint$Gradient$Sweep;FFLjava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$Gradient$Sweep;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCenterX ()F
+	public final fun getCenterY ()F
+	public fun getStops ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/kanvas/Paint$GradientAndStroke : com/juul/krayon/kanvas/Paint {
+	public fun <init> (Lcom/juul/krayon/kanvas/Paint$Gradient;Lcom/juul/krayon/kanvas/Paint$Stroke;)V
+	public final fun component1 ()Lcom/juul/krayon/kanvas/Paint$Gradient;
+	public final fun component2 ()Lcom/juul/krayon/kanvas/Paint$Stroke;
+	public final fun copy (Lcom/juul/krayon/kanvas/Paint$Gradient;Lcom/juul/krayon/kanvas/Paint$Stroke;)Lcom/juul/krayon/kanvas/Paint$GradientAndStroke;
+	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Paint$GradientAndStroke;Lcom/juul/krayon/kanvas/Paint$Gradient;Lcom/juul/krayon/kanvas/Paint$Stroke;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Paint$GradientAndStroke;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGradient ()Lcom/juul/krayon/kanvas/Paint$Gradient;
 	public final fun getStroke ()Lcom/juul/krayon/kanvas/Paint$Stroke;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
