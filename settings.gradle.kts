@@ -35,6 +35,7 @@ include(
     "hierarchy",
     "interpolate",
     "kanvas",
+    "kanvas-compose",
     "sample",
     "scale",
     "selection",
