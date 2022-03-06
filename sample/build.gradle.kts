@@ -38,11 +38,17 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
+                implementation(project(":compose"))
                 implementation(project(":element-view"))
+                implementation(libs.androidx.activity.compose)
                 implementation(libs.androidx.appcompat)
                 implementation(libs.androidx.lifecycle.runtime)
                 implementation(libs.coroutines.android)
                 implementation(libs.material)
+                implementation(compose.foundation)
+                implementation(compose.preview)
+                implementation(compose.runtime)
+                implementation(compose.ui)
             }
         }
 
@@ -54,7 +60,7 @@ kotlin {
 
         val desktopMain by getting {
             dependencies {
-                implementation(project(":kanvas-compose"))
+                implementation(project(":compose"))
                 implementation(compose.desktop.currentOs)
                 implementation(compose.preview)
             }

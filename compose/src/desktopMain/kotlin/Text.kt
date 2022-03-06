@@ -1,4 +1,4 @@
-package com.juul.krayon.kanvas.compose
+package com.juul.krayon.compose
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.nativeCanvas
@@ -8,11 +8,6 @@ import org.jetbrains.skia.TextLine
 import org.jetbrains.skia.Typeface
 import org.jetbrains.skia.Font as SkiaFont
 import org.jetbrains.skia.Paint as SkiaPaint
-
-public actual typealias ResourceContext = Any
-
-@Composable
-internal actual fun rememberResourceContext(): ResourceContext = Unit
 
 internal actual fun drawText(kanvas: ComposeKanvas, text: CharSequence, x: Float, y: Float, paint: Paint.Text) {
     val canvas = kanvas.scope.drawContext.canvas.nativeCanvas

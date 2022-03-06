@@ -1,4 +1,4 @@
-package com.juul.krayon.kanvas.compose
+package com.juul.krayon.compose
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush

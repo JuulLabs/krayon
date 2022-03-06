@@ -1,10 +1,11 @@
-package com.juul.krayon.kanvas.compose
+package com.juul.krayon.compose
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.DrawStyle
+import androidx.compose.ui.graphics.drawscope.scale
 import com.juul.krayon.color.Color
 import com.juul.krayon.kanvas.Clip
 import com.juul.krayon.kanvas.Kanvas
@@ -21,6 +22,10 @@ public class ComposeKanvas internal constructor(
 
     override val width: Float get() = scope.size.width
     override val height: Float get() = scope.size.height
+
+    init {
+        scope.drawContext.transform.scale(scope.density, pivot = Offset.Zero)
+    }
 
     private inline fun withBrushAndStyle(
         paint: Paint,

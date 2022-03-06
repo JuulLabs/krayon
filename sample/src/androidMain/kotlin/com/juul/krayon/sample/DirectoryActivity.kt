@@ -16,6 +16,7 @@ class DirectoryActivity : AppCompatActivity() {
 
         binding.buttonLine.setNavigateOnClick<LineActivity>()
         binding.buttonPie.setNavigateOnClick<PieActivity>()
+        binding.buttonComposeLine.setNavigateOnClick<ComposeLineActivity>()
     }
 
     private inline fun <reified T : Activity> View.setNavigateOnClick() {

@@ -1,4 +1,4 @@
-package com.juul.krayon.kanvas.compose
+package com.juul.krayon.compose
 
 import com.juul.krayon.color.Color
 import androidx.compose.ui.graphics.Color as ComposeColor
