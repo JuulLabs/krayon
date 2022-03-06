@@ -18,9 +18,11 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":kanvas"))
+                api(project(":element"))
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
+                implementation(libs.datetime)
             }
         }
         val commonTest by getting {

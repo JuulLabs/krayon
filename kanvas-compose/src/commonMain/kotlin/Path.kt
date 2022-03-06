@@ -1,7 +1,6 @@
 package com.juul.krayon.kanvas.compose
 
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.graphics.PathOperation
 import com.juul.krayon.kanvas.PathBuilder
 import androidx.compose.ui.graphics.Path as ComposePath
 
@@ -87,5 +86,5 @@ internal class ComposePathBuilder : PathBuilder<ComposePath> {
         pathBuffer.reset()
     }
 
-    override fun build(): ComposePath = ComposePath.combine(PathOperation.Union, EMPTY_PATH, pathBuffer)
+    override fun build(): ComposePath = pathBuffer
 }
