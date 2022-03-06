@@ -18,23 +18,6 @@ public final class com/juul/krayon/compose/ComposeKanvas : com/juul/krayon/kanva
 	public fun pushTransform (Lcom/juul/krayon/kanvas/Transform;)V
 }
 
-public final class com/juul/krayon/compose/ComposePathBuilder : com/juul/krayon/kanvas/PathBuilder {
-	public fun <init> ()V
-	public fun arcTo (FFFFFFZ)V
-	public fun build ()Landroidx/compose/ui/graphics/Path;
-	public synthetic fun build ()Ljava/lang/Object;
-	public fun close ()V
-	public fun cubicTo (FFFFFF)V
-	public fun lineTo (FF)V
-	public fun moveTo (FF)V
-	public fun quadraticTo (FFFF)V
-	public fun relativeCubicTo (FFFFFF)V
-	public fun relativeLineTo (FF)V
-	public fun relativeMoveTo (FF)V
-	public fun relativeQuadraticTo (FFFF)V
-	public fun reset ()V
-}
-
 public final class com/juul/krayon/compose/ElementViewKt {
 	public static final fun ElementView (Landroidx/compose/runtime/State;Lkotlin/jvm/functions/Function4;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
 	public static final fun ElementView (Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function4;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
