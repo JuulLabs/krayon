@@ -14,8 +14,9 @@ import com.juul.krayon.kanvas.Transform
 import com.juul.krayon.kanvas.build
 import androidx.compose.ui.graphics.Path as ComposePath
 
-public class ComposeKanvas(
+public class ComposeKanvas internal constructor(
     internal val scope: DrawScope,
+    internal val resourceContext: ResourceContext
 ) : Kanvas<ComposePath> {
 
     override val width: Float get() = scope.size.width
