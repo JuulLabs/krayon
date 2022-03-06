@@ -4,8 +4,6 @@ import androidx.compose.ui.geometry.Rect
 import com.juul.krayon.kanvas.PathBuilder
 import androidx.compose.ui.graphics.Path as ComposePath
 
-private val EMPTY_PATH = ComposePath()
-
 @PublishedApi
 internal class ComposePathBuilder : PathBuilder<ComposePath> {
     private val pathBuffer = ComposePath()

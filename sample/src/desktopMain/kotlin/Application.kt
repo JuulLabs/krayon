@@ -29,9 +29,10 @@ import kotlin.math.PI
 
 fun main() = singleWindowApplication {
     MaterialTheme {
-        Column(Modifier
-            .verticalScroll(rememberScrollState())
-            .padding(16.dp)
+        Column(
+            Modifier
+                .verticalScroll(rememberScrollState())
+                .padding(16.dp)
         ) {
             LineChart()
             PieChart()

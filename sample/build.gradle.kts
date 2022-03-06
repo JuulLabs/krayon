@@ -70,6 +70,7 @@ kotlin {
             dependencies {
                 implementation(project(":element-view"))
                 implementation(libs.coroutines.js)
+                implementation(compose.web.core) // required because of the compose plugin, but unused.
             }
         }
 

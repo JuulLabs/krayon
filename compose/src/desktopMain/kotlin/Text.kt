@@ -1,6 +1,5 @@
 package com.juul.krayon.compose
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.nativeCanvas
 import com.juul.krayon.kanvas.Paint
 import org.jetbrains.skia.FontStyle
