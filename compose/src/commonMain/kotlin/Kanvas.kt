@@ -11,7 +11,7 @@ public fun Kanvas(
     modifier: Modifier,
     onDraw: Kanvas<Path>.() -> Unit,
 ) {
-    val resourceContext = rememberResourceContext()
+    val resourceContext = rememberResourceCache()
     Canvas(modifier) {
         onDraw(ComposeKanvas(scope = this, resourceContext))
     }

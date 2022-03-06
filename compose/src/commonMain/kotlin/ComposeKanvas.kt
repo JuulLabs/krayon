@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Path as ComposePath
 
 public class ComposeKanvas internal constructor(
     internal val scope: DrawScope,
-    internal val resourceContext: ResourceContext
+    internal val resourceCache: ResourceCache
 ) : Kanvas<ComposePath> {
 
     override val width: Float get() = scope.size.width
