@@ -8,6 +8,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ComposeLineActivity"
+            android:exported="true" />
         <activity android:name=".LineActivity"
             android:exported="true" />
         <activity android:name=".PieActivity"

@@ -30,6 +30,7 @@ include(
     "box",
     "chart",
     "color",
+    "compose",
     "element",
     "element-view",
     "hierarchy",

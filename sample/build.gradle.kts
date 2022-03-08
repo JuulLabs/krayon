@@ -1,11 +1,16 @@
+import org.jetbrains.compose.compose
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+
 plugins {
     kotlin("multiplatform")
+    id("org.jetbrains.compose")
     id("com.android.application")
     id("org.jmailen.kotlinter")
 }
 
 kotlin {
     android()
+    jvm("desktop")
     js {
         browser()
         binaries.executable()
@@ -15,7 +20,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":axis"))
-                implementation(project(":element-view"))
                 implementation(project(":selection"))
                 implementation(project(":scale"))
                 implementation(project(":shape"))
@@ -34,10 +38,17 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
+                implementation(project(":compose"))
+                implementation(project(":element-view"))
+                implementation(libs.androidx.activity.compose)
                 implementation(libs.androidx.appcompat)
                 implementation(libs.androidx.lifecycle.runtime)
                 implementation(libs.coroutines.android)
                 implementation(libs.material)
+                implementation(compose.foundation)
+                implementation(compose.preview)
+                implementation(compose.runtime)
+                implementation(compose.ui)
             }
         }
 
@@ -47,9 +58,19 @@ kotlin {
             }
         }
 
+        val desktopMain by getting {
+            dependencies {
+                implementation(project(":compose"))
+                implementation(compose.desktop.currentOs)
+                implementation(compose.preview)
+            }
+        }
+
         val jsMain by getting {
             dependencies {
+                implementation(project(":element-view"))
                 implementation(libs.coroutines.js)
+                implementation(compose.web.core) // required because of the compose plugin, but unused.
             }
         }
 
@@ -87,5 +108,16 @@ android {
 
     sourceSets {
         getByName("main").manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    }
+}
+
+compose.desktop {
+    application {
+        mainClass = "ApplicationKt"
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "jvm"
+            packageVersion = "1.0.0"
+        }
     }
 }

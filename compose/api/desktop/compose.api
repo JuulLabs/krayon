@@ -1,0 +1,34 @@
+public final class com/juul/krayon/compose/ComposeKanvas : com/juul/krayon/kanvas/Kanvas {
+	public static final field $stable I
+	public fun buildPath (Lcom/juul/krayon/kanvas/Path;)Landroidx/compose/ui/graphics/Path;
+	public synthetic fun buildPath (Lcom/juul/krayon/kanvas/Path;)Ljava/lang/Object;
+	public fun drawArc (FFFFFFLcom/juul/krayon/kanvas/Paint;)V
+	public fun drawCircle (FFFLcom/juul/krayon/kanvas/Paint;)V
+	public fun drawColor-Z7dcaks (I)V
+	public fun drawLine (FFFFLcom/juul/krayon/kanvas/Paint;)V
+	public fun drawOval (FFFFLcom/juul/krayon/kanvas/Paint;)V
+	public fun drawPath (Landroidx/compose/ui/graphics/Path;Lcom/juul/krayon/kanvas/Paint;)V
+	public synthetic fun drawPath (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Paint;)V
+	public fun drawRect (FFFFLcom/juul/krayon/kanvas/Paint;)V
+	public fun drawText (Ljava/lang/CharSequence;FFLcom/juul/krayon/kanvas/Paint;)V
+	public fun getHeight ()F
+	public fun getWidth ()F
+	public fun pop ()V
+	public fun pushClip (Lcom/juul/krayon/kanvas/Clip;)V
+	public fun pushTransform (Lcom/juul/krayon/kanvas/Transform;)V
+}
+
+public final class com/juul/krayon/compose/ElementViewKt {
+	public static final fun ElementView (Landroidx/compose/runtime/State;Lkotlin/jvm/functions/Function4;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun ElementView (Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function4;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+}
+
+public final class com/juul/krayon/compose/KanvasKt {
+	public static final fun Kanvas (Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;I)V
+}
+
+public final class com/juul/krayon/compose/ResourceCache {
+	public static final field $stable I
+	public fun <init> ()V
+}
+
