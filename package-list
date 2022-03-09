@@ -10,6 +10,8 @@ com.juul.krayon.chart.render
 com.juul.krayon.chart.render.components
 module:color
 com.juul.krayon.color
+module:compose
+com.juul.krayon.compose
 module:element
 com.juul.krayon.element
 module:element-view
