@@ -26,7 +26,14 @@ import com.juul.krayon.kanvas.svg.Command.RelativeSmoothQuadraticTo
 import com.juul.krayon.kanvas.svg.Command.RelativeVerticalLineTo
 import com.juul.krayon.kanvas.svg.Token.CommandToken
 import com.juul.krayon.kanvas.svg.Token.ValueToken
+import kotlin.math.PI
 import kotlin.math.abs
+import kotlin.math.atan2
+import kotlin.math.ceil
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.sqrt
+import kotlin.math.tan
 
 /** Parses `this` as [SVG Path data](https://www.w3.org/TR/SVG/paths.html#PathData) to a [Path], throwing an exception if the parsing fails. */
 public fun String.toPath(): Path = parse(lex(this))
@@ -242,26 +249,150 @@ private class CommandPathBuilder : RelativePathBuilder<ReifiedPath>() {
     }
 
     private fun pushArc(command: Command, args: List<Float>) {
+        check(command == AbsoluteArc || command == RelativeArc)
         val state = this.state // copy prevents re-allocating every read
-        val x = args[5]
-        val y = args[6]
-        if (x == state.lastX && y == state.lastY) {
-            return // No-op
-        }
         val rx = abs(args[0])
         val ry = abs(args[1])
-        val xAxisRotation = args[2] // TODO: Warn or throw when this is non-zero, because it isn't multiplatform safe
-        val largeArcFlag = args[3] != 0f // TODO: Check what other implementations do. Spec only mentions 0 and 1, not other values.
-        val sweepFlag = args[4] != 0f // TODO: Check what other implementations do. Spec only mentions 0 and 1, not other values.
-        if (rx == 0f || ry == 0f) when (command) {
-            AbsoluteArc -> lineTo(x, y)
-            RelativeArc -> relativeLineTo(x, y)
+        val x = args[5]
+        val y = args[6]
+        if (rx <= 0f || ry <= 0f) {
+            // when radius is zero, treat it as infinite (straight line)
+            when (command) {
+                AbsoluteArc -> lineTo(x, y)
+                RelativeArc -> relativeLineTo(x, y)
+            }
         } else {
-            val left = args[5] - args[0]
-            val top = args[6] - args[1]
-            val right = args[5] + args[0]
-            val bottom = args[6] + args[1]
-            TODO("Continue from here. https://www.w3.org/TR/SVG/implnote.html#ArcImplementationNotes")
+            val xAxisRotation = args[2]
+            val largeArcFlag = args[3] != 0f
+            val sweepFlag = args[4] != 0f
+            pushArc(
+                x0 = state.lastX,
+                y0 = state.lastY,
+                x1 = x + if (command == RelativeArc) state.lastX else 0f,
+                y1 = y + if (command == RelativeArc) state.lastY else 0f,
+                a = rx,
+                b = ry,
+                thetaDegrees = xAxisRotation,
+                isMoreThanHalf = largeArcFlag,
+                isPositiveArc = sweepFlag
+            )
+        }
+    }
+
+    /** Translated from Android's PathParser: https://android.googlesource.com/platform/frameworks/base/+/17e64ffd852f8fe23b8e2e2ff1b62ee742af17a6/core/java/android/util/PathParser.java#381 */
+    private fun pushArc(
+        x0: Float,
+        y0: Float,
+        x1: Float,
+        y1: Float,
+        a: Float,
+        b: Float,
+        thetaDegrees: Float,
+        isMoreThanHalf: Boolean,
+        isPositiveArc: Boolean
+    ) {
+        val theta = thetaDegrees * PI.toFloat() / 180
+        // Pre-compute rotation matrix entries
+        val cosTheta = cos(theta)
+        val sinTheta = sin(theta)
+        // Transform (x0, y0) and (x1, y1) into unit space using (inverse) rotation, followed by (inverse) scale
+        val x0p = (x0 * cosTheta + y0 * sinTheta) / a
+        val y0p = (-x0 * sinTheta + y0 * cosTheta) / b
+        val x1p = (x1 * cosTheta + y1 * sinTheta) / a
+        val y1p = (-x1 * sinTheta + y1 * cosTheta) / b
+
+        // Compute differences and averages
+        val dx = x0p - x1p
+        val dy = y0p - y1p
+        val xm = (x0p + x1p) / 2
+        val ym = (y0p + y1p) / 2
+
+        // Solve for intersecting unit circles
+        val dsq = dx * dx + dy * dy
+        if (dsq == 0f) {
+            return  // Points are coincident
+        }
+        val disc = 1f / dsq - 1f / 4f
+        if (disc < 0f) {
+            // Target position is too far apart, so scale the ellipse while preserving the requested aspect ratio.
+            val adjust = sqrt(dsq) / 1.99999f // I have no idea why the original source uses 1.99999 instead of 2
+            pushArc(x0, y0, x1, y1, a * adjust, b * adjust, thetaDegrees, isMoreThanHalf, isPositiveArc)
+            return // Don't finish calculation here because we recursed
+        }
+        val s = sqrt(disc)
+        val sdx = s * dx
+        val sdy = s * dy
+        var (cx, cy) = when (isMoreThanHalf == isPositiveArc) {
+            true -> (xm - sdy) to (ym + sdx)
+            false -> (xm + sdy) to (ym - sdx)
+        }
+
+        val eta0 = atan2(y0p - cy, x0p - cx)
+        val eta1 = atan2(y1p - cy, x1p - cx)
+
+        val sweep = run {
+            val sweep = eta1 - eta0
+            when {
+                isPositiveArc == (sweep >= 0) -> sweep
+                sweep > 0 -> sweep - 2 * PI.toFloat()
+                else -> sweep + 2 * PI.toFloat()
+            }
+        }
+
+        cx *= a
+        cy *= b
+        val tcx = cx
+        cx = cx * cosTheta - cy * sinTheta
+        cy = tcx * sinTheta + cy * cosTheta
+
+        arcToCubic(cx, cy, a, b, x0, y0, thetaDegrees, eta0, sweep);
+    }
+
+    /** Translated from Android's PathParser. https://android.googlesource.com/platform/frameworks/base/+/17e64ffd852f8fe23b8e2e2ff1b62ee742af17a6/core/java/android/util/PathParser.java#472 */
+    private fun arcToCubic(
+        cx: Float,
+        cy: Float,
+        a: Float,
+        b: Float,
+        e1x: Float,
+        e1y: Float,
+        theta: Float,
+        start: Float,
+        sweep: Float
+    ) {
+        // Shadow some parameters because Java implementation was mutating them
+        var e1x = e1x
+        var e1y = e1y
+        // Maximum of 45 degrees per cubic Bezier segment
+        val numSegments = abs(ceil(sweep * 4 / PI).toInt())
+        var eta1 = start
+        val cosTheta = cos(theta)
+        val sinTheta = sin(theta)
+        val cosEta1 = cos(eta1)
+        val sinEta1 = sin(eta1)
+        var ep1x = -a * cosTheta * sinEta1 - b * sinTheta * cosEta1
+        var ep1y = -a * sinTheta * sinEta1 + b * cosTheta * cosEta1
+        val anglePerSegment = sweep / numSegments
+        for (i in 0 until numSegments) {
+            val eta2 = eta1 + anglePerSegment
+            val sinEta2 = sin(eta2)
+            val cosEta2 = cos(eta2)
+            val e2x = cx + a * cosTheta * cosEta2 - b * sinTheta * sinEta2
+            val e2y = cy + a * sinTheta * cosEta2 + b * cosTheta * sinEta2
+            val ep2x = -a * cosTheta * sinEta2 - b * sinTheta * cosEta2
+            val ep2y = -a * sinTheta * sinEta2 + b * cosTheta * cosEta2
+            val tanDiff2 = tan((eta2 - eta1) / 2)
+            val alpha = sin(eta2 - eta1) * (sqrt(4 + 3 * tanDiff2 * tanDiff2) - 1) / 3
+            val q1x = e1x + alpha * ep1x
+            val q1y = e1y + alpha * ep1y
+            val q2x = e2x - alpha * ep2x
+            val q2y = e2y - alpha * ep2y
+            cubicTo(q1x, q1y, q2x, q2y, e2x, e2y)
+            eta1 = eta2
+            e1x = e2x
+            e1y = e2y
+            ep1x = ep2x
+            ep1y = ep2y
         }
     }
 }
