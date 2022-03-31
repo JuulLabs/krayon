@@ -1,5 +1,6 @@
 package com.juul.krayon.kanvas.svg
 
+import com.juul.krayon.kanvas.Segment
 import com.juul.krayon.kanvas.svg.Command.AbsoluteArc
 import com.juul.krayon.kanvas.svg.Command.AbsoluteClosePath
 import com.juul.krayon.kanvas.svg.Command.AbsoluteCubicTo
@@ -24,6 +25,7 @@ import com.juul.krayon.kanvas.svg.Token.CommandToken
 import com.juul.krayon.kanvas.svg.Token.ValueToken
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFails
 
 class StringToPathTests {
 
@@ -84,5 +86,67 @@ class StringToPathTests {
         assertEquals(ValueToken(-6e7f), tokens[7])
         assertEquals(CommandToken(RelativeClosePath), tokens[8])
         assertEquals(9, tokens.size)
+    }
+
+    @Test
+    fun parse_withNoTokens_returnsEmptyPath() {
+        assertEquals(0, parse(lex("")).segments.size)
+    }
+
+    @Test
+    fun parse_withNoCommand_fails() {
+        assertFails { parse(lex("1")) }
+    }
+
+    @Test
+    fun parse_withTooFewValues_fails() {
+        assertFails { parse(lex("l 1")) }
+    }
+
+    @Test
+    fun parse_withTooManyValues_fails() {
+        assertFails { parse(lex("l 1 2 3")) }
+    }
+
+    @Test
+    fun parse_withSingleValidSegment_returnsCorrectSegment() {
+        assertEquals(Segment.MoveTo(1f, 2f), parse(lex("M1 2")).segments.single())
+        assertEquals(Segment.Close, parse(lex("Z")).segments.single())
+        assertEquals(Segment.LineTo(1f, 2f), parse(lex("L1 2")).segments.single())
+        assertEquals(Segment.LineTo(1f, 0f), parse(lex("H1")).segments.single())
+        assertEquals(Segment.LineTo(0f, 1f), parse(lex("V1")).segments.single())
+        assertEquals(Segment.CubicTo(1f, 2f, 3f, 4f, 5f, 6f), parse(lex("C1 2 3 4 5 6")).segments.single())
+        assertEquals(Segment.CubicTo(0f, 0f, 1f, 2f, 3f, 4f), parse(lex("S1 2 3 4")).segments.single())
+        assertEquals(Segment.QuadraticTo(1f, 2f, 3f, 4f), parse(lex("Q1 2 3 4")).segments.single())
+        assertEquals(Segment.QuadraticTo(0f, 0f, 1f, 2f), parse(lex("T1 2")).segments.single())
+        // TODO: assertEquals(Segment.Close, parse(lex("A")).segments.single())
+        // Because RelativePathBuilder is used as an implementation detail, these end up a looking a little different than they should.
+        // Ideally, these would use RelativeXyz versions of all the segments and not need the "m50 50" as the first segment. As is these
+        // don't really fit the spirit of what this test was meant to cover.
+        assertEquals(Segment.MoveTo(51f, 52f), parse(lex("m50 50 m1 2")).segments.last())
+        assertEquals(Segment.Close, parse(lex("m50 50 z")).segments.last())
+        assertEquals(Segment.LineTo(51f, 52f), parse(lex("m50 50 l1 2")).segments.last())
+        assertEquals(Segment.LineTo(51f, 50f), parse(lex("m50 50 h1")).segments.last())
+        assertEquals(Segment.LineTo(50f, 51f), parse(lex("m50 50 v1")).segments.last())
+        assertEquals(Segment.CubicTo(51f, 52f, 53f, 54f, 55f, 56f), parse(lex("m50 50 c1 2 3 4 5 6")).segments.last())
+        assertEquals(Segment.CubicTo(50f, 50f, 51f, 52f, 53f, 54f), parse(lex("m50 50 s1 2 3 4")).segments.last())
+        assertEquals(Segment.QuadraticTo(51f, 52f, 53f, 54f), parse(lex("m50 50 q1 2 3 4")).segments.last())
+        assertEquals(Segment.QuadraticTo(50f, 50f, 51f, 52f), parse(lex("m50 50 t1 2")).segments.last())
+        // TODO: assertEquals(Segment.Close, parse(lex("a")).segments.single())
+    }
+
+    @Test
+    fun parse_withSmoothCurves_usesReflectedControlPoint() {
+        val cubicSegments = parse(lex("S1 2 3 4 S5 6 7 8 s2 2 4 4")).segments
+        assertEquals(Segment.CubicTo(0f, 0f, 1f, 2f, 3f, 4f), cubicSegments[0])
+        assertEquals(Segment.CubicTo(5f, 6f, 5f, 6f, 7f, 8f), cubicSegments[1])
+        assertEquals(Segment.CubicTo(9f, 10f, 9f, 10f, 11f, 12f), cubicSegments[2])
+        assertEquals(3, cubicSegments.size)
+
+        val quadraticSegments = parse(lex("T1 2 T3 4 t2 2")).segments
+        assertEquals(Segment.QuadraticTo(0f, 0f, 1f, 2f), quadraticSegments[0])
+        assertEquals(Segment.QuadraticTo(2f, 4f, 3f, 4f), quadraticSegments[1])
+        assertEquals(Segment.QuadraticTo(4f, 4f, 5f, 6f), quadraticSegments[2])
+        assertEquals(3, quadraticSegments.size)
     }
 }
