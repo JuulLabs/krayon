@@ -4,7 +4,7 @@ android-compile = "android-31"
 android-min = "21"
 coroutines = "1.6.0"
 jacoco = "0.8.7"
-kotlin = "1.6.10"
+kotlin = "1.6.20"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.4.0" }
