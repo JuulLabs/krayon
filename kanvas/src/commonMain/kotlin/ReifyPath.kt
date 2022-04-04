@@ -82,7 +82,7 @@ internal class ReifiedPathPathBuilder : PathBuilder<ReifiedPath> {
     override fun build(): ReifiedPath = ReifiedPath(ArrayList(segments))
 }
 
-internal class ReifiedPath(
+internal data class ReifiedPath(
     internal val segments: List<Segment>
 ) : Path {
     override fun PathBuilder<*>.apply() {
