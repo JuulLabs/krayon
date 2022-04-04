@@ -304,6 +304,10 @@ public final class com/juul/krayon/kanvas/PathBuilderKt {
 	public static final fun build (Lcom/juul/krayon/kanvas/PathBuilder;Lcom/juul/krayon/kanvas/Path;)Ljava/lang/Object;
 }
 
+public final class com/juul/krayon/kanvas/ReifyPathKt {
+	public static final fun reify (Lcom/juul/krayon/kanvas/Path;)Lcom/juul/krayon/kanvas/Path;
+}
+
 public abstract class com/juul/krayon/kanvas/RelativePathBuilder : com/juul/krayon/kanvas/PathBuilder {
 	public fun <init> ()V
 	public fun arcTo (FFFFFFZ)V
@@ -436,6 +440,18 @@ public final class com/juul/krayon/kanvas/svg/PathString {
 	public fun toString ()Ljava/lang/String;
 	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
 	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/kanvas/svg/PathStringKt {
+	public static final fun toPath-AOi5KNs (Ljava/lang/String;)Lcom/juul/krayon/kanvas/Path;
+	public static final fun toPathOrNull-AOi5KNs (Ljava/lang/String;)Lcom/juul/krayon/kanvas/Path;
+	public static final fun toPathString (Lcom/juul/krayon/kanvas/Path;Lcom/juul/krayon/kanvas/xml/NumberFormatter;)Ljava/lang/String;
+	public static synthetic fun toPathString$default (Lcom/juul/krayon/kanvas/Path;Lcom/juul/krayon/kanvas/xml/NumberFormatter;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class com/juul/krayon/kanvas/svg/StringToPathKt {
+	public static final fun toPath (Ljava/lang/String;)Lcom/juul/krayon/kanvas/Path;
+	public static final fun toPathOrNull (Ljava/lang/String;)Lcom/juul/krayon/kanvas/Path;
 }
 
 public final class com/juul/krayon/kanvas/svg/SvgKanvas : com/juul/krayon/kanvas/Kanvas {

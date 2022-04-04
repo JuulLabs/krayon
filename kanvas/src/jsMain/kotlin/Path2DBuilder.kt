@@ -3,6 +3,9 @@ package com.juul.krayon.kanvas
 import org.w3c.dom.Path2D
 import kotlin.math.PI
 
+/** Converts a [Path] to an HTML Canvas platform representation. */
+public fun Path.toPath2d(): Path2D = Path2DBuilder().build(this)
+
 public class Path2DBuilder : RelativePathBuilder<Path2D>() {
     private var buffer = Path2D()
 

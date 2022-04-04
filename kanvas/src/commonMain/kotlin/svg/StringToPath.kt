@@ -310,7 +310,7 @@ private class CommandPathBuilder : RelativePathBuilder<ReifiedPath>() {
         // Solve for intersecting unit circles
         val dsq = dx * dx + dy * dy
         if (dsq == 0f) {
-            return  // Points are coincident
+            return // Points are coincident
         }
         val disc = 1f / dsq - 1f / 4f
         if (disc < 0f) {
@@ -345,7 +345,7 @@ private class CommandPathBuilder : RelativePathBuilder<ReifiedPath>() {
         cx = cx * cosTheta - cy * sinTheta
         cy = tcx * sinTheta + cy * cosTheta
 
-        arcToCubic(cx, cy, a, b, x0, y0, thetaDegrees, eta0, sweep);
+        arcToCubic(cx, cy, a, b, x0, y0, thetaDegrees, eta0, sweep)
     }
 
     /** Translated from Android's PathParser. https://android.googlesource.com/platform/frameworks/base/+/17e64ffd852f8fe23b8e2e2ff1b62ee742af17a6/core/java/android/util/PathParser.java#472 */
