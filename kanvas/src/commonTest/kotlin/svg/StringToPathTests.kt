@@ -26,6 +26,7 @@ import com.juul.krayon.kanvas.svg.Token.ValueToken
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
+import kotlin.test.assertTrue
 
 class StringToPathTests {
 
@@ -119,7 +120,6 @@ class StringToPathTests {
         assertEquals(Segment.CubicTo(0f, 0f, 1f, 2f, 3f, 4f), parse(lex("S1 2 3 4")).segments.single())
         assertEquals(Segment.QuadraticTo(1f, 2f, 3f, 4f), parse(lex("Q1 2 3 4")).segments.single())
         assertEquals(Segment.QuadraticTo(0f, 0f, 1f, 2f), parse(lex("T1 2")).segments.single())
-        // TODO: assertEquals(Segment.Close, parse(lex("A")).segments.single())
         // Because RelativePathBuilder is used as an implementation detail, these end up a looking a little different than they should.
         // Ideally, these would use RelativeXyz versions of all the segments and not need the "m50 50" as the first segment. As is these
         // don't really fit the spirit of what this test was meant to cover.
@@ -132,7 +132,10 @@ class StringToPathTests {
         assertEquals(Segment.CubicTo(50f, 50f, 51f, 52f, 53f, 54f), parse(lex("m50 50 s1 2 3 4")).segments.last())
         assertEquals(Segment.QuadraticTo(51f, 52f, 53f, 54f), parse(lex("m50 50 q1 2 3 4")).segments.last())
         assertEquals(Segment.QuadraticTo(50f, 50f, 51f, 52f), parse(lex("m50 50 t1 2")).segments.last())
-        // TODO: assertEquals(Segment.Close, parse(lex("a")).segments.single())
+        // Arcs are not represented as actual arc segments because our arc abstraction is weaker than SVG's (thanks, Android...). As such, we use
+        // Android's arc-to-cubic translations. Here we just check that the segments are correctly typed.
+        assertTrue(parse(lex("A 50 50 0 0 0 100 0")).segments.all { it is Segment.CubicTo })
+        assertTrue(parse(lex("a 50 50 0 0 0 100 0")).segments.all { it is Segment.CubicTo })
     }
 
     @Test
@@ -149,4 +152,6 @@ class StringToPathTests {
         assertEquals(Segment.QuadraticTo(4f, 4f, 5f, 6f), quadraticSegments[2])
         assertEquals(3, quadraticSegments.size)
     }
+
+    // TODO: Figure out some sample cases for arc to verify that the produced cubic curves are reasonable/correct.
 }
