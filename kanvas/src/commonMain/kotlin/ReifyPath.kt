@@ -78,8 +78,8 @@ internal class ReifiedPathPathBuilder : PathBuilder<ReifiedPath> {
         segments.clear()
     }
 
-    // ArrayList used to copy segments, preventing future mutation
-    override fun build(): ReifiedPath = ReifiedPath(ArrayList(segments))
+    // `toList` used to copy segments, preventing future mutation
+    override fun build(): ReifiedPath = ReifiedPath(segments.toList())
 }
 
 internal data class ReifiedPath(
