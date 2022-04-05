@@ -113,17 +113,9 @@ public class ComposeKanvas internal constructor(
                 is Transform.InOrder ->
                     transform.transformations.forEach(::applyTransform)
                 is Transform.Scale ->
-                    if (transform.pivotX == 0f && transform.pivotY == 0f) {
-                        scope.drawContext.transform.scale(transform.horizontal, transform.vertical)
-                    } else {
-                        scope.drawContext.transform.scale(transform.horizontal, transform.vertical, pivot = Offset(transform.pivotX, transform.pivotY))
-                    }
+                    scope.drawContext.transform.scale(transform.horizontal, transform.vertical, pivot = Offset(transform.pivotX, transform.pivotY))
                 is Transform.Rotate ->
-                    if (transform.pivotX == 0f && transform.pivotY == 0f) {
-                        scope.drawContext.transform.rotate(transform.degrees)
-                    } else {
-                        scope.drawContext.transform.rotate(transform.degrees, pivot = Offset(transform.pivotX, transform.pivotY))
-                    }
+                    scope.drawContext.transform.rotate(transform.degrees, pivot = Offset(transform.pivotX, transform.pivotY))
                 is Transform.Translate ->
                     scope.drawContext.transform.translate(transform.horizontal, transform.vertical)
                 is Transform.Skew ->
