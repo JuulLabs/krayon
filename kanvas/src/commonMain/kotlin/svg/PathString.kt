@@ -1,14 +1,24 @@
 package com.juul.krayon.kanvas.svg
 
+import com.juul.krayon.kanvas.Path
 import com.juul.krayon.kanvas.PathBuilder
 import com.juul.krayon.kanvas.getEllipseX
 import com.juul.krayon.kanvas.getEllipseY
 import com.juul.krayon.kanvas.xml.NumberFormatter
+import com.juul.krayon.kanvas.xml.ToStringFormatter
 import kotlin.jvm.JvmInline
 import kotlin.math.abs
 
 @JvmInline
 public value class PathString(public val string: String)
+
+public fun PathString.toPath(): Path = string.toPath()
+public fun PathString.toPathOrNull(): Path? = string.toPathOrNull()
+
+/** Converts a [Path] to an SVG platform representation. */
+public fun Path.toPathString(
+    formatter: NumberFormatter = ToStringFormatter()
+): PathString = PathStringBuilder(formatter).build()
 
 internal class PathStringBuilder(private val fmt: NumberFormatter) : PathBuilder<PathString> {
     private val buffer = StringBuilder()
