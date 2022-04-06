@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.datetime.Clock
 
 @Composable
-fun <T> ElementView(
+public fun <T> ElementView(
     dataState: State<T>,
     updateElements: (root: RootElement, width: Float, height: Float, data: T) -> Unit,
     modifier: Modifier = Modifier,
@@ -28,7 +28,7 @@ fun <T> ElementView(
 }
 
 @Composable
-fun <T> ElementView(
+public fun <T> ElementView(
     dataSource: Flow<T>,
     updateElements: (root: RootElement, width: Float, height: Float, data: T) -> Unit,
     modifier: Modifier = Modifier,
