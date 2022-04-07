@@ -11,7 +11,9 @@ plugins {
 }
 
 kotlin {
-    android()
+    explicitApi()
+
+    android() { publishAllLibraryVariants() }
     jvm("desktop")
 
     sourceSets {

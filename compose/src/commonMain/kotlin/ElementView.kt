@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.State
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
@@ -18,7 +19,17 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.datetime.Clock
 
 @Composable
-fun <T> ElementView(
+public fun <T> ElementView(
+    deriveData: () -> T,
+    updateElements: (root: RootElement, width: Float, height: Float, data: T) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val state = remember { derivedStateOf(deriveData) }
+    ElementView(state, updateElements, modifier)
+}
+
+@Composable
+public fun <T> ElementView(
     dataState: State<T>,
     updateElements: (root: RootElement, width: Float, height: Float, data: T) -> Unit,
     modifier: Modifier = Modifier,
@@ -28,7 +39,7 @@ fun <T> ElementView(
 }
 
 @Composable
-fun <T> ElementView(
+public fun <T> ElementView(
     dataSource: Flow<T>,
     updateElements: (root: RootElement, width: Float, height: Float, data: T) -> Unit,
     modifier: Modifier = Modifier,

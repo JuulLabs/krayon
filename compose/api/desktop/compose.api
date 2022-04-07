@@ -18,8 +18,13 @@ public final class com/juul/krayon/compose/ComposeKanvas : com/juul/krayon/kanva
 	public fun pushTransform (Lcom/juul/krayon/kanvas/Transform;)V
 }
 
+public final class com/juul/krayon/compose/ComposePathBuilderKt {
+	public static final fun toCompose (Lcom/juul/krayon/kanvas/Path;)Landroidx/compose/ui/graphics/Path;
+}
+
 public final class com/juul/krayon/compose/ElementViewKt {
 	public static final fun ElementView (Landroidx/compose/runtime/State;Lkotlin/jvm/functions/Function4;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun ElementView (Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function4;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
 	public static final fun ElementView (Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function4;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
 }
 
