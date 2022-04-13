@@ -20,8 +20,8 @@ public class ComposeKanvas internal constructor(
     internal val resourceCache: ResourceCache
 ) : Kanvas<ComposePath> {
 
-    override val width: Float get() = scope.size.width
-    override val height: Float get() = scope.size.height
+    override val width: Float = scope.size.width / scope.density
+    override val height: Float = scope.size.height / scope.density
 
     init {
         scope.drawContext.transform.scale(scope.density, pivot = Offset.Zero)
