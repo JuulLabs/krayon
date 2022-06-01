@@ -1,5 +1,5 @@
 [versions]
-agp = "7.2.0"
+agp = "7.2.1"
 android-compile = "android-31"
 android-min = "21"
 coroutines = "1.6.1"
@@ -16,7 +16,7 @@ coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", ve
 coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.3.2" }
-material = { module = "com.google.android.material:material", version = "1.6.0" }
+material = { module = "com.google.android.material:material", version = "1.6.1" }
 robolectric = { module = "org.robolectric:robolectric", version = "4.8.1" }
 
 [plugins]
