@@ -55,6 +55,12 @@ kotlin {
             }
         }
 
+        val jsMain by getting {
+            dependencies {
+                api(project(":element-view"))
+            }
+        }
+
         val jsTest by getting {
             dependencies {
                 implementation(kotlin("test-js"))
