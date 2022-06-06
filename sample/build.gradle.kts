@@ -19,10 +19,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":axis"))
-                implementation(project(":selection"))
-                implementation(project(":scale"))
-                implementation(project(":shape"))
+                implementation(project(":box"))
                 implementation(kotlin("stdlib"))
                 implementation(libs.coroutines.core)
                 implementation(libs.datetime)
@@ -39,7 +36,6 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(project(":compose"))
-                implementation(project(":element-view"))
                 implementation(libs.androidx.activity.compose)
                 implementation(libs.androidx.appcompat)
                 implementation(libs.androidx.lifecycle.runtime)
@@ -68,7 +64,6 @@ kotlin {
 
         val jsMain by getting {
             dependencies {
-                implementation(project(":element-view"))
                 implementation(libs.coroutines.js)
                 implementation(compose.web.core) // required because of the compose plugin, but unused.
             }
