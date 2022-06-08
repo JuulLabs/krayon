@@ -47,21 +47,27 @@ public class MonotoneX : Curve {
     override fun point(context: PathBuilder<*>, x: Float, y: Float) {
         var t1 = NaN
         if (x == x1 && y == y1) return // Ignore coincident points.
-        if (point < 3) {
-            if (point == 0) {
+        when (point) {
+            0 -> {
+                point = 1
                 if (line.truthy()) {
                     context.lineTo(x, y)
                 } else {
                     context.moveTo(x, y)
                 }
-            } else if (point == 2) {
+            }
+            1 -> {
+                point = 2
+            }
+            2 -> {
+                point = 3
                 t1 = slope3(x, y)
                 curveToPoint(context, slope2(t1), t1)
             }
-            point += 1
-        } else {
-            t1 = slope3(x, y)
-            curveToPoint(context, t0, t1)
+            else -> {
+                t1 = slope3(x, y)
+                curveToPoint(context, t0, t1)
+            }
         }
 
         x0 = x1
