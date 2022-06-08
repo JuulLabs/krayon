@@ -62,7 +62,6 @@ public class MonotoneX : Curve {
         } else {
             t1 = slope3(x, y)
             curveToPoint(context, t0, t1)
-            point = 0
         }
 
         x0 = x1
