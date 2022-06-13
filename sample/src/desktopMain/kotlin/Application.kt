@@ -1,3 +1,4 @@
+
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,11 +21,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.singleWindowApplication
+import com.juul.krayon.color.blue
+import com.juul.krayon.color.red
 import com.juul.krayon.compose.ElementView
+import com.juul.krayon.element.CircleElement
+import com.juul.krayon.element.RootElement
+import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.sample.PieChart
 import com.juul.krayon.sample.lineChart
 import com.juul.krayon.sample.movingSineWave
 import com.juul.krayon.sample.pieChart
+import com.juul.krayon.selection.append
+import com.juul.krayon.selection.asSelection
+import com.juul.krayon.selection.data
+import com.juul.krayon.selection.each
+import com.juul.krayon.selection.join
+import com.juul.krayon.selection.selectAll
 import kotlin.math.PI
 
 fun main() = singleWindowApplication {
@@ -36,6 +48,7 @@ fun main() = singleWindowApplication {
         ) {
             LineChart()
             PieChart()
+            TouchChart()
         }
     }
 }
@@ -82,6 +95,16 @@ private fun PieChart() {
 }
 
 @Composable
+private fun TouchChart() {
+    val composeData = mutableStateOf(listOf(false, false, false))
+    ElementView(
+        composeData,
+        getUpdater { composeData.value = it },
+        Modifier.size(640.dp, 320.dp)
+    )
+}
+
+@Composable
 private fun ValueSlider(
     label: String,
     min: Float,
@@ -92,4 +115,28 @@ private fun ValueSlider(
         Text(label, Modifier.width(120.dp))
         Slider(state.value, valueRange = min..max, onValueChange = { state.value = it }, modifier = Modifier.fillMaxWidth())
     }
+}
+
+private fun getUpdater(sideEffect: (List<Boolean>) -> Unit) = { root: RootElement, width: Float, height: Float, data: List<Boolean> ->
+    root.asSelection()
+        .selectAll(CircleElement)
+        .data(data)
+        .join {
+            append(CircleElement).each { (_, i) ->
+                radius = 100f
+            }
+        }
+        .each { (d, i) ->
+            centerX = (width / 5) * (1 + i)
+            centerY = height / 2
+            paint = Paint.Fill((if (d) blue else red).copy(alpha = 128))
+            onClick = { // captures `data` so we need to reset it every update
+                val newValue = data
+                    .toBooleanArray()
+                    .apply { this[i] = !this[i] }
+                    .toList()
+                sideEffect(newValue)
+            }
+        }
+    Unit
 }

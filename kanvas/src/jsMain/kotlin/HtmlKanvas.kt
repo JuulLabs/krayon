@@ -28,9 +28,12 @@ private fun shouldFill(paint: Paint): Boolean =
 private fun shouldStroke(paint: Paint): Boolean =
     paint is Paint.Stroke || paint is Paint.FillAndStroke || paint is Paint.GradientAndStroke
 
-public class HtmlCanvas(
+@Deprecated("This class has been renamed to HtmlKanvas", ReplaceWith("HtmlKanvas", "com.juul.krayon.kanvas.HtmlKanvas"))
+public typealias HtmlCanvas = HtmlKanvas
+
+public class HtmlKanvas(
     element: HTMLCanvasElement,
-) : Kanvas<Path2D> {
+) : Kanvas<Path2D>, IsPointInPath {
 
     /** The raw HTMLCanvas's 2d rendering context. */
     public val context: CanvasRenderingContext2D = element.getContext("2d") as CanvasRenderingContext2D
@@ -275,6 +278,12 @@ public class HtmlCanvas(
             Paint.Text.Alignment.Right -> CanvasTextAlign.RIGHT
         }
         context.font = "${paint.size}px ${paint.font.names.joinToString { "\"$it\"" }}"
+    }
+
+    override fun isPointInPath(transform: Transform, path: Path, x: Float, y: Float): Boolean {
+        withTransform(transform) {
+            return context.isPointInPath(buildPath(path), x.toDouble(), y.toDouble())
+        }
     }
 }
 

@@ -1,5 +1,6 @@
 package com.juul.krayon.compose
 
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -11,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
 import com.juul.krayon.element.RootElement
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -70,7 +72,19 @@ public fun <T> ElementView(
                 }
             }
         }
-        Kanvas(Modifier.matchParentSize()) {
+        Kanvas(
+            Modifier
+                .matchParentSize()
+                .pointerInput(null) {
+                    detectTapGestures(
+                        onTap = { offset ->
+                            val x = offset.x.toDp().value
+                            val y = offset.y.toDp().value
+                            root.onClick(isPointInPath(), x, y)
+                        }
+                    )
+                }
+        ) {
             frameTime.value // Be reading a state that changed
             root.draw(this)
         }

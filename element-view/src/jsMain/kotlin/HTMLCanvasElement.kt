@@ -11,9 +11,11 @@ public fun HTMLCanvasElement.attachAdapter(
     adapters[this] = adapter
     adapter.onAttached(this)
     onresize = { adapter.onSizeChanged(width, height) }
+    onclick = { adapter.onClick(it.offsetX.toFloat(), it.offsetY.toFloat()) }
 }
 
 public fun HTMLCanvasElement.detachAdapter() {
     adapters.remove(this)?.onDetached()
     onresize = null
+    onclick = null
 }

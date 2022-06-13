@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.util.TypedValue
 import com.juul.krayon.element.RootElement
 import com.juul.krayon.kanvas.AndroidKanvas
+import com.juul.krayon.kanvas.ScaledIsPointInPath
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -20,7 +21,7 @@ import kotlin.coroutines.CoroutineContext
 
 private val EMPTY_STATE = AdapterState<ElementView>(null, RootElement(), 0, 0)
 
-public actual class ElementViewAdapter<T> actual constructor(
+public class ElementViewAdapter<T>(
     private val dataSource: Flow<T>,
     private val updater: UpdateElement<T>,
 ) {
@@ -44,6 +45,16 @@ public actual class ElementViewAdapter<T> actual constructor(
      */
     internal fun onSizeChanged(width: Int, height: Int) {
         state.value = state.value.copy(root = RootElement(), width = width, height = height)
+    }
+
+    internal fun onClick(x: Float, y: Float): Boolean {
+        val state = state.value
+        if (state.view != null) {
+            val scalingFactor = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1f, state.view.resources.displayMetrics)
+            val isPointInPath = ScaledIsPointInPath(scalingFactor)
+            return state.root.onClick(isPointInPath, x, y)
+        }
+        return false
     }
 
     /** Enqueue rendering in a new scope. */
