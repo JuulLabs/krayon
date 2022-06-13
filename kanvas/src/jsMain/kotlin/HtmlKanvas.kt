@@ -287,7 +287,7 @@ public class HtmlKanvas(
     }
 }
 
-/** Workaround for browser differences.  */
+/** Workaround for browser differences. */
 private fun conicStartAngle(): Double {
     val offset = PI / 2
     val userAgent = window.navigator.userAgent.lowercase()

@@ -18,6 +18,7 @@ import com.juul.krayon.element.UpdateElement
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.collect
 import kotlinx.datetime.Clock
 
 @Composable

@@ -1,20 +1,7 @@
 package com.juul.krayon.sample
 
-import com.juul.krayon.color.blue
-import com.juul.krayon.color.red
-import com.juul.krayon.element.CircleElement
-import com.juul.krayon.element.TransformElement
 import com.juul.krayon.element.view.ElementViewAdapter
-import com.juul.krayon.element.UpdateElement
 import com.juul.krayon.element.view.attachAdapter
-import com.juul.krayon.kanvas.Paint
-import com.juul.krayon.kanvas.Transform
-import com.juul.krayon.selection.append
-import com.juul.krayon.selection.asSelection
-import com.juul.krayon.selection.data
-import com.juul.krayon.selection.each
-import com.juul.krayon.selection.join
-import com.juul.krayon.selection.selectAll
 import kotlinx.browser.document
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -79,31 +66,7 @@ private fun setupPieChart() {
 }
 
 private fun setupInteractiveChart() {
-    val isToggled = MutableStateFlow(listOf(false, false, false))
-    val render = UpdateElement<List<Boolean>> { root, width, height, data ->
-        root.asSelection()
-            .selectAll(TransformElement)
-            .data(data)
-            .join {
-                append(TransformElement).each { (_, i) ->
-                    val child = CircleElement().apply {
-                        radius = 100f
-                        onClick = {
-                            isToggled.value = isToggled.value
-                                .toBooleanArray()
-                                .apply { this[i] = !this[i] }
-                                .toList()
-                        }
-                    }
-                    appendChild(child)
-                }
-            }
-            .each { (d, i) ->
-                transform = Transform.Translate(horizontal = (width / 5) * (1 + i), vertical = height / 2)
-                (children.single() as CircleElement).paint = Paint.Fill((if (d) blue else red).copy(alpha = 128))
-            }
-    }
-
     val canvasElement = document.getElementById("interaction-canvas") as HTMLCanvasElement
-    canvasElement.attachAdapter(ElementViewAdapter(isToggled, render))
+    val (flow, update) = interactiveTreeChart()
+    canvasElement.attachAdapter(ElementViewAdapter(flow, update))
 }
