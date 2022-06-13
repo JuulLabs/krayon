@@ -15,7 +15,7 @@ public class CircleElement : Element(), Interactable<CircleElement> {
     override var onClick: ((CircleElement) -> Unit)? by attributes.withDefault { null }
 
     override fun <PATH> draw(canvas: Kanvas<PATH>) {
-        canvas.drawPath(canvas.buildPath(getInteractionPath()), paint)
+        canvas.drawCircle(centerX, centerY, radius, paint)
     }
 
     override fun getInteractionPath(): Path = Path {

@@ -10,7 +10,7 @@ import com.juul.krayon.color.red
 import com.juul.krayon.compose.ElementView
 import com.juul.krayon.element.CircleElement
 import com.juul.krayon.element.view.ElementViewAdapter
-import com.juul.krayon.element.view.UpdateElement
+import com.juul.krayon.element.UpdateElement
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.sample.databinding.ActivityInteractiveBinding
 import com.juul.krayon.selection.append

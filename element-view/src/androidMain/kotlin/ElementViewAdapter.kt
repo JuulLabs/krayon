@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.util.TypedValue
 import com.juul.krayon.element.RootElement
+import com.juul.krayon.element.UpdateElement
 import com.juul.krayon.kanvas.AndroidKanvas
 import com.juul.krayon.kanvas.ScaledIsPointInPath
 import kotlinx.coroutines.CoroutineScope

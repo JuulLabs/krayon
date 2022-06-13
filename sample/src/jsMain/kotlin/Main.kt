@@ -5,7 +5,7 @@ import com.juul.krayon.color.red
 import com.juul.krayon.element.CircleElement
 import com.juul.krayon.element.TransformElement
 import com.juul.krayon.element.view.ElementViewAdapter
-import com.juul.krayon.element.view.UpdateElement
+import com.juul.krayon.element.UpdateElement
 import com.juul.krayon.element.view.attachAdapter
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Transform

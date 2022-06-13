@@ -1,6 +1,7 @@
 package com.juul.krayon.element.view
 
 import com.juul.krayon.element.RootElement
+import com.juul.krayon.element.UpdateElement
 import com.juul.krayon.kanvas.HtmlKanvas
 import kotlinx.browser.window
 import kotlinx.coroutines.CoroutineScope
@@ -9,7 +10,6 @@ import kotlinx.coroutines.awaitAnimationFrame
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.w3c.dom.HTMLCanvasElement
