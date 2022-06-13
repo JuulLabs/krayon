@@ -3,7 +3,7 @@ public final class com/juul/krayon/hierarchy/ExtensionsKt {
 }
 
 public final class com/juul/krayon/hierarchy/HierarchyKt {
-	public static final fun flatHierarchy (Ljava/util/List;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun flatHierarchy (Ljava/lang/Iterable;)Lcom/juul/krayon/hierarchy/Node;
 	public static final fun hierarchy (Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
 }
 
@@ -60,6 +60,8 @@ public final class com/juul/krayon/hierarchy/treemap/Tile {
 	public final fun copy (FFFF)Lcom/juul/krayon/hierarchy/treemap/Tile;
 	public static synthetic fun copy$default (Lcom/juul/krayon/hierarchy/treemap/Tile;FFFFILjava/lang/Object;)Lcom/juul/krayon/hierarchy/treemap/Tile;
 	public final fun getBottom ()F
+	public final fun getCenterX ()F
+	public final fun getCenterY ()F
 	public final fun getHeight ()F
 	public final fun getLeft ()F
 	public final fun getRight ()F

@@ -1,14 +1,17 @@
-public final class com/juul/krayon/element/CircleElement : com/juul/krayon/element/Element {
+public final class com/juul/krayon/element/CircleElement : com/juul/krayon/element/Element, com/juul/krayon/element/Interactable {
 	public static final field Companion Lcom/juul/krayon/element/CircleElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
 	public final fun getCenterX ()F
 	public final fun getCenterY ()F
+	public fun getInteractionPath ()Lcom/juul/krayon/kanvas/Path;
+	public fun getOnClick ()Lkotlin/jvm/functions/Function1;
 	public final fun getPaint ()Lcom/juul/krayon/kanvas/Paint;
 	public final fun getRadius ()F
 	public fun getTag ()Ljava/lang/String;
 	public final fun setCenterX (F)V
 	public final fun setCenterY (F)V
+	public fun setOnClick (Lkotlin/jvm/functions/Function1;)V
 	public final fun setPaint (Lcom/juul/krayon/kanvas/Paint;)V
 	public final fun setRadius (F)V
 }
@@ -68,6 +71,12 @@ public final class com/juul/krayon/element/GroupElement$Companion : com/juul/kra
 	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/GroupElement;
 }
 
+public abstract interface class com/juul/krayon/element/Interactable {
+	public abstract fun getInteractionPath ()Lcom/juul/krayon/kanvas/Path;
+	public abstract fun getOnClick ()Lkotlin/jvm/functions/Function1;
+	public abstract fun setOnClick (Lkotlin/jvm/functions/Function1;)V
+}
+
 public final class com/juul/krayon/element/KindSelectorKt {
 	public static final fun withKind (Lcom/juul/krayon/element/ElementSelector;Ljava/lang/String;)Lcom/juul/krayon/element/ElementSelector;
 }
@@ -96,13 +105,16 @@ public final class com/juul/krayon/element/LineElement$Companion : com/juul/kray
 	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/LineElement;
 }
 
-public final class com/juul/krayon/element/PathElement : com/juul/krayon/element/Element {
+public final class com/juul/krayon/element/PathElement : com/juul/krayon/element/Element, com/juul/krayon/element/Interactable {
 	public static final field Companion Lcom/juul/krayon/element/PathElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
+	public fun getInteractionPath ()Lcom/juul/krayon/kanvas/Path;
+	public fun getOnClick ()Lkotlin/jvm/functions/Function1;
 	public final fun getPaint ()Lcom/juul/krayon/kanvas/Paint;
 	public final fun getPath ()Lcom/juul/krayon/kanvas/Path;
 	public fun getTag ()Ljava/lang/String;
+	public fun setOnClick (Lkotlin/jvm/functions/Function1;)V
 	public final fun setPaint (Lcom/juul/krayon/kanvas/Paint;)V
 	public final fun setPath (Lcom/juul/krayon/kanvas/Path;)V
 }
@@ -114,18 +126,21 @@ public final class com/juul/krayon/element/PathElement$Companion : com/juul/kray
 	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/PathElement;
 }
 
-public final class com/juul/krayon/element/RectangleElement : com/juul/krayon/element/Element {
+public final class com/juul/krayon/element/RectangleElement : com/juul/krayon/element/Element, com/juul/krayon/element/Interactable {
 	public static final field Companion Lcom/juul/krayon/element/RectangleElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
 	public final fun getBottom ()F
+	public fun getInteractionPath ()Lcom/juul/krayon/kanvas/Path;
 	public final fun getLeft ()F
+	public fun getOnClick ()Lkotlin/jvm/functions/Function1;
 	public final fun getPaint ()Lcom/juul/krayon/kanvas/Paint;
 	public final fun getRight ()F
 	public fun getTag ()Ljava/lang/String;
 	public final fun getTop ()F
 	public final fun setBottom (F)V
 	public final fun setLeft (F)V
+	public fun setOnClick (Lkotlin/jvm/functions/Function1;)V
 	public final fun setPaint (Lcom/juul/krayon/kanvas/Paint;)V
 	public final fun setRight (F)V
 	public final fun setTop (F)V
@@ -143,6 +158,7 @@ public final class com/juul/krayon/element/RootElement : com/juul/krayon/element
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
 	public fun getTag ()Ljava/lang/String;
+	public final fun onClick (Lcom/juul/krayon/kanvas/IsPointInPath;FF)Z
 }
 
 public final class com/juul/krayon/element/RootElement$Companion : com/juul/krayon/element/ElementSelector {
@@ -150,14 +166,16 @@ public final class com/juul/krayon/element/RootElement$Companion : com/juul/kray
 	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/RootElement;
 }
 
-public final class com/juul/krayon/element/RoundedRectangleElement : com/juul/krayon/element/Element {
+public final class com/juul/krayon/element/RoundedRectangleElement : com/juul/krayon/element/Element, com/juul/krayon/element/Interactable {
 	public static final field Companion Lcom/juul/krayon/element/RoundedRectangleElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
 	public final fun getBottom ()F
 	public final fun getBottomLeftRadius ()F
 	public final fun getBottomRightRadius ()F
+	public fun getInteractionPath ()Lcom/juul/krayon/kanvas/Path;
 	public final fun getLeft ()F
+	public fun getOnClick ()Lkotlin/jvm/functions/Function1;
 	public final fun getPaint ()Lcom/juul/krayon/kanvas/Paint;
 	public final fun getRight ()F
 	public fun getTag ()Ljava/lang/String;
@@ -168,6 +186,7 @@ public final class com/juul/krayon/element/RoundedRectangleElement : com/juul/kr
 	public final fun setBottomLeftRadius (F)V
 	public final fun setBottomRightRadius (F)V
 	public final fun setLeft (F)V
+	public fun setOnClick (Lkotlin/jvm/functions/Function1;)V
 	public final fun setPaint (Lcom/juul/krayon/kanvas/Paint;)V
 	public final fun setRight (F)V
 	public final fun setTop (F)V
@@ -220,5 +239,9 @@ public final class com/juul/krayon/element/TransformElement$Companion : com/juul
 	public fun build ()Lcom/juul/krayon/element/TransformElement;
 	public synthetic fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
 	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/TransformElement;
+}
+
+public abstract interface class com/juul/krayon/element/UpdateElement {
+	public abstract fun update (Lcom/juul/krayon/element/RootElement;FFLjava/lang/Object;)V
 }
 
