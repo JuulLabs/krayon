@@ -157,8 +157,10 @@ public final class com/juul/krayon/element/RootElement : com/juul/krayon/element
 	public static final field Companion Lcom/juul/krayon/element/RootElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
+	public final fun getOnClickFallback ()Lkotlin/jvm/functions/Function0;
 	public fun getTag ()Ljava/lang/String;
 	public final fun onClick (Lcom/juul/krayon/kanvas/IsPointInPath;FF)Z
+	public final fun setOnClickFallback (Lkotlin/jvm/functions/Function0;)V
 }
 
 public final class com/juul/krayon/element/RootElement$Companion : com/juul/krayon/element/ElementSelector {

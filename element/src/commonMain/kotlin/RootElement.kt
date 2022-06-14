@@ -9,6 +9,8 @@ public class RootElement : Element() {
 
     override val tag: String get() = "root"
 
+    public var onClickFallback: (() -> Unit)? by attributes.withDefault { null }
+
     override fun <PATH> draw(canvas: Kanvas<PATH>) {
         children.forEach { it.draw(canvas) }
     }
@@ -22,13 +24,21 @@ public class RootElement : Element() {
                 val transform = (interactable as Element).totalTransform()
                 isPointInPath.isPointInPath(transform, interactable.getInteractionPath(), x, y)
             }
-        return if (interactable != null) {
-            @Suppress("UNCHECKED_CAST") // Interactable<T> always accepts itself as the type argument.
-            val onClick = interactable.onClick as (Element) -> Unit
-            onClick(interactable as Element)
-            true
-        } else {
-            false
+        val fallback = onClickFallback
+        return when {
+            interactable != null -> {
+                @Suppress("UNCHECKED_CAST") // Interactable<T> always accepts itself as the type argument.
+                val onClick = interactable.onClick as (Element) -> Unit
+                onClick(interactable as Element)
+                true
+            }
+            fallback != null -> {
+                fallback()
+                true
+            }
+            else -> {
+                false
+            }
         }
     }
 
