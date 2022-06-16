@@ -18,7 +18,7 @@ Multiplatform drawing library. Provides a multiplatform canvas and chart renderi
 
 ### Low Level Modules
 
-These modules provide an unopinionated multiplatform experience with simple, low-level primatives. Drawing with a Krayon
+These modules provide an unopinionated multiplatform experience with simple, low-level primitives. Drawing with a Krayon
 `Kanvas` should feel very similar to drawing directly to an Android `Canvas` or HTML/JS `CanvasRenderingContext2D`.
 
 | Module             | Description                                                                                        |
