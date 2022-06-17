@@ -1,0 +1,4 @@
+public final class com/juul/krayon/box/Element_HierarchyKt {
+	public static final fun setShapeFrom (Lcom/juul/krayon/element/RectangleElement;Lcom/juul/krayon/hierarchy/treemap/Tile;)V
+}
+

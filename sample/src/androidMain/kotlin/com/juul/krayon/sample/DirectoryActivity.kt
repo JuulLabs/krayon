@@ -14,6 +14,7 @@ class DirectoryActivity : AppCompatActivity() {
         val binding = ActivityDirectoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.buttonInteractive.setNavigateOnClick<InteractiveActivity>()
         binding.buttonLine.setNavigateOnClick<LineActivity>()
         binding.buttonPie.setNavigateOnClick<PieActivity>()
         binding.buttonComposeLine.setNavigateOnClick<ComposeLineActivity>()
