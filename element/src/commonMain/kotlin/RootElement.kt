@@ -9,6 +9,13 @@ public class RootElement : Element() {
 
     override val tag: String get() = "root"
 
+    /**
+     * If set, this callback is invoked when [onClick] is called but no descendant element handles
+     * that event.
+     *
+     * An example of when this is useful would be implementing a deselection behavior, where clicking
+     * on an element selects that element and clicking anywhere else on the chart deselects it.
+     */
     public var onClickFallback: (() -> Unit)? by attributes.withDefault { null }
 
     override fun <PATH> draw(canvas: Kanvas<PATH>) {
@@ -17,6 +24,7 @@ public class RootElement : Element() {
 
     /** Returns true if an element was found and clicked on. Returns false if no element matched. */
     public fun onClick(isPointInPath: IsPointInPath, x: Float, y: Float): Boolean {
+        // Union types would be pretty nice here. Value is of type T where T: Element and T: Interactable<T>
         val interactable = visibilityOrderedDescendants()
             .filterIsInstance<Interactable<*>>()
             .filter { it.onClick != null }
