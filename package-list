@@ -1,6 +1,7 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-
+$dokka.location:com.juul.krayon.element.view/ElementViewAdapter///PointingToDeclaration/element-view/com.juul.krayon.element.view/[js]-element-view-adapter/index.html
+$dokka.location:com.juul.krayon.element.view/ElementViewAdapter/ElementViewAdapter/#kotlinx.coroutines.flow.Flow[TypeParam(bounds=[kotlin.Any?])]#com.juul.krayon.element.UpdateElement[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/element-view/com.juul.krayon.element.view/[js]-element-view-adapter/-element-view-adapter.html
 module:axis
 com.juul.krayon.axis
 module:color
