@@ -103,6 +103,10 @@ public final class com/juul/krayon/kanvas/FontKt {
 	public static final field serif Ljava/lang/String;
 }
 
+public abstract interface class com/juul/krayon/kanvas/IsPointInPath {
+	public abstract fun isPointInPath (Lcom/juul/krayon/kanvas/Transform;Lcom/juul/krayon/kanvas/Path;FF)Z
+}
+
 public abstract interface class com/juul/krayon/kanvas/Kanvas {
 	public abstract fun buildPath (Lcom/juul/krayon/kanvas/Path;)Ljava/lang/Object;
 	public abstract fun drawArc (FFFFFFLcom/juul/krayon/kanvas/Paint;)V
@@ -409,6 +413,13 @@ public final class com/juul/krayon/kanvas/RelativePathBuilder$State {
 	public final fun getLastY ()F
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/kanvas/ScaledIsPointInPath : com/juul/krayon/kanvas/IsPointInPath {
+	public fun <init> ()V
+	public fun <init> (F)V
+	public synthetic fun <init> (FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun isPointInPath (Lcom/juul/krayon/kanvas/Transform;Lcom/juul/krayon/kanvas/Path;FF)Z
 }
 
 public abstract class com/juul/krayon/kanvas/Transform {

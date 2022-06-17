@@ -28,9 +28,11 @@ public fun HTMLCanvasElement.attachAdapter(
     observer.observe(this)
     adapters[this] = adapter
     adapter.onAttached(this)
+    onclick = { adapter.onClick(it.offsetX.toFloat(), it.offsetY.toFloat()) }
 }
 
 public fun HTMLCanvasElement.detachAdapter() {
     observers.remove(this)?.unobserve(this)
     adapters.remove(this)?.onDetached()
+    onclick = null
 }

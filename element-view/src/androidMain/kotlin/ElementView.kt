@@ -1,8 +1,10 @@
 package com.juul.krayon.element.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import android.graphics.Paint as AndroidPaint
 
@@ -38,6 +40,14 @@ public class ElementView @JvmOverloads constructor(
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         adapter?.onSizeChanged(w, h)
+    }
+
+    @SuppressLint("ClickableViewAccessibility") // Can't use recommended `performClick` because we need touch coordinates.
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (event.actionMasked == MotionEvent.ACTION_DOWN) {
+            adapter?.onClick(event.x, event.y)
+        }
+        return false
     }
 
     override fun onDraw(canvas: Canvas) {
