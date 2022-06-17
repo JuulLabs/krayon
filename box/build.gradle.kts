@@ -10,6 +10,8 @@ kotlin {
     android { publishAllLibraryVariants() }
     jvm()
     js().browser()
+    macosArm64()
+    macosX64()
 
     sourceSets {
         val commonMain by getting {
