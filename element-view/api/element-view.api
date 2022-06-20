@@ -3,14 +3,11 @@ public final class com/juul/krayon/element/view/ElementView : android/view/View 
 	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
 	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun getAdapter ()Lcom/juul/krayon/element/view/ElementViewAdapter;
+	public fun onTouchEvent (Landroid/view/MotionEvent;)Z
 	public final fun setAdapter (Lcom/juul/krayon/element/view/ElementViewAdapter;)V
 }
 
 public final class com/juul/krayon/element/view/ElementViewAdapter {
-	public fun <init> (Lkotlinx/coroutines/flow/Flow;Lcom/juul/krayon/element/view/UpdateElement;)V
-}
-
-public abstract interface class com/juul/krayon/element/view/UpdateElement {
-	public abstract fun update (Lcom/juul/krayon/element/RootElement;FFLjava/lang/Object;)V
+	public fun <init> (Lkotlinx/coroutines/flow/Flow;Lcom/juul/krayon/element/UpdateElement;)V
 }
 

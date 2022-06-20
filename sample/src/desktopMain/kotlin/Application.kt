@@ -1,3 +1,4 @@
+
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.singleWindowApplication
 import com.juul.krayon.compose.ElementView
 import com.juul.krayon.sample.PieChart
+import com.juul.krayon.sample.interactiveTreeChart
 import com.juul.krayon.sample.lineChart
 import com.juul.krayon.sample.movingSineWave
 import com.juul.krayon.sample.pieChart
@@ -36,6 +38,7 @@ fun main() = singleWindowApplication {
         ) {
             LineChart()
             PieChart()
+            TouchChart()
         }
     }
 }
@@ -79,6 +82,12 @@ private fun PieChart() {
             }
         }
     }
+}
+
+@Composable
+private fun TouchChart() {
+    val (flow, update) = remember { interactiveTreeChart() }
+    ElementView(flow, update, Modifier.size(640.dp, 320.dp))
 }
 
 @Composable

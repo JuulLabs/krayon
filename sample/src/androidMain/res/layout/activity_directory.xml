@@ -8,6 +8,13 @@
     >
 
     <Button
+        android:id="@+id/button_interactive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Interactive Chart"
+        />
+
+    <Button
         android:id="@+id/button_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

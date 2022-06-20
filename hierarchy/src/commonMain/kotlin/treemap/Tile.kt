@@ -25,6 +25,8 @@ public class Tile internal constructor(
 ) {
     public val width: Float get() = right - left
     public val height: Float get() = bottom - top
+    public val centerX: Float get() = left + (width / 2)
+    public val centerY: Float get() = top + (height / 2)
 
     public fun copy(
         left: Float = this.left,

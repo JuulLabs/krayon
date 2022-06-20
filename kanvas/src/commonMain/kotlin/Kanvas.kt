@@ -1,6 +1,9 @@
 package com.juul.krayon.kanvas
 
 import com.juul.krayon.color.Color
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 
 /** Something to draw on. Implementations are not required to be safe across multiple threads. */
 public interface Kanvas<PATH> {
@@ -60,10 +63,12 @@ public interface Kanvas<PATH> {
 }
 
 /** Invokes [actions] inside of a [Kanvas.pushClip]/[Kanvas.pop] pair. */
+@OptIn(ExperimentalContracts::class)
 public inline fun <PATH> Kanvas<PATH>.withClip(
     clip: Clip<PATH>,
     actions: Kanvas<PATH>.() -> Unit,
 ) {
+    contract { callsInPlace(actions, InvocationKind.EXACTLY_ONCE) }
     pushClip(clip)
     try {
         actions.invoke(this)
@@ -73,10 +78,12 @@ public inline fun <PATH> Kanvas<PATH>.withClip(
 }
 
 /** Invokes [actions] inside of a [Kanvas.pushTransform]/[Kanvas.pop] pair. */
+@OptIn(ExperimentalContracts::class)
 public inline fun <PATH> Kanvas<PATH>.withTransform(
     transform: Transform,
     actions: Kanvas<PATH>.() -> Unit,
 ) {
+    contract { callsInPlace(actions, InvocationKind.EXACTLY_ONCE) }
     pushTransform(transform)
     try {
         actions.invoke(this)
