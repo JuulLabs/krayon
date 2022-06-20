@@ -28,6 +28,8 @@ private fun shouldFill(paint: Paint): Boolean =
 private fun shouldStroke(paint: Paint): Boolean =
     paint is Paint.Stroke || paint is Paint.FillAndStroke || paint is Paint.GradientAndStroke
 
+private val WHITESPACE = Regex("\\s")
+
 @Deprecated("This class has been renamed to HtmlKanvas", ReplaceWith("HtmlKanvas", "com.juul.krayon.kanvas.HtmlKanvas"))
 public typealias HtmlCanvas = HtmlKanvas
 
@@ -277,7 +279,11 @@ public class HtmlKanvas(
             Paint.Text.Alignment.Center -> CanvasTextAlign.CENTER
             Paint.Text.Alignment.Right -> CanvasTextAlign.RIGHT
         }
-        context.font = "${paint.size}px ${paint.font.names.joinToString { "\"$it\"" }}"
+        val size = "${paint.size}px"
+        val name = paint.font.names.joinToString { font ->
+            if (WHITESPACE in font) "\"$font\"" else font
+        }
+        context.font = "$size $name"
     }
 
     override fun isPointInPath(transform: Transform, path: Path, x: Float, y: Float): Boolean {
