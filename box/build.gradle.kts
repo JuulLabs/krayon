@@ -10,7 +10,13 @@ kotlin {
     android { publishAllLibraryVariants() }
     jvm()
     js().browser()
-    macosArm64()
+    macosArm64 {
+        binaries {
+            framework {
+                baseName = "KrayonBox"
+            }
+        }
+    }
     macosX64()
 
     sourceSets {

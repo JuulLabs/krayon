@@ -3,6 +3,7 @@ package com.juul.krayon.element
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Path
+import com.juul.krayon.kanvas.circlePath
 
 public class CircleElement : Element(), Interactable<CircleElement> {
 
@@ -18,14 +19,7 @@ public class CircleElement : Element(), Interactable<CircleElement> {
         canvas.drawCircle(centerX, centerY, radius, paint)
     }
 
-    override fun getInteractionPath(): Path = Path {
-        val left = centerX - radius
-        val top = centerY - radius
-        val right = centerX + radius
-        val bottom = centerY + radius
-        arcTo(left, top, right, bottom, 0f, 180f, forceMoveTo = false)
-        arcTo(left, top, right, bottom, 180f, 180f, forceMoveTo = false)
-    }
+    override fun getInteractionPath(): Path = circlePath(centerX, centerY, radius)
 
     public companion object : ElementBuilder<CircleElement>, ElementSelector<CircleElement> {
         override fun build(): CircleElement = CircleElement()

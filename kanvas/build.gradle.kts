@@ -53,6 +53,10 @@ kotlin {
             }
         }
 
+        val appleMain by creating {
+            dependsOn(commonMain)
+        }
+
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
@@ -63,6 +67,14 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-js"))
             }
+        }
+
+        val macosArm64Main by getting {
+            dependsOn(appleMain)
+        }
+
+        val macosX64Main by getting {
+            dependsOn(appleMain)
         }
     }
 }
