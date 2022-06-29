@@ -15,12 +15,13 @@ jacoco {
 kotlin {
     explicitApi()
 
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
     jvm()
     js().browser()
-
-    macosX64()
     macosArm64()
-    iosArm64()
+    macosX64()
 
     sourceSets {
         val commonTest by getting {
