@@ -60,6 +60,18 @@ kotlin {
             dependsOn(commonMain)
         }
 
+        val iosArm64Main by getting {
+            dependsOn(appleMain)
+        }
+
+        val iosSimulatorArm64Main by getting {
+            dependsOn(appleMain)
+        }
+
+        val iosX64Main by getting {
+            dependsOn(appleMain)
+        }
+
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))

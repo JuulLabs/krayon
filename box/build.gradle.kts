@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
@@ -9,22 +7,33 @@ plugins {
 kotlin {
     explicitApi()
 
-    fun KotlinNativeTarget.configureFramework() {
+    android { publishAllLibraryVariants() }
+    val iosArm64 = iosArm64()
+    val iosSimulatorArm64 = iosSimulatorArm64()
+    val iosX64 = iosX64()
+    jvm()
+    js().browser()
+    val macosArm64 = macosArm64()
+    val macosX64 = macosX64()
+
+    val appleTargets = listOf(iosArm64, iosSimulatorArm64, iosX64, macosArm64, macosX64)
+    configure(appleTargets) {
         binaries {
             framework {
-                baseName = "KrayonBox"
+                baseName = "Krayon"
+                export(project(":axis"))
+                export(project(":color"))
+                export(project(":element"))
+                export(project(":hierarchy"))
+                export(project(":interpolate"))
+                export(project(":kanvas"))
+                export(project(":scale"))
+                export(project(":selection"))
+                export(project(":shape"))
+                export(project(":time"))
             }
         }
     }
-
-    android { publishAllLibraryVariants() }
-    iosArm64 { configureFramework() }
-    iosSimulatorArm64 { configureFramework() }
-    iosX64 { configureFramework() }
-    jvm()
-    js().browser()
-    macosArm64 { configureFramework() }
-    macosX64 { configureFramework() }
 
     sourceSets {
         val commonMain by getting {
