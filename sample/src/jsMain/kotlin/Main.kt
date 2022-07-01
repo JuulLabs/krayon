@@ -14,6 +14,7 @@ private val arcs = listOf(1f, 2f, 3f, 4f, 5f, 6f)
 fun main() {
     setupLineChart()
     setupPieChart()
+    setupInteractiveChart()
 }
 
 private fun setupLineChart() {
@@ -62,4 +63,10 @@ private fun setupPieChart() {
             updater = ::pieChart
         )
     )
+}
+
+private fun setupInteractiveChart() {
+    val canvasElement = document.getElementById("interaction-canvas") as HTMLCanvasElement
+    val (flow, update) = interactiveTreeChart()
+    canvasElement.attachAdapter(ElementViewAdapter(flow, update))
 }

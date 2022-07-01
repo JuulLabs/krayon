@@ -10,6 +10,8 @@
         </activity>
         <activity android:name=".ComposeLineActivity"
             android:exported="true" />
+        <activity android:name=".InteractiveActivity"
+            android:exported="true" />
         <activity android:name=".LineActivity"
             android:exported="true" />
         <activity android:name=".PieActivity"

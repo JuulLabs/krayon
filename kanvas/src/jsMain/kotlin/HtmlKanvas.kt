@@ -1,9 +1,12 @@
 package com.juul.krayon.kanvas
 
 import com.juul.krayon.color.Color
+import kotlinx.browser.window
 import org.w3c.dom.BEVEL
 import org.w3c.dom.BUTT
 import org.w3c.dom.CENTER
+import org.w3c.dom.CanvasFillStrokeStyles
+import org.w3c.dom.CanvasGradient
 import org.w3c.dom.CanvasLineCap
 import org.w3c.dom.CanvasLineJoin
 import org.w3c.dom.CanvasRenderingContext2D
@@ -25,9 +28,14 @@ private fun shouldFill(paint: Paint): Boolean =
 private fun shouldStroke(paint: Paint): Boolean =
     paint is Paint.Stroke || paint is Paint.FillAndStroke || paint is Paint.GradientAndStroke
 
-public class HtmlCanvas(
+private val WHITESPACE = Regex("\\s")
+
+@Deprecated("This class has been renamed to HtmlKanvas", ReplaceWith("HtmlKanvas", "com.juul.krayon.kanvas.HtmlKanvas"))
+public typealias HtmlCanvas = HtmlKanvas
+
+public class HtmlKanvas(
     element: HTMLCanvasElement,
-) : Kanvas<Path2D> {
+) : Kanvas<Path2D>, IsPointInPath {
 
     /** The raw HTMLCanvas's 2d rendering context. */
     public val context: CanvasRenderingContext2D = element.getContext("2d") as CanvasRenderingContext2D
@@ -245,7 +253,18 @@ public class HtmlCanvas(
                 paint.centerY.toDouble(),
                 paint.radius.toDouble()
             )
-            else -> throw UnsupportedOperationException("`HtmlCanvas` does not support `Sweep` gradients.")
+            is Paint.Gradient.Sweep -> {
+                val ctx = this.context // ensure a locally bound variable for use in js call
+                if (js("typeof ctx.createConicGradient === \"function\"") as Boolean) {
+                    (ctx as ConicCanvasFillStrokeStyles).createConicGradient(
+                        conicStartAngle(),
+                        paint.centerX.toDouble(),
+                        paint.centerY.toDouble()
+                    )
+                } else {
+                    throw UnsupportedOperationException("Your browser does not support conic gradients, please try updating.")
+                }
+            }
         }
         paint.stops.forEach { (offset, color) ->
             gradient.addColorStop(offset.toDouble(), color.toHexString())
@@ -260,6 +279,35 @@ public class HtmlCanvas(
             Paint.Text.Alignment.Center -> CanvasTextAlign.CENTER
             Paint.Text.Alignment.Right -> CanvasTextAlign.RIGHT
         }
-        context.font = "${paint.size}px ${paint.font.names.joinToString { "\"$it\"" }}"
+        val size = "${paint.size}px"
+        val name = paint.font.names.joinToString { font ->
+            if (WHITESPACE in font) "\"$font\"" else font
+        }
+        context.font = "$size $name"
     }
+
+    override fun isPointInPath(transform: Transform, path: Path, x: Float, y: Float): Boolean {
+        withTransform(transform) {
+            return context.isPointInPath(buildPath(path), x.toDouble(), y.toDouble())
+        }
+    }
+}
+
+/** Workaround for browser differences. */
+private fun conicStartAngle(): Double {
+    val offset = PI / 2
+    val userAgent = window.navigator.userAgent.lowercase()
+    return when {
+        userAgent.contains("opera") -> 0.0
+        userAgent.contains("edge") -> 0.0
+        userAgent.contains("chrome") -> 0.0
+        userAgent.contains("safari") -> offset
+        userAgent.contains("firefox") -> offset
+        else -> 0.0
+    }
+}
+
+/** Workaround for new JS functionality that hasn't made its way to Kotlin stdlib yet. */
+private external interface ConicCanvasFillStrokeStyles : CanvasFillStrokeStyles {
+    fun createConicGradient(startAngle: Double, x: Double, y: Double): CanvasGradient
 }

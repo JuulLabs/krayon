@@ -17,6 +17,9 @@ kotlin {
 
     jvm()
     js().browser()
+    macosArm64()
+    macosX64()
+    iosArm64()
 
     sourceSets {
         val commonTest by getting {

@@ -10,6 +10,9 @@ kotlin {
     android { publishAllLibraryVariants() }
     jvm()
     js().browser()
+    macosArm64()
+    macosX64()
+    iosArm64()
 
     sourceSets {
         val commonMain by getting {
@@ -52,6 +55,12 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
+            }
+        }
+
+        val jsMain by getting {
+            dependencies {
+                api(project(":element-view"))
             }
         }
 

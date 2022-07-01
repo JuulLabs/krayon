@@ -1,7 +1,8 @@
 package com.juul.krayon.element.view
 
 import com.juul.krayon.element.RootElement
-import com.juul.krayon.kanvas.HtmlCanvas
+import com.juul.krayon.element.UpdateElement
+import com.juul.krayon.kanvas.HtmlKanvas
 import kotlinx.browser.window
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -9,7 +10,6 @@ import kotlinx.coroutines.awaitAnimationFrame
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.w3c.dom.HTMLCanvasElement
@@ -17,7 +17,7 @@ import kotlin.coroutines.CoroutineContext
 
 private val EMPTY_STATE = AdapterState<HTMLCanvasElement>(null, RootElement(), 0, 0)
 
-public actual class ElementViewAdapter<T> actual constructor(
+public class ElementViewAdapter<T>(
     private val dataSource: Flow<T>,
     private val updater: UpdateElement<T>,
 ) {
@@ -37,6 +37,13 @@ public actual class ElementViewAdapter<T> actual constructor(
      */
     internal fun onSizeChanged(width: Int, height: Int) {
         state.value = state.value.copy(root = RootElement(), width = width, height = height)
+    }
+
+    internal fun onClick(x: Float, y: Float) {
+        val state = state.value
+        val canvas = state.view ?: return
+        val kanvas = HtmlKanvas(canvas)
+        state.root.onClick(kanvas, x, y)
     }
 
     /** Enqueue rendering in a new scope. */
@@ -59,7 +66,7 @@ public actual class ElementViewAdapter<T> actual constructor(
             state.collectLatest { state ->
                 if (state.view == null) return@collectLatest
                 if (state.width == 0 || state.height == 0) return@collectLatest
-                val canvas = HtmlCanvas(state.view)
+                val canvas = HtmlKanvas(state.view)
                 dataSource.collect { data ->
                     updater.update(state.root, state.width.toFloat(), state.height.toFloat(), data)
                     window.awaitAnimationFrame()

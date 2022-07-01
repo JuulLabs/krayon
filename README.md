@@ -11,14 +11,14 @@ Multiplatform drawing library. Provides a multiplatform canvas and chart renderi
 
 ### Aggregate Modules
 
-| Module                           | Description                                                                                                                                       |
-|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`box`](box)                     | Module exporting all other published modules (except `compose`). Useful for getting started quickly if your builds include dead-code elimination. |
-| [`sample`](sample) (unpublished) | Sample application showing use of the library with common drawing code and logic across Android and JS targets.                                   |
+| Module                           | Description                                                                                                                                                                                   |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`box`](box)                     | Module exporting all other published modules (except `compose`). Useful for getting started quickly if your builds include dead-code elimination. Also includes some cross-module extensions. |
+| [`sample`](sample) (unpublished) | Sample application showing use of the library with common drawing code and logic across Android and JS targets.                                                                               |
 
 ### Low Level Modules
 
-These modules provide an unopinionated multiplatform experience with simple, low-level primatives. Drawing with a Krayon
+These modules provide an unopinionated multiplatform experience with simple, low-level primitives. Drawing with a Krayon
 `Kanvas` should feel very similar to drawing directly to an Android `Canvas` or HTML/JS `CanvasRenderingContext2D`.
 
 | Module             | Description                                                                                        |
