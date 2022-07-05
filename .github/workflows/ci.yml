@@ -34,7 +34,7 @@ jobs:
 
       - uses: EnricoMi/publish-unit-test-result-action/composite@v2
         with:
-          files: '**/build/test-results/**/*.xml'
+          junit_files: '**/build/test-results/**/*.xml'
           report_individual_runs: 'true'
 
       - uses: codecov/codecov-action@v3
