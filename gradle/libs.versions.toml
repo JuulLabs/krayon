@@ -1,6 +1,7 @@
 [versions]
 agp = "7.2.1"
-android-compile = "android-31"
+android-compile = "android-32"
+android-target = "32"
 android-min = "21"
 # Right now we have some extra complexity. When 1.2.0 releases properly, we should be able to delete
 # the compose-compiler and compose-fallback versions. For the most part, you should just be able to
