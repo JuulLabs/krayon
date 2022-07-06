@@ -2,9 +2,17 @@
 agp = "7.2.1"
 android-compile = "android-31"
 android-min = "21"
-coroutines = "1.6.1"
+# Right now we have some extra complexity. When 1.2.0 releases properly, we should be able to delete
+# the compose-compiler and compose-fallback versions. For the most part, you should just be able to
+# get away with deleting where they were used (remove .replace calls and remove global dependency
+# substitution). When this happens please make sure to remove the maven repo with URL:
+# https://androidx.dev/storage/compose-compiler/repository/
+compose = "1.2.0-alpha01-dev741"
+compose-compiler = "1.2.0-dev-k1.7.0-53370d83bb1"
+compose-fallback = "1.1.1"
+coroutines = "1.6.3"
 jacoco = "0.8.7"
-kotlin = "1.6.10"
+kotlin = "1.7.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.5.0" }
@@ -15,7 +23,7 @@ coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-androi
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.3.2" }
+datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.4.0" }
 material = { module = "com.google.android.material:material", version = "1.6.1" }
 robolectric = { module = "org.robolectric:robolectric", version = "4.8.1" }
 
@@ -23,7 +31,7 @@ robolectric = { module = "org.robolectric:robolectric", version = "4.8.1" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 atomicfu = { id = "kotlinx-atomicfu", version = "0.16.2" }
-compose = { id = "org.jetbrains.compose", version = "1.1.1" }
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 dokka = { id = "org.jetbrains.dokka", version = "1.7.0" }
 java8 = { id = "net.mbonnin.one.eight", version = "0.2" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
