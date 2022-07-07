@@ -41,10 +41,10 @@ kotlin {
                 implementation(libs.androidx.lifecycle.runtime)
                 implementation(libs.coroutines.android)
                 implementation(libs.material)
-                implementation(compose.foundation.replace(libs.versions.compose.asProvider().get(), libs.versions.compose.fallback.get()))
-                implementation(compose.preview.replace(libs.versions.compose.asProvider().get(), libs.versions.compose.fallback.get()))
-                implementation(compose.runtime.replace(libs.versions.compose.asProvider().get(), libs.versions.compose.fallback.get()))
-                implementation(compose.ui.replace(libs.versions.compose.asProvider().get(), libs.versions.compose.fallback.get()))
+                implementation(compose.foundation)
+                implementation(compose.preview)
+                implementation(compose.runtime)
+                implementation(compose.ui)
             }
         }
 
@@ -57,15 +57,15 @@ kotlin {
         val desktopMain by getting {
             dependencies {
                 implementation(project(":compose"))
-                implementation(compose.desktop.currentOs.replace(libs.versions.compose.asProvider().get(), libs.versions.compose.fallback.get()))
-                implementation(compose.preview.replace(libs.versions.compose.asProvider().get(), libs.versions.compose.fallback.get()))
+                implementation(compose.desktop.currentOs)
+                implementation(compose.preview)
             }
         }
 
         val jsMain by getting {
             dependencies {
                 implementation(libs.coroutines.js)
-                implementation(compose.web.core.replace(libs.versions.compose.asProvider().get(), libs.versions.compose.fallback.get())) // required because of the compose plugin, but unused.
+                implementation(compose.web.core) // required because of the compose plugin, but unused.
             }
         }
 

@@ -21,9 +21,9 @@ kotlin {
             dependencies {
                 api(project(":kanvas"))
                 api(project(":element"))
-                api(compose.runtime.replace(libs.versions.compose.asProvider().get(), libs.versions.compose.fallback.get()))
-                api(compose.foundation.replace(libs.versions.compose.asProvider().get(), libs.versions.compose.fallback.get()))
-                api(compose.material.replace(libs.versions.compose.asProvider().get(), libs.versions.compose.fallback.get()))
+                api(compose.runtime)
+                api(compose.foundation)
+                api(compose.material)
                 implementation(libs.datetime)
             }
         }
@@ -34,7 +34,7 @@ kotlin {
         }
         val desktopMain by getting {
             dependencies {
-                api(compose.preview.replace(libs.versions.compose.asProvider().get(), libs.versions.compose.fallback.get()))
+                api(compose.preview)
             }
         }
     }

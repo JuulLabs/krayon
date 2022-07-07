@@ -26,7 +26,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { setUrl("https://androidx.dev/storage/compose-compiler/repository/") }
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev") // Compose pre-release versions
     }
 
     tasks.withType<Test>().configureEach {
@@ -36,14 +36,6 @@ allprojects {
             showExceptions = true
             showStackTraces = true
             showCauses = true
-        }
-    }
-
-    configurations.all {
-        resolutionStrategy.dependencySubstitution {
-            substitute(module("org.jetbrains.compose.compiler:compiler")).apply {
-                using(module("androidx.compose.compiler:compiler:${libs.versions.compose.compiler.get()}"))
-            }
         }
     }
 }
