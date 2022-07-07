@@ -249,7 +249,9 @@ private class CommandPathBuilder : RelativePathBuilder<ReifiedPath>() {
     }
 
     private fun pushArc(command: Command, args: List<Float>) {
-        check(command == AbsoluteArc || command == RelativeArc)
+        check(command == AbsoluteArc || command == RelativeArc) {
+            "Command must be one of AbsoluteArc or RelativeArc, but was $command."
+        }
         val state = this.state // copy prevents re-allocating every read
         val rx = abs(args[0])
         val ry = abs(args[1])
@@ -260,6 +262,7 @@ private class CommandPathBuilder : RelativePathBuilder<ReifiedPath>() {
             when (command) {
                 AbsoluteArc -> lineTo(x, y)
                 RelativeArc -> relativeLineTo(x, y)
+                else -> error("Unreachable.")
             }
         } else {
             val xAxisRotation = args[2]
