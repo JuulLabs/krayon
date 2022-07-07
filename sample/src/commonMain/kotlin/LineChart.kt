@@ -3,20 +3,17 @@ package com.juul.krayon.sample
 import com.juul.krayon.axis.axisBottom
 import com.juul.krayon.axis.axisLeft
 import com.juul.krayon.axis.call
-import com.juul.krayon.color.black
 import com.juul.krayon.color.darkSlateBlue
 import com.juul.krayon.color.steelBlue
 import com.juul.krayon.color.white
 import com.juul.krayon.element.CircleElement
 import com.juul.krayon.element.GroupElement
-import com.juul.krayon.element.KanvasElement
 import com.juul.krayon.element.PathElement
 import com.juul.krayon.element.RootElement
 import com.juul.krayon.element.TransformElement
 import com.juul.krayon.element.withKind
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Transform
-import com.juul.krayon.kanvas.svg.toPath
 import com.juul.krayon.scale.domain
 import com.juul.krayon.scale.extent
 import com.juul.krayon.scale.range
@@ -55,16 +52,6 @@ internal fun lineChart(root: RootElement, width: Float, height: Float, data: Lis
     val line = line<Point>()
         .x { (p) -> x.scale(p.x) }
         .y { (p) -> y.scale(p.y) }
-
-    root.asSelection()
-        .selectAll(KanvasElement)
-        .data(listOf(null))
-        .join(KanvasElement)
-        .each {
-            onDraw = {
-                drawPath("M0,0l100,100l100,-50z".toPath(), Paint.Stroke(black, 2f))
-            }
-        }
 
     val body = root.asSelection()
         .selectAll(TransformElement.withKind("body"))
