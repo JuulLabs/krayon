@@ -19,7 +19,7 @@ internal actual fun drawText(kanvas: ComposeKanvas, text: CharSequence, x: Float
             Paint.Text.Alignment.Right -> x - textLine.width
         },
         y = y,
-        paint = paint.toSkiaPaint()
+        paint = paint.toSkiaPaint(),
     )
 }
 

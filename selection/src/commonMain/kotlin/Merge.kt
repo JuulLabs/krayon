@@ -11,7 +11,7 @@ public fun <E : Element, D> Selection<E, D>.merge(
             group.parent,
             group.nodes.mapIndexed { nodeIndex, node ->
                 node ?: other.groups[groupIndex].nodes[nodeIndex]
-            }
+            },
         )
-    }
+    },
 )

@@ -6,7 +6,7 @@ object UnitPath
 
 class CallRecordingKanvas(
     width: Float,
-    height: Float
+    height: Float,
 ) : Kanvas<UnitPath>, CallRecord {
 
     private val recorder = CallRecorder()

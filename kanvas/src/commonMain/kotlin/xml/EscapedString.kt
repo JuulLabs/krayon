@@ -19,7 +19,7 @@ internal class EscapedString private constructor(private val string: String) {
                         else -> append(value)
                     }
                 }
-            }
+            },
         )
     }
 }

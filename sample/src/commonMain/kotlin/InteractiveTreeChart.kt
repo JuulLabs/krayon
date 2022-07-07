@@ -50,7 +50,7 @@ enum class Letter {
 
 data class InteractiveTreeChart(
     val selection: Letter?,
-    val counts: Map<Letter, Int>
+    val counts: Map<Letter, Int>,
 )
 
 internal fun interactiveTreeChart(): Pair<Flow<InteractiveTreeChart>, UpdateElement<InteractiveTreeChart>> {
@@ -70,7 +70,7 @@ private fun updateInteractiveTreeChart(
     width: Float,
     height: Float,
     data: InteractiveTreeChart,
-    sideEffect: (Letter) -> Unit
+    sideEffect: (Letter) -> Unit,
 ) {
     val min = data.counts.values.min { it }
     val max = data.counts.values.max { it }
@@ -98,7 +98,7 @@ private fun updateInteractiveTreeChart(
             setShapeFrom(tile)
             paint = Paint.FillAndStroke(
                 Fill(colorFor(entry.key)),
-                Paint.Stroke(white, 2f)
+                Paint.Stroke(white, 2f),
             )
             onClick = { sideEffect(entry.key) }
         }

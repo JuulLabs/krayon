@@ -12,8 +12,8 @@ public inline fun <E : Element, D> Selection<E, D>.filter(
                 group.parent,
                 group.nodes.mapIndexedNotNull { index, node ->
                     node?.takeIf { node.filter(arguments(node.data as D, index, group.nodes)) }
-                }
+                },
             )
-        }
+        },
     )
 }

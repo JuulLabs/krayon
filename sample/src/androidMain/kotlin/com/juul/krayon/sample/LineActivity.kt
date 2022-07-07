@@ -14,7 +14,7 @@ class LineActivity : AppCompatActivity() {
 
         binding.sineView.adapter = ElementViewAdapter(
             dataSource = movingSineWave(),
-            updater = ::lineChart
+            updater = ::lineChart,
         )
     }
 }

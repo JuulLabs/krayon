@@ -16,7 +16,7 @@ class ComposeLineActivity : AppCompatActivity() {
             ElementView(
                 remember { movingSineWave() },
                 ::lineChart,
-                Modifier.fillMaxSize()
+                Modifier.fillMaxSize(),
             )
         }
     }

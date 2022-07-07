@@ -19,7 +19,7 @@ public fun scale(
     domain,
     range,
     getInverter = ::interpolator,
-    getInterpolator = ::interpolator
+    getInterpolator = ::interpolator,
 )
 
 // Syntax sugar for creating a new scale with a modifier domain and range, when the interpolator type is built in.

@@ -85,7 +85,7 @@ internal fun XmlElement.setColorAttributes(
     id: String,
     opacityId: String,
     color: Color,
-    formatter: NumberFormatter
+    formatter: NumberFormatter,
 ) = apply {
     setAttribute(id, "#${color.rgb.toString(16).padStart(6, '0')}")
     if (color.alpha != 0xFF) {
