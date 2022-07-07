@@ -6,8 +6,8 @@ public class GroupElement : Element() {
 
     override val tag: String get() = "group"
 
-    override fun <PATH> draw(canvas: Kanvas<PATH>) {
-        children.forEach { it.draw(canvas) }
+    override fun draw(kanvas: Kanvas) {
+        children.forEach { it.draw(kanvas) }
     }
 
     public companion object : ElementBuilder<GroupElement>, ElementSelector<GroupElement> {

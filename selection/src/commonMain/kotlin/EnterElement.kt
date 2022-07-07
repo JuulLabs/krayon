@@ -22,7 +22,7 @@ public class EnterElement : Element() {
     override fun <E : Element> queryAll(selector: ElementSelector<E>): Sequence<E> =
         checkNotNull(parent).queryAll(selector)
 
-    override fun <PATH> draw(canvas: Kanvas<PATH>) {
+    override fun draw(kanvas: Kanvas) {
         error("$tag should not be present in the element tree.")
     }
 }

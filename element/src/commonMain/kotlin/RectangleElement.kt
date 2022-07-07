@@ -15,8 +15,8 @@ public class RectangleElement : Element(), Interactable<RectangleElement> {
     public var paint: Paint by attributes.withDefault { DEFAULT_FILL }
     override var onClick: ((RectangleElement) -> Unit)? by attributes.withDefault { null }
 
-    override fun <PATH> draw(canvas: Kanvas<PATH>) {
-        canvas.drawRect(left, top, right, bottom, paint)
+    override fun draw(kanvas: Kanvas) {
+        kanvas.drawRect(left, top, right, bottom, paint)
     }
 
     override fun getInteractionPath(): Path = Path {

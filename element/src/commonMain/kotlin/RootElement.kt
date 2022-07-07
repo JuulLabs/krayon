@@ -18,8 +18,8 @@ public class RootElement : Element() {
      */
     public var onClickFallback: (() -> Unit)? by attributes.withDefault { null }
 
-    override fun <PATH> draw(canvas: Kanvas<PATH>) {
-        children.forEach { it.draw(canvas) }
+    override fun draw(kanvas: Kanvas) {
+        children.forEach { it.draw(kanvas) }
     }
 
     /** Returns true if an element was found and clicked on. Returns false if no element matched. */

@@ -3,7 +3,6 @@ package com.juul.krayon.element
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Path
-import com.juul.krayon.kanvas.reify
 
 public class RoundedRectangleElement : Element(), Interactable<RoundedRectangleElement> {
 
@@ -25,8 +24,8 @@ public class RoundedRectangleElement : Element(), Interactable<RoundedRectangleE
 
     // TODO: Cache the generated path, lazily generating it only when it changes.
 
-    override fun <PATH> draw(canvas: Kanvas<PATH>) {
-        canvas.drawPath(canvas.buildPath(generatePath()), paint)
+    override fun draw(kanvas: Kanvas) {
+        kanvas.drawPath(generatePath(), paint)
     }
 
     override fun getInteractionPath(): Path = generatePath()
@@ -73,5 +72,5 @@ private fun RoundedRectangleElement.generatePath(): Path {
         lineTo(left, top + tlr)
         arcTo(left, top, left + 2 * tlr, top + 2 * tlr, 180f, 90f, false)
         close()
-    }.reify()
+    }
 }
