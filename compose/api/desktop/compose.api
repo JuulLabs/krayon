@@ -1,14 +1,11 @@
 public final class com/juul/krayon/compose/ComposeKanvas : com/juul/krayon/kanvas/Kanvas {
 	public static final field $stable I
-	public fun buildPath (Lcom/juul/krayon/kanvas/Path;)Landroidx/compose/ui/graphics/Path;
-	public synthetic fun buildPath (Lcom/juul/krayon/kanvas/Path;)Ljava/lang/Object;
 	public fun drawArc (FFFFFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawCircle (FFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawColor-Z7dcaks (I)V
 	public fun drawLine (FFFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawOval (FFFFLcom/juul/krayon/kanvas/Paint;)V
-	public fun drawPath (Landroidx/compose/ui/graphics/Path;Lcom/juul/krayon/kanvas/Paint;)V
-	public synthetic fun drawPath (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Paint;)V
+	public fun drawPath (Lcom/juul/krayon/kanvas/Path;Lcom/juul/krayon/kanvas/Paint;)V
 	public fun drawRect (FFFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawText (Ljava/lang/CharSequence;FFLcom/juul/krayon/kanvas/Paint;)V
 	public fun getHeight ()F
@@ -18,8 +15,10 @@ public final class com/juul/krayon/compose/ComposeKanvas : com/juul/krayon/kanva
 	public fun pushTransform (Lcom/juul/krayon/kanvas/Transform;)V
 }
 
-public final class com/juul/krayon/compose/ComposePathBuilderKt {
-	public static final fun toCompose (Lcom/juul/krayon/kanvas/Path;)Landroidx/compose/ui/graphics/Path;
+public final class com/juul/krayon/compose/ComposePathMarker : com/juul/krayon/kanvas/PathTypeMarker {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/juul/krayon/compose/ComposePathMarker;
+	public fun getBuilder ()Lcom/juul/krayon/kanvas/PathBuilder;
 }
 
 public final class com/juul/krayon/compose/ElementViewKt {
