@@ -24,11 +24,11 @@ public final class com/juul/krayon/color/Color {
 	public final synthetic fun unbox-impl ()I
 }
 
-public final class com/juul/krayon/color/OperationsKt {
+public final class com/juul/krayon/color/LerpKt {
 	public static final fun lerp-5Jni88Q (IIF)I
 }
 
-public final class com/juul/krayon/color/RandomKt {
+public final class com/juul/krayon/color/NextColorKt {
 	public static final fun nextColor (Lkotlin/random/Random;Z)I
 	public static synthetic fun nextColor$default (Lkotlin/random/Random;ZILjava/lang/Object;)I
 }
