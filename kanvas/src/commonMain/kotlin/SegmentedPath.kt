@@ -146,6 +146,7 @@ internal data class SegmentedPath(
                 is CubicTo -> builder.cubicTo(beginControlX, beginControlY, endControlX, endControlY, endX, endY)
                 is RelativeCubicTo -> builder.relativeCubicTo(beginControlX, beginControlY, endControlX, endControlY, endX, endY)
                 is Close -> builder.close()
+                else -> error("Unreachable.")
             }
         }
         return builder.build()

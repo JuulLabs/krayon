@@ -40,7 +40,7 @@ public interface Kanvas {
     /** Draw an oval defined by the rectangle [left], [top], [right], and [bottom]. */
     public fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: Paint)
 
-    /** Draws a path returned by [buildPath]. */
+    /** Draws a [Path]. */
     public fun drawPath(path: Path, paint: Paint)
 
     /** Draws the rectangle [left], [top], [right], [bottom]. */
