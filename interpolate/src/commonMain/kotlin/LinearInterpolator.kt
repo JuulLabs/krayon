@@ -6,16 +6,8 @@ import com.juul.krayon.time.minus
 import com.juul.krayon.time.plus
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
-import kotlin.time.ExperimentalTime
 
-public fun interpolator(start: Int, stop: Int): BidirectionalInterpolator<Int> = LinearIntInterpolator(start, stop)
-public fun interpolator(start: Float, stop: Float): BidirectionalInterpolator<Float> = LinearFloatInterpolator(start, stop)
-public fun interpolator(start: Double, stop: Double): BidirectionalInterpolator<Double> = LinearDoubleInterpolator(start, stop)
-public fun interpolator(start: Instant, stop: Instant): BidirectionalInterpolator<Instant> = LinearInstantInterpolator(start, stop)
-public fun interpolator(start: LocalDateTime, stop: LocalDateTime): BidirectionalInterpolator<LocalDateTime> = LinearLocalDateTimeInterpolator(start, stop)
-public fun interpolator(start: Color, stop: Color): Interpolator<Color> = ArgbLinearColorInterpolator(start, stop)
-
-private class LinearIntInterpolator(
+internal class LinearIntInterpolator(
     private val start: Int,
     stop: Int,
 ) : BidirectionalInterpolator<Int> {
@@ -24,7 +16,7 @@ private class LinearIntInterpolator(
     override fun invert(value: Int): Float = (value - start).toFloat() / range
 }
 
-private class LinearFloatInterpolator(
+internal class LinearFloatInterpolator(
     private val start: Float,
     stop: Float,
 ) : BidirectionalInterpolator<Float> {
@@ -33,7 +25,7 @@ private class LinearFloatInterpolator(
     override fun invert(value: Float): Float = (value - start) / range
 }
 
-private class LinearDoubleInterpolator(
+internal class LinearDoubleInterpolator(
     private val start: Double,
     stop: Double,
 ) : BidirectionalInterpolator<Double> {
@@ -42,8 +34,7 @@ private class LinearDoubleInterpolator(
     override fun invert(value: Double): Float = ((value - start) / range).toFloat()
 }
 
-@OptIn(ExperimentalTime::class)
-private class LinearInstantInterpolator(
+internal class LinearInstantInterpolator(
     private val start: Instant,
     stop: Instant,
 ) : BidirectionalInterpolator<Instant> {
@@ -52,7 +43,7 @@ private class LinearInstantInterpolator(
     override fun invert(value: Instant): Float = ((value - start) / range).toFloat()
 }
 
-private class LinearLocalDateTimeInterpolator(
+internal class LinearLocalDateTimeInterpolator(
     private val start: LocalDateTime,
     stop: LocalDateTime,
 ) : BidirectionalInterpolator<LocalDateTime> {
@@ -61,7 +52,7 @@ private class LinearLocalDateTimeInterpolator(
     override fun invert(value: LocalDateTime): Float = ((value - start) / range).toFloat()
 }
 
-private class ArgbLinearColorInterpolator(
+internal class ArgbLinearColorInterpolator(
     private val start: Color,
     private val stop: Color,
 ) : Interpolator<Color> {

@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Path as ComposePath
 
 public class ComposeKanvas internal constructor(
     internal val scope: DrawScope,
-    internal val resourceCache: ResourceCache
+    internal val resourceCache: ResourceCache,
 ) : Kanvas<ComposePath> {
 
     override val width: Float = scope.size.width / scope.density
@@ -70,7 +70,7 @@ public class ComposeKanvas internal constructor(
             end = Offset(endX, endY),
             strokeWidth = stroke.width,
             cap = stroke.composeCap,
-            pathEffect = stroke.composePathEffect
+            pathEffect = stroke.composePathEffect,
         )
     }
 

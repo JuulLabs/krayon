@@ -24,9 +24,9 @@ public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(
                         node,
                         node.select(arguments(node.data as D, index, group.nodes))
                             .onEach { it.data = node.data }
-                            .toList()
+                            .toList(),
                     )
                 }
-        }
+        },
     )
 }

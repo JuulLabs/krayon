@@ -14,7 +14,7 @@ public fun <T> hierarchy(
 }
 
 public fun <T> flatHierarchy(
-    values: Iterable<T>
+    values: Iterable<T>,
 ): Node<T?, Nothing?> = Node(null as T?, null).also { root ->
     root.children = values.map { value -> Node(value, null, root) }
 }

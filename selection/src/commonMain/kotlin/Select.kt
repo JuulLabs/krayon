@@ -20,8 +20,8 @@ public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.select(
                 group.nodes.mapIndexed { index, node ->
                     node?.select(arguments(node.data as D, index, group.nodes))
                         ?.also { it.data = node.data }
-                }
+                },
             )
-        }
+        },
     )
 }

@@ -163,7 +163,7 @@ public class ContinuousAxis<D : Comparable<D>> internal constructor(
         val linePaint = Paint.Stroke(lineColor, lineWidth)
         val pathMerge = path.merge(
             path.enter.insert(PathElement, Element.withKind("tick"))
-                .each { kind = "domain" }
+                .each { kind = "domain" },
         ).each { paint = linePaint }
 
         val tickMerge = tick.merge(tickEnter)
@@ -175,7 +175,7 @@ public class ContinuousAxis<D : Comparable<D>> internal constructor(
                 } else {
                     endY = k * tickSizeInner
                 }
-            }
+            },
         ).each { paint = linePaint }
 
         val alignment = when (edge) {
@@ -197,7 +197,7 @@ public class ContinuousAxis<D : Comparable<D>> internal constructor(
                     Left, Right -> 0.32f
                     Bottom -> 0.71f
                 }
-            }
+            },
         ).each { paint = textPaint }
 
         // TODO: animations will live here, once we support animations.
@@ -223,7 +223,7 @@ public class ContinuousAxis<D : Comparable<D>> internal constructor(
         tickMerge.each { (d) ->
             this.transform = Transform.Translate(
                 horizontal = if (isVertical) 0f else scale(d),
-                vertical = if (isVertical) scale(d) else 0f
+                vertical = if (isVertical) scale(d) else 0f,
             )
         }
 

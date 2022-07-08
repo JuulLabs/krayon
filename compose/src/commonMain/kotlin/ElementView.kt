@@ -82,9 +82,9 @@ public fun <T> ElementView(
                             val x = offset.x.toDp().value
                             val y = offset.y.toDp().value
                             root.onClick(isPointInPath(), x, y)
-                        }
+                        },
                     )
-                }
+                },
         ) {
             frameTime.value // Be reading a state that changed
             root.draw(this)

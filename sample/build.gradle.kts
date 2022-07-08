@@ -109,7 +109,7 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "ApplicationKt"
+        mainClass = "MainKt"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "jvm"

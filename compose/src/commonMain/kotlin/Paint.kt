@@ -55,7 +55,7 @@ internal val Paint.Stroke.drawStyle: DrawStyle
         miter = (join as? Paint.Stroke.Join.Miter)?.limit ?: DefaultMiter,
         cap = composeCap,
         join = composeJoin,
-        pathEffect = composePathEffect
+        pathEffect = composePathEffect,
     )
 internal val Paint.Gradient.drawStyle: DrawStyle get() = Fill
 

@@ -44,7 +44,7 @@ private fun safeRadius(desired: Float, horizontalNeighbor: Float, verticalNeighb
     return if (requiresHorizontalAdjustment && requiresVerticalAdjustment) {
         minOf(
             width * desired / (desired + horizontalNeighbor),
-            height * desired / (desired + verticalNeighbor)
+            height * desired / (desired + verticalNeighbor),
         )
     } else if (requiresHorizontalAdjustment) {
         width * desired / (desired + horizontalNeighbor)

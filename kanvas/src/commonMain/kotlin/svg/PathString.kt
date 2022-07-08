@@ -17,7 +17,7 @@ public fun PathString.toPathOrNull(): Path? = string.toPathOrNull()
 
 /** Converts a [Path] to an SVG platform representation. */
 public fun Path.toPathString(
-    formatter: NumberFormatter = ToStringFormatter()
+    formatter: NumberFormatter = ToStringFormatter(),
 ): PathString = PathStringBuilder(formatter).build()
 
 internal class PathStringBuilder(private val fmt: NumberFormatter) : PathBuilder<PathString> {

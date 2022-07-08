@@ -341,5 +341,5 @@ internal val keywordMap = mapOf(
     "gainsboro" to gainsboro,
 
     "transparent" to transparent,
-    "rebeccapurple" to rebeccaPurple
+    "rebeccapurple" to rebeccaPurple,
 )

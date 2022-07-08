@@ -34,7 +34,7 @@ fun main() = singleWindowApplication {
         Column(
             Modifier
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp)
+                .padding(16.dp),
         ) {
             LineChart()
             PieChart()
@@ -48,7 +48,7 @@ private fun LineChart() {
     ElementView(
         remember { movingSineWave() },
         ::lineChart,
-        Modifier.defaultMinSize(360.dp, 360.dp).fillMaxWidth()
+        Modifier.defaultMinSize(360.dp, 360.dp).fillMaxWidth(),
     )
 }
 
@@ -70,7 +70,7 @@ private fun PieChart() {
         ElementView(
             charts,
             ::pieChart,
-            Modifier.size(360.dp, 360.dp)
+            Modifier.size(360.dp, 360.dp),
         )
         BoxWithConstraints(Modifier.fillMaxWidth()) {
             Column(Modifier.padding(16.dp)) {

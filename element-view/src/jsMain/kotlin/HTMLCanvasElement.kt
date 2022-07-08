@@ -4,7 +4,7 @@ import org.w3c.dom.Element
 import org.w3c.dom.HTMLCanvasElement
 
 private external class ResizeObserver(
-    callback: (entries: Array<ResizeObserverEntry>, observer: ResizeObserver) -> Unit
+    callback: (entries: Array<ResizeObserverEntry>, observer: ResizeObserver) -> Unit,
 ) {
     fun observe(target: Element)
     fun unobserve(target: Element)
@@ -16,7 +16,7 @@ private var adapters = mutableMapOf<HTMLCanvasElement, ElementViewAdapter<*>>()
 private var observers = mutableMapOf<HTMLCanvasElement, ResizeObserver>()
 
 public fun HTMLCanvasElement.attachAdapter(
-    adapter: ElementViewAdapter<*>
+    adapter: ElementViewAdapter<*>,
 ) {
     detachAdapter()
     val observer = ResizeObserver { _, _ ->

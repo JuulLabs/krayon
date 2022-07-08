@@ -28,7 +28,7 @@ internal fun Double.scientificNotation(maxPrecision: Int): String = when {
 private data class Components(
     val integral: Int,
     val fractional: Double,
-    val magnitude: Int
+    val magnitude: Int,
 ) {
     init {
         require(integral in 0..9)

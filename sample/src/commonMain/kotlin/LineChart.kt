@@ -30,7 +30,7 @@ private val solidLinePaint = Paint.Stroke(steelBlue, 1f)
 private val dashedLinePaint = Paint.Stroke(darkSlateBlue, 0.5f, dash = Paint.Stroke.Dash.Pattern(5f, 5.5f))
 private val circlePaint = Paint.FillAndStroke(
     Paint.Fill(white),
-    Paint.Stroke(steelBlue, 1f)
+    Paint.Stroke(steelBlue, 1f),
 )
 
 internal fun lineChart(root: RootElement, width: Float, height: Float, data: List<Point?>) {
@@ -60,7 +60,7 @@ internal fun lineChart(root: RootElement, width: Float, height: Float, data: Lis
         .each {
             transform = Transform.Translate(
                 horizontal = leftMargin,
-                vertical = topMargin
+                vertical = topMargin,
             )
         }
 

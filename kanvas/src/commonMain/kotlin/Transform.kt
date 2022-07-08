@@ -48,11 +48,11 @@ public sealed class Transform {
 public fun Transform.Scale.split(): Transform.InOrder = Transform.InOrder(
     Transform.Translate(pivotX, pivotY),
     Transform.Scale(horizontal, vertical),
-    Transform.Translate(-pivotX, -pivotY)
+    Transform.Translate(-pivotX, -pivotY),
 )
 
 /** Converts a bi-direction skew into an ordered transformation of horizontal skew and vertical skew. */
 public fun Transform.Skew.split(): Transform.InOrder = Transform.InOrder(
     Transform.Skew(horizontal = horizontal),
-    Transform.Skew(vertical = vertical)
+    Transform.Skew(vertical = vertical),
 )

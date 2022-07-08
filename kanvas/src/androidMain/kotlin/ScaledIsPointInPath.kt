@@ -15,7 +15,7 @@ private const val HALF_RECT_SIZE = 0.002f
  * This class also builds in a `scalingFactor` which is used for dealing with screen density.
  */
 public class ScaledIsPointInPath(
-    private val scalingFactor: Float = 1f
+    private val scalingFactor: Float = 1f,
 ) : IsPointInPath {
 
     override fun isPointInPath(transform: Transform, path: Path, x: Float, y: Float): Boolean {
