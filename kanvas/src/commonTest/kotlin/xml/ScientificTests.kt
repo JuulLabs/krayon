@@ -15,6 +15,7 @@ class ScientificTests {
     fun scientificNotation_forSmallIntegers_omitsDecimalAndE() {
         assertEquals("7", 7.0.scientificNotation(6))
     }
+
     @Test
     fun scientificNotation_forSmallDecimals_omitsE() {
         assertEquals("7", 7.0.scientificNotation(6))
@@ -49,6 +50,7 @@ class ScientificTests {
     fun scientificNotation_forTinyValues_includesNegativeExponent() {
         assertEquals("1.23e-1", 0.123.scientificNotation(5))
     }
+
     @Test
     fun scientificNotation_forNegativeValues_includesNegativeSign() {
         assertEquals("-1.23e-1", (-0.123).scientificNotation(5))

@@ -4,7 +4,7 @@ import com.juul.krayon.color.Color
 
 class CallRecordingKanvas(
     width: Float,
-    height: Float
+    height: Float,
 ) : Kanvas, CallRecord {
 
     private val recorder = CallRecorder()

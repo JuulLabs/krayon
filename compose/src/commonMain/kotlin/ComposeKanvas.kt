@@ -66,7 +66,7 @@ public class ComposeKanvas internal constructor(
             end = Offset(endX, endY),
             strokeWidth = stroke.width,
             cap = stroke.composeCap,
-            pathEffect = stroke.composePathEffect
+            pathEffect = stroke.composePathEffect,
         )
     }
 

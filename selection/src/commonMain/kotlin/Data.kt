@@ -89,7 +89,7 @@ private fun <E : Element, D1, D2> bindIndex(
                 EnterElement().also {
                     it.data = value
                     it.parent = group.parent
-                }
+                },
             )
         }
         exit.add(null)
@@ -147,7 +147,7 @@ private fun <E : Element, D1, D2> bindKey(
                 EnterElement().also {
                     it.parent = group.parent
                     it.data = value
-                }
+                },
             )
             update.add(null)
             nodeByKeyValue.remove(keyValue)
@@ -156,7 +156,7 @@ private fun <E : Element, D1, D2> bindKey(
             update.add(
                 node.also {
                     it.data = value
-                }
+                },
             )
         }
     }

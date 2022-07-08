@@ -13,7 +13,7 @@ public value class Color(public val argb: Int) {
             ((alpha and MASK_COMPONENT) shl SHIFT_ALPHA) or
                 ((red and MASK_COMPONENT) shl SHIFT_RED) or
                 ((green and MASK_COMPONENT) shl SHIFT_GREEN) or
-                ((blue and MASK_COMPONENT) shl SHIFT_BLUE)
+                ((blue and MASK_COMPONENT) shl SHIFT_BLUE),
         )
 
     /** Create an opaque color from component integers. Components are masked to their last eight bits. */
@@ -22,7 +22,10 @@ public value class Color(public val argb: Int) {
 
     /** Create a color from component floats. Components are multiplied by 255 and rounded. */
     public constructor(alpha: Float, red: Float, green: Float, blue: Float) : this(
-        alpha.toColorComponent(), red.toColorComponent(), green.toColorComponent(), blue.toColorComponent()
+        alpha.toColorComponent(),
+        red.toColorComponent(),
+        green.toColorComponent(),
+        blue.toColorComponent(),
     )
 
     /** Create an opaque color from component floats. Components are multiplied by 255 and rounded. */

@@ -1,7 +1,7 @@
 public abstract interface class com/juul/krayon/interpolate/BidirectionalInterpolator : com/juul/krayon/interpolate/Interpolator, com/juul/krayon/interpolate/Inverter {
 }
 
-public final class com/juul/krayon/interpolate/ClampInterpolatorKt {
+public final class com/juul/krayon/interpolate/ClampKt {
 	public static final fun clamp (Lcom/juul/krayon/interpolate/Interpolator;)Lcom/juul/krayon/interpolate/Interpolator;
 }
 
@@ -9,16 +9,16 @@ public abstract interface class com/juul/krayon/interpolate/Interpolator {
 	public abstract fun interpolate (F)Ljava/lang/Object;
 }
 
-public abstract interface class com/juul/krayon/interpolate/Inverter {
-	public abstract fun invert (Ljava/lang/Object;)F
-}
-
-public final class com/juul/krayon/interpolate/LinearInterpolatorKt {
+public final class com/juul/krayon/interpolate/InterpolatorKt {
 	public static final fun interpolator (DD)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator (FF)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator (II)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator (Lkotlinx/datetime/Instant;Lkotlinx/datetime/Instant;)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator-h4DbW5E (II)Lcom/juul/krayon/interpolate/Interpolator;
+}
+
+public abstract interface class com/juul/krayon/interpolate/Inverter {
+	public abstract fun invert (Ljava/lang/Object;)F
 }
 

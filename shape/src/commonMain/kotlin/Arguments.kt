@@ -7,7 +7,7 @@ package com.juul.krayon.shape
 public class Arguments<D : Any> internal constructor(
     datum: D,
     index: Int,
-    data: List<D?>
+    data: List<D?>,
 ) {
     public var datum: D = datum
         internal set

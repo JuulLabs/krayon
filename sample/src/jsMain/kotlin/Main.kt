@@ -22,8 +22,8 @@ private fun setupLineChart() {
         .attachAdapter(
             ElementViewAdapter(
                 dataSource = movingSineWave(),
-                updater = ::lineChart
-            )
+                updater = ::lineChart,
+            ),
         )
 }
 
@@ -60,8 +60,8 @@ private fun setupPieChart() {
     (document.getElementById("pie-canvas") as HTMLCanvasElement).attachAdapter(
         ElementViewAdapter(
             dataSource = charts,
-            updater = ::pieChart
-        )
+            updater = ::pieChart,
+        ),
     )
 }
 

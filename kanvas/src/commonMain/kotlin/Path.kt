@@ -5,7 +5,7 @@ public class Path internal constructor(
 ) {
 
     public constructor(
-        path: PathBuilder<*>.() -> Unit
+        path: PathBuilder<*>.() -> Unit,
     ) : this(SegmentedPathBuilder().apply(path).build())
 
     private val cache = mutableMapOf<PathTypeMarker<*>, Any>()

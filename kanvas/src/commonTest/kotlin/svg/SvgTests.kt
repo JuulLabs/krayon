@@ -59,7 +59,7 @@ class SvgTests {
             val redStroke = Paint.Stroke(red, width = 2f)
             val greenFillAndStroke = Paint.FillAndStroke(
                 Paint.Fill(green),
-                Paint.Stroke(lime, width = 1f)
+                Paint.Stroke(lime, width = 1f),
             )
             val dashedGreenStroke = Paint.Stroke(lime, width = 1f, dash = Pattern(2f, 1f))
             val linearGradientPaint = Paint.Gradient.Linear(0f, 0f, 100f, 100f, Stop(0f, white), Stop(1f, black))

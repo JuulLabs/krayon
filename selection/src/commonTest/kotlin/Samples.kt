@@ -33,7 +33,7 @@ class Samples {
               <circle cx="4e2" cy="5e1" r="1" fill="#000000" />
             </svg>
             """.trimIndent(),
-            canvas.build()
+            canvas.build(),
         )
     }
 }

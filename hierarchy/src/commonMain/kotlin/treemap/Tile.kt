@@ -32,7 +32,7 @@ public class Tile internal constructor(
         left: Float = this.left,
         top: Float = this.top,
         right: Float = this.right,
-        bottom: Float = this.bottom
+        bottom: Float = this.bottom,
     ): Tile = tile(left, top, right, bottom)
 
     override fun toString(): String = "Tile(left=$left, top=$top, right=$right, bottom=$bottom)"

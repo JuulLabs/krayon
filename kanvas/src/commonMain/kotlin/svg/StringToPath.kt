@@ -49,7 +49,7 @@ public fun String.toPathOrNull(): Path? = try {
 
 internal enum class Command(
     val command: Char,
-    val numArgs: Int
+    val numArgs: Int,
 ) {
     AbsoluteMoveTo(command = 'M', numArgs = 2),
     AbsoluteClosePath(command = 'Z', numArgs = 0),
@@ -277,7 +277,7 @@ private class CommandPathBuilder : RelativePathBuilder<SegmentedPath>() {
                 b = ry,
                 thetaDegrees = xAxisRotation,
                 isMoreThanHalf = largeArcFlag,
-                isPositiveArc = sweepFlag
+                isPositiveArc = sweepFlag,
             )
         }
     }
@@ -292,7 +292,7 @@ private class CommandPathBuilder : RelativePathBuilder<SegmentedPath>() {
         b: Float,
         thetaDegrees: Float,
         isMoreThanHalf: Boolean,
-        isPositiveArc: Boolean
+        isPositiveArc: Boolean,
     ) {
         val theta = thetaDegrees * PI.toFloat() / 180
         // Pre-compute rotation matrix entries
@@ -361,7 +361,7 @@ private class CommandPathBuilder : RelativePathBuilder<SegmentedPath>() {
         e1y: Float,
         theta: Float,
         start: Float,
-        sweep: Float
+        sweep: Float,
     ) {
         // Shadow some parameters because Java implementation was mutating them
         var e1x = e1x

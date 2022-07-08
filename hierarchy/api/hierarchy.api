@@ -1,7 +1,3 @@
-public final class com/juul/krayon/hierarchy/ExtensionsKt {
-	public static final fun sumOf (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)F
-}
-
 public final class com/juul/krayon/hierarchy/HierarchyKt {
 	public static final fun flatHierarchy (Ljava/lang/Iterable;)Lcom/juul/krayon/hierarchy/Node;
 	public static final fun hierarchy (Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
@@ -32,6 +28,10 @@ public final class com/juul/krayon/hierarchy/NodeKt {
 	public static final fun traverseBreadthFirst (Lcom/juul/krayon/hierarchy/Node;)Lkotlin/sequences/Sequence;
 	public static final fun traversePostOrder (Lcom/juul/krayon/hierarchy/Node;)Lkotlin/sequences/Sequence;
 	public static final fun traversePreOrder (Lcom/juul/krayon/hierarchy/Node;)Lkotlin/sequences/Sequence;
+}
+
+public final class com/juul/krayon/hierarchy/SumOfKt {
+	public static final fun sumOf (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)F
 }
 
 public final class com/juul/krayon/hierarchy/treemap/Dice : com/juul/krayon/hierarchy/treemap/TileMethod {

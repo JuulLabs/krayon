@@ -39,7 +39,7 @@ class PieActivity : AppCompatActivity() {
 
         binding.sineView.adapter = ElementViewAdapter(
             dataSource = charts,
-            updater = ::pieChart
+            updater = ::pieChart,
         )
     }
 

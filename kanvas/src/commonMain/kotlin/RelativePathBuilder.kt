@@ -86,7 +86,7 @@ public abstract class RelativePathBuilder<P> : PathBuilder<P> {
             lastX + endControlX,
             lastY + endControlY,
             lastX + endX,
-            lastY + endY
+            lastY + endY,
         )
     }
 

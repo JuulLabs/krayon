@@ -29,7 +29,7 @@ private val paints = listOf(red, blue, green, darkMagenta, darkCyan, olive)
             centerX = 0f,
             centerY = 0f,
             Stop(0f, lerp(color, white, 0.75f)),
-            Stop(1f, lerp(color, black, 0.25f))
+            Stop(1f, lerp(color, black, 0.25f)),
         )
         val stroke = Paint.Stroke(black, 0.5f, join = Paint.Stroke.Join.Round)
         Paint.GradientAndStroke(gradient, stroke)

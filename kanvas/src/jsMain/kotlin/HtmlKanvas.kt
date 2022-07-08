@@ -116,7 +116,7 @@ public class HtmlKanvas(
                     clip.left.toDouble(),
                     clip.top.toDouble(),
                     clip.right.toDouble() - clip.left,
-                    clip.bottom.toDouble() - clip.top
+                    clip.bottom.toDouble() - clip.top,
                 )
                 context.clip()
             }
@@ -165,7 +165,7 @@ public class HtmlKanvas(
                         c = transform.horizontal.toDouble(),
                         d = 1.0,
                         e = 0.0,
-                        f = 0.0
+                        f = 0.0,
                     )
                 }
             }
@@ -222,7 +222,7 @@ public class HtmlKanvas(
                 is Paint.Stroke.Dash.Pattern -> Array(paint.dash.intervals.size) { index ->
                     paint.dash.intervals[index].toDouble()
                 }
-            }
+            },
         )
     }
 
@@ -236,7 +236,7 @@ public class HtmlKanvas(
                 0.0,
                 paint.centerX.toDouble(),
                 paint.centerY.toDouble(),
-                paint.radius.toDouble()
+                paint.radius.toDouble(),
             )
             is Paint.Gradient.Sweep -> {
                 val ctx = this.context // ensure a locally bound variable for use in js call
@@ -244,7 +244,7 @@ public class HtmlKanvas(
                     (ctx as ConicCanvasFillStrokeStyles).createConicGradient(
                         conicStartAngle(),
                         paint.centerX.toDouble(),
-                        paint.centerY.toDouble()
+                        paint.centerY.toDouble(),
                     )
                 } else {
                     throw UnsupportedOperationException("Your browser does not support conic gradients, please try updating.")

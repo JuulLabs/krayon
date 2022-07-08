@@ -62,7 +62,7 @@ public class Pie<T> internal constructor(
                 index = index,
                 startAngle = angle,
                 endAngle = endAngle,
-                padAngle = p
+                padAngle = p,
             ).also {
                 angle = endAngle
             }

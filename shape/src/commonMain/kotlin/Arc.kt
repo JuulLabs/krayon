@@ -200,7 +200,7 @@ private fun defaultPadRadius(arc: Arc, startAngle: Float, endAngle: Float, padAn
 
 private data class Intersection(
     val x: Float,
-    val y: Float
+    val y: Float,
 )
 
 private fun intersect(x0: Float, y0: Float, x1: Float, y1: Float, x2: Float, y2: Float, x3: Float, y3: Float): Intersection? {
@@ -261,7 +261,7 @@ private fun cornerTangents(x0: Float, y0: Float, x1: Float, y1: Float, r1: Float
         x01 = -ox,
         y01 = -oy,
         x11 = cx * (r1 / r - 1),
-        y11 = cy * (r1 / r - 1)
+        y11 = cy * (r1 / r - 1),
     )
 }
 
@@ -280,7 +280,7 @@ private fun PathBuilder<*>.arcToReversible(
     startAngle: Float,
     sweepAngle: Float,
     forceMoveTo: Boolean,
-    reverse: Boolean
+    reverse: Boolean,
 ) {
     if (reverse) {
         arcTo(left, top, right, bottom, startAngle + sweepAngle, -sweepAngle, forceMoveTo)

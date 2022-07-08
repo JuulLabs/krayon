@@ -41,7 +41,7 @@ internal class Path2DBuilder : RelativePathBuilder<Path2D>() {
             endControlX.toDouble(),
             endControlY.toDouble(),
             endX.toDouble(),
-            endY.toDouble()
+            endY.toDouble(),
         )
     }
 

@@ -26,7 +26,7 @@ public class Treemap<T>(
                 node.layout.left + p,
                 node.layout.top + p,
                 node.layout.right - p,
-                node.layout.bottom - p
+                node.layout.bottom - p,
             )
             if (node.children.isNotEmpty()) {
                 p = paddingInner(node) / 2
@@ -35,7 +35,7 @@ public class Treemap<T>(
                     tile.left + paddingLeft(node) - p,
                     tile.top + paddingTop(node) - p,
                     tile.right - paddingRight(node) + p,
-                    tile.bottom - paddingBottom(node) + p
+                    tile.bottom - paddingBottom(node) + p,
                 )
                 tileMethod.tile(node)
             }

@@ -6,5 +6,5 @@ public data class Slice<T>(
     val index: Int,
     val startAngle: Float,
     val endAngle: Float,
-    val padAngle: Float
+    val padAngle: Float,
 )
