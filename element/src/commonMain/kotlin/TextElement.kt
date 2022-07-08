@@ -15,8 +15,8 @@ public class TextElement : Element() {
     /** Vertical alignment, as a ratio of [Paint.Text.size]. */
     public var verticalAlign: Float by attributes.withDefault { 0f }
 
-    override fun <PATH> draw(canvas: Kanvas<PATH>) {
-        canvas.drawText(text, x, y + (paint.size * verticalAlign), paint)
+    override fun draw(kanvas: Kanvas) {
+        kanvas.drawText(text, x, y + (paint.size * verticalAlign), paint)
     }
 
     public companion object : ElementBuilder<TextElement>, ElementSelector<TextElement> {

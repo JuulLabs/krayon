@@ -1,18 +1,7 @@
 package com.juul.krayon.kanvas
 
-public fun interface Path {
-    public fun PathBuilder<*>.apply()
-}
-
-public fun <P> PathBuilder<P>.build(path: Path): P {
-    with(path) { apply() }
-    return build()
-}
-
-/** Builds paths. */
+/** Interface used by a [PathTypeMarker] to generate platform types for [Path] instances. */
 public interface PathBuilder<out P> {
-
-    // TODO: There's a lot more operations that can be done here, but this seems like a nice minimal set.
 
     /** Set the beginning of the next contour to the point [x], [y]. */
     public fun moveTo(x: Float, y: Float)

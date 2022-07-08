@@ -13,8 +13,8 @@ public class LineElement : Element() {
     public var endY: Float by attributes.withDefault { 0f }
     public var paint: Paint by attributes.withDefault { DEFAULT_STROKE }
 
-    override fun <PATH> draw(canvas: Kanvas<PATH>) {
-        canvas.drawLine(startX, startY, endX, endY, paint)
+    override fun draw(kanvas: Kanvas) {
+        kanvas.drawLine(startX, startY, endX, endY, paint)
     }
 
     public companion object : ElementBuilder<LineElement>, ElementSelector<LineElement> {

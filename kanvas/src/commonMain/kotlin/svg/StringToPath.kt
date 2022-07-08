@@ -1,9 +1,9 @@
 package com.juul.krayon.kanvas.svg
 
 import com.juul.krayon.kanvas.Path
-import com.juul.krayon.kanvas.ReifiedPath
-import com.juul.krayon.kanvas.ReifiedPathPathBuilder
 import com.juul.krayon.kanvas.RelativePathBuilder
+import com.juul.krayon.kanvas.SegmentedPath
+import com.juul.krayon.kanvas.SegmentedPathBuilder
 import com.juul.krayon.kanvas.svg.Command.AbsoluteArc
 import com.juul.krayon.kanvas.svg.Command.AbsoluteClosePath
 import com.juul.krayon.kanvas.svg.Command.AbsoluteCubicTo
@@ -36,7 +36,7 @@ import kotlin.math.sqrt
 import kotlin.math.tan
 
 /** Parses `this` as [SVG Path data](https://www.w3.org/TR/SVG/paths.html#PathData) to a [Path], throwing an exception if the parsing fails. */
-public fun String.toPath(): Path = parse(lex(this))
+public fun String.toPath(): Path = Path(parse(lex(this)))
 
 /** Parses `this` as [SVG Path data](https://www.w3.org/TR/SVG/paths.html#PathData) to a [Path], returning null if the parsing fails. */
 public fun String.toPathOrNull(): Path? = try {
@@ -119,7 +119,7 @@ internal fun lex(string: String): Sequence<Token> = sequence {
     }
 }
 
-internal fun parse(tokens: Sequence<Token>): ReifiedPath {
+internal fun parse(tokens: Sequence<Token>): SegmentedPath {
     val builder = CommandPathBuilder()
     var command: Command? = null
     var valueRequired = false
@@ -149,9 +149,9 @@ internal fun parse(tokens: Sequence<Token>): ReifiedPath {
     return builder.build()
 }
 
-private class CommandPathBuilder : RelativePathBuilder<ReifiedPath>() {
+private class CommandPathBuilder : RelativePathBuilder<SegmentedPath>() {
 
-    private val delegate = ReifiedPathPathBuilder()
+    private val delegate = SegmentedPathBuilder()
 
     private var lastControlPoint: Pair<Float, Float>? = null
 
@@ -197,7 +197,7 @@ private class CommandPathBuilder : RelativePathBuilder<ReifiedPath>() {
         delegate.reset()
     }
 
-    override fun build(): ReifiedPath = delegate.build()
+    override fun build(): SegmentedPath = delegate.build()
 
     fun push(command: Command, args: List<Float>) {
         when (command) {

@@ -14,28 +14,16 @@ import org.w3c.dom.CanvasTextAlign
 import org.w3c.dom.HTMLCanvasElement
 import org.w3c.dom.LEFT
 import org.w3c.dom.MITER
-import org.w3c.dom.Path2D
 import org.w3c.dom.RIGHT
 import org.w3c.dom.ROUND
 import org.w3c.dom.SQUARE
 import kotlin.math.PI
 
-/** Helper for the common case of deciding if [CanvasRenderingContext2D] should call a `fill` function or not. */
-private fun shouldFill(paint: Paint): Boolean =
-    paint is Paint.Fill || paint is Paint.FillAndStroke || paint is Paint.Gradient || paint is Paint.GradientAndStroke
-
-/** Helper for the common case of deciding if [CanvasRenderingContext2D] should call a `stroke` function or not. */
-private fun shouldStroke(paint: Paint): Boolean =
-    paint is Paint.Stroke || paint is Paint.FillAndStroke || paint is Paint.GradientAndStroke
-
 private val WHITESPACE = Regex("\\s")
-
-@Deprecated("This class has been renamed to HtmlKanvas", ReplaceWith("HtmlKanvas", "com.juul.krayon.kanvas.HtmlKanvas"))
-public typealias HtmlCanvas = HtmlKanvas
 
 public class HtmlKanvas(
     element: HTMLCanvasElement,
-) : Kanvas<Path2D>, IsPointInPath {
+) : Kanvas, IsPointInPath {
 
     /** The raw HTMLCanvas's 2d rendering context. */
     public val context: CanvasRenderingContext2D = element.getContext("2d") as CanvasRenderingContext2D
@@ -45,9 +33,6 @@ public class HtmlKanvas(
 
     override val height: Float
         get() = context.canvas.height.toFloat()
-
-    override fun buildPath(actions: Path): Path2D =
-        Path2DBuilder().build(actions)
 
     override fun drawArc(
         left: Float,
@@ -99,12 +84,12 @@ public class HtmlKanvas(
         drawArc(left, top, right, bottom, 0f, 360f, paint)
     }
 
-    override fun drawPath(path: Path2D, paint: Paint) {
+    override fun drawPath(path: Path, paint: Paint) {
         require(paint !is Paint.Text)
         applyStyle(paint)
         context.beginPath() // TODO: Look up if this is necessary.
-        if (shouldFill(paint)) context.fill(path)
-        if (shouldStroke(paint)) context.stroke(path)
+        if (shouldFill(paint)) context.fill(path.get(Path2DMarker))
+        if (shouldStroke(paint)) context.stroke(path.get(Path2DMarker))
     }
 
     override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
@@ -122,7 +107,7 @@ public class HtmlKanvas(
         context.fillText(text.toString(), x.toDouble(), y.toDouble())
     }
 
-    override fun pushClip(clip: Clip<Path2D>) {
+    override fun pushClip(clip: Clip) {
         context.save()
         context.beginPath()
         when (clip) {
@@ -136,7 +121,7 @@ public class HtmlKanvas(
                 context.clip()
             }
             is Clip.Path -> {
-                context.clip(clip.path)
+                context.clip(clip.path.get(Path2DMarker))
             }
         }
     }
@@ -288,7 +273,7 @@ public class HtmlKanvas(
 
     override fun isPointInPath(transform: Transform, path: Path, x: Float, y: Float): Boolean {
         withTransform(transform) {
-            return context.isPointInPath(buildPath(path), x.toDouble(), y.toDouble())
+            return context.isPointInPath(path.get(Path2DMarker), x.toDouble(), y.toDouble())
         }
     }
 }
@@ -311,3 +296,11 @@ private fun conicStartAngle(): Double {
 private external interface ConicCanvasFillStrokeStyles : CanvasFillStrokeStyles {
     fun createConicGradient(startAngle: Double, x: Double, y: Double): CanvasGradient
 }
+
+/** Helper for the common case of deciding if [CanvasRenderingContext2D] should call a `fill` function or not. */
+private fun shouldFill(paint: Paint): Boolean =
+    paint is Paint.Fill || paint is Paint.FillAndStroke || paint is Paint.Gradient || paint is Paint.GradientAndStroke
+
+/** Helper for the common case of deciding if [CanvasRenderingContext2D] should call a `stroke` function or not. */
+private fun shouldStroke(paint: Paint): Boolean =
+    paint is Paint.Stroke || paint is Paint.FillAndStroke || paint is Paint.GradientAndStroke

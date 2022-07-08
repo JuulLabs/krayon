@@ -1,13 +1,10 @@
 public final class com/juul/krayon/kanvas/AndroidKanvas : com/juul/krayon/kanvas/Kanvas {
-	public fun buildPath (Lcom/juul/krayon/kanvas/Path;)Landroid/graphics/Path;
-	public synthetic fun buildPath (Lcom/juul/krayon/kanvas/Path;)Ljava/lang/Object;
 	public fun drawArc (FFFFFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawCircle (FFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawColor-Z7dcaks (I)V
 	public fun drawLine (FFFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawOval (FFFFLcom/juul/krayon/kanvas/Paint;)V
-	public fun drawPath (Landroid/graphics/Path;Lcom/juul/krayon/kanvas/Paint;)V
-	public synthetic fun drawPath (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Paint;)V
+	public fun drawPath (Lcom/juul/krayon/kanvas/Path;Lcom/juul/krayon/kanvas/Paint;)V
 	public fun drawRect (FFFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawText (Ljava/lang/CharSequence;FFLcom/juul/krayon/kanvas/Paint;)V
 	public fun getHeight ()F
@@ -31,45 +28,27 @@ public final class com/juul/krayon/kanvas/AndroidPaintKt {
 	public static final fun toAndroid (Lcom/juul/krayon/kanvas/Paint;Landroid/content/Context;)Landroid/graphics/Paint;
 }
 
-public final class com/juul/krayon/kanvas/AndroidPathBuilder : com/juul/krayon/kanvas/PathBuilder {
-	public fun <init> ()V
-	public fun arcTo (FFFFFFZ)V
-	public fun build ()Landroid/graphics/Path;
-	public synthetic fun build ()Ljava/lang/Object;
-	public fun close ()V
-	public fun cubicTo (FFFFFF)V
-	public fun lineTo (FF)V
-	public fun moveTo (FF)V
-	public fun quadraticTo (FFFF)V
-	public fun relativeCubicTo (FFFFFF)V
-	public fun relativeLineTo (FF)V
-	public fun relativeMoveTo (FF)V
-	public fun relativeQuadraticTo (FFFF)V
-	public fun reset ()V
-}
-
-public final class com/juul/krayon/kanvas/AndroidPathBuilderKt {
-	public static final fun androidPath (Lkotlin/jvm/functions/Function1;)Landroid/graphics/Path;
-	public static final fun toAndroid (Lcom/juul/krayon/kanvas/Path;)Landroid/graphics/Path;
+public final class com/juul/krayon/kanvas/AndroidPathMarker : com/juul/krayon/kanvas/PathTypeMarker {
+	public static final field INSTANCE Lcom/juul/krayon/kanvas/AndroidPathMarker;
+	public fun getBuilder ()Lcom/juul/krayon/kanvas/PathBuilder;
 }
 
 public abstract class com/juul/krayon/kanvas/Clip {
 }
 
 public final class com/juul/krayon/kanvas/Clip$Path : com/juul/krayon/kanvas/Clip {
-	public fun <init> (Ljava/lang/Object;)V
-	public final fun component1 ()Ljava/lang/Object;
-	public final fun copy (Ljava/lang/Object;)Lcom/juul/krayon/kanvas/Clip$Path;
-	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Clip$Path;Ljava/lang/Object;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Clip$Path;
+	public fun <init> (Lcom/juul/krayon/kanvas/Path;)V
+	public final fun component1 ()Lcom/juul/krayon/kanvas/Path;
+	public final fun copy (Lcom/juul/krayon/kanvas/Path;)Lcom/juul/krayon/kanvas/Clip$Path;
+	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Clip$Path;Lcom/juul/krayon/kanvas/Path;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Clip$Path;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getPath ()Ljava/lang/Object;
+	public final fun getPath ()Lcom/juul/krayon/kanvas/Path;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/juul/krayon/kanvas/Clip$Rect : com/juul/krayon/kanvas/Clip {
 	public fun <init> (FFFF)V
-	public final fun cast ()Lcom/juul/krayon/kanvas/Clip$Rect;
 	public final fun component1 ()F
 	public final fun component2 ()F
 	public final fun component3 ()F
@@ -108,13 +87,12 @@ public abstract interface class com/juul/krayon/kanvas/IsPointInPath {
 }
 
 public abstract interface class com/juul/krayon/kanvas/Kanvas {
-	public abstract fun buildPath (Lcom/juul/krayon/kanvas/Path;)Ljava/lang/Object;
 	public abstract fun drawArc (FFFFFFLcom/juul/krayon/kanvas/Paint;)V
 	public abstract fun drawCircle (FFFLcom/juul/krayon/kanvas/Paint;)V
 	public abstract fun drawColor-Z7dcaks (I)V
 	public abstract fun drawLine (FFFFLcom/juul/krayon/kanvas/Paint;)V
 	public abstract fun drawOval (FFFFLcom/juul/krayon/kanvas/Paint;)V
-	public abstract fun drawPath (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Paint;)V
+	public abstract fun drawPath (Lcom/juul/krayon/kanvas/Path;Lcom/juul/krayon/kanvas/Paint;)V
 	public abstract fun drawRect (FFFFLcom/juul/krayon/kanvas/Paint;)V
 	public abstract fun drawText (Ljava/lang/CharSequence;FFLcom/juul/krayon/kanvas/Paint;)V
 	public abstract fun getHeight ()F
@@ -353,8 +331,9 @@ public final class com/juul/krayon/kanvas/PaintKt {
 	public static final field DEFAULT_MITER_LIMIT F
 }
 
-public abstract interface class com/juul/krayon/kanvas/Path {
-	public abstract fun apply (Lcom/juul/krayon/kanvas/PathBuilder;)V
+public final class com/juul/krayon/kanvas/Path {
+	public fun <init> (Lkotlin/jvm/functions/Function1;)V
+	public final fun get (Lcom/juul/krayon/kanvas/PathTypeMarker;)Ljava/lang/Object;
 }
 
 public abstract interface class com/juul/krayon/kanvas/PathBuilder {
@@ -372,12 +351,8 @@ public abstract interface class com/juul/krayon/kanvas/PathBuilder {
 	public abstract fun reset ()V
 }
 
-public final class com/juul/krayon/kanvas/PathBuilderKt {
-	public static final fun build (Lcom/juul/krayon/kanvas/PathBuilder;Lcom/juul/krayon/kanvas/Path;)Ljava/lang/Object;
-}
-
-public final class com/juul/krayon/kanvas/ReifyPathKt {
-	public static final fun reify (Lcom/juul/krayon/kanvas/Path;)Lcom/juul/krayon/kanvas/Path;
+public abstract interface class com/juul/krayon/kanvas/PathTypeMarker {
+	public abstract fun getBuilder ()Lcom/juul/krayon/kanvas/PathBuilder;
 }
 
 public abstract class com/juul/krayon/kanvas/RelativePathBuilder : com/juul/krayon/kanvas/PathBuilder {
@@ -521,11 +496,16 @@ public final class com/juul/krayon/kanvas/svg/PathString {
 	public final synthetic fun unbox-impl ()Ljava/lang/String;
 }
 
-public final class com/juul/krayon/kanvas/svg/PathStringKt {
-	public static final fun toPath-AOi5KNs (Ljava/lang/String;)Lcom/juul/krayon/kanvas/Path;
-	public static final fun toPathOrNull-AOi5KNs (Ljava/lang/String;)Lcom/juul/krayon/kanvas/Path;
-	public static final fun toPathString (Lcom/juul/krayon/kanvas/Path;Lcom/juul/krayon/kanvas/xml/NumberFormatter;)Ljava/lang/String;
-	public static synthetic fun toPathString$default (Lcom/juul/krayon/kanvas/Path;Lcom/juul/krayon/kanvas/xml/NumberFormatter;ILjava/lang/Object;)Ljava/lang/String;
+public final class com/juul/krayon/kanvas/svg/PathStringMarker : com/juul/krayon/kanvas/PathTypeMarker {
+	public fun <init> (Lcom/juul/krayon/kanvas/xml/NumberFormatter;)V
+	public final fun component1 ()Lcom/juul/krayon/kanvas/xml/NumberFormatter;
+	public final fun copy (Lcom/juul/krayon/kanvas/xml/NumberFormatter;)Lcom/juul/krayon/kanvas/svg/PathStringMarker;
+	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/svg/PathStringMarker;Lcom/juul/krayon/kanvas/xml/NumberFormatter;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/svg/PathStringMarker;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getBuilder ()Lcom/juul/krayon/kanvas/PathBuilder;
+	public final fun getFormatter ()Lcom/juul/krayon/kanvas/xml/NumberFormatter;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/juul/krayon/kanvas/svg/StringToPathKt {
@@ -537,15 +517,12 @@ public final class com/juul/krayon/kanvas/svg/SvgKanvas : com/juul/krayon/kanvas
 	public fun <init> (FFLcom/juul/krayon/kanvas/xml/NumberFormatter;)V
 	public synthetic fun <init> (FFLcom/juul/krayon/kanvas/xml/NumberFormatter;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun build ()Ljava/lang/String;
-	public synthetic fun buildPath (Lcom/juul/krayon/kanvas/Path;)Ljava/lang/Object;
-	public fun buildPath-tG2Avo8 (Lcom/juul/krayon/kanvas/Path;)Ljava/lang/String;
 	public fun drawArc (FFFFFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawCircle (FFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawColor-Z7dcaks (I)V
 	public fun drawLine (FFFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawOval (FFFFLcom/juul/krayon/kanvas/Paint;)V
-	public synthetic fun drawPath (Ljava/lang/Object;Lcom/juul/krayon/kanvas/Paint;)V
-	public fun drawPath-tz8rt4E (Ljava/lang/String;Lcom/juul/krayon/kanvas/Paint;)V
+	public fun drawPath (Lcom/juul/krayon/kanvas/Path;Lcom/juul/krayon/kanvas/Paint;)V
 	public fun drawRect (FFFFLcom/juul/krayon/kanvas/Paint;)V
 	public fun drawText (Ljava/lang/CharSequence;FFLcom/juul/krayon/kanvas/Paint;)V
 	public fun getHeight ()F
@@ -564,14 +541,19 @@ public abstract interface class com/juul/krayon/kanvas/xml/NumberFormatter {
 
 public final class com/juul/krayon/kanvas/xml/ScientificFormatter : com/juul/krayon/kanvas/xml/NumberFormatter {
 	public fun <init> (I)V
+	public final fun copy (I)Lcom/juul/krayon/kanvas/xml/ScientificFormatter;
+	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/xml/ScientificFormatter;IILjava/lang/Object;)Lcom/juul/krayon/kanvas/xml/ScientificFormatter;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
 	public fun invoke (D)Ljava/lang/String;
 	public fun invoke (F)Ljava/lang/String;
 	public fun invoke (I)Ljava/lang/String;
 	public fun invoke (J)Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/juul/krayon/kanvas/xml/ToStringFormatter : com/juul/krayon/kanvas/xml/NumberFormatter {
-	public fun <init> ()V
+	public static final field INSTANCE Lcom/juul/krayon/kanvas/xml/ToStringFormatter;
 	public fun invoke (D)Ljava/lang/String;
 	public fun invoke (F)Ljava/lang/String;
 	public fun invoke (I)Ljava/lang/String;

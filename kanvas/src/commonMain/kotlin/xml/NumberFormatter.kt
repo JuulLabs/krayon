@@ -15,7 +15,7 @@ public interface NumberFormatter {
  *
  * Fast, but outputs are not guaranteed to match between Kotlin runtimes.
  */
-public class ToStringFormatter : NumberFormatter {
+public object ToStringFormatter : NumberFormatter {
     public override fun invoke(value: Double): String = value.toString()
     public override fun invoke(value: Float): String = value.toString()
     public override fun invoke(value: Int): String = value.toString()
@@ -27,7 +27,7 @@ public class ToStringFormatter : NumberFormatter {
  *
  * Not optimized, but guarantees consistent formatting between Kotlin runtimes.
  */
-public class ScientificFormatter(private val precision: Int) : NumberFormatter {
+public data class ScientificFormatter(private val precision: Int) : NumberFormatter {
     public override fun invoke(value: Double): String = value.scientificNotation(precision)
     public override fun invoke(value: Float): String = this(value.toDouble())
     public override fun invoke(value: Int): String = this(value.toDouble())

@@ -5,7 +5,6 @@ import android.graphics.Canvas
 import android.graphics.RectF
 import com.juul.krayon.color.Color
 import android.graphics.Paint as AndroidPaint
-import android.graphics.Path as AndroidPath
 
 /** Create an [AndroidKanvas]. */
 public fun AndroidKanvas(
@@ -26,7 +25,7 @@ public class AndroidKanvas internal constructor(
     private var canvas: Canvas?,
     private val scalingFactor: Float = 1f,
     private val paintCache: PaintCache = PaintCache(context),
-) : Kanvas<AndroidPath> {
+) : Kanvas {
 
     private val preTransform = Transform.Scale(horizontal = scalingFactor, vertical = scalingFactor)
 
@@ -44,9 +43,6 @@ public class AndroidKanvas internal constructor(
             pushTransform(preTransform)
         }
     }
-
-    override fun buildPath(actions: Path): AndroidPath =
-        AndroidPathBuilder().build(actions)
 
     private fun requireCanvas(): Canvas = checkNotNull(canvas)
 
@@ -101,9 +97,9 @@ public class AndroidKanvas internal constructor(
         withPaint(paint) { drawOval(compatRectF, it) }
     }
 
-    override fun drawPath(path: AndroidPath, paint: Paint) {
+    override fun drawPath(path: Path, paint: Paint) {
         require(paint !is Paint.Text)
-        withPaint(paint) { drawPath(path, it) }
+        withPaint(paint) { drawPath(path.get(AndroidPathMarker), it) }
     }
 
     override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
@@ -117,11 +113,11 @@ public class AndroidKanvas internal constructor(
     }
 
     @Suppress("DEPRECATION")
-    override fun pushClip(clip: Clip<AndroidPath>) {
+    override fun pushClip(clip: Clip) {
         requireCanvas().save()
         when (clip) {
             is Clip.Rect -> requireCanvas().clipRect(clip.left, clip.top, clip.right, clip.bottom)
-            is Clip.Path -> requireCanvas().clipPath(clip.path)
+            is Clip.Path -> requireCanvas().clipPath(clip.path.get(AndroidPathMarker))
         }
     }
 

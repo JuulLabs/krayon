@@ -10,9 +10,9 @@ public class TransformElement : Element() {
 
     public var transform: Transform by attributes.withDefault { Transform.Translate() }
 
-    override fun <PATH> draw(canvas: Kanvas<PATH>) {
-        canvas.withTransform(transform) {
-            children.forEach { it.draw(canvas) }
+    override fun draw(kanvas: Kanvas) {
+        kanvas.withTransform(transform) {
+            children.forEach { it.draw(kanvas) }
         }
     }
 

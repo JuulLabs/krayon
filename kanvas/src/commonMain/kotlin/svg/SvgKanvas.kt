@@ -6,7 +6,6 @@ import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Path
 import com.juul.krayon.kanvas.Transform
-import com.juul.krayon.kanvas.build
 import com.juul.krayon.kanvas.split
 import com.juul.krayon.kanvas.xml.NumberFormatter
 import com.juul.krayon.kanvas.xml.ToStringFormatter
@@ -17,8 +16,10 @@ import kotlin.math.roundToInt
 public class SvgKanvas(
     override val width: Float,
     override val height: Float,
-    private val formatter: NumberFormatter = ToStringFormatter(),
-) : Kanvas<PathString> {
+    private val formatter: NumberFormatter = ToStringFormatter,
+) : Kanvas {
+
+    private val marker = PathStringMarker(formatter)
 
     /** Root XML element. */
     private val root = XmlElement("svg")
@@ -34,9 +35,6 @@ public class SvgKanvas(
     /** ID to use for the next gradient. */
     private var gradientCount = 0
 
-    override fun buildPath(actions: Path): PathString =
-        PathStringBuilder(formatter).build(actions)
-
     override fun drawArc(
         left: Float,
         top: Float,
@@ -46,7 +44,7 @@ public class SvgKanvas(
         sweepAngle: Float,
         paint: Paint,
     ) {
-        drawPath(buildPath { arcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo = true) }, paint)
+        drawPath(Path { arcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo = true) }, paint)
     }
 
     override fun drawCircle(centerX: Float, centerY: Float, radius: Float, paint: Paint) {
@@ -91,9 +89,9 @@ public class SvgKanvas(
         xmlAncestors.last().addContent(element)
     }
 
-    override fun drawPath(path: PathString, paint: Paint) {
+    override fun drawPath(path: Path, paint: Paint) {
         val element = XmlElement("path")
-            .setAttribute("d", path.string)
+            .setAttribute("d", path.get(marker).string)
             .setPaintAttributes(paint, formatter, injectGradientDef(paint))
         xmlAncestors.last().addContent(element)
     }
@@ -117,7 +115,7 @@ public class SvgKanvas(
         xmlAncestors.last().addContent(element)
     }
 
-    override fun pushClip(clip: Clip<PathString>) {
+    override fun pushClip(clip: Clip) {
         // TODO: As an optimization, it should be possible to use a single `defs` object for the whole vector.
         val pathName = "c$clipCount"
         clipCount += 1
@@ -130,7 +128,7 @@ public class SvgKanvas(
                     .setAttribute("height", clip.bottom - clip.top, formatter)
             is Clip.Path ->
                 XmlElement("path")
-                    .setAttribute("d", clip.path.string)
+                    .setAttribute("d", clip.path.get(marker).string)
         }
         val clipPath = XmlElement("clipPath")
             .setAttribute("id", pathName)

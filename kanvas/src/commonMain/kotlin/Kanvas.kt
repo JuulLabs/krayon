@@ -6,16 +6,13 @@ import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
 /** Something to draw on. Implementations are not required to be safe across multiple threads. */
-public interface Kanvas<PATH> {
+public interface Kanvas {
 
     /** Gets the width of the canvas. */
     public val width: Float
 
     /** Gets the height of the canvas. */
     public val height: Float
-
-    /** Create a [PATH] understood by this canvas. The returned path must NOT have a reference to the canvas. */
-    public fun buildPath(actions: Path): PATH
 
     /**
      * Draw an arc that fits in the oval defined by the rectangle [left], [top], [right], and [bottom], from
@@ -43,8 +40,8 @@ public interface Kanvas<PATH> {
     /** Draw an oval defined by the rectangle [left], [top], [right], and [bottom]. */
     public fun drawOval(left: Float, top: Float, right: Float, bottom: Float, paint: Paint)
 
-    /** Draws a path returned by [buildPath]. */
-    public fun drawPath(path: PATH, paint: Paint)
+    /** Draws a [Path]. */
+    public fun drawPath(path: Path, paint: Paint)
 
     /** Draws the rectangle [left], [top], [right], [bottom]. */
     public fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint)
@@ -53,7 +50,7 @@ public interface Kanvas<PATH> {
     public fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint)
 
     /** Pushes a [clip] to the canvas. Remove it with [pop]. */
-    public fun pushClip(clip: Clip<PATH>)
+    public fun pushClip(clip: Clip)
 
     /** Pushes a [transform] to the canvas. Remove it with [pop]. */
     public fun pushTransform(transform: Transform)
@@ -64,9 +61,9 @@ public interface Kanvas<PATH> {
 
 /** Invokes [actions] inside of a [Kanvas.pushClip]/[Kanvas.pop] pair. */
 @OptIn(ExperimentalContracts::class)
-public inline fun <PATH> Kanvas<PATH>.withClip(
-    clip: Clip<PATH>,
-    actions: Kanvas<PATH>.() -> Unit,
+public inline fun Kanvas.withClip(
+    clip: Clip,
+    actions: Kanvas.() -> Unit,
 ) {
     contract { callsInPlace(actions, InvocationKind.EXACTLY_ONCE) }
     pushClip(clip)
@@ -79,9 +76,9 @@ public inline fun <PATH> Kanvas<PATH>.withClip(
 
 /** Invokes [actions] inside of a [Kanvas.pushTransform]/[Kanvas.pop] pair. */
 @OptIn(ExperimentalContracts::class)
-public inline fun <PATH> Kanvas<PATH>.withTransform(
+public inline fun Kanvas.withTransform(
     transform: Transform,
-    actions: Kanvas<PATH>.() -> Unit,
+    actions: Kanvas.() -> Unit,
 ) {
     contract { callsInPlace(actions, InvocationKind.EXACTLY_ONCE) }
     pushTransform(transform)

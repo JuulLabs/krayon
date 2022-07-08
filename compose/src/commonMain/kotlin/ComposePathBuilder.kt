@@ -1,13 +1,8 @@
 package com.juul.krayon.compose
 
 import androidx.compose.ui.geometry.Rect
-import com.juul.krayon.kanvas.Path
 import com.juul.krayon.kanvas.PathBuilder
-import com.juul.krayon.kanvas.build
 import androidx.compose.ui.graphics.Path as ComposePath
-
-/** Converts a [Path] to a Compose platform representation. */
-public fun Path.toCompose(): ComposePath = ComposePathBuilder().build(this)
 
 internal class ComposePathBuilder : PathBuilder<ComposePath> {
     private val pathBuffer = ComposePath()

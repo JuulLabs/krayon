@@ -12,8 +12,8 @@ public class PathElement : Element(), Interactable<PathElement> {
     public var paint: Paint by attributes.withDefault { DEFAULT_STROKE }
     override var onClick: ((PathElement) -> Unit)? by attributes.withDefault { null }
 
-    override fun <PATH> draw(canvas: Kanvas<PATH>) {
-        canvas.drawPath(canvas.buildPath(path), paint)
+    override fun draw(kanvas: Kanvas) {
+        kanvas.drawPath(path, paint)
     }
 
     override fun getInteractionPath(): Path = path

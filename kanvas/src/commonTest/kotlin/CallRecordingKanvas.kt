@@ -2,12 +2,10 @@ package com.juul.krayon.kanvas
 
 import com.juul.krayon.color.Color
 
-object UnitPath
-
 class CallRecordingKanvas(
     width: Float,
     height: Float,
-) : Kanvas<UnitPath>, CallRecord {
+) : Kanvas, CallRecord {
 
     private val recorder = CallRecorder()
     override val calls: List<Call>
@@ -26,11 +24,6 @@ class CallRecordingKanvas(
             recorder.record("height")
             return _height
         }
-
-    override fun buildPath(actions: Path): UnitPath {
-        recorder.record("buildPath", actions)
-        return UnitPath
-    }
 
     override fun drawArc(
         left: Float,
@@ -60,7 +53,7 @@ class CallRecordingKanvas(
         recorder.record("drawOval", left, top, right, bottom, paint)
     }
 
-    override fun drawPath(path: UnitPath, paint: Paint) {
+    override fun drawPath(path: Path, paint: Paint) {
         recorder.record("drawPath", path, paint)
     }
 
@@ -72,7 +65,7 @@ class CallRecordingKanvas(
         recorder.record("drawText", text, x, y, paint)
     }
 
-    override fun pushClip(clip: Clip<UnitPath>) {
+    override fun pushClip(clip: Clip) {
         recorder.record("pushClip", clip)
     }
 

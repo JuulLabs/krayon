@@ -12,13 +12,11 @@ import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Path
 import com.juul.krayon.kanvas.Transform
-import com.juul.krayon.kanvas.build
-import androidx.compose.ui.graphics.Path as ComposePath
 
 public class ComposeKanvas internal constructor(
     internal val scope: DrawScope,
     internal val resourceCache: ResourceCache,
-) : Kanvas<ComposePath> {
+) : Kanvas {
 
     override val width: Float = scope.size.width / scope.density
     override val height: Float = scope.size.height / scope.density
@@ -43,8 +41,6 @@ public class ComposeKanvas internal constructor(
             else -> action(paint.toBrush(), paint.drawStyle)
         }
     }
-
-    override fun buildPath(actions: Path): ComposePath = ComposePathBuilder().build(actions)
 
     override fun drawArc(left: Float, top: Float, right: Float, bottom: Float, startAngle: Float, sweepAngle: Float, paint: Paint) {
         withBrushAndStyle(paint) { brush, style ->
@@ -80,9 +76,9 @@ public class ComposeKanvas internal constructor(
         }
     }
 
-    override fun drawPath(path: ComposePath, paint: Paint) {
+    override fun drawPath(path: Path, paint: Paint) {
         withBrushAndStyle(paint) { brush, style ->
-            drawPath(path, brush, style = style)
+            drawPath(path.get(ComposePathMarker), brush, style = style)
         }
     }
 
@@ -98,11 +94,11 @@ public class ComposeKanvas internal constructor(
         drawText(this, text, x, y, paint)
     }
 
-    override fun pushClip(clip: Clip<ComposePath>) {
+    override fun pushClip(clip: Clip) {
         scope.drawContext.canvas.save()
         when (clip) {
             is Clip.Rect -> scope.drawContext.transform.clipRect(clip.left, clip.top, clip.right, clip.bottom)
-            is Clip.Path -> scope.drawContext.transform.clipPath(clip.path)
+            is Clip.Path -> scope.drawContext.transform.clipPath(clip.path.get(ComposePathMarker))
         }
     }
 

@@ -1,6 +1,6 @@
 package com.juul.krayon.kanvas
 
-class CallRecordingPathBuilder : RelativePathBuilder<UnitPath>(), CallRecord {
+class CallRecordingPathBuilder : RelativePathBuilder<Unit>(), CallRecord {
     private val recorder = CallRecorder()
     override val calls: List<Call>
         get() = recorder.calls
@@ -67,8 +67,7 @@ class CallRecordingPathBuilder : RelativePathBuilder<UnitPath>(), CallRecord {
         recorder.record("reset")
     }
 
-    override fun build(): UnitPath {
+    override fun build() {
         recorder.record("build")
-        return UnitPath
     }
 }

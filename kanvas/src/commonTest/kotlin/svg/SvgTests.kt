@@ -29,14 +29,14 @@ class SvgTests {
                   <stop offset="100%" stop-color="#000000" />
                 </linearGradient>
               </defs>
-              <path d="M0,0l100,100h-100z" fill="url(#g0)" />
+              <path d="M 0 0 L 1e2 1e2 L 0 1e2 z" fill="url(#g0)" />
               <defs>
                 <radialGradient id="g1" gradientUnits="userSpaceOnUse" cx="5e1" cy="5e1" r="7e1">
                   <stop offset="0%" stop-color="#ffffff" />
                   <stop offset="100%" stop-color="#000000" />
                 </radialGradient>
               </defs>
-              <path d="M0,0h100v100z" stroke-dasharray="2 1" stroke-width="1px" stroke="#00ff00" fill="url(#g1)" />
+              <path d="M 0 0 L 1e2 0 L 1e2 1e2 z" stroke-dasharray="2 1" stroke-width="1px" stroke="#00ff00" fill="url(#g1)" />
               <circle cx="1.6e1" cy="8.4e1" r="8" fill="#000000" />
               <defs>
                 <clipPath id="c0">
@@ -65,8 +65,8 @@ class SvgTests {
             val linearGradientPaint = Paint.Gradient.Linear(0f, 0f, 100f, 100f, Stop(0f, white), Stop(1f, black))
             val radialGradientPaint = Paint.Gradient.Radial(50f, 50f, 70f, Stop(0f, white), Stop(1f, black))
             val blueText = Paint.Text(blue, size = 16f, Paint.Text.Alignment.Center, Font("Times New Roman", serif))
-            svg.drawPath(PathString("M0,0l100,100h-100z"), linearGradientPaint)
-            svg.drawPath(PathString("M0,0h100v100z"), Paint.GradientAndStroke(radialGradientPaint, dashedGreenStroke))
+            svg.drawPath("M0,0l100,100h-100z".toPath(), linearGradientPaint)
+            svg.drawPath("M0,0h100v100z".toPath(), Paint.GradientAndStroke(radialGradientPaint, dashedGreenStroke))
             svg.drawCircle(16f, 84f, 8f, blackFill)
             svg.withClip(Clip.Rect(16f, 16f, 84f, 84f)) {
                 drawLine(0f, 100f, 100f, 0f, redStroke)
