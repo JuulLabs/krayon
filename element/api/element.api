@@ -77,6 +77,22 @@ public abstract interface class com/juul/krayon/element/Interactable {
 	public abstract fun setOnClick (Lkotlin/jvm/functions/Function1;)V
 }
 
+public final class com/juul/krayon/element/KanvasElement : com/juul/krayon/element/Element {
+	public static final field Companion Lcom/juul/krayon/element/KanvasElement$Companion;
+	public fun <init> ()V
+	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
+	public final fun getOnDraw ()Lkotlin/jvm/functions/Function1;
+	public fun getTag ()Ljava/lang/String;
+	public final fun setOnDraw (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class com/juul/krayon/element/KanvasElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/ElementSelector {
+	public synthetic fun build ()Lcom/juul/krayon/element/Element;
+	public fun build ()Lcom/juul/krayon/element/KanvasElement;
+	public synthetic fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
+	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/KanvasElement;
+}
+
 public final class com/juul/krayon/element/KindSelectorKt {
 	public static final fun withKind (Lcom/juul/krayon/element/ElementSelector;Ljava/lang/String;)Lcom/juul/krayon/element/ElementSelector;
 }
