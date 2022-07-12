@@ -11,8 +11,8 @@ public class KanvasElement : Element() {
 
     override fun draw(kanvas: Kanvas) {
         val callback = onDraw
-        if (callback != null) {
-            kanvas.callback()
+        if (callback != null) with(kanvas) {
+            callback()
         }
     }
 
