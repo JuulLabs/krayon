@@ -4,7 +4,7 @@ android-compile = "android-32"
 android-target = "32"
 android-min = "21"
 compose = "1.2.0-alpha01-dev741"
-coroutines = "1.6.3"
+coroutines = "1.6.4"
 jacoco = "0.8.7"
 kotlin = "1.7.10"
 
