@@ -11,7 +11,7 @@ kotlin = "1.7.10"
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.5.1" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.4.2" }
-androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.5.0" }
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.5.1" }
 androidx-test = { module = "androidx.test:core", version = "1.4.0" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
