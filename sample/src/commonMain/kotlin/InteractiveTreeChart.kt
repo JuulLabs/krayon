@@ -7,6 +7,8 @@ import com.juul.krayon.color.darkBlue
 import com.juul.krayon.color.forestGreen
 import com.juul.krayon.color.lerp
 import com.juul.krayon.color.white
+import com.juul.krayon.element.ClickHandler
+import com.juul.krayon.element.HoverHandler
 import com.juul.krayon.element.RectangleElement
 import com.juul.krayon.element.RootElement
 import com.juul.krayon.element.TextElement
@@ -32,7 +34,7 @@ import com.juul.krayon.selection.join
 import com.juul.krayon.selection.selectAll
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.combine
 import kotlin.random.Random
 
 enum class Letter {
@@ -50,17 +52,32 @@ enum class Letter {
 
 data class InteractiveTreeChart(
     val selection: Letter?,
+    val hovered: Letter?,
     val counts: Map<Letter, Int>,
 )
 
 internal fun interactiveTreeChart(): Pair<Flow<InteractiveTreeChart>, UpdateElement<InteractiveTreeChart>> {
-    val selection = MutableStateFlow(null as Letter?)
+    val selectionState = MutableStateFlow(null as Letter?)
+    val hoveredState = MutableStateFlow(null as Letter?)
     val letterSizes = Letter.values().associateWith { Random.nextInt(50, 500) }
-    val dataFlow = selection.map { InteractiveTreeChart(it, letterSizes) }
+    val dataFlow = combine(selectionState, hoveredState) { selection, hovered ->
+        InteractiveTreeChart(selection, hovered, letterSizes)
+    }
     val updater = UpdateElement<InteractiveTreeChart> { root, width, height, data ->
-        updateInteractiveTreeChart(root, width, height, data) { letter ->
-            selection.value = letter.takeUnless { it == selection.value }
-        }
+        updateInteractiveTreeChart(
+            root,
+            width,
+            height,
+            data,
+            clickHandler = { letter -> selectionState.value = letter.takeUnless { it == selectionState.value } },
+            hoverHandler = { letter, hovered ->
+                if (!hovered && hoveredState.value == letter) {
+                    hoveredState.value = null
+                } else if (hovered) {
+                    hoveredState.value = letter
+                }
+            },
+        )
     }
     return dataFlow to updater
 }
@@ -70,16 +87,22 @@ private fun updateInteractiveTreeChart(
     width: Float,
     height: Float,
     data: InteractiveTreeChart,
-    sideEffect: (Letter) -> Unit,
+    clickHandler: ClickHandler<Letter>,
+    hoverHandler: HoverHandler<Letter>,
 ) {
     val min = data.counts.values.min { it }
     val max = data.counts.values.max { it }
     fun colorFor(letter: Letter): Color {
         val value = data.counts[letter] ?: 0
-        return if (letter == data.selection) {
+        val baseColor = if (letter == data.selection) {
             forestGreen
         } else {
             lerp(crimson, darkBlue, (value - min).toFloat() / (max - min))
+        }
+        return if (letter == data.hovered) {
+            lerp(baseColor, white, 0.25f)
+        } else {
+            baseColor
         }
     }
 
@@ -100,7 +123,8 @@ private fun updateInteractiveTreeChart(
                 Fill(colorFor(entry.key)),
                 Paint.Stroke(white, 2f),
             )
-            onClick = { sideEffect(entry.key) }
+            onClick { clickHandler.onClick(entry.key) }
+            onHoverChanged { _, hovered -> hoverHandler.onHoverChanged(entry.key, hovered) }
         }
 
     val textPaint = Text(white, size = 12f, alignment = Center, Font(sansSerif))

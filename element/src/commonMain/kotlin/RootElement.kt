@@ -1,5 +1,7 @@
 package com.juul.krayon.element
 
+import com.juul.krayon.element.InteractableType.Click
+import com.juul.krayon.element.InteractableType.Hover
 import com.juul.krayon.kanvas.IsPointInPath
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Transform
@@ -8,6 +10,13 @@ import com.juul.krayon.kanvas.Transform.Translate
 public class RootElement : Element() {
 
     override val tag: String get() = "root"
+
+    /**
+     * The currently hovered value, recorded as an implementation detail of the hover-off event.
+     *
+     * This is NOT implemented as `by attribute` to avoid leaking its visibility.
+     */
+    private var hoveredElement: InteractableElement<*>? = null
 
     /**
      * If set, this callback is invoked when [onClick] is called but no descendant element handles
@@ -22,31 +31,41 @@ public class RootElement : Element() {
         children.forEach { it.draw(kanvas) }
     }
 
-    /** Returns true if an element was found and clicked on. Returns false if no element matched. */
-    public fun onClick(isPointInPath: IsPointInPath, x: Float, y: Float): Boolean {
-        // Union types would be pretty nice here. Value is of type T where T: Element and T: Interactable<T>
-        val interactable = visibilityOrderedDescendants()
-            .filterIsInstance<Interactable<*>>()
-            .filter { it.onClick != null }
-            .firstOrNull { interactable ->
-                val transform = (interactable as Element).totalTransform()
-                isPointInPath.isPointInPath(transform, interactable.getInteractionPath(), x, y)
+    public fun onHover(isPointInPath: IsPointInPath, x: Float, y: Float) {
+        val previousHoveredElement = hoveredElement
+        val newHoveredElement = interactableAtPoint(isPointInPath, x, y, type = Hover)
+        if (newHoveredElement != previousHoveredElement) {
+            if (previousHoveredElement != null) {
+                @Suppress("UNCHECKED_CAST") // Interactables always accepts themselves as the type argument.
+                val handler = previousHoveredElement.hoverHandler as HoverHandler<Element>?
+                handler?.onHoverChanged(previousHoveredElement, hovered = false)
             }
+            if (newHoveredElement != null) {
+                @Suppress("UNCHECKED_CAST") // Interactables always accepts themselves as the type argument.
+                val handler = newHoveredElement.hoverHandler as HoverHandler<Element>
+                handler.onHoverChanged(newHoveredElement, hovered = true)
+            }
+            hoveredElement = newHoveredElement
+        }
+    }
+
+    public fun onHoverOff() {
+        val element = hoveredElement ?: return
+        @Suppress("UNCHECKED_CAST") // Interactables always accepts themselves as the type argument.
+        val handler = element.hoverHandler as HoverHandler<Element>? ?: return
+        handler.onHoverChanged(element, hovered = false)
+        hoveredElement = null
+    }
+
+    public fun onClick(isPointInPath: IsPointInPath, x: Float, y: Float) {
+        val clickedElement = interactableAtPoint(isPointInPath, x, y, type = Click)
         val fallback = onClickFallback
-        return when {
-            interactable != null -> {
-                @Suppress("UNCHECKED_CAST") // Interactable<T> always accepts itself as the type argument.
-                val onClick = interactable.onClick as (Element) -> Unit
-                onClick(interactable as Element)
-                true
-            }
-            fallback != null -> {
-                fallback()
-                true
-            }
-            else -> {
-                false
-            }
+        if (clickedElement != null) {
+            @Suppress("UNCHECKED_CAST") // Interactables always accepts themselves as the type argument.
+            val handler = clickedElement.clickHandler as ClickHandler<Element>
+            handler.onClick(clickedElement)
+        } else if (fallback != null) {
+            fallback()
         }
     }
 
@@ -55,6 +74,21 @@ public class RootElement : Element() {
     }
 }
 
+/** Type-safe argument for [interactableAtPoint]. */
+private enum class InteractableType { Click, Hover }
+
+/**
+ * Returns all descendants of this [Element], sorted by visibility. This means that later elements
+ * always come before earlier elements, and children always come before their parent.
+ */
+private fun Element.visibilityOrderedDescendants(): Sequence<Element> = sequence {
+    for (child in children.asReversed()) {
+        yieldAll(child.visibilityOrderedDescendants())
+    }
+    yield(this@visibilityOrderedDescendants)
+}
+
+/** Returns the total transform that will affect how this element draws. */
 private fun Element.totalTransform(): Transform {
     var element: Element? = this
     var transform: Transform = Translate() // Start with a no-op/identity transform
@@ -67,9 +101,23 @@ private fun Element.totalTransform(): Transform {
     return transform
 }
 
-private fun Element.visibilityOrderedDescendants(): Sequence<Element> = sequence {
-    for (child in children.asReversed()) {
-        yieldAll(child.visibilityOrderedDescendants())
+/**
+ * Finds the element that consumes/receives interaction. Depending on [type], this will only include
+ * elements that have the appropriate handler installed.
+ */
+private fun Element.interactableAtPoint(
+    isPointInPath: IsPointInPath,
+    x: Float,
+    y: Float,
+    type: InteractableType,
+): InteractableElement<*>? = visibilityOrderedDescendants()
+    .filterIsInstance<InteractableElement<*>>()
+    .filter { element ->
+        when (type) {
+            Click -> element.clickHandler != null
+            Hover -> element.hoverHandler != null
+        }
+    }.firstOrNull { interactable ->
+        val transform = (interactable as Element).totalTransform()
+        isPointInPath.isPointInPath(transform, interactable.getInteractionPath(), x, y)
     }
-    yield(this@visibilityOrderedDescendants)
-}

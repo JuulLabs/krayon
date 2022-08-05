@@ -46,6 +46,18 @@ public class ElementViewAdapter<T>(
         state.root.onClick(kanvas, x, y)
     }
 
+    internal fun onHover(x: Float, y: Float) {
+        val state = state.value
+        val canvas = state.view ?: return
+        val kanvas = HtmlKanvas(canvas)
+        state.root.onHover(kanvas, x, y)
+    }
+
+    internal fun onHoverOff() {
+        val state = state.value
+        state.root.onHoverOff()
+    }
+
     /** Enqueue rendering in a new scope. */
     internal fun onAttached(view: HTMLCanvasElement) {
         state.value = AdapterState(view, RootElement(), view.width, view.height)
