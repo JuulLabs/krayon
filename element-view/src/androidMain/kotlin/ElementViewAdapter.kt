@@ -15,7 +15,6 @@ import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
@@ -66,9 +65,9 @@ public class ElementViewAdapter<T>(
         }
     }
 
-    internal fun onHoverOff() {
+    internal fun onHoverEnded() {
         val state = state.value
-        state.root.onHoverOff()
+        state.root.onHoverEnded()
     }
 
     /** Enqueue rendering in a new scope. */

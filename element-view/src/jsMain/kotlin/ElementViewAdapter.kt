@@ -53,9 +53,9 @@ public class ElementViewAdapter<T>(
         state.root.onHover(kanvas, x, y)
     }
 
-    internal fun onHoverOff() {
+    internal fun onHoverEnded() {
         val state = state.value
-        state.root.onHoverOff()
+        state.root.onHoverEnded()
     }
 
     /** Enqueue rendering in a new scope. */

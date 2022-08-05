@@ -7,8 +7,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Modifier
@@ -89,7 +91,7 @@ public fun <T> ElementView(
         // still leverage their workaround by setting a flag on tap and treating our event as a
         // different one. This is only necessary for touch events - the desktop user with a mouse
         // should maintain hover state after releasing a tap.
-        var treatNextTouchAsExit = false
+        var treatNextTouchAsExit by remember { mutableStateOf(false) }
         Kanvas(
             Modifier
                 .matchParentSize()
@@ -100,15 +102,25 @@ public fun <T> ElementView(
                         if (treatNextTouchAsExit) {
                             treatNextTouchAsExit = false
                             if (change.type == PointerType.Touch) {
-                                root.onHoverOff()
+                                root.onHoverEnded()
                             }
                         } else {
                             when (event.type) {
-                                Press, Enter, Move, Release -> {
+                                Press, Enter, Move -> {
                                     val (x, y) = change.position
                                     root.onHover(isPointInPath(), x.toDp().value, y.toDp().value)
                                 }
-                                Exit -> root.onHoverOff()
+                                Release -> {
+                                    // Sometimes this even doesn't fire correctly and we get a move
+                                    // instead. Still, handle it properly in case they ever fix it.
+                                    if (change.type == PointerType.Touch) {
+                                        root.onHoverEnded()
+                                    } else {
+                                        val (x, y) = change.position
+                                        root.onHover(isPointInPath(), x.toDp().value, y.toDp().value)
+                                    }
+                                }
+                                Exit -> root.onHoverEnded()
                             }
                         }
                     }

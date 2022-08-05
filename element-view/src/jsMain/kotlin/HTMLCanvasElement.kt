@@ -31,7 +31,7 @@ public fun HTMLCanvasElement.attachAdapter(
     onclick = { adapter.onClick(it.offsetX.toFloat(), it.offsetY.toFloat()) }
     onmouseover = { adapter.onHover(it.offsetX.toFloat(), it.offsetY.toFloat()) }
     onmousemove = { adapter.onHover(it.offsetX.toFloat(), it.offsetY.toFloat()) }
-    onmouseleave = { adapter.onHoverOff() }
+    onmouseleave = { adapter.onHoverEnded() }
 }
 
 public fun HTMLCanvasElement.detachAdapter() {

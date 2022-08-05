@@ -32,8 +32,8 @@ public class RootElement : Element() {
     }
 
     /**
-     * Entry point for dispatching hover events. Usually you won't need to call this, and it will be
-     * handled by your platform-specific ElementView.
+     * Entry point for dispatching hover events, both start and move. Usually you won't need to call
+     * this, and it will be handled by your platform-specific ElementView.
      */
     public fun onHover(isPointInPath: IsPointInPath, x: Float, y: Float) {
         val previousHoveredElement = hoveredElement
@@ -54,10 +54,10 @@ public class RootElement : Element() {
     }
 
     /**
-     * Entry point for dispatching hover-off events. Usually you won't need to call this, and it will be
+     * Entry point for dispatching hover-end events. Usually you won't need to call this, and it will be
      * handled by your platform-specific ElementView.
      */
-    public fun onHoverOff() {
+    public fun onHoverEnded() {
         val element = hoveredElement ?: return
 
         @Suppress("UNCHECKED_CAST") // Interactables always accepts themselves as the type argument.

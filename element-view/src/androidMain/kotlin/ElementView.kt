@@ -57,7 +57,7 @@ public class ElementView @JvmOverloads constructor(
         if (!bounds.contains(event.x, event.y)) {
             // We're receiving a touch event that's off of our bounds. This means that the user has
             // dragged until they are no longer on the view.
-            adapter?.onHoverOff()
+            adapter?.onHoverEnded()
             return false
         }
 
@@ -69,11 +69,11 @@ public class ElementView @JvmOverloads constructor(
                 adapter?.onClick(event.x, event.y)
                 if (event.getToolType(0) == TOOL_TYPE_FINGER) {
                     // Touch loses hover when click ends, but other input types like mouse don't.
-                    adapter?.onHoverOff()
+                    adapter?.onHoverEnded()
                 }
             }
             ACTION_CANCEL -> {
-                adapter?.onHoverOff()
+                adapter?.onHoverEnded()
             }
         }
         return true
@@ -82,7 +82,7 @@ public class ElementView @JvmOverloads constructor(
     override fun onHoverEvent(event: MotionEvent): Boolean {
         when (event.actionMasked) {
             ACTION_HOVER_ENTER, ACTION_HOVER_MOVE -> adapter?.onHover(event.x, event.y)
-            ACTION_HOVER_EXIT -> adapter?.onHoverOff()
+            ACTION_HOVER_EXIT -> adapter?.onHoverEnded()
             // Should be unreachable, but if they add a new event in the future we shouldn't consume it.
             else -> return false
         }

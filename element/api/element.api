@@ -180,7 +180,7 @@ public final class com/juul/krayon/element/RootElement : com/juul/krayon/element
 	public fun getTag ()Ljava/lang/String;
 	public final fun onClick (Lcom/juul/krayon/kanvas/IsPointInPath;FF)V
 	public final fun onHover (Lcom/juul/krayon/kanvas/IsPointInPath;FF)V
-	public final fun onHoverOff ()V
+	public final fun onHoverEnded ()V
 	public final fun setOnClickFallback (Lkotlin/jvm/functions/Function0;)V
 }
 
