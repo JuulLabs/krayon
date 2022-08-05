@@ -59,6 +59,7 @@ public class RootElement : Element() {
      */
     public fun onHoverOff() {
         val element = hoveredElement ?: return
+
         @Suppress("UNCHECKED_CAST") // Interactables always accepts themselves as the type argument.
         val handler = element.hoverHandler as HoverHandler<Element>? ?: return
         handler.onHoverChanged(element, hovered = false)
