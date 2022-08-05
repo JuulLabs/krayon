@@ -31,6 +31,10 @@ public class RootElement : Element() {
         children.forEach { it.draw(kanvas) }
     }
 
+    /**
+     * Entry point for dispatching hover events. Usually you won't need to call this, and it will be
+     * handled by your platform-specific ElementView.
+     */
     public fun onHover(isPointInPath: IsPointInPath, x: Float, y: Float) {
         val previousHoveredElement = hoveredElement
         val newHoveredElement = interactableAtPoint(isPointInPath, x, y, type = Hover)
@@ -49,6 +53,10 @@ public class RootElement : Element() {
         }
     }
 
+    /**
+     * Entry point for dispatching hover-off events. Usually you won't need to call this, and it will be
+     * handled by your platform-specific ElementView.
+     */
     public fun onHoverOff() {
         val element = hoveredElement ?: return
         @Suppress("UNCHECKED_CAST") // Interactables always accepts themselves as the type argument.
@@ -57,6 +65,10 @@ public class RootElement : Element() {
         hoveredElement = null
     }
 
+    /**
+     * Entry point for dispatching click events. Usually you won't need to call this, and it will be
+     * handled by your platform-specific ElementView.
+     */
     public fun onClick(isPointInPath: IsPointInPath, x: Float, y: Float) {
         val clickedElement = interactableAtPoint(isPointInPath, x, y, type = Click)
         val fallback = onClickFallback
