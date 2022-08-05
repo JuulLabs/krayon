@@ -5,6 +5,9 @@ import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.MotionEvent
+import android.view.MotionEvent.ACTION_HOVER_ENTER
+import android.view.MotionEvent.ACTION_HOVER_EXIT
+import android.view.MotionEvent.ACTION_HOVER_MOVE
 import android.view.View
 import android.graphics.Paint as AndroidPaint
 
@@ -46,8 +49,19 @@ public class ElementView @JvmOverloads constructor(
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (event.actionMasked == MotionEvent.ACTION_DOWN) {
             adapter?.onClick(event.x, event.y)
+            return true
         }
         return false
+    }
+
+    override fun onHoverEvent(event: MotionEvent): Boolean {
+        when (event.action) {
+            ACTION_HOVER_ENTER, ACTION_HOVER_MOVE -> adapter?.onHover(event.x, event.y)
+            ACTION_HOVER_EXIT -> adapter?.onHoverOff()
+            // Should be unreachable, but if they add a new event in the future we shouldn't consume it.
+            else -> return false
+        }
+        return true
     }
 
     override fun onDraw(canvas: Canvas) {

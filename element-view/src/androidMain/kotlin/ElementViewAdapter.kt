@@ -48,14 +48,27 @@ public class ElementViewAdapter<T>(
         state.value = state.value.copy(root = RootElement(), width = width, height = height)
     }
 
-    internal fun onClick(x: Float, y: Float): Boolean {
+    internal fun onClick(x: Float, y: Float) {
         val state = state.value
         if (state.view != null) {
             val scalingFactor = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1f, state.view.resources.displayMetrics)
             val isPointInPath = ScaledIsPointInPath(scalingFactor)
-            return state.root.onClick(isPointInPath, x, y)
+            state.root.onClick(isPointInPath, x, y)
         }
-        return false
+    }
+
+    internal fun onHover(x: Float, y: Float) {
+        val state = state.value
+        if (state.view != null) {
+            val scalingFactor = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1f, state.view.resources.displayMetrics)
+            val isPointInPath = ScaledIsPointInPath(scalingFactor)
+            state.root.onHover(isPointInPath, x, y)
+        }
+    }
+
+    internal fun onHoverOff() {
+        val state = state.value
+        state.root.onHoverOff()
     }
 
     /** Enqueue rendering in a new scope. */

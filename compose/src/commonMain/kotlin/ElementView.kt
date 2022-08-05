@@ -12,13 +12,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.PointerEventPass
+import androidx.compose.ui.input.pointer.PointerEventType.Companion.Enter
+import androidx.compose.ui.input.pointer.PointerEventType.Companion.Exit
+import androidx.compose.ui.input.pointer.PointerEventType.Companion.Move
+import androidx.compose.ui.input.pointer.PointerEventType.Companion.Press
+import androidx.compose.ui.input.pointer.PointerEventType.Companion.Release
+import androidx.compose.ui.input.pointer.PointerType
 import androidx.compose.ui.input.pointer.pointerInput
 import com.juul.krayon.element.RootElement
 import com.juul.krayon.element.UpdateElement
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.isActive
 import kotlinx.datetime.Clock
 
 @Composable
@@ -73,15 +81,45 @@ public fun <T> ElementView(
                 }
             }
         }
+
+        // Dirty hack for correctly handling hover after taps. Android doesn't always propagate the
+        // release event properly, instead sending a "move" event even after the release happens,
+        // and while Compose's internal tap recognition works around that you can't reuse the
+        // implementation if you need to receive move events while waiting for it. However, we can
+        // still leverage their workaround by setting a flag on tap and treating our event as a
+        // different one. This is only necessary for touch events - the desktop user with a mouse
+        // should maintain hover state after releasing a tap.
+        var treatNextTouchAsExit = false
         Kanvas(
             Modifier
                 .matchParentSize()
-                .pointerInput(null) {
+                .pointerInput(null) { // hover events must be processed manually
+                    while (currentCoroutineContext().isActive) {
+                        val event = awaitPointerEventScope { awaitPointerEvent(PointerEventPass.Main) }
+                        val change = event.changes.last()
+                        if (treatNextTouchAsExit) {
+                            treatNextTouchAsExit = false
+                            if (change.type == PointerType.Touch) {
+                                root.onHoverOff()
+                            }
+                        } else {
+                            when (event.type) {
+                                Press, Enter, Move, Release -> {
+                                    val (x, y) = change.position
+                                    root.onHover(isPointInPath(), x.toDp().value, y.toDp().value)
+                                }
+                                Exit -> root.onHoverOff()
+                            }
+                        }
+                    }
+                }
+                .pointerInput(null) { // tap events have such nice syntax sugar
                     detectTapGestures(
                         onTap = { offset ->
                             val x = offset.x.toDp().value
                             val y = offset.y.toDp().value
                             root.onClick(isPointInPath(), x, y)
+                            treatNextTouchAsExit = true
                         },
                     )
                 },
