@@ -4,7 +4,7 @@ import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Path
 
-public class RectangleElement : Element(), Interactable<RectangleElement> {
+public class RectangleElement : InteractableElement<RectangleElement>() {
 
     override val tag: String get() = "rectangle"
 
@@ -13,7 +13,6 @@ public class RectangleElement : Element(), Interactable<RectangleElement> {
     public var right: Float by attributes.withDefault { 0f }
     public var bottom: Float by attributes.withDefault { 0f }
     public var paint: Paint by attributes.withDefault { DEFAULT_FILL }
-    override var onClick: ((RectangleElement) -> Unit)? by attributes.withDefault { null }
 
     override fun draw(kanvas: Kanvas) {
         kanvas.drawRect(left, top, right, bottom, paint)

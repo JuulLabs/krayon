@@ -4,7 +4,7 @@ import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Path
 
-public class CircleElement : Element(), Interactable<CircleElement> {
+public class CircleElement : InteractableElement<CircleElement>() {
 
     override val tag: String get() = "circle"
 
@@ -12,7 +12,6 @@ public class CircleElement : Element(), Interactable<CircleElement> {
     public var centerY: Float by attributes.withDefault { 0f }
     public var radius: Float by attributes.withDefault { 0f }
     public var paint: Paint by attributes.withDefault { DEFAULT_FILL }
-    override var onClick: ((CircleElement) -> Unit)? by attributes.withDefault { null }
 
     override fun draw(kanvas: Kanvas) {
         kanvas.drawCircle(centerX, centerY, radius, paint)

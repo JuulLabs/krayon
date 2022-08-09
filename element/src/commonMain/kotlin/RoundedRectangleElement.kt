@@ -4,7 +4,7 @@ import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Path
 
-public class RoundedRectangleElement : Element(), Interactable<RoundedRectangleElement> {
+public class RoundedRectangleElement : InteractableElement<RoundedRectangleElement>() {
 
     override val tag: String get() = "rounded-rectangle"
 
@@ -19,8 +19,6 @@ public class RoundedRectangleElement : Element(), Interactable<RoundedRectangleE
     public var bottomRightRadius: Float by attributes.withDefault { 0f }
 
     public var paint: Paint by attributes.withDefault { DEFAULT_FILL }
-
-    override var onClick: ((RoundedRectangleElement) -> Unit)? by attributes.withDefault { null }
 
     // TODO: Cache the generated path, lazily generating it only when it changes.
 
