@@ -19,7 +19,8 @@ public class ScaledIsPointInPath(
 ) : IsPointInPath {
 
     override fun isPointInPath(transform: Transform, path: Path, x: Float, y: Float): Boolean {
-        val nativePath = path.get(AndroidPathMarker).apply {
+        // Create a copy of the retrieved path because we need to mutate it.
+        val nativePath = android.graphics.Path(path.get(AndroidPathMarker)).apply {
             val matrix = Matrix().applyTransform(transform)
             transform(matrix)
         }
