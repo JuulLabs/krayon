@@ -1,6 +1,14 @@
+name-template: '$RESOLVED_VERSION'
+tag-template: '$RESOLVED_VERSION'
 categories:
-  - title: '🐛 Bug Fixes'
-    label: 'bug'
+  - title: '![Logo](https://user-images.githubusercontent.com/98017/187119315-a560cc0d-438d-4d4d-a8b5-8e362d9343b7.png) JVM'
+    label: 'jvm'
+  - title: '![Logo](https://user-images.githubusercontent.com/98017/187119262-704841c7-4c83-4a0a-b77a-6ff5a61760e6.png) Android'
+    label: 'android'
+  - title: '![Logo](https://user-images.githubusercontent.com/98017/187119291-220ce960-0bc3-41f2-bb6a-caa67c91dbc9.png) Apple'
+    label: 'apple'
+  - title: '![Logo](https://user-images.githubusercontent.com/98017/187119350-c2846176-40ec-4896-8763-a468abface99.png) JavaScript'
+    label: 'javascript'
   - title: '🧰 Maintenance'
     labels:
       - 'maintenance'
@@ -8,7 +16,15 @@ categories:
 change-template: '- $TITLE (#$NUMBER)'
 exclude-labels:
   - 'skip-changelog'
-template: |
-  ## 🚀 Changes
-  
-  $CHANGES
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
+template: $CHANGES
