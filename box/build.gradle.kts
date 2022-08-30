@@ -17,16 +17,16 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":axis"))
-                api(project(":color"))
-                api(project(":element"))
-                api(project(":hierarchy"))
-                api(project(":interpolate"))
-                api(project(":kanvas"))
-                api(project(":scale"))
-                api(project(":selection"))
-                api(project(":shape"))
-                api(project(":time"))
+                api(projects.axis)
+                api(projects.color)
+                api(projects.element)
+                api(projects.hierarchy)
+                api(projects.interpolate)
+                api(projects.kanvas)
+                api(projects.scale)
+                api(projects.selection)
+                api(projects.shape)
+                api(projects.time)
             }
         }
 
@@ -40,7 +40,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                api(project(":element-view"))
+                api(projects.elementView)
             }
         }
 
@@ -60,7 +60,7 @@ kotlin {
 
         val jsMain by getting {
             dependencies {
-                api(project(":element-view"))
+                api(projects.elementView)
             }
         }
 

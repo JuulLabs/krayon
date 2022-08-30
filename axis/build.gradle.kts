@@ -24,8 +24,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":scale"))
-                api(project(":selection"))
+                api(projects.scale)
+                api(projects.selection)
             }
         }
 

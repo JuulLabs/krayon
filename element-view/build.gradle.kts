@@ -15,7 +15,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":element"))
+                api(projects.element)
                 api(libs.coroutines.core)
             }
         }
