@@ -19,7 +19,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":box"))
+                implementation(projects.box)
                 implementation(kotlin("stdlib"))
                 implementation(libs.coroutines.core)
                 implementation(libs.datetime)
@@ -35,7 +35,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                implementation(project(":compose"))
+                implementation(projects.compose)
                 implementation(libs.androidx.activity.compose)
                 implementation(libs.androidx.appcompat)
                 implementation(libs.androidx.lifecycle.runtime)
@@ -56,7 +56,7 @@ kotlin {
 
         val desktopMain by getting {
             dependencies {
-                implementation(project(":compose"))
+                implementation(projects.compose)
                 implementation(compose.desktop.currentOs)
                 implementation(compose.preview)
             }

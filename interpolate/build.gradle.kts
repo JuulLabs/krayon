@@ -24,9 +24,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":kanvas"))
+                api(projects.kanvas)
                 api(libs.datetime)
-                implementation(project(":time"))
+                implementation(projects.time)
             }
         }
 
