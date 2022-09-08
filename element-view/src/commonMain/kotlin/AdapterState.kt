@@ -7,4 +7,5 @@ internal data class AdapterState<V : Any>(
     val root: RootElement,
     val width: Int,
     val height: Int,
+    val scale: Float = 1f,
 )
