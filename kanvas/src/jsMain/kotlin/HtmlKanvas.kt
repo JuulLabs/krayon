@@ -23,16 +23,23 @@ private val WHITESPACE = Regex("\\s")
 
 public class HtmlKanvas(
     element: HTMLCanvasElement,
+    private val scalingFactor: Float = 1f,
 ) : Kanvas, IsPointInPath {
 
     /** The raw HTMLCanvas's 2d rendering context. */
     public val context: CanvasRenderingContext2D = element.getContext("2d") as CanvasRenderingContext2D
 
     override val width: Float
-        get() = context.canvas.width.toFloat()
+        get() = context.canvas.width / scalingFactor
 
     override val height: Float
-        get() = context.canvas.height.toFloat()
+        get() = context.canvas.height / scalingFactor
+
+    init {
+        if (scalingFactor != 1f) {
+            pushTransform(Transform.Scale(scalingFactor, scalingFactor))
+        }
+    }
 
     override fun drawArc(
         left: Float,

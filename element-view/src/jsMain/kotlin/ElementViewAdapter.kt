@@ -35,8 +35,8 @@ public class ElementViewAdapter<T>(
      * The view changed size, so we should re-render the bitmap. When this happens, the RootElement
      * will be reset, so the render will have a clean slate.
      */
-    internal fun onSizeChanged(width: Int, height: Int) {
-        state.value = state.value.copy(root = RootElement(), width = width, height = height)
+    internal fun onSizeChanged(width: Int, height: Int, scale: Double) {
+        state.value = state.value.copy(root = RootElement(), width = width, height = height, scale = scale.toFloat())
     }
 
     internal fun onClick(x: Float, y: Float) {
@@ -78,12 +78,13 @@ public class ElementViewAdapter<T>(
             state.collectLatest { state ->
                 if (state.view == null) return@collectLatest
                 if (state.width == 0 || state.height == 0) return@collectLatest
-                val canvas = HtmlKanvas(state.view)
                 dataSource.collect { data ->
                     updater.update(state.root, state.width.toFloat(), state.height.toFloat(), data)
                     window.awaitAnimationFrame()
+                    val canvas = HtmlKanvas(state.view, state.scale)
                     canvas.context.clearRect(0.0, 0.0, state.width.toDouble(), state.height.toDouble())
                     state.root.draw(canvas)
+                    canvas.context.resetTransform()
                 }
             }
         }
