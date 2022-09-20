@@ -70,7 +70,8 @@ internal enum class Command(
     RelativeSmoothCubicTo(command = 's', numArgs = 4),
     RelativeQuadraticTo(command = 'q', numArgs = 4),
     RelativeSmoothQuadraticTo(command = 't', numArgs = 2),
-    RelativeArc(command = 'a', numArgs = 7);
+    RelativeArc(command = 'a', numArgs = 7),
+    ;
 }
 
 private val charToCommandCache = enumValues<Command>().associateBy { it.command }

@@ -47,7 +47,7 @@ enum class Letter {
     Eta,
     Theta,
     Iota,
-    Kappa
+    Kappa,
 }
 
 data class InteractiveTreeChart(

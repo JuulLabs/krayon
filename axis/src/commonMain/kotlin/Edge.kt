@@ -4,5 +4,5 @@ public enum class Edge {
     Left,
     Top,
     Right,
-    Bottom
+    Bottom,
 }
