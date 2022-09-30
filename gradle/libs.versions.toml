@@ -6,7 +6,7 @@ android-min = "21"
 compose = "1.2.0-alpha01-dev774"
 coroutines = "1.6.4"
 jacoco = "0.8.7"
-kotlin = "1.7.10"
+kotlin = "1.7.20"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.5.1" }
