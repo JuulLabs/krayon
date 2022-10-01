@@ -122,8 +122,8 @@ private fun getTypeface(context: Context, font: Font): Typeface =
                     sansSerif -> return@mapNotNull Typeface.SANS_SERIF
                     monospace -> return@mapNotNull Typeface.MONOSPACE
                     else -> fontResources.getOrPut(name) {
-                        @SuppressLint("DiscouragedApi") // Result of this expensive call is cached.
                         // Local variable so suppress annotation can be applied to specific line.
+                        @SuppressLint("DiscouragedApi") // Result of expensive `getIdentifier` call is cached.
                         val identifier = context.resources.getIdentifier(name, "font", context.packageName)
                         identifier
                     }
