@@ -1,5 +1,6 @@
 package com.juul.krayon.kanvas
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.DashPathEffect
@@ -121,7 +122,10 @@ private fun getTypeface(context: Context, font: Font): Typeface =
                     sansSerif -> return@mapNotNull Typeface.SANS_SERIF
                     monospace -> return@mapNotNull Typeface.MONOSPACE
                     else -> fontResources.getOrPut(name) {
-                        context.resources.getIdentifier(name, "font", context.packageName)
+                        // Local variable so suppress annotation can be applied to specific line.
+                        @SuppressLint("DiscouragedApi") // Result of expensive `getIdentifier` call is cached.
+                        val identifier = context.resources.getIdentifier(name, "font", context.packageName)
+                        identifier
                     }
                 }
             try {

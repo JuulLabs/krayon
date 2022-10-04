@@ -1,6 +1,6 @@
 [versions]
 agp = "7.3.0"
-android-compile = "android-32"
+android-compile = "android-33"
 android-target = "32"
 android-min = "21"
 compose = "1.2.0-alpha01-dev774"
