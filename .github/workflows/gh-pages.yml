@@ -32,7 +32,7 @@ jobs:
             ${{ runner.os }}-
 
       - run: ./gradlew dokkaHtmlMultiModule
-      - uses: JamesIves/github-pages-deploy-action@v4.4.0
+      - uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           folder: build/gh-pages
 
