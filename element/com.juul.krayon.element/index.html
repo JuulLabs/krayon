@@ -4,10 +4,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>com.juul.krayon.element</title>
 <link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -18,7 +26,8 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../scripts/main.js" defer></script>
-<script type="text/javascript" src="../../scripts/prism.js" async></script></head>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
     <div id="leftToggler"><span class="icon-toggler"></span></div>
@@ -38,9 +47,9 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageids="element::com.juul.krayon.element////PointingToDeclaration//-1535626007">
-  <div class="breadcrumbs"><a href="../index.html">element</a><span class="delimiter">/</span><a href="index.html">com.juul.krayon.element</a></div>
+  <div class="breadcrumbs"><a href="../index.html">element</a><span class="delimiter">/</span><span class="current">com.juul.krayon.element</span></div>
   <div class="cover ">
-    <h1 class="cover"><span><span>Package</span></span> <span>com.</span><wbr><span>juul.</span><wbr><span>krayon.</span><wbr><span>element</span></h1>
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Functions">Functions</button></div>
@@ -56,7 +65,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-circle-element/index.html">CircleElement</a> : <a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-circle-element/index.html">CircleElement</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-circle-element/index.html">CircleElement</a> : <a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-circle-element/index.html">CircleElement</a><span class="token operator">&gt; </span></div></div></div>
               </div>
             </div>
           </div>
@@ -71,7 +80,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-click-handler/index.html">ClickHandler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-click-handler/index.html">T</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Handler for click events.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-click-handler/index.html">ClickHandler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-click-handler/index.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Handler for click events.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -86,7 +95,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-element/index.html">Element</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-element/index.html">Element</a></div></div></div>
               </div>
             </div>
           </div>
@@ -101,7 +110,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-element-builder/index.html">ElementBuilder</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-element-builder/index.html">E</a><span class="token operator"> : </span><a href="-element/index.html">Element</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-element-builder/index.html">ElementBuilder</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-element-builder/index.html">E</a><span class="token operator"> : </span><a href="-element/index.html">Element</a><span class="token operator">&gt;</span></div></div></div>
               </div>
             </div>
           </div>
@@ -116,7 +125,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-element-selector/index.html">ElementSelector</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-element-selector/index.html">E</a><span class="token operator"> : </span><a href="-element/index.html">Element</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-element-selector/index.html">ElementSelector</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-element-selector/index.html">E</a><span class="token operator"> : </span><a href="-element/index.html">Element</a><span class="token operator">&gt;</span></div></div></div>
               </div>
             </div>
           </div>
@@ -131,7 +140,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-group-element/index.html">GroupElement</a> : <a href="-element/index.html">Element</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-group-element/index.html">GroupElement</a> : <a href="-element/index.html">Element</a></div></div></div>
               </div>
             </div>
           </div>
@@ -146,7 +155,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-hover-handler/index.html">HoverHandler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-hover-handler/index.html">T</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Handler for hover events.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-hover-handler/index.html">HoverHandler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-hover-handler/index.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Handler for hover events.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -161,7 +170,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-interactable-element/index.html">T</a><span class="token operator"> : </span><a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-interactable-element/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span> : <a href="-element/index.html">Element</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Subclasses of this are able to receive click and hover events inside of an <code class="lang-kotlin">ElementView</code>. These subclasses must implement <a href="-interactable-element/get-interaction-path.html">getInteractionPath</a> and the individual instances must have a non-null <a href="-interactable-element/on-click.html">onClick</a> or <a href="-interactable-element/on-hover-changed.html">onHoverChanged</a> handler set. These events are dispatched to the "top"-most element in the tree that would be able to fire, which occludes other elements below it.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-interactable-element/index.html">T</a><span class="token operator"> : </span><a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-interactable-element/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span> : <a href="-element/index.html">Element</a></div><div class="brief "><p class="paragraph">Subclasses of this are able to receive click and hover events inside of an <code class="lang-kotlin">ElementView</code>. These subclasses must implement <a href="-interactable-element/get-interaction-path.html">getInteractionPath</a> and the individual instances must have a non-null <a href="-interactable-element/on-click.html">onClick</a> or <a href="-interactable-element/on-hover-changed.html">onHoverChanged</a> handler set. These events are dispatched to the "top"-most element in the tree that would be able to fire, which occludes other elements below it.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -176,7 +185,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-kanvas-element/index.html">KanvasElement</a> : <a href="-element/index.html">Element</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Breakaway <a href="-element/index.html">Element</a> allowing for raw <a href="../../kanvas/com.juul.krayon.kanvas/-kanvas/index.html">Kanvas</a> drawing.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-kanvas-element/index.html">KanvasElement</a> : <a href="-element/index.html">Element</a></div><div class="brief "><p class="paragraph">Breakaway <a href="-element/index.html">Element</a> allowing for raw <a href="../../kanvas/com.juul.krayon.kanvas/-kanvas/index.html">Kanvas</a> drawing.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -191,7 +200,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-line-element/index.html">LineElement</a> : <a href="-element/index.html">Element</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-line-element/index.html">LineElement</a> : <a href="-element/index.html">Element</a></div></div></div>
               </div>
             </div>
           </div>
@@ -206,7 +215,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-path-element/index.html">PathElement</a> : <a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-path-element/index.html">PathElement</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-path-element/index.html">PathElement</a> : <a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-path-element/index.html">PathElement</a><span class="token operator">&gt; </span></div></div></div>
               </div>
             </div>
           </div>
@@ -221,7 +230,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-rectangle-element/index.html">RectangleElement</a> : <a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-rectangle-element/index.html">RectangleElement</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-rectangle-element/index.html">RectangleElement</a> : <a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-rectangle-element/index.html">RectangleElement</a><span class="token operator">&gt; </span></div></div></div>
               </div>
             </div>
           </div>
@@ -236,7 +245,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-root-element/index.html">RootElement</a> : <a href="-element/index.html">Element</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-root-element/index.html">RootElement</a> : <a href="-element/index.html">Element</a></div></div></div>
               </div>
             </div>
           </div>
@@ -251,7 +260,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-rounded-rectangle-element/index.html">RoundedRectangleElement</a> : <a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-rounded-rectangle-element/index.html">RoundedRectangleElement</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-rounded-rectangle-element/index.html">RoundedRectangleElement</a> : <a href="-interactable-element/index.html">InteractableElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-rounded-rectangle-element/index.html">RoundedRectangleElement</a><span class="token operator">&gt; </span></div></div></div>
               </div>
             </div>
           </div>
@@ -266,7 +275,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-text-element/index.html">TextElement</a> : <a href="-element/index.html">Element</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-text-element/index.html">TextElement</a> : <a href="-element/index.html">Element</a></div></div></div>
               </div>
             </div>
           </div>
@@ -281,7 +290,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-transform-element/index.html">TransformElement</a> : <a href="-element/index.html">Element</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-transform-element/index.html">TransformElement</a> : <a href="-element/index.html">Element</a></div></div></div>
               </div>
             </div>
           </div>
@@ -296,7 +305,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-update-element/index.html">UpdateElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-update-element/index.html">T</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-update-element/index.html">UpdateElement</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-update-element/index.html">T</a><span class="token operator">&gt;</span></div></div></div>
               </div>
             </div>
           </div>
@@ -313,7 +322,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="with-kind.html">E</a><span class="token operator"> : </span><a href="-element/index.html">Element</a><span class="token operator">&gt; </span><a href="-element-selector/index.html">ElementSelector</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="with-kind.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="with-kind.html"><span class="token function">withKind</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">kind<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-element-selector/index.html">ElementSelector</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="with-kind.html">E</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":element:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="with-kind.html">E</a><span class="token operator"> : </span><a href="-element/index.html">Element</a><span class="token operator">&gt; </span><a href="-element-selector/index.html">ElementSelector</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="with-kind.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="with-kind.html"><span class="token function">withKind</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">kind<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-element-selector/index.html">ElementSelector</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="with-kind.html">E</a><span class="token operator">&gt;</span></div></div></div>
               </div>
             </div>
           </div>
