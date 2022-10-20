@@ -80,11 +80,11 @@ public class ElementViewAdapter<T>(
                 if (state.width == 0 || state.height == 0) return@collectLatest
                 dataSource.collect { data ->
                     updater.update(state.root, state.width.toFloat(), state.height.toFloat(), data)
-                    window.awaitAnimationFrame()
                     val canvas = HtmlKanvas(state.view, state.scale)
                     canvas.context.clearRect(0.0, 0.0, state.width.toDouble(), state.height.toDouble())
                     state.root.draw(canvas)
                     canvas.context.resetTransform()
+                    window.awaitAnimationFrame()
                 }
             }
         }
