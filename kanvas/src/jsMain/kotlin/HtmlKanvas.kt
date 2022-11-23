@@ -290,6 +290,7 @@ private fun conicStartAngle(): Double {
     val offset = PI / 2
     val userAgent = window.navigator.userAgent.lowercase()
     return when {
+        userAgent.contains("bluefy") -> offset
         userAgent.contains("opera") -> 0.0
         userAgent.contains("edge") -> 0.0
         userAgent.contains("chrome") -> 0.0
