@@ -3,16 +3,16 @@ agp = "7.3.1"
 android-compile = "android-33"
 android-target = "32"
 android-min = "21"
-compose = "1.2.0"
+compose = "1.2.1"
 coroutines = "1.6.4"
 jacoco = "0.8.7"
 kotlin = "1.7.20"
 
 [libraries]
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.6.0" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.6.1" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.5.1" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.5.1" }
-androidx-test = { module = "androidx.test:core", version = "1.4.0" }
+androidx-test = { module = "androidx.test:core", version = "1.5.0" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
