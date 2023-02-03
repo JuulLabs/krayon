@@ -1,5 +1,5 @@
 [versions]
-agp = "7.4.0"
+agp = "7.4.1"
 android-compile = "android-33"
 android-target = "32"
 android-min = "21"
