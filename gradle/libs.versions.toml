@@ -10,7 +10,7 @@ kotlin = "1.8.10"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.6.1" }
-androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.6.0" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.5.1" }
 androidx-test = { module = "androidx.test:core", version = "1.5.0" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
@@ -31,4 +31,4 @@ java8 = { id = "net.mbonnin.one.eight", version = "0.2" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "3.13.0" }
 maven-publish = { id = "com.vanniktech.maven.publish", version = "0.24.0" }
-validator = { id = "binary-compatibility-validator", version = "0.8.0" }
+validator = { id = "binary-compatibility-validator", version = "0.13.0" }

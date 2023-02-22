@@ -8,6 +8,8 @@ public final class com/juul/krayon/hierarchy/Node {
 	public final fun getData ()Ljava/lang/Object;
 	public final fun getLayout ()Ljava/lang/Object;
 	public final fun getParent ()Lcom/juul/krayon/hierarchy/Node;
+	public final fun getWeight ()F
+	public final fun setWeight (F)V
 }
 
 public final class com/juul/krayon/hierarchy/NodeKt {
