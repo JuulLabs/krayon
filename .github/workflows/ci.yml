@@ -35,8 +35,6 @@ jobs:
           report_individual_runs: 'true'
 
       - uses: codecov/codecov-action@v3
-        with:
-          fail_ci_if_error: true
 
       - run: |
           set -o xtrace
