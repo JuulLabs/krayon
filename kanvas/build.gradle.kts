@@ -1,3 +1,6 @@
+import kotlinx.atomicfu.plugin.gradle.whenEvaluated
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
@@ -19,9 +22,9 @@ kotlin {
     android { publishAllLibraryVariants() }
     jvm()
     js().browser()
+    iosArm64()
     macosArm64()
     macosX64()
-    iosArm64()
 
     sourceSets {
         val commonMain by getting {
@@ -65,6 +68,29 @@ kotlin {
                 implementation(kotlin("test-js"))
             }
         }
+
+        val nativeDarwinMain by creating {
+            dependsOn(commonMain)
+        }
+
+        val iosArm64Main by getting {
+            dependsOn(nativeDarwinMain)
+        }
+
+        val macosArm64Main by getting {
+            dependsOn(nativeDarwinMain)
+        }
+
+        val macosX64Main by getting {
+            dependsOn(nativeDarwinMain)
+        }
+    }
+}
+
+// TODO: See if there's a better way of publishing this for local use in xcode sample
+kotlinArtifacts {
+    Native.XCFramework("krayon") {
+        targets(macosArm64)
     }
 }
 
