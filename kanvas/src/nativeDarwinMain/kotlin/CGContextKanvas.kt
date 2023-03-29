@@ -104,33 +104,33 @@ public class CGContextKanvas(
     override fun pushTransform(transform: Transform) {
         CGContextSaveGState(unmanagedContext)
         fun Transform.applyToCurrentTransformationMatrix() {
-            when (transform) {
+            when (this) {
                 is Transform.InOrder -> {
-                    transform.transformations.forEach { it.applyToCurrentTransformationMatrix() }
+                    transformations.forEach { it.applyToCurrentTransformationMatrix() }
                 }
 
-                is Transform.Scale -> if (transform.pivotX == 0f && transform.pivotY == 0f) {
-                    CGContextScaleCTM(unmanagedContext, transform.horizontal.toDouble(), transform.vertical.toDouble())
+                is Transform.Scale -> if (pivotX == 0f && pivotY == 0f) {
+                    CGContextScaleCTM(unmanagedContext, horizontal.toDouble(), vertical.toDouble())
                 } else {
-                    transform.split().applyToCurrentTransformationMatrix()
+                    split().applyToCurrentTransformationMatrix()
                 }
 
-                is Transform.Rotate -> if (transform.pivotX == 0f && transform.pivotY == 0f) {
-                    CGContextRotateCTM(unmanagedContext, transform.degrees * PI / 180)
+                is Transform.Rotate -> if (pivotX == 0f && pivotY == 0f) {
+                    CGContextRotateCTM(unmanagedContext, degrees * PI / 180)
                 } else {
-                    transform.split().applyToCurrentTransformationMatrix()
+                    split().applyToCurrentTransformationMatrix()
                 }
 
                 is Transform.Translate -> {
-                    CGContextTranslateCTM(unmanagedContext, transform.horizontal.toDouble(), transform.vertical.toDouble())
+                    CGContextTranslateCTM(unmanagedContext, horizontal.toDouble(), vertical.toDouble())
                 }
 
                 is Transform.Skew -> {
                     // TODO: Test this. Matrix params copy-pasted from HTML's version.
                     val skewMatrix = CGAffineTransformMake(
                         a = 1.0,
-                        b = transform.vertical.toDouble(),
-                        c = transform.horizontal.toDouble(),
+                        b = vertical.toDouble(),
+                        c = horizontal.toDouble(),
                         d = 1.0,
                         tx = 0.0,
                         ty = 0.0,
