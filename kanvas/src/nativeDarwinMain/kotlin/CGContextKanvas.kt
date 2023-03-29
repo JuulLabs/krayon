@@ -3,15 +3,18 @@ package com.juul.krayon.kanvas
 import com.juul.krayon.color.Color
 import kotlinx.cinterop.CPointerVarOf
 import kotlinx.cinterop.value
+import platform.CoreGraphics.CGAffineTransformMake
 import platform.CoreGraphics.CGContextAddPath
 import platform.CoreGraphics.CGContextBeginPath
 import platform.CoreGraphics.CGContextClip
-import platform.CoreGraphics.CGContextDrawPath
-import platform.CoreGraphics.CGContextFillRect
+import platform.CoreGraphics.CGContextConcatCTM
 import platform.CoreGraphics.CGContextRef
 import platform.CoreGraphics.CGContextRestoreGState
+import platform.CoreGraphics.CGContextRotateCTM
 import platform.CoreGraphics.CGContextSaveGState
-import platform.CoreGraphics.CGRectMake
+import platform.CoreGraphics.CGContextScaleCTM
+import platform.CoreGraphics.CGContextTranslateCTM
+import kotlin.math.PI
 
 /**
  * It is the calling code's responsibility to ensure that [unmanagedContext] outlives this object.
@@ -100,7 +103,43 @@ public class CGContextKanvas(
 
     override fun pushTransform(transform: Transform) {
         CGContextSaveGState(unmanagedContext)
-        TODO("Not yet implemented")
+        fun Transform.applyToCurrentTransformationMatrix() {
+            when (transform) {
+                is Transform.InOrder -> {
+                    transform.transformations.forEach { it.applyToCurrentTransformationMatrix() }
+                }
+
+                is Transform.Scale -> if (transform.pivotX == 0f && transform.pivotY == 0f) {
+                    CGContextScaleCTM(unmanagedContext, transform.horizontal.toDouble(), transform.vertical.toDouble())
+                } else {
+                    transform.split().applyToCurrentTransformationMatrix()
+                }
+
+                is Transform.Rotate -> if (transform.pivotX == 0f && transform.pivotY == 0f) {
+                    CGContextRotateCTM(unmanagedContext, transform.degrees * PI / 180)
+                } else {
+                    transform.split().applyToCurrentTransformationMatrix()
+                }
+
+                is Transform.Translate -> {
+                    CGContextTranslateCTM(unmanagedContext, transform.horizontal.toDouble(), transform.vertical.toDouble())
+                }
+
+                is Transform.Skew -> {
+                    // TODO: Test this. Matrix params copy-pasted from HTML's version.
+                    val skewMatrix = CGAffineTransformMake(
+                        a = 1.0,
+                        b = transform.vertical.toDouble(),
+                        c = transform.horizontal.toDouble(),
+                        d = 1.0,
+                        tx = 0.0,
+                        ty = 0.0,
+                    )
+                    CGContextConcatCTM(unmanagedContext, skewMatrix)
+                }
+            }
+        }
+        transform.applyToCurrentTransformationMatrix()
     }
 
     override fun pop() {

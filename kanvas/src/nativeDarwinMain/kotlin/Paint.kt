@@ -12,6 +12,7 @@ import platform.CoreGraphics.CGContextClip
 import platform.CoreGraphics.CGContextDrawLinearGradient
 import platform.CoreGraphics.CGContextDrawRadialGradient
 import platform.CoreGraphics.CGContextFillPath
+import platform.CoreGraphics.CGContextGetInterpolationQuality
 import platform.CoreGraphics.CGContextMoveToPoint
 import platform.CoreGraphics.CGContextRef
 import platform.CoreGraphics.CGContextRestoreGState
@@ -32,6 +33,8 @@ import platform.CoreGraphics.CGLineJoin
 import platform.CoreGraphics.CGPointMake
 import platform.CoreGraphics.kCGGradientDrawsAfterEndLocation
 import platform.CoreGraphics.kCGGradientDrawsBeforeStartLocation
+import platform.CoreGraphics.kCGInterpolationLow
+import platform.CoreGraphics.kCGInterpolationMedium
 import kotlin.math.PI
 import kotlin.math.ceil
 import kotlin.math.cos
@@ -85,9 +88,11 @@ private fun drawConicGradient(context: CGContextRef, paint: Paint.Gradient.Sweep
     val sweeps = paint.stops.asSequence().zipWithNext()
     for ((start, end) in sweeps) {
         val distance = end.offset - start.offset
-        // Using 256 bands should be pretty close to perfect due to 8 bit color channels, but there
-        // might be a happier medium using fewer segments.
-        val approxTotalSegmentCount = 256
+        val approxTotalSegmentCount = when (CGContextGetInterpolationQuality(context)) {
+            kCGInterpolationLow -> 64
+            kCGInterpolationMedium -> 128
+            else -> 256 // Enough segments to fit an 8-bit color channel across the sweep without banding
+        }
         val segmentCount = ceil(distance * approxTotalSegmentCount).toInt().coerceAtLeast(3)
         val segmentWidth = distance / segmentCount
         CGContextSetShouldAntialias(context, false)
