@@ -1,45 +1,43 @@
 package com.juul.krayon.kanvas
 
+import kotlinx.cinterop.refTo
+import platform.CoreGraphics.CGContextFillPath
 import platform.CoreGraphics.CGContextRef
+import platform.CoreGraphics.CGContextSetLineCap
+import platform.CoreGraphics.CGContextSetLineDash
+import platform.CoreGraphics.CGContextSetLineJoin
+import platform.CoreGraphics.CGContextSetLineWidth
 import platform.CoreGraphics.CGContextSetRGBFillColor
 import platform.CoreGraphics.CGContextSetRGBStrokeColor
+import platform.CoreGraphics.CGContextStrokePath
+import platform.CoreGraphics.CGLineCap
+import platform.CoreGraphics.CGLineJoin
 import platform.CoreGraphics.CGPathDrawingMode
 import platform.CoreGraphics.CGTextDrawingMode
+import platform.QuartzCore.CAGradientLayer
+import platform.QuartzCore.CAGradientLayerType
+import platform.QuartzCore.kCAGradientLayerConic
 
-internal val Paint.pathDrawingMode: CGPathDrawingMode
-    get() = when (this) {
-        is Paint.FillAndStroke, is Paint.GradientAndStroke -> CGPathDrawingMode.kCGPathFillStroke
-        is Paint.Fill, is Paint.Gradient -> CGPathDrawingMode.kCGPathFill
-        is Paint.Stroke -> CGPathDrawingMode.kCGPathStroke
-        else -> error("`pathDrawingMode` must not be called on `Paint.Text`, but was `$this`.")
-    }
-
-internal val Paint.textDrawingMode: CGTextDrawingMode
-    get() = when (this) {
-        is Paint.Text -> CGTextDrawingMode.kCGTextFill
-        else -> error("`textDrawingMode` must only be called on `Paint.Text`, but was `$this`.")
-    }
-
-internal fun Paint.applyTo(context: CGContextRef) {
+internal fun Paint.drawCurrentPath(context: CGContextRef) {
     when (this) {
         is Paint.FillAndStroke -> {
-            applyFill(context, fill)
-            applyStroke(context, stroke)
+            drawCurrentPathFill(context, fill)
+            drawCurrentPathStroke(context, stroke)
         }
 
         is Paint.GradientAndStroke -> {
-            applyGradient(context, gradient)
-            applyStroke(context, stroke)
+            drawCurrentPathGradient(context, gradient)
+            drawCurrentPathStroke(context, stroke)
         }
 
-        is Paint.Fill -> applyFill(context, this)
-        is Paint.Gradient -> applyGradient(context, this)
-        is Paint.Stroke -> applyStroke(context, this)
-        is Paint.Text -> applyText(context, this)
+        is Paint.Fill -> drawCurrentPathFill(context, this)
+        is Paint.Gradient -> drawCurrentPathGradient(context, this)
+        is Paint.Stroke -> drawCurrentPathStroke(context, this)
+        is Paint.Text -> error("`drawCurrentPath` must not be called on `Paint.Text`, but was `$this`.")
     }
 }
 
-private fun applyFill(context: CGContextRef, paint: Paint.Fill) {
+private fun drawCurrentPathFill(context: CGContextRef, paint: Paint.Fill) {
     CGContextSetRGBFillColor(
         context,
         paint.color.red / 255.0,
@@ -47,24 +45,51 @@ private fun applyFill(context: CGContextRef, paint: Paint.Fill) {
         paint.color.blue / 255.0,
         paint.color.alpha / 255.0,
     )
+    CGContextFillPath(context)
 }
 
-private fun applyGradient(context: CGContextRef, paint: Paint.Gradient) {
+private fun drawCurrentPathGradient(context: CGContextRef, paint: Paint.Gradient) {
+    // TODO: Actually implement gradients. Unfortunately, Core Graphics doesn't have conic gradients,
+    //       so those will have a different code path. Dodging all that complexity with a placeholder
+    drawCurrentPathFill(context, Paint.Fill(paint.stops.first().color))
 }
 
-private fun applyStroke(context: CGContextRef, paint: Paint.Stroke) {
-    try {
-        CGContextSetRGBStrokeColor(
-            context,
-            paint.color.red / 255.0,
-            paint.color.green / 255.0,
-            paint.color.blue / 255.0,
-            paint.color.alpha / 255.0,
-        )
-    } catch (e: Exception) {
-        throw RuntimeException("Set stroke failed", e)
+private fun drawCurrentPathStroke(context: CGContextRef, paint: Paint.Stroke) {
+    CGContextSetRGBStrokeColor(
+        context,
+        paint.color.red / 255.0,
+        paint.color.green / 255.0,
+        paint.color.blue / 255.0,
+        paint.color.alpha / 255.0,
+    )
+    CGContextSetLineWidth(context, paint.width.toDouble())
+    CGContextSetLineCap(
+        context,
+        cap = when (paint.cap) {
+            Paint.Stroke.Cap.Butt -> CGLineCap.kCGLineCapButt
+            Paint.Stroke.Cap.Round -> CGLineCap.kCGLineCapRound
+            Paint.Stroke.Cap.Square -> CGLineCap.kCGLineCapSquare
+        },
+    )
+    CGContextSetLineJoin(
+        context,
+        join = when (paint.join) {
+            Paint.Stroke.Join.Round -> CGLineJoin.kCGLineJoinRound
+            Paint.Stroke.Join.Bevel -> CGLineJoin.kCGLineJoinMiter
+            is Paint.Stroke.Join.Miter -> CGLineJoin.kCGLineJoinMiter
+            else -> error("Unreachable.")
+        },
+    )
+    val dashPattern = when (paint.dash) {
+        Paint.Stroke.Dash.None -> null
+        is Paint.Stroke.Dash.Pattern -> paint.dash.intervals.map { it.toDouble() }.toDoubleArray()
+        else -> error("Unreachable.")
     }
-}
-
-private fun applyText(context: CGContextRef, paint: Paint.Text) {
+    CGContextSetLineDash(
+        context,
+        phase = 0.0,
+        lengths = dashPattern?.refTo(0),
+        count = (dashPattern?.size ?: 0).toULong()
+    )
+    CGContextStrokePath(context)
 }

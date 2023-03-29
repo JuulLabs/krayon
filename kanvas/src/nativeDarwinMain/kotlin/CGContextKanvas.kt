@@ -46,9 +46,7 @@ public class CGContextKanvas(
     }
 
     override fun drawColor(color: Color) {
-        val paint = Paint.Fill(color)
-        paint.applyTo(unmanagedContext)
-        CGContextFillRect(unmanagedContext, CGRectMake(0.0, 0.0, width.toDouble(), height.toDouble()))
+        drawRect(0f, 0f, width, height, Paint.Fill(color))
     }
 
     override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: Paint) {
@@ -70,13 +68,11 @@ public class CGContextKanvas(
     override fun drawPath(path: Path, paint: Paint) {
         require(paint !is Paint.Text) { "`drawPath` must not be called with `Paint.Text`, but was $paint." }
 
-        paint.applyTo(unmanagedContext)
-
         CGContextBeginPath(unmanagedContext)
         path.withCGPath { cgPath ->
             CGContextAddPath(unmanagedContext, cgPath)
         }
-        CGContextDrawPath(unmanagedContext, paint.pathDrawingMode)
+        paint.drawCurrentPath(unmanagedContext)
     }
 
     override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
