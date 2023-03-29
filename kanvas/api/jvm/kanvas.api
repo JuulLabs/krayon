@@ -1,4 +1,5 @@
 public abstract class com/juul/krayon/kanvas/Clip {
+	public abstract fun getPath ()Lcom/juul/krayon/kanvas/Path;
 }
 
 public final class com/juul/krayon/kanvas/Clip$Path : com/juul/krayon/kanvas/Clip {
@@ -7,7 +8,7 @@ public final class com/juul/krayon/kanvas/Clip$Path : com/juul/krayon/kanvas/Cli
 	public final fun copy (Lcom/juul/krayon/kanvas/Path;)Lcom/juul/krayon/kanvas/Clip$Path;
 	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/Clip$Path;Lcom/juul/krayon/kanvas/Path;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Clip$Path;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getPath ()Lcom/juul/krayon/kanvas/Path;
+	public fun getPath ()Lcom/juul/krayon/kanvas/Path;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -23,6 +24,7 @@ public final class com/juul/krayon/kanvas/Clip$Rect : com/juul/krayon/kanvas/Cli
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getBottom ()F
 	public final fun getLeft ()F
+	public fun getPath ()Lcom/juul/krayon/kanvas/Path;
 	public final fun getRight ()F
 	public final fun getTop ()F
 	public fun hashCode ()I
@@ -285,6 +287,7 @@ public final class com/juul/krayon/kanvas/PaintKt {
 
 public final class com/juul/krayon/kanvas/Path {
 	public fun <init> (Lkotlin/jvm/functions/Function1;)V
+	public final fun buildWith (Lcom/juul/krayon/kanvas/PathBuilder;)Ljava/lang/Object;
 	public final fun get (Lcom/juul/krayon/kanvas/PathTypeMarker;)Ljava/lang/Object;
 }
 

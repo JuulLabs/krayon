@@ -1,6 +1,3 @@
-import kotlinx.atomicfu.plugin.gradle.whenEvaluated
-import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
-
 plugins {
     id("com.android.library")
     kotlin("multiplatform")

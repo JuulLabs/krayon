@@ -1,6 +1,5 @@
 package com.juul.krayon.kanvas
 
-import com.juul.krayon.kanvas.Path
 import com.juul.krayon.kanvas.Path as KrayonPath
 
 /** Describes an area to be included or excluded in future draw calls. */

@@ -1,6 +1,5 @@
 package com.juul.krayon.kanvas
 
-import kotlinx.cinterop.CPointer
 import platform.CoreGraphics.CGAffineTransformMakeScale
 import platform.CoreGraphics.CGMutablePathRef
 import platform.CoreGraphics.CGPathAddCurveToPoint
