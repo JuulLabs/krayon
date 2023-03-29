@@ -1,17 +1,18 @@
 package com.juul.krayon.kanvas
 
+import com.juul.krayon.color.Color
+import com.juul.krayon.color.lerp
 import kotlinx.cinterop.refTo
-import platform.CoreGraphics.CGColorCreate
-import platform.CoreGraphics.CGColorRelease
 import platform.CoreGraphics.CGColorSpaceCreateDeviceRGB
-import platform.CoreGraphics.CGColorSpaceGetNumberOfComponents
 import platform.CoreGraphics.CGColorSpaceRef
 import platform.CoreGraphics.CGColorSpaceRelease
+import platform.CoreGraphics.CGContextAddLineToPoint
+import platform.CoreGraphics.CGContextBeginPath
 import platform.CoreGraphics.CGContextClip
-import platform.CoreGraphics.CGContextCopyPath
 import platform.CoreGraphics.CGContextDrawLinearGradient
 import platform.CoreGraphics.CGContextDrawRadialGradient
 import platform.CoreGraphics.CGContextFillPath
+import platform.CoreGraphics.CGContextMoveToPoint
 import platform.CoreGraphics.CGContextRef
 import platform.CoreGraphics.CGContextRestoreGState
 import platform.CoreGraphics.CGContextSaveGState
@@ -21,20 +22,20 @@ import platform.CoreGraphics.CGContextSetLineJoin
 import platform.CoreGraphics.CGContextSetLineWidth
 import platform.CoreGraphics.CGContextSetRGBFillColor
 import platform.CoreGraphics.CGContextSetRGBStrokeColor
+import platform.CoreGraphics.CGContextSetShouldAntialias
 import platform.CoreGraphics.CGContextStrokePath
 import platform.CoreGraphics.CGGradientCreateWithColorComponents
 import platform.CoreGraphics.CGGradientRef
 import platform.CoreGraphics.CGGradientRelease
 import platform.CoreGraphics.CGLineCap
 import platform.CoreGraphics.CGLineJoin
-import platform.CoreGraphics.CGPathGetBoundingBox
-import platform.CoreGraphics.CGPathRef
-import platform.CoreGraphics.CGPathRelease
 import platform.CoreGraphics.CGPointMake
 import platform.CoreGraphics.kCGGradientDrawsAfterEndLocation
 import platform.CoreGraphics.kCGGradientDrawsBeforeStartLocation
-import platform.QuartzCore.CAGradientLayer
-import platform.QuartzCore.kCAGradientLayerConic
+import kotlin.math.PI
+import kotlin.math.ceil
+import kotlin.math.cos
+import kotlin.math.sin
 
 internal fun Paint.drawCurrentPath(context: CGContextRef) {
     when (this) {
@@ -67,43 +68,43 @@ private fun drawCurrentPathFill(context: CGContextRef, paint: Paint.Fill) {
 }
 
 private fun drawCurrentPathGradient(context: CGContextRef, paint: Paint.Gradient) {
-    // FIXME: Path copy could be dodged on linear/radial
-    val path = CGContextCopyPath(context)!!
-    try {
-        CGContextSaveGState(context)
-        CGContextClip(context)
-        when (paint) {
-            is Paint.Gradient.Linear -> drawLinearGradient(context, paint)
-            is Paint.Gradient.Radial -> drawRadialGradient(context, paint)
-            is Paint.Gradient.Sweep -> drawConicGradient(context, paint, path)
-        }
-        CGContextRestoreGState(context)
-    } finally {
-        CGPathRelease(path)
+    CGContextSaveGState(context)
+    CGContextClip(context)
+    when (paint) {
+        is Paint.Gradient.Linear -> drawLinearGradient(context, paint)
+        is Paint.Gradient.Radial -> drawRadialGradient(context, paint)
+        is Paint.Gradient.Sweep -> drawConicGradient(context, paint)
     }
+    CGContextRestoreGState(context)
 }
 
-private fun drawConicGradient(context: CGContextRef, paint: Paint.Gradient.Sweep, path: CGPathRef) {
-    val components = paint.stops.map { stop ->
-        doubleArrayOf(
-            stop.color.red / 255.0,
-            stop.color.green / 255.0,
-            stop.color.blue / 255.0,
-            stop.color.alpha / 255.0,
-        )
-    }
-    val colors = withCGColorSpaceDeviceRGB { colorspace ->
-        components.map { CGColorCreate(colorspace, it.refTo(0)) }
-    }
-    try {
-        val layer = CAGradientLayer()
-        layer.type = kCAGradientLayerConic
-        layer.colors = colors
-        layer.locations = paint.stops.map { it.offset.toDouble() }
-        layer.setFrame(CGPathGetBoundingBox(path))
-        layer.renderInContext(context)
-    } finally {
-        colors.forEach(::CGColorRelease)
+private fun drawConicGradient(context: CGContextRef, paint: Paint.Gradient.Sweep) {
+    // FIXME: It might be possible to use CAGradientLayer, but I couldn't get that working.
+    //  TODO: See if iOS works -- the docs only put the warning for OS X specifically.
+    // Approximate by splitting into a bunch of triangles around the center point.
+    val sweeps = paint.stops.asSequence().zipWithNext()
+    for ((start, end) in sweeps) {
+        val distance = end.offset - start.offset
+        // Using 256 bands should be pretty close to perfect due to 8 bit color channels, but there
+        // might be a happier medium using fewer segments.
+        val approxTotalSegmentCount = 256
+        val segmentCount = ceil(distance * approxTotalSegmentCount).toInt().coerceAtLeast(3)
+        val segmentWidth = distance / segmentCount
+        CGContextSetShouldAntialias(context, false)
+        for (segment in 0 until segmentCount) {
+            val color = lerp(start.color, end.color, segment.toFloat() / (segmentCount - 1f))
+            val segmentOffsetStart = start.offset + segmentWidth * segment
+            val segmentOffsetEnd = segmentOffsetStart + segmentWidth
+            CGContextBeginPath(context)
+            val angleStart = (PI / 2) - (segmentOffsetStart * 2 * PI)
+            val angleEnd = (PI / 2) - (segmentOffsetEnd * 2 * PI)
+            CGContextMoveToPoint(context, paint.centerX.toDouble(), paint.centerY.toDouble())
+            val radius = 100_000 // Any large number works. Goal is to shoot off the edges of the context.
+            CGContextAddLineToPoint(context, paint.centerX + cos(angleStart) * radius, paint.centerY + sin(angleStart) * radius)
+            CGContextAddLineToPoint(context, paint.centerX + cos(angleEnd) * radius, paint.centerY + sin(angleEnd) * radius)
+            drawCurrentPathFill(context, Paint.Fill(color))
+        }
+        CGContextSetShouldAntialias(context, true)
     }
 }
 
@@ -181,12 +182,7 @@ private inline fun withCGGradientRef(
 ) {
     withCGColorSpaceDeviceRGB { colorspace ->
         val components = stops.flatMap { stop ->
-            listOf(
-                stop.color.red / 255.0,
-                stop.color.green / 255.0,
-                stop.color.blue / 255.0,
-                stop.color.alpha / 255.0,
-            )
+            stop.color.getComponents().asIterable()
         }.toDoubleArray()
         val locations = stops.map { it.offset.toDouble() }.toDoubleArray()
         val gradient = CGGradientCreateWithColorComponents(
@@ -207,12 +203,12 @@ private inline fun <T> withCGColorSpaceDeviceRGB(
     crossinline actions: (CGColorSpaceRef) -> T,
 ): T {
     val colorspace = CGColorSpaceCreateDeviceRGB()!!
-    check(CGColorSpaceGetNumberOfComponents(colorspace).toInt() == 4) {
-        "Unexpected number of components. Expected `4` but was `${CGColorSpaceGetNumberOfComponents(colorspace)}`."
-    }
     try {
         return actions(colorspace)
     } finally {
         CGColorSpaceRelease(colorspace)
     }
 }
+
+private fun Color.getComponents(): DoubleArray =
+    doubleArrayOf(red / 255.0, green / 255.0, blue / 255.0, alpha / 255.0)
