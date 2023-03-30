@@ -101,8 +101,8 @@ private fun drawConicGradient(context: CGContextRef, paint: Paint.Gradient.Sweep
             val segmentOffsetStart = start.offset + segmentWidth * segment
             val segmentOffsetEnd = segmentOffsetStart + segmentWidth
             CGContextBeginPath(context)
-            val angleStart = (PI / 2) - (segmentOffsetStart * 2 * PI)
-            val angleEnd = (PI / 2) - (segmentOffsetEnd * 2 * PI)
+            val angleStart = segmentOffsetStart * 2 * PI
+            val angleEnd = segmentOffsetEnd * 2 * PI
             CGContextMoveToPoint(context, paint.centerX.toDouble(), paint.centerY.toDouble())
             val radius = 100_000 // Any large number works. Goal is to shoot off the edges of the context.
             CGContextAddLineToPoint(context, paint.centerX + cos(angleStart) * radius, paint.centerY + sin(angleStart) * radius)

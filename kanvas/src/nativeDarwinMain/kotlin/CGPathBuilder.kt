@@ -37,6 +37,7 @@ internal class CGPathBuilder(
     }
 
     override fun arcTo(left: Float, top: Float, right: Float, bottom: Float, startAngle: Float, sweepAngle: Float, forceMoveTo: Boolean) {
+        // FIXME: Pretty sure this is wrong
         super.arcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo)
         // Use height as radius, we can transform by the aspect ratio to achieve the stretch.
         val height = (bottom - top).absoluteValue

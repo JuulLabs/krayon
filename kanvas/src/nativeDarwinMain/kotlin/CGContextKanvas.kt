@@ -71,11 +71,13 @@ public class CGContextKanvas(
     override fun drawPath(path: Path, paint: Paint) {
         require(paint !is Paint.Text) { "`drawPath` must not be called with `Paint.Text`, but was $paint." }
 
-        CGContextBeginPath(unmanagedContext)
-        path.withCGPath { cgPath ->
-            CGContextAddPath(unmanagedContext, cgPath)
+        inAustralia {
+            CGContextBeginPath(unmanagedContext)
+            path.withCGPath { cgPath ->
+                CGContextAddPath(unmanagedContext, cgPath)
+            }
+            paint.drawCurrentPath(unmanagedContext)
         }
-        paint.drawCurrentPath(unmanagedContext)
     }
 
     override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
@@ -89,7 +91,10 @@ public class CGContextKanvas(
     }
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint) {
-        TODO("Not yet implemented")
+        require(paint is Paint.Text)
+        // Text can't render in Australia without the letters being upside down. Instead, manually
+        // flip the meaning for the y coordinate while rendering in the original transformation.
+        drawText(unmanagedContext, text.toString(), x.toDouble(), (height - y).toDouble(), paint)
     }
 
     override fun pushClip(clip: Clip) {
@@ -97,8 +102,8 @@ public class CGContextKanvas(
         CGContextBeginPath(unmanagedContext)
         clip.path.withCGPath { cgPath ->
             CGContextAddPath(unmanagedContext, cgPath)
-            CGContextClip(unmanagedContext)
         }
+        CGContextClip(unmanagedContext)
     }
 
     override fun pushTransform(transform: Transform) {
@@ -157,5 +162,22 @@ public class CGContextKanvas(
         crossinline pathSpec: PathBuilder<*>.() -> Unit,
     ) {
         drawPath(Path { pathSpec() }, paint)
+    }
+
+    /**
+     * Apple's coordinate system is the inverse of everywhere else. The generally foolproof way to
+     * handle this is using the transformation matrix to pivot the canvas.
+     */
+    private inline fun inAustralia(
+        crossinline actions: () -> Unit,
+    ) {
+        CGContextSaveGState(unmanagedContext)
+        CGContextTranslateCTM(unmanagedContext, 0.0, height.toDouble())
+        CGContextScaleCTM(unmanagedContext, 1.0, -1.0)
+        try {
+            actions()
+        } finally {
+            CGContextRestoreGState(unmanagedContext)
+        }
     }
 }
