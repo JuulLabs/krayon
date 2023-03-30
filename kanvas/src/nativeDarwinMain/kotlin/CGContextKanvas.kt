@@ -127,7 +127,7 @@ public class CGContextKanvas(
                 }
 
                 is Transform.Translate -> {
-                    CGContextTranslateCTM(unmanagedContext, horizontal.toDouble(), vertical.toDouble())
+                    CGContextTranslateCTM(unmanagedContext, horizontal.toDouble(), -vertical.toDouble())
                 }
 
                 is Transform.Skew -> {
