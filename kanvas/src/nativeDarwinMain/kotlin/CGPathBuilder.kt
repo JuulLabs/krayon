@@ -2,10 +2,10 @@ package com.juul.krayon.kanvas
 
 import platform.CoreGraphics.CGAffineTransformMakeScale
 import platform.CoreGraphics.CGMutablePathRef
+import platform.CoreGraphics.CGPathAddArc
 import platform.CoreGraphics.CGPathAddCurveToPoint
 import platform.CoreGraphics.CGPathAddLineToPoint
 import platform.CoreGraphics.CGPathAddQuadCurveToPoint
-import platform.CoreGraphics.CGPathAddRelativeArc
 import platform.CoreGraphics.CGPathCloseSubpath
 import platform.CoreGraphics.CGPathCreateCopy
 import platform.CoreGraphics.CGPathCreateMutable
@@ -37,20 +37,18 @@ internal class CGPathBuilder(
     }
 
     override fun arcTo(left: Float, top: Float, right: Float, bottom: Float, startAngle: Float, sweepAngle: Float, forceMoveTo: Boolean) {
-        // FIXME: Pretty sure this is wrong
         super.arcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo)
-        // Use height as radius, we can transform by the aspect ratio to achieve the stretch.
         val height = (bottom - top).absoluteValue
         val aspect = (right - left).absoluteValue / height
-        CGPathAddRelativeArc(
+        CGPathAddArc(
             buffer,
-            matrix = CGAffineTransformMakeScale(sx = aspect.toDouble(), sy = 1.0),
-            // TODO: Check if I need to scale x by the inverse transform
-            x = (right - left) / 2.0,
+            m = CGAffineTransformMakeScale(aspect.toDouble(), 1.0),
+            x = (right - left) / 2.0 / aspect,
             y = (bottom - top) / 2.0,
-            radius = height.toDouble(),
+            radius = height / 2.0,
             startAngle = startAngle * PI / 180,
-            delta = sweepAngle * PI / 180,
+            endAngle = (startAngle + sweepAngle) * PI / 180,
+            clockwise = sweepAngle < 0,
         )
     }
 

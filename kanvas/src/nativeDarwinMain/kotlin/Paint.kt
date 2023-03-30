@@ -7,8 +7,10 @@ import platform.CoreGraphics.CGColorSpaceCreateDeviceRGB
 import platform.CoreGraphics.CGColorSpaceRef
 import platform.CoreGraphics.CGColorSpaceRelease
 import platform.CoreGraphics.CGContextAddLineToPoint
+import platform.CoreGraphics.CGContextAddPath
 import platform.CoreGraphics.CGContextBeginPath
 import platform.CoreGraphics.CGContextClip
+import platform.CoreGraphics.CGContextCopyPath
 import platform.CoreGraphics.CGContextDrawLinearGradient
 import platform.CoreGraphics.CGContextDrawRadialGradient
 import platform.CoreGraphics.CGContextFillPath
@@ -30,6 +32,7 @@ import platform.CoreGraphics.CGGradientRef
 import platform.CoreGraphics.CGGradientRelease
 import platform.CoreGraphics.CGLineCap
 import platform.CoreGraphics.CGLineJoin
+import platform.CoreGraphics.CGPathRelease
 import platform.CoreGraphics.CGPointMake
 import platform.CoreGraphics.kCGGradientDrawsAfterEndLocation
 import platform.CoreGraphics.kCGGradientDrawsBeforeStartLocation
@@ -43,12 +46,26 @@ import kotlin.math.sin
 internal fun Paint.drawCurrentPath(context: CGContextRef) {
     when (this) {
         is Paint.FillAndStroke -> {
-            drawCurrentPathFill(context, fill)
+            // Drawing the current path clears it, so make a copy first for drawing a second time.
+            val copy = CGContextCopyPath(context)
+            try {
+                drawCurrentPathFill(context, fill)
+                CGContextAddPath(context, copy)
+            } finally {
+                CGPathRelease(copy)
+            }
             drawCurrentPathStroke(context, stroke)
         }
 
         is Paint.GradientAndStroke -> {
-            drawCurrentPathGradient(context, gradient)
+            // Drawing the current path clears it, so make a copy first for drawing a second time.
+            val copy = CGContextCopyPath(context)
+            try {
+                drawCurrentPathGradient(context, gradient)
+                CGContextAddPath(context, copy)
+            } finally {
+                CGPathRelease(copy)
+            }
             drawCurrentPathStroke(context, stroke)
         }
 
