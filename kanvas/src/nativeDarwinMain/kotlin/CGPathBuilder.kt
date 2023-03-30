@@ -1,6 +1,8 @@
 package com.juul.krayon.kanvas
 
+import platform.CoreGraphics.CGAffineTransformConcat
 import platform.CoreGraphics.CGAffineTransformMakeScale
+import platform.CoreGraphics.CGAffineTransformMakeTranslation
 import platform.CoreGraphics.CGMutablePathRef
 import platform.CoreGraphics.CGPathAddArc
 import platform.CoreGraphics.CGPathAddCurveToPoint
@@ -37,19 +39,36 @@ internal class CGPathBuilder(
     }
 
     override fun arcTo(left: Float, top: Float, right: Float, bottom: Float, startAngle: Float, sweepAngle: Float, forceMoveTo: Boolean) {
-        super.arcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo)
-        val height = (bottom - top).absoluteValue
-        val aspect = (right - left).absoluteValue / height
-        CGPathAddArc(
-            buffer,
-            m = CGAffineTransformMakeScale(aspect.toDouble(), 1.0),
-            x = (right - left) / 2.0 / aspect,
-            y = (bottom - top) / 2.0,
-            radius = height / 2.0,
-            startAngle = startAngle * PI / 180,
-            endAngle = (startAngle + sweepAngle) * PI / 180,
-            clockwise = sweepAngle < 0,
-        )
+        val height = (bottom - top).absoluteValue.toDouble()
+        val width = (right - left).absoluteValue.toDouble()
+        if (height == 0.0 && width == 0.0) {
+            when (forceMoveTo) {
+                true -> moveTo(left, top)
+                false -> lineTo(left, top)
+            }
+        } else {
+            super.arcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo)
+            val aspect = width / height
+            val cx = (right + left) / 2.0
+            val cy = (bottom + top) / 2.0
+            val radius = height / 2.0
+            val startRads = startAngle * PI / 180
+            val endRads = (startAngle + sweepAngle) * PI / 180
+            val clockwise = sweepAngle < 0
+            CGPathAddArc(
+                buffer,
+                m = CGAffineTransformConcat(
+                    CGAffineTransformMakeScale(aspect, 1.0),
+                    CGAffineTransformMakeTranslation(cx, cy),
+                ),
+                x = 0.0,
+                y = 0.0,
+                radius = radius,
+                startAngle = startRads,
+                endAngle = endRads,
+                clockwise = clockwise,
+            )
+        }
     }
 
     override fun quadraticTo(controlX: Float, controlY: Float, endX: Float, endY: Float) {
