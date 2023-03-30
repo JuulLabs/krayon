@@ -116,14 +116,14 @@ internal class CGPathBuilder(
  * If you wish to hold a reference to the path outside the block, it is your responsibility to call
  * [CGPathRetain] before the block finishes, and [CGPathRelease] when you are done with the path.
  */
-internal inline fun Path.withCGPath(
-    crossinline action: (cgPath: CGPathRef) -> Unit,
-) {
+internal inline fun <T> Path.withCGPath(
+    crossinline action: (cgPath: CGPathRef) -> T,
+): T {
     val buffer = CGPathCreateMutable()!!
     try {
         val cgPath = buildWith(CGPathBuilder(buffer))
         try {
-            action(cgPath)
+            return action(cgPath)
         } finally {
             CGPathRelease(cgPath)
         }

@@ -41,7 +41,7 @@ internal inline fun <T> withCFAttributedString(
 internal operator fun CFAttributedStringRef.set(
     key: CFStringRef?,
     range: IntRange = fullRange,
-    value: CFTypeRef?
+    value: CFTypeRef?,
 ) {
     // TODO: Double check if the off-by-1 is more properly resolved by changing the `until` to `..` below
     val cfRange = CFRangeMake(range.first.toLong(), (range.last - range.first + 1).toLong())
