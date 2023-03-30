@@ -426,6 +426,7 @@ public final class com/juul/krayon/kanvas/Transform$Translate : com/juul/krayon/
 }
 
 public final class com/juul/krayon/kanvas/TransformKt {
+	public static final fun split (Lcom/juul/krayon/kanvas/Transform$Rotate;)Lcom/juul/krayon/kanvas/Transform$InOrder;
 	public static final fun split (Lcom/juul/krayon/kanvas/Transform$Scale;)Lcom/juul/krayon/kanvas/Transform$InOrder;
 	public static final fun split (Lcom/juul/krayon/kanvas/Transform$Skew;)Lcom/juul/krayon/kanvas/Transform$InOrder;
 }
