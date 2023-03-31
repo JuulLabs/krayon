@@ -113,8 +113,8 @@ Krayon's multiplatform interface with Core Graphics' native drawing primitives. 
 
 ```swift
 // Define some constants. Here `scale` is used to handle retina 2x scaling
-val width = 400
-val height = 300
+let width = 400
+let height = 300
 let scale = 2
 
 // Create a context and pass it to Krayon
