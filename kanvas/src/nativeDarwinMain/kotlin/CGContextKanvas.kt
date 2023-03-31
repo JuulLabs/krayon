@@ -3,11 +3,9 @@ package com.juul.krayon.kanvas
 import com.juul.krayon.color.Color
 import kotlinx.cinterop.CPointerVarOf
 import kotlinx.cinterop.value
-import platform.CoreGraphics.CGAffineTransformMake
 import platform.CoreGraphics.CGContextAddPath
 import platform.CoreGraphics.CGContextBeginPath
 import platform.CoreGraphics.CGContextClip
-import platform.CoreGraphics.CGContextConcatCTM
 import platform.CoreGraphics.CGContextRef
 import platform.CoreGraphics.CGContextRestoreGState
 import platform.CoreGraphics.CGContextRotateCTM
@@ -71,7 +69,7 @@ public class CGContextKanvas(
     override fun drawPath(path: Path, paint: Paint) {
         require(paint !is Paint.Text) { "`drawPath` must not be called with `Paint.Text`, but was $paint." }
 
-        inAustralia {
+        withInverseY {
             CGContextBeginPath(unmanagedContext)
             path.withCGPath { cgPath ->
                 CGContextAddPath(unmanagedContext, cgPath)
@@ -92,8 +90,8 @@ public class CGContextKanvas(
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint) {
         require(paint is Paint.Text)
-        // Text can't render in Australia without the letters being upside down. Instead, manually
-        // flip the meaning for the y coordinate while rendering in the original transformation.
+        // Text, unlike other rendering, can't just be rendered in a y-inverted transform.
+        // Manually adjust by doing `height - y` and calling it a day.
         drawText(unmanagedContext, text.toString(), x.toDouble(), (height - y).toDouble(), paint)
     }
 
@@ -131,16 +129,7 @@ public class CGContextKanvas(
                 }
 
                 is Transform.Skew -> {
-                    // TODO: Test this. Matrix params copy-pasted from HTML's version.
-                    val skewMatrix = CGAffineTransformMake(
-                        a = 1.0,
-                        b = vertical.toDouble(),
-                        c = horizontal.toDouble(),
-                        d = 1.0,
-                        tx = 0.0,
-                        ty = 0.0,
-                    )
-                    CGContextConcatCTM(unmanagedContext, skewMatrix)
+                    CGContextSkewCTM(unmanagedContext, horizontal.toDouble(), vertical.toDouble())
                 }
             }
         }
@@ -167,8 +156,10 @@ public class CGContextKanvas(
     /**
      * Apple's coordinate system is the inverse of everywhere else. The generally foolproof way to
      * handle this is using the transformation matrix to pivot the canvas.
+     *
+     * Do _not_ use this with text -- doing so will result in upside down lettering.
      */
-    private inline fun inAustralia(
+    private inline fun withInverseY(
         crossinline actions: () -> Unit,
     ) {
         CGContextSaveGState(unmanagedContext)

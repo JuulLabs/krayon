@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalUnsignedTypes::class)
-
 package com.juul.krayon.kanvas
 
 import platform.CoreFoundation.CFRelease

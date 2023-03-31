@@ -84,13 +84,6 @@ kotlin {
     }
 }
 
-// TODO: See if there's a better way of publishing this for local use in xcode sample
-kotlinArtifacts {
-    Native.XCFramework("krayon") {
-        targets(macosArm64, iosArm64)
-    }
-}
-
 android {
     compileSdkVersion(libs.versions.android.compile.get())
 

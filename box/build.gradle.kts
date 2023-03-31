@@ -72,6 +72,24 @@ kotlin {
     }
 }
 
+// Uncomment for local builds for Apple targets
+// kotlinArtifacts {
+//     Native.XCFramework("Krayon") {
+//         targets(macosArm64, macosX64, iosArm64)
+//         modes(DEBUG, RELEASE)
+//         addModule(projects.axis)
+//         addModule(projects.color)
+//         addModule(projects.element)
+//         addModule(projects.hierarchy)
+//         addModule(projects.interpolate)
+//         addModule(projects.kanvas)
+//         addModule(projects.scale)
+//         addModule(projects.selection)
+//         addModule(projects.shape)
+//         addModule(projects.time)
+//     }
+// }
+
 android {
     compileSdkVersion(libs.versions.android.compile.get())
 
