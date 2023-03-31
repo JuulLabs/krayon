@@ -1,5 +1,8 @@
 ![badge-android]
 ![badge-jvm]
+![badge-js]
+![badge-ios]
+![badge-mac]
 
 # Kanvas
 
@@ -51,7 +54,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.juul.krayon:canvas-$platform:$version")
+    implementation("com.juul.krayon:kanvas-$platform:$version")
 }
 ```
 
@@ -83,21 +86,21 @@ cocoapods {
     // ...
     framework {
         // ...
-        export("com.juul.krayon:$module:$currentVersion")
+        export("com.juul.krayon:$module:$version")
     }
 }
 ```
 
 #### Using Kotlin-Artifacts DSL
 
-A simpler, but experimental, approach involves using the [Kotlin Artifacts dsl](https://kotlinlang.org/docs/multiplatform-native-artifacts.html).
+A simpler, but experimental, approach involves using the [Kotlin Artifacts DSL](https://kotlinlang.org/docs/multiplatform-native-artifacts.html).
 
 ```kotlin
 kotlinArtifacts {
     Native.XCFramework("YourLibrary") {
         targets(macosArm64, macosX64, iosArm64)
         modes(DEBUG, RELEASE)
-        addModule("com.juul.krayon:$module:$currentVersion")
+        addModule("com.juul.krayon:$module:$version")
     }
 }
 ```

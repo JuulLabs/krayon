@@ -155,7 +155,7 @@ public class CGContextKanvas(
 
     /**
      * Apple's coordinate system is the inverse of everywhere else. The generally foolproof way to
-     * handle this is using the transformation matrix to pivot the canvas.
+     * handle this is using the transformation matrix to flip the canvas vertically.
      *
      * Do _not_ use this with text -- doing so will result in upside down lettering.
      */
