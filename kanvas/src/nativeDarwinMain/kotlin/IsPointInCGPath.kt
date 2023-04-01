@@ -15,7 +15,7 @@ public object IsPointInCGPath : IsPointInPath {
             CGPathContainsPoint(
                 cgPath,
                 m = pointTransform,
-                CGPointMake(x.toDouble(), y.toDouble()),
+                point = CGPointMake(x.toDouble(), y.toDouble()),
                 eoFill = false,
             )
         }

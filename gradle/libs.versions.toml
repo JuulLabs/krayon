@@ -1,5 +1,5 @@
 [versions]
-agp = "7.4.1" # maximum version supported by IDEA 2023.1
+agp = "7.4.1" # 7.4.1 is the maximum version supported by IDEA 2023.1
 android-compile = "android-33"
 android-target = "32"
 android-min = "21"
