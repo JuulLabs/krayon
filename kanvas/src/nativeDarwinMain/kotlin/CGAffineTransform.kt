@@ -74,8 +74,7 @@ internal fun Transform.asCGAffineTransform(): CValue<CGAffineTransform> {
             }
 
             is Transform.Translate -> {
-                // TODO: Double check if inverting this was correct.
-                buffer = CGAffineTransformTranslate(buffer, horizontal.toDouble(), -vertical.toDouble())
+                buffer = CGAffineTransformTranslate(buffer, horizontal.toDouble(), vertical.toDouble())
             }
 
             is Transform.Skew -> {
