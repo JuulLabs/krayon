@@ -14,7 +14,6 @@ import platform.CoreGraphics.CGContextCopyPath
 import platform.CoreGraphics.CGContextDrawLinearGradient
 import platform.CoreGraphics.CGContextDrawRadialGradient
 import platform.CoreGraphics.CGContextFillPath
-import platform.CoreGraphics.CGContextGetInterpolationQuality
 import platform.CoreGraphics.CGContextMoveToPoint
 import platform.CoreGraphics.CGContextRef
 import platform.CoreGraphics.CGContextRestoreGState
@@ -36,11 +35,10 @@ import platform.CoreGraphics.CGPathRelease
 import platform.CoreGraphics.CGPointMake
 import platform.CoreGraphics.kCGGradientDrawsAfterEndLocation
 import platform.CoreGraphics.kCGGradientDrawsBeforeStartLocation
-import platform.CoreGraphics.kCGInterpolationLow
-import platform.CoreGraphics.kCGInterpolationMedium
 import kotlin.math.PI
-import kotlin.math.ceil
+import kotlin.math.absoluteValue
 import kotlin.math.cos
+import kotlin.math.roundToInt
 import kotlin.math.sin
 
 internal fun Paint.drawCurrentPath(context: CGContextRef) {
@@ -102,15 +100,36 @@ private fun drawConicGradient(context: CGContextRef, paint: Paint.Gradient.Sweep
     // FIXME: It might be possible to use CAGradientLayer, but I couldn't get that working.
     //  TODO: See if iOS works -- the docs only put the warning for OS X specifically.
     // Approximate by splitting into a bunch of triangles around the center point.
+
+    // Safety rails to make sure that we can't totally blow out drawing cost when lots of tight gradients are used.
+    // Note that this will almost never actually be used, and is instead is used to define a minimum angle for each
+    // segment within a sweep. Using 720 segments comes out to about half a degree maximum per segment, which could
+    // lead to banding with very distant conics but shouldn't cause problems in common cases.
+    // TODO: Make this configurable somehow
+    val maximumTotalSegmentCount = 360 * 2
+
     val sweeps = paint.stops.asSequence().zipWithNext()
     for ((start, end) in sweeps) {
         val distance = end.offset - start.offset
-        val approxTotalSegmentCount = when (CGContextGetInterpolationQuality(context)) {
-            kCGInterpolationLow -> 64
-            kCGInterpolationMedium -> 128
-            else -> 256 // Enough segments to fit an 8-bit color channel across the sweep without banding
+        val segmentCount = run {
+            val maxColorChannelDistance = maxOf(
+                (end.color.red - start.color.red).absoluteValue,
+                (end.color.green - start.color.green).absoluteValue,
+                (end.color.blue - start.color.blue).absoluteValue,
+                (end.color.alpha - start.color.alpha).absoluteValue,
+            )
+            // Value of 1 is approximately "no per-channel color banding". Smaller values could avoid artifacts
+            // when two channels change out of lockstep, but come at additional cost. Larger values accept some
+            // banding within a color channel in exchange for performance.
+            // TODO: Make this configurable somehow
+            val colorBandingTolerance = 1.0
+            val colorBasedSegmentCount = (maxColorChannelDistance / colorBandingTolerance).roundToInt()
+            val angleBasedSegmentCount = (distance * maximumTotalSegmentCount).toInt()
+            // Using a minimum of 3 segments guarantees that a solid-color sweep never produces segments that approach
+            // 180+ degrees. Anything past 90 degrees hits the realm of effective radius reducing as angle grows, but
+            // 120 degrees is well within the range where that isn't problematic yet.
+            minOf(colorBasedSegmentCount, angleBasedSegmentCount).coerceAtLeast(3)
         }
-        val segmentCount = ceil(distance * approxTotalSegmentCount).toInt().coerceAtLeast(3)
         val segmentWidth = distance / segmentCount
         CGContextSetShouldAntialias(context, false)
         for (segment in 0 until segmentCount) {
@@ -121,7 +140,7 @@ private fun drawConicGradient(context: CGContextRef, paint: Paint.Gradient.Sweep
             val angleStart = segmentOffsetStart * 2 * PI
             val angleEnd = segmentOffsetEnd * 2 * PI
             CGContextMoveToPoint(context, paint.centerX.toDouble(), paint.centerY.toDouble())
-            val radius = 100_000 // Any large number works. Goal is to shoot off the edges of the context.
+            val radius = 1_000_000 // Any large number works. Goal is to shoot off the edges of the context.
             CGContextAddLineToPoint(context, paint.centerX + cos(angleStart) * radius, paint.centerY + sin(angleStart) * radius)
             CGContextAddLineToPoint(context, paint.centerX + cos(angleEnd) * radius, paint.centerY + sin(angleEnd) * radius)
             drawCurrentPathFill(context, Paint.Fill(color))
