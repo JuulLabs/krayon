@@ -19,9 +19,9 @@ kotlin {
     android { publishAllLibraryVariants() }
     jvm()
     js().browser()
+    iosArm64()
     macosArm64()
     macosX64()
-    iosArm64()
 
     sourceSets {
         val commonMain by getting {
@@ -64,6 +64,22 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-js"))
             }
+        }
+
+        val nativeDarwinMain by creating {
+            dependsOn(commonMain)
+        }
+
+        val iosArm64Main by getting {
+            dependsOn(nativeDarwinMain)
+        }
+
+        val macosArm64Main by getting {
+            dependsOn(nativeDarwinMain)
+        }
+
+        val macosX64Main by getting {
+            dependsOn(nativeDarwinMain)
         }
     }
 }
