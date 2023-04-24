@@ -6,7 +6,7 @@ android-min = "21"
 compose = "1.4.0"
 coroutines = "1.6.4"
 jacoco = "0.8.7"
-kotlin = "1.8.10"
+kotlin = "1.8.20"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.7.1" }
@@ -29,6 +29,6 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 dokka = { id = "org.jetbrains.dokka", version = "1.8.10" }
 java8 = { id = "net.mbonnin.one.eight", version = "0.2" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinter = { id = "org.jmailen.kotlinter", version = "3.13.0" }
-maven-publish = { id = "com.vanniktech.maven.publish", version = "0.25.1" }
+kotlinter = { id = "org.jmailen.kotlinter", version = "3.14.0" }
+maven-publish = { id = "com.vanniktech.maven.publish", version = "0.25.2" }
 validator = { id = "binary-compatibility-validator", version = "0.13.0" }
