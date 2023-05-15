@@ -52,10 +52,10 @@ android {
     compileSdk = libs.versions.android.compile.get().toInt()
     defaultConfig.minSdk = libs.versions.android.min.get().toInt()
 
+    namespace = "com.juul.krayon.compose"
+
     lint {
         abortOnError = true
         warningsAsErrors = true
     }
-
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 }

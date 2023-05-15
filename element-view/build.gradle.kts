@@ -64,12 +64,10 @@ android {
     compileSdk = libs.versions.android.compile.get().toInt()
     defaultConfig.minSdk = libs.versions.android.min.get().toInt()
 
+    namespace = "com.juul.krayon.element.view"
+
     lint {
         abortOnError = true
         warningsAsErrors = true
-    }
-
-    sourceSets {
-        getByName("main").manifest.srcFile("src/androidMain/AndroidManifest.xml")
     }
 }
