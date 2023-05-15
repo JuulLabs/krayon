@@ -26,7 +26,7 @@ public class ElementView @JvmOverloads constructor(
     private val blitPaint = AndroidPaint()
 
     /** The chart [ElementViewAdapter]. */
-    var adapter: ElementViewAdapter<*>? = null
+    public var adapter: ElementViewAdapter<*>? = null
         set(value) {
             if (isAttachedToWindow) {
                 field?.onDetached()

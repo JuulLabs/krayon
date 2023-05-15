@@ -14,6 +14,7 @@ jacoco {
 
 kotlin {
     explicitApi()
+    jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
     jvm()
     js().browser()
