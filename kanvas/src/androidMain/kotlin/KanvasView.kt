@@ -9,7 +9,7 @@ import android.util.TypedValue.applyDimension
 import android.view.View
 
 /** Base class for custom [View]s implemented using Krayon. */
-abstract class KanvasView(
+public abstract class KanvasView(
     context: Context,
     attrs: AttributeSet? = null,
 ) : View(context, attrs) {
