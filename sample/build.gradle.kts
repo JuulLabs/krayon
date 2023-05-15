@@ -9,6 +9,8 @@ plugins {
 }
 
 kotlin {
+    jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
+
     android()
     jvm("desktop")
     js {
@@ -78,10 +80,17 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(libs.versions.android.compile.get())
+    // Workaround (for `jvmToolchain` not being honored) needed until AGP 8.1.0-alpha09.
+    // https://kotlinlang.org/docs/gradle-configure-project.html#gradle-java-toolchains-support
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    compileSdk = libs.versions.android.compile.get().toInt()
 
     defaultConfig {
-        minSdkVersion(libs.versions.android.min.get())
+        minSdk = libs.versions.android.min.get().toInt()
         targetSdk = libs.versions.android.target.get().toInt()
         versionCode = 1
         versionName = "sample"
@@ -92,7 +101,7 @@ android {
         viewBinding = true
     }
 
-    lintOptions {
+    lint {
         // Good habits for a real app, but trying to keep the sample project minimal.
         disable += "AllowBackup"
         disable += "MissingApplicationIcon"
