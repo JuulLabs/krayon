@@ -47,7 +47,7 @@ kotlin {
             }
         }
 
-        val androidTest by getting {
+        val androidUnitTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation(libs.androidx.test)
@@ -99,9 +99,5 @@ android {
     lint {
         abortOnError = true
         warningsAsErrors = true
-    }
-
-    sourceSets {
-        getByName("main").manifest.srcFile("src/androidMain/AndroidManifest.xml")
     }
 }
