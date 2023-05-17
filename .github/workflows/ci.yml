@@ -1,10 +1,15 @@
 name: CI
 on:
   pull_request:
+  # Trigger on merges to `main` to allow `gradle/gradle-build-action` runs to write their caches.
+  # https://github.com/gradle/gradle-build-action#using-the-caches-read-only
+  push:
+    branches:
+      - main
 
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-12
     steps:
       - uses: actions/checkout@v3
       - uses: gradle/wrapper-validation-action@v1
@@ -13,21 +18,15 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - uses: actions/cache@v3
+      - name: assemble
+        uses: gradle/gradle-build-action@v2
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-            ~/.konan
-            ~/.android/build-cache
-            ~/.android/cache
-          key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          arguments: assemble
 
-      - run: ./gradlew assemble
-      - run: ./gradlew check jacocoTestReport
+      - name: check jacocoTestReport
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: check jacocoTestReport
 
       - uses: EnricoMi/publish-unit-test-result-action/composite@v2
         with:
@@ -36,22 +35,12 @@ jobs:
 
       - uses: codecov/codecov-action@v3
 
-      - run: |
-          set -o xtrace
-          if [ ! -z "${{ secrets.SIGNING_KEY }}" ]; then
-            ./gradlew \
-            -PVERSION_NAME="unspecified" \
-            -PsigningInMemoryKey="${{ secrets.SIGNING_KEY }}" \
-            -PsigningInMemoryKeyPassword="${{ secrets.SIGNING_PASSWORD }}" \
-            publishToMavenLocal
-          else
-            ./gradlew \
-            -PVERSION_NAME="unspecified" \
-            -PRELEASE_SIGNING_ENABLED=false \
-            publishToMavenLocal
-          fi
+      - name: publishToMavenLocal
         if: github.repository_owner == 'JuulLabs'
-
-      - run: |
-          rm -f ~/.gradle/caches/modules-2/modules-2.lock
-          rm -f ~/.gradle/caches/modules-2/gc.properties
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: |
+            -PVERSION_NAME=unspecified
+            -PsigningInMemoryKey=${{ secrets.SIGNING_KEY }}
+            -PsigningInMemoryKeyPassword=${{ secrets.SIGNING_PASSWORD }}
+            publishToMavenLocal
