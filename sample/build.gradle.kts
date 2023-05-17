@@ -1,4 +1,3 @@
-import org.jetbrains.compose.compose
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -50,7 +49,7 @@ kotlin {
             }
         }
 
-        val androidTest by getting {
+        val androidUnitTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
             }
@@ -96,6 +95,8 @@ android {
         versionName = "sample"
     }
 
+    namespace = "com.juul.krayon.sample"
+
     buildFeatures {
         resValues = true
         viewBinding = true
@@ -109,10 +110,6 @@ android {
         // False positives for some reason
         disable += "MissingClass"
         disable += "UnusedResources"
-    }
-
-    sourceSets {
-        getByName("main").manifest.srcFile("src/androidMain/AndroidManifest.xml")
     }
 }
 
