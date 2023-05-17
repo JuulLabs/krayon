@@ -96,6 +96,8 @@ android {
     compileSdk = libs.versions.android.compile.get().toInt()
     defaultConfig.minSdk = libs.versions.android.min.get().toInt()
 
+    namespace = "com.juul.krayon.kanvas"
+
     lint {
         abortOnError = true
         warningsAsErrors = true

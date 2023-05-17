@@ -95,6 +95,8 @@ android {
         versionName = "sample"
     }
 
+    namespace = "com.juul.krayon.sample"
+
     buildFeatures {
         resValues = true
         viewBinding = true

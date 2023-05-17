@@ -102,6 +102,8 @@ android {
     compileSdk = libs.versions.android.compile.get().toInt()
     defaultConfig.minSdk = libs.versions.android.min.get().toInt()
 
+    namespace = "com.juul.krayon.box"
+
     lint {
         abortOnError = true
         warningsAsErrors = true
