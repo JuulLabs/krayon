@@ -24,6 +24,6 @@ jobs:
           cache-read-only: true
           arguments: dokkaHtmlMultiModule
 
-      - uses: JamesIves/github-pages-deploy-action@v4.4.1
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build/gh-pages
