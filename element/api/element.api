@@ -25,6 +25,22 @@ public abstract interface class com/juul/krayon/element/ClickHandler {
 	public abstract fun onClick (Ljava/lang/Object;)V
 }
 
+public final class com/juul/krayon/element/ClipElement : com/juul/krayon/element/Element {
+	public static final field Companion Lcom/juul/krayon/element/ClipElement$Companion;
+	public fun <init> ()V
+	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
+	public final fun getClip ()Lcom/juul/krayon/kanvas/Clip;
+	public fun getTag ()Ljava/lang/String;
+	public final fun setClip (Lcom/juul/krayon/kanvas/Clip;)V
+}
+
+public final class com/juul/krayon/element/ClipElement$Companion : com/juul/krayon/element/ElementBuilder, com/juul/krayon/element/ElementSelector {
+	public fun build ()Lcom/juul/krayon/element/ClipElement;
+	public synthetic fun build ()Lcom/juul/krayon/element/Element;
+	public fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/ClipElement;
+	public synthetic fun trySelect (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
+}
+
 public abstract class com/juul/krayon/element/Element {
 	public static final field Companion Lcom/juul/krayon/element/Element$Companion;
 	public fun <init> ()V
