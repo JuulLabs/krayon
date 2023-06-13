@@ -97,9 +97,11 @@ public class CGContextKanvas(
 
     override fun pushClip(clip: Clip) {
         CGContextSaveGState(unmanagedContext)
-        CGContextBeginPath(unmanagedContext)
-        clip.path.withCGPath { cgPath ->
-            CGContextAddPath(unmanagedContext, cgPath)
+        withInverseY {
+            CGContextBeginPath(unmanagedContext)
+            clip.path.withCGPath { cgPath ->
+                CGContextAddPath(unmanagedContext, cgPath)
+            }
         }
         CGContextClip(unmanagedContext)
     }
