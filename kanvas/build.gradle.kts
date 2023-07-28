@@ -25,6 +25,10 @@ kotlin {
     macosX64()
 
     sourceSets {
+        all {
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+        }
+
         val commonMain by getting {
             dependencies {
                 api(projects.color)
