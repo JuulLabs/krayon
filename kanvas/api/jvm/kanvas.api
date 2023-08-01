@@ -209,6 +209,7 @@ public final class com/juul/krayon/kanvas/Paint$Stroke$Cap : java/lang/Enum {
 	public static final field Butt Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
 	public static final field Round Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
 	public static final field Square Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
 	public static fun values ()[Lcom/juul/krayon/kanvas/Paint$Stroke$Cap;
 }
@@ -277,6 +278,7 @@ public final class com/juul/krayon/kanvas/Paint$Text$Alignment : java/lang/Enum 
 	public static final field Center Lcom/juul/krayon/kanvas/Paint$Text$Alignment;
 	public static final field Left Lcom/juul/krayon/kanvas/Paint$Text$Alignment;
 	public static final field Right Lcom/juul/krayon/kanvas/Paint$Text$Alignment;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lcom/juul/krayon/kanvas/Paint$Text$Alignment;
 	public static fun values ()[Lcom/juul/krayon/kanvas/Paint$Text$Alignment;
 }
