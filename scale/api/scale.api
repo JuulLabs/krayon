@@ -69,6 +69,11 @@ public final class com/juul/krayon/scale/MinKt {
 	public static final fun min (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Comparable;
 }
 
+public final class com/juul/krayon/scale/NiceKt {
+	public static final fun nice (DDI)Ljava/util/List;
+	public static final fun nice (FFI)Ljava/util/List;
+}
+
 public abstract interface class com/juul/krayon/scale/Scale {
 	public abstract fun scale (Ljava/lang/Object;)Ljava/lang/Object;
 }
