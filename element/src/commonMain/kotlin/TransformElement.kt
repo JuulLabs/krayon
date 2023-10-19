@@ -18,6 +18,7 @@ public class TransformElement : Element() {
 
     public companion object : ElementBuilder<TransformElement>, ElementSelector<TransformElement> {
         override fun build(): TransformElement = TransformElement()
+
         override fun trySelect(element: Element): TransformElement? = element as? TransformElement
     }
 }

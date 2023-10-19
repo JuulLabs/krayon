@@ -56,12 +56,15 @@ public sealed class Paint {
 
         public sealed class Dash {
             public object None : Dash()
+
             public data class Pattern(val intervals: List<Float>) : Dash() {
                 public constructor(vararg intervals: Float) : this(intervals.toList())
 
                 init {
                     check(intervals.isNotEmpty()) { "Cannot construct pattern without intervals. Use Dash.None instead." }
-                    check(intervals.size % 2 == 0) { "Patterns must contain an even number of items. An interval is created for each even/odd index pair." }
+                    check(
+                        intervals.size % 2 == 0,
+                    ) { "Patterns must contain an even number of items. An interval is created for each even/odd index pair." }
                 }
             }
         }

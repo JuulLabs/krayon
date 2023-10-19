@@ -19,6 +19,7 @@ public class PathElement : InteractableElement<PathElement>() {
 
     public companion object : ElementBuilder<PathElement>, ElementSelector<PathElement> {
         override fun build(): PathElement = PathElement()
+
         override fun trySelect(element: Element): PathElement? = element as? PathElement
     }
 }

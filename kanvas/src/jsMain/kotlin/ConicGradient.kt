@@ -19,6 +19,7 @@ internal external interface ConicCanvasFillStrokeStyles : CanvasFillStrokeStyles
 /** Workaround for new JS functionality that hasn't made its way to Kotlin stdlib yet. */
 private external class OffscreenCanvas(width: Double, height: Double) {
     fun getContext(contextId: String, vararg arguments: Any?): RenderingContext?
+
     fun transferToImageBitmap(): ImageBitmap
 }
 

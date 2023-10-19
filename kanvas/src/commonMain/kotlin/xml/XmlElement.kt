@@ -15,9 +15,13 @@ internal class XmlElement(
     }
 
     fun setAttribute(id: String, value: String) = setAttribute(id.toId(), value.escape())
+
     fun setAttribute(id: String, value: Double, formatter: NumberFormatter) = setAttribute(id, formatter(value))
+
     fun setAttribute(id: String, value: Float, formatter: NumberFormatter) = setAttribute(id, formatter(value))
+
     fun setAttribute(id: String, value: Int, formatter: NumberFormatter) = setAttribute(id, formatter(value))
+
     fun setAttribute(id: String, value: Long, formatter: NumberFormatter) = setAttribute(id, formatter(value))
 
     fun unsetAttribute(id: Id) = apply {
@@ -31,10 +35,12 @@ internal class XmlElement(
     }
 
     fun addContent(text: EscapedString) = addContent(Content.Text(text))
+
     fun addContent(child: XmlElement) = addContent(Content.Child(child))
 
     sealed class Content {
         data class Child(val child: XmlElement) : Content()
+
         data class Text(val text: EscapedString) : Content()
     }
 

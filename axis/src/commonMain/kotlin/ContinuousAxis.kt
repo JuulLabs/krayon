@@ -67,16 +67,24 @@ public fun axisRight(scale: ContinuousScale<Double, Float>): ContinuousAxis<Doub
 public fun axisBottom(scale: ContinuousScale<Double, Float>): ContinuousAxis<Double> = ContinuousAxis(Bottom, scale, DoubleTicker)
 
 @JvmName("axisLeftLocalDateTime")
-public fun axisLeft(scale: ContinuousScale<LocalDateTime, Float>): ContinuousAxis<LocalDateTime> = ContinuousAxis(Left, scale, LocalDateTimeTicker)
+public fun axisLeft(
+    scale: ContinuousScale<LocalDateTime, Float>,
+): ContinuousAxis<LocalDateTime> = ContinuousAxis(Left, scale, LocalDateTimeTicker)
 
 @JvmName("axisTopLocalDateTime")
-public fun axisTop(scale: ContinuousScale<LocalDateTime, Float>): ContinuousAxis<LocalDateTime> = ContinuousAxis(Top, scale, LocalDateTimeTicker)
+public fun axisTop(
+    scale: ContinuousScale<LocalDateTime, Float>,
+): ContinuousAxis<LocalDateTime> = ContinuousAxis(Top, scale, LocalDateTimeTicker)
 
 @JvmName("axisRightLocalDateTime")
-public fun axisRight(scale: ContinuousScale<LocalDateTime, Float>): ContinuousAxis<LocalDateTime> = ContinuousAxis(Right, scale, LocalDateTimeTicker)
+public fun axisRight(
+    scale: ContinuousScale<LocalDateTime, Float>,
+): ContinuousAxis<LocalDateTime> = ContinuousAxis(Right, scale, LocalDateTimeTicker)
 
 @JvmName("axisBottomLocalDateTime")
-public fun axisBottom(scale: ContinuousScale<LocalDateTime, Float>): ContinuousAxis<LocalDateTime> = ContinuousAxis(Bottom, scale, LocalDateTimeTicker)
+public fun axisBottom(
+    scale: ContinuousScale<LocalDateTime, Float>,
+): ContinuousAxis<LocalDateTime> = ContinuousAxis(Bottom, scale, LocalDateTimeTicker)
 
 @JvmName("axisLeftInstant")
 public fun axisLeft(scale: ContinuousScale<Instant, Float>): ContinuousAxis<Instant> = ContinuousAxis(Left, scale, InstantTicker)

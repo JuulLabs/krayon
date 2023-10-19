@@ -17,6 +17,8 @@ public class Arguments<D : Any> internal constructor(
         internal set
 
     public operator fun component1(): D = datum
+
     public operator fun component2(): Int = index
+
     public operator fun component3(): List<D?> = data
 }

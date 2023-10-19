@@ -108,6 +108,7 @@ public class CGContextKanvas(
 
     override fun pushTransform(transform: Transform) {
         CGContextSaveGState(unmanagedContext)
+
         fun Transform.applyToCurrentTransformationMatrix() {
             when (this) {
                 is Transform.InOrder -> {

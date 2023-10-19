@@ -37,11 +37,15 @@ public class Arc internal constructor(
         private set
 
     public fun outerRadius(value: Float): Arc = apply { outerRadius = value }
+
     public fun innerRadius(value: Float): Arc = apply { innerRadius = value }
+
     public fun cornerRadius(value: Float): Arc = apply { cornerRadius = value }
+
     public fun padRadius(value: (Arc, Float, Float, Float) -> Float): Arc = apply { padRadius = value }
 
     public operator fun invoke(slice: Slice<*>): Path = createPath(slice.startAngle, slice.endAngle, slice.padAngle)
+
     public operator fun invoke(startAngle: Float, endAngle: Float, padAngle: Float): Path = createPath(startAngle, endAngle, padAngle)
 
     private fun createPath(startAngle: Float, endAngle: Float, padAngle: Float) = Path {

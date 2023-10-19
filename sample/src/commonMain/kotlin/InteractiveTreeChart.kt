@@ -92,6 +92,7 @@ private fun updateInteractiveTreeChart(
 ) {
     val min = data.counts.values.min { it }
     val max = data.counts.values.max { it }
+
     fun colorFor(letter: Letter): Color {
         val value = data.counts[letter] ?: 0
         val baseColor = if (letter == data.selection) {

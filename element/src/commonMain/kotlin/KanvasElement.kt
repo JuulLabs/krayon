@@ -20,6 +20,7 @@ public class KanvasElement : Element() {
 
     public companion object : ElementBuilder<KanvasElement>, ElementSelector<KanvasElement> {
         override fun build(): KanvasElement = KanvasElement()
+
         override fun trySelect(element: Element): KanvasElement? = element as? KanvasElement
     }
 }

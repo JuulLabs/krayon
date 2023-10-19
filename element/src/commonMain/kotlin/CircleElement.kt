@@ -28,6 +28,7 @@ public class CircleElement : InteractableElement<CircleElement>() {
 
     public companion object : ElementBuilder<CircleElement>, ElementSelector<CircleElement> {
         override fun build(): CircleElement = CircleElement()
+
         override fun trySelect(element: Element): CircleElement? = element as? CircleElement
     }
 }

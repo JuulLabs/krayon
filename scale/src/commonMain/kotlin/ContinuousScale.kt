@@ -27,9 +27,13 @@ public fun scale(
 
 // Vararg domains
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: Int): ContinuousScale<Int, R> = domain(domain.toList())
+
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: Float): ContinuousScale<Float, R> = domain(domain.toList())
+
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: Double): ContinuousScale<Double, R> = domain(domain.toList())
+
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: Instant): ContinuousScale<Instant, R> = domain(domain.toList())
+
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: LocalDateTime): ContinuousScale<LocalDateTime, R> = domain(domain.toList())
 
 // List domains
@@ -43,17 +47,27 @@ public fun <R> ContinuousScale<*, R>.domain(domain: Iterable<Float>): Continuous
 public fun <R> ContinuousScale<*, R>.domain(domain: Iterable<Double>): ContinuousScale<Double, R> = domain(domain.toList(), ::interpolator)
 
 @JvmName("domainInstant")
-public fun <R> ContinuousScale<*, R>.domain(domain: Iterable<Instant>): ContinuousScale<Instant, R> = domain(domain.toList(), ::interpolator)
+public fun <R> ContinuousScale<*, R>.domain(
+    domain: Iterable<Instant>,
+): ContinuousScale<Instant, R> = domain(domain.toList(), ::interpolator)
 
 @JvmName("domainLocalDateTime")
-public fun <R> ContinuousScale<*, R>.domain(domain: Iterable<LocalDateTime>): ContinuousScale<LocalDateTime, R> = domain(domain.toList(), ::interpolator)
+public fun <R> ContinuousScale<*, R>.domain(
+    domain: Iterable<LocalDateTime>,
+): ContinuousScale<LocalDateTime, R> = domain(domain.toList(), ::interpolator)
 
 // Vararg ranges
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Int): ContinuousScale<D, Int> = range(range.toList())
+
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Float): ContinuousScale<D, Float> = range(range.toList())
+
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Double): ContinuousScale<D, Double> = range(range.toList())
+
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Instant): ContinuousScale<D, Instant> = range(range.toList())
-public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: LocalDateTime): ContinuousScale<D, LocalDateTime> = range(range.toList())
+
+public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: LocalDateTime): ContinuousScale<D, LocalDateTime> = range(
+    range.toList(),
+)
 
 // No vararg on explicit value classes, so no vararg syntax sugar for `Color`, sorry.
 // public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Color): ContinuousScale<D, Color> = range(range.toList())
@@ -72,7 +86,9 @@ public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Double>):
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Instant>): ContinuousScale<D, Instant> = range(range, ::interpolator)
 
 @JvmName("rangeLocalDateTime")
-public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<LocalDateTime>): ContinuousScale<D, LocalDateTime> = range(range, ::interpolator)
+public fun <D : Comparable<D>> ContinuousScale<D, *>.range(
+    range: List<LocalDateTime>,
+): ContinuousScale<D, LocalDateTime> = range(range, ::interpolator)
 
 @JvmName("rangeColor")
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Color>): ContinuousScale<D, Color> = range(range, ::interpolator)
@@ -89,7 +105,9 @@ public class ContinuousScale<D : Comparable<D>, R> internal constructor(
         init {
             require(domain.size >= 2) { "Domain must consist of at least 2 values, but was ${domain.size}." }
             require(range.size >= 2) { "Range must consist of at least 2 values, but was ${domain.size}." }
-            require(domain.size == range.size) { "Domain and range must have the same number of values, but domain was ${domain.size} and range was ${range.size}." }
+            require(domain.size == range.size) {
+                "Domain and range must have the same number of values, but domain was ${domain.size} and range was ${range.size}."
+            }
             require(domain.isAscending() || domain.isDescending()) { "Domain must be strictly ascending or strictly descending." }
         }
 

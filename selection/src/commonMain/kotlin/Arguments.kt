@@ -19,7 +19,9 @@ public class Arguments<D, T> private constructor(
         internal set
 
     public operator fun component1(): D = datum
+
     public operator fun component2(): Int = index
+
     public operator fun component3(): List<T> = data
 
     @PublishedApi

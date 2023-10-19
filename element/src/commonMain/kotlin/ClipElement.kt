@@ -26,6 +26,7 @@ public class ClipElement : Element() {
 
     public companion object : ElementBuilder<ClipElement>, ElementSelector<ClipElement> {
         override fun build(): ClipElement = ClipElement()
+
         override fun trySelect(element: Element): ClipElement? = element as? ClipElement
     }
 }

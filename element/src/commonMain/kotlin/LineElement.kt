@@ -19,6 +19,7 @@ public class LineElement : Element() {
 
     public companion object : ElementBuilder<LineElement>, ElementSelector<LineElement> {
         override fun build(): LineElement = LineElement()
+
         override fun trySelect(element: Element): LineElement? = element as? LineElement
     }
 }

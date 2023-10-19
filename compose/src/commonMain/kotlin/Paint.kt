@@ -82,8 +82,11 @@ internal fun Paint.toBrush(): Brush = when (this) {
     is Paint.FillAndStroke -> throw UnsupportedOperationException("FillAndStroke cannot be converted to a singular brush.")
     is Paint.GradientAndStroke -> throw UnsupportedOperationException("GradientAndStroke cannot be converted to a singular brush.")
 }
+
 internal fun Paint.Fill.toBrush(): Brush = SolidColor(color.asComposeColor())
+
 internal fun Paint.Stroke.toBrush(): Brush = SolidColor(color.asComposeColor())
+
 internal fun Paint.Gradient.toBrush(): Brush = when (this) {
     is Paint.Gradient.Linear -> this.toBrush()
     is Paint.Gradient.Radial -> this.toBrush()
@@ -93,6 +96,12 @@ internal fun Paint.Gradient.toBrush(): Brush = when (this) {
 private val Paint.Gradient.composeStops: Array<Pair<Float, ComposeColor>>
     get() = Array(stops.size) { index -> stops[index].let { (offset, color) -> offset to color.asComposeColor() } }
 
-private fun Paint.Gradient.Linear.toBrush(): Brush = Brush.linearGradient(*composeStops, start = Offset(startX, startY), end = Offset(endX, endY))
+private fun Paint.Gradient.Linear.toBrush(): Brush = Brush.linearGradient(
+    *composeStops,
+    start = Offset(startX, startY),
+    end = Offset(endX, endY),
+)
+
 private fun Paint.Gradient.Radial.toBrush(): Brush = Brush.radialGradient(*composeStops, center = Offset(centerX, centerY), radius = radius)
+
 private fun Paint.Gradient.Sweep.toBrush(): Brush = Brush.sweepGradient(*composeStops, center = Offset(centerX, centerY))

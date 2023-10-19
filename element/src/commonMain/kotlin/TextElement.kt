@@ -21,6 +21,7 @@ public class TextElement : Element() {
 
     public companion object : ElementBuilder<TextElement>, ElementSelector<TextElement> {
         override fun build(): TextElement = TextElement()
+
         override fun trySelect(element: Element): TextElement? = element as? TextElement
     }
 }
