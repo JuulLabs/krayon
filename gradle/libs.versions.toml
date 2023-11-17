@@ -1,5 +1,5 @@
 [versions]
-agp = "8.1.3" # 7.4.1 is the maximum version supported by IDEA 2023.1
+agp = "8.1.4" # 7.4.1 is the maximum version supported by IDEA 2023.1
 android-compile = "34"
 android-min = "21"
 android-target = "32"
@@ -10,7 +10,7 @@ jvm-toolchain = "11"
 kotlin = "1.9.20"
 
 [libraries]
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.8.0" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.8.1" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.6.2" }
 androidx-test = { module = "androidx.test:core", version = "1.5.0" }
