@@ -10,7 +10,7 @@ plugins {
 kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
-    android()
+    androidTarget()
     jvm("desktop")
     js {
         browser()
