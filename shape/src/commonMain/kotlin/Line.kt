@@ -17,10 +17,15 @@ public class Line<D : Any> internal constructor() : Shape<D> {
     private var y: (Arguments<D>) -> Float = DEFAULT_XY
 
     public fun curve(curve: Curve): Line<D> = this.apply { this.curve = curve }
+
     public fun defined(defined: (Arguments<D>) -> Boolean): Line<D> = this.apply { this.defined = defined }
+
     public fun x(x: Float): Line<D> = this.apply { this.x = { x } }
+
     public fun x(x: (Arguments<D>) -> Float): Line<D> = this.apply { this.x = x }
+
     public fun y(y: Float): Line<D> = this.apply { this.y = { y } }
+
     public fun y(y: (Arguments<D>) -> Float): Line<D> = this.apply { this.y = y }
 
     override fun render(data: List<D?>): Path = Path {

@@ -44,7 +44,15 @@ public class ComposeKanvas internal constructor(
 
     override fun drawArc(left: Float, top: Float, right: Float, bottom: Float, startAngle: Float, sweepAngle: Float, paint: Paint) {
         withBrushAndStyle(paint) { brush, style ->
-            drawArc(brush, startAngle, sweepAngle, useCenter = false, topLeft = Offset(left, top), Size(right - left, bottom - top), style = style)
+            drawArc(
+                brush,
+                startAngle,
+                sweepAngle,
+                useCenter = false,
+                topLeft = Offset(left, top),
+                Size(right - left, bottom - top),
+                style = style,
+            )
         }
     }
 
@@ -110,7 +118,11 @@ public class ComposeKanvas internal constructor(
                 is Transform.InOrder ->
                     transform.transformations.forEach(::applyTransform)
                 is Transform.Scale ->
-                    scope.drawContext.transform.scale(transform.horizontal, transform.vertical, pivot = Offset(transform.pivotX, transform.pivotY))
+                    scope.drawContext.transform.scale(
+                        transform.horizontal,
+                        transform.vertical,
+                        pivot = Offset(transform.pivotX, transform.pivotY),
+                    )
                 is Transform.Rotate ->
                     scope.drawContext.transform.rotate(transform.degrees, pivot = Offset(transform.pivotX, transform.pivotY))
                 is Transform.Translate ->

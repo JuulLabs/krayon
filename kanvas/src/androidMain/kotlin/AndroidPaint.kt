@@ -24,7 +24,10 @@ private val fontResources = mutableMapOf<String, Int>()
  * fonts that might be used, as calls to [addFontAssociation] are cheap and the behavior
  * for missing associations is expensive ([Resources.getIdentifier]).
  */
-public fun addFontAssociation(fontName: String, @FontRes fontRes: Int) {
+public fun addFontAssociation(
+    fontName: String,
+    @FontRes fontRes: Int,
+) {
     fontResources[fontName] = fontRes
 }
 

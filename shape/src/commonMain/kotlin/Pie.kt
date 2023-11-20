@@ -32,7 +32,9 @@ public class Pie<T> internal constructor(
     public fun <T2> value(value: (T2) -> Float): Pie<T2> = Pie(value, startAngle, endAngle, padAngle)
 
     public fun startAngle(value: Float): Pie<T> = apply { startAngle = value }
+
     public fun endAngle(value: Float): Pie<T> = apply { endAngle = value }
+
     public fun padAngle(value: Float): Pie<T> = apply { padAngle = value }
 
     public operator fun invoke(vararg data: T): List<Slice<T>> = this(data.toList())

@@ -74,10 +74,12 @@ internal enum class Command(
 }
 
 private val charToCommandCache = enumValues<Command>().associateBy { it.command }
+
 private fun Char.toCommandOrNull(): Command? = charToCommandCache[this]
 
 internal sealed class Token {
     data class CommandToken(val command: Command) : Token()
+
     data class ValueToken(val value: Float) : Token()
 }
 

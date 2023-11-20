@@ -55,6 +55,7 @@ internal fun CGContextSkewCTM(
 internal fun Transform.asCGAffineTransform(): CValue<CGAffineTransform> {
     // While theoretically complete, this implementation is almost wholly untested.
     var buffer = CGAffineTransformMakeTranslation(0.0, 0.0)
+
     fun Transform.applyToBuffer() {
         when (this) {
             is Transform.InOrder -> {

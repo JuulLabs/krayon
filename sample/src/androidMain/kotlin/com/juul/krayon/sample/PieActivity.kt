@@ -29,13 +29,21 @@ class PieActivity : AppCompatActivity() {
         binding.sliderEnd.configure(min = PI.toFloat(), max = (2 * PI).toFloat(), state = endAngle)
         binding.sliderRadius.configure(min = 0f, max = 32f, state = cornerRadius)
         binding.sliderPad.configure(min = 0f, max = 0.1f, state = paddingAngle)
-        val displayWidthDp = with(resources.displayMetrics) { (widthPixels - binding.root.paddingLeft - binding.root.paddingRight) / density }
+        val displayWidthDp =
+            with(resources.displayMetrics) { (widthPixels - binding.root.paddingLeft - binding.root.paddingRight) / density }
         binding.sliderInner.configure(min = 0f, max = 0.4f * displayWidthDp, state = innerRadius)
 
         // Convert state into a flow for consumption by the element view adapter.
-        val charts = combine(startAngle, endAngle, cornerRadius, paddingAngle, innerRadius) { startAngle, endAngle, cornerRadius, paddingAngle, innerRadius ->
-            PieChart(arcs, startAngle, endAngle, cornerRadius, paddingAngle, innerRadius)
-        }
+        val charts =
+            combine(
+                startAngle,
+                endAngle,
+                cornerRadius,
+                paddingAngle,
+                innerRadius,
+            ) { startAngle, endAngle, cornerRadius, paddingAngle, innerRadius ->
+                PieChart(arcs, startAngle, endAngle, cornerRadius, paddingAngle, innerRadius)
+            }
 
         binding.sineView.adapter = ElementViewAdapter(
             dataSource = charts,

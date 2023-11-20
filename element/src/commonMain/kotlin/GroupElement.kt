@@ -12,6 +12,7 @@ public class GroupElement : Element() {
 
     public companion object : ElementBuilder<GroupElement>, ElementSelector<GroupElement> {
         override fun build(): GroupElement = GroupElement()
+
         override fun trySelect(element: Element): GroupElement? = element as? GroupElement
     }
 }

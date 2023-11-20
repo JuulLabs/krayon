@@ -5,7 +5,9 @@ private val ALLOWED_KEY_CHARS = (('a'..'z') + ('A'..'Z') + NUMBERS + '_' + '-').
 
 internal class Id private constructor(private val string: String) {
     override fun toString(): String = string
+
     override fun hashCode(): Int = string.hashCode()
+
     override fun equals(other: Any?): Boolean = this === other || (other is Id && string == other.string)
 
     companion object {

@@ -97,7 +97,15 @@ internal class SegmentedPathBuilder : PathBuilder<SegmentedPath> {
         segments += RelativeLineTo(x, y)
     }
 
-    override fun arcTo(left: Float, top: Float, right: Float, bottom: Float, startAngle: Float, sweepAngle: Float, forceMoveTo: Boolean) {
+    override fun arcTo(
+        left: Float,
+        top: Float,
+        right: Float,
+        bottom: Float,
+        startAngle: Float,
+        sweepAngle: Float,
+        forceMoveTo: Boolean,
+    ) {
         segments += ArcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo)
     }
 
@@ -109,11 +117,25 @@ internal class SegmentedPathBuilder : PathBuilder<SegmentedPath> {
         segments += RelativeQuadraticTo(controlX, controlY, endX, endY)
     }
 
-    override fun cubicTo(beginControlX: Float, beginControlY: Float, endControlX: Float, endControlY: Float, endX: Float, endY: Float) {
+    override fun cubicTo(
+        beginControlX: Float,
+        beginControlY: Float,
+        endControlX: Float,
+        endControlY: Float,
+        endX: Float,
+        endY: Float,
+    ) {
         segments += CubicTo(beginControlX, beginControlY, endControlX, endControlY, endX, endY)
     }
 
-    override fun relativeCubicTo(beginControlX: Float, beginControlY: Float, endControlX: Float, endControlY: Float, endX: Float, endY: Float) {
+    override fun relativeCubicTo(
+        beginControlX: Float,
+        beginControlY: Float,
+        endControlX: Float,
+        endControlY: Float,
+        endX: Float,
+        endY: Float,
+    ) {
         segments += RelativeCubicTo(beginControlX, beginControlY, endControlX, endControlY, endX, endY)
     }
 

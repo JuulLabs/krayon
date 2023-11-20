@@ -5,8 +5,11 @@ public interface NumberFormatter {
     // Avoid [Number] argument to avoid boxing when possible.
 
     public operator fun invoke(value: Double): String
+
     public operator fun invoke(value: Float): String
+
     public operator fun invoke(value: Int): String
+
     public operator fun invoke(value: Long): String
 }
 
@@ -17,8 +20,11 @@ public interface NumberFormatter {
  */
 public object ToStringFormatter : NumberFormatter {
     public override fun invoke(value: Double): String = value.toString()
+
     public override fun invoke(value: Float): String = value.toString()
+
     public override fun invoke(value: Int): String = value.toString()
+
     public override fun invoke(value: Long): String = value.toString()
 }
 
@@ -29,7 +35,10 @@ public object ToStringFormatter : NumberFormatter {
  */
 public data class ScientificFormatter(private val precision: Int) : NumberFormatter {
     public override fun invoke(value: Double): String = value.scientificNotation(precision)
+
     public override fun invoke(value: Float): String = this(value.toDouble())
+
     public override fun invoke(value: Int): String = this(value.toDouble())
+
     public override fun invoke(value: Long): String = this(value.toDouble())
 }

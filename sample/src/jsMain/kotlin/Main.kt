@@ -53,9 +53,16 @@ private fun setupPieChart() {
     configure("pie-inner-radius", min = 0f, max = 192f, state = innerRadius)
 
     // Convert state into a flow for consumption by the element view adapter.
-    val charts = combine(startAngle, endAngle, cornerRadius, paddingAngle, innerRadius) { startAngle, endAngle, cornerRadius, paddingAngle, innerRadius ->
-        PieChart(arcs, startAngle, endAngle, cornerRadius, paddingAngle, innerRadius)
-    }
+    val charts =
+        combine(
+            startAngle,
+            endAngle,
+            cornerRadius,
+            paddingAngle,
+            innerRadius,
+        ) { startAngle, endAngle, cornerRadius, paddingAngle, innerRadius ->
+            PieChart(arcs, startAngle, endAngle, cornerRadius, paddingAngle, innerRadius)
+        }
 
     (document.getElementById("pie-canvas") as HTMLCanvasElement).attachAdapter(
         ElementViewAdapter(

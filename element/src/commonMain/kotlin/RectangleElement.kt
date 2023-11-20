@@ -28,6 +28,7 @@ public class RectangleElement : InteractableElement<RectangleElement>() {
 
     public companion object : ElementBuilder<RectangleElement>, ElementSelector<RectangleElement> {
         override fun build(): RectangleElement = RectangleElement()
+
         override fun trySelect(element: Element): RectangleElement? = element as? RectangleElement
     }
 }

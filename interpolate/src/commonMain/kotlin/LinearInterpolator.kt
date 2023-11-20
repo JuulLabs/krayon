@@ -12,7 +12,9 @@ internal class LinearIntInterpolator(
     stop: Int,
 ) : BidirectionalInterpolator<Int> {
     private val range = stop - start
+
     override fun interpolate(fraction: Float): Int = start + (range * fraction).toInt()
+
     override fun invert(value: Int): Float = (value - start).toFloat() / range
 }
 
@@ -21,7 +23,9 @@ internal class LinearFloatInterpolator(
     stop: Float,
 ) : BidirectionalInterpolator<Float> {
     private val range = stop - start
+
     override fun interpolate(fraction: Float): Float = start + (range * fraction)
+
     override fun invert(value: Float): Float = (value - start) / range
 }
 
@@ -30,7 +34,9 @@ internal class LinearDoubleInterpolator(
     stop: Double,
 ) : BidirectionalInterpolator<Double> {
     private val range = stop - start
+
     override fun interpolate(fraction: Float): Double = start + (range * fraction)
+
     override fun invert(value: Double): Float = ((value - start) / range).toFloat()
 }
 
@@ -39,7 +45,9 @@ internal class LinearInstantInterpolator(
     stop: Instant,
 ) : BidirectionalInterpolator<Instant> {
     private val range = stop - start
+
     override fun interpolate(fraction: Float): Instant = start + (range * fraction.toDouble())
+
     override fun invert(value: Instant): Float = ((value - start) / range).toFloat()
 }
 
@@ -48,7 +56,9 @@ internal class LinearLocalDateTimeInterpolator(
     stop: LocalDateTime,
 ) : BidirectionalInterpolator<LocalDateTime> {
     private val range = stop - start
+
     override fun interpolate(fraction: Float): LocalDateTime = start + (range * fraction.toDouble())
+
     override fun invert(value: LocalDateTime): Float = ((value - start) / range).toFloat()
 }
 

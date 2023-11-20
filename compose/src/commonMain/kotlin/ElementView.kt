@@ -61,6 +61,7 @@ public fun <T> ElementView(
         // Was having problems getting the sizes to update when resizing the window. This little dance worked
         // when more obvious solutions didn't
         fun getWidth() = minWidth.value
+
         fun getHeight() = minHeight.value
         val width = remember { MutableStateFlow(getWidth()) }
         val height = remember { MutableStateFlow(getHeight()) }

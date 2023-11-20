@@ -2,7 +2,9 @@ package com.juul.krayon.kanvas.xml
 
 internal class EscapedString private constructor(private val string: String) {
     override fun toString(): String = string
+
     override fun hashCode(): Int = string.hashCode()
+
     override fun equals(other: Any?): Boolean = this === other || (other is EscapedString && string == other.string)
 
     companion object {

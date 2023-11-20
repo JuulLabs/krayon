@@ -30,6 +30,7 @@ public class RoundedRectangleElement : InteractableElement<RoundedRectangleEleme
 
     public companion object : ElementBuilder<RoundedRectangleElement>, ElementSelector<RoundedRectangleElement> {
         override fun build(): RoundedRectangleElement = RoundedRectangleElement()
+
         override fun trySelect(element: Element): RoundedRectangleElement? = element as? RoundedRectangleElement
     }
 }
