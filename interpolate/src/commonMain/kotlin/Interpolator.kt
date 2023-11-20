@@ -30,7 +30,7 @@ public fun interpolator(
 
 public fun interpolator(
     start: LocalDateTime,
-    stop: LocalDateTime
+    stop: LocalDateTime,
 ): BidirectionalInterpolator<LocalDateTime> = LinearLocalDateTimeInterpolator(start, stop)
 
 public fun interpolator(
