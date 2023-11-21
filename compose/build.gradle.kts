@@ -14,7 +14,7 @@ kotlin {
     explicitApi()
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
-    android() { publishAllLibraryVariants() }
+    androidTarget() { publishAllLibraryVariants() }
     jvm("desktop")
 
     sourceSets {

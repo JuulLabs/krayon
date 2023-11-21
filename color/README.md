@@ -26,7 +26,7 @@ repositories {
 }
 
 kotlin {
-    android()
+    androidTarget()
     jvm()
 
     sourceSets {
