@@ -7,7 +7,7 @@ compose = "1.5.10"
 coroutines = "1.7.3"
 jacoco = "0.8.7"
 jvm-toolchain = "11"
-kotlin = "1.9.20"
+kotlin = "1.9.21"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.8.1" }
