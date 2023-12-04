@@ -16,59 +16,25 @@ kotlin {
     iosArm64()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                api(projects.axis)
-                api(projects.color)
-                api(projects.element)
-                api(projects.hierarchy)
-                api(projects.interpolate)
-                api(projects.kanvas)
-                api(projects.scale)
-                api(projects.selection)
-                api(projects.shape)
-                api(projects.time)
-            }
+        commonMain.dependencies {
+            api(projects.axis)
+            api(projects.color)
+            api(projects.element)
+            api(projects.hierarchy)
+            api(projects.interpolate)
+            api(projects.kanvas)
+            api(projects.scale)
+            api(projects.selection)
+            api(projects.shape)
+            api(projects.time)
         }
 
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("reflect"))
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-            }
+        androidMain.dependencies {
+            api(projects.elementView)
         }
 
-        val androidMain by getting {
-            dependencies {
-                api(projects.elementView)
-            }
-        }
-
-        val androidUnitTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation(libs.androidx.test)
-                implementation(libs.robolectric)
-            }
-        }
-
-        val jvmTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-            }
-        }
-
-        val jsMain by getting {
-            dependencies {
-                api(projects.elementView)
-            }
-        }
-
-        val jsTest by getting {
-            dependencies {
-                implementation(kotlin("test-js"))
-            }
+        jsMain.dependencies {
+            api(projects.elementView)
         }
     }
 }

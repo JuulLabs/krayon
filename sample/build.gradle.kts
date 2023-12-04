@@ -18,62 +18,38 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(projects.box)
-                implementation(kotlin("stdlib"))
-                implementation(libs.coroutines.core)
-                implementation(libs.datetime)
-            }
+        commonMain.dependencies {
+            implementation(projects.box)
+            implementation(libs.coroutines.core)
+            implementation(libs.datetime)
         }
 
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-            }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
         }
 
-        val androidMain by getting {
-            dependencies {
-                implementation(projects.compose)
-                implementation(libs.androidx.activity.compose)
-                implementation(libs.androidx.appcompat)
-                implementation(libs.androidx.lifecycle.runtime)
-                implementation(libs.coroutines.android)
-                implementation(libs.material)
-                implementation(compose.foundation)
-                implementation(compose.preview)
-                implementation(compose.runtime)
-                implementation(compose.ui)
-            }
+        androidMain.dependencies {
+            implementation(projects.compose)
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.appcompat)
+            implementation(libs.androidx.lifecycle.runtime)
+            implementation(libs.coroutines.android)
+            implementation(libs.material)
+            implementation(compose.foundation)
+            implementation(compose.preview)
+            implementation(compose.runtime)
+            implementation(compose.ui)
         }
 
-        val androidUnitTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-            }
+        getByName("desktopMain").dependencies {
+            implementation(projects.compose)
+            implementation(compose.desktop.currentOs)
+            implementation(compose.preview)
         }
 
-        val desktopMain by getting {
-            dependencies {
-                implementation(projects.compose)
-                implementation(compose.desktop.currentOs)
-                implementation(compose.preview)
-            }
-        }
-
-        val jsMain by getting {
-            dependencies {
-                implementation(libs.coroutines.js)
-                implementation(compose.web.core) // required because of the compose plugin, but unused.
-            }
-        }
-
-        val jsTest by getting {
-            dependencies {
-                implementation(kotlin("test-js"))
-            }
+        jsMain.dependencies {
+            implementation(libs.coroutines.js)
+            implementation(compose.web.core) // required because of the compose plugin, but unused.
         }
     }
 }

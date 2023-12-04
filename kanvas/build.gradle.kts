@@ -29,62 +29,23 @@ kotlin {
             languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
         }
 
-        val commonMain by getting {
-            dependencies {
-                api(projects.color)
-            }
+        commonMain.dependencies {
+            api(projects.color)
         }
 
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("reflect"))
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-            }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
         }
 
-        val androidMain by getting {
-            dependencies {
-                implementation(libs.androidx.appcompat)
-                implementation(libs.androidx.lifecycle.runtime)
-                implementation(libs.coroutines.android)
-            }
+        androidMain.dependencies {
+            implementation(libs.androidx.appcompat)
+            implementation(libs.androidx.lifecycle.runtime)
+            implementation(libs.coroutines.android)
         }
 
-        val androidUnitTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation(libs.androidx.test)
-                implementation(libs.robolectric)
-            }
-        }
-
-        val jvmTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-            }
-        }
-
-        val jsTest by getting {
-            dependencies {
-                implementation(kotlin("test-js"))
-            }
-        }
-
-        val nativeDarwinMain by creating {
-            dependsOn(commonMain)
-        }
-
-        val iosArm64Main by getting {
-            dependsOn(nativeDarwinMain)
-        }
-
-        val macosArm64Main by getting {
-            dependsOn(nativeDarwinMain)
-        }
-
-        val macosX64Main by getting {
-            dependsOn(nativeDarwinMain)
+        getByName("androidUnitTest").dependencies {
+            implementation(libs.androidx.test)
+            implementation(libs.robolectric)
         }
     }
 }

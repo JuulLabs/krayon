@@ -14,29 +14,23 @@ kotlin {
     explicitApi()
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
-    androidTarget() { publishAllLibraryVariants() }
+    androidTarget().publishAllLibraryVariants()
     jvm("desktop")
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                api(projects.kanvas)
-                api(projects.element)
-                api(compose.runtime)
-                api(compose.foundation)
-                api(compose.material)
-                implementation(libs.datetime)
-            }
+        commonMain.dependencies {
+            api(projects.kanvas)
+            api(projects.element)
+            api(compose.runtime)
+            api(compose.foundation)
+            api(compose.material)
+            implementation(libs.datetime)
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
         }
-        val desktopMain by getting {
-            dependencies {
-                api(compose.preview)
-            }
+        getByName("desktopMain").dependencies {
+            api(compose.preview)
         }
     }
 }

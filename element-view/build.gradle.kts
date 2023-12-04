@@ -14,41 +14,24 @@ kotlin {
     js().browser()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                api(projects.element)
-                api(libs.coroutines.core)
-            }
+        commonMain.dependencies {
+            api(projects.element)
+            api(libs.coroutines.core)
         }
 
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("reflect"))
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-            }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
         }
 
-        val androidMain by getting {
-            dependencies {
-                implementation(libs.androidx.appcompat)
-                implementation(libs.androidx.lifecycle.runtime)
-                implementation(libs.coroutines.android)
-            }
+        androidMain.dependencies {
+            implementation(libs.androidx.appcompat)
+            implementation(libs.androidx.lifecycle.runtime)
+            implementation(libs.coroutines.android)
         }
 
-        val androidUnitTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation(libs.androidx.test)
-                implementation(libs.robolectric)
-            }
-        }
-
-        val jsTest by getting {
-            dependencies {
-                implementation(kotlin("test-js"))
-            }
+        getByName("androidUnitTest").dependencies {
+            implementation(libs.androidx.test)
+            implementation(libs.robolectric)
         }
     }
 }
