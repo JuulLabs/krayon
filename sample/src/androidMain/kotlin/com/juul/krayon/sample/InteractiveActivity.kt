@@ -1,5 +1,6 @@
 package com.juul.krayon.sample
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +12,7 @@ import com.juul.krayon.sample.databinding.ActivityInteractiveBinding
 
 class InteractiveActivity : AppCompatActivity() {
 
+    @SuppressLint("RememberReturnType") // Lint incorrect fails saying `remember` is returning `Unit`.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
