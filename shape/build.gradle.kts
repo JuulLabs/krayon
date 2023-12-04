@@ -23,29 +23,12 @@ kotlin {
     iosArm64()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                api(projects.kanvas)
-            }
+        commonMain.dependencies {
+            api(projects.kanvas)
         }
 
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-            }
-        }
-
-        val jvmTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-            }
-        }
-
-        val jsTest by getting {
-            dependencies {
-                implementation(kotlin("test-js"))
-            }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
         }
     }
 }
