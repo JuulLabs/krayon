@@ -1,5 +1,6 @@
 package com.juul.krayon.sample
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.juul.krayon.compose.ElementView
 
 class ComposeLineActivity : AppCompatActivity() {
 
+    @SuppressLint("RememberReturnType") // Lint incorrect fails saying `remember` is returning `Unit`.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
