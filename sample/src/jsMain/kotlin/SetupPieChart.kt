@@ -1,7 +1,7 @@
-package com.juul.krayon.sample
-
 import com.juul.krayon.element.view.ElementViewAdapter
 import com.juul.krayon.element.view.attachAdapter
+import com.juul.krayon.sample.PieChart
+import com.juul.krayon.sample.pieChart
 import kotlinx.browser.document
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -11,23 +11,8 @@ import kotlin.math.PI
 
 private val arcs = listOf(1f, 2f, 3f, 4f, 5f, 6f)
 
-fun main() {
-    setupLineChart()
-    setupPieChart()
-    setupInteractiveChart()
-}
-
-private fun setupLineChart() {
-    (document.getElementById("line-canvas") as HTMLCanvasElement)
-        .attachAdapter(
-            ElementViewAdapter(
-                dataSource = movingSineWave(),
-                updater = ::lineChart,
-            ),
-        )
-}
-
-private fun setupPieChart() {
+@JsExport
+fun setupPieChart(elementId: String) {
     fun configure(id: String, min: Float, max: Float, state: MutableStateFlow<Float>) {
         val input = document.getElementById(id) as HTMLInputElement
         input.min = min.toString()
@@ -64,16 +49,10 @@ private fun setupPieChart() {
             PieChart(arcs, startAngle, endAngle, cornerRadius, paddingAngle, innerRadius)
         }
 
-    (document.getElementById("pie-canvas") as HTMLCanvasElement).attachAdapter(
+    (document.getElementById(elementId) as HTMLCanvasElement).attachAdapter(
         ElementViewAdapter(
             dataSource = charts,
             updater = ::pieChart,
         ),
     )
-}
-
-private fun setupInteractiveChart() {
-    val canvasElement = document.getElementById("interaction-canvas") as HTMLCanvasElement
-    val (flow, update) = interactiveTreeChart()
-    canvasElement.attachAdapter(ElementViewAdapter(flow, update))
 }

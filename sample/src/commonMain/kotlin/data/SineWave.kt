@@ -1,5 +1,6 @@
-package com.juul.krayon.sample
+package com.juul.krayon.sample.data
 
+import com.juul.krayon.sample.Point
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

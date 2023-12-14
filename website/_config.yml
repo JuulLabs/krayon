@@ -1,0 +1,10 @@
+title: Krayon
+description: Cross platform (Android, iOS & JavaScript) canvas library.
+
+plugins:
+  - jekyll-remote-theme
+
+remote_theme: jekyll/minima
+
+kramdown:
+  parse_block_html: true

@@ -38,10 +38,6 @@ allprojects {
     }
 }
 
-tasks.dokkaHtmlMultiModule.configure {
-    outputDirectory.set(buildDir.resolve("gh-pages"))
-}
-
 // Remove this when we can update Kotlin/Compose to something that doesn't need the M1 workaround.
 rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin> {
     rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().nodeVersion = "16.0.0"

@@ -2,28 +2,45 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - main
+      - $default-branch
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 env:
   GRADLE_OPTS: -Dorg.gradle.daemon=false
+  JEKYLL_ENV: production
 
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: gradle/wrapper-validation-action@v1
+
+      - uses: actions/configure-pages@v4
+        id: pages
+
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: dokkaHtmlMultiModule
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Website
         uses: gradle/gradle-build-action@v2
         with:
           cache-read-only: true
-          arguments: dokkaHtmlMultiModule
+          arguments: |
+            -Pbaseurl=${{ steps.pages.outputs.base_path }}
+            :website:build
 
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: build/gh-pages
+          folder: website/_site
