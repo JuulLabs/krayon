@@ -33,7 +33,7 @@ gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 # https://github.com/benbalter/jekyll-remote-theme
-gem "jekyll-remote-theme"
+gem "jekyll-remote-theme", group: :jekyll_plugins
 
-# https://github.com/jekyll/jekyll-redirect-from
-gem "jekyll-redirect-from"
+# https://github.com/jeffreytse/jekyll-spaceship
+gem "jekyll-spaceship", group: :jekyll_plugins

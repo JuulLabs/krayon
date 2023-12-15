@@ -7,7 +7,7 @@ permalink: /samples/
 <table>
     <tr>
         <td>
-            <a href="sinewave">
+            <a href="sinewave" markdown="0">
                 <canvas id="line-canvas" style="height: 200px; width: 300px"></canvas>
             </a>
         </td>
@@ -16,4 +16,4 @@ permalink: /samples/
         </td>
     </tr>
 </table>
-<script>sample.setupMovingSineWave("line-canvas");</script>
+<script>sample.setupMovingSineWave(document.getElementById("line-canvas"));</script>

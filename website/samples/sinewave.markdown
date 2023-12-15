@@ -3,7 +3,7 @@ layout: page
 ---
 
 <canvas id="line-canvas" style="height: 480px; width: 854px"></canvas>
-<script>sample.setupMovingSineWave("line-canvas");</script>
+<script>sample.setupMovingSineWave(document.getElementById("line-canvas"));</script>
 
 <details>
 <summary markdown="span">Data</summary>
