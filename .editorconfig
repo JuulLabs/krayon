@@ -11,3 +11,6 @@ ktlint_standard_property-naming = disabled
 # `string-template-indent` is disabled because it depends on `multiline-expression-wrapping`.
 ktlint_standard_multiline-expression-wrapping = disabled
 ktlint_standard_string-template-indent = disabled
+
+[sample/**/*.{kt,kts}]
+ktlint_standard_no-multi-spaces = disabled
