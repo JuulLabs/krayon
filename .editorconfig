@@ -14,3 +14,4 @@ ktlint_standard_string-template-indent = disabled
 
 [sample/**/*.{kt,kts}]
 ktlint_standard_no-multi-spaces = disabled
+ktlint_standard_discouraged-comment-location = disabled
