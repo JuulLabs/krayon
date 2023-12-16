@@ -12,7 +12,7 @@ import kotlin.math.PI
 private val arcs = listOf(1f, 2f, 3f, 4f, 5f, 6f)
 
 @JsExport
-fun setupPieChart(elementId: String) {
+fun setupPieChart(element: HTMLCanvasElement) {
     fun configure(id: String, min: Float, max: Float, state: MutableStateFlow<Float>) {
         val input = document.getElementById(id) as HTMLInputElement
         input.min = min.toString()
@@ -49,7 +49,7 @@ fun setupPieChart(elementId: String) {
             PieChart(arcs, startAngle, endAngle, cornerRadius, paddingAngle, innerRadius)
         }
 
-    (document.getElementById(elementId) as HTMLCanvasElement).attachAdapter(
+    element.attachAdapter(
         ElementViewAdapter(
             dataSource = charts,
             updater = ::pieChart,
