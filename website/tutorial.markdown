@@ -55,10 +55,10 @@ graph LR;
     Elements --> SvgKanvas
     Elements --> ComposeKanvas
     Elements --> CGContextKanvas
-    style Krayon fill:#B3E5FC
-    style Web fill:#E8D44D
-    style Android fill:#9FC137
-    style iOS fill:#ADADAD
+    style Krayon fill:#b3e5fc
+    style Web fill:#e8d44d
+    style Android fill:#9fc137
+    style iOS fill:#adadad
 ```
 <br/>
 
@@ -73,10 +73,10 @@ To draw a simple line on an HTML [Canvas], we start by creating a [Canvas]:
 We can then perform the following in [Kotlin]&trade;:
 
 1. Create a [`RootElement`]
-2. Access [`RootElement`] as a [`Selection`] (which allows for attribute modifications)
+2. Access [`RootElement`] as a [`Selection`]
 3. Add a [`LineElement`] to the [`RootElement`]
 4. Update the start and end points of the [`LineElement`]
-5. Draw the [`RootElement`] to a [`HtmlKanvas`] which bridges to an HTML [Canvas] 
+5. Draw the [`RootElement`] to a [`HtmlKanvas`] (which bridges to an HTML [Canvas]) 
 
 ```kotlin
 {% include kotlin/tutorial/Line1.kt %}
@@ -95,14 +95,18 @@ This will render as:
 
 ### Data
 
-To draw the same line as above, powered by a dataset, we can perform the following in
+To draw the same line as above, but powered by a dataset, we can perform the following in
 [Kotlin]&trade;:
 
 1. Create a [`RootElement`]
-2. Access [`RootElement`] as a [`Selection`] (which allows for attribute modifications)
+2. Access [`RootElement`] as a [`Selection`]
 3. Add a [`LineElement`] to the [`RootElement`]
-4. Update the start and end points of the [`LineElement`]
-5. Draw the [`RootElement`] to a [`HtmlKanvas`] which bridges to an HTML [Canvas]
+4. Associate data with the [`Selection`]
+5. Combine each element of the data with a [`LineElement`]
+6. Iterate over each item of the data (`data` is a `Pair<Point, Point>`) and [`LineElement`]s
+7. Deconstruct `data` as `start` (`Point`) and `end` (`Point`) 
+8. Assign the `Point` values to the [`LineElement`] properties (`startX`, `startY`, etc.)
+9. Draw the [`RootElement`] to a [`HtmlKanvas`] (which bridges to an HTML [Canvas])
 
 ```kotlin
 {% include kotlin/tutorial/Line2.kt %}
