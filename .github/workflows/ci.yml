@@ -55,4 +55,4 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           cache-read-only: true
-          arguments: :website:build
+          arguments: :website:browserBuild
