@@ -39,7 +39,7 @@ jobs:
           cache-read-only: true
           arguments: |
             -Pbaseurl=${{ steps.pages.outputs.base_path }}
-            :website:build
+            :website:browserBuild
 
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
