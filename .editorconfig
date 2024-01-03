@@ -11,3 +11,10 @@ ktlint_standard_property-naming = disabled
 # `string-template-indent` is disabled because it depends on `multiline-expression-wrapping`.
 ktlint_standard_multiline-expression-wrapping = disabled
 ktlint_standard_string-template-indent = disabled
+
+[sample/**/*.{kt,kts}]
+ktlint_standard_no-multi-spaces = disabled
+
+# `if-else-wrapping` is disabled because it depends on `discouraged-comment-location`.
+ktlint_standard_discouraged-comment-location = disabled
+ktlint_standard_if-else-wrapping = disabled
