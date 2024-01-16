@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Krayon | Cross platform (Android, iOS &amp; JavaScript) canvas library.</title>
+<meta name="generator" content="Jekyll v4.3.3">
+<meta property="og:title" content="Krayon">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Cross platform (Android, iOS &amp; JavaScript) canvas library.">
+<meta property="og:description" content="Cross platform (Android, iOS &amp; JavaScript) canvas library.">
+<meta property="og:site_name" content="Krayon">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Krayon">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Cross platform (Android, iOS &amp; JavaScript) canvas library.","headline":"Krayon","url":"/krayon/samples/sinewave.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/krayon/assets/css/style.css">
+<link type="application/atom+xml" rel="alternate" href="/krayon/feed.xml" title="Krayon">
+<script src="/krayon/assets/js/sample.js"></script>
+</head>
+<body>
+<header class="site-header">
+
+    <div class="wrapper">
+<a class="site-title" rel="author" href="/krayon/"><img src="/assets/images/krayon.svg" height="35px"></a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger" class="nav-trigger">
+            <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+            </label>
+
+            <div class="trigger">
+<a class="page-link" href="/krayon/api/">API</a><a class="page-link" href="/krayon/modules/">Modules</a><a class="page-link" href="/krayon/samples/">Samples</a><a class="page-link" href="/krayon/tutorial/">Tutorial</a>
+</div>
+        </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <canvas id="line-canvas" style="height: 480px; width: 854px"></canvas>
+<script>sample.setupMovingSineWave(document.getElementById("line-canvas"));</script>
+
+<details>
+  <summary>Data</summary>
+
+  <div class="language-kotlin highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="nn">com.juul.krayon.sample.data</span>
+
+<span class="k">import</span> <span class="nn">com.juul.krayon.sample.Point</span>
+<span class="k">import</span> <span class="nn">kotlinx.coroutines.currentCoroutineContext</span>
+<span class="k">import</span> <span class="nn">kotlinx.coroutines.flow.Flow</span>
+<span class="k">import</span> <span class="nn">kotlinx.coroutines.flow.flow</span>
+<span class="k">import</span> <span class="nn">kotlinx.coroutines.isActive</span>
+<span class="k">import</span> <span class="nn">kotlin.math.PI</span>
+<span class="k">import</span> <span class="nn">kotlin.math.sin</span>
+<span class="k">import</span> <span class="nn">kotlin.time.Duration</span>
+<span class="k">import</span> <span class="nn">kotlin.time.Duration.Companion.seconds</span>
+<span class="k">import</span> <span class="nn">kotlin.time.TimeSource</span>
+
+<span class="cm">/** A flow that emits data for a continuously rolling sine wave. By default, completes a full cycle in 10 seconds. */</span>
+<span class="k">internal</span> <span class="k">fun</span> <span class="nf">movingSineWave</span><span class="p">(</span>
+    <span class="n">period</span><span class="p">:</span> <span class="nc">Duration</span> <span class="p">=</span> <span class="mi">10</span><span class="p">.</span><span class="n">seconds</span><span class="p">,</span>
+    <span class="n">samples</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">50</span><span class="p">,</span>
+<span class="p">):</span> <span class="nc">Flow</span><span class="p">&lt;</span><span class="nc">List</span><span class="p">&lt;</span><span class="nc">Point</span><span class="p">?&gt;&gt;</span> <span class="p">=</span> <span class="nf">flow</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="py">offset</span> <span class="p">=</span> <span class="mf">0f</span>
+    <span class="kd">var</span> <span class="py">time</span> <span class="p">=</span> <span class="nc">TimeSource</span><span class="p">.</span><span class="nc">Monotonic</span><span class="p">.</span><span class="nf">markNow</span><span class="p">()</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nf">currentCoroutineContext</span><span class="p">().</span><span class="n">isActive</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">emit</span><span class="p">(</span><span class="nf">sineWave</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">samples</span><span class="p">))</span>
+        <span class="n">offset</span> <span class="p">+=</span> <span class="p">((</span><span class="n">time</span><span class="p">.</span><span class="nf">elapsedNow</span><span class="p">()</span> <span class="p">/</span> <span class="n">period</span><span class="p">)</span> <span class="p">*</span> <span class="mi">2</span> <span class="p">*</span> <span class="nc">PI</span><span class="p">).</span><span class="nf">toFloat</span><span class="p">()</span>
+        <span class="n">time</span> <span class="p">=</span> <span class="nc">TimeSource</span><span class="p">.</span><span class="nc">Monotonic</span><span class="p">.</span><span class="nf">markNow</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">internal</span> <span class="k">fun</span> <span class="nf">sineWave</span><span class="p">(</span><span class="n">offset</span><span class="p">:</span> <span class="nc">Float</span> <span class="p">=</span> <span class="mf">0f</span><span class="p">,</span> <span class="n">samples</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">50</span><span class="p">):</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Point</span><span class="p">?&gt;</span> <span class="p">=</span>
+    <span class="p">(</span><span class="mi">0</span> <span class="n">until</span> <span class="n">samples</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="n">i</span> <span class="p">-&gt;</span>
+        <span class="kd">val</span> <span class="py">proportion</span> <span class="p">=</span> <span class="n">i</span><span class="p">.</span><span class="nf">toFloat</span><span class="p">()</span> <span class="p">/</span> <span class="p">(</span><span class="n">samples</span> <span class="p">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">x</span> <span class="p">=</span> <span class="n">offset</span> <span class="p">+</span> <span class="p">(</span><span class="mi">2</span> <span class="p">*</span> <span class="nc">PI</span> <span class="p">*</span> <span class="n">proportion</span><span class="p">).</span><span class="nf">toFloat</span><span class="p">()</span>
+        <span class="nc">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="nf">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)).</span><span class="nf">takeUnless</span> <span class="p">{</span> <span class="n">i</span> <span class="p">%</span> <span class="mi">5</span> <span class="p">==</span> <span class="mi">0</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+</code></pre></div>  </div>
+</details>
+
+<details>
+  <summary>Updater</summary>
+
+  <div class="language-kotlin highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="nn">com.juul.krayon.sample.updaters</span>
+
+<span class="k">import</span> <span class="nn">com.juul.krayon.axis.axisBottom</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.axis.axisLeft</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.axis.call</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.color.darkSlateBlue</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.color.steelBlue</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.color.white</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.element.CircleElement</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.element.GroupElement</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.element.PathElement</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.element.RootElement</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.element.TransformElement</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.element.withKind</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.kanvas.Paint</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.kanvas.Transform</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.sample.Point</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.scale.domain</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.scale.extent</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.scale.range</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.scale.scale</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.selection.append</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.selection.asSelection</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.selection.data</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.selection.each</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.selection.join</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.selection.selectAll</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.shape.line</span>
+
+<span class="k">private</span> <span class="kd">val</span> <span class="py">solidLinePaint</span> <span class="p">=</span> <span class="nc">Paint</span><span class="p">.</span><span class="nc">Stroke</span><span class="p">(</span><span class="n">steelBlue</span><span class="p">,</span> <span class="mf">1f</span><span class="p">)</span>
+<span class="k">private</span> <span class="kd">val</span> <span class="py">dashedLinePaint</span> <span class="p">=</span> <span class="nc">Paint</span><span class="p">.</span><span class="nc">Stroke</span><span class="p">(</span><span class="n">darkSlateBlue</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">,</span> <span class="n">dash</span> <span class="p">=</span> <span class="nc">Paint</span><span class="p">.</span><span class="nc">Stroke</span><span class="p">.</span><span class="nc">Dash</span><span class="p">.</span><span class="nc">Pattern</span><span class="p">(</span><span class="mf">5f</span><span class="p">,</span> <span class="mf">5.5f</span><span class="p">))</span>
+<span class="k">private</span> <span class="kd">val</span> <span class="py">circlePaint</span> <span class="p">=</span> <span class="nc">Paint</span><span class="p">.</span><span class="nc">FillAndStroke</span><span class="p">(</span>
+    <span class="nc">Paint</span><span class="p">.</span><span class="nc">Fill</span><span class="p">(</span><span class="n">white</span><span class="p">),</span>
+    <span class="nc">Paint</span><span class="p">.</span><span class="nc">Stroke</span><span class="p">(</span><span class="n">steelBlue</span><span class="p">,</span> <span class="mf">1f</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="k">internal</span> <span class="k">fun</span> <span class="nf">lineChart</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="nc">RootElement</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nc">Float</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nc">Float</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Point</span><span class="p">?&gt;)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">leftMargin</span> <span class="p">=</span> <span class="mf">40f</span>
+    <span class="kd">val</span> <span class="py">topMargin</span> <span class="p">=</span> <span class="mf">20f</span>
+    <span class="kd">val</span> <span class="py">rightMargin</span> <span class="p">=</span> <span class="mf">20f</span>
+    <span class="kd">val</span> <span class="py">bottomMargin</span> <span class="p">=</span> <span class="mf">40f</span>
+
+    <span class="kd">val</span> <span class="py">innerWidth</span> <span class="p">=</span> <span class="n">width</span> <span class="p">-</span> <span class="n">leftMargin</span> <span class="p">-</span> <span class="n">rightMargin</span>
+    <span class="kd">val</span> <span class="py">innerHeight</span> <span class="p">=</span> <span class="n">height</span> <span class="p">-</span> <span class="n">topMargin</span> <span class="p">-</span> <span class="n">bottomMargin</span>
+
+    <span class="kd">val</span> <span class="py">x</span> <span class="p">=</span> <span class="nf">scale</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">domain</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="nf">extent</span> <span class="p">{</span> <span class="n">it</span><span class="o">?.</span><span class="n">x</span> <span class="p">})</span>
+        <span class="p">.</span><span class="nf">range</span><span class="p">(</span><span class="mf">0f</span><span class="p">,</span> <span class="n">innerWidth</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">y</span> <span class="p">=</span> <span class="nf">scale</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">domain</span><span class="p">(-</span><span class="mf">1f</span><span class="p">,</span> <span class="mf">1f</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">range</span><span class="p">(</span><span class="n">innerHeight</span><span class="p">,</span> <span class="mf">0f</span><span class="p">)</span>
+
+    <span class="kd">val</span> <span class="py">line</span> <span class="p">=</span> <span class="n">line</span><span class="p">&lt;</span><span class="nc">Point</span><span class="p">&gt;()</span>
+        <span class="p">.</span><span class="nf">x</span> <span class="p">{</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">x</span><span class="p">.</span><span class="nf">scale</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="p">}</span>
+        <span class="p">.</span><span class="nf">y</span> <span class="p">{</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">y</span><span class="p">.</span><span class="nf">scale</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="kd">val</span> <span class="py">body</span> <span class="p">=</span> <span class="n">root</span><span class="p">.</span><span class="nf">asSelection</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">selectAll</span><span class="p">(</span><span class="nc">TransformElement</span><span class="p">.</span><span class="nf">withKind</span><span class="p">(</span><span class="s">"body"</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">data</span><span class="p">(</span><span class="nf">listOf</span><span class="p">(</span><span class="k">null</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">join</span> <span class="p">{</span> <span class="nf">append</span><span class="p">(</span><span class="nc">TransformElement</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span> <span class="n">kind</span> <span class="p">=</span> <span class="s">"body"</span> <span class="p">}</span> <span class="p">}</span>
+        <span class="p">.</span><span class="nf">each</span> <span class="p">{</span>
+            <span class="n">transform</span> <span class="p">=</span> <span class="nc">Transform</span><span class="p">.</span><span class="nc">Translate</span><span class="p">(</span>
+                <span class="n">horizontal</span> <span class="p">=</span> <span class="n">leftMargin</span><span class="p">,</span>
+                <span class="n">vertical</span> <span class="p">=</span> <span class="n">topMargin</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">}</span>
+
+    <span class="n">body</span><span class="p">.</span><span class="nf">selectAll</span><span class="p">(</span><span class="nc">TransformElement</span><span class="p">.</span><span class="nf">withKind</span><span class="p">(</span><span class="s">"x-axis"</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">data</span><span class="p">(</span><span class="nf">listOf</span><span class="p">(</span><span class="k">null</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">join</span> <span class="p">{</span> <span class="nf">append</span><span class="p">(</span><span class="nc">TransformElement</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span> <span class="n">kind</span> <span class="p">=</span> <span class="s">"x-axis"</span> <span class="p">}</span> <span class="p">}</span>
+        <span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="n">transform</span> <span class="p">=</span> <span class="nc">Transform</span><span class="p">.</span><span class="nc">Translate</span><span class="p">(</span><span class="n">vertical</span> <span class="p">=</span> <span class="n">innerHeight</span><span class="p">)</span> <span class="p">}</span>
+        <span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="nf">axisBottom</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+    <span class="n">body</span><span class="p">.</span><span class="nf">selectAll</span><span class="p">(</span><span class="nc">GroupElement</span><span class="p">.</span><span class="nf">withKind</span><span class="p">(</span><span class="s">"y-axis"</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">data</span><span class="p">(</span><span class="nf">listOf</span><span class="p">(</span><span class="k">null</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">join</span> <span class="p">{</span> <span class="nf">append</span><span class="p">(</span><span class="nc">GroupElement</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span> <span class="n">kind</span> <span class="p">=</span> <span class="s">"y-axis"</span> <span class="p">}</span> <span class="p">}</span>
+        <span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="nf">axisLeft</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+    <span class="n">body</span><span class="p">.</span><span class="nf">selectAll</span><span class="p">(</span><span class="nc">PathElement</span><span class="p">.</span><span class="nf">withKind</span><span class="p">(</span><span class="s">"line"</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">data</span><span class="p">(</span><span class="nf">listOf</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="nf">filterNotNull</span><span class="p">(),</span> <span class="n">data</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">join</span> <span class="p">{</span>
+            <span class="nf">append</span><span class="p">(</span><span class="nc">PathElement</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">-&gt;</span>
+                <span class="n">kind</span> <span class="p">=</span> <span class="s">"line"</span>
+                <span class="n">paint</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="p">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">dashedLinePaint</span> <span class="k">else</span> <span class="n">solidLinePaint</span>
+            <span class="p">}</span>
+        <span class="p">}.</span><span class="nf">each</span> <span class="p">{</span> <span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">-&gt;</span>
+            <span class="n">path</span> <span class="p">=</span> <span class="n">line</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="p">}</span>
+
+    <span class="n">body</span><span class="p">.</span><span class="nf">selectAll</span><span class="p">(</span><span class="nc">CircleElement</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">data</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="nf">filterNotNull</span><span class="p">())</span>
+        <span class="p">.</span><span class="nf">join</span> <span class="p">{</span>
+            <span class="nf">append</span><span class="p">(</span><span class="nc">CircleElement</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span>
+                <span class="n">radius</span> <span class="p">=</span> <span class="mf">3f</span>
+                <span class="n">paint</span> <span class="p">=</span> <span class="n">circlePaint</span>
+            <span class="p">}</span>
+        <span class="p">}.</span><span class="nf">each</span> <span class="p">{</span> <span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">-&gt;</span>
+            <span class="n">centerX</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="nf">scale</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">centerY</span> <span class="p">=</span> <span class="n">y</span><span class="p">.</span><span class="nf">scale</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div>  </div>
+</details>
+
+<details>
+  <summary>Glue</summary>
+
+  <div class="language-kotlin highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.juul.krayon.element.view.ElementViewAdapter</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.element.view.attachAdapter</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.sample.data.movingSineWave</span>
+<span class="k">import</span> <span class="nn">com.juul.krayon.sample.updaters.lineChart</span>
+<span class="k">import</span> <span class="nn">org.w3c.dom.HTMLCanvasElement</span>
+
+<span class="nd">@JsExport</span>
+<span class="k">fun</span> <span class="nf">setupMovingSineWave</span><span class="p">(</span><span class="n">element</span><span class="p">:</span> <span class="nc">HTMLCanvasElement</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">element</span><span class="p">.</span><span class="nf">attachAdapter</span><span class="p">(</span>
+        <span class="nc">ElementViewAdapter</span><span class="p">(</span>
+            <span class="n">dataSource</span> <span class="p">=</span> <span class="nf">movingSineWave</span><span class="p">(),</span>
+            <span class="n">updater</span> <span class="p">=</span> <span class="o">::</span><span class="n">lineChart</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre></div>  </div>
+</details>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" href="/krayon/"></data>
+
+    <div class="wrapper">
+
+        <div class="footer-col-wrapper">
+            <div class="footer-col">
+                <p class="feed-subscribe">
+                    <a href="https://github.com/JuulLabs/krayon">
+                        <img alt="GitHub" src="/krayon/assets/images/github-mark.svg" width="35px">
+                         
+                        <span>Fork me on GitHub</span>
+                    </a>
+                </p>
+            </div>
+            <div class="footer-col">
+                <p>Cross platform (Android, iOS &amp; JavaScript) canvas library.</p>
+            </div>
+        </div>
+
+        <div class="social-links">
+<ul class="social-media-list"></ul>
+</div>
+
+    </div>
+
+</footer>
+</body>
+
+</html>

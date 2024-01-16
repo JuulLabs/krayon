@@ -1,0 +1,519 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.juul.krayon.kanvas</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../index.html">
+                            krayon
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":kanvas:dokkaHtmlPartial/androidMain">android</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":kanvas:dokkaHtmlPartial/commonMain">common</button>
+                <button class="platform-tag platform-selector js-like" data-active="" data-filter=":kanvas:dokkaHtmlPartial/jsMain">js</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="kanvas::com.juul.krayon.kanvas////PointingToDeclaration//1401831481">
+  <div class="breadcrumbs"><a href="../index.html">kanvas</a><span class="delimiter">/</span><span class="current">com.juul.krayon.kanvas</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="1214820704%2FClasslikes%2F-1219556937" anchor-label="AndroidKanvas" id="1214820704%2FClasslikes%2F-1219556937" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-android-kanvas/index.html"><span>Android</span><wbr><span><span>Kanvas</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1214820704%2FClasslikes%2F-1219556937"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-android-kanvas/index.html">AndroidKanvas</a> : <a href="-kanvas/index.html">Kanvas</a></div><div class="brief "><p class="paragraph">Implementation of <a href="-kanvas/index.html">Kanvas</a> which wraps a native Android <a href="https://developer.android.com/reference/kotlin/android/graphics/Canvas.html">Canvas</a>.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="794880593%2FClasslikes%2F-1219556937" anchor-label="AndroidPathMarker" id="794880593%2FClasslikes%2F-1219556937" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-android-path-marker/index.html"><span>Android</span><wbr><span>Path</span><wbr><span><span>Marker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="794880593%2FClasslikes%2F-1219556937"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-android-path-marker/index.html">AndroidPathMarker</a> : <a href="-path-type-marker/index.html">PathTypeMarker</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/graphics/Path.html">Path</a><span class="token operator">&gt; </span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1788027187%2FClasslikes%2F506614723" anchor-label="Clip" id="1788027187%2FClasslikes%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-clip/index.html"><span><span>Clip</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1788027187%2FClasslikes%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-clip/index.html">Clip</a></div><div class="brief "><p class="paragraph">Describes an area to be included or excluded in future draw calls.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-554662636%2FClasslikes%2F506614723" anchor-label="Font" id="-554662636%2FClasslikes%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-font/index.html"><span><span>Font</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-554662636%2FClasslikes%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-font/index.html">Font</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>names<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fonts are provided as a list of family names, in descending priority.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1210572920%2FClasslikes%2F318269413" anchor-label="HtmlKanvas" id="-1210572920%2FClasslikes%2F318269413" data-filterable-set=":kanvas:dokkaHtmlPartial/jsMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/jsMain" data-filterable-set=":kanvas:dokkaHtmlPartial/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-html-kanvas/index.html"><span>Html</span><wbr><span><span>Kanvas</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1210572920%2FClasslikes%2F318269413"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/jsMain" data-filterable-set=":kanvas:dokkaHtmlPartial/jsMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-html-kanvas/index.html">HtmlKanvas</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/org.w3c.dom/-h-t-m-l-canvas-element/index.html">HTMLCanvasElement</a><span class="token punctuation">, </span></span><span class="parameter ">scalingFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span></span></span><span class="token punctuation">)</span> : <a href="-kanvas/index.html">Kanvas</a>, <a href="-is-point-in-path/index.html">IsPointInPath</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1751421711%2FClasslikes%2F506614723" anchor-label="IsPointInPath" id="1751421711%2FClasslikes%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-is-point-in-path/index.html"><span>Is</span><wbr><span>Point</span><wbr><span>In</span><wbr><span><span>Path</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1751421711%2FClasslikes%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-is-point-in-path/index.html">IsPointInPath</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2093703757%2FClasslikes%2F506614723" anchor-label="Kanvas" id="-2093703757%2FClasslikes%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-kanvas/index.html"><span><span>Kanvas</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2093703757%2FClasslikes%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-kanvas/index.html">Kanvas</a></div><div class="brief "><p class="paragraph">Something to draw on. Implementations are not required to be safe across multiple threads.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-579529330%2FClasslikes%2F-1219556937" anchor-label="KanvasView" id="-579529330%2FClasslikes%2F-1219556937" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-kanvas-view/index.html"><span>Kanvas</span><wbr><span><span>View</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-579529330%2FClasslikes%2F-1219556937"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-kanvas-view/index.html">KanvasView</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">attrs<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/util/AttributeSet.html">AttributeSet</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a></div><div class="brief "><p class="paragraph">Base class for custom <a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a>s implemented using Krayon.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1266132607%2FClasslikes%2F506614723" anchor-label="Paint" id="-1266132607%2FClasslikes%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-paint/index.html"><span><span>Paint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1266132607%2FClasslikes%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-paint/index.html">Paint</a></div><div class="brief "><p class="paragraph">A descriptor for how shapes should be painted.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1108531135%2FClasslikes%2F-1219556937" anchor-label="PaintCache" id="1108531135%2FClasslikes%2F-1219556937" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-paint-cache/index.html"><span>Paint</span><wbr><span><span>Cache</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1108531135%2FClasslikes%2F-1219556937"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-paint-cache/index.html">PaintCache</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">initial<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-paint/index.html">Paint</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/graphics/Paint.html">Paint</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1839756802%2FClasslikes%2F506614723" anchor-label="Path" id="-1839756802%2FClasslikes%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-path/index.html"><span><span>Path</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1839756802%2FClasslikes%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-path/index.html">Path</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-77933230%2FClasslikes%2F318269413" anchor-label="Path2DMarker" id="-77933230%2FClasslikes%2F318269413" data-filterable-set=":kanvas:dokkaHtmlPartial/jsMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/jsMain" data-filterable-set=":kanvas:dokkaHtmlPartial/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-path2-d-marker/index.html"><span><span>Path2DMarker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-77933230%2FClasslikes%2F318269413"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/jsMain" data-filterable-set=":kanvas:dokkaHtmlPartial/jsMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-path2-d-marker/index.html">Path2DMarker</a> : <a href="-path-type-marker/index.html">PathTypeMarker</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/org.w3c.dom/-path2-d/index.html">Path2D</a><span class="token operator">&gt; </span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-656213335%2FClasslikes%2F506614723" anchor-label="PathBuilder" id="-656213335%2FClasslikes%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-path-builder/index.html"><span>Path</span><wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-656213335%2FClasslikes%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-path-builder/index.html">PathBuilder</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-path-builder/index.html">P</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Interface used by a <a href="-path-type-marker/index.html">PathTypeMarker</a> to generate platform types for <a href="-path/index.html">Path</a> instances.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-309676022%2FClasslikes%2F506614723" anchor-label="PathTypeMarker" id="-309676022%2FClasslikes%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-path-type-marker/index.html"><span>Path</span><wbr><span>Type</span><wbr><span><span>Marker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-309676022%2FClasslikes%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-path-type-marker/index.html">PathTypeMarker</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-path-type-marker/index.html">P</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Used to bridge the gap between a <a href="-path/index.html">Path</a> and the platform type required by a <a href="-kanvas/index.html">Kanvas</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1994119787%2FClasslikes%2F506614723" anchor-label="RelativePathBuilder" id="-1994119787%2FClasslikes%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-relative-path-builder/index.html"><span>Relative</span><wbr><span>Path</span><wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1994119787%2FClasslikes%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-relative-path-builder/index.html">RelativePathBuilder</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-relative-path-builder/index.html">P</a><span class="token operator">&gt;</span> : <a href="-path-builder/index.html">PathBuilder</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-relative-path-builder/index.html">P</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Handles relative path building when the underlying output type can't.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="341827977%2FClasslikes%2F-1219556937" anchor-label="ScaledIsPointInPath" id="341827977%2FClasslikes%2F-1219556937" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-scaled-is-point-in-path/index.html"><span>Scaled</span><wbr><span>Is</span><wbr><span>Point</span><wbr><span>In</span><wbr><span><span>Path</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="341827977%2FClasslikes%2F-1219556937"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-scaled-is-point-in-path/index.html">ScaledIsPointInPath</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scalingFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span></span></span><span class="token punctuation">)</span> : <a href="-is-point-in-path/index.html">IsPointInPath</a></div><div class="brief "><p class="paragraph">Unlike other platforms, Android doesn't provide an actual way of checking if a point is contained in a path. Android does, however, allow you to intersect paths. As such, check if a very small rectangle around the actual touch point overlaps with the path.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1577899213%2FClasslikes%2F506614723" anchor-label="Transform" id="-1577899213%2FClasslikes%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transform/index.html"><span><span>Transform</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1577899213%2FClasslikes%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-transform/index.html">Transform</a></div><div class="brief "><p class="paragraph">Represents a transformation. Usually, these will boil down to matrix operations.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="762000539%2FProperties%2F506614723" anchor-label="DEFAULT_MITER_LIMIT" id="762000539%2FProperties%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-d-e-f-a-u-l-t_-m-i-t-e-r_-l-i-m-i-t.html"><span><span>DEFAULT_MITER_LIMIT</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="762000539%2FProperties%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-d-e-f-a-u-l-t_-m-i-t-e-r_-l-i-m-i-t.html">DEFAULT_MITER_LIMIT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">4.0f</span></div><div class="brief "><p class="paragraph">Default chosen to match SVG. See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="602295419%2FProperties%2F506614723" anchor-label="monospace" id="602295419%2FProperties%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="monospace.html"><span><span>monospace</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="602295419%2FProperties%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="monospace.html">monospace</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2145866316%2FProperties%2F506614723" anchor-label="sansSerif" id="-2145866316%2FProperties%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sans-serif.html"><span>sans</span><wbr><span><span>Serif</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2145866316%2FProperties%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="sans-serif.html">sansSerif</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-247710527%2FProperties%2F506614723" anchor-label="serif" id="-247710527%2FProperties%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="serif.html"><span><span>serif</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-247710527%2FProperties%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="serif.html">serif</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-244356700%2FFunctions%2F-1219556937" anchor-label="addFontAssociation" id="-244356700%2FFunctions%2F-1219556937" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-font-association.html"><span>add</span><wbr><span>Font</span><wbr><span><span>Association</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-244356700%2FFunctions%2F-1219556937"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="add-font-association.html"><span class="token function">addFontAssociation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fontName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/FontRes.html"><span class="token annotation builtin">FontRes</span></a>&nbsp;</span>fontRes<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Associate a Font.name to a <a href="https://developer.android.com/reference/kotlin/androidx/annotation/FontRes.html">FontRes</a> id. As a best-practice, do this up front for any fonts that might be used, as calls to <a href="add-font-association.html">addFontAssociation</a> are cheap and the behavior for missing associations is expensive (<a href="https://developer.android.com/reference/kotlin/android/content/res/Resources.html#getIdentifier-kotlin.String-kotlin.String-kotlin.String-">Resources.getIdentifier</a>).</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2023248909%2FFunctions%2F-1219556937" anchor-label="AndroidKanvas" id="-2023248909%2FFunctions%2F-1219556937" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain"></a>
+          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-android-kanvas.html"><span>Android</span><wbr><span><span>Kanvas</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2023248909%2FFunctions%2F-1219556937"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-android-kanvas.html"><span class="token function">AndroidKanvas</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">canvas<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Canvas.html">Canvas</a><span class="token punctuation">, </span></span><span class="parameter ">scalingFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span><span class="token punctuation">, </span></span><span class="parameter ">paintCache<span class="token operator">: </span><a href="-paint-cache/index.html">PaintCache</a><span class="token operator"> = </span>PaintCache(context)</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-android-kanvas/index.html">AndroidKanvas</a></div><div class="brief "><p class="paragraph">Create an <a href="-android-kanvas/index.html">AndroidKanvas</a>.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-924010296%2FFunctions%2F506614723" anchor-label="split" id="-924010296%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="split.html"><span><span>split</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-924010296%2FFunctions%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-transform/-rotate/index.html">Transform.Rotate</a><span class="token punctuation">.</span><a href="split.html"><span class="token function">split</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-transform/-in-order/index.html">Transform.InOrder</a></div><div class="brief "><p class="paragraph">Converts a pivoted rotate into an ordered transformation of translate, rotate, translate.</p></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-transform/-scale/index.html">Transform.Scale</a><span class="token punctuation">.</span><a href="split.html"><span class="token function">split</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-transform/-in-order/index.html">Transform.InOrder</a></div><div class="brief "><p class="paragraph">Converts a pivoted scale into an ordered transformation of translate, scale, translate.</p></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-transform/-skew/index.html">Transform.Skew</a><span class="token punctuation">.</span><a href="split.html"><span class="token function">split</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-transform/-in-order/index.html">Transform.InOrder</a></div><div class="brief "><p class="paragraph">Converts a bi-direction skew into an ordered transformation of horizontal skew and vertical skew.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-743634343%2FFunctions%2F-1219556937" anchor-label="toAndroid" id="-743634343%2FFunctions%2F-1219556937" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-android.html"><span>to</span><wbr><span><span>Android</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-743634343%2FFunctions%2F-1219556937"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-paint/-fill/index.html">Paint.Fill</a><span class="token punctuation">.</span><a href="to-android.html"><span class="token function">toAndroid</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Paint.html">Paint</a></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-paint/-gradient/index.html">Paint.Gradient</a><span class="token punctuation">.</span><a href="to-android.html"><span class="token function">toAndroid</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Paint.html">Paint</a></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-paint/-stroke/index.html">Paint.Stroke</a><span class="token punctuation">.</span><a href="to-android.html"><span class="token function">toAndroid</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Paint.html">Paint</a></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-paint/index.html">Paint</a><span class="token punctuation">.</span><a href="to-android.html"><span class="token function">toAndroid</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Paint.html">Paint</a></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-paint/-text/index.html">Paint.Text</a><span class="token punctuation">.</span><a href="to-android.html"><span class="token function">toAndroid</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Paint.html">Paint</a></div><div class="brief "><p class="paragraph">Converts a Krayon <a href="-paint/index.html">Paint</a> into an <a href="https://developer.android.com/reference/kotlin/android/graphics/Paint.html">AndroidPaint</a>.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1114184085%2FFunctions%2F506614723" anchor-label="withClip" id="-1114184085%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-clip.html"><span>with</span><wbr><span><span>Clip</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1114184085%2FFunctions%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><a href="with-clip.html"><span class="token function">withClip</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clip<span class="token operator">: </span><a href="-clip/index.html">Clip</a><span class="token punctuation">, </span></span><span class="parameter ">actions<span class="token operator">: </span><span class="token keyword"></span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Invokes <a href="with-clip.html">actions</a> inside of a <a href="-kanvas/push-clip.html">Kanvas.pushClip</a>/<a href="-kanvas/pop.html">Kanvas.pop</a> pair.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="927890043%2FFunctions%2F506614723" anchor-label="withTransform" id="927890043%2FFunctions%2F506614723" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-transform.html"><span>with</span><wbr><span><span>Transform</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="927890043%2FFunctions%2F506614723"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><a href="with-transform.html"><span class="token function">withTransform</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><a href="-transform/index.html">Transform</a><span class="token punctuation">, </span></span><span class="parameter ">actions<span class="token operator">: </span><span class="token keyword"></span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Invokes <a href="with-transform.html">actions</a> inside of a <a href="-kanvas/push-transform.html">Kanvas.pushTransform</a>/<a href="-kanvas/pop.html">Kanvas.pop</a> pair.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

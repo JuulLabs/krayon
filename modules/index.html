@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Modules | Krayon</title>
+<meta name="generator" content="Jekyll v4.3.3">
+<meta property="og:title" content="Modules">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Cross platform (Android, iOS &amp; JavaScript) canvas library.">
+<meta property="og:description" content="Cross platform (Android, iOS &amp; JavaScript) canvas library.">
+<meta property="og:site_name" content="Krayon">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Modules">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Cross platform (Android, iOS &amp; JavaScript) canvas library.","headline":"Modules","url":"/krayon/modules/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/krayon/assets/css/style.css">
+<link type="application/atom+xml" rel="alternate" href="/krayon/feed.xml" title="Krayon">
+<script src="/krayon/assets/js/sample.js"></script>
+</head>
+<body>
+<header class="site-header">
+
+    <div class="wrapper">
+<a class="site-title" rel="author" href="/krayon/"><img src="/assets/images/krayon.svg" height="35px"></a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger" class="nav-trigger">
+            <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+            </label>
+
+            <div class="trigger">
+<a class="page-link" href="/krayon/api/">API</a><a class="page-link" href="/krayon/modules/">Modules</a><a class="page-link" href="/krayon/samples/">Samples</a><a class="page-link" href="/krayon/tutorial/">Tutorial</a>
+</div>
+        </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Modules</h1>
+  </header>
+
+  <div class="post-content">
+    <h3 id="aggregate-modules">Aggregate Modules</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Module</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/JuulLabs/krayon/tree/main/box"><code class="language-plaintext highlighter-rouge">box</code></a></td>
+      <td>Module exporting all other published modules (except <code class="language-plaintext highlighter-rouge">compose</code>). Useful for getting started quickly if your builds include dead-code elimination. Also includes some cross-module extensions.</td>
+    </tr>
+    <tr>
+      <td>
+<a href="https://github.com/JuulLabs/krayon/tree/main/sample"><code class="language-plaintext highlighter-rouge">sample</code></a> (unpublished)</td>
+      <td>Sample application showing use of the library with common drawing code and logic across Android and JS targets.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="low-level-modules">Low Level Modules</h3>
+
+<p>These modules provide an unopinionated multiplatform experience with simple, low-level primitives. Drawing with a Krayon
+<code class="language-plaintext highlighter-rouge">Kanvas</code> should feel very similar to drawing directly to an Android <code class="language-plaintext highlighter-rouge">Canvas</code> or HTML/JS <code class="language-plaintext highlighter-rouge">CanvasRenderingContext2D</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Module</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/JuulLabs/krayon/tree/main/color"><code class="language-plaintext highlighter-rouge">color</code></a></td>
+      <td>Multiplatform color representation and operations.</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JuulLabs/krayon/tree/main/kanvas"><code class="language-plaintext highlighter-rouge">kanvas</code></a></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Kanvas</code> interface with platform specific (Android, HTML) and multiplatform (SVG) implementations.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="high-level-modules">High Level Modules</h3>
+
+<p>These modules provide functionality heavily inspired by, and often directly translated from, D3. Many of the modules aim
+to provide a 1-to-1 mapping with a D3 library, such as <code class="language-plaintext highlighter-rouge">axis</code> or <code class="language-plaintext highlighter-rouge">selection</code>. Other modules, like <code class="language-plaintext highlighter-rouge">element</code>, attempt to
+fill in gaps required to support this, like <code class="language-plaintext highlighter-rouge">Element</code> being used instead of the DOM to enable non-web targets.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Module</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/JuulLabs/krayon/tree/main/axis"><code class="language-plaintext highlighter-rouge">axis</code></a></td>
+      <td>Component for rendering reference marks as part of a chart.</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JuulLabs/krayon/tree/main/compose"><code class="language-plaintext highlighter-rouge">compose</code></a></td>
+      <td>Compose Multiplatform <code class="language-plaintext highlighter-rouge">Kanvas</code> and <code class="language-plaintext highlighter-rouge">ElementView</code> composables. Not included in <code class="language-plaintext highlighter-rouge">box</code>.</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JuulLabs/krayon/tree/main/element"><code class="language-plaintext highlighter-rouge">element</code></a></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Element</code> class used to provide an mutable object-tree of drawing operation.</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JuulLabs/krayon/tree/main/element-view"><code class="language-plaintext highlighter-rouge">element-view</code></a></td>
+      <td>Android specific <code class="language-plaintext highlighter-rouge">View</code> for rendering an <code class="language-plaintext highlighter-rouge">Element</code> off the main thread.</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JuulLabs/krayon/tree/main/interpolate"><code class="language-plaintext highlighter-rouge">interpolate</code></a></td>
+      <td>Functionality for blending/picking values between start and stop values.</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JuulLabs/krayon/tree/main/selection"><code class="language-plaintext highlighter-rouge">selection</code></a></td>
+      <td>Data-driven transformation of the <code class="language-plaintext highlighter-rouge">Element</code>-tree.</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JuulLabs/krayon/tree/main/shape"><code class="language-plaintext highlighter-rouge">shape</code></a></td>
+      <td>Visualization support for generating complex shapes from data, such as line charts.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" href="/krayon/"></data>
+
+    <div class="wrapper">
+
+        <div class="footer-col-wrapper">
+            <div class="footer-col">
+                <p class="feed-subscribe">
+                    <a href="https://github.com/JuulLabs/krayon">
+                        <img alt="GitHub" src="/krayon/assets/images/github-mark.svg" width="35px">
+                         
+                        <span>Fork me on GitHub</span>
+                    </a>
+                </p>
+            </div>
+            <div class="footer-col">
+                <p>Cross platform (Android, iOS &amp; JavaScript) canvas library.</p>
+            </div>
+        </div>
+
+        <div class="social-links">
+<ul class="social-media-list"></ul>
+</div>
+
+    </div>
+
+</footer>
+</body>
+
+</html>
