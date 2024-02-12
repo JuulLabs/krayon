@@ -39,7 +39,7 @@ jobs:
           junit_files: '**/build/test-results/**/*.xml'
           report_individual_runs: 'true'
 
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v4
 
       - name: publishToMavenLocal
         if: github.repository_owner == 'JuulLabs'
