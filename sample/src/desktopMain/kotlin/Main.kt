@@ -23,10 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.singleWindowApplication
 import com.juul.krayon.compose.ElementView
 import com.juul.krayon.sample.PieChart
+import com.juul.krayon.sample.data.movingSineWave
 import com.juul.krayon.sample.interactiveTreeChart
-import com.juul.krayon.sample.lineChart
-import com.juul.krayon.sample.movingSineWave
 import com.juul.krayon.sample.pieChart
+import com.juul.krayon.sample.updaters.lineChart
 import kotlin.math.PI
 
 fun main() = singleWindowApplication {

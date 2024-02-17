@@ -1,5 +1,6 @@
-package com.juul.krayon.sample
+package com.juul.krayon.sample.data
 
+import com.juul.krayon.sample.Point
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -8,11 +9,9 @@ import kotlin.math.PI
 import kotlin.math.sin
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
-import kotlin.time.ExperimentalTime
 import kotlin.time.TimeSource
 
 /** A flow that emits data for a continuously rolling sine wave. By default, completes a full cycle in 10 seconds. */
-@OptIn(ExperimentalTime::class)
 internal fun movingSineWave(
     period: Duration = 10.seconds,
     samples: Int = 50,

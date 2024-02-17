@@ -1,10 +1,10 @@
 [versions]
-agp = "8.2.0" # 7.4.1 is the maximum version supported by IDEA 2023.1
+agp = "8.2.2" # 7.4.1 is the maximum version supported by IDEA 2023.1
 android-compile = "34"
 android-min = "21"
 android-target = "32"
-compose = "1.5.11"
-coroutines = "1.7.3"
+compose = "1.5.12"
+coroutines = "1.8.0"
 jacoco = "0.8.7"
 jvm-toolchain = "11"
 kotlin = "1.9.22"
@@ -12,7 +12,7 @@ kotlin = "1.9.22"
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.8.2" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
-androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.6.2" }
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.7.0" }
 androidx-test = { module = "androidx.test:core", version = "1.5.0" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
@@ -29,6 +29,6 @@ atomicfu = { id = "kotlinx-atomicfu", version = "0.21.0" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 dokka = { id = "org.jetbrains.dokka", version = "1.9.10" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinter = { id = "org.jmailen.kotlinter", version = "4.1.0" }
-maven-publish = { id = "com.vanniktech.maven.publish", version = "0.25.3" }
+kotlinter = { id = "org.jmailen.kotlinter", version = "4.1.1" }
+maven-publish = { id = "com.vanniktech.maven.publish", version = "0.27.0" }
 validator = { id = "binary-compatibility-validator", version = "0.13.0" }

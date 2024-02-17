@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.juul.krayon.compose.ElementView
+import com.juul.krayon.sample.data.movingSineWave
+import com.juul.krayon.sample.updaters.lineChart
 
 class ComposeLineActivity : AppCompatActivity() {
 

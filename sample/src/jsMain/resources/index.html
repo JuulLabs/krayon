@@ -5,6 +5,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto+Slab">
     <title>Hello, Kotlin/JS!</title>
+    <script src="sample.js"></script>
 </head>
 <body>
 <h1>Krayon Sample</h1>
@@ -37,7 +38,11 @@
     </tr>
 </table>
 <h2>Interaction</h2>
-<canvas id="interaction-canvas"  style="height: 480px; width: 854px"></canvas>
+<canvas id="interaction-canvas" style="height: 480px; width: 854px"></canvas>
 </body>
-<script src="sample.js"></script>
+<script>
+    sample.setupMovingSineWave(document.getElementById("line-canvas"));
+    sample.setupPieChart(document.getElementById("pie-canvas"));
+    sample.setupInteractiveChart(document.getElementById("interaction-canvas"));
+</script>
 </html>

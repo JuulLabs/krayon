@@ -1,4 +1,4 @@
-package com.juul.krayon.sample
+package com.juul.krayon.sample.updaters
 
 import com.juul.krayon.axis.axisBottom
 import com.juul.krayon.axis.axisLeft
@@ -14,6 +14,7 @@ import com.juul.krayon.element.TransformElement
 import com.juul.krayon.element.withKind
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Transform
+import com.juul.krayon.sample.Point
 import com.juul.krayon.scale.domain
 import com.juul.krayon.scale.extent
 import com.juul.krayon.scale.range
