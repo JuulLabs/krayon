@@ -1,5 +1,5 @@
 [versions]
-agp = "8.2.2" # 7.4.1 is the maximum version supported by IDEA 2023.1
+agp = "8.3.0" # 7.4.1 is the maximum version supported by IDEA 2023.1
 android-compile = "34"
 android-min = "21"
 android-target = "32"
@@ -31,4 +31,4 @@ dokka = { id = "org.jetbrains.dokka", version = "1.9.10" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "4.2.0" }
 maven-publish = { id = "com.vanniktech.maven.publish", version = "0.27.0" }
-validator = { id = "binary-compatibility-validator", version = "0.13.0" }
+validator = { id = "binary-compatibility-validator", version = "0.14.0" }
