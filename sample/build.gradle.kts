@@ -19,9 +19,10 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.box)
+            implementation(compose.runtime)
             implementation(libs.coroutines.core)
             implementation(libs.datetime)
+            implementation(projects.box)
         }
 
         commonTest.dependencies {
@@ -49,7 +50,7 @@ kotlin {
 
         jsMain.dependencies {
             implementation(libs.coroutines.js)
-            implementation(compose.web.core) // required because of the compose plugin, but unused.
+            implementation(compose.html.core) // required because of the compose plugin, but unused.
         }
     }
 }
