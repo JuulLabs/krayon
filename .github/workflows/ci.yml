@@ -42,13 +42,11 @@ jobs:
       - uses: codecov/codecov-action@v4
 
       - name: publishToMavenLocal
-        if: github.repository_owner == 'JuulLabs'
         uses: gradle/gradle-build-action@v3
         with:
           arguments: |
             -PVERSION_NAME=unspecified
-            -PsigningInMemoryKey=${{ secrets.SIGNING_KEY }}
-            -PsigningInMemoryKeyPassword=${{ secrets.SIGNING_PASSWORD }}
+            -PRELEASE_SIGNING_ENABLED=false
             publishToMavenLocal
 
       - name: Website
