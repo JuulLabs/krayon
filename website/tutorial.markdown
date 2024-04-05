@@ -161,9 +161,9 @@ This will render as:
 [DOM]: https://en.wikipedia.org/wiki/Document_Object_Model
 [Document Object Model]: https://en.wikipedia.org/wiki/Document_Object_Model
 [Kotlin]: https://kotlinlang.org/
-[`Element`]: https://juullabs.github.io/api/krayon/element/com.juul.krayon.element/-element/index.html
-[`HtmlKanvas`]: https://juullabs.github.io/krayon/kanvas/com.juul.krayon.kanvas/-html-kanvas/index.html
-[`LineElement`]: https://juullabs.github.io/api/krayon/element/com.juul.krayon.element/-line-element/index.html
-[`RootElement`]: https://juullabs.github.io/api/krayon/element/com.juul.krayon.element/-root-element/index.html
-[`Selection`]: https://juullabs.github.io/api/krayon/selection/com.juul.krayon.selection/-selection/index.html
+[`Element`]: https://juullabs.github.io/krayon/api/element/com.juul.krayon.element/-element/index.html
+[`HtmlKanvas`]: https://juullabs.github.io/krayon/api/kanvas/com.juul.krayon.kanvas/-html-kanvas/index.html
+[`LineElement`]: https://juullabs.github.io/krayon/api/element/com.juul.krayon.element/-line-element/index.html
+[`RootElement`]: https://juullabs.github.io/krayon/api/element/com.juul.krayon.element/-root-element/index.html
+[`Selection`]: https://juullabs.github.io/krayon/api/selection/com.juul.krayon.selection/-selection/index.html
 [multiplatform]: https://kotlinlang.org/docs/multiplatform.html
