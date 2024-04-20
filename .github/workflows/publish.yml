@@ -6,10 +6,10 @@ on:
 
 jobs:
   publish:
-    runs-on: macos-13
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - uses: gradle/wrapper-validation-action@v2
+      - uses: gradle/wrapper-validation-action@v3
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
