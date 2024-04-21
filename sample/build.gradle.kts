@@ -11,11 +11,11 @@ kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
     androidTarget()
-    jvm("desktop")
     js {
         browser()
         binaries.executable()
     }
+    jvm("desktop")
 
     sourceSets {
         commonMain.dependencies {
