@@ -17,6 +17,8 @@ kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
     iosArm64()
+    iosSimulatorArm64()
+    iosX64()
     js().browser()
     jvm()
     macosArm64()

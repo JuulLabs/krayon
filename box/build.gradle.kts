@@ -10,6 +10,8 @@ kotlin {
 
     androidTarget().publishAllLibraryVariants()
     iosArm64()
+    iosSimulatorArm64()
+    iosX64()
     js().browser()
     jvm()
     macosArm64()
