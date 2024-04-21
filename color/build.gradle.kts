@@ -16,12 +16,11 @@ kotlin {
     explicitApi()
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
-    jvm()
-    js().browser()
-
-    macosX64()
-    macosArm64()
     iosArm64()
+    js().browser()
+    jvm()
+    macosArm64()
+    macosX64()
 
     sourceSets {
         commonTest.dependencies {

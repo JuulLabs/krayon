@@ -18,9 +18,9 @@ kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
     androidTarget().publishAllLibraryVariants()
-    jvm()
-    js().browser()
     iosArm64()
+    js().browser()
+    jvm()
     macosArm64()
     macosX64()
 
