@@ -1,5 +1,7 @@
 package com.juul.krayon.kanvas
 
+import com.juul.krayon.kanvas.OperatingSystem.iOS
+import com.juul.krayon.kanvas.OperatingSystem.macOS
 import kotlinx.cinterop.CValue
 import platform.CoreGraphics.CGAffineTransform
 import platform.CoreGraphics.CGAffineTransformConcat
@@ -52,6 +54,19 @@ internal fun CGContextSkewCTM(
     )
 }
 
+/**
+ * Per [CGAffineTransformRotate documentation](https://developer.apple.com/documentation/coregraphics/1455962-cgaffinetransformrotate#parameters):
+ *
+ * > The angle, in radians, by which to rotate the affine transform. In iOS, a positive value
+ * > specifies counterclockwise rotation and a negative value specifies clockwise rotation.
+ * > In macOS, a positive value specifies clockwise rotation and a negative value specifies
+ * > counterclockwise rotation.
+ */
+private val rotationModifier = when (currentOperatingSystem) {
+    iOS -> -1
+    macOS -> 1
+}
+
 internal fun Transform.asCGAffineTransform(): CValue<CGAffineTransform> {
     // While theoretically complete, this implementation is almost wholly untested.
     var buffer = CGAffineTransformMakeTranslation(0.0, 0.0)
@@ -69,7 +84,7 @@ internal fun Transform.asCGAffineTransform(): CValue<CGAffineTransform> {
             }
 
             is Transform.Rotate -> if (pivotX == 0f && pivotY == 0f) {
-                buffer = CGAffineTransformRotate(buffer, degrees * PI / 180)
+                buffer = CGAffineTransformRotate(buffer, rotationModifier * degrees * PI / 180)
             } else {
                 split().applyToBuffer()
             }
