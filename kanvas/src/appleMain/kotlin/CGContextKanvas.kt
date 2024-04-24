@@ -3,16 +3,21 @@ package com.juul.krayon.kanvas
 import com.juul.krayon.color.Color
 import kotlinx.cinterop.CPointerVarOf
 import kotlinx.cinterop.value
+import platform.CoreGraphics.CGAffineTransformMakeScale
 import platform.CoreGraphics.CGContextAddPath
 import platform.CoreGraphics.CGContextBeginPath
 import platform.CoreGraphics.CGContextClip
+import platform.CoreGraphics.CGContextGetTextMatrix
 import platform.CoreGraphics.CGContextRef
 import platform.CoreGraphics.CGContextRestoreGState
 import platform.CoreGraphics.CGContextRotateCTM
 import platform.CoreGraphics.CGContextSaveGState
 import platform.CoreGraphics.CGContextScaleCTM
+import platform.CoreGraphics.CGContextSetTextMatrix
 import platform.CoreGraphics.CGContextTranslateCTM
 import kotlin.math.PI
+
+private val invertY = CGAffineTransformMakeScale(1.0, -1.0)
 
 /**
  * It is the calling code's responsibility to ensure that [unmanagedContext] outlives this object.
@@ -69,13 +74,11 @@ public class CGContextKanvas(
     override fun drawPath(path: Path, paint: Paint) {
         require(paint !is Paint.Text) { "`drawPath` must not be called with `Paint.Text`, but was $paint." }
 
-        withInverseY {
-            CGContextBeginPath(unmanagedContext)
-            path.withCGPath { cgPath ->
-                CGContextAddPath(unmanagedContext, cgPath)
-            }
-            paint.drawCurrentPath(unmanagedContext)
+        CGContextBeginPath(unmanagedContext)
+        path.withCGPath { cgPath ->
+            CGContextAddPath(unmanagedContext, cgPath)
         }
+        paint.drawCurrentPath(unmanagedContext)
     }
 
     override fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
@@ -90,18 +93,20 @@ public class CGContextKanvas(
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint) {
         require(paint is Paint.Text)
-        // Text, unlike other rendering, can't just be rendered in a y-inverted transform.
-        // Manually adjust by doing `height - y` and calling it a day.
-        drawText(unmanagedContext, text.toString(), x.toDouble(), (height - y).toDouble(), paint)
+        val matrix = CGContextGetTextMatrix(unmanagedContext)
+        CGContextSetTextMatrix(unmanagedContext, invertY)
+        try {
+            drawText(unmanagedContext, text.toString(), x.toDouble(), y.toDouble(), paint)
+        } finally {
+            CGContextSetTextMatrix(unmanagedContext, matrix)
+        }
     }
 
     override fun pushClip(clip: Clip) {
         CGContextSaveGState(unmanagedContext)
-        withInverseY {
-            CGContextBeginPath(unmanagedContext)
-            clip.path.withCGPath { cgPath ->
-                CGContextAddPath(unmanagedContext, cgPath)
-            }
+        CGContextBeginPath(unmanagedContext)
+        clip.path.withCGPath { cgPath ->
+            CGContextAddPath(unmanagedContext, cgPath)
         }
         CGContextClip(unmanagedContext)
     }
@@ -128,7 +133,7 @@ public class CGContextKanvas(
                 }
 
                 is Transform.Translate -> {
-                    CGContextTranslateCTM(unmanagedContext, horizontal.toDouble(), -vertical.toDouble())
+                    CGContextTranslateCTM(unmanagedContext, horizontal.toDouble(), vertical.toDouble())
                 }
 
                 is Transform.Skew -> {
@@ -154,24 +159,5 @@ public class CGContextKanvas(
         crossinline pathSpec: PathBuilder<*>.() -> Unit,
     ) {
         drawPath(Path { pathSpec() }, paint)
-    }
-
-    /**
-     * Apple's coordinate system is the inverse of everywhere else. The generally foolproof way to
-     * handle this is using the transformation matrix to flip the canvas vertically.
-     *
-     * Do _not_ use this with text -- doing so will result in upside down lettering.
-     */
-    private inline fun withInverseY(
-        crossinline actions: () -> Unit,
-    ) {
-        CGContextSaveGState(unmanagedContext)
-        CGContextTranslateCTM(unmanagedContext, 0.0, height.toDouble())
-        CGContextScaleCTM(unmanagedContext, 1.0, -1.0)
-        try {
-            actions()
-        } finally {
-            CGContextRestoreGState(unmanagedContext)
-        }
     }
 }
