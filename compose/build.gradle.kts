@@ -1,5 +1,3 @@
-import org.jetbrains.compose.compose
-
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
@@ -15,9 +13,15 @@ kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
     androidTarget().publishAllLibraryVariants()
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
     jvm("desktop")
 
     sourceSets {
+
+        applyDefaultHierarchyTemplate()
+
         commonMain.dependencies {
             api(projects.kanvas)
             api(projects.element)
@@ -29,8 +33,17 @@ kotlin {
         commonTest.dependencies {
             implementation(kotlin("test"))
         }
-        getByName("desktopMain").dependencies {
-            api(compose.preview)
+
+        val skiaMain by creating {
+            dependsOn(commonMain.get())
+        }
+
+        val desktopMain by getting {
+            dependsOn(skiaMain)
+        }
+
+        val iosMain by getting {
+            dependsOn(skiaMain)
         }
     }
 }
