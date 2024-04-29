@@ -9,11 +9,13 @@ kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
     androidTarget().publishAllLibraryVariants()
-    jvm()
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
     js().browser()
+    jvm()
     macosArm64()
     macosX64()
-    iosArm64()
 
     sourceSets {
         commonMain.dependencies {
