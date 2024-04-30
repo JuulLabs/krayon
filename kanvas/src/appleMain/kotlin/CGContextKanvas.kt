@@ -17,7 +17,7 @@ import platform.CoreGraphics.CGContextSetTextMatrix
 import platform.CoreGraphics.CGContextTranslateCTM
 import kotlin.math.PI
 
-private val invertY = CGAffineTransformMakeScale(1.0, -1.0)
+private val invertTextVerticallyTransform = CGAffineTransformMakeScale(1.0, -1.0)
 
 /**
  * It is the calling code's responsibility to ensure that [unmanagedContext] outlives this object.
@@ -28,14 +28,34 @@ public class CGContextKanvas(
     private val unmanagedContext: CGContextRef,
     width: Double,
     height: Double,
+    private val invertTextVertically: Boolean,
 ) : Kanvas {
+
+    /**
+     * It is the calling code's responsibility to ensure that [unmanagedContext] outlives this object.
+     *
+     * When calling from Swift, pass `Unmanaged.passUnretained/passRetained(yourCgContext).
+     */
+    public constructor(
+        unmanagedContext: CGContextRef,
+        width: Double,
+        height: Double,
+    ) : this(unmanagedContext, width, height, invertTextVertically = true)
 
     /** When calling from Swift, use `&yourCgContext`. */
     public constructor(
         ptr: CPointerVarOf<CGContextRef>,
         width: Double,
         height: Double,
-    ) : this(unmanagedContext = ptr.value!!, width, height)
+        invertTextVertically: Boolean,
+    ) : this(unmanagedContext = ptr.value!!, width, height, invertTextVertically)
+
+    /** When calling from Swift, use `&yourCgContext`. */
+    public constructor(
+        ptr: CPointerVarOf<CGContextRef>,
+        width: Double,
+        height: Double,
+    ) : this(unmanagedContext = ptr.value!!, width, height, invertTextVertically = true)
 
     override val width: Float = width.toFloat()
 
@@ -93,8 +113,16 @@ public class CGContextKanvas(
 
     override fun drawText(text: CharSequence, x: Float, y: Float, paint: Paint) {
         require(paint is Paint.Text)
+        if (invertTextVertically) {
+            drawTextInvertedVertically(text, x, y, paint)
+        } else {
+            drawText(unmanagedContext, text.toString(), x.toDouble(), y.toDouble(), paint)
+        }
+    }
+
+    private fun drawTextInvertedVertically(text: CharSequence, x: Float, y: Float, paint: Paint.Text) {
         val matrix = CGContextGetTextMatrix(unmanagedContext)
-        CGContextSetTextMatrix(unmanagedContext, invertY)
+        CGContextSetTextMatrix(unmanagedContext, invertTextVerticallyTransform)
         try {
             drawText(unmanagedContext, text.toString(), x.toDouble(), y.toDouble(), paint)
         } finally {
