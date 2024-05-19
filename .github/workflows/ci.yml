@@ -12,27 +12,20 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - uses: gradle/wrapper-validation-action@v3
-
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
-
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
           bundler-cache: true
-
-      - name: assemble
-        uses: gradle/gradle-build-action@v3
+      - uses: gradle/actions/setup-gradle@v3
         with:
-          arguments: assemble
+          validate-wrappers: true
 
-      - name: check jacocoTestReport
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: check jacocoTestReport
+      - run: ./gradlew assemble
+      - run: ./gradlew jacocoTestReport
 
       - uses: EnricoMi/publish-unit-test-result-action/composite@v2
         with:
@@ -41,15 +34,9 @@ jobs:
 
       - uses: codecov/codecov-action@v4
 
-      - name: publishToMavenLocal
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: |
-            -PVERSION_NAME=unspecified
-            -PRELEASE_SIGNING_ENABLED=false
-            publishToMavenLocal
-
-      - name: Website
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: :website:browserBuild
+      - run: >
+          ./gradlew
+          -PVERSION_NAME=unspecified
+          -PRELEASE_SIGNING_ENABLED=false
+          publishToMavenLocal
+      - run: ./gradlew :website:browserBuild
