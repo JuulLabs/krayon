@@ -34,7 +34,7 @@ jobs:
         with:
           arguments: check jacocoTestReport
 
-      - uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      - uses: EnricoMi/publish-unit-test-result-action/macos@v2
         with:
           junit_files: '**/build/test-results/**/*.xml'
           report_individual_runs: 'true'
