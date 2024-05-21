@@ -19,28 +19,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: gradle/wrapper-validation-action@v3
-
       - uses: actions/configure-pages@v5
         id: pages
-
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
-
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
           bundler-cache: true
-
-      - name: Website
-        uses: gradle/gradle-build-action@v3
+      - uses: gradle/actions/setup-gradle@v3
         with:
           cache-read-only: true
-          arguments: |
-            -Pbaseurl=${{ steps.pages.outputs.base_path }}
-            :website:browserBuild
+
+      - run: ./gradlew -Pbaseurl='${{ steps.pages.outputs.base_path }}' :website:browserBuild
 
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
