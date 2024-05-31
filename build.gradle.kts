@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.compose) apply false
+    alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.kotlinter) apply false
     alias(libs.plugins.dokka)
     alias(libs.plugins.maven.publish) apply false
@@ -35,9 +36,4 @@ allprojects {
             showCauses = true
         }
     }
-}
-
-// Remove this when we can update Kotlin/Compose to something that doesn't need the M1 workaround.
-rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin> {
-    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().nodeVersion = "16.0.0"
 }
