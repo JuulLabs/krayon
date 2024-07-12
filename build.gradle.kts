@@ -18,6 +18,11 @@ plugins {
 }
 
 apiValidation {
+    @OptIn(kotlinx.validation.ExperimentalBCVApi::class)
+    klib {
+        enabled = true
+    }
+
     ignoredProjects.addAll(listOf("sample"))
 }
 
