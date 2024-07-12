@@ -1,0 +1,73 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <krayon:axis>
+final enum class com.juul.krayon.axis/Edge : kotlin/Enum<com.juul.krayon.axis/Edge> { // com.juul.krayon.axis/Edge|null[0]
+    enum entry Bottom // com.juul.krayon.axis/Edge.Bottom|null[0]
+    enum entry Left // com.juul.krayon.axis/Edge.Left|null[0]
+    enum entry Right // com.juul.krayon.axis/Edge.Right|null[0]
+    enum entry Top // com.juul.krayon.axis/Edge.Top|null[0]
+
+    final val entries // com.juul.krayon.axis/Edge.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.juul.krayon.axis/Edge> // com.juul.krayon.axis/Edge.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.juul.krayon.axis/Edge // com.juul.krayon.axis/Edge.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.juul.krayon.axis/Edge> // com.juul.krayon.axis/Edge.values|values#static(){}[0]
+}
+
+final class <#A: kotlin/Comparable<#A>> com.juul.krayon.axis/ContinuousAxis { // com.juul.krayon.axis/ContinuousAxis|null[0]
+    final var font // com.juul.krayon.axis/ContinuousAxis.font|{}font[0]
+        final fun <get-font>(): com.juul.krayon.kanvas/Font // com.juul.krayon.axis/ContinuousAxis.font.<get-font>|<get-font>(){}[0]
+        final fun <set-font>(com.juul.krayon.kanvas/Font) // com.juul.krayon.axis/ContinuousAxis.font.<set-font>|<set-font>(com.juul.krayon.kanvas.Font){}[0]
+    final var formatter // com.juul.krayon.axis/ContinuousAxis.formatter|{}formatter[0]
+        final fun <get-formatter>(): kotlin/Function1<#A, kotlin/String> // com.juul.krayon.axis/ContinuousAxis.formatter.<get-formatter>|<get-formatter>(){}[0]
+        final fun <set-formatter>(kotlin/Function1<#A, kotlin/String>) // com.juul.krayon.axis/ContinuousAxis.formatter.<set-formatter>|<set-formatter>(kotlin.Function1<1:0,kotlin.String>){}[0]
+    final var lineColor // com.juul.krayon.axis/ContinuousAxis.lineColor|{}lineColor[0]
+        final fun <get-lineColor>(): com.juul.krayon.color/Color // com.juul.krayon.axis/ContinuousAxis.lineColor.<get-lineColor>|<get-lineColor>(){}[0]
+        final fun <set-lineColor>(com.juul.krayon.color/Color) // com.juul.krayon.axis/ContinuousAxis.lineColor.<set-lineColor>|<set-lineColor>(com.juul.krayon.color.Color){}[0]
+    final var lineWidth // com.juul.krayon.axis/ContinuousAxis.lineWidth|{}lineWidth[0]
+        final fun <get-lineWidth>(): kotlin/Float // com.juul.krayon.axis/ContinuousAxis.lineWidth.<get-lineWidth>|<get-lineWidth>(){}[0]
+        final fun <set-lineWidth>(kotlin/Float) // com.juul.krayon.axis/ContinuousAxis.lineWidth.<set-lineWidth>|<set-lineWidth>(kotlin.Float){}[0]
+    final var textColor // com.juul.krayon.axis/ContinuousAxis.textColor|{}textColor[0]
+        final fun <get-textColor>(): com.juul.krayon.color/Color // com.juul.krayon.axis/ContinuousAxis.textColor.<get-textColor>|<get-textColor>(){}[0]
+        final fun <set-textColor>(com.juul.krayon.color/Color) // com.juul.krayon.axis/ContinuousAxis.textColor.<set-textColor>|<set-textColor>(com.juul.krayon.color.Color){}[0]
+    final var textSize // com.juul.krayon.axis/ContinuousAxis.textSize|{}textSize[0]
+        final fun <get-textSize>(): kotlin/Float // com.juul.krayon.axis/ContinuousAxis.textSize.<get-textSize>|<get-textSize>(){}[0]
+        final fun <set-textSize>(kotlin/Float) // com.juul.krayon.axis/ContinuousAxis.textSize.<set-textSize>|<set-textSize>(kotlin.Float){}[0]
+    final var tickCount // com.juul.krayon.axis/ContinuousAxis.tickCount|{}tickCount[0]
+        final fun <get-tickCount>(): kotlin/Int // com.juul.krayon.axis/ContinuousAxis.tickCount.<get-tickCount>|<get-tickCount>(){}[0]
+        final fun <set-tickCount>(kotlin/Int) // com.juul.krayon.axis/ContinuousAxis.tickCount.<set-tickCount>|<set-tickCount>(kotlin.Int){}[0]
+    final var tickPadding // com.juul.krayon.axis/ContinuousAxis.tickPadding|{}tickPadding[0]
+        final fun <get-tickPadding>(): kotlin/Float // com.juul.krayon.axis/ContinuousAxis.tickPadding.<get-tickPadding>|<get-tickPadding>(){}[0]
+        final fun <set-tickPadding>(kotlin/Float) // com.juul.krayon.axis/ContinuousAxis.tickPadding.<set-tickPadding>|<set-tickPadding>(kotlin.Float){}[0]
+    final var tickSizeInner // com.juul.krayon.axis/ContinuousAxis.tickSizeInner|{}tickSizeInner[0]
+        final fun <get-tickSizeInner>(): kotlin/Float // com.juul.krayon.axis/ContinuousAxis.tickSizeInner.<get-tickSizeInner>|<get-tickSizeInner>(){}[0]
+        final fun <set-tickSizeInner>(kotlin/Float) // com.juul.krayon.axis/ContinuousAxis.tickSizeInner.<set-tickSizeInner>|<set-tickSizeInner>(kotlin.Float){}[0]
+    final var tickSizeOuter // com.juul.krayon.axis/ContinuousAxis.tickSizeOuter|{}tickSizeOuter[0]
+        final fun <get-tickSizeOuter>(): kotlin/Float // com.juul.krayon.axis/ContinuousAxis.tickSizeOuter.<get-tickSizeOuter>|<get-tickSizeOuter>(){}[0]
+        final fun <set-tickSizeOuter>(kotlin/Float) // com.juul.krayon.axis/ContinuousAxis.tickSizeOuter.<set-tickSizeOuter>|<set-tickSizeOuter>(kotlin.Float){}[0]
+
+    final fun applySelection(com.juul.krayon.selection/Selection<*, *>) // com.juul.krayon.axis/ContinuousAxis.applySelection|applySelection(com.juul.krayon.selection.Selection<*,*>){}[0]
+}
+
+final fun (com.juul.krayon.selection/Selection<*, *>).com.juul.krayon.axis/call(com.juul.krayon.axis/ContinuousAxis<*>) // com.juul.krayon.axis/call|call@com.juul.krayon.selection.Selection<*,*>(com.juul.krayon.axis.ContinuousAxis<*>){}[0]
+final fun com.juul.krayon.axis/axisBottom(com.juul.krayon.scale/ContinuousScale<kotlin/Double, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlin/Double> // com.juul.krayon.axis/axisBottom|axisBottom(com.juul.krayon.scale.ContinuousScale<kotlin.Double,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisBottom(com.juul.krayon.scale/ContinuousScale<kotlin/Float, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlin/Float> // com.juul.krayon.axis/axisBottom|axisBottom(com.juul.krayon.scale.ContinuousScale<kotlin.Float,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisBottom(com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/Instant, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlinx.datetime/Instant> // com.juul.krayon.axis/axisBottom|axisBottom(com.juul.krayon.scale.ContinuousScale<kotlinx.datetime.Instant,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisBottom(com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/LocalDateTime, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlinx.datetime/LocalDateTime> // com.juul.krayon.axis/axisBottom|axisBottom(com.juul.krayon.scale.ContinuousScale<kotlinx.datetime.LocalDateTime,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisLeft(com.juul.krayon.scale/ContinuousScale<kotlin/Double, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlin/Double> // com.juul.krayon.axis/axisLeft|axisLeft(com.juul.krayon.scale.ContinuousScale<kotlin.Double,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisLeft(com.juul.krayon.scale/ContinuousScale<kotlin/Float, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlin/Float> // com.juul.krayon.axis/axisLeft|axisLeft(com.juul.krayon.scale.ContinuousScale<kotlin.Float,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisLeft(com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/Instant, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlinx.datetime/Instant> // com.juul.krayon.axis/axisLeft|axisLeft(com.juul.krayon.scale.ContinuousScale<kotlinx.datetime.Instant,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisLeft(com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/LocalDateTime, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlinx.datetime/LocalDateTime> // com.juul.krayon.axis/axisLeft|axisLeft(com.juul.krayon.scale.ContinuousScale<kotlinx.datetime.LocalDateTime,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisRight(com.juul.krayon.scale/ContinuousScale<kotlin/Double, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlin/Double> // com.juul.krayon.axis/axisRight|axisRight(com.juul.krayon.scale.ContinuousScale<kotlin.Double,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisRight(com.juul.krayon.scale/ContinuousScale<kotlin/Float, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlin/Float> // com.juul.krayon.axis/axisRight|axisRight(com.juul.krayon.scale.ContinuousScale<kotlin.Float,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisRight(com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/Instant, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlinx.datetime/Instant> // com.juul.krayon.axis/axisRight|axisRight(com.juul.krayon.scale.ContinuousScale<kotlinx.datetime.Instant,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisRight(com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/LocalDateTime, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlinx.datetime/LocalDateTime> // com.juul.krayon.axis/axisRight|axisRight(com.juul.krayon.scale.ContinuousScale<kotlinx.datetime.LocalDateTime,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisTop(com.juul.krayon.scale/ContinuousScale<kotlin/Double, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlin/Double> // com.juul.krayon.axis/axisTop|axisTop(com.juul.krayon.scale.ContinuousScale<kotlin.Double,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisTop(com.juul.krayon.scale/ContinuousScale<kotlin/Float, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlin/Float> // com.juul.krayon.axis/axisTop|axisTop(com.juul.krayon.scale.ContinuousScale<kotlin.Float,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisTop(com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/Instant, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlinx.datetime/Instant> // com.juul.krayon.axis/axisTop|axisTop(com.juul.krayon.scale.ContinuousScale<kotlinx.datetime.Instant,kotlin.Float>){}[0]
+final fun com.juul.krayon.axis/axisTop(com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/LocalDateTime, kotlin/Float>): com.juul.krayon.axis/ContinuousAxis<kotlinx.datetime/LocalDateTime> // com.juul.krayon.axis/axisTop|axisTop(com.juul.krayon.scale.ContinuousScale<kotlinx.datetime.LocalDateTime,kotlin.Float>){}[0]

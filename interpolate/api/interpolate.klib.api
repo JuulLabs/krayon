@@ -1,0 +1,25 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <krayon:interpolate>
+abstract interface <#A: kotlin/Any?> com.juul.krayon.interpolate/BidirectionalInterpolator : com.juul.krayon.interpolate/Interpolator<#A>, com.juul.krayon.interpolate/Inverter<#A> // com.juul.krayon.interpolate/BidirectionalInterpolator|null[0]
+
+abstract interface <#A: kotlin/Any?> com.juul.krayon.interpolate/Interpolator { // com.juul.krayon.interpolate/Interpolator|null[0]
+    abstract fun interpolate(kotlin/Float): #A // com.juul.krayon.interpolate/Interpolator.interpolate|interpolate(kotlin.Float){}[0]
+}
+
+abstract interface <#A: kotlin/Any?> com.juul.krayon.interpolate/Inverter { // com.juul.krayon.interpolate/Inverter|null[0]
+    abstract fun invert(#A): kotlin/Float // com.juul.krayon.interpolate/Inverter.invert|invert(1:0){}[0]
+}
+
+final fun <#A: kotlin/Any?> (com.juul.krayon.interpolate/Interpolator<#A>).com.juul.krayon.interpolate/clamp(): com.juul.krayon.interpolate/Interpolator<#A> // com.juul.krayon.interpolate/clamp|clamp@com.juul.krayon.interpolate.Interpolator<0:0>(){0§<kotlin.Any?>}[0]
+final fun com.juul.krayon.interpolate/interpolator(com.juul.krayon.color/Color, com.juul.krayon.color/Color): com.juul.krayon.interpolate/Interpolator<com.juul.krayon.color/Color> // com.juul.krayon.interpolate/interpolator|interpolator(com.juul.krayon.color.Color;com.juul.krayon.color.Color){}[0]
+final fun com.juul.krayon.interpolate/interpolator(kotlin/Double, kotlin/Double): com.juul.krayon.interpolate/BidirectionalInterpolator<kotlin/Double> // com.juul.krayon.interpolate/interpolator|interpolator(kotlin.Double;kotlin.Double){}[0]
+final fun com.juul.krayon.interpolate/interpolator(kotlin/Float, kotlin/Float): com.juul.krayon.interpolate/BidirectionalInterpolator<kotlin/Float> // com.juul.krayon.interpolate/interpolator|interpolator(kotlin.Float;kotlin.Float){}[0]
+final fun com.juul.krayon.interpolate/interpolator(kotlin/Int, kotlin/Int): com.juul.krayon.interpolate/BidirectionalInterpolator<kotlin/Int> // com.juul.krayon.interpolate/interpolator|interpolator(kotlin.Int;kotlin.Int){}[0]
+final fun com.juul.krayon.interpolate/interpolator(kotlinx.datetime/Instant, kotlinx.datetime/Instant): com.juul.krayon.interpolate/BidirectionalInterpolator<kotlinx.datetime/Instant> // com.juul.krayon.interpolate/interpolator|interpolator(kotlinx.datetime.Instant;kotlinx.datetime.Instant){}[0]
+final fun com.juul.krayon.interpolate/interpolator(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime): com.juul.krayon.interpolate/BidirectionalInterpolator<kotlinx.datetime/LocalDateTime> // com.juul.krayon.interpolate/interpolator|interpolator(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime){}[0]
