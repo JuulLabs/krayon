@@ -1,0 +1,124 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <krayon:hierarchy>
+abstract interface com.juul.krayon.hierarchy.treemap/TileMethod { // com.juul.krayon.hierarchy.treemap/TileMethod|null[0]
+    abstract fun tile(com.juul.krayon.hierarchy/Node<*, com.juul.krayon.hierarchy.treemap/Tile>) // com.juul.krayon.hierarchy.treemap/TileMethod.tile|tile(com.juul.krayon.hierarchy.Node<*,com.juul.krayon.hierarchy.treemap.Tile>){}[0]
+}
+
+final class <#A: kotlin/Any?, #B: kotlin/Any?> com.juul.krayon.hierarchy/Node { // com.juul.krayon.hierarchy/Node|null[0]
+    final val data // com.juul.krayon.hierarchy/Node.data|{}data[0]
+        final fun <get-data>(): #A // com.juul.krayon.hierarchy/Node.data.<get-data>|<get-data>(){}[0]
+    final val parent // com.juul.krayon.hierarchy/Node.parent|{}parent[0]
+        final fun <get-parent>(): com.juul.krayon.hierarchy/Node<#A, #B>? // com.juul.krayon.hierarchy/Node.parent.<get-parent>|<get-parent>(){}[0]
+
+    final var children // com.juul.krayon.hierarchy/Node.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/List<com.juul.krayon.hierarchy/Node<#A, #B>> // com.juul.krayon.hierarchy/Node.children.<get-children>|<get-children>(){}[0]
+    final var layout // com.juul.krayon.hierarchy/Node.layout|{}layout[0]
+        final fun <get-layout>(): #B // com.juul.krayon.hierarchy/Node.layout.<get-layout>|<get-layout>(){}[0]
+    final var weight // com.juul.krayon.hierarchy/Node.weight|{}weight[0]
+        final fun <get-weight>(): kotlin/Float // com.juul.krayon.hierarchy/Node.weight.<get-weight>|<get-weight>(){}[0]
+        final fun <set-weight>(kotlin/Float) // com.juul.krayon.hierarchy/Node.weight.<set-weight>|<set-weight>(kotlin.Float){}[0]
+}
+
+final class <#A: kotlin/Any?> com.juul.krayon.hierarchy.treemap/Treemap { // com.juul.krayon.hierarchy.treemap/Treemap|null[0]
+    constructor <init>(kotlin/Float = ..., kotlin/Float = ..., com.juul.krayon.hierarchy.treemap/TileMethod = ..., kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float> = ..., kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float> = ..., kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float> = ..., kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float> = ..., kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float> = ...) // com.juul.krayon.hierarchy.treemap/Treemap.<init>|<init>(kotlin.Float;kotlin.Float;com.juul.krayon.hierarchy.treemap.TileMethod;kotlin.Function1<com.juul.krayon.hierarchy.Node<1:0,com.juul.krayon.hierarchy.treemap.Tile>,kotlin.Float>;kotlin.Function1<com.juul.krayon.hierarchy.Node<1:0,com.juul.krayon.hierarchy.treemap.Tile>,kotlin.Float>;kotlin.Function1<com.juul.krayon.hierarchy.Node<1:0,com.juul.krayon.hierarchy.treemap.Tile>,kotlin.Float>;kotlin.Function1<com.juul.krayon.hierarchy.Node<1:0,com.juul.krayon.hierarchy.treemap.Tile>,kotlin.Float>;kotlin.Function1<com.juul.krayon.hierarchy.Node<1:0,com.juul.krayon.hierarchy.treemap.Tile>,kotlin.Float>){}[0]
+
+    final var height // com.juul.krayon.hierarchy.treemap/Treemap.height|{}height[0]
+        final fun <get-height>(): kotlin/Float // com.juul.krayon.hierarchy.treemap/Treemap.height.<get-height>|<get-height>(){}[0]
+        final fun <set-height>(kotlin/Float) // com.juul.krayon.hierarchy.treemap/Treemap.height.<set-height>|<set-height>(kotlin.Float){}[0]
+    final var paddingBottom // com.juul.krayon.hierarchy.treemap/Treemap.paddingBottom|{}paddingBottom[0]
+        final fun <get-paddingBottom>(): kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float> // com.juul.krayon.hierarchy.treemap/Treemap.paddingBottom.<get-paddingBottom>|<get-paddingBottom>(){}[0]
+        final fun <set-paddingBottom>(kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float>) // com.juul.krayon.hierarchy.treemap/Treemap.paddingBottom.<set-paddingBottom>|<set-paddingBottom>(kotlin.Function1<com.juul.krayon.hierarchy.Node<1:0,com.juul.krayon.hierarchy.treemap.Tile>,kotlin.Float>){}[0]
+    final var paddingInner // com.juul.krayon.hierarchy.treemap/Treemap.paddingInner|{}paddingInner[0]
+        final fun <get-paddingInner>(): kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float> // com.juul.krayon.hierarchy.treemap/Treemap.paddingInner.<get-paddingInner>|<get-paddingInner>(){}[0]
+        final fun <set-paddingInner>(kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float>) // com.juul.krayon.hierarchy.treemap/Treemap.paddingInner.<set-paddingInner>|<set-paddingInner>(kotlin.Function1<com.juul.krayon.hierarchy.Node<1:0,com.juul.krayon.hierarchy.treemap.Tile>,kotlin.Float>){}[0]
+    final var paddingLeft // com.juul.krayon.hierarchy.treemap/Treemap.paddingLeft|{}paddingLeft[0]
+        final fun <get-paddingLeft>(): kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float> // com.juul.krayon.hierarchy.treemap/Treemap.paddingLeft.<get-paddingLeft>|<get-paddingLeft>(){}[0]
+        final fun <set-paddingLeft>(kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float>) // com.juul.krayon.hierarchy.treemap/Treemap.paddingLeft.<set-paddingLeft>|<set-paddingLeft>(kotlin.Function1<com.juul.krayon.hierarchy.Node<1:0,com.juul.krayon.hierarchy.treemap.Tile>,kotlin.Float>){}[0]
+    final var paddingRight // com.juul.krayon.hierarchy.treemap/Treemap.paddingRight|{}paddingRight[0]
+        final fun <get-paddingRight>(): kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float> // com.juul.krayon.hierarchy.treemap/Treemap.paddingRight.<get-paddingRight>|<get-paddingRight>(){}[0]
+        final fun <set-paddingRight>(kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float>) // com.juul.krayon.hierarchy.treemap/Treemap.paddingRight.<set-paddingRight>|<set-paddingRight>(kotlin.Function1<com.juul.krayon.hierarchy.Node<1:0,com.juul.krayon.hierarchy.treemap.Tile>,kotlin.Float>){}[0]
+    final var paddingTop // com.juul.krayon.hierarchy.treemap/Treemap.paddingTop|{}paddingTop[0]
+        final fun <get-paddingTop>(): kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float> // com.juul.krayon.hierarchy.treemap/Treemap.paddingTop.<get-paddingTop>|<get-paddingTop>(){}[0]
+        final fun <set-paddingTop>(kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile>, kotlin/Float>) // com.juul.krayon.hierarchy.treemap/Treemap.paddingTop.<set-paddingTop>|<set-paddingTop>(kotlin.Function1<com.juul.krayon.hierarchy.Node<1:0,com.juul.krayon.hierarchy.treemap.Tile>,kotlin.Float>){}[0]
+    final var tileMethod // com.juul.krayon.hierarchy.treemap/Treemap.tileMethod|{}tileMethod[0]
+        final fun <get-tileMethod>(): com.juul.krayon.hierarchy.treemap/TileMethod // com.juul.krayon.hierarchy.treemap/Treemap.tileMethod.<get-tileMethod>|<get-tileMethod>(){}[0]
+        final fun <set-tileMethod>(com.juul.krayon.hierarchy.treemap/TileMethod) // com.juul.krayon.hierarchy.treemap/Treemap.tileMethod.<set-tileMethod>|<set-tileMethod>(com.juul.krayon.hierarchy.treemap.TileMethod){}[0]
+    final var width // com.juul.krayon.hierarchy.treemap/Treemap.width|{}width[0]
+        final fun <get-width>(): kotlin/Float // com.juul.krayon.hierarchy.treemap/Treemap.width.<get-width>|<get-width>(){}[0]
+        final fun <set-width>(kotlin/Float) // com.juul.krayon.hierarchy.treemap/Treemap.width.<set-width>|<set-width>(kotlin.Float){}[0]
+
+    final fun layout(com.juul.krayon.hierarchy/Node<#A, *>): com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile> // com.juul.krayon.hierarchy.treemap/Treemap.layout|layout(com.juul.krayon.hierarchy.Node<1:0,*>){}[0]
+}
+
+final class com.juul.krayon.hierarchy.treemap/Squarify : com.juul.krayon.hierarchy.treemap/TileMethod { // com.juul.krayon.hierarchy.treemap/Squarify|null[0]
+    constructor <init>(kotlin/Float = ...) // com.juul.krayon.hierarchy.treemap/Squarify.<init>|<init>(kotlin.Float){}[0]
+
+    final fun tile(com.juul.krayon.hierarchy/Node<*, com.juul.krayon.hierarchy.treemap/Tile>) // com.juul.krayon.hierarchy.treemap/Squarify.tile|tile(com.juul.krayon.hierarchy.Node<*,com.juul.krayon.hierarchy.treemap.Tile>){}[0]
+}
+
+final class com.juul.krayon.hierarchy.treemap/Tile { // com.juul.krayon.hierarchy.treemap/Tile|null[0]
+    final val bottom // com.juul.krayon.hierarchy.treemap/Tile.bottom|{}bottom[0]
+        final fun <get-bottom>(): kotlin/Float // com.juul.krayon.hierarchy.treemap/Tile.bottom.<get-bottom>|<get-bottom>(){}[0]
+    final val centerX // com.juul.krayon.hierarchy.treemap/Tile.centerX|{}centerX[0]
+        final fun <get-centerX>(): kotlin/Float // com.juul.krayon.hierarchy.treemap/Tile.centerX.<get-centerX>|<get-centerX>(){}[0]
+    final val centerY // com.juul.krayon.hierarchy.treemap/Tile.centerY|{}centerY[0]
+        final fun <get-centerY>(): kotlin/Float // com.juul.krayon.hierarchy.treemap/Tile.centerY.<get-centerY>|<get-centerY>(){}[0]
+    final val height // com.juul.krayon.hierarchy.treemap/Tile.height|{}height[0]
+        final fun <get-height>(): kotlin/Float // com.juul.krayon.hierarchy.treemap/Tile.height.<get-height>|<get-height>(){}[0]
+    final val left // com.juul.krayon.hierarchy.treemap/Tile.left|{}left[0]
+        final fun <get-left>(): kotlin/Float // com.juul.krayon.hierarchy.treemap/Tile.left.<get-left>|<get-left>(){}[0]
+    final val right // com.juul.krayon.hierarchy.treemap/Tile.right|{}right[0]
+        final fun <get-right>(): kotlin/Float // com.juul.krayon.hierarchy.treemap/Tile.right.<get-right>|<get-right>(){}[0]
+    final val top // com.juul.krayon.hierarchy.treemap/Tile.top|{}top[0]
+        final fun <get-top>(): kotlin/Float // com.juul.krayon.hierarchy.treemap/Tile.top.<get-top>|<get-top>(){}[0]
+    final val width // com.juul.krayon.hierarchy.treemap/Tile.width|{}width[0]
+        final fun <get-width>(): kotlin/Float // com.juul.krayon.hierarchy.treemap/Tile.width.<get-width>|<get-width>(){}[0]
+
+    final fun copy(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ...): com.juul.krayon.hierarchy.treemap/Tile // com.juul.krayon.hierarchy.treemap/Tile.copy|copy(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.hierarchy.treemap/Tile.toString|toString(){}[0]
+}
+
+final object com.juul.krayon.hierarchy.treemap/Dice : com.juul.krayon.hierarchy.treemap/TileMethod { // com.juul.krayon.hierarchy.treemap/Dice|null[0]
+    final fun tile(com.juul.krayon.hierarchy/Node<*, com.juul.krayon.hierarchy.treemap/Tile>) // com.juul.krayon.hierarchy.treemap/Dice.tile|tile(com.juul.krayon.hierarchy.Node<*,com.juul.krayon.hierarchy.treemap.Tile>){}[0]
+}
+
+final object com.juul.krayon.hierarchy.treemap/Slice : com.juul.krayon.hierarchy.treemap/TileMethod { // com.juul.krayon.hierarchy.treemap/Slice|null[0]
+    final fun tile(com.juul.krayon.hierarchy/Node<*, com.juul.krayon.hierarchy.treemap/Tile>) // com.juul.krayon.hierarchy.treemap/Slice.tile|tile(com.juul.krayon.hierarchy.Node<*,com.juul.krayon.hierarchy.treemap.Tile>){}[0]
+}
+
+final object com.juul.krayon.hierarchy.treemap/SliceAndDice : com.juul.krayon.hierarchy.treemap/TileMethod { // com.juul.krayon.hierarchy.treemap/SliceAndDice|null[0]
+    final fun tile(com.juul.krayon.hierarchy/Node<*, com.juul.krayon.hierarchy.treemap/Tile>) // com.juul.krayon.hierarchy.treemap/SliceAndDice.tile|tile(com.juul.krayon.hierarchy.Node<*,com.juul.krayon.hierarchy.treemap.Tile>){}[0]
+}
+
+final val com.juul.krayon.hierarchy/depth // com.juul.krayon.hierarchy/depth|@com.juul.krayon.hierarchy.Node<0:0,0:1>{0§<kotlin.Any?>;1§<kotlin.Any?>}depth[0]
+    final fun <#A1: kotlin/Any?, #B1: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A1, #B1>).<get-depth>(): kotlin/Int // com.juul.krayon.hierarchy/depth.<get-depth>|<get-depth>@com.juul.krayon.hierarchy.Node<0:0,0:1>(){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final val com.juul.krayon.hierarchy/height // com.juul.krayon.hierarchy/height|@com.juul.krayon.hierarchy.Node<0:0,0:1>{0§<kotlin.Any?>;1§<kotlin.Any?>}height[0]
+    final fun <#A1: kotlin/Any?, #B1: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A1, #B1>).<get-height>(): kotlin/Int // com.juul.krayon.hierarchy/height.<get-height>|<get-height>@com.juul.krayon.hierarchy.Node<0:0,0:1>(){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final val com.juul.krayon.hierarchy/isLeaf // com.juul.krayon.hierarchy/isLeaf|@com.juul.krayon.hierarchy.Node<0:0,0:1>{0§<kotlin.Any?>;1§<kotlin.Any?>}isLeaf[0]
+    final fun <#A1: kotlin/Any?, #B1: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A1, #B1>).<get-isLeaf>(): kotlin/Boolean // com.juul.krayon.hierarchy/isLeaf.<get-isLeaf>|<get-isLeaf>@com.juul.krayon.hierarchy.Node<0:0,0:1>(){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/ancestors(): kotlin.sequences/Sequence<com.juul.krayon.hierarchy/Node<#A, #B>> // com.juul.krayon.hierarchy/ancestors|ancestors@com.juul.krayon.hierarchy.Node<0:0,0:1>(){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/count(): com.juul.krayon.hierarchy/Node<#A, #B> // com.juul.krayon.hierarchy/count|count@com.juul.krayon.hierarchy.Node<0:0,0:1>(){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/sort(kotlin/Comparator<#A>): com.juul.krayon.hierarchy/Node<#A, #B> // com.juul.krayon.hierarchy/sort|sort@com.juul.krayon.hierarchy.Node<0:0,0:1>(kotlin.Comparator<0:0>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/traverseBreadthFirst(): kotlin.sequences/Sequence<com.juul.krayon.hierarchy/Node<#A, #B>> // com.juul.krayon.hierarchy/traverseBreadthFirst|traverseBreadthFirst@com.juul.krayon.hierarchy.Node<0:0,0:1>(){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/traversePostOrder(): kotlin.sequences/Sequence<com.juul.krayon.hierarchy/Node<#A, #B>> // com.juul.krayon.hierarchy/traversePostOrder|traversePostOrder@com.juul.krayon.hierarchy.Node<0:0,0:1>(){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/traversePreOrder(): kotlin.sequences/Sequence<com.juul.krayon.hierarchy/Node<#A, #B>> // com.juul.krayon.hierarchy/traversePreOrder|traversePreOrder@com.juul.krayon.hierarchy.Node<0:0,0:1>(){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A?, #B>).com.juul.krayon.hierarchy/removeHierarchy(): kotlin.sequences/Sequence<kotlin/Pair<#A, #B>> // com.juul.krayon.hierarchy/removeHierarchy|removeHierarchy@com.juul.krayon.hierarchy.Node<0:0?,0:1>(){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, *>).com.juul.krayon.hierarchy.treemap/layoutWith(com.juul.krayon.hierarchy.treemap/Treemap<#A>): com.juul.krayon.hierarchy/Node<#A, com.juul.krayon.hierarchy.treemap/Tile> // com.juul.krayon.hierarchy.treemap/layoutWith|layoutWith@com.juul.krayon.hierarchy.Node<0:0,*>(com.juul.krayon.hierarchy.treemap.Treemap<0:0>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> com.juul.krayon.hierarchy/flatHierarchy(kotlin.collections/Iterable<#A>): com.juul.krayon.hierarchy/Node<#A?, kotlin/Nothing?> // com.juul.krayon.hierarchy/flatHierarchy|flatHierarchy(kotlin.collections.Iterable<0:0>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> com.juul.krayon.hierarchy/hierarchy(#A, kotlin/Function1<#A, kotlin.collections/List<#A>>): com.juul.krayon.hierarchy/Node<#A, kotlin/Nothing?> // com.juul.krayon.hierarchy/hierarchy|hierarchy(0:0;kotlin.Function1<0:0,kotlin.collections.List<0:0>>){0§<kotlin.Any?>}[0]
+final fun com.juul.krayon.hierarchy.treemap/tile(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float): com.juul.krayon.hierarchy.treemap/Tile // com.juul.krayon.hierarchy.treemap/tile|tile(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/each(crossinline kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, #B>, kotlin/Unit>): com.juul.krayon.hierarchy/Node<#A, #B> // com.juul.krayon.hierarchy/each|each@com.juul.krayon.hierarchy.Node<0:0,0:1>(kotlin.Function1<com.juul.krayon.hierarchy.Node<0:0,0:1>,kotlin.Unit>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/eachAfter(crossinline kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, #B>, kotlin/Unit>): com.juul.krayon.hierarchy/Node<#A, #B> // com.juul.krayon.hierarchy/eachAfter|eachAfter@com.juul.krayon.hierarchy.Node<0:0,0:1>(kotlin.Function1<com.juul.krayon.hierarchy.Node<0:0,0:1>,kotlin.Unit>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/eachAfterIndexed(crossinline kotlin/Function2<kotlin/Int, com.juul.krayon.hierarchy/Node<#A, #B>, kotlin/Unit>): com.juul.krayon.hierarchy/Node<#A, #B> // com.juul.krayon.hierarchy/eachAfterIndexed|eachAfterIndexed@com.juul.krayon.hierarchy.Node<0:0,0:1>(kotlin.Function2<kotlin.Int,com.juul.krayon.hierarchy.Node<0:0,0:1>,kotlin.Unit>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/eachBefore(crossinline kotlin/Function1<com.juul.krayon.hierarchy/Node<#A, #B>, kotlin/Unit>): com.juul.krayon.hierarchy/Node<#A, #B> // com.juul.krayon.hierarchy/eachBefore|eachBefore@com.juul.krayon.hierarchy.Node<0:0,0:1>(kotlin.Function1<com.juul.krayon.hierarchy.Node<0:0,0:1>,kotlin.Unit>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/eachBeforeIndexed(crossinline kotlin/Function2<kotlin/Int, com.juul.krayon.hierarchy/Node<#A, #B>, kotlin/Unit>): com.juul.krayon.hierarchy/Node<#A, #B> // com.juul.krayon.hierarchy/eachBeforeIndexed|eachBeforeIndexed@com.juul.krayon.hierarchy.Node<0:0,0:1>(kotlin.Function2<kotlin.Int,com.juul.krayon.hierarchy.Node<0:0,0:1>,kotlin.Unit>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/eachIndexed(crossinline kotlin/Function2<kotlin/Int, com.juul.krayon.hierarchy/Node<#A, #B>, kotlin/Unit>): com.juul.krayon.hierarchy/Node<#A, #B> // com.juul.krayon.hierarchy/eachIndexed|eachIndexed@com.juul.krayon.hierarchy.Node<0:0,0:1>(kotlin.Function2<kotlin.Int,com.juul.krayon.hierarchy.Node<0:0,0:1>,kotlin.Unit>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.hierarchy/Node<#A, #B>).com.juul.krayon.hierarchy/sum(crossinline kotlin/Function1<#A, kotlin/Float>): com.juul.krayon.hierarchy/Node<#A, #B> // com.juul.krayon.hierarchy/sum|sum@com.juul.krayon.hierarchy.Node<0:0,0:1>(kotlin.Function1<0:0,kotlin.Float>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?> (kotlin.collections/Iterable<#A>).com.juul.krayon.hierarchy/sumOf(kotlin/Function1<#A, kotlin/Float>): kotlin/Float // com.juul.krayon.hierarchy/sumOf|sumOf@kotlin.collections.Iterable<0:0>(kotlin.Function1<0:0,kotlin.Float>){0§<kotlin.Any?>}[0]

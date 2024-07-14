@@ -1,0 +1,343 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <krayon:element>
+abstract fun interface <#A: kotlin/Any?> com.juul.krayon.element/ClickHandler { // com.juul.krayon.element/ClickHandler|null[0]
+    abstract fun onClick(#A) // com.juul.krayon.element/ClickHandler.onClick|onClick(1:0){}[0]
+}
+
+abstract fun interface <#A: kotlin/Any?> com.juul.krayon.element/HoverHandler { // com.juul.krayon.element/HoverHandler|null[0]
+    abstract fun onHoverChanged(#A, kotlin/Boolean) // com.juul.krayon.element/HoverHandler.onHoverChanged|onHoverChanged(1:0;kotlin.Boolean){}[0]
+}
+
+abstract fun interface <#A: kotlin/Any?> com.juul.krayon.element/UpdateElement { // com.juul.krayon.element/UpdateElement|null[0]
+    abstract fun update(com.juul.krayon.element/RootElement, kotlin/Float, kotlin/Float, #A) // com.juul.krayon.element/UpdateElement.update|update(com.juul.krayon.element.RootElement;kotlin.Float;kotlin.Float;1:0){}[0]
+}
+
+abstract interface <#A: com.juul.krayon.element/Element> com.juul.krayon.element/ElementBuilder { // com.juul.krayon.element/ElementBuilder|null[0]
+    abstract fun build(): #A // com.juul.krayon.element/ElementBuilder.build|build(){}[0]
+}
+
+abstract interface <#A: com.juul.krayon.element/Element> com.juul.krayon.element/ElementSelector { // com.juul.krayon.element/ElementSelector|null[0]
+    abstract fun trySelect(com.juul.krayon.element/Element): #A? // com.juul.krayon.element/ElementSelector.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+}
+
+abstract class <#A: com.juul.krayon.element/InteractableElement<#A>> com.juul.krayon.element/InteractableElement : com.juul.krayon.element/Element { // com.juul.krayon.element/InteractableElement|null[0]
+    constructor <init>() // com.juul.krayon.element/InteractableElement.<init>|<init>(){}[0]
+
+    abstract fun getInteractionPath(): com.juul.krayon.kanvas/Path // com.juul.krayon.element/InteractableElement.getInteractionPath|getInteractionPath(){}[0]
+    final fun onClick(com.juul.krayon.element/ClickHandler<#A>?) // com.juul.krayon.element/InteractableElement.onClick|onClick(com.juul.krayon.element.ClickHandler<1:0>?){}[0]
+    final fun onHoverChanged(com.juul.krayon.element/HoverHandler<#A>?) // com.juul.krayon.element/InteractableElement.onHoverChanged|onHoverChanged(com.juul.krayon.element.HoverHandler<1:0>?){}[0]
+}
+
+abstract class com.juul.krayon.element/Element { // com.juul.krayon.element/Element|null[0]
+    constructor <init>() // com.juul.krayon.element/Element.<init>|<init>(){}[0]
+
+    abstract val tag // com.juul.krayon.element/Element.tag|{}tag[0]
+        abstract fun <get-tag>(): kotlin/String // com.juul.krayon.element/Element.tag.<get-tag>|<get-tag>(){}[0]
+    final val attributes // com.juul.krayon.element/Element.attributes|{}attributes[0]
+        final fun <get-attributes>(): kotlin.collections/MutableMap<kotlin/String, kotlin/Any?> // com.juul.krayon.element/Element.attributes.<get-attributes>|<get-attributes>(){}[0]
+    final val children // com.juul.krayon.element/Element.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/List<com.juul.krayon.element/Element> // com.juul.krayon.element/Element.children.<get-children>|<get-children>(){}[0]
+
+    final var data // com.juul.krayon.element/Element.data|{}data[0]
+        final fun <get-data>(): kotlin/Any? // com.juul.krayon.element/Element.data.<get-data>|<get-data>(){}[0]
+        final fun <set-data>(kotlin/Any?) // com.juul.krayon.element/Element.data.<set-data>|<set-data>(kotlin.Any?){}[0]
+    final var kind // com.juul.krayon.element/Element.kind|{}kind[0]
+        final fun <get-kind>(): kotlin/String? // com.juul.krayon.element/Element.kind.<get-kind>|<get-kind>(){}[0]
+        final fun <set-kind>(kotlin/String?) // com.juul.krayon.element/Element.kind.<set-kind>|<set-kind>(kotlin.String?){}[0]
+    open var parent // com.juul.krayon.element/Element.parent|{}parent[0]
+        open fun <get-parent>(): com.juul.krayon.element/Element? // com.juul.krayon.element/Element.parent.<get-parent>|<get-parent>(){}[0]
+        open fun <set-parent>(com.juul.krayon.element/Element?) // com.juul.krayon.element/Element.parent.<set-parent>|<set-parent>(com.juul.krayon.element.Element?){}[0]
+
+    abstract fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/Element.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+    final fun <#A1: com.juul.krayon.element/Element> removeChild(#A1): #A1 // com.juul.krayon.element/Element.removeChild|removeChild(0:0){0§<com.juul.krayon.element.Element>}[0]
+    final fun matches(com.juul.krayon.element/ElementSelector<*>): kotlin/Boolean // com.juul.krayon.element/Element.matches|matches(com.juul.krayon.element.ElementSelector<*>){}[0]
+    open fun <#A1: com.juul.krayon.element/Element> appendChild(#A1): #A1 // com.juul.krayon.element/Element.appendChild|appendChild(0:0){0§<com.juul.krayon.element.Element>}[0]
+    open fun <#A1: com.juul.krayon.element/Element> insertBefore(#A1, com.juul.krayon.element/Element?): #A1 // com.juul.krayon.element/Element.insertBefore|insertBefore(0:0;com.juul.krayon.element.Element?){0§<com.juul.krayon.element.Element>}[0]
+    open fun <#A1: com.juul.krayon.element/Element> query(com.juul.krayon.element/ElementSelector<#A1>): #A1? // com.juul.krayon.element/Element.query|query(com.juul.krayon.element.ElementSelector<0:0>){0§<com.juul.krayon.element.Element>}[0]
+    open fun <#A1: com.juul.krayon.element/Element> queryAll(com.juul.krayon.element/ElementSelector<#A1>): kotlin.sequences/Sequence<#A1> // com.juul.krayon.element/Element.queryAll|queryAll(com.juul.krayon.element.ElementSelector<0:0>){0§<com.juul.krayon.element.Element>}[0]
+    open fun toString(): kotlin/String // com.juul.krayon.element/Element.toString|toString(){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementSelector<com.juul.krayon.element/Element> { // com.juul.krayon.element/Element.Companion|null[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/Element // com.juul.krayon.element/Element.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final class com.juul.krayon.element/CircleElement : com.juul.krayon.element/InteractableElement<com.juul.krayon.element/CircleElement> { // com.juul.krayon.element/CircleElement|null[0]
+    constructor <init>() // com.juul.krayon.element/CircleElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.element/CircleElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.element/CircleElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var centerX // com.juul.krayon.element/CircleElement.centerX|{}centerX[0]
+        final fun <get-centerX>(): kotlin/Float // com.juul.krayon.element/CircleElement.centerX.<get-centerX>|<get-centerX>(){}[0]
+        final fun <set-centerX>(kotlin/Float) // com.juul.krayon.element/CircleElement.centerX.<set-centerX>|<set-centerX>(kotlin.Float){}[0]
+    final var centerY // com.juul.krayon.element/CircleElement.centerY|{}centerY[0]
+        final fun <get-centerY>(): kotlin/Float // com.juul.krayon.element/CircleElement.centerY.<get-centerY>|<get-centerY>(){}[0]
+        final fun <set-centerY>(kotlin/Float) // com.juul.krayon.element/CircleElement.centerY.<set-centerY>|<set-centerY>(kotlin.Float){}[0]
+    final var paint // com.juul.krayon.element/CircleElement.paint|{}paint[0]
+        final fun <get-paint>(): com.juul.krayon.kanvas/Paint // com.juul.krayon.element/CircleElement.paint.<get-paint>|<get-paint>(){}[0]
+        final fun <set-paint>(com.juul.krayon.kanvas/Paint) // com.juul.krayon.element/CircleElement.paint.<set-paint>|<set-paint>(com.juul.krayon.kanvas.Paint){}[0]
+    final var radius // com.juul.krayon.element/CircleElement.radius|{}radius[0]
+        final fun <get-radius>(): kotlin/Float // com.juul.krayon.element/CircleElement.radius.<get-radius>|<get-radius>(){}[0]
+        final fun <set-radius>(kotlin/Float) // com.juul.krayon.element/CircleElement.radius.<set-radius>|<set-radius>(kotlin.Float){}[0]
+
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/CircleElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+    final fun getInteractionPath(): com.juul.krayon.kanvas/Path // com.juul.krayon.element/CircleElement.getInteractionPath|getInteractionPath(){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementBuilder<com.juul.krayon.element/CircleElement>, com.juul.krayon.element/ElementSelector<com.juul.krayon.element/CircleElement> { // com.juul.krayon.element/CircleElement.Companion|null[0]
+        final fun build(): com.juul.krayon.element/CircleElement // com.juul.krayon.element/CircleElement.Companion.build|build(){}[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/CircleElement? // com.juul.krayon.element/CircleElement.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final class com.juul.krayon.element/ClipElement : com.juul.krayon.element/Element { // com.juul.krayon.element/ClipElement|null[0]
+    constructor <init>() // com.juul.krayon.element/ClipElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.element/ClipElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.element/ClipElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var clip // com.juul.krayon.element/ClipElement.clip|{}clip[0]
+        final fun <get-clip>(): com.juul.krayon.kanvas/Clip? // com.juul.krayon.element/ClipElement.clip.<get-clip>|<get-clip>(){}[0]
+        final fun <set-clip>(com.juul.krayon.kanvas/Clip?) // com.juul.krayon.element/ClipElement.clip.<set-clip>|<set-clip>(com.juul.krayon.kanvas.Clip?){}[0]
+
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/ClipElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementBuilder<com.juul.krayon.element/ClipElement>, com.juul.krayon.element/ElementSelector<com.juul.krayon.element/ClipElement> { // com.juul.krayon.element/ClipElement.Companion|null[0]
+        final fun build(): com.juul.krayon.element/ClipElement // com.juul.krayon.element/ClipElement.Companion.build|build(){}[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/ClipElement? // com.juul.krayon.element/ClipElement.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final class com.juul.krayon.element/GroupElement : com.juul.krayon.element/Element { // com.juul.krayon.element/GroupElement|null[0]
+    constructor <init>() // com.juul.krayon.element/GroupElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.element/GroupElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.element/GroupElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/GroupElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementBuilder<com.juul.krayon.element/GroupElement>, com.juul.krayon.element/ElementSelector<com.juul.krayon.element/GroupElement> { // com.juul.krayon.element/GroupElement.Companion|null[0]
+        final fun build(): com.juul.krayon.element/GroupElement // com.juul.krayon.element/GroupElement.Companion.build|build(){}[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/GroupElement? // com.juul.krayon.element/GroupElement.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final class com.juul.krayon.element/KanvasElement : com.juul.krayon.element/Element { // com.juul.krayon.element/KanvasElement|null[0]
+    constructor <init>() // com.juul.krayon.element/KanvasElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.element/KanvasElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.element/KanvasElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var onDraw // com.juul.krayon.element/KanvasElement.onDraw|{}onDraw[0]
+        final fun <get-onDraw>(): kotlin/Function1<com.juul.krayon.kanvas/Kanvas, kotlin/Unit>? // com.juul.krayon.element/KanvasElement.onDraw.<get-onDraw>|<get-onDraw>(){}[0]
+        final fun <set-onDraw>(kotlin/Function1<com.juul.krayon.kanvas/Kanvas, kotlin/Unit>?) // com.juul.krayon.element/KanvasElement.onDraw.<set-onDraw>|<set-onDraw>(kotlin.Function1<com.juul.krayon.kanvas.Kanvas,kotlin.Unit>?){}[0]
+
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/KanvasElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementBuilder<com.juul.krayon.element/KanvasElement>, com.juul.krayon.element/ElementSelector<com.juul.krayon.element/KanvasElement> { // com.juul.krayon.element/KanvasElement.Companion|null[0]
+        final fun build(): com.juul.krayon.element/KanvasElement // com.juul.krayon.element/KanvasElement.Companion.build|build(){}[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/KanvasElement? // com.juul.krayon.element/KanvasElement.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final class com.juul.krayon.element/LineElement : com.juul.krayon.element/Element { // com.juul.krayon.element/LineElement|null[0]
+    constructor <init>() // com.juul.krayon.element/LineElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.element/LineElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.element/LineElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var endX // com.juul.krayon.element/LineElement.endX|{}endX[0]
+        final fun <get-endX>(): kotlin/Float // com.juul.krayon.element/LineElement.endX.<get-endX>|<get-endX>(){}[0]
+        final fun <set-endX>(kotlin/Float) // com.juul.krayon.element/LineElement.endX.<set-endX>|<set-endX>(kotlin.Float){}[0]
+    final var endY // com.juul.krayon.element/LineElement.endY|{}endY[0]
+        final fun <get-endY>(): kotlin/Float // com.juul.krayon.element/LineElement.endY.<get-endY>|<get-endY>(){}[0]
+        final fun <set-endY>(kotlin/Float) // com.juul.krayon.element/LineElement.endY.<set-endY>|<set-endY>(kotlin.Float){}[0]
+    final var paint // com.juul.krayon.element/LineElement.paint|{}paint[0]
+        final fun <get-paint>(): com.juul.krayon.kanvas/Paint // com.juul.krayon.element/LineElement.paint.<get-paint>|<get-paint>(){}[0]
+        final fun <set-paint>(com.juul.krayon.kanvas/Paint) // com.juul.krayon.element/LineElement.paint.<set-paint>|<set-paint>(com.juul.krayon.kanvas.Paint){}[0]
+    final var startX // com.juul.krayon.element/LineElement.startX|{}startX[0]
+        final fun <get-startX>(): kotlin/Float // com.juul.krayon.element/LineElement.startX.<get-startX>|<get-startX>(){}[0]
+        final fun <set-startX>(kotlin/Float) // com.juul.krayon.element/LineElement.startX.<set-startX>|<set-startX>(kotlin.Float){}[0]
+    final var startY // com.juul.krayon.element/LineElement.startY|{}startY[0]
+        final fun <get-startY>(): kotlin/Float // com.juul.krayon.element/LineElement.startY.<get-startY>|<get-startY>(){}[0]
+        final fun <set-startY>(kotlin/Float) // com.juul.krayon.element/LineElement.startY.<set-startY>|<set-startY>(kotlin.Float){}[0]
+
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/LineElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementBuilder<com.juul.krayon.element/LineElement>, com.juul.krayon.element/ElementSelector<com.juul.krayon.element/LineElement> { // com.juul.krayon.element/LineElement.Companion|null[0]
+        final fun build(): com.juul.krayon.element/LineElement // com.juul.krayon.element/LineElement.Companion.build|build(){}[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/LineElement? // com.juul.krayon.element/LineElement.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final class com.juul.krayon.element/PathElement : com.juul.krayon.element/InteractableElement<com.juul.krayon.element/PathElement> { // com.juul.krayon.element/PathElement|null[0]
+    constructor <init>() // com.juul.krayon.element/PathElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.element/PathElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.element/PathElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var paint // com.juul.krayon.element/PathElement.paint|{}paint[0]
+        final fun <get-paint>(): com.juul.krayon.kanvas/Paint // com.juul.krayon.element/PathElement.paint.<get-paint>|<get-paint>(){}[0]
+        final fun <set-paint>(com.juul.krayon.kanvas/Paint) // com.juul.krayon.element/PathElement.paint.<set-paint>|<set-paint>(com.juul.krayon.kanvas.Paint){}[0]
+    final var path // com.juul.krayon.element/PathElement.path|{}path[0]
+        final fun <get-path>(): com.juul.krayon.kanvas/Path // com.juul.krayon.element/PathElement.path.<get-path>|<get-path>(){}[0]
+        final fun <set-path>(com.juul.krayon.kanvas/Path) // com.juul.krayon.element/PathElement.path.<set-path>|<set-path>(com.juul.krayon.kanvas.Path){}[0]
+
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/PathElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+    final fun getInteractionPath(): com.juul.krayon.kanvas/Path // com.juul.krayon.element/PathElement.getInteractionPath|getInteractionPath(){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementBuilder<com.juul.krayon.element/PathElement>, com.juul.krayon.element/ElementSelector<com.juul.krayon.element/PathElement> { // com.juul.krayon.element/PathElement.Companion|null[0]
+        final fun build(): com.juul.krayon.element/PathElement // com.juul.krayon.element/PathElement.Companion.build|build(){}[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/PathElement? // com.juul.krayon.element/PathElement.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final class com.juul.krayon.element/RectangleElement : com.juul.krayon.element/InteractableElement<com.juul.krayon.element/RectangleElement> { // com.juul.krayon.element/RectangleElement|null[0]
+    constructor <init>() // com.juul.krayon.element/RectangleElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.element/RectangleElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.element/RectangleElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var bottom // com.juul.krayon.element/RectangleElement.bottom|{}bottom[0]
+        final fun <get-bottom>(): kotlin/Float // com.juul.krayon.element/RectangleElement.bottom.<get-bottom>|<get-bottom>(){}[0]
+        final fun <set-bottom>(kotlin/Float) // com.juul.krayon.element/RectangleElement.bottom.<set-bottom>|<set-bottom>(kotlin.Float){}[0]
+    final var left // com.juul.krayon.element/RectangleElement.left|{}left[0]
+        final fun <get-left>(): kotlin/Float // com.juul.krayon.element/RectangleElement.left.<get-left>|<get-left>(){}[0]
+        final fun <set-left>(kotlin/Float) // com.juul.krayon.element/RectangleElement.left.<set-left>|<set-left>(kotlin.Float){}[0]
+    final var paint // com.juul.krayon.element/RectangleElement.paint|{}paint[0]
+        final fun <get-paint>(): com.juul.krayon.kanvas/Paint // com.juul.krayon.element/RectangleElement.paint.<get-paint>|<get-paint>(){}[0]
+        final fun <set-paint>(com.juul.krayon.kanvas/Paint) // com.juul.krayon.element/RectangleElement.paint.<set-paint>|<set-paint>(com.juul.krayon.kanvas.Paint){}[0]
+    final var right // com.juul.krayon.element/RectangleElement.right|{}right[0]
+        final fun <get-right>(): kotlin/Float // com.juul.krayon.element/RectangleElement.right.<get-right>|<get-right>(){}[0]
+        final fun <set-right>(kotlin/Float) // com.juul.krayon.element/RectangleElement.right.<set-right>|<set-right>(kotlin.Float){}[0]
+    final var top // com.juul.krayon.element/RectangleElement.top|{}top[0]
+        final fun <get-top>(): kotlin/Float // com.juul.krayon.element/RectangleElement.top.<get-top>|<get-top>(){}[0]
+        final fun <set-top>(kotlin/Float) // com.juul.krayon.element/RectangleElement.top.<set-top>|<set-top>(kotlin.Float){}[0]
+
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/RectangleElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+    final fun getInteractionPath(): com.juul.krayon.kanvas/Path // com.juul.krayon.element/RectangleElement.getInteractionPath|getInteractionPath(){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementBuilder<com.juul.krayon.element/RectangleElement>, com.juul.krayon.element/ElementSelector<com.juul.krayon.element/RectangleElement> { // com.juul.krayon.element/RectangleElement.Companion|null[0]
+        final fun build(): com.juul.krayon.element/RectangleElement // com.juul.krayon.element/RectangleElement.Companion.build|build(){}[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/RectangleElement? // com.juul.krayon.element/RectangleElement.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final class com.juul.krayon.element/RootElement : com.juul.krayon.element/Element { // com.juul.krayon.element/RootElement|null[0]
+    constructor <init>() // com.juul.krayon.element/RootElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.element/RootElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.element/RootElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var onClickFallback // com.juul.krayon.element/RootElement.onClickFallback|{}onClickFallback[0]
+        final fun <get-onClickFallback>(): kotlin/Function0<kotlin/Unit>? // com.juul.krayon.element/RootElement.onClickFallback.<get-onClickFallback>|<get-onClickFallback>(){}[0]
+        final fun <set-onClickFallback>(kotlin/Function0<kotlin/Unit>?) // com.juul.krayon.element/RootElement.onClickFallback.<set-onClickFallback>|<set-onClickFallback>(kotlin.Function0<kotlin.Unit>?){}[0]
+
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/RootElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+    final fun onClick(com.juul.krayon.kanvas/IsPointInPath, kotlin/Float, kotlin/Float) // com.juul.krayon.element/RootElement.onClick|onClick(com.juul.krayon.kanvas.IsPointInPath;kotlin.Float;kotlin.Float){}[0]
+    final fun onHover(com.juul.krayon.kanvas/IsPointInPath, kotlin/Float, kotlin/Float) // com.juul.krayon.element/RootElement.onHover|onHover(com.juul.krayon.kanvas.IsPointInPath;kotlin.Float;kotlin.Float){}[0]
+    final fun onHoverEnded() // com.juul.krayon.element/RootElement.onHoverEnded|onHoverEnded(){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementSelector<com.juul.krayon.element/RootElement> { // com.juul.krayon.element/RootElement.Companion|null[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/RootElement? // com.juul.krayon.element/RootElement.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final class com.juul.krayon.element/RoundedRectangleElement : com.juul.krayon.element/InteractableElement<com.juul.krayon.element/RoundedRectangleElement> { // com.juul.krayon.element/RoundedRectangleElement|null[0]
+    constructor <init>() // com.juul.krayon.element/RoundedRectangleElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.element/RoundedRectangleElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.element/RoundedRectangleElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var bottom // com.juul.krayon.element/RoundedRectangleElement.bottom|{}bottom[0]
+        final fun <get-bottom>(): kotlin/Float // com.juul.krayon.element/RoundedRectangleElement.bottom.<get-bottom>|<get-bottom>(){}[0]
+        final fun <set-bottom>(kotlin/Float) // com.juul.krayon.element/RoundedRectangleElement.bottom.<set-bottom>|<set-bottom>(kotlin.Float){}[0]
+    final var bottomLeftRadius // com.juul.krayon.element/RoundedRectangleElement.bottomLeftRadius|{}bottomLeftRadius[0]
+        final fun <get-bottomLeftRadius>(): kotlin/Float // com.juul.krayon.element/RoundedRectangleElement.bottomLeftRadius.<get-bottomLeftRadius>|<get-bottomLeftRadius>(){}[0]
+        final fun <set-bottomLeftRadius>(kotlin/Float) // com.juul.krayon.element/RoundedRectangleElement.bottomLeftRadius.<set-bottomLeftRadius>|<set-bottomLeftRadius>(kotlin.Float){}[0]
+    final var bottomRightRadius // com.juul.krayon.element/RoundedRectangleElement.bottomRightRadius|{}bottomRightRadius[0]
+        final fun <get-bottomRightRadius>(): kotlin/Float // com.juul.krayon.element/RoundedRectangleElement.bottomRightRadius.<get-bottomRightRadius>|<get-bottomRightRadius>(){}[0]
+        final fun <set-bottomRightRadius>(kotlin/Float) // com.juul.krayon.element/RoundedRectangleElement.bottomRightRadius.<set-bottomRightRadius>|<set-bottomRightRadius>(kotlin.Float){}[0]
+    final var left // com.juul.krayon.element/RoundedRectangleElement.left|{}left[0]
+        final fun <get-left>(): kotlin/Float // com.juul.krayon.element/RoundedRectangleElement.left.<get-left>|<get-left>(){}[0]
+        final fun <set-left>(kotlin/Float) // com.juul.krayon.element/RoundedRectangleElement.left.<set-left>|<set-left>(kotlin.Float){}[0]
+    final var paint // com.juul.krayon.element/RoundedRectangleElement.paint|{}paint[0]
+        final fun <get-paint>(): com.juul.krayon.kanvas/Paint // com.juul.krayon.element/RoundedRectangleElement.paint.<get-paint>|<get-paint>(){}[0]
+        final fun <set-paint>(com.juul.krayon.kanvas/Paint) // com.juul.krayon.element/RoundedRectangleElement.paint.<set-paint>|<set-paint>(com.juul.krayon.kanvas.Paint){}[0]
+    final var right // com.juul.krayon.element/RoundedRectangleElement.right|{}right[0]
+        final fun <get-right>(): kotlin/Float // com.juul.krayon.element/RoundedRectangleElement.right.<get-right>|<get-right>(){}[0]
+        final fun <set-right>(kotlin/Float) // com.juul.krayon.element/RoundedRectangleElement.right.<set-right>|<set-right>(kotlin.Float){}[0]
+    final var top // com.juul.krayon.element/RoundedRectangleElement.top|{}top[0]
+        final fun <get-top>(): kotlin/Float // com.juul.krayon.element/RoundedRectangleElement.top.<get-top>|<get-top>(){}[0]
+        final fun <set-top>(kotlin/Float) // com.juul.krayon.element/RoundedRectangleElement.top.<set-top>|<set-top>(kotlin.Float){}[0]
+    final var topLeftRadius // com.juul.krayon.element/RoundedRectangleElement.topLeftRadius|{}topLeftRadius[0]
+        final fun <get-topLeftRadius>(): kotlin/Float // com.juul.krayon.element/RoundedRectangleElement.topLeftRadius.<get-topLeftRadius>|<get-topLeftRadius>(){}[0]
+        final fun <set-topLeftRadius>(kotlin/Float) // com.juul.krayon.element/RoundedRectangleElement.topLeftRadius.<set-topLeftRadius>|<set-topLeftRadius>(kotlin.Float){}[0]
+    final var topRightRadius // com.juul.krayon.element/RoundedRectangleElement.topRightRadius|{}topRightRadius[0]
+        final fun <get-topRightRadius>(): kotlin/Float // com.juul.krayon.element/RoundedRectangleElement.topRightRadius.<get-topRightRadius>|<get-topRightRadius>(){}[0]
+        final fun <set-topRightRadius>(kotlin/Float) // com.juul.krayon.element/RoundedRectangleElement.topRightRadius.<set-topRightRadius>|<set-topRightRadius>(kotlin.Float){}[0]
+
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/RoundedRectangleElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+    final fun getInteractionPath(): com.juul.krayon.kanvas/Path // com.juul.krayon.element/RoundedRectangleElement.getInteractionPath|getInteractionPath(){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementBuilder<com.juul.krayon.element/RoundedRectangleElement>, com.juul.krayon.element/ElementSelector<com.juul.krayon.element/RoundedRectangleElement> { // com.juul.krayon.element/RoundedRectangleElement.Companion|null[0]
+        final fun build(): com.juul.krayon.element/RoundedRectangleElement // com.juul.krayon.element/RoundedRectangleElement.Companion.build|build(){}[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/RoundedRectangleElement? // com.juul.krayon.element/RoundedRectangleElement.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final class com.juul.krayon.element/TextElement : com.juul.krayon.element/Element { // com.juul.krayon.element/TextElement|null[0]
+    constructor <init>() // com.juul.krayon.element/TextElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.element/TextElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.element/TextElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var paint // com.juul.krayon.element/TextElement.paint|{}paint[0]
+        final fun <get-paint>(): com.juul.krayon.kanvas/Paint.Text // com.juul.krayon.element/TextElement.paint.<get-paint>|<get-paint>(){}[0]
+        final fun <set-paint>(com.juul.krayon.kanvas/Paint.Text) // com.juul.krayon.element/TextElement.paint.<set-paint>|<set-paint>(com.juul.krayon.kanvas.Paint.Text){}[0]
+    final var text // com.juul.krayon.element/TextElement.text|{}text[0]
+        final fun <get-text>(): kotlin/String // com.juul.krayon.element/TextElement.text.<get-text>|<get-text>(){}[0]
+        final fun <set-text>(kotlin/String) // com.juul.krayon.element/TextElement.text.<set-text>|<set-text>(kotlin.String){}[0]
+    final var verticalAlign // com.juul.krayon.element/TextElement.verticalAlign|{}verticalAlign[0]
+        final fun <get-verticalAlign>(): kotlin/Float // com.juul.krayon.element/TextElement.verticalAlign.<get-verticalAlign>|<get-verticalAlign>(){}[0]
+        final fun <set-verticalAlign>(kotlin/Float) // com.juul.krayon.element/TextElement.verticalAlign.<set-verticalAlign>|<set-verticalAlign>(kotlin.Float){}[0]
+    final var x // com.juul.krayon.element/TextElement.x|{}x[0]
+        final fun <get-x>(): kotlin/Float // com.juul.krayon.element/TextElement.x.<get-x>|<get-x>(){}[0]
+        final fun <set-x>(kotlin/Float) // com.juul.krayon.element/TextElement.x.<set-x>|<set-x>(kotlin.Float){}[0]
+    final var y // com.juul.krayon.element/TextElement.y|{}y[0]
+        final fun <get-y>(): kotlin/Float // com.juul.krayon.element/TextElement.y.<get-y>|<get-y>(){}[0]
+        final fun <set-y>(kotlin/Float) // com.juul.krayon.element/TextElement.y.<set-y>|<set-y>(kotlin.Float){}[0]
+
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/TextElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementBuilder<com.juul.krayon.element/TextElement>, com.juul.krayon.element/ElementSelector<com.juul.krayon.element/TextElement> { // com.juul.krayon.element/TextElement.Companion|null[0]
+        final fun build(): com.juul.krayon.element/TextElement // com.juul.krayon.element/TextElement.Companion.build|build(){}[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/TextElement? // com.juul.krayon.element/TextElement.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final class com.juul.krayon.element/TransformElement : com.juul.krayon.element/Element { // com.juul.krayon.element/TransformElement|null[0]
+    constructor <init>() // com.juul.krayon.element/TransformElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.element/TransformElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.element/TransformElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var transform // com.juul.krayon.element/TransformElement.transform|{}transform[0]
+        final fun <get-transform>(): com.juul.krayon.kanvas/Transform // com.juul.krayon.element/TransformElement.transform.<get-transform>|<get-transform>(){}[0]
+        final fun <set-transform>(com.juul.krayon.kanvas/Transform) // com.juul.krayon.element/TransformElement.transform.<set-transform>|<set-transform>(com.juul.krayon.kanvas.Transform){}[0]
+
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.element/TransformElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+
+    final object Companion : com.juul.krayon.element/ElementBuilder<com.juul.krayon.element/TransformElement>, com.juul.krayon.element/ElementSelector<com.juul.krayon.element/TransformElement> { // com.juul.krayon.element/TransformElement.Companion|null[0]
+        final fun build(): com.juul.krayon.element/TransformElement // com.juul.krayon.element/TransformElement.Companion.build|build(){}[0]
+        final fun trySelect(com.juul.krayon.element/Element): com.juul.krayon.element/TransformElement? // com.juul.krayon.element/TransformElement.Companion.trySelect|trySelect(com.juul.krayon.element.Element){}[0]
+    }
+}
+
+final fun <#A: com.juul.krayon.element/Element> (com.juul.krayon.element/ElementSelector<#A>).com.juul.krayon.element/withKind(kotlin/String): com.juul.krayon.element/ElementSelector<#A> // com.juul.krayon.element/withKind|withKind@com.juul.krayon.element.ElementSelector<0:0>(kotlin.String){0§<com.juul.krayon.element.Element>}[0]

@@ -1,0 +1,103 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <krayon:time>
+abstract interface com.juul.krayon.time/Interval { // com.juul.krayon.time/Interval|null[0]
+    abstract fun floor(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/Interval.floor|floor(kotlinx.datetime.LocalDateTime){}[0]
+    abstract fun offset(kotlinx.datetime/LocalDateTime, kotlin/Int): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/Interval.offset|offset(kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+    open fun ceil(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/Interval.ceil|ceil(kotlinx.datetime.LocalDateTime){}[0]
+    open fun filter(kotlin/Function1<kotlinx.datetime/LocalDateTime, kotlin/Boolean>): com.juul.krayon.time/Interval // com.juul.krayon.time/Interval.filter|filter(kotlin.Function1<kotlinx.datetime.LocalDateTime,kotlin.Boolean>){}[0]
+    open fun range(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime, kotlin/Int = ...): kotlin.collections/List<kotlinx.datetime/LocalDateTime> // com.juul.krayon.time/Interval.range|range(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+    open fun round(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/Interval.round|round(kotlinx.datetime.LocalDateTime){}[0]
+
+    abstract interface Count : com.juul.krayon.time/Interval { // com.juul.krayon.time/Interval.Count|null[0]
+        abstract fun count(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/Interval.Count.count|count(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime){}[0]
+        open fun every(kotlin/Int): com.juul.krayon.time/Interval // com.juul.krayon.time/Interval.Count.every|every(kotlin.Int){}[0]
+    }
+
+    abstract interface Field : com.juul.krayon.time/Interval { // com.juul.krayon.time/Interval.Field|null[0]
+        abstract fun field(kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/Interval.Field.field|field(kotlinx.datetime.LocalDateTime){}[0]
+    }
+}
+
+final class com.juul.krayon.time/WeekInterval : com.juul.krayon.time/Interval, com.juul.krayon.time/Interval.Count { // com.juul.krayon.time/WeekInterval|null[0]
+    constructor <init>(kotlinx.datetime/DayOfWeek) // com.juul.krayon.time/WeekInterval.<init>|<init>(kotlinx.datetime.DayOfWeek){}[0]
+
+    final fun count(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/WeekInterval.count|count(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime){}[0]
+    final fun floor(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/WeekInterval.floor|floor(kotlinx.datetime.LocalDateTime){}[0]
+    final fun offset(kotlinx.datetime/LocalDateTime, kotlin/Int): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/WeekInterval.offset|offset(kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+
+    final object Companion { // com.juul.krayon.time/WeekInterval.Companion|null[0]
+        final val friday // com.juul.krayon.time/WeekInterval.Companion.friday|{}friday[0]
+            final fun <get-friday>(): com.juul.krayon.time/WeekInterval // com.juul.krayon.time/WeekInterval.Companion.friday.<get-friday>|<get-friday>(){}[0]
+        final val monday // com.juul.krayon.time/WeekInterval.Companion.monday|{}monday[0]
+            final fun <get-monday>(): com.juul.krayon.time/WeekInterval // com.juul.krayon.time/WeekInterval.Companion.monday.<get-monday>|<get-monday>(){}[0]
+        final val saturday // com.juul.krayon.time/WeekInterval.Companion.saturday|{}saturday[0]
+            final fun <get-saturday>(): com.juul.krayon.time/WeekInterval // com.juul.krayon.time/WeekInterval.Companion.saturday.<get-saturday>|<get-saturday>(){}[0]
+        final val sunday // com.juul.krayon.time/WeekInterval.Companion.sunday|{}sunday[0]
+            final fun <get-sunday>(): com.juul.krayon.time/WeekInterval // com.juul.krayon.time/WeekInterval.Companion.sunday.<get-sunday>|<get-sunday>(){}[0]
+        final val thursday // com.juul.krayon.time/WeekInterval.Companion.thursday|{}thursday[0]
+            final fun <get-thursday>(): com.juul.krayon.time/WeekInterval // com.juul.krayon.time/WeekInterval.Companion.thursday.<get-thursday>|<get-thursday>(){}[0]
+        final val tuesday // com.juul.krayon.time/WeekInterval.Companion.tuesday|{}tuesday[0]
+            final fun <get-tuesday>(): com.juul.krayon.time/WeekInterval // com.juul.krayon.time/WeekInterval.Companion.tuesday.<get-tuesday>|<get-tuesday>(){}[0]
+        final val wednesday // com.juul.krayon.time/WeekInterval.Companion.wednesday|{}wednesday[0]
+            final fun <get-wednesday>(): com.juul.krayon.time/WeekInterval // com.juul.krayon.time/WeekInterval.Companion.wednesday.<get-wednesday>|<get-wednesday>(){}[0]
+    }
+}
+
+final object com.juul.krayon.time/DayInterval : com.juul.krayon.time/Interval, com.juul.krayon.time/Interval.Count, com.juul.krayon.time/Interval.Field { // com.juul.krayon.time/DayInterval|null[0]
+    final fun count(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/DayInterval.count|count(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime){}[0]
+    final fun field(kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/DayInterval.field|field(kotlinx.datetime.LocalDateTime){}[0]
+    final fun floor(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/DayInterval.floor|floor(kotlinx.datetime.LocalDateTime){}[0]
+    final fun offset(kotlinx.datetime/LocalDateTime, kotlin/Int): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/DayInterval.offset|offset(kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+}
+
+final object com.juul.krayon.time/HourInterval : com.juul.krayon.time/Interval, com.juul.krayon.time/Interval.Count, com.juul.krayon.time/Interval.Field { // com.juul.krayon.time/HourInterval|null[0]
+    final fun count(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/HourInterval.count|count(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime){}[0]
+    final fun field(kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/HourInterval.field|field(kotlinx.datetime.LocalDateTime){}[0]
+    final fun floor(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/HourInterval.floor|floor(kotlinx.datetime.LocalDateTime){}[0]
+    final fun offset(kotlinx.datetime/LocalDateTime, kotlin/Int): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/HourInterval.offset|offset(kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+}
+
+final object com.juul.krayon.time/MillisecondInterval : com.juul.krayon.time/Interval, com.juul.krayon.time/Interval.Count, com.juul.krayon.time/Interval.Field { // com.juul.krayon.time/MillisecondInterval|null[0]
+    final fun count(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/MillisecondInterval.count|count(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime){}[0]
+    final fun field(kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/MillisecondInterval.field|field(kotlinx.datetime.LocalDateTime){}[0]
+    final fun floor(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/MillisecondInterval.floor|floor(kotlinx.datetime.LocalDateTime){}[0]
+    final fun offset(kotlinx.datetime/LocalDateTime, kotlin/Int): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/MillisecondInterval.offset|offset(kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+}
+
+final object com.juul.krayon.time/MinuteInterval : com.juul.krayon.time/Interval, com.juul.krayon.time/Interval.Count, com.juul.krayon.time/Interval.Field { // com.juul.krayon.time/MinuteInterval|null[0]
+    final fun count(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/MinuteInterval.count|count(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime){}[0]
+    final fun field(kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/MinuteInterval.field|field(kotlinx.datetime.LocalDateTime){}[0]
+    final fun floor(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/MinuteInterval.floor|floor(kotlinx.datetime.LocalDateTime){}[0]
+    final fun offset(kotlinx.datetime/LocalDateTime, kotlin/Int): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/MinuteInterval.offset|offset(kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+}
+
+final object com.juul.krayon.time/MonthInterval : com.juul.krayon.time/Interval, com.juul.krayon.time/Interval.Count, com.juul.krayon.time/Interval.Field { // com.juul.krayon.time/MonthInterval|null[0]
+    final fun count(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/MonthInterval.count|count(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime){}[0]
+    final fun field(kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/MonthInterval.field|field(kotlinx.datetime.LocalDateTime){}[0]
+    final fun floor(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/MonthInterval.floor|floor(kotlinx.datetime.LocalDateTime){}[0]
+    final fun offset(kotlinx.datetime/LocalDateTime, kotlin/Int): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/MonthInterval.offset|offset(kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+}
+
+final object com.juul.krayon.time/SecondInterval : com.juul.krayon.time/Interval, com.juul.krayon.time/Interval.Count, com.juul.krayon.time/Interval.Field { // com.juul.krayon.time/SecondInterval|null[0]
+    final fun count(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/SecondInterval.count|count(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime){}[0]
+    final fun field(kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/SecondInterval.field|field(kotlinx.datetime.LocalDateTime){}[0]
+    final fun floor(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/SecondInterval.floor|floor(kotlinx.datetime.LocalDateTime){}[0]
+    final fun offset(kotlinx.datetime/LocalDateTime, kotlin/Int): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/SecondInterval.offset|offset(kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+}
+
+final object com.juul.krayon.time/YearInterval : com.juul.krayon.time/Interval, com.juul.krayon.time/Interval.Count, com.juul.krayon.time/Interval.Field { // com.juul.krayon.time/YearInterval|null[0]
+    final fun count(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/YearInterval.count|count(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime){}[0]
+    final fun field(kotlinx.datetime/LocalDateTime): kotlin/Int // com.juul.krayon.time/YearInterval.field|field(kotlinx.datetime.LocalDateTime){}[0]
+    final fun floor(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/YearInterval.floor|floor(kotlinx.datetime.LocalDateTime){}[0]
+    final fun offset(kotlinx.datetime/LocalDateTime, kotlin/Int): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/YearInterval.offset|offset(kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+}
+
+final fun (kotlinx.datetime/LocalDateTime).com.juul.krayon.time/minus(kotlin.time/Duration): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/minus|minus@kotlinx.datetime.LocalDateTime(kotlin.time.Duration){}[0]
+final fun (kotlinx.datetime/LocalDateTime).com.juul.krayon.time/minus(kotlinx.datetime/LocalDateTime): kotlin.time/Duration // com.juul.krayon.time/minus|minus@kotlinx.datetime.LocalDateTime(kotlinx.datetime.LocalDateTime){}[0]
+final fun (kotlinx.datetime/LocalDateTime).com.juul.krayon.time/plus(kotlin.time/Duration): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/plus|plus@kotlinx.datetime.LocalDateTime(kotlin.time.Duration){}[0]

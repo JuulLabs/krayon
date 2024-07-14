@@ -1,0 +1,652 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, macosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <krayon:kanvas>
+abstract interface <#A: kotlin/Any> com.juul.krayon.kanvas/PathTypeMarker { // com.juul.krayon.kanvas/PathTypeMarker|null[0]
+    abstract val builder // com.juul.krayon.kanvas/PathTypeMarker.builder|{}builder[0]
+        abstract fun <get-builder>(): com.juul.krayon.kanvas/PathBuilder<#A> // com.juul.krayon.kanvas/PathTypeMarker.builder.<get-builder>|<get-builder>(){}[0]
+}
+
+abstract interface <#A: out kotlin/Any?> com.juul.krayon.kanvas/PathBuilder { // com.juul.krayon.kanvas/PathBuilder|null[0]
+    abstract fun arcTo(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Boolean) // com.juul.krayon.kanvas/PathBuilder.arcTo|arcTo(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Boolean){}[0]
+    abstract fun build(): #A // com.juul.krayon.kanvas/PathBuilder.build|build(){}[0]
+    abstract fun close() // com.juul.krayon.kanvas/PathBuilder.close|close(){}[0]
+    abstract fun cubicTo(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/PathBuilder.cubicTo|cubicTo(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    abstract fun lineTo(kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/PathBuilder.lineTo|lineTo(kotlin.Float;kotlin.Float){}[0]
+    abstract fun moveTo(kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/PathBuilder.moveTo|moveTo(kotlin.Float;kotlin.Float){}[0]
+    abstract fun quadraticTo(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/PathBuilder.quadraticTo|quadraticTo(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    abstract fun relativeCubicTo(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/PathBuilder.relativeCubicTo|relativeCubicTo(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    abstract fun relativeLineTo(kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/PathBuilder.relativeLineTo|relativeLineTo(kotlin.Float;kotlin.Float){}[0]
+    abstract fun relativeMoveTo(kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/PathBuilder.relativeMoveTo|relativeMoveTo(kotlin.Float;kotlin.Float){}[0]
+    abstract fun relativeQuadraticTo(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/PathBuilder.relativeQuadraticTo|relativeQuadraticTo(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    abstract fun reset() // com.juul.krayon.kanvas/PathBuilder.reset|reset(){}[0]
+}
+
+abstract interface com.juul.krayon.kanvas.xml/NumberFormatter { // com.juul.krayon.kanvas.xml/NumberFormatter|null[0]
+    abstract fun invoke(kotlin/Double): kotlin/String // com.juul.krayon.kanvas.xml/NumberFormatter.invoke|invoke(kotlin.Double){}[0]
+    abstract fun invoke(kotlin/Float): kotlin/String // com.juul.krayon.kanvas.xml/NumberFormatter.invoke|invoke(kotlin.Float){}[0]
+    abstract fun invoke(kotlin/Int): kotlin/String // com.juul.krayon.kanvas.xml/NumberFormatter.invoke|invoke(kotlin.Int){}[0]
+    abstract fun invoke(kotlin/Long): kotlin/String // com.juul.krayon.kanvas.xml/NumberFormatter.invoke|invoke(kotlin.Long){}[0]
+}
+
+abstract interface com.juul.krayon.kanvas/IsPointInPath { // com.juul.krayon.kanvas/IsPointInPath|null[0]
+    abstract fun isPointInPath(com.juul.krayon.kanvas/Transform, com.juul.krayon.kanvas/Path, kotlin/Float, kotlin/Float): kotlin/Boolean // com.juul.krayon.kanvas/IsPointInPath.isPointInPath|isPointInPath(com.juul.krayon.kanvas.Transform;com.juul.krayon.kanvas.Path;kotlin.Float;kotlin.Float){}[0]
+}
+
+abstract interface com.juul.krayon.kanvas/Kanvas { // com.juul.krayon.kanvas/Kanvas|null[0]
+    abstract val height // com.juul.krayon.kanvas/Kanvas.height|{}height[0]
+        abstract fun <get-height>(): kotlin/Float // com.juul.krayon.kanvas/Kanvas.height.<get-height>|<get-height>(){}[0]
+    abstract val width // com.juul.krayon.kanvas/Kanvas.width|{}width[0]
+        abstract fun <get-width>(): kotlin/Float // com.juul.krayon.kanvas/Kanvas.width.<get-width>|<get-width>(){}[0]
+
+    abstract fun drawArc(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/Kanvas.drawArc|drawArc(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    abstract fun drawCircle(kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/Kanvas.drawCircle|drawCircle(kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    abstract fun drawColor(com.juul.krayon.color/Color) // com.juul.krayon.kanvas/Kanvas.drawColor|drawColor(com.juul.krayon.color.Color){}[0]
+    abstract fun drawLine(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/Kanvas.drawLine|drawLine(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    abstract fun drawOval(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/Kanvas.drawOval|drawOval(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    abstract fun drawPath(com.juul.krayon.kanvas/Path, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/Kanvas.drawPath|drawPath(com.juul.krayon.kanvas.Path;com.juul.krayon.kanvas.Paint){}[0]
+    abstract fun drawRect(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/Kanvas.drawRect|drawRect(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    abstract fun drawText(kotlin/CharSequence, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/Kanvas.drawText|drawText(kotlin.CharSequence;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    abstract fun pop() // com.juul.krayon.kanvas/Kanvas.pop|pop(){}[0]
+    abstract fun pushClip(com.juul.krayon.kanvas/Clip) // com.juul.krayon.kanvas/Kanvas.pushClip|pushClip(com.juul.krayon.kanvas.Clip){}[0]
+    abstract fun pushTransform(com.juul.krayon.kanvas/Transform) // com.juul.krayon.kanvas/Kanvas.pushTransform|pushTransform(com.juul.krayon.kanvas.Transform){}[0]
+}
+
+abstract class <#A: kotlin/Any?> com.juul.krayon.kanvas/RelativePathBuilder : com.juul.krayon.kanvas/PathBuilder<#A> { // com.juul.krayon.kanvas/RelativePathBuilder|null[0]
+    constructor <init>() // com.juul.krayon.kanvas/RelativePathBuilder.<init>|<init>(){}[0]
+
+    final val state // com.juul.krayon.kanvas/RelativePathBuilder.state|{}state[0]
+        final fun <get-state>(): com.juul.krayon.kanvas/RelativePathBuilder.State // com.juul.krayon.kanvas/RelativePathBuilder.state.<get-state>|<get-state>(){}[0]
+
+    open fun arcTo(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Boolean) // com.juul.krayon.kanvas/RelativePathBuilder.arcTo|arcTo(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Boolean){}[0]
+    open fun close() // com.juul.krayon.kanvas/RelativePathBuilder.close|close(){}[0]
+    open fun cubicTo(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/RelativePathBuilder.cubicTo|cubicTo(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    open fun lineTo(kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/RelativePathBuilder.lineTo|lineTo(kotlin.Float;kotlin.Float){}[0]
+    open fun moveTo(kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/RelativePathBuilder.moveTo|moveTo(kotlin.Float;kotlin.Float){}[0]
+    open fun quadraticTo(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/RelativePathBuilder.quadraticTo|quadraticTo(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    open fun relativeCubicTo(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/RelativePathBuilder.relativeCubicTo|relativeCubicTo(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    open fun relativeLineTo(kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/RelativePathBuilder.relativeLineTo|relativeLineTo(kotlin.Float;kotlin.Float){}[0]
+    open fun relativeMoveTo(kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/RelativePathBuilder.relativeMoveTo|relativeMoveTo(kotlin.Float;kotlin.Float){}[0]
+    open fun relativeQuadraticTo(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/RelativePathBuilder.relativeQuadraticTo|relativeQuadraticTo(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    open fun reset() // com.juul.krayon.kanvas/RelativePathBuilder.reset|reset(){}[0]
+
+    final class State { // com.juul.krayon.kanvas/RelativePathBuilder.State|null[0]
+        constructor <init>(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ...) // com.juul.krayon.kanvas/RelativePathBuilder.State.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+
+        final val closeToX // com.juul.krayon.kanvas/RelativePathBuilder.State.closeToX|{}closeToX[0]
+            final fun <get-closeToX>(): kotlin/Float // com.juul.krayon.kanvas/RelativePathBuilder.State.closeToX.<get-closeToX>|<get-closeToX>(){}[0]
+        final val closeToY // com.juul.krayon.kanvas/RelativePathBuilder.State.closeToY|{}closeToY[0]
+            final fun <get-closeToY>(): kotlin/Float // com.juul.krayon.kanvas/RelativePathBuilder.State.closeToY.<get-closeToY>|<get-closeToY>(){}[0]
+        final val lastX // com.juul.krayon.kanvas/RelativePathBuilder.State.lastX|{}lastX[0]
+            final fun <get-lastX>(): kotlin/Float // com.juul.krayon.kanvas/RelativePathBuilder.State.lastX.<get-lastX>|<get-lastX>(){}[0]
+        final val lastY // com.juul.krayon.kanvas/RelativePathBuilder.State.lastY|{}lastY[0]
+            final fun <get-lastY>(): kotlin/Float // com.juul.krayon.kanvas/RelativePathBuilder.State.lastY.<get-lastY>|<get-lastY>(){}[0]
+
+        final fun component1(): kotlin/Float // com.juul.krayon.kanvas/RelativePathBuilder.State.component1|component1(){}[0]
+        final fun component2(): kotlin/Float // com.juul.krayon.kanvas/RelativePathBuilder.State.component2|component2(){}[0]
+        final fun component3(): kotlin/Float // com.juul.krayon.kanvas/RelativePathBuilder.State.component3|component3(){}[0]
+        final fun component4(): kotlin/Float // com.juul.krayon.kanvas/RelativePathBuilder.State.component4|component4(){}[0]
+        final fun copy(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ...): com.juul.krayon.kanvas/RelativePathBuilder.State // com.juul.krayon.kanvas/RelativePathBuilder.State.copy|copy(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/RelativePathBuilder.State.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/RelativePathBuilder.State.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/RelativePathBuilder.State.toString|toString(){}[0]
+    }
+}
+
+final class com.juul.krayon.kanvas.svg/PathStringMarker : com.juul.krayon.kanvas/PathTypeMarker<com.juul.krayon.kanvas.svg/PathString> { // com.juul.krayon.kanvas.svg/PathStringMarker|null[0]
+    constructor <init>(com.juul.krayon.kanvas.xml/NumberFormatter) // com.juul.krayon.kanvas.svg/PathStringMarker.<init>|<init>(com.juul.krayon.kanvas.xml.NumberFormatter){}[0]
+
+    final val builder // com.juul.krayon.kanvas.svg/PathStringMarker.builder|{}builder[0]
+        final fun <get-builder>(): com.juul.krayon.kanvas/PathBuilder<com.juul.krayon.kanvas.svg/PathString> // com.juul.krayon.kanvas.svg/PathStringMarker.builder.<get-builder>|<get-builder>(){}[0]
+    final val formatter // com.juul.krayon.kanvas.svg/PathStringMarker.formatter|{}formatter[0]
+        final fun <get-formatter>(): com.juul.krayon.kanvas.xml/NumberFormatter // com.juul.krayon.kanvas.svg/PathStringMarker.formatter.<get-formatter>|<get-formatter>(){}[0]
+
+    final fun component1(): com.juul.krayon.kanvas.xml/NumberFormatter // com.juul.krayon.kanvas.svg/PathStringMarker.component1|component1(){}[0]
+    final fun copy(com.juul.krayon.kanvas.xml/NumberFormatter = ...): com.juul.krayon.kanvas.svg/PathStringMarker // com.juul.krayon.kanvas.svg/PathStringMarker.copy|copy(com.juul.krayon.kanvas.xml.NumberFormatter){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas.svg/PathStringMarker.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas.svg/PathStringMarker.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.kanvas.svg/PathStringMarker.toString|toString(){}[0]
+}
+
+final class com.juul.krayon.kanvas.svg/SvgKanvas : com.juul.krayon.kanvas/Kanvas { // com.juul.krayon.kanvas.svg/SvgKanvas|null[0]
+    constructor <init>(kotlin/Float, kotlin/Float, com.juul.krayon.kanvas.xml/NumberFormatter = ...) // com.juul.krayon.kanvas.svg/SvgKanvas.<init>|<init>(kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.xml.NumberFormatter){}[0]
+
+    final val height // com.juul.krayon.kanvas.svg/SvgKanvas.height|{}height[0]
+        final fun <get-height>(): kotlin/Float // com.juul.krayon.kanvas.svg/SvgKanvas.height.<get-height>|<get-height>(){}[0]
+    final val width // com.juul.krayon.kanvas.svg/SvgKanvas.width|{}width[0]
+        final fun <get-width>(): kotlin/Float // com.juul.krayon.kanvas.svg/SvgKanvas.width.<get-width>|<get-width>(){}[0]
+
+    final fun build(): kotlin/String // com.juul.krayon.kanvas.svg/SvgKanvas.build|build(){}[0]
+    final fun drawArc(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas.svg/SvgKanvas.drawArc|drawArc(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawCircle(kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas.svg/SvgKanvas.drawCircle|drawCircle(kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawColor(com.juul.krayon.color/Color) // com.juul.krayon.kanvas.svg/SvgKanvas.drawColor|drawColor(com.juul.krayon.color.Color){}[0]
+    final fun drawLine(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas.svg/SvgKanvas.drawLine|drawLine(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawOval(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas.svg/SvgKanvas.drawOval|drawOval(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawPath(com.juul.krayon.kanvas/Path, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas.svg/SvgKanvas.drawPath|drawPath(com.juul.krayon.kanvas.Path;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawRect(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas.svg/SvgKanvas.drawRect|drawRect(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawText(kotlin/CharSequence, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas.svg/SvgKanvas.drawText|drawText(kotlin.CharSequence;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun pop() // com.juul.krayon.kanvas.svg/SvgKanvas.pop|pop(){}[0]
+    final fun pushClip(com.juul.krayon.kanvas/Clip) // com.juul.krayon.kanvas.svg/SvgKanvas.pushClip|pushClip(com.juul.krayon.kanvas.Clip){}[0]
+    final fun pushTransform(com.juul.krayon.kanvas/Transform) // com.juul.krayon.kanvas.svg/SvgKanvas.pushTransform|pushTransform(com.juul.krayon.kanvas.Transform){}[0]
+}
+
+final class com.juul.krayon.kanvas.xml/ScientificFormatter : com.juul.krayon.kanvas.xml/NumberFormatter { // com.juul.krayon.kanvas.xml/ScientificFormatter|null[0]
+    constructor <init>(kotlin/Int) // com.juul.krayon.kanvas.xml/ScientificFormatter.<init>|<init>(kotlin.Int){}[0]
+
+    final fun copy(kotlin/Int = ...): com.juul.krayon.kanvas.xml/ScientificFormatter // com.juul.krayon.kanvas.xml/ScientificFormatter.copy|copy(kotlin.Int){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas.xml/ScientificFormatter.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas.xml/ScientificFormatter.hashCode|hashCode(){}[0]
+    final fun invoke(kotlin/Double): kotlin/String // com.juul.krayon.kanvas.xml/ScientificFormatter.invoke|invoke(kotlin.Double){}[0]
+    final fun invoke(kotlin/Float): kotlin/String // com.juul.krayon.kanvas.xml/ScientificFormatter.invoke|invoke(kotlin.Float){}[0]
+    final fun invoke(kotlin/Int): kotlin/String // com.juul.krayon.kanvas.xml/ScientificFormatter.invoke|invoke(kotlin.Int){}[0]
+    final fun invoke(kotlin/Long): kotlin/String // com.juul.krayon.kanvas.xml/ScientificFormatter.invoke|invoke(kotlin.Long){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.kanvas.xml/ScientificFormatter.toString|toString(){}[0]
+}
+
+final class com.juul.krayon.kanvas/Font { // com.juul.krayon.kanvas/Font|null[0]
+    constructor <init>(kotlin.collections/List<kotlin/String>) // com.juul.krayon.kanvas/Font.<init>|<init>(kotlin.collections.List<kotlin.String>){}[0]
+    constructor <init>(kotlin/String, kotlin/Array<out kotlin/String>...) // com.juul.krayon.kanvas/Font.<init>|<init>(kotlin.String;kotlin.Array<out|kotlin.String>...){}[0]
+
+    final val names // com.juul.krayon.kanvas/Font.names|{}names[0]
+        final fun <get-names>(): kotlin.collections/List<kotlin/String> // com.juul.krayon.kanvas/Font.names.<get-names>|<get-names>(){}[0]
+
+    final fun component1(): kotlin.collections/List<kotlin/String> // com.juul.krayon.kanvas/Font.component1|component1(){}[0]
+    final fun copy(kotlin.collections/List<kotlin/String> = ...): com.juul.krayon.kanvas/Font // com.juul.krayon.kanvas/Font.copy|copy(kotlin.collections.List<kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Font.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Font.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.kanvas/Font.toString|toString(){}[0]
+}
+
+final class com.juul.krayon.kanvas/Path { // com.juul.krayon.kanvas/Path|null[0]
+    constructor <init>(kotlin/Function1<com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Unit>) // com.juul.krayon.kanvas/Path.<init>|<init>(kotlin.Function1<com.juul.krayon.kanvas.PathBuilder<*>,kotlin.Unit>){}[0]
+
+    final fun <#A1: kotlin/Any> buildWith(com.juul.krayon.kanvas/PathBuilder<#A1>): #A1 // com.juul.krayon.kanvas/Path.buildWith|buildWith(com.juul.krayon.kanvas.PathBuilder<0:0>){0§<kotlin.Any>}[0]
+    final fun <#A1: kotlin/Any> get(com.juul.krayon.kanvas/PathTypeMarker<#A1>): #A1 // com.juul.krayon.kanvas/Path.get|get(com.juul.krayon.kanvas.PathTypeMarker<0:0>){0§<kotlin.Any>}[0]
+}
+
+final value class com.juul.krayon.kanvas.svg/PathString { // com.juul.krayon.kanvas.svg/PathString|null[0]
+    constructor <init>(kotlin/String) // com.juul.krayon.kanvas.svg/PathString.<init>|<init>(kotlin.String){}[0]
+
+    final val string // com.juul.krayon.kanvas.svg/PathString.string|{}string[0]
+        final fun <get-string>(): kotlin/String // com.juul.krayon.kanvas.svg/PathString.string.<get-string>|<get-string>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas.svg/PathString.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas.svg/PathString.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.kanvas.svg/PathString.toString|toString(){}[0]
+}
+
+sealed class com.juul.krayon.kanvas/Clip { // com.juul.krayon.kanvas/Clip|null[0]
+    constructor <init>() // com.juul.krayon.kanvas/Clip.<init>|<init>(){}[0]
+
+    abstract val path // com.juul.krayon.kanvas/Clip.path|{}path[0]
+        abstract fun <get-path>(): com.juul.krayon.kanvas/Path // com.juul.krayon.kanvas/Clip.path.<get-path>|<get-path>(){}[0]
+
+    final class Path : com.juul.krayon.kanvas/Clip { // com.juul.krayon.kanvas/Clip.Path|null[0]
+        constructor <init>(com.juul.krayon.kanvas/Path) // com.juul.krayon.kanvas/Clip.Path.<init>|<init>(com.juul.krayon.kanvas.Path){}[0]
+
+        final val path // com.juul.krayon.kanvas/Clip.Path.path|{}path[0]
+            final fun <get-path>(): com.juul.krayon.kanvas/Path // com.juul.krayon.kanvas/Clip.Path.path.<get-path>|<get-path>(){}[0]
+
+        final fun component1(): com.juul.krayon.kanvas/Path // com.juul.krayon.kanvas/Clip.Path.component1|component1(){}[0]
+        final fun copy(com.juul.krayon.kanvas/Path = ...): com.juul.krayon.kanvas/Clip.Path // com.juul.krayon.kanvas/Clip.Path.copy|copy(com.juul.krayon.kanvas.Path){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Clip.Path.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Clip.Path.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Clip.Path.toString|toString(){}[0]
+    }
+
+    final class Rect : com.juul.krayon.kanvas/Clip { // com.juul.krayon.kanvas/Clip.Rect|null[0]
+        constructor <init>(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/Clip.Rect.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+
+        final val bottom // com.juul.krayon.kanvas/Clip.Rect.bottom|{}bottom[0]
+            final fun <get-bottom>(): kotlin/Float // com.juul.krayon.kanvas/Clip.Rect.bottom.<get-bottom>|<get-bottom>(){}[0]
+        final val left // com.juul.krayon.kanvas/Clip.Rect.left|{}left[0]
+            final fun <get-left>(): kotlin/Float // com.juul.krayon.kanvas/Clip.Rect.left.<get-left>|<get-left>(){}[0]
+        final val path // com.juul.krayon.kanvas/Clip.Rect.path|{}path[0]
+            final fun <get-path>(): com.juul.krayon.kanvas/Path // com.juul.krayon.kanvas/Clip.Rect.path.<get-path>|<get-path>(){}[0]
+        final val right // com.juul.krayon.kanvas/Clip.Rect.right|{}right[0]
+            final fun <get-right>(): kotlin/Float // com.juul.krayon.kanvas/Clip.Rect.right.<get-right>|<get-right>(){}[0]
+        final val top // com.juul.krayon.kanvas/Clip.Rect.top|{}top[0]
+            final fun <get-top>(): kotlin/Float // com.juul.krayon.kanvas/Clip.Rect.top.<get-top>|<get-top>(){}[0]
+
+        final fun component1(): kotlin/Float // com.juul.krayon.kanvas/Clip.Rect.component1|component1(){}[0]
+        final fun component2(): kotlin/Float // com.juul.krayon.kanvas/Clip.Rect.component2|component2(){}[0]
+        final fun component3(): kotlin/Float // com.juul.krayon.kanvas/Clip.Rect.component3|component3(){}[0]
+        final fun component4(): kotlin/Float // com.juul.krayon.kanvas/Clip.Rect.component4|component4(){}[0]
+        final fun copy(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ...): com.juul.krayon.kanvas/Clip.Rect // com.juul.krayon.kanvas/Clip.Rect.copy|copy(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Clip.Rect.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Clip.Rect.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Clip.Rect.toString|toString(){}[0]
+    }
+}
+
+sealed class com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint|null[0]
+    constructor <init>() // com.juul.krayon.kanvas/Paint.<init>|<init>(){}[0]
+
+    final class Fill : com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint.Fill|null[0]
+        constructor <init>(com.juul.krayon.color/Color) // com.juul.krayon.kanvas/Paint.Fill.<init>|<init>(com.juul.krayon.color.Color){}[0]
+
+        final val color // com.juul.krayon.kanvas/Paint.Fill.color|{}color[0]
+            final fun <get-color>(): com.juul.krayon.color/Color // com.juul.krayon.kanvas/Paint.Fill.color.<get-color>|<get-color>(){}[0]
+
+        final fun component1(): com.juul.krayon.color/Color // com.juul.krayon.kanvas/Paint.Fill.component1|component1(){}[0]
+        final fun copy(com.juul.krayon.color/Color = ...): com.juul.krayon.kanvas/Paint.Fill // com.juul.krayon.kanvas/Paint.Fill.copy|copy(com.juul.krayon.color.Color){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Paint.Fill.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Paint.Fill.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Paint.Fill.toString|toString(){}[0]
+    }
+
+    final class FillAndStroke : com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint.FillAndStroke|null[0]
+        constructor <init>(com.juul.krayon.kanvas/Paint.Fill, com.juul.krayon.kanvas/Paint.Stroke) // com.juul.krayon.kanvas/Paint.FillAndStroke.<init>|<init>(com.juul.krayon.kanvas.Paint.Fill;com.juul.krayon.kanvas.Paint.Stroke){}[0]
+
+        final val fill // com.juul.krayon.kanvas/Paint.FillAndStroke.fill|{}fill[0]
+            final fun <get-fill>(): com.juul.krayon.kanvas/Paint.Fill // com.juul.krayon.kanvas/Paint.FillAndStroke.fill.<get-fill>|<get-fill>(){}[0]
+        final val stroke // com.juul.krayon.kanvas/Paint.FillAndStroke.stroke|{}stroke[0]
+            final fun <get-stroke>(): com.juul.krayon.kanvas/Paint.Stroke // com.juul.krayon.kanvas/Paint.FillAndStroke.stroke.<get-stroke>|<get-stroke>(){}[0]
+
+        final fun component1(): com.juul.krayon.kanvas/Paint.Fill // com.juul.krayon.kanvas/Paint.FillAndStroke.component1|component1(){}[0]
+        final fun component2(): com.juul.krayon.kanvas/Paint.Stroke // com.juul.krayon.kanvas/Paint.FillAndStroke.component2|component2(){}[0]
+        final fun copy(com.juul.krayon.kanvas/Paint.Fill = ..., com.juul.krayon.kanvas/Paint.Stroke = ...): com.juul.krayon.kanvas/Paint.FillAndStroke // com.juul.krayon.kanvas/Paint.FillAndStroke.copy|copy(com.juul.krayon.kanvas.Paint.Fill;com.juul.krayon.kanvas.Paint.Stroke){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Paint.FillAndStroke.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Paint.FillAndStroke.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Paint.FillAndStroke.toString|toString(){}[0]
+    }
+
+    final class GradientAndStroke : com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint.GradientAndStroke|null[0]
+        constructor <init>(com.juul.krayon.kanvas/Paint.Gradient, com.juul.krayon.kanvas/Paint.Stroke) // com.juul.krayon.kanvas/Paint.GradientAndStroke.<init>|<init>(com.juul.krayon.kanvas.Paint.Gradient;com.juul.krayon.kanvas.Paint.Stroke){}[0]
+
+        final val gradient // com.juul.krayon.kanvas/Paint.GradientAndStroke.gradient|{}gradient[0]
+            final fun <get-gradient>(): com.juul.krayon.kanvas/Paint.Gradient // com.juul.krayon.kanvas/Paint.GradientAndStroke.gradient.<get-gradient>|<get-gradient>(){}[0]
+        final val stroke // com.juul.krayon.kanvas/Paint.GradientAndStroke.stroke|{}stroke[0]
+            final fun <get-stroke>(): com.juul.krayon.kanvas/Paint.Stroke // com.juul.krayon.kanvas/Paint.GradientAndStroke.stroke.<get-stroke>|<get-stroke>(){}[0]
+
+        final fun component1(): com.juul.krayon.kanvas/Paint.Gradient // com.juul.krayon.kanvas/Paint.GradientAndStroke.component1|component1(){}[0]
+        final fun component2(): com.juul.krayon.kanvas/Paint.Stroke // com.juul.krayon.kanvas/Paint.GradientAndStroke.component2|component2(){}[0]
+        final fun copy(com.juul.krayon.kanvas/Paint.Gradient = ..., com.juul.krayon.kanvas/Paint.Stroke = ...): com.juul.krayon.kanvas/Paint.GradientAndStroke // com.juul.krayon.kanvas/Paint.GradientAndStroke.copy|copy(com.juul.krayon.kanvas.Paint.Gradient;com.juul.krayon.kanvas.Paint.Stroke){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Paint.GradientAndStroke.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Paint.GradientAndStroke.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Paint.GradientAndStroke.toString|toString(){}[0]
+    }
+
+    final class Stroke : com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint.Stroke|null[0]
+        constructor <init>(com.juul.krayon.color/Color, kotlin/Float, com.juul.krayon.kanvas/Paint.Stroke.Cap = ..., com.juul.krayon.kanvas/Paint.Stroke.Join = ..., com.juul.krayon.kanvas/Paint.Stroke.Dash = ...) // com.juul.krayon.kanvas/Paint.Stroke.<init>|<init>(com.juul.krayon.color.Color;kotlin.Float;com.juul.krayon.kanvas.Paint.Stroke.Cap;com.juul.krayon.kanvas.Paint.Stroke.Join;com.juul.krayon.kanvas.Paint.Stroke.Dash){}[0]
+
+        final val cap // com.juul.krayon.kanvas/Paint.Stroke.cap|{}cap[0]
+            final fun <get-cap>(): com.juul.krayon.kanvas/Paint.Stroke.Cap // com.juul.krayon.kanvas/Paint.Stroke.cap.<get-cap>|<get-cap>(){}[0]
+        final val color // com.juul.krayon.kanvas/Paint.Stroke.color|{}color[0]
+            final fun <get-color>(): com.juul.krayon.color/Color // com.juul.krayon.kanvas/Paint.Stroke.color.<get-color>|<get-color>(){}[0]
+        final val dash // com.juul.krayon.kanvas/Paint.Stroke.dash|{}dash[0]
+            final fun <get-dash>(): com.juul.krayon.kanvas/Paint.Stroke.Dash // com.juul.krayon.kanvas/Paint.Stroke.dash.<get-dash>|<get-dash>(){}[0]
+        final val join // com.juul.krayon.kanvas/Paint.Stroke.join|{}join[0]
+            final fun <get-join>(): com.juul.krayon.kanvas/Paint.Stroke.Join // com.juul.krayon.kanvas/Paint.Stroke.join.<get-join>|<get-join>(){}[0]
+        final val width // com.juul.krayon.kanvas/Paint.Stroke.width|{}width[0]
+            final fun <get-width>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Stroke.width.<get-width>|<get-width>(){}[0]
+
+        final fun component1(): com.juul.krayon.color/Color // com.juul.krayon.kanvas/Paint.Stroke.component1|component1(){}[0]
+        final fun component2(): kotlin/Float // com.juul.krayon.kanvas/Paint.Stroke.component2|component2(){}[0]
+        final fun component3(): com.juul.krayon.kanvas/Paint.Stroke.Cap // com.juul.krayon.kanvas/Paint.Stroke.component3|component3(){}[0]
+        final fun component4(): com.juul.krayon.kanvas/Paint.Stroke.Join // com.juul.krayon.kanvas/Paint.Stroke.component4|component4(){}[0]
+        final fun component5(): com.juul.krayon.kanvas/Paint.Stroke.Dash // com.juul.krayon.kanvas/Paint.Stroke.component5|component5(){}[0]
+        final fun copy(com.juul.krayon.color/Color = ..., kotlin/Float = ..., com.juul.krayon.kanvas/Paint.Stroke.Cap = ..., com.juul.krayon.kanvas/Paint.Stroke.Join = ..., com.juul.krayon.kanvas/Paint.Stroke.Dash = ...): com.juul.krayon.kanvas/Paint.Stroke // com.juul.krayon.kanvas/Paint.Stroke.copy|copy(com.juul.krayon.color.Color;kotlin.Float;com.juul.krayon.kanvas.Paint.Stroke.Cap;com.juul.krayon.kanvas.Paint.Stroke.Join;com.juul.krayon.kanvas.Paint.Stroke.Dash){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Paint.Stroke.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Paint.Stroke.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Paint.Stroke.toString|toString(){}[0]
+
+        final enum class Cap : kotlin/Enum<com.juul.krayon.kanvas/Paint.Stroke.Cap> { // com.juul.krayon.kanvas/Paint.Stroke.Cap|null[0]
+            enum entry Butt // com.juul.krayon.kanvas/Paint.Stroke.Cap.Butt|null[0]
+            enum entry Round // com.juul.krayon.kanvas/Paint.Stroke.Cap.Round|null[0]
+            enum entry Square // com.juul.krayon.kanvas/Paint.Stroke.Cap.Square|null[0]
+
+            final val entries // com.juul.krayon.kanvas/Paint.Stroke.Cap.entries|#static{}entries[0]
+                final fun <get-entries>(): kotlin.enums/EnumEntries<com.juul.krayon.kanvas/Paint.Stroke.Cap> // com.juul.krayon.kanvas/Paint.Stroke.Cap.entries.<get-entries>|<get-entries>#static(){}[0]
+
+            final fun valueOf(kotlin/String): com.juul.krayon.kanvas/Paint.Stroke.Cap // com.juul.krayon.kanvas/Paint.Stroke.Cap.valueOf|valueOf#static(kotlin.String){}[0]
+            final fun values(): kotlin/Array<com.juul.krayon.kanvas/Paint.Stroke.Cap> // com.juul.krayon.kanvas/Paint.Stroke.Cap.values|values#static(){}[0]
+        }
+
+        sealed class Dash { // com.juul.krayon.kanvas/Paint.Stroke.Dash|null[0]
+            constructor <init>() // com.juul.krayon.kanvas/Paint.Stroke.Dash.<init>|<init>(){}[0]
+
+            final class Pattern : com.juul.krayon.kanvas/Paint.Stroke.Dash { // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern|null[0]
+                constructor <init>(kotlin.collections/List<kotlin/Float>) // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern.<init>|<init>(kotlin.collections.List<kotlin.Float>){}[0]
+                constructor <init>(kotlin/FloatArray...) // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern.<init>|<init>(kotlin.FloatArray...){}[0]
+
+                final val intervals // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern.intervals|{}intervals[0]
+                    final fun <get-intervals>(): kotlin.collections/List<kotlin/Float> // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern.intervals.<get-intervals>|<get-intervals>(){}[0]
+
+                final fun component1(): kotlin.collections/List<kotlin/Float> // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern.component1|component1(){}[0]
+                final fun copy(kotlin.collections/List<kotlin/Float> = ...): com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern.copy|copy(kotlin.collections.List<kotlin.Float>){}[0]
+                final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern.equals|equals(kotlin.Any?){}[0]
+                final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern.hashCode|hashCode(){}[0]
+                final fun toString(): kotlin/String // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern.toString|toString(){}[0]
+            }
+
+            final object None : com.juul.krayon.kanvas/Paint.Stroke.Dash // com.juul.krayon.kanvas/Paint.Stroke.Dash.None|null[0]
+        }
+
+        sealed class Join { // com.juul.krayon.kanvas/Paint.Stroke.Join|null[0]
+            constructor <init>() // com.juul.krayon.kanvas/Paint.Stroke.Join.<init>|<init>(){}[0]
+
+            final class Miter : com.juul.krayon.kanvas/Paint.Stroke.Join { // com.juul.krayon.kanvas/Paint.Stroke.Join.Miter|null[0]
+                constructor <init>(kotlin/Float = ...) // com.juul.krayon.kanvas/Paint.Stroke.Join.Miter.<init>|<init>(kotlin.Float){}[0]
+
+                final val limit // com.juul.krayon.kanvas/Paint.Stroke.Join.Miter.limit|{}limit[0]
+                    final fun <get-limit>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Stroke.Join.Miter.limit.<get-limit>|<get-limit>(){}[0]
+
+                final fun component1(): kotlin/Float // com.juul.krayon.kanvas/Paint.Stroke.Join.Miter.component1|component1(){}[0]
+                final fun copy(kotlin/Float = ...): com.juul.krayon.kanvas/Paint.Stroke.Join.Miter // com.juul.krayon.kanvas/Paint.Stroke.Join.Miter.copy|copy(kotlin.Float){}[0]
+                final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Paint.Stroke.Join.Miter.equals|equals(kotlin.Any?){}[0]
+                final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Paint.Stroke.Join.Miter.hashCode|hashCode(){}[0]
+                final fun toString(): kotlin/String // com.juul.krayon.kanvas/Paint.Stroke.Join.Miter.toString|toString(){}[0]
+            }
+
+            final object Bevel : com.juul.krayon.kanvas/Paint.Stroke.Join // com.juul.krayon.kanvas/Paint.Stroke.Join.Bevel|null[0]
+
+            final object Round : com.juul.krayon.kanvas/Paint.Stroke.Join // com.juul.krayon.kanvas/Paint.Stroke.Join.Round|null[0]
+        }
+    }
+
+    final class Text : com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint.Text|null[0]
+        constructor <init>(com.juul.krayon.color/Color, kotlin/Float, com.juul.krayon.kanvas/Paint.Text.Alignment, com.juul.krayon.kanvas/Font) // com.juul.krayon.kanvas/Paint.Text.<init>|<init>(com.juul.krayon.color.Color;kotlin.Float;com.juul.krayon.kanvas.Paint.Text.Alignment;com.juul.krayon.kanvas.Font){}[0]
+
+        final val alignment // com.juul.krayon.kanvas/Paint.Text.alignment|{}alignment[0]
+            final fun <get-alignment>(): com.juul.krayon.kanvas/Paint.Text.Alignment // com.juul.krayon.kanvas/Paint.Text.alignment.<get-alignment>|<get-alignment>(){}[0]
+        final val color // com.juul.krayon.kanvas/Paint.Text.color|{}color[0]
+            final fun <get-color>(): com.juul.krayon.color/Color // com.juul.krayon.kanvas/Paint.Text.color.<get-color>|<get-color>(){}[0]
+        final val font // com.juul.krayon.kanvas/Paint.Text.font|{}font[0]
+            final fun <get-font>(): com.juul.krayon.kanvas/Font // com.juul.krayon.kanvas/Paint.Text.font.<get-font>|<get-font>(){}[0]
+        final val size // com.juul.krayon.kanvas/Paint.Text.size|{}size[0]
+            final fun <get-size>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Text.size.<get-size>|<get-size>(){}[0]
+
+        final fun component1(): com.juul.krayon.color/Color // com.juul.krayon.kanvas/Paint.Text.component1|component1(){}[0]
+        final fun component2(): kotlin/Float // com.juul.krayon.kanvas/Paint.Text.component2|component2(){}[0]
+        final fun component3(): com.juul.krayon.kanvas/Paint.Text.Alignment // com.juul.krayon.kanvas/Paint.Text.component3|component3(){}[0]
+        final fun component4(): com.juul.krayon.kanvas/Font // com.juul.krayon.kanvas/Paint.Text.component4|component4(){}[0]
+        final fun copy(com.juul.krayon.color/Color = ..., kotlin/Float = ..., com.juul.krayon.kanvas/Paint.Text.Alignment = ..., com.juul.krayon.kanvas/Font = ...): com.juul.krayon.kanvas/Paint.Text // com.juul.krayon.kanvas/Paint.Text.copy|copy(com.juul.krayon.color.Color;kotlin.Float;com.juul.krayon.kanvas.Paint.Text.Alignment;com.juul.krayon.kanvas.Font){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Paint.Text.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Paint.Text.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Paint.Text.toString|toString(){}[0]
+
+        final enum class Alignment : kotlin/Enum<com.juul.krayon.kanvas/Paint.Text.Alignment> { // com.juul.krayon.kanvas/Paint.Text.Alignment|null[0]
+            enum entry Center // com.juul.krayon.kanvas/Paint.Text.Alignment.Center|null[0]
+            enum entry Left // com.juul.krayon.kanvas/Paint.Text.Alignment.Left|null[0]
+            enum entry Right // com.juul.krayon.kanvas/Paint.Text.Alignment.Right|null[0]
+
+            final val entries // com.juul.krayon.kanvas/Paint.Text.Alignment.entries|#static{}entries[0]
+                final fun <get-entries>(): kotlin.enums/EnumEntries<com.juul.krayon.kanvas/Paint.Text.Alignment> // com.juul.krayon.kanvas/Paint.Text.Alignment.entries.<get-entries>|<get-entries>#static(){}[0]
+
+            final fun valueOf(kotlin/String): com.juul.krayon.kanvas/Paint.Text.Alignment // com.juul.krayon.kanvas/Paint.Text.Alignment.valueOf|valueOf#static(kotlin.String){}[0]
+            final fun values(): kotlin/Array<com.juul.krayon.kanvas/Paint.Text.Alignment> // com.juul.krayon.kanvas/Paint.Text.Alignment.values|values#static(){}[0]
+        }
+    }
+
+    sealed class Gradient : com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint.Gradient|null[0]
+        constructor <init>() // com.juul.krayon.kanvas/Paint.Gradient.<init>|<init>(){}[0]
+
+        abstract val stops // com.juul.krayon.kanvas/Paint.Gradient.stops|{}stops[0]
+            abstract fun <get-stops>(): kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop> // com.juul.krayon.kanvas/Paint.Gradient.stops.<get-stops>|<get-stops>(){}[0]
+
+        final class Linear : com.juul.krayon.kanvas/Paint.Gradient { // com.juul.krayon.kanvas/Paint.Gradient.Linear|null[0]
+            constructor <init>(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop>) // com.juul.krayon.kanvas/Paint.Gradient.Linear.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.collections.List<com.juul.krayon.kanvas.Paint.Gradient.Stop>){}[0]
+            constructor <init>(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Array<out com.juul.krayon.kanvas/Paint.Gradient.Stop>...) // com.juul.krayon.kanvas/Paint.Gradient.Linear.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Array<out|com.juul.krayon.kanvas.Paint.Gradient.Stop>...){}[0]
+
+            final val endX // com.juul.krayon.kanvas/Paint.Gradient.Linear.endX|{}endX[0]
+                final fun <get-endX>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Linear.endX.<get-endX>|<get-endX>(){}[0]
+            final val endY // com.juul.krayon.kanvas/Paint.Gradient.Linear.endY|{}endY[0]
+                final fun <get-endY>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Linear.endY.<get-endY>|<get-endY>(){}[0]
+            final val startX // com.juul.krayon.kanvas/Paint.Gradient.Linear.startX|{}startX[0]
+                final fun <get-startX>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Linear.startX.<get-startX>|<get-startX>(){}[0]
+            final val startY // com.juul.krayon.kanvas/Paint.Gradient.Linear.startY|{}startY[0]
+                final fun <get-startY>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Linear.startY.<get-startY>|<get-startY>(){}[0]
+            final val stops // com.juul.krayon.kanvas/Paint.Gradient.Linear.stops|{}stops[0]
+                final fun <get-stops>(): kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop> // com.juul.krayon.kanvas/Paint.Gradient.Linear.stops.<get-stops>|<get-stops>(){}[0]
+
+            final fun component1(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Linear.component1|component1(){}[0]
+            final fun component2(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Linear.component2|component2(){}[0]
+            final fun component3(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Linear.component3|component3(){}[0]
+            final fun component4(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Linear.component4|component4(){}[0]
+            final fun component5(): kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop> // com.juul.krayon.kanvas/Paint.Gradient.Linear.component5|component5(){}[0]
+            final fun copy(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop> = ...): com.juul.krayon.kanvas/Paint.Gradient.Linear // com.juul.krayon.kanvas/Paint.Gradient.Linear.copy|copy(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.collections.List<com.juul.krayon.kanvas.Paint.Gradient.Stop>){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Paint.Gradient.Linear.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Paint.Gradient.Linear.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // com.juul.krayon.kanvas/Paint.Gradient.Linear.toString|toString(){}[0]
+        }
+
+        final class Radial : com.juul.krayon.kanvas/Paint.Gradient { // com.juul.krayon.kanvas/Paint.Gradient.Radial|null[0]
+            constructor <init>(kotlin/Float, kotlin/Float, kotlin/Float, kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop>) // com.juul.krayon.kanvas/Paint.Gradient.Radial.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.collections.List<com.juul.krayon.kanvas.Paint.Gradient.Stop>){}[0]
+            constructor <init>(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Array<out com.juul.krayon.kanvas/Paint.Gradient.Stop>...) // com.juul.krayon.kanvas/Paint.Gradient.Radial.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Array<out|com.juul.krayon.kanvas.Paint.Gradient.Stop>...){}[0]
+
+            final val centerX // com.juul.krayon.kanvas/Paint.Gradient.Radial.centerX|{}centerX[0]
+                final fun <get-centerX>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Radial.centerX.<get-centerX>|<get-centerX>(){}[0]
+            final val centerY // com.juul.krayon.kanvas/Paint.Gradient.Radial.centerY|{}centerY[0]
+                final fun <get-centerY>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Radial.centerY.<get-centerY>|<get-centerY>(){}[0]
+            final val radius // com.juul.krayon.kanvas/Paint.Gradient.Radial.radius|{}radius[0]
+                final fun <get-radius>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Radial.radius.<get-radius>|<get-radius>(){}[0]
+            final val stops // com.juul.krayon.kanvas/Paint.Gradient.Radial.stops|{}stops[0]
+                final fun <get-stops>(): kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop> // com.juul.krayon.kanvas/Paint.Gradient.Radial.stops.<get-stops>|<get-stops>(){}[0]
+
+            final fun component1(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Radial.component1|component1(){}[0]
+            final fun component2(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Radial.component2|component2(){}[0]
+            final fun component3(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Radial.component3|component3(){}[0]
+            final fun component4(): kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop> // com.juul.krayon.kanvas/Paint.Gradient.Radial.component4|component4(){}[0]
+            final fun copy(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop> = ...): com.juul.krayon.kanvas/Paint.Gradient.Radial // com.juul.krayon.kanvas/Paint.Gradient.Radial.copy|copy(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.collections.List<com.juul.krayon.kanvas.Paint.Gradient.Stop>){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Paint.Gradient.Radial.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Paint.Gradient.Radial.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // com.juul.krayon.kanvas/Paint.Gradient.Radial.toString|toString(){}[0]
+        }
+
+        final class Stop { // com.juul.krayon.kanvas/Paint.Gradient.Stop|null[0]
+            constructor <init>(kotlin/Float, com.juul.krayon.color/Color) // com.juul.krayon.kanvas/Paint.Gradient.Stop.<init>|<init>(kotlin.Float;com.juul.krayon.color.Color){}[0]
+
+            final val color // com.juul.krayon.kanvas/Paint.Gradient.Stop.color|{}color[0]
+                final fun <get-color>(): com.juul.krayon.color/Color // com.juul.krayon.kanvas/Paint.Gradient.Stop.color.<get-color>|<get-color>(){}[0]
+            final val offset // com.juul.krayon.kanvas/Paint.Gradient.Stop.offset|{}offset[0]
+                final fun <get-offset>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Stop.offset.<get-offset>|<get-offset>(){}[0]
+
+            final fun component1(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Stop.component1|component1(){}[0]
+            final fun component2(): com.juul.krayon.color/Color // com.juul.krayon.kanvas/Paint.Gradient.Stop.component2|component2(){}[0]
+            final fun copy(kotlin/Float = ..., com.juul.krayon.color/Color = ...): com.juul.krayon.kanvas/Paint.Gradient.Stop // com.juul.krayon.kanvas/Paint.Gradient.Stop.copy|copy(kotlin.Float;com.juul.krayon.color.Color){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Paint.Gradient.Stop.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Paint.Gradient.Stop.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // com.juul.krayon.kanvas/Paint.Gradient.Stop.toString|toString(){}[0]
+        }
+
+        final class Sweep : com.juul.krayon.kanvas/Paint.Gradient { // com.juul.krayon.kanvas/Paint.Gradient.Sweep|null[0]
+            constructor <init>(kotlin/Float, kotlin/Float, kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop>) // com.juul.krayon.kanvas/Paint.Gradient.Sweep.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.collections.List<com.juul.krayon.kanvas.Paint.Gradient.Stop>){}[0]
+            constructor <init>(kotlin/Float, kotlin/Float, kotlin/Array<out com.juul.krayon.kanvas/Paint.Gradient.Stop>...) // com.juul.krayon.kanvas/Paint.Gradient.Sweep.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Array<out|com.juul.krayon.kanvas.Paint.Gradient.Stop>...){}[0]
+
+            final val centerX // com.juul.krayon.kanvas/Paint.Gradient.Sweep.centerX|{}centerX[0]
+                final fun <get-centerX>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Sweep.centerX.<get-centerX>|<get-centerX>(){}[0]
+            final val centerY // com.juul.krayon.kanvas/Paint.Gradient.Sweep.centerY|{}centerY[0]
+                final fun <get-centerY>(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Sweep.centerY.<get-centerY>|<get-centerY>(){}[0]
+            final val stops // com.juul.krayon.kanvas/Paint.Gradient.Sweep.stops|{}stops[0]
+                final fun <get-stops>(): kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop> // com.juul.krayon.kanvas/Paint.Gradient.Sweep.stops.<get-stops>|<get-stops>(){}[0]
+
+            final fun component1(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Sweep.component1|component1(){}[0]
+            final fun component2(): kotlin/Float // com.juul.krayon.kanvas/Paint.Gradient.Sweep.component2|component2(){}[0]
+            final fun component3(): kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop> // com.juul.krayon.kanvas/Paint.Gradient.Sweep.component3|component3(){}[0]
+            final fun copy(kotlin/Float = ..., kotlin/Float = ..., kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop> = ...): com.juul.krayon.kanvas/Paint.Gradient.Sweep // com.juul.krayon.kanvas/Paint.Gradient.Sweep.copy|copy(kotlin.Float;kotlin.Float;kotlin.collections.List<com.juul.krayon.kanvas.Paint.Gradient.Stop>){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Paint.Gradient.Sweep.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Paint.Gradient.Sweep.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // com.juul.krayon.kanvas/Paint.Gradient.Sweep.toString|toString(){}[0]
+        }
+    }
+}
+
+sealed class com.juul.krayon.kanvas/Transform { // com.juul.krayon.kanvas/Transform|null[0]
+    constructor <init>() // com.juul.krayon.kanvas/Transform.<init>|<init>(){}[0]
+
+    final class InOrder : com.juul.krayon.kanvas/Transform { // com.juul.krayon.kanvas/Transform.InOrder|null[0]
+        constructor <init>(kotlin.collections/List<com.juul.krayon.kanvas/Transform>) // com.juul.krayon.kanvas/Transform.InOrder.<init>|<init>(kotlin.collections.List<com.juul.krayon.kanvas.Transform>){}[0]
+        constructor <init>(kotlin/Array<out com.juul.krayon.kanvas/Transform>...) // com.juul.krayon.kanvas/Transform.InOrder.<init>|<init>(kotlin.Array<out|com.juul.krayon.kanvas.Transform>...){}[0]
+
+        final val transformations // com.juul.krayon.kanvas/Transform.InOrder.transformations|{}transformations[0]
+            final fun <get-transformations>(): kotlin.collections/List<com.juul.krayon.kanvas/Transform> // com.juul.krayon.kanvas/Transform.InOrder.transformations.<get-transformations>|<get-transformations>(){}[0]
+
+        final fun component1(): kotlin.collections/List<com.juul.krayon.kanvas/Transform> // com.juul.krayon.kanvas/Transform.InOrder.component1|component1(){}[0]
+        final fun copy(kotlin.collections/List<com.juul.krayon.kanvas/Transform> = ...): com.juul.krayon.kanvas/Transform.InOrder // com.juul.krayon.kanvas/Transform.InOrder.copy|copy(kotlin.collections.List<com.juul.krayon.kanvas.Transform>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Transform.InOrder.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Transform.InOrder.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Transform.InOrder.toString|toString(){}[0]
+    }
+
+    final class Rotate : com.juul.krayon.kanvas/Transform { // com.juul.krayon.kanvas/Transform.Rotate|null[0]
+        constructor <init>(kotlin/Float, kotlin/Float = ..., kotlin/Float = ...) // com.juul.krayon.kanvas/Transform.Rotate.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+
+        final val degrees // com.juul.krayon.kanvas/Transform.Rotate.degrees|{}degrees[0]
+            final fun <get-degrees>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Rotate.degrees.<get-degrees>|<get-degrees>(){}[0]
+        final val pivotX // com.juul.krayon.kanvas/Transform.Rotate.pivotX|{}pivotX[0]
+            final fun <get-pivotX>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Rotate.pivotX.<get-pivotX>|<get-pivotX>(){}[0]
+        final val pivotY // com.juul.krayon.kanvas/Transform.Rotate.pivotY|{}pivotY[0]
+            final fun <get-pivotY>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Rotate.pivotY.<get-pivotY>|<get-pivotY>(){}[0]
+
+        final fun component1(): kotlin/Float // com.juul.krayon.kanvas/Transform.Rotate.component1|component1(){}[0]
+        final fun component2(): kotlin/Float // com.juul.krayon.kanvas/Transform.Rotate.component2|component2(){}[0]
+        final fun component3(): kotlin/Float // com.juul.krayon.kanvas/Transform.Rotate.component3|component3(){}[0]
+        final fun copy(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ...): com.juul.krayon.kanvas/Transform.Rotate // com.juul.krayon.kanvas/Transform.Rotate.copy|copy(kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Transform.Rotate.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Transform.Rotate.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Transform.Rotate.toString|toString(){}[0]
+    }
+
+    final class Scale : com.juul.krayon.kanvas/Transform { // com.juul.krayon.kanvas/Transform.Scale|null[0]
+        constructor <init>(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ...) // com.juul.krayon.kanvas/Transform.Scale.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+
+        final val horizontal // com.juul.krayon.kanvas/Transform.Scale.horizontal|{}horizontal[0]
+            final fun <get-horizontal>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Scale.horizontal.<get-horizontal>|<get-horizontal>(){}[0]
+        final val pivotX // com.juul.krayon.kanvas/Transform.Scale.pivotX|{}pivotX[0]
+            final fun <get-pivotX>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Scale.pivotX.<get-pivotX>|<get-pivotX>(){}[0]
+        final val pivotY // com.juul.krayon.kanvas/Transform.Scale.pivotY|{}pivotY[0]
+            final fun <get-pivotY>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Scale.pivotY.<get-pivotY>|<get-pivotY>(){}[0]
+        final val vertical // com.juul.krayon.kanvas/Transform.Scale.vertical|{}vertical[0]
+            final fun <get-vertical>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Scale.vertical.<get-vertical>|<get-vertical>(){}[0]
+
+        final fun component1(): kotlin/Float // com.juul.krayon.kanvas/Transform.Scale.component1|component1(){}[0]
+        final fun component2(): kotlin/Float // com.juul.krayon.kanvas/Transform.Scale.component2|component2(){}[0]
+        final fun component3(): kotlin/Float // com.juul.krayon.kanvas/Transform.Scale.component3|component3(){}[0]
+        final fun component4(): kotlin/Float // com.juul.krayon.kanvas/Transform.Scale.component4|component4(){}[0]
+        final fun copy(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ...): com.juul.krayon.kanvas/Transform.Scale // com.juul.krayon.kanvas/Transform.Scale.copy|copy(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Transform.Scale.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Transform.Scale.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Transform.Scale.toString|toString(){}[0]
+    }
+
+    final class Skew : com.juul.krayon.kanvas/Transform { // com.juul.krayon.kanvas/Transform.Skew|null[0]
+        constructor <init>(kotlin/Float = ..., kotlin/Float = ...) // com.juul.krayon.kanvas/Transform.Skew.<init>|<init>(kotlin.Float;kotlin.Float){}[0]
+
+        final val horizontal // com.juul.krayon.kanvas/Transform.Skew.horizontal|{}horizontal[0]
+            final fun <get-horizontal>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Skew.horizontal.<get-horizontal>|<get-horizontal>(){}[0]
+        final val vertical // com.juul.krayon.kanvas/Transform.Skew.vertical|{}vertical[0]
+            final fun <get-vertical>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Skew.vertical.<get-vertical>|<get-vertical>(){}[0]
+
+        final fun component1(): kotlin/Float // com.juul.krayon.kanvas/Transform.Skew.component1|component1(){}[0]
+        final fun component2(): kotlin/Float // com.juul.krayon.kanvas/Transform.Skew.component2|component2(){}[0]
+        final fun copy(kotlin/Float = ..., kotlin/Float = ...): com.juul.krayon.kanvas/Transform.Skew // com.juul.krayon.kanvas/Transform.Skew.copy|copy(kotlin.Float;kotlin.Float){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Transform.Skew.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Transform.Skew.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Transform.Skew.toString|toString(){}[0]
+    }
+
+    final class Translate : com.juul.krayon.kanvas/Transform { // com.juul.krayon.kanvas/Transform.Translate|null[0]
+        constructor <init>(kotlin/Float = ..., kotlin/Float = ...) // com.juul.krayon.kanvas/Transform.Translate.<init>|<init>(kotlin.Float;kotlin.Float){}[0]
+
+        final val horizontal // com.juul.krayon.kanvas/Transform.Translate.horizontal|{}horizontal[0]
+            final fun <get-horizontal>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Translate.horizontal.<get-horizontal>|<get-horizontal>(){}[0]
+        final val vertical // com.juul.krayon.kanvas/Transform.Translate.vertical|{}vertical[0]
+            final fun <get-vertical>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Translate.vertical.<get-vertical>|<get-vertical>(){}[0]
+
+        final fun component1(): kotlin/Float // com.juul.krayon.kanvas/Transform.Translate.component1|component1(){}[0]
+        final fun component2(): kotlin/Float // com.juul.krayon.kanvas/Transform.Translate.component2|component2(){}[0]
+        final fun copy(kotlin/Float = ..., kotlin/Float = ...): com.juul.krayon.kanvas/Transform.Translate // com.juul.krayon.kanvas/Transform.Translate.copy|copy(kotlin.Float;kotlin.Float){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Transform.Translate.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Transform.Translate.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.kanvas/Transform.Translate.toString|toString(){}[0]
+    }
+}
+
+final object com.juul.krayon.kanvas.xml/ToStringFormatter : com.juul.krayon.kanvas.xml/NumberFormatter { // com.juul.krayon.kanvas.xml/ToStringFormatter|null[0]
+    final fun invoke(kotlin/Double): kotlin/String // com.juul.krayon.kanvas.xml/ToStringFormatter.invoke|invoke(kotlin.Double){}[0]
+    final fun invoke(kotlin/Float): kotlin/String // com.juul.krayon.kanvas.xml/ToStringFormatter.invoke|invoke(kotlin.Float){}[0]
+    final fun invoke(kotlin/Int): kotlin/String // com.juul.krayon.kanvas.xml/ToStringFormatter.invoke|invoke(kotlin.Int){}[0]
+    final fun invoke(kotlin/Long): kotlin/String // com.juul.krayon.kanvas.xml/ToStringFormatter.invoke|invoke(kotlin.Long){}[0]
+}
+
+final const val com.juul.krayon.kanvas/DEFAULT_MITER_LIMIT // com.juul.krayon.kanvas/DEFAULT_MITER_LIMIT|{}DEFAULT_MITER_LIMIT[0]
+    final fun <get-DEFAULT_MITER_LIMIT>(): kotlin/Float // com.juul.krayon.kanvas/DEFAULT_MITER_LIMIT.<get-DEFAULT_MITER_LIMIT>|<get-DEFAULT_MITER_LIMIT>(){}[0]
+final const val com.juul.krayon.kanvas/monospace // com.juul.krayon.kanvas/monospace|{}monospace[0]
+    final fun <get-monospace>(): kotlin/String // com.juul.krayon.kanvas/monospace.<get-monospace>|<get-monospace>(){}[0]
+final const val com.juul.krayon.kanvas/sansSerif // com.juul.krayon.kanvas/sansSerif|{}sansSerif[0]
+    final fun <get-sansSerif>(): kotlin/String // com.juul.krayon.kanvas/sansSerif.<get-sansSerif>|<get-sansSerif>(){}[0]
+final const val com.juul.krayon.kanvas/serif // com.juul.krayon.kanvas/serif|{}serif[0]
+    final fun <get-serif>(): kotlin/String // com.juul.krayon.kanvas/serif.<get-serif>|<get-serif>(){}[0]
+
+final fun (com.juul.krayon.kanvas/Transform.Rotate).com.juul.krayon.kanvas/split(): com.juul.krayon.kanvas/Transform.InOrder // com.juul.krayon.kanvas/split|split@com.juul.krayon.kanvas.Transform.Rotate(){}[0]
+final fun (com.juul.krayon.kanvas/Transform.Scale).com.juul.krayon.kanvas/split(): com.juul.krayon.kanvas/Transform.InOrder // com.juul.krayon.kanvas/split|split@com.juul.krayon.kanvas.Transform.Scale(){}[0]
+final fun (com.juul.krayon.kanvas/Transform.Skew).com.juul.krayon.kanvas/split(): com.juul.krayon.kanvas/Transform.InOrder // com.juul.krayon.kanvas/split|split@com.juul.krayon.kanvas.Transform.Skew(){}[0]
+final fun (kotlin/String).com.juul.krayon.kanvas.svg/toPath(): com.juul.krayon.kanvas/Path // com.juul.krayon.kanvas.svg/toPath|toPath@kotlin.String(){}[0]
+final fun (kotlin/String).com.juul.krayon.kanvas.svg/toPathOrNull(): com.juul.krayon.kanvas/Path? // com.juul.krayon.kanvas.svg/toPathOrNull|toPathOrNull@kotlin.String(){}[0]
+final inline fun (com.juul.krayon.kanvas/Kanvas).com.juul.krayon.kanvas/withClip(com.juul.krayon.kanvas/Clip, kotlin/Function1<com.juul.krayon.kanvas/Kanvas, kotlin/Unit>) // com.juul.krayon.kanvas/withClip|withClip@com.juul.krayon.kanvas.Kanvas(com.juul.krayon.kanvas.Clip;kotlin.Function1<com.juul.krayon.kanvas.Kanvas,kotlin.Unit>){}[0]
+final inline fun (com.juul.krayon.kanvas/Kanvas).com.juul.krayon.kanvas/withTransform(com.juul.krayon.kanvas/Transform, kotlin/Function1<com.juul.krayon.kanvas/Kanvas, kotlin/Unit>) // com.juul.krayon.kanvas/withTransform|withTransform@com.juul.krayon.kanvas.Kanvas(com.juul.krayon.kanvas.Transform;kotlin.Function1<com.juul.krayon.kanvas.Kanvas,kotlin.Unit>){}[0]
+
+// Targets: [apple]
+final class com.juul.krayon.kanvas/CGContextKanvas : com.juul.krayon.kanvas/Kanvas { // com.juul.krayon.kanvas/CGContextKanvas|null[0]
+    constructor <init>(kotlinx.cinterop/CPointer<cnames.structs/CGContext>, kotlin/Double, kotlin/Double) // com.juul.krayon.kanvas/CGContextKanvas.<init>|<init>(kotlinx.cinterop.CPointer<cnames.structs.CGContext>;kotlin.Double;kotlin.Double){}[0]
+    constructor <init>(kotlinx.cinterop/CPointerVarOf<kotlinx.cinterop/CPointer<cnames.structs/CGContext>>, kotlin/Double, kotlin/Double) // com.juul.krayon.kanvas/CGContextKanvas.<init>|<init>(kotlinx.cinterop.CPointerVarOf<kotlinx.cinterop.CPointer<cnames.structs.CGContext>>;kotlin.Double;kotlin.Double){}[0]
+
+    final val height // com.juul.krayon.kanvas/CGContextKanvas.height|{}height[0]
+        final fun <get-height>(): kotlin/Float // com.juul.krayon.kanvas/CGContextKanvas.height.<get-height>|<get-height>(){}[0]
+    final val width // com.juul.krayon.kanvas/CGContextKanvas.width|{}width[0]
+        final fun <get-width>(): kotlin/Float // com.juul.krayon.kanvas/CGContextKanvas.width.<get-width>|<get-width>(){}[0]
+
+    final fun drawArc(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/CGContextKanvas.drawArc|drawArc(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawCircle(kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/CGContextKanvas.drawCircle|drawCircle(kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawColor(com.juul.krayon.color/Color) // com.juul.krayon.kanvas/CGContextKanvas.drawColor|drawColor(com.juul.krayon.color.Color){}[0]
+    final fun drawLine(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/CGContextKanvas.drawLine|drawLine(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawOval(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/CGContextKanvas.drawOval|drawOval(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawPath(com.juul.krayon.kanvas/Path, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/CGContextKanvas.drawPath|drawPath(com.juul.krayon.kanvas.Path;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawRect(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/CGContextKanvas.drawRect|drawRect(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawText(kotlin/CharSequence, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/CGContextKanvas.drawText|drawText(kotlin.CharSequence;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun pop() // com.juul.krayon.kanvas/CGContextKanvas.pop|pop(){}[0]
+    final fun pushClip(com.juul.krayon.kanvas/Clip) // com.juul.krayon.kanvas/CGContextKanvas.pushClip|pushClip(com.juul.krayon.kanvas.Clip){}[0]
+    final fun pushTransform(com.juul.krayon.kanvas/Transform) // com.juul.krayon.kanvas/CGContextKanvas.pushTransform|pushTransform(com.juul.krayon.kanvas.Transform){}[0]
+}
+
+// Targets: [apple]
+final object com.juul.krayon.kanvas/IsPointInCGPath : com.juul.krayon.kanvas/IsPointInPath { // com.juul.krayon.kanvas/IsPointInCGPath|null[0]
+    final fun isPointInPath(com.juul.krayon.kanvas/Transform, com.juul.krayon.kanvas/Path, kotlin/Float, kotlin/Float): kotlin/Boolean // com.juul.krayon.kanvas/IsPointInCGPath.isPointInPath|isPointInPath(com.juul.krayon.kanvas.Transform;com.juul.krayon.kanvas.Path;kotlin.Float;kotlin.Float){}[0]
+}
+
+// Targets: [js]
+final class com.juul.krayon.kanvas/HtmlKanvas : com.juul.krayon.kanvas/IsPointInPath, com.juul.krayon.kanvas/Kanvas { // com.juul.krayon.kanvas/HtmlKanvas|null[0]
+    constructor <init>(org.w3c.dom/HTMLCanvasElement, kotlin/Float = ...) // com.juul.krayon.kanvas/HtmlKanvas.<init>|<init>(org.w3c.dom.HTMLCanvasElement;kotlin.Float){}[0]
+
+    final val context // com.juul.krayon.kanvas/HtmlKanvas.context|{}context[0]
+        final fun <get-context>(): org.w3c.dom/CanvasRenderingContext2D // com.juul.krayon.kanvas/HtmlKanvas.context.<get-context>|<get-context>(){}[0]
+    final val height // com.juul.krayon.kanvas/HtmlKanvas.height|{}height[0]
+        final fun <get-height>(): kotlin/Float // com.juul.krayon.kanvas/HtmlKanvas.height.<get-height>|<get-height>(){}[0]
+    final val width // com.juul.krayon.kanvas/HtmlKanvas.width|{}width[0]
+        final fun <get-width>(): kotlin/Float // com.juul.krayon.kanvas/HtmlKanvas.width.<get-width>|<get-width>(){}[0]
+
+    final fun drawArc(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/HtmlKanvas.drawArc|drawArc(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawCircle(kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/HtmlKanvas.drawCircle|drawCircle(kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawColor(com.juul.krayon.color/Color) // com.juul.krayon.kanvas/HtmlKanvas.drawColor|drawColor(com.juul.krayon.color.Color){}[0]
+    final fun drawLine(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/HtmlKanvas.drawLine|drawLine(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawOval(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/HtmlKanvas.drawOval|drawOval(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawPath(com.juul.krayon.kanvas/Path, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/HtmlKanvas.drawPath|drawPath(com.juul.krayon.kanvas.Path;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawRect(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/HtmlKanvas.drawRect|drawRect(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun drawText(kotlin/CharSequence, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/HtmlKanvas.drawText|drawText(kotlin.CharSequence;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun isPointInPath(com.juul.krayon.kanvas/Transform, com.juul.krayon.kanvas/Path, kotlin/Float, kotlin/Float): kotlin/Boolean // com.juul.krayon.kanvas/HtmlKanvas.isPointInPath|isPointInPath(com.juul.krayon.kanvas.Transform;com.juul.krayon.kanvas.Path;kotlin.Float;kotlin.Float){}[0]
+    final fun pop() // com.juul.krayon.kanvas/HtmlKanvas.pop|pop(){}[0]
+    final fun pushClip(com.juul.krayon.kanvas/Clip) // com.juul.krayon.kanvas/HtmlKanvas.pushClip|pushClip(com.juul.krayon.kanvas.Clip){}[0]
+    final fun pushTransform(com.juul.krayon.kanvas/Transform) // com.juul.krayon.kanvas/HtmlKanvas.pushTransform|pushTransform(com.juul.krayon.kanvas.Transform){}[0]
+}
+
+// Targets: [js]
+final object com.juul.krayon.kanvas/Path2DMarker : com.juul.krayon.kanvas/PathTypeMarker<org.w3c.dom/Path2D> { // com.juul.krayon.kanvas/Path2DMarker|null[0]
+    final val builder // com.juul.krayon.kanvas/Path2DMarker.builder|{}builder[0]
+        final fun <get-builder>(): com.juul.krayon.kanvas/PathBuilder<org.w3c.dom/Path2D> // com.juul.krayon.kanvas/Path2DMarker.builder.<get-builder>|<get-builder>(){}[0]
+}

@@ -1,0 +1,104 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <krayon:selection>
+final class <#A: com.juul.krayon.element/Element, #B: kotlin/Any?> com.juul.krayon.selection/ExitSelection : com.juul.krayon.selection/Selection<#A, #B> { // com.juul.krayon.selection/ExitSelection|null[0]
+    constructor <init>(kotlin.collections/List<com.juul.krayon.selection/Group<#A, #B>>) // com.juul.krayon.selection/ExitSelection.<init>|<init>(kotlin.collections.List<com.juul.krayon.selection.Group<1:0,1:1>>){}[0]
+}
+
+final class <#A: com.juul.krayon.element/Element, #B: kotlin/Any?> com.juul.krayon.selection/Group { // com.juul.krayon.selection/Group|null[0]
+    constructor <init>(com.juul.krayon.element/Element?, kotlin.collections/List<#A?>) // com.juul.krayon.selection/Group.<init>|<init>(com.juul.krayon.element.Element?;kotlin.collections.List<1:0?>){}[0]
+
+    final val nodes // com.juul.krayon.selection/Group.nodes|{}nodes[0]
+        final fun <get-nodes>(): kotlin.collections/List<#A?> // com.juul.krayon.selection/Group.nodes.<get-nodes>|<get-nodes>(){}[0]
+    final val parent // com.juul.krayon.selection/Group.parent|{}parent[0]
+        final fun <get-parent>(): com.juul.krayon.element/Element? // com.juul.krayon.selection/Group.parent.<get-parent>|<get-parent>(){}[0]
+
+    final fun component1(): com.juul.krayon.element/Element? // com.juul.krayon.selection/Group.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<#A?> // com.juul.krayon.selection/Group.component2|component2(){}[0]
+    final fun copy(com.juul.krayon.element/Element? = ..., kotlin.collections/List<#A?> = ...): com.juul.krayon.selection/Group<#A, #B> // com.juul.krayon.selection/Group.copy|copy(com.juul.krayon.element.Element?;kotlin.collections.List<1:0?>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.selection/Group.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.juul.krayon.selection/Group.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.selection/Group.toString|toString(){}[0]
+}
+
+final class <#A: com.juul.krayon.element/Element, #B: kotlin/Any?> com.juul.krayon.selection/UpdateSelection : com.juul.krayon.selection/Selection<#A, #B> { // com.juul.krayon.selection/UpdateSelection|null[0]
+    constructor <init>(kotlin.collections/List<com.juul.krayon.selection/Group<#A, #B>>, com.juul.krayon.selection/EnterSelection<#B>, com.juul.krayon.selection/ExitSelection<#A, #B>) // com.juul.krayon.selection/UpdateSelection.<init>|<init>(kotlin.collections.List<com.juul.krayon.selection.Group<1:0,1:1>>;com.juul.krayon.selection.EnterSelection<1:1>;com.juul.krayon.selection.ExitSelection<1:0,1:1>){}[0]
+
+    final val enter // com.juul.krayon.selection/UpdateSelection.enter|{}enter[0]
+        final fun <get-enter>(): com.juul.krayon.selection/EnterSelection<#B> // com.juul.krayon.selection/UpdateSelection.enter.<get-enter>|<get-enter>(){}[0]
+    final val exit // com.juul.krayon.selection/UpdateSelection.exit|{}exit[0]
+        final fun <get-exit>(): com.juul.krayon.selection/ExitSelection<#A, #B> // com.juul.krayon.selection/UpdateSelection.exit.<get-exit>|<get-exit>(){}[0]
+}
+
+final class <#A: kotlin/Any?, #B: kotlin/Any?> com.juul.krayon.selection/Arguments { // com.juul.krayon.selection/Arguments|null[0]
+    final var data // com.juul.krayon.selection/Arguments.data|{}data[0]
+        final fun <get-data>(): kotlin.collections/List<#B> // com.juul.krayon.selection/Arguments.data.<get-data>|<get-data>(){}[0]
+    final var datum // com.juul.krayon.selection/Arguments.datum|{}datum[0]
+        final fun <get-datum>(): #A // com.juul.krayon.selection/Arguments.datum.<get-datum>|<get-datum>(){}[0]
+    final var index // com.juul.krayon.selection/Arguments.index|{}index[0]
+        final fun <get-index>(): kotlin/Int // com.juul.krayon.selection/Arguments.index.<get-index>|<get-index>(){}[0]
+
+    final fun component1(): #A // com.juul.krayon.selection/Arguments.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // com.juul.krayon.selection/Arguments.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/List<#B> // com.juul.krayon.selection/Arguments.component3|component3(){}[0]
+
+    final class <#A1: kotlin/Any?, #B1: kotlin/Any?> Buffer { // com.juul.krayon.selection/Arguments.Buffer|null[0]
+        constructor <init>() // com.juul.krayon.selection/Arguments.Buffer.<init>|<init>(){}[0]
+
+        final fun invoke(#A1, kotlin/Int, kotlin.collections/List<#B1>): com.juul.krayon.selection/Arguments<#A1, #B1> // com.juul.krayon.selection/Arguments.Buffer.invoke|invoke(1:0;kotlin.Int;kotlin.collections.List<1:1>){}[0]
+    }
+}
+
+final class <#A: kotlin/Any?> com.juul.krayon.selection/EnterSelection : com.juul.krayon.selection/Selection<com.juul.krayon.selection/EnterElement, #A> { // com.juul.krayon.selection/EnterSelection|null[0]
+    constructor <init>(kotlin.collections/List<com.juul.krayon.selection/Group<com.juul.krayon.selection/EnterElement, #A>>) // com.juul.krayon.selection/EnterSelection.<init>|<init>(kotlin.collections.List<com.juul.krayon.selection.Group<com.juul.krayon.selection.EnterElement,1:0>>){}[0]
+}
+
+final class com.juul.krayon.selection/EnterElement : com.juul.krayon.element/Element { // com.juul.krayon.selection/EnterElement|null[0]
+    constructor <init>() // com.juul.krayon.selection/EnterElement.<init>|<init>(){}[0]
+
+    final val tag // com.juul.krayon.selection/EnterElement.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // com.juul.krayon.selection/EnterElement.tag.<get-tag>|<get-tag>(){}[0]
+
+    final var next // com.juul.krayon.selection/EnterElement.next|{}next[0]
+        final fun <get-next>(): com.juul.krayon.element/Element? // com.juul.krayon.selection/EnterElement.next.<get-next>|<get-next>(){}[0]
+        final fun <set-next>(com.juul.krayon.element/Element?) // com.juul.krayon.selection/EnterElement.next.<set-next>|<set-next>(com.juul.krayon.element.Element?){}[0]
+
+    final fun <#A1: com.juul.krayon.element/Element> appendChild(#A1): #A1 // com.juul.krayon.selection/EnterElement.appendChild|appendChild(0:0){0§<com.juul.krayon.element.Element>}[0]
+    final fun <#A1: com.juul.krayon.element/Element> insertBefore(#A1, com.juul.krayon.element/Element?): #A1 // com.juul.krayon.selection/EnterElement.insertBefore|insertBefore(0:0;com.juul.krayon.element.Element?){0§<com.juul.krayon.element.Element>}[0]
+    final fun <#A1: com.juul.krayon.element/Element> query(com.juul.krayon.element/ElementSelector<#A1>): #A1? // com.juul.krayon.selection/EnterElement.query|query(com.juul.krayon.element.ElementSelector<0:0>){0§<com.juul.krayon.element.Element>}[0]
+    final fun <#A1: com.juul.krayon.element/Element> queryAll(com.juul.krayon.element/ElementSelector<#A1>): kotlin.sequences/Sequence<#A1> // com.juul.krayon.selection/EnterElement.queryAll|queryAll(com.juul.krayon.element.ElementSelector<0:0>){0§<com.juul.krayon.element.Element>}[0]
+    final fun draw(com.juul.krayon.kanvas/Kanvas) // com.juul.krayon.selection/EnterElement.draw|draw(com.juul.krayon.kanvas.Kanvas){}[0]
+}
+
+open class <#A: com.juul.krayon.element/Element, #B: kotlin/Any?> com.juul.krayon.selection/Selection { // com.juul.krayon.selection/Selection|null[0]
+    constructor <init>(kotlin.collections/List<com.juul.krayon.selection/Group<#A, #B>>) // com.juul.krayon.selection/Selection.<init>|<init>(kotlin.collections.List<com.juul.krayon.selection.Group<1:0,1:1>>){}[0]
+
+    final val groups // com.juul.krayon.selection/Selection.groups|{}groups[0]
+        final fun <get-groups>(): kotlin.collections/List<com.juul.krayon.selection/Group<#A, #B>> // com.juul.krayon.selection/Selection.groups.<get-groups>|<get-groups>(){}[0]
+}
+
+final fun <#A: com.juul.krayon.element/Element, #B: com.juul.krayon.element/Element, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #C>).com.juul.krayon.selection/append(com.juul.krayon.element/ElementBuilder<#B>): com.juul.krayon.selection/Selection<#B, #C> // com.juul.krayon.selection/append|append@com.juul.krayon.selection.Selection<0:0,0:2>(com.juul.krayon.element.ElementBuilder<0:1>){0§<com.juul.krayon.element.Element>;1§<com.juul.krayon.element.Element>;2§<kotlin.Any?>}[0]
+final fun <#A: com.juul.krayon.element/Element, #B: com.juul.krayon.element/Element, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #C>).com.juul.krayon.selection/insert(com.juul.krayon.element/ElementBuilder<#B>, com.juul.krayon.element/ElementSelector<*>): com.juul.krayon.selection/Selection<#B, #C> // com.juul.krayon.selection/insert|insert@com.juul.krayon.selection.Selection<0:0,0:2>(com.juul.krayon.element.ElementBuilder<0:1>;com.juul.krayon.element.ElementSelector<*>){0§<com.juul.krayon.element.Element>;1§<com.juul.krayon.element.Element>;2§<kotlin.Any?>}[0]
+final fun <#A: com.juul.krayon.element/Element, #B: com.juul.krayon.element/Element, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #C>).com.juul.krayon.selection/select(com.juul.krayon.element/ElementSelector<#B>): com.juul.krayon.selection/Selection<#B, #C> // com.juul.krayon.selection/select|select@com.juul.krayon.selection.Selection<0:0,0:2>(com.juul.krayon.element.ElementSelector<0:1>){0§<com.juul.krayon.element.Element>;1§<com.juul.krayon.element.Element>;2§<kotlin.Any?>}[0]
+final fun <#A: com.juul.krayon.element/Element, #B: com.juul.krayon.element/Element, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #C>).com.juul.krayon.selection/selectAll(com.juul.krayon.element/ElementSelector<#B>): com.juul.krayon.selection/Selection<#B, #C> // com.juul.krayon.selection/selectAll|selectAll@com.juul.krayon.selection.Selection<0:0,0:2>(com.juul.krayon.element.ElementSelector<0:1>){0§<com.juul.krayon.element.Element>;1§<com.juul.krayon.element.Element>;2§<kotlin.Any?>}[0]
+final fun <#A: com.juul.krayon.element/Element, #B: kotlin/Any?, #C: com.juul.krayon.selection/Selection<#A, #B>> (#C).com.juul.krayon.selection/order(): #C // com.juul.krayon.selection/order|order@0:2(){0§<com.juul.krayon.element.Element>;1§<kotlin.Any?>;2§<com.juul.krayon.selection.Selection<0:0,0:1>>}[0]
+final fun <#A: com.juul.krayon.element/Element, #B: kotlin/Any?, #C: com.juul.krayon.selection/Selection<#A, #B>> (#C).com.juul.krayon.selection/remove(): #C // com.juul.krayon.selection/remove|remove@0:2(){0§<com.juul.krayon.element.Element>;1§<kotlin.Any?>;2§<com.juul.krayon.selection.Selection<0:0,0:1>>}[0]
+final fun <#A: com.juul.krayon.element/Element, #B: kotlin/Any?, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #B>).com.juul.krayon.selection/data(kotlin.collections/List<#C>): com.juul.krayon.selection/UpdateSelection<#A, #C> // com.juul.krayon.selection/data|data@com.juul.krayon.selection.Selection<0:0,0:1>(kotlin.collections.List<0:2>){0§<com.juul.krayon.element.Element>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final fun <#A: com.juul.krayon.element/Element, #B: kotlin/Any?, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #B>).com.juul.krayon.selection/data(kotlin/Function2<kotlin/Int, com.juul.krayon.selection/Group<#A, #B>, kotlin.collections/List<#C>>): com.juul.krayon.selection/UpdateSelection<#A, #C> // com.juul.krayon.selection/data|data@com.juul.krayon.selection.Selection<0:0,0:1>(kotlin.Function2<kotlin.Int,com.juul.krayon.selection.Group<0:0,0:1>,kotlin.collections.List<0:2>>){0§<com.juul.krayon.element.Element>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final fun <#A: com.juul.krayon.element/Element, #B: kotlin/Any?, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #B>).com.juul.krayon.selection/keyedData(kotlin.collections/List<#C>, kotlin/Function2<com.juul.krayon.element/Element?, com.juul.krayon.selection/Arguments<kotlin/Any?, kotlin/Any?>, kotlin/Any?>): com.juul.krayon.selection/UpdateSelection<#A, #C> // com.juul.krayon.selection/keyedData|keyedData@com.juul.krayon.selection.Selection<0:0,0:1>(kotlin.collections.List<0:2>;kotlin.Function2<com.juul.krayon.element.Element?,com.juul.krayon.selection.Arguments<kotlin.Any?,kotlin.Any?>,kotlin.Any?>){0§<com.juul.krayon.element.Element>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final fun <#A: com.juul.krayon.element/Element, #B: kotlin/Any?, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #B>).com.juul.krayon.selection/keyedData(kotlin/Function2<kotlin/Int, com.juul.krayon.selection/Group<#A, #B>, kotlin.collections/List<#C>>, kotlin/Function2<com.juul.krayon.element/Element?, com.juul.krayon.selection/Arguments<kotlin/Any?, kotlin/Any?>, kotlin/Any?>): com.juul.krayon.selection/UpdateSelection<#A, #C> // com.juul.krayon.selection/keyedData|keyedData@com.juul.krayon.selection.Selection<0:0,0:1>(kotlin.Function2<kotlin.Int,com.juul.krayon.selection.Group<0:0,0:1>,kotlin.collections.List<0:2>>;kotlin.Function2<com.juul.krayon.element.Element?,com.juul.krayon.selection.Arguments<kotlin.Any?,kotlin.Any?>,kotlin.Any?>){0§<com.juul.krayon.element.Element>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final fun <#A: com.juul.krayon.element/Element, #B: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #B>).com.juul.krayon.selection/merge(com.juul.krayon.selection/Selection<#A, #B>): com.juul.krayon.selection/Selection<#A, #B> // com.juul.krayon.selection/merge|merge@com.juul.krayon.selection.Selection<0:0,0:1>(com.juul.krayon.selection.Selection<0:0,0:1>){0§<com.juul.krayon.element.Element>;1§<kotlin.Any?>}[0]
+final fun <#A: com.juul.krayon.element/Element, #B: kotlin/Any?> (com.juul.krayon.selection/UpdateSelection<#A, #B>).com.juul.krayon.selection/join(com.juul.krayon.element/ElementBuilder<#A>): com.juul.krayon.selection/Selection<#A, #B> // com.juul.krayon.selection/join|join@com.juul.krayon.selection.UpdateSelection<0:0,0:1>(com.juul.krayon.element.ElementBuilder<0:0>){0§<com.juul.krayon.element.Element>;1§<kotlin.Any?>}[0]
+final fun <#A: com.juul.krayon.element/Element> (#A).com.juul.krayon.selection/asSelection(): com.juul.krayon.selection/Selection<#A, kotlin/Nothing?> // com.juul.krayon.selection/asSelection|asSelection@0:0(){0§<com.juul.krayon.element.Element>}[0]
+final inline fun <#A: com.juul.krayon.element/Element, #B: com.juul.krayon.element/Element, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #C>).com.juul.krayon.selection/append(crossinline kotlin/Function2<#A, com.juul.krayon.selection/Arguments<#C, #A?>, #B>): com.juul.krayon.selection/Selection<#B, #C> // com.juul.krayon.selection/append|append@com.juul.krayon.selection.Selection<0:0,0:2>(kotlin.Function2<0:0,com.juul.krayon.selection.Arguments<0:2,0:0?>,0:1>){0§<com.juul.krayon.element.Element>;1§<com.juul.krayon.element.Element>;2§<kotlin.Any?>}[0]
+final inline fun <#A: com.juul.krayon.element/Element, #B: com.juul.krayon.element/Element, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #C>).com.juul.krayon.selection/insert(crossinline kotlin/Function2<#A, com.juul.krayon.selection/Arguments<#C, #A?>, #B>, com.juul.krayon.element/ElementSelector<*>): com.juul.krayon.selection/Selection<#B, #C> // com.juul.krayon.selection/insert|insert@com.juul.krayon.selection.Selection<0:0,0:2>(kotlin.Function2<0:0,com.juul.krayon.selection.Arguments<0:2,0:0?>,0:1>;com.juul.krayon.element.ElementSelector<*>){0§<com.juul.krayon.element.Element>;1§<com.juul.krayon.element.Element>;2§<kotlin.Any?>}[0]
+final inline fun <#A: com.juul.krayon.element/Element, #B: com.juul.krayon.element/Element, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #C>).com.juul.krayon.selection/select(crossinline kotlin/Function2<#A, com.juul.krayon.selection/Arguments<#C, #A?>, #B?>): com.juul.krayon.selection/Selection<#B, #C> // com.juul.krayon.selection/select|select@com.juul.krayon.selection.Selection<0:0,0:2>(kotlin.Function2<0:0,com.juul.krayon.selection.Arguments<0:2,0:0?>,0:1?>){0§<com.juul.krayon.element.Element>;1§<com.juul.krayon.element.Element>;2§<kotlin.Any?>}[0]
+final inline fun <#A: com.juul.krayon.element/Element, #B: com.juul.krayon.element/Element, #C: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #C>).com.juul.krayon.selection/selectAll(crossinline kotlin/Function2<#A, com.juul.krayon.selection/Arguments<#C, #A?>, kotlin.sequences/Sequence<#B>>): com.juul.krayon.selection/Selection<#B, #C> // com.juul.krayon.selection/selectAll|selectAll@com.juul.krayon.selection.Selection<0:0,0:2>(kotlin.Function2<0:0,com.juul.krayon.selection.Arguments<0:2,0:0?>,kotlin.sequences.Sequence<0:1>>){0§<com.juul.krayon.element.Element>;1§<com.juul.krayon.element.Element>;2§<kotlin.Any?>}[0]
+final inline fun <#A: com.juul.krayon.element/Element, #B: kotlin/Any?, #C: com.juul.krayon.selection/Selection<#A, #B>> (#C).com.juul.krayon.selection/each(crossinline kotlin/Function2<#A, com.juul.krayon.selection/Arguments<#B, #A?>, kotlin/Unit>): #C // com.juul.krayon.selection/each|each@0:2(kotlin.Function2<0:0,com.juul.krayon.selection.Arguments<0:1,0:0?>,kotlin.Unit>){0§<com.juul.krayon.element.Element>;1§<kotlin.Any?>;2§<com.juul.krayon.selection.Selection<0:0,0:1>>}[0]
+final inline fun <#A: com.juul.krayon.element/Element, #B: kotlin/Any?> (com.juul.krayon.selection/Selection<#A, #B>).com.juul.krayon.selection/filter(crossinline kotlin/Function2<#A, com.juul.krayon.selection/Arguments<#B, #A?>, kotlin/Boolean>): com.juul.krayon.selection/Selection<#A, #B> // com.juul.krayon.selection/filter|filter@com.juul.krayon.selection.Selection<0:0,0:1>(kotlin.Function2<0:0,com.juul.krayon.selection.Arguments<0:1,0:0?>,kotlin.Boolean>){0§<com.juul.krayon.element.Element>;1§<kotlin.Any?>}[0]
+final inline fun <#A: com.juul.krayon.element/Element, #B: kotlin/Any?> (com.juul.krayon.selection/UpdateSelection<#A, #B>).com.juul.krayon.selection/join(crossinline kotlin/Function1<com.juul.krayon.selection/Selection<#A, #B>, com.juul.krayon.selection/Selection<#A, #B>> = ..., crossinline kotlin/Function1<com.juul.krayon.selection/Selection<#A, #B>, kotlin/Unit> = ..., crossinline kotlin/Function1<com.juul.krayon.selection/EnterSelection<#B>, com.juul.krayon.selection/Selection<#A, #B>>): com.juul.krayon.selection/Selection<#A, #B> // com.juul.krayon.selection/join|join@com.juul.krayon.selection.UpdateSelection<0:0,0:1>(kotlin.Function1<com.juul.krayon.selection.Selection<0:0,0:1>,com.juul.krayon.selection.Selection<0:0,0:1>>;kotlin.Function1<com.juul.krayon.selection.Selection<0:0,0:1>,kotlin.Unit>;kotlin.Function1<com.juul.krayon.selection.EnterSelection<0:1>,com.juul.krayon.selection.Selection<0:0,0:1>>){0§<com.juul.krayon.element.Element>;1§<kotlin.Any?>}[0]

@@ -1,0 +1,79 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <krayon:scale>
+abstract fun interface <#A: kotlin/Any?> com.juul.krayon.scale/Ticker { // com.juul.krayon.scale/Ticker|null[0]
+    abstract fun ticks(#A, #A, kotlin/Int): kotlin.collections/List<#A> // com.juul.krayon.scale/Ticker.ticks|ticks(1:0;1:0;kotlin.Int){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: kotlin/Any?> com.juul.krayon.scale/Scale { // com.juul.krayon.scale/Scale|null[0]
+    abstract fun scale(#A): #B // com.juul.krayon.scale/Scale.scale|scale(1:0){}[0]
+}
+
+final class <#A: kotlin/Comparable<#A>, #B: kotlin/Any?> com.juul.krayon.scale/ContinuousScale : com.juul.krayon.scale/Scale<#A, #B> { // com.juul.krayon.scale/ContinuousScale|null[0]
+    final val domain // com.juul.krayon.scale/ContinuousScale.domain|{}domain[0]
+        final fun <get-domain>(): kotlin.collections/List<#A> // com.juul.krayon.scale/ContinuousScale.domain.<get-domain>|<get-domain>(){}[0]
+    final val range // com.juul.krayon.scale/ContinuousScale.range|{}range[0]
+        final fun <get-range>(): kotlin.collections/List<#B> // com.juul.krayon.scale/ContinuousScale.range.<get-range>|<get-range>(){}[0]
+
+    final fun <#A1: kotlin/Any?> range(kotlin.collections/List<#A1>, kotlin/Function2<#A1, #A1, com.juul.krayon.interpolate/Interpolator<#A1>>): com.juul.krayon.scale/ContinuousScale<#A, #A1> // com.juul.krayon.scale/ContinuousScale.range|range(kotlin.collections.List<0:0>;kotlin.Function2<0:0,0:0,com.juul.krayon.interpolate.Interpolator<0:0>>){0§<kotlin.Any?>}[0]
+    final fun <#A1: kotlin/Comparable<#A1>> domain(kotlin.collections/List<#A1>, kotlin/Function2<#A1, #A1, com.juul.krayon.interpolate/Inverter<#A1>>): com.juul.krayon.scale/ContinuousScale<#A1, #B> // com.juul.krayon.scale/ContinuousScale.domain|domain(kotlin.collections.List<0:0>;kotlin.Function2<0:0,0:0,com.juul.krayon.interpolate.Inverter<0:0>>){0§<kotlin.Comparable<0:0>>}[0]
+    final fun scale(#A): #B // com.juul.krayon.scale/ContinuousScale.scale|scale(1:0){}[0]
+}
+
+final object com.juul.krayon.scale/DoubleTicker : com.juul.krayon.scale/Ticker<kotlin/Double> { // com.juul.krayon.scale/DoubleTicker|null[0]
+    final fun ticks(kotlin/Double, kotlin/Double, kotlin/Int): kotlin.collections/List<kotlin/Double> // com.juul.krayon.scale/DoubleTicker.ticks|ticks(kotlin.Double;kotlin.Double;kotlin.Int){}[0]
+}
+
+final object com.juul.krayon.scale/FloatTicker : com.juul.krayon.scale/Ticker<kotlin/Float> { // com.juul.krayon.scale/FloatTicker|null[0]
+    final fun ticks(kotlin/Float, kotlin/Float, kotlin/Int): kotlin.collections/List<kotlin/Float> // com.juul.krayon.scale/FloatTicker.ticks|ticks(kotlin.Float;kotlin.Float;kotlin.Int){}[0]
+}
+
+final object com.juul.krayon.scale/InstantTicker : com.juul.krayon.scale/Ticker<kotlinx.datetime/Instant> { // com.juul.krayon.scale/InstantTicker|null[0]
+    final fun ticks(kotlinx.datetime/Instant, kotlinx.datetime/Instant, kotlin/Int): kotlin.collections/List<kotlinx.datetime/Instant> // com.juul.krayon.scale/InstantTicker.ticks|ticks(kotlinx.datetime.Instant;kotlinx.datetime.Instant;kotlin.Int){}[0]
+}
+
+final object com.juul.krayon.scale/LocalDateTimeTicker : com.juul.krayon.scale/Ticker<kotlinx.datetime/LocalDateTime> { // com.juul.krayon.scale/LocalDateTimeTicker|null[0]
+    final fun ticks(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime, kotlin/Int): kotlin.collections/List<kotlinx.datetime/LocalDateTime> // com.juul.krayon.scale/LocalDateTimeTicker.ticks|ticks(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+}
+
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.juul.krayon.scale/Scale<#A, #B>).com.juul.krayon.scale/invoke(#A): #B // com.juul.krayon.scale/invoke|invoke@com.juul.krayon.scale.Scale<0:0,0:1>(0:0){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.juul.krayon.scale/domain(kotlin.collections/Iterable<kotlin/Double>): com.juul.krayon.scale/ContinuousScale<kotlin/Double, #A> // com.juul.krayon.scale/domain|domain@com.juul.krayon.scale.ContinuousScale<*,0:0>(kotlin.collections.Iterable<kotlin.Double>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.juul.krayon.scale/domain(kotlin.collections/Iterable<kotlin/Float>): com.juul.krayon.scale/ContinuousScale<kotlin/Float, #A> // com.juul.krayon.scale/domain|domain@com.juul.krayon.scale.ContinuousScale<*,0:0>(kotlin.collections.Iterable<kotlin.Float>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.juul.krayon.scale/domain(kotlin.collections/Iterable<kotlin/Int>): com.juul.krayon.scale/ContinuousScale<kotlin/Int, #A> // com.juul.krayon.scale/domain|domain@com.juul.krayon.scale.ContinuousScale<*,0:0>(kotlin.collections.Iterable<kotlin.Int>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.juul.krayon.scale/domain(kotlin.collections/Iterable<kotlinx.datetime/Instant>): com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/Instant, #A> // com.juul.krayon.scale/domain|domain@com.juul.krayon.scale.ContinuousScale<*,0:0>(kotlin.collections.Iterable<kotlinx.datetime.Instant>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.juul.krayon.scale/domain(kotlin.collections/Iterable<kotlinx.datetime/LocalDateTime>): com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/LocalDateTime, #A> // com.juul.krayon.scale/domain|domain@com.juul.krayon.scale.ContinuousScale<*,0:0>(kotlin.collections.Iterable<kotlinx.datetime.LocalDateTime>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.juul.krayon.scale/domain(kotlin/Array<out kotlinx.datetime/Instant>...): com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/Instant, #A> // com.juul.krayon.scale/domain|domain@com.juul.krayon.scale.ContinuousScale<*,0:0>(kotlin.Array<out|kotlinx.datetime.Instant>...){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.juul.krayon.scale/domain(kotlin/Array<out kotlinx.datetime/LocalDateTime>...): com.juul.krayon.scale/ContinuousScale<kotlinx.datetime/LocalDateTime, #A> // com.juul.krayon.scale/domain|domain@com.juul.krayon.scale.ContinuousScale<*,0:0>(kotlin.Array<out|kotlinx.datetime.LocalDateTime>...){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.juul.krayon.scale/domain(kotlin/DoubleArray...): com.juul.krayon.scale/ContinuousScale<kotlin/Double, #A> // com.juul.krayon.scale/domain|domain@com.juul.krayon.scale.ContinuousScale<*,0:0>(kotlin.DoubleArray...){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.juul.krayon.scale/domain(kotlin/FloatArray...): com.juul.krayon.scale/ContinuousScale<kotlin/Float, #A> // com.juul.krayon.scale/domain|domain@com.juul.krayon.scale.ContinuousScale<*,0:0>(kotlin.FloatArray...){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.juul.krayon.scale/domain(kotlin/IntArray...): com.juul.krayon.scale/ContinuousScale<kotlin/Int, #A> // com.juul.krayon.scale/domain|domain@com.juul.krayon.scale.ContinuousScale<*,0:0>(kotlin.IntArray...){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin.collections/List<com.juul.krayon.color/Color>): com.juul.krayon.scale/ContinuousScale<#A, com.juul.krayon.color/Color> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.collections.List<com.juul.krayon.color.Color>){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin.collections/List<kotlin/Double>): com.juul.krayon.scale/ContinuousScale<#A, kotlin/Double> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.collections.List<kotlin.Double>){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin.collections/List<kotlin/Float>): com.juul.krayon.scale/ContinuousScale<#A, kotlin/Float> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.collections.List<kotlin.Float>){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin.collections/List<kotlin/Int>): com.juul.krayon.scale/ContinuousScale<#A, kotlin/Int> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.collections.List<kotlin.Int>){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin.collections/List<kotlinx.datetime/Instant>): com.juul.krayon.scale/ContinuousScale<#A, kotlinx.datetime/Instant> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.collections.List<kotlinx.datetime.Instant>){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin.collections/List<kotlinx.datetime/LocalDateTime>): com.juul.krayon.scale/ContinuousScale<#A, kotlinx.datetime/LocalDateTime> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.collections.List<kotlinx.datetime.LocalDateTime>){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin/Array<out kotlinx.datetime/Instant>...): com.juul.krayon.scale/ContinuousScale<#A, kotlinx.datetime/Instant> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.Array<out|kotlinx.datetime.Instant>...){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin/Array<out kotlinx.datetime/LocalDateTime>...): com.juul.krayon.scale/ContinuousScale<#A, kotlinx.datetime/LocalDateTime> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.Array<out|kotlinx.datetime.LocalDateTime>...){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin/DoubleArray...): com.juul.krayon.scale/ContinuousScale<#A, kotlin/Double> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.DoubleArray...){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin/FloatArray...): com.juul.krayon.scale/ContinuousScale<#A, kotlin/Float> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.FloatArray...){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin/IntArray...): com.juul.krayon.scale/ContinuousScale<#A, kotlin/Int> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.IntArray...){0§<kotlin.Comparable<0:0>>}[0]
+final fun com.juul.krayon.scale/nice(kotlin/Double, kotlin/Double, kotlin/Int): kotlin.collections/List<kotlin/Double> // com.juul.krayon.scale/nice|nice(kotlin.Double;kotlin.Double;kotlin.Int){}[0]
+final fun com.juul.krayon.scale/nice(kotlin/Float, kotlin/Float, kotlin/Int): kotlin.collections/List<kotlin/Float> // com.juul.krayon.scale/nice|nice(kotlin.Float;kotlin.Float;kotlin.Int){}[0]
+final fun com.juul.krayon.scale/scale(kotlin.collections/List<kotlin/Float> = ..., kotlin.collections/List<kotlin/Float> = ...): com.juul.krayon.scale/ContinuousScale<kotlin/Float, kotlin/Float> // com.juul.krayon.scale/scale|scale(kotlin.collections.List<kotlin.Float>;kotlin.collections.List<kotlin.Float>){}[0]
+final fun com.juul.krayon.scale/tickIncrement(kotlin/Double, kotlin/Double, kotlin/Int): kotlin/Int // com.juul.krayon.scale/tickIncrement|tickIncrement(kotlin.Double;kotlin.Double;kotlin.Int){}[0]
+final fun com.juul.krayon.scale/tickIncrement(kotlin/Float, kotlin/Float, kotlin/Int): kotlin/Int // com.juul.krayon.scale/tickIncrement|tickIncrement(kotlin.Float;kotlin.Float;kotlin.Int){}[0]
+final fun com.juul.krayon.scale/tickInterval(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime, kotlin/Int): com.juul.krayon.time/Interval // com.juul.krayon.scale/tickInterval|tickInterval(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+final fun com.juul.krayon.scale/tickStep(kotlin/Double, kotlin/Double, kotlin/Int): kotlin/Double // com.juul.krayon.scale/tickStep|tickStep(kotlin.Double;kotlin.Double;kotlin.Int){}[0]
+final fun com.juul.krayon.scale/tickStep(kotlin/Float, kotlin/Float, kotlin/Int): kotlin/Float // com.juul.krayon.scale/tickStep|tickStep(kotlin.Float;kotlin.Float;kotlin.Int){}[0]
+final fun com.juul.krayon.scale/ticks(kotlin/Double, kotlin/Double, kotlin/Int): kotlin.collections/List<kotlin/Double> // com.juul.krayon.scale/ticks|ticks(kotlin.Double;kotlin.Double;kotlin.Int){}[0]
+final fun com.juul.krayon.scale/ticks(kotlin/Float, kotlin/Float, kotlin/Int): kotlin.collections/List<kotlin/Float> // com.juul.krayon.scale/ticks|ticks(kotlin.Float;kotlin.Float;kotlin.Int){}[0]
+final fun com.juul.krayon.scale/ticks(kotlinx.datetime/LocalDateTime, kotlinx.datetime/LocalDateTime, kotlin/Int): kotlin.collections/List<kotlinx.datetime/LocalDateTime> // com.juul.krayon.scale/ticks|ticks(kotlinx.datetime.LocalDateTime;kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Comparable<#B>> (kotlin.collections/Iterable<#A>).com.juul.krayon.scale/extent(crossinline kotlin/Function1<#A, #B?>): kotlin.collections/Iterable<#B> // com.juul.krayon.scale/extent|extent@kotlin.collections.Iterable<0:0>(kotlin.Function1<0:0,0:1?>){0§<kotlin.Any?>;1§<kotlin.Comparable<0:1>>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Comparable<#B>> (kotlin.collections/Iterable<#A>).com.juul.krayon.scale/max(crossinline kotlin/Function1<#A, #B?>): #B // com.juul.krayon.scale/max|max@kotlin.collections.Iterable<0:0>(kotlin.Function1<0:0,0:1?>){0§<kotlin.Any?>;1§<kotlin.Comparable<0:1>>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Comparable<#B>> (kotlin.collections/Iterable<#A>).com.juul.krayon.scale/min(crossinline kotlin/Function1<#A, #B?>): #B // com.juul.krayon.scale/min|min@kotlin.collections.Iterable<0:0>(kotlin.Function1<0:0,0:1?>){0§<kotlin.Any?>;1§<kotlin.Comparable<0:1>>}[0]
