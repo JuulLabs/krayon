@@ -1,5 +1,5 @@
 [versions]
-agp = "8.5.2" # 7.4.1 is the maximum version supported by IDEA 2023.1
+agp = "8.6.0" # 7.4.1 is the maximum version supported by IDEA 2023.1
 android-compile = "34"
 android-min = "21"
 android-target = "32"
@@ -18,7 +18,7 @@ coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-androi
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.6.0" }
+datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.6.1" }
 material = { module = "com.google.android.material:material", version = "1.12.0" }
 robolectric = { module = "org.robolectric:robolectric", version = "4.13" }
 
