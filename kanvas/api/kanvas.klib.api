@@ -6,7 +6,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <krayon:kanvas>
+// Library unique name: <com.juul.krayon:kanvas>
 abstract interface <#A: kotlin/Any> com.juul.krayon.kanvas/PathTypeMarker { // com.juul.krayon.kanvas/PathTypeMarker|null[0]
     abstract val builder // com.juul.krayon.kanvas/PathTypeMarker.builder|{}builder[0]
         abstract fun <get-builder>(): com.juul.krayon.kanvas/PathBuilder<#A> // com.juul.krayon.kanvas/PathTypeMarker.builder.<get-builder>|<get-builder>(){}[0]

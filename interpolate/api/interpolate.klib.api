@@ -5,7 +5,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <krayon:interpolate>
+// Library unique name: <com.juul.krayon:interpolate>
 abstract interface <#A: kotlin/Any?> com.juul.krayon.interpolate/BidirectionalInterpolator : com.juul.krayon.interpolate/Interpolator<#A>, com.juul.krayon.interpolate/Inverter<#A> // com.juul.krayon.interpolate/BidirectionalInterpolator|null[0]
 
 abstract interface <#A: kotlin/Any?> com.juul.krayon.interpolate/Interpolator { // com.juul.krayon.interpolate/Interpolator|null[0]
