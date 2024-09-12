@@ -27,6 +27,8 @@ apiValidation {
 }
 
 allprojects {
+    group = "com.juul.krayon"
+
     repositories {
         google()
         mavenCentral()
