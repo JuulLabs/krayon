@@ -23,6 +23,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
 
       - run: ./gradlew assemble
+      - run: ./gradlew check
       - run: ./gradlew jacocoTestReport
 
       - uses: EnricoMi/publish-unit-test-result-action/macos@v2
