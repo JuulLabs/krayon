@@ -5,7 +5,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <krayon:scale>
+// Library unique name: <com.juul.krayon:scale>
 abstract fun interface <#A: kotlin/Any?> com.juul.krayon.scale/Ticker { // com.juul.krayon.scale/Ticker|null[0]
     abstract fun ticks(#A, #A, kotlin/Int): kotlin.collections/List<#A> // com.juul.krayon.scale/Ticker.ticks|ticks(1:0;1:0;kotlin.Int){}[0]
 }

@@ -5,7 +5,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <krayon:color>
+// Library unique name: <com.juul.krayon:color>
 final value class com.juul.krayon.color/Color { // com.juul.krayon.color/Color|null[0]
     constructor <init>(kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.color/Color.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float){}[0]
     constructor <init>(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.color/Color.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]

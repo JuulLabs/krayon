@@ -5,7 +5,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <krayon:element-view>
+// Library unique name: <com.juul.krayon:element-view>
 final class <#A: kotlin/Any?> com.juul.krayon.element.view/ElementViewAdapter { // com.juul.krayon.element.view/ElementViewAdapter|null[0]
     constructor <init>(kotlinx.coroutines.flow/Flow<#A>, com.juul.krayon.element/UpdateElement<#A>) // com.juul.krayon.element.view/ElementViewAdapter.<init>|<init>(kotlinx.coroutines.flow.Flow<1:0>;com.juul.krayon.element.UpdateElement<1:0>){}[0]
 }

@@ -5,7 +5,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <krayon:hierarchy>
+// Library unique name: <com.juul.krayon:hierarchy>
 abstract interface com.juul.krayon.hierarchy.treemap/TileMethod { // com.juul.krayon.hierarchy.treemap/TileMethod|null[0]
     abstract fun tile(com.juul.krayon.hierarchy/Node<*, com.juul.krayon.hierarchy.treemap/Tile>) // com.juul.krayon.hierarchy.treemap/TileMethod.tile|tile(com.juul.krayon.hierarchy.Node<*,com.juul.krayon.hierarchy.treemap.Tile>){}[0]
 }

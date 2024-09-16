@@ -5,7 +5,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <krayon:time>
+// Library unique name: <com.juul.krayon:time>
 abstract interface com.juul.krayon.time/Interval { // com.juul.krayon.time/Interval|null[0]
     abstract fun floor(kotlinx.datetime/LocalDateTime): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/Interval.floor|floor(kotlinx.datetime.LocalDateTime){}[0]
     abstract fun offset(kotlinx.datetime/LocalDateTime, kotlin/Int): kotlinx.datetime/LocalDateTime // com.juul.krayon.time/Interval.offset|offset(kotlinx.datetime.LocalDateTime;kotlin.Int){}[0]
