@@ -17,6 +17,7 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
     iosX64()
+    js().browser()
     jvm("desktop")
 
     sourceSets {
@@ -44,6 +45,10 @@ kotlin {
         }
 
         val iosMain by getting {
+            dependsOn(skiaMain)
+        }
+
+        val jsMain by getting {
             dependsOn(skiaMain)
         }
     }

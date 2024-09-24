@@ -5,7 +5,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <krayon:axis>
+// Library unique name: <com.juul.krayon:axis>
 final enum class com.juul.krayon.axis/Edge : kotlin/Enum<com.juul.krayon.axis/Edge> { // com.juul.krayon.axis/Edge|null[0]
     enum entry Bottom // com.juul.krayon.axis/Edge.Bottom|null[0]
     enum entry Left // com.juul.krayon.axis/Edge.Left|null[0]

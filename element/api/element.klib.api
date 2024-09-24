@@ -5,7 +5,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <krayon:element>
+// Library unique name: <com.juul.krayon:element>
 abstract fun interface <#A: kotlin/Any?> com.juul.krayon.element/ClickHandler { // com.juul.krayon.element/ClickHandler|null[0]
     abstract fun onClick(#A) // com.juul.krayon.element/ClickHandler.onClick|onClick(1:0){}[0]
 }

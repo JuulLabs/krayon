@@ -156,19 +156,21 @@ internal data class SegmentedPath(
 ) {
     fun <P> rebuildWith(builder: PathBuilder<P>): P {
         builder.reset()
-        for (segment in segments) with(segment) {
-            when (this) {
-                is MoveTo -> builder.moveTo(x, y)
-                is RelativeMoveTo -> builder.relativeMoveTo(x, y)
-                is LineTo -> builder.lineTo(x, y)
-                is RelativeLineTo -> builder.relativeLineTo(x, y)
-                is ArcTo -> builder.arcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo)
-                is QuadraticTo -> builder.quadraticTo(controlX, controlY, endX, endY)
-                is RelativeQuadraticTo -> builder.relativeQuadraticTo(controlX, controlY, endX, endY)
-                is CubicTo -> builder.cubicTo(beginControlX, beginControlY, endControlX, endControlY, endX, endY)
-                is RelativeCubicTo -> builder.relativeCubicTo(beginControlX, beginControlY, endControlX, endControlY, endX, endY)
-                is Close -> builder.close()
-                else -> error("Unreachable.")
+        for (segment in segments) {
+            with(segment) {
+                when (this) {
+                    is MoveTo -> builder.moveTo(x, y)
+                    is RelativeMoveTo -> builder.relativeMoveTo(x, y)
+                    is LineTo -> builder.lineTo(x, y)
+                    is RelativeLineTo -> builder.relativeLineTo(x, y)
+                    is ArcTo -> builder.arcTo(left, top, right, bottom, startAngle, sweepAngle, forceMoveTo)
+                    is QuadraticTo -> builder.quadraticTo(controlX, controlY, endX, endY)
+                    is RelativeQuadraticTo -> builder.relativeQuadraticTo(controlX, controlY, endX, endY)
+                    is CubicTo -> builder.cubicTo(beginControlX, beginControlY, endControlX, endControlY, endX, endY)
+                    is RelativeCubicTo -> builder.relativeCubicTo(beginControlX, beginControlY, endControlX, endControlY, endX, endY)
+                    is Close -> builder.close()
+                    else -> error("Unreachable.")
+                }
             }
         }
         return builder.build()

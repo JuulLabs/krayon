@@ -5,7 +5,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <krayon:shape>
+// Library unique name: <com.juul.krayon:shape>
 abstract interface <#A: kotlin/Any> com.juul.krayon.shape/Shape { // com.juul.krayon.shape/Shape|null[0]
     abstract fun render(kotlin.collections/List<#A?>): com.juul.krayon.kanvas/Path // com.juul.krayon.shape/Shape.render|render(kotlin.collections.List<1:0?>){}[0]
 }

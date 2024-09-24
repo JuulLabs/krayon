@@ -5,7 +5,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <krayon:selection>
+// Library unique name: <com.juul.krayon:selection>
 final class <#A: com.juul.krayon.element/Element, #B: kotlin/Any?> com.juul.krayon.selection/ExitSelection : com.juul.krayon.selection/Selection<#A, #B> { // com.juul.krayon.selection/ExitSelection|null[0]
     constructor <init>(kotlin.collections/List<com.juul.krayon.selection/Group<#A, #B>>) // com.juul.krayon.selection/ExitSelection.<init>|<init>(kotlin.collections.List<com.juul.krayon.selection.Group<1:0,1:1>>){}[0]
 }
