@@ -181,8 +181,6 @@ final value class com.juul.krayon.kanvas.svg/PathString { // com.juul.krayon.kan
 }
 
 sealed class com.juul.krayon.kanvas/Clip { // com.juul.krayon.kanvas/Clip|null[0]
-    constructor <init>() // com.juul.krayon.kanvas/Clip.<init>|<init>(){}[0]
-
     abstract val path // com.juul.krayon.kanvas/Clip.path|{}path[0]
         abstract fun <get-path>(): com.juul.krayon.kanvas/Path // com.juul.krayon.kanvas/Clip.path.<get-path>|<get-path>(){}[0]
 
@@ -225,8 +223,6 @@ sealed class com.juul.krayon.kanvas/Clip { // com.juul.krayon.kanvas/Clip|null[0
 }
 
 sealed class com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint|null[0]
-    constructor <init>() // com.juul.krayon.kanvas/Paint.<init>|<init>(){}[0]
-
     final class Fill : com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint.Fill|null[0]
         constructor <init>(com.juul.krayon.color/Color) // com.juul.krayon.kanvas/Paint.Fill.<init>|<init>(com.juul.krayon.color.Color){}[0]
 
@@ -309,8 +305,6 @@ sealed class com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint|null
         }
 
         sealed class Dash { // com.juul.krayon.kanvas/Paint.Stroke.Dash|null[0]
-            constructor <init>() // com.juul.krayon.kanvas/Paint.Stroke.Dash.<init>|<init>(){}[0]
-
             final class Pattern : com.juul.krayon.kanvas/Paint.Stroke.Dash { // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern|null[0]
                 constructor <init>(kotlin.collections/List<kotlin/Float>) // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern.<init>|<init>(kotlin.collections.List<kotlin.Float>){}[0]
                 constructor <init>(kotlin/FloatArray...) // com.juul.krayon.kanvas/Paint.Stroke.Dash.Pattern.<init>|<init>(kotlin.FloatArray...){}[0]
@@ -329,8 +323,6 @@ sealed class com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint|null
         }
 
         sealed class Join { // com.juul.krayon.kanvas/Paint.Stroke.Join|null[0]
-            constructor <init>() // com.juul.krayon.kanvas/Paint.Stroke.Join.<init>|<init>(){}[0]
-
             final class Miter : com.juul.krayon.kanvas/Paint.Stroke.Join { // com.juul.krayon.kanvas/Paint.Stroke.Join.Miter|null[0]
                 constructor <init>(kotlin/Float = ...) // com.juul.krayon.kanvas/Paint.Stroke.Join.Miter.<init>|<init>(kotlin.Float){}[0]
 
@@ -385,8 +377,6 @@ sealed class com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint|null
     }
 
     sealed class Gradient : com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint.Gradient|null[0]
-        constructor <init>() // com.juul.krayon.kanvas/Paint.Gradient.<init>|<init>(){}[0]
-
         abstract val stops // com.juul.krayon.kanvas/Paint.Gradient.stops|{}stops[0]
             abstract fun <get-stops>(): kotlin.collections/List<com.juul.krayon.kanvas/Paint.Gradient.Stop> // com.juul.krayon.kanvas/Paint.Gradient.stops.<get-stops>|<get-stops>(){}[0]
 
@@ -478,8 +468,6 @@ sealed class com.juul.krayon.kanvas/Paint { // com.juul.krayon.kanvas/Paint|null
 }
 
 sealed class com.juul.krayon.kanvas/Transform { // com.juul.krayon.kanvas/Transform|null[0]
-    constructor <init>() // com.juul.krayon.kanvas/Transform.<init>|<init>(){}[0]
-
     final class InOrder : com.juul.krayon.kanvas/Transform { // com.juul.krayon.kanvas/Transform.InOrder|null[0]
         constructor <init>(kotlin.collections/List<com.juul.krayon.kanvas/Transform>) // com.juul.krayon.kanvas/Transform.InOrder.<init>|<init>(kotlin.collections.List<com.juul.krayon.kanvas.Transform>){}[0]
         constructor <init>(kotlin/Array<out com.juul.krayon.kanvas/Transform>...) // com.juul.krayon.kanvas/Transform.InOrder.<init>|<init>(kotlin.Array<out|com.juul.krayon.kanvas.Transform>...){}[0]
