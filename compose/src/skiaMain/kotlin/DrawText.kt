@@ -2,9 +2,9 @@ package com.juul.krayon.compose
 
 import androidx.compose.ui.graphics.nativeCanvas
 import com.juul.krayon.kanvas.Paint
+import org.jetbrains.skia.FontMgr
 import org.jetbrains.skia.FontStyle
 import org.jetbrains.skia.TextLine
-import org.jetbrains.skia.Typeface
 import org.jetbrains.skia.Font as SkiaFont
 import org.jetbrains.skia.Paint as SkiaPaint
 
@@ -28,7 +28,7 @@ private fun CharSequence.toTextLine(paint: Paint.Text): TextLine =
 
 private fun Paint.Text.toSkiaFont(): SkiaFont {
     // TODO: Verify that this font behavior works as desired when using bold-fonts explicitly by name.
-    val typeface = Typeface.makeFromName(font.names.first(), FontStyle.NORMAL)
+    val typeface = FontMgr.default.legacyMakeTypeface(font.names.first(), FontStyle.NORMAL)
     return SkiaFont(typeface, size)
 }
 
