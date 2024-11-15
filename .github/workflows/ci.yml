@@ -31,7 +31,7 @@ jobs:
           junit_files: '**/build/test-results/**/*.xml'
           report_individual_runs: 'true'
 
-      - uses: codecov/codecov-action@v4
+      - uses: codecov/codecov-action@v5
 
       - run: >
           ./gradlew
