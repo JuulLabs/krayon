@@ -20,7 +20,7 @@ coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", v
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.6.1" }
 material = { module = "com.google.android.material:material", version = "1.12.0" }
-robolectric = { module = "org.robolectric:robolectric", version = "4.13" }
+robolectric = { module = "org.robolectric:robolectric", version = "4.14" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
