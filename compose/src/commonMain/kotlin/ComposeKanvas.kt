@@ -63,7 +63,7 @@ public class ComposeKanvas internal constructor(
     }
 
     override fun drawColor(color: Color) {
-        scope.drawRect(color.asComposeColor())
+        scope.drawRect(color.toCompose())
     }
 
     override fun drawLine(startX: Float, startY: Float, endX: Float, endY: Float, paint: Paint) {
