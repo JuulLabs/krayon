@@ -10,7 +10,7 @@ private val RRGGBBAA = """($HEX{2})($HEX{2})($HEX{2})($HEX{2})""".toRegex(RegexO
 public fun String.toColor(): Color =
     when {
         this.startsWith("#") -> parseHexNotation(this)
-        else -> keywordMap[this.toLowerCase()]
+        else -> keywordMap[this.lowercase()]
     } ?: throw IllegalArgumentException("Unknown color: `$this`.")
 
 public fun String.toColorOrNull(): Color? =
