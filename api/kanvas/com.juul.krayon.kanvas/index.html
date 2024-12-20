@@ -25,40 +25,93 @@
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
 <link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
 <script type="text/javascript" src="../../scripts/clipboard.js" async></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script>
 <script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
 <body>
     <div class="root">
-<nav class="navigation" id="navigation-wrapper">
-    <div class="navigation--inner">
-        <div class="navigation-title">
-            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
-            <div class="library-name">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
 <a class="library-name--link" href="../../index.html">
-                            krayon
-                    </a>            </div>
-            <div class="library-version">
-            </div>
+                    krayon
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
         </div>
-        <div class="filter-section" id="filter-section">
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
                 <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":kanvas:dokkaHtmlPartial/androidMain">android</button>
                 <button class="platform-tag platform-selector common-like" data-active="" data-filter=":kanvas:dokkaHtmlPartial/appleMain">apple</button>
                 <button class="platform-tag platform-selector common-like" data-active="" data-filter=":kanvas:dokkaHtmlPartial/commonMain">common</button>
                 <button class="platform-tag platform-selector js-like" data-active="" data-filter=":kanvas:dokkaHtmlPartial/jsMain">js</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kanvas:dokkaHtmlPartial/androidMain" data-filter=":kanvas:dokkaHtmlPartial/androidMain">
+                                <span class="checkbox--icon"></span>
+                                android
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kanvas:dokkaHtmlPartial/appleMain" data-filter=":kanvas:dokkaHtmlPartial/appleMain">
+                                <span class="checkbox--icon"></span>
+                                apple
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kanvas:dokkaHtmlPartial/commonMain" data-filter=":kanvas:dokkaHtmlPartial/commonMain">
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option js-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kanvas:dokkaHtmlPartial/jsMain" data-filter=":kanvas:dokkaHtmlPartial/jsMain">
+                                <span class="checkbox--icon"></span>
+                                js
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
         </div>
-    </div>
-    <div class="navigation-controls">
-        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
-        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
-    </div>
-</nav>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
         <div id="container">
             <div class="sidebar" id="leftColumn">
-                <div class="sidebar--inner" id="sideMenu"></div>
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    krayon
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
             </div>
             <div id="main">
 <div class="main-content" data-page-type="package" id="content" pageids="kanvas::com.juul.krayon.kanvas////PointingToDeclaration//373234492">
@@ -117,7 +170,7 @@
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
                     <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-c-g-context-kanvas/index.html">CGContextKanvas</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">unmanagedContext<span class="token operator">: </span><span data-unresolved-link="platform.CoreGraphics/CGContextRef///PointingToDeclaration/">CGContextRef</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">It is the calling code's responsibility to ensure that <a href="../../kanvas/com.juul.krayon.kanvas/-c-g-context-kanvas/unmanaged-context.html">unmanagedContext</a> outlives this object.</p></div></div>                  </div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-c-g-context-kanvas/index.html">CGContextKanvas</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">unmanagedContext<span class="token operator">: </span><span data-unresolved-link="platform.CoreGraphics/CGContextRef///PointingToDeclaration/">CGContextRef</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">It is the calling code's responsibility to ensure that <a href="../../kanvas/com.juul.krayon.kanvas/-c-g-context-kanvas/unmanaged-context.html">unmanagedContext</a> outlives this object.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -147,7 +200,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-font/index.html">Font</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>names<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fonts are provided as a list of family names, in descending priority.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-font/index.html">Font</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>names<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fonts are provided as a list of family names, in descending priority.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -164,7 +217,7 @@
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
                     <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/jsMain" data-filterable-set=":kanvas:dokkaHtmlPartial/jsMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/jsMain">js</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-html-kanvas/index.html">HtmlKanvas</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/org.w3c.dom/-h-t-m-l-canvas-element/index.html">HTMLCanvasElement</a><span class="token punctuation">, </span></span><span class="parameter ">scalingFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span></span></span><span class="token punctuation">)</span> : <a href="-kanvas/index.html">Kanvas</a>, <a href="-is-point-in-path/index.html">IsPointInPath</a></div></div>                  </div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-html-kanvas/index.html">HtmlKanvas</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/org.w3c.dom/-h-t-m-l-canvas-element/index.html">HTMLCanvasElement</a><span class="token punctuation">, </span></span><span class="parameter ">scalingFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span></span></span><span class="token punctuation">)</span> : <a href="-kanvas/index.html">Kanvas</a>, <a href="-is-point-in-path/index.html">IsPointInPath</a></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -260,7 +313,7 @@
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
                     <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-paint-cache/index.html">PaintCache</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">initial<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="-paint/index.html">Paint</a><span class="token punctuation">, </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Paint.html">Paint</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span></div></div>                  </div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-paint-cache/index.html">PaintCache</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">initial<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="-paint/index.html">Paint</a><span class="token punctuation">, </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Paint.html">Paint</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -292,7 +345,7 @@
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
                     <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/jsMain" data-filterable-set=":kanvas:dokkaHtmlPartial/jsMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/jsMain">js</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-path2-d-marker/index.html">Path2DMarker</a> : <a href="-path-type-marker/index.html">PathTypeMarker</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/org.w3c.dom/-path2-d/index.html">Path2D</a><span class="token operator">&gt; </span></div></div>                  </div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-path2-d-marker/index.html">Path2DMarker</a> : <a href="-path-type-marker/index.html">PathTypeMarker</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/org.w3c.dom/-path2-d/index.html">Path2D</a><span class="token operator">&gt; </span></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -322,7 +375,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-path-type-marker/index.html">PathTypeMarker</a><span class="token operator">&lt;</span><a href="-path-type-marker/index.html">P</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Used to bridge the gap between a <a href="-path/index.html">Path</a> and the platform type required by a <a href="-kanvas/index.html">Kanvas</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-path-type-marker/index.html">PathTypeMarker</a><span class="token operator">&lt;</span><a href="-path-type-marker/index.html">P</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Used to bridge the gap between a <a href="-path/index.html">Path</a> and the platform type required by a <a href="-kanvas/index.html">Kanvas</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -354,7 +407,7 @@
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
                     <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-scaled-is-point-in-path/index.html">ScaledIsPointInPath</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scalingFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span></span></span><span class="token punctuation">)</span> : <a href="-is-point-in-path/index.html">IsPointInPath</a></div><div class="brief "><p class="paragraph">Unlike other platforms, Android doesn't provide an actual way of checking if a point is contained in a path. Android does, however, allow you to intersect paths. As such, check if a very small rectangle around the actual touch point overlaps with the path.</p></div></div>                  </div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-scaled-is-point-in-path/index.html">ScaledIsPointInPath</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scalingFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span></span></span><span class="token punctuation">)</span> : <a href="-is-point-in-path/index.html">IsPointInPath</a></div><div class="brief "><p class="paragraph">Unlike other platforms, Android doesn't provide an actual way of checking if a point is contained in a path. Android does, however, allow you to intersect paths. As such, check if a very small rectangle around the actual touch point overlaps with the path.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -382,13 +435,13 @@
           <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/commonMain" data-filterable-set=":kanvas:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="-d-e-f-a-u-l-t_-m-i-t-e-r_-l-i-m-i-t.html"><span><span>DEFAULT_MITER_LIMIT</span></span></a></div>
+                  <div><a href="-d-e-f-a-u-l-t_-m-i-t-e-r_-l-i-m-i-t.html"><span>DEFAULT_</span><wbr><span>MITER_</span><wbr><span>LIMIT</span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="762000539%2FProperties%2F506614723"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-d-e-f-a-u-l-t_-m-i-t-e-r_-l-i-m-i-t.html">DEFAULT_MITER_LIMIT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">4.0f</span></div><div class="brief "><p class="paragraph">Default chosen to match SVG. See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-d-e-f-a-u-l-t_-m-i-t-e-r_-l-i-m-i-t.html">DEFAULT_MITER_LIMIT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">4.0f</span></div><div class="brief "><p class="paragraph">Default chosen to match SVG. See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -403,7 +456,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="monospace.html">monospace</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="monospace.html">monospace</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -418,7 +471,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="sans-serif.html">sansSerif</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="sans-serif.html">sansSerif</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -433,7 +486,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="serif.html">serif</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="serif.html">serif</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -454,7 +507,7 @@
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
                     <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="add-font-association.html"><span class="token function">addFontAssociation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fontName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/FontRes.html"><span class="token annotation builtin">FontRes</span></a>&nbsp;</span>fontRes<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Associate a Font.name to a <a href="https://developer.android.com/reference/kotlin/androidx/annotation/FontRes.html">FontRes</a> id. As a best-practice, do this up front for any fonts that might be used, as calls to <a href="add-font-association.html">addFontAssociation</a> are cheap and the behavior for missing associations is expensive (<a href="https://developer.android.com/reference/kotlin/android/content/res/Resources.html#getidentifier">Resources.getIdentifier</a>).</p></div></div>                  </div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="add-font-association.html"><span class="token function">addFontAssociation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fontName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/FontRes.html"><span class="token annotation builtin">FontRes</span></a>&nbsp;</span>fontRes<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Associate a Font.name to a <a href="https://developer.android.com/reference/kotlin/androidx/annotation/FontRes.html">FontRes</a> id. As a best-practice, do this up front for any fonts that might be used, as calls to <a href="add-font-association.html">addFontAssociation</a> are cheap and the behavior for missing associations is expensive (<a href="https://developer.android.com/reference/kotlin/android/content/res/Resources.html#getidentifier">Resources.getIdentifier</a>).</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -471,7 +524,7 @@
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
                     <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/androidMain" data-filterable-set=":kanvas:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/androidMain">android</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-android-kanvas.html"><span class="token function">AndroidKanvas</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">canvas<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Canvas.html">Canvas</a><span class="token punctuation">, </span></span><span class="parameter ">scalingFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span><span class="token punctuation">, </span></span><span class="parameter ">paintCache<span class="token operator">: </span><a href="-paint-cache/index.html">PaintCache</a><span class="token operator"> = </span>PaintCache(context)</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-android-kanvas/index.html">AndroidKanvas</a></div><div class="brief "><p class="paragraph">Create an <a href="-android-kanvas/index.html">AndroidKanvas</a>.</p></div></div>                  </div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-android-kanvas.html"><span class="token function">AndroidKanvas</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">canvas<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Canvas.html">Canvas</a><span class="token punctuation">, </span></span><span class="parameter ">scalingFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span><span class="token punctuation">, </span></span><span class="parameter ">paintCache<span class="token operator">: </span><a href="-paint-cache/index.html">PaintCache</a><span class="token operator"> = </span>PaintCache(context)</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-android-kanvas/index.html">AndroidKanvas</a></div><div class="brief "><p class="paragraph">Create an <a href="-android-kanvas/index.html">AndroidKanvas</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -518,7 +571,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><a href="with-clip.html"><span class="token function">withClip</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clip<span class="token operator">: </span><a href="-clip/index.html">Clip</a><span class="token punctuation">, </span></span><span class="parameter ">actions<span class="token operator">: </span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Invokes <a href="with-clip.html">actions</a> inside of a <a href="-kanvas/push-clip.html">Kanvas.pushClip</a>/<a href="-kanvas/pop.html">Kanvas.pop</a> pair.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><a href="with-clip.html"><span class="token function">withClip</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clip<span class="token operator">: </span><a href="-clip/index.html">Clip</a><span class="token punctuation">, </span></span><span class="parameter ">actions<span class="token operator">: </span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Invokes <a href="with-clip.html">actions</a> inside of a <a href="-kanvas/push-clip.html">Kanvas.pushClip</a>/<a href="-kanvas/pop.html">Kanvas.pop</a> pair.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -533,7 +586,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><a href="with-transform.html"><span class="token function">withTransform</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><a href="-transform/index.html">Transform</a><span class="token punctuation">, </span></span><span class="parameter ">actions<span class="token operator">: </span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Invokes <a href="with-transform.html">actions</a> inside of a <a href="-kanvas/push-transform.html">Kanvas.pushTransform</a>/<a href="-kanvas/pop.html">Kanvas.pop</a> pair.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><a href="with-transform.html"><span class="token function">withTransform</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><a href="-transform/index.html">Transform</a><span class="token punctuation">, </span></span><span class="parameter ">actions<span class="token operator">: </span><a href="-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Invokes <a href="with-transform.html">actions</a> inside of a <a href="-kanvas/push-transform.html">Kanvas.pushTransform</a>/<a href="-kanvas/pop.html">Kanvas.pop</a> pair.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -543,12 +596,18 @@
     </div>
   </div>
 </div>
-      <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-      </div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2024 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
             </div>
         </div>
     </div>
 </body>
 </html>
-
