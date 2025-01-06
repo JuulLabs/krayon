@@ -27,6 +27,11 @@ public final class com/juul/krayon/compose/ElementViewKt {
 	public static final fun ElementView (Lkotlinx/coroutines/flow/Flow;Lcom/juul/krayon/element/UpdateElement;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
 }
 
+public final class com/juul/krayon/compose/InteropKt {
+	public static final fun toCompose-Z7dcaks (I)J
+	public static final fun toKrayon-8_81llA (J)I
+}
+
 public final class com/juul/krayon/compose/KanvasKt {
 	public static final fun Kanvas (Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;I)V
 }
