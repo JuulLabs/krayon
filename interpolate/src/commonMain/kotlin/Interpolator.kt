@@ -2,6 +2,7 @@ package com.juul.krayon.interpolate
 
 import com.juul.krayon.color.Color
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 
 public interface Interpolator<T> {
@@ -27,6 +28,11 @@ public fun interpolator(
     start: Instant,
     stop: Instant,
 ): BidirectionalInterpolator<Instant> = LinearInstantInterpolator(start, stop)
+
+public fun interpolator(
+    start: LocalDate,
+    stop: LocalDate,
+): BidirectionalInterpolator<LocalDate> = LinearLocalDateInterpolator(start, stop)
 
 public fun interpolator(
     start: LocalDateTime,
