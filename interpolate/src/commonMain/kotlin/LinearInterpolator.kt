@@ -4,8 +4,12 @@ import com.juul.krayon.color.Color
 import com.juul.krayon.color.lerp
 import com.juul.krayon.time.minus
 import com.juul.krayon.time.plus
+import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.plus
+import kotlin.math.roundToInt
 
 internal class LinearIntInterpolator(
     private val start: Int,
@@ -49,6 +53,20 @@ internal class LinearInstantInterpolator(
     override fun interpolate(fraction: Float): Instant = start + (range * fraction.toDouble())
 
     override fun invert(value: Instant): Float = ((value - start) / range).toFloat()
+}
+
+internal class LinearLocalDateInterpolator(
+    private val start: LocalDate,
+    stop: LocalDate,
+) : BidirectionalInterpolator<LocalDate> {
+
+    private val range = stop.toEpochDays() - start.toEpochDays()
+
+    override fun interpolate(fraction: Float): LocalDate =
+        start + DatePeriod(days = (range * fraction).roundToInt())
+
+    override fun invert(value: LocalDate): Float =
+        (value.toEpochDays() - start.toEpochDays()).toFloat() / range
 }
 
 internal class LinearLocalDateTimeInterpolator(
