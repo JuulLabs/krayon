@@ -14,6 +14,7 @@ public final class com/juul/krayon/interpolate/InterpolatorKt {
 	public static final fun interpolator (FF)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator (II)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator (Lkotlinx/datetime/Instant;Lkotlinx/datetime/Instant;)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
+	public static final fun interpolator (Lkotlinx/datetime/LocalDate;Lkotlinx/datetime/LocalDate;)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)Lcom/juul/krayon/interpolate/BidirectionalInterpolator;
 	public static final fun interpolator-h4DbW5E (II)Lcom/juul/krayon/interpolate/Interpolator;
 }
