@@ -22,7 +22,7 @@ internal class BitmapPool(
         }
         size = newSize
         pool.removeFirstOrNull()
-            ?.apply { if (this.width != width || this.height != height) reconfigure(width, height, config) }
+            ?.also { bmp -> if (bmp.width != width || bmp.height != height) bmp.reconfigure(width, height, config) }
             ?: Bitmap.createBitmap(width, height, config)
     }
 

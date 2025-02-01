@@ -5,6 +5,7 @@ import com.juul.krayon.interpolate.Interpolator
 import com.juul.krayon.interpolate.Inverter
 import com.juul.krayon.interpolate.interpolator
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlin.jvm.JvmName
 
@@ -34,6 +35,8 @@ public fun <R> ContinuousScale<*, R>.domain(vararg domain: Double): ContinuousSc
 
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: Instant): ContinuousScale<Instant, R> = domain(domain.toList())
 
+public fun <R> ContinuousScale<*, R>.domain(vararg domain: LocalDate): ContinuousScale<LocalDate, R> = domain(domain.toList())
+
 public fun <R> ContinuousScale<*, R>.domain(vararg domain: LocalDateTime): ContinuousScale<LocalDateTime, R> = domain(domain.toList())
 
 // List domains
@@ -51,6 +54,11 @@ public fun <R> ContinuousScale<*, R>.domain(
     domain: Iterable<Instant>,
 ): ContinuousScale<Instant, R> = domain(domain.toList(), ::interpolator)
 
+@JvmName("domainLocalDate")
+public fun <R> ContinuousScale<*, R>.domain(
+    domain: Iterable<LocalDate>,
+): ContinuousScale<LocalDate, R> = domain(domain.toList(), ::interpolator)
+
 @JvmName("domainLocalDateTime")
 public fun <R> ContinuousScale<*, R>.domain(
     domain: Iterable<LocalDateTime>,
@@ -64,6 +72,8 @@ public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Float):
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Double): ContinuousScale<D, Double> = range(range.toList())
 
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: Instant): ContinuousScale<D, Instant> = range(range.toList())
+
+public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: LocalDate): ContinuousScale<D, LocalDate> = range(range.toList())
 
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(vararg range: LocalDateTime): ContinuousScale<D, LocalDateTime> = range(
     range.toList(),
@@ -84,6 +94,11 @@ public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Double>):
 
 @JvmName("rangeInstant")
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(range: List<Instant>): ContinuousScale<D, Instant> = range(range, ::interpolator)
+
+@JvmName("rangeLocalDate")
+public fun <D : Comparable<D>> ContinuousScale<D, *>.range(
+    range: List<LocalDate>,
+): ContinuousScale<D, LocalDate> = range(range, ::interpolator)
 
 @JvmName("rangeLocalDateTime")
 public fun <D : Comparable<D>> ContinuousScale<D, *>.range(
