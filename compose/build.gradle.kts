@@ -19,6 +19,8 @@ kotlin {
     iosX64()
     js().browser()
     jvm("desktop")
+    macosArm64()
+    macosX64()
 
     sourceSets {
 
@@ -44,7 +46,7 @@ kotlin {
             dependsOn(skiaMain)
         }
 
-        val iosMain by getting {
+        val appleMain by getting {
             dependsOn(skiaMain)
         }
 
