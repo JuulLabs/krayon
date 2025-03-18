@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import androidx.core.graphics.createBitmap
 
 /** Cache of no-longer-used [Bitmap] that might be useful in the future, to avoid allocating on every draw. */
 internal class BitmapPool(
@@ -23,7 +24,7 @@ internal class BitmapPool(
         size = newSize
         pool.removeFirstOrNull()
             ?.also { bmp -> if (bmp.width != width || bmp.height != height) bmp.reconfigure(width, height, config) }
-            ?: Bitmap.createBitmap(width, height, config)
+            ?: createBitmap(width, height, config)
     }
 
     suspend fun release(bitmap: Bitmap) = mutex.withLock {
