@@ -2,9 +2,9 @@ package com.juul.krayon.element.view
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import androidx.core.graphics.createBitmap
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import androidx.core.graphics.createBitmap
 
 /** Cache of no-longer-used [Bitmap] that might be useful in the future, to avoid allocating on every draw. */
 internal class BitmapPool(
