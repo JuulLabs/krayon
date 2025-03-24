@@ -53,6 +53,10 @@ kotlin {
         val jsMain by getting {
             dependsOn(skiaMain)
         }
+
+        val macosMain by getting {
+            dependsOn(skiaMain)
+        }
     }
 }
 
