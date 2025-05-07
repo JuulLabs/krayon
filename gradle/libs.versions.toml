@@ -6,8 +6,9 @@ android-target = "32"
 compose = "1.7.3"
 coroutines = "1.10.1"
 jacoco = "0.8.7"
-jvm-toolchain = "11"
+jvm-toolchain = "17"
 kotlin = "2.1.20"
+serialization = "1.8.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.10.1" }
@@ -17,10 +18,15 @@ androidx-test = { module = "androidx.test:core", version = "1.6.1" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
+coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.6.2" }
+highlights = { module = "dev.snipme:highlights", version = "1.0.0" }
+markdown = { module = "com.mikepenz:multiplatform-markdown-renderer-m2", version = "0.32.0" }
 material = { module = "com.google.android.material:material", version = "1.12.0" }
+navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version = "2.8.0-alpha10" } # Warning: >2.8.0-alpha10 results in: java.lang.UnsatisfiedLinkError: 'long org.jetbrains.skiko.node.RenderNodeContextKt.RenderNodeContext_nMake(boolean)'
 robolectric = { module = "org.robolectric:robolectric", version = "4.14.1" }
+serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "serialization" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -32,3 +38,4 @@ dokka = { id = "org.jetbrains.dokka", version = "2.0.0" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "5.0.2" }
 maven-publish = { id = "com.vanniktech.maven.publish", version = "0.31.0" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

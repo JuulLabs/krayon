@@ -1,0 +1,25 @@
+graph LR;
+    Data --> Elements
+    subgraph Krayon
+        Elements
+        SvgKanvas
+        subgraph Web
+            HtmlKanvas
+        end
+        subgraph Android
+            AndroidKanvas
+            ComposeKanvas
+        end
+        subgraph iOS
+            CGContextKanvas
+        end
+    end
+    Elements --> HtmlKanvas
+    Elements --> AndroidKanvas
+    Elements --> SvgKanvas
+    Elements --> ComposeKanvas
+    Elements --> CGContextKanvas
+    style Krayon fill:#b3e5fc
+    style Web fill:#e8d44d
+    style Android fill:#9fc137
+    style iOS fill:#adadad
