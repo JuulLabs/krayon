@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalTime::class)
+
 package com.juul.krayon.scale
 
 import com.juul.krayon.time.DayInterval
@@ -22,6 +24,7 @@ import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.nanoseconds
 import kotlin.time.Duration.Companion.seconds
+import kotlin.time.ExperimentalTime
 
 private data class NiceInterval(
     val interval: Interval.Count,

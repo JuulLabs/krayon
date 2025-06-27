@@ -1,10 +1,13 @@
+@file:OptIn(ExperimentalTime::class)
+
 package com.juul.krayon.scale
 
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone.Companion.UTC
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 import com.juul.krayon.scale.ticks as rawTicks
 
 public fun interface Ticker<T> {
