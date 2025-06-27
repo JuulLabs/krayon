@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalTime::class)
+
 package com.juul.krayon.interpolate
 
 import com.juul.krayon.color.Color
@@ -5,11 +7,12 @@ import com.juul.krayon.color.lerp
 import com.juul.krayon.time.minus
 import com.juul.krayon.time.plus
 import kotlinx.datetime.DatePeriod
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.plus
 import kotlin.math.roundToInt
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 internal class LinearIntInterpolator(
     private val start: Int,

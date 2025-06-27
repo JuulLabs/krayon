@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalTime::class)
+
 package com.juul.krayon.compose
 
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -29,7 +31,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.isActive
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 @Composable
 public fun <T> ElementView(
