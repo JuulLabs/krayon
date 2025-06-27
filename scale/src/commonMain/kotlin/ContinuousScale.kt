@@ -1,13 +1,16 @@
+@file:OptIn(ExperimentalTime::class)
+
 package com.juul.krayon.scale
 
 import com.juul.krayon.color.Color
 import com.juul.krayon.interpolate.Interpolator
 import com.juul.krayon.interpolate.Inverter
 import com.juul.krayon.interpolate.interpolator
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlin.jvm.JvmName
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 private val DEFAULT_DOMAIN = listOf(0f, 1f)
 private val DEFAULT_RANGE = listOf(0f, 1f)

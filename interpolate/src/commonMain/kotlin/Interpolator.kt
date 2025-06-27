@@ -1,9 +1,12 @@
+@file:OptIn(ExperimentalTime::class)
+
 package com.juul.krayon.interpolate
 
 import com.juul.krayon.color.Color
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 public interface Interpolator<T> {
     public fun interpolate(fraction: Float): T

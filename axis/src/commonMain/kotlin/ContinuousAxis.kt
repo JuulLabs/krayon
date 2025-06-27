@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalTime::class)
+
 package com.juul.krayon.axis
 
 import com.juul.krayon.axis.Edge.Bottom
@@ -37,10 +39,11 @@ import com.juul.krayon.selection.order
 import com.juul.krayon.selection.remove
 import com.juul.krayon.selection.select
 import com.juul.krayon.selection.selectAll
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlin.jvm.JvmName
 import kotlin.math.max
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 @JvmName("axisLeftFloat")
 public fun axisLeft(scale: ContinuousScale<Float, Float>): ContinuousAxis<Float> = ContinuousAxis(Left, scale, FloatTicker)

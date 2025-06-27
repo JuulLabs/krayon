@@ -3,32 +3,32 @@ agp = "8.10.0" # 7.4.1 is the maximum version supported by IDEA 2023.1
 android-compile = "35"
 android-min = "21"
 android-target = "32"
-compose = "1.8.0"
-coroutines = "1.10.1"
+compose = "1.8.2"
+coroutines = "1.10.2"
 jacoco = "0.8.7"
 jvm-toolchain = "11"
 kotlin = "2.1.21"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.10.1" }
-androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.7.0" }
-androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.0" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.7.1" }
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.1" }
 androidx-test = { module = "androidx.test:core", version = "1.6.1" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.6.2" }
+datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.7.0" }
 material = { module = "com.google.android.material:material", version = "1.12.0" }
-robolectric = { module = "org.robolectric:robolectric", version = "4.14.1" }
+robolectric = { module = "org.robolectric:robolectric", version = "4.15.1" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-api = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.17.0" }
+api = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.18.0" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version = "2.0.0" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinter = { id = "org.jmailen.kotlinter", version = "5.0.2" }
-maven-publish = { id = "com.vanniktech.maven.publish", version = "0.32.0" }
+kotlinter = { id = "org.jmailen.kotlinter", version = "5.1.1" }
+maven-publish = { id = "com.vanniktech.maven.publish", version = "0.33.0" }

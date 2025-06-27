@@ -125,7 +125,7 @@ public final class com/juul/krayon/time/SecondInterval : com/juul/krayon/time/In
 
 public final class com/juul/krayon/time/WeekInterval : com/juul/krayon/time/Interval, com/juul/krayon/time/Interval$Count {
 	public static final field Companion Lcom/juul/krayon/time/WeekInterval$Companion;
-	public fun <init> (Ljava/time/DayOfWeek;)V
+	public fun <init> (Lkotlinx/datetime/DayOfWeek;)V
 	public fun ceil (Lkotlinx/datetime/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
 	public fun count (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;)I
 	public fun every (I)Lcom/juul/krayon/time/Interval;
