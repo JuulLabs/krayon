@@ -81,6 +81,7 @@ android {
         // False positives for some reason
         disable += "MissingClass"
         disable += "UnusedResources"
+        disable += "GradleDependency"
     }
 }
 
