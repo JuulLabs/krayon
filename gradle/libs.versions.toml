@@ -2,7 +2,7 @@
 agp = "8.9.2" # 7.4.1 is the maximum version supported by IDEA 2023.1
 android-compile = "36"
 android-min = "21"
-android-target = "32"
+android-target = "36"
 compose = "1.8.2"
 coroutines = "1.10.2"
 jacoco = "0.8.7"
