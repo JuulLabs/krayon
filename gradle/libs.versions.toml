@@ -1,8 +1,8 @@
 [versions]
-agp = "8.9.2" # 7.4.1 is the maximum version supported by IDEA 2023.1
-android-compile = "35"
+agp = "8.11.1" # 7.4.1 is the maximum version supported by IDEA 2023.1
+android-compile = "36"
 android-min = "21"
-android-target = "32"
+android-target = "36"
 compose = "1.8.2"
 coroutines = "1.10.2"
 jacoco = "0.8.7"
@@ -18,17 +18,17 @@ coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-androi
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.7.0" }
+datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.7.1" }
 material = { module = "com.google.android.material:material", version = "1.12.0" }
 robolectric = { module = "org.robolectric:robolectric", version = "4.15.1" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-api = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.18.0" }
+api = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.18.1" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version = "2.0.0" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "5.1.1" }
-maven-publish = { id = "com.vanniktech.maven.publish", version = "0.33.0" }
+maven-publish = { id = "com.vanniktech.maven.publish", version = "0.34.0" }
