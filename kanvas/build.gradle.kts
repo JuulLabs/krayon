@@ -33,6 +33,7 @@ kotlin {
 
         commonMain.dependencies {
             api(projects.color)
+            api(projects.core)
         }
 
         commonTest.dependencies {

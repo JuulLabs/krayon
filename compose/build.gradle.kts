@@ -7,6 +7,7 @@ plugins {
     jacoco
     id("org.jetbrains.dokka")
     id("com.vanniktech.maven.publish")
+    alias(libs.plugins.atomicfu)
 }
 
 kotlin {
