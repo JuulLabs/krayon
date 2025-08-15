@@ -27,12 +27,15 @@ kotlin {
         applyDefaultHierarchyTemplate()
 
         commonMain.dependencies {
+            api(projects.core)
             api(projects.kanvas)
             api(projects.element)
+            api(compose.components.resources)
             api(compose.runtime)
             api(compose.foundation)
             api(compose.material)
             implementation(libs.datetime)
+            implementation(libs.kotlinx.collections.immutable)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))

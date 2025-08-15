@@ -21,6 +21,7 @@ include(
     "box",
     "color",
     "compose",
+    "core",
     "element",
     "element-view",
     "hierarchy",
