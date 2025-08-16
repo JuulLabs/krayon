@@ -16,4 +16,7 @@ public class InfiniteCache<K, V> : Cache<K, V> {
     override fun set(key: K, value: V) {
         guard.withLock { cache[key] = value }
     }
+
+    override fun getOrPut(key: K, defaultValue: () -> V): V =
+        guard.withLock { cache.getOrPut(key, defaultValue) }
 }

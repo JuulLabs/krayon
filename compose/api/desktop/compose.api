@@ -36,9 +36,8 @@ public final class com/juul/krayon/compose/KanvasKt {
 	public static final fun Kanvas (Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;I)V
 }
 
-public final class com/juul/krayon/compose/ResourceCache {
-	public static final field $stable I
-	public fun <init> ()V
+public final class com/juul/krayon/compose/KrayonExtensionsKt {
+	public static final fun addFontAssociation (Lcom/juul/krayon/core/Krayon;Ljava/lang/String;Lorg/jetbrains/compose/resources/FontResource;Lorg/jetbrains/compose/resources/ResourceEnvironment;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class com/juul/krayon/compose/SkiaIsPointInPath : com/juul/krayon/kanvas/IsPointInPath {

@@ -32,7 +32,7 @@ kotlin {
             languageSettings.optIn("com.juul.krayon.core.InternalKrayonApi")
         }
 
-        commonMain.dependencies {
+        androidMain.dependencies {
             implementation(libs.androidx.startup.runtime)
         }
 

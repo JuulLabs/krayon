@@ -54,6 +54,19 @@ public class LruCache<K, V>(private val capacity: Int) : Cache<K, V> {
         }
     }
 
+    override fun getOrPut(key: K, defaultValue: () -> V): V {
+        guard.withLock {
+            if (key in index) {
+                @Suppress("UNCHECKED_CAST")
+                return get(key) as V
+            } else {
+                val value = defaultValue()
+                set(key, value)
+                return value
+            }
+        }
+    }
+
     private fun insert(node: Node<K, V>) {
         node.previous = null
         node.next = head
