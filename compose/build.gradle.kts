@@ -74,3 +74,5 @@ android {
         disable += "GradleDependency"
     }
 }
+
+compose.resources { generateResClass = never }
