@@ -28,6 +28,7 @@ kotlin {
 
     sourceSets {
         all {
+            languageSettings.optIn("com.juul.krayon.core.InternalKrayonApi")
             languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
         }
 

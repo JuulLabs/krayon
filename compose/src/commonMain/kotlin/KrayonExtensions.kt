@@ -1,20 +1,15 @@
 package com.juul.krayon.compose
 
 import com.juul.krayon.core.Krayon
-import kotlinx.atomicfu.atomic
-import kotlinx.atomicfu.update
-import kotlinx.collections.immutable.ImmutableMap
-import kotlinx.collections.immutable.persistentMapOf
+import com.juul.krayon.core.cache.InfiniteCache
 import org.jetbrains.compose.resources.FontResource
 import org.jetbrains.compose.resources.ResourceEnvironment
-import org.jetbrains.compose.resources.getFontResourceBytes
 import org.jetbrains.compose.resources.getSystemResourceEnvironment
 
-private val _fontAssociations = atomic(persistentMapOf<String, ByteArray>())
-internal val fontAssociations: ImmutableMap<String, ByteArray> get() = _fontAssociations.value
+internal val fontAssociations = InfiniteCache<String, NativeTypeface>()
 
 /**
- * Registers [resource] as the font to use for [name] inside Compose canvases.
+ * Registers [resource] as the font to use for [name] inside a [ComposeKanvas].
  *
  * An [environment] can be obtained by calling [getSystemResourceEnvironment]. Note that
  * [getSystemResourceEnvironment] is considered expensive, so when possible it is best to call it
@@ -26,6 +21,5 @@ public suspend fun Krayon.addFontAssociation(
     resource: FontResource,
     environment: ResourceEnvironment,
 ) {
-    val bytes = getFontResourceBytes(environment, resource)
-    _fontAssociations.update { it.put(name, bytes) }
+    fontAssociations[name] = loadNativeTypeface(resource, environment)
 }

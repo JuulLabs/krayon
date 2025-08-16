@@ -7,7 +7,6 @@ plugins {
     jacoco
     id("org.jetbrains.dokka")
     id("com.vanniktech.maven.publish")
-    alias(libs.plugins.atomicfu)
 }
 
 kotlin {
@@ -27,6 +26,10 @@ kotlin {
 
         applyDefaultHierarchyTemplate()
 
+        all {
+            languageSettings.optIn("com.juul.krayon.core.InternalKrayonApi")
+        }
+
         commonMain.dependencies {
             api(projects.core)
             api(projects.kanvas)
@@ -36,7 +39,6 @@ kotlin {
             api(compose.foundation)
             api(compose.material)
             implementation(libs.datetime)
-            implementation(libs.kotlinx.collections.immutable)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
