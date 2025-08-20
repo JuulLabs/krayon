@@ -22,7 +22,7 @@ private val TILE_MODE = Shader.TileMode.CLAMP
  * fonts that might be used, as calls to [addFontAssociation] are cheap and the behavior
  * for missing associations is expensive ([Resources.getIdentifier]).
  *
- * These associations are only used when drawing to an [AndroidKanvas]. If using compose with a
+ * These associations are only used when drawing to an [AndroidKanvas]. If using Compose with a
  * [ComposeKanvas], see the overload with [FontResource] instead.
  */
 @Deprecated(

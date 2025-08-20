@@ -1,14 +1,7 @@
 package com.juul.krayon.compose
 
 import androidx.compose.ui.graphics.nativeCanvas
-import com.juul.krayon.core.cache.InfiniteCache
 import com.juul.krayon.kanvas.Paint
-import com.juul.krayon.kanvas.monospace
-import com.juul.krayon.kanvas.sansSerif
-import com.juul.krayon.kanvas.serif
-import org.jetbrains.skia.FontMgr
-import org.jetbrains.skia.FontStyle
-import org.jetbrains.skia.Typeface
 import org.jetbrains.skia.impl.use
 import org.jetbrains.skia.Font as SkiaFont
 import org.jetbrains.skia.Paint as SkiaPaint

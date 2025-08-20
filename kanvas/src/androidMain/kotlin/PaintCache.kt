@@ -1,7 +1,6 @@
 package com.juul.krayon.kanvas
 
 import android.content.Context
-import com.juul.krayon.core.InternalKrayonApi
 import com.juul.krayon.core.cache.Cache
 import com.juul.krayon.core.cache.LruCache
 import android.graphics.Paint as AndroidPaint
