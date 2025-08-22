@@ -10,8 +10,7 @@ public fun Kanvas(
     modifier: Modifier,
     onDraw: Kanvas.() -> Unit,
 ) {
-    val resourceCache = rememberResourceCache()
     Canvas(modifier) {
-        onDraw(ComposeKanvas(scope = this, resourceCache))
+        onDraw(ComposeKanvas(scope = this))
     }
 }

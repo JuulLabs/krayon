@@ -1,0 +1,27 @@
+public abstract interface annotation class com/juul/krayon/core/InternalKrayonApi : java/lang/annotation/Annotation {
+}
+
+public final class com/juul/krayon/core/Krayon {
+	public static final field INSTANCE Lcom/juul/krayon/core/Krayon;
+}
+
+public abstract interface class com/juul/krayon/core/cache/Cache {
+	public abstract fun get (Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun getOrPut (Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+	public abstract fun set (Ljava/lang/Object;Ljava/lang/Object;)V
+}
+
+public final class com/juul/krayon/core/cache/InfiniteCache : com/juul/krayon/core/cache/Cache {
+	public fun <init> ()V
+	public fun get (Ljava/lang/Object;)Ljava/lang/Object;
+	public fun getOrPut (Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+	public fun set (Ljava/lang/Object;Ljava/lang/Object;)V
+}
+
+public final class com/juul/krayon/core/cache/LruCache : com/juul/krayon/core/cache/Cache {
+	public fun <init> (I)V
+	public fun get (Ljava/lang/Object;)Ljava/lang/Object;
+	public fun getOrPut (Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+	public fun set (Ljava/lang/Object;Ljava/lang/Object;)V
+}
+

@@ -28,11 +28,13 @@ kotlin {
 
     sourceSets {
         all {
+            languageSettings.optIn("com.juul.krayon.core.InternalKrayonApi")
             languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
         }
 
         commonMain.dependencies {
             api(projects.color)
+            api(projects.core)
         }
 
         commonTest.dependencies {

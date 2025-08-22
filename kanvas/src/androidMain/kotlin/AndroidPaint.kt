@@ -11,24 +11,32 @@ import android.graphics.SweepGradient
 import android.graphics.Typeface
 import androidx.annotation.FontRes
 import androidx.core.content.res.ResourcesCompat
+import com.juul.krayon.core.Krayon
 import android.graphics.Paint as AndroidPaint
 
 /** TODO: Double-check that this is the behavior used by other platforms. */
 private val TILE_MODE = Shader.TileMode.CLAMP
 
-/** Cache from [Font.name] to [FontRes] id. */
-private val fontResources = mutableMapOf<String, Int>()
-
 /**
  * Associate a [Font.name] to a [FontRes] id. As a best-practice, do this up front for any
  * fonts that might be used, as calls to [addFontAssociation] are cheap and the behavior
  * for missing associations is expensive ([Resources.getIdentifier]).
+ *
+ * These associations are only used when drawing to an [AndroidKanvas]. If using Compose with a
+ * [ComposeKanvas], see the overload with [FontResource] instead.
  */
+@Deprecated(
+    message = "This function has been moved to an extension function on Krayon. ",
+    replaceWith = ReplaceWith(
+        expression = "Krayon.addFontAssociation(fontName, fontRes)",
+        imports = ["com.juul.krayon.core.Krayon", "com.juul.krayon.kanvas.addFontAssociation"],
+    ),
+)
 public fun addFontAssociation(
     fontName: String,
     @FontRes fontRes: Int,
 ) {
-    fontResources[fontName] = fontRes
+    Krayon.addFontAssociation(fontName, fontRes)
 }
 
 /** Converts a Krayon [Paint] into an [AndroidPaint]. */

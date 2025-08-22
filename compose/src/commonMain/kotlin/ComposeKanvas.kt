@@ -15,7 +15,6 @@ import com.juul.krayon.kanvas.Transform
 
 public class ComposeKanvas internal constructor(
     internal val scope: DrawScope,
-    internal val resourceCache: ResourceCache,
 ) : Kanvas {
 
     override val width: Float = scope.size.width / scope.density

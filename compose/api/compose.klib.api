@@ -25,10 +25,6 @@ final class com.juul.krayon.compose/ComposeKanvas : com.juul.krayon.kanvas/Kanva
     final fun pushTransform(com.juul.krayon.kanvas/Transform) // com.juul.krayon.compose/ComposeKanvas.pushTransform|pushTransform(com.juul.krayon.kanvas.Transform){}[0]
 }
 
-final class com.juul.krayon.compose/ResourceCache { // com.juul.krayon.compose/ResourceCache|null[0]
-    constructor <init>() // com.juul.krayon.compose/ResourceCache.<init>|<init>(){}[0]
-}
-
 final class com.juul.krayon.compose/SkiaIsPointInPath : com.juul.krayon.kanvas/IsPointInPath { // com.juul.krayon.compose/SkiaIsPointInPath|null[0]
     constructor <init>() // com.juul.krayon.compose/SkiaIsPointInPath.<init>|<init>(){}[0]
 
@@ -43,7 +39,6 @@ final object com.juul.krayon.compose/ComposePathMarker : com.juul.krayon.kanvas/
 final val com.juul.krayon.compose/com_juul_krayon_compose_ComposeKanvas$stableprop // com.juul.krayon.compose/com_juul_krayon_compose_ComposeKanvas$stableprop|#static{}com_juul_krayon_compose_ComposeKanvas$stableprop[0]
 final val com.juul.krayon.compose/com_juul_krayon_compose_ComposePathBuilder$stableprop // com.juul.krayon.compose/com_juul_krayon_compose_ComposePathBuilder$stableprop|#static{}com_juul_krayon_compose_ComposePathBuilder$stableprop[0]
 final val com.juul.krayon.compose/com_juul_krayon_compose_ComposePathMarker$stableprop // com.juul.krayon.compose/com_juul_krayon_compose_ComposePathMarker$stableprop|#static{}com_juul_krayon_compose_ComposePathMarker$stableprop[0]
-final val com.juul.krayon.compose/com_juul_krayon_compose_ResourceCache$stableprop // com.juul.krayon.compose/com_juul_krayon_compose_ResourceCache$stableprop|#static{}com_juul_krayon_compose_ResourceCache$stableprop[0]
 final val com.juul.krayon.compose/com_juul_krayon_compose_SkiaIsPointInPath$stableprop // com.juul.krayon.compose/com_juul_krayon_compose_SkiaIsPointInPath$stableprop|#static{}com_juul_krayon_compose_SkiaIsPointInPath$stableprop[0]
 
 final fun (androidx.compose.ui.graphics/Color).com.juul.krayon.compose/toKrayon(): com.juul.krayon.color/Color // com.juul.krayon.compose/toKrayon|toKrayon@androidx.compose.ui.graphics.Color(){}[0]
@@ -55,5 +50,5 @@ final fun com.juul.krayon.compose/Kanvas(androidx.compose.ui/Modifier, kotlin/Fu
 final fun com.juul.krayon.compose/com_juul_krayon_compose_ComposeKanvas$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_ComposeKanvas$stableprop_getter|com_juul_krayon_compose_ComposeKanvas$stableprop_getter(){}[0]
 final fun com.juul.krayon.compose/com_juul_krayon_compose_ComposePathBuilder$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_ComposePathBuilder$stableprop_getter|com_juul_krayon_compose_ComposePathBuilder$stableprop_getter(){}[0]
 final fun com.juul.krayon.compose/com_juul_krayon_compose_ComposePathMarker$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_ComposePathMarker$stableprop_getter|com_juul_krayon_compose_ComposePathMarker$stableprop_getter(){}[0]
-final fun com.juul.krayon.compose/com_juul_krayon_compose_ResourceCache$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_ResourceCache$stableprop_getter|com_juul_krayon_compose_ResourceCache$stableprop_getter(){}[0]
 final fun com.juul.krayon.compose/com_juul_krayon_compose_SkiaIsPointInPath$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_SkiaIsPointInPath$stableprop_getter|com_juul_krayon_compose_SkiaIsPointInPath$stableprop_getter(){}[0]
+final suspend fun (com.juul.krayon.core/Krayon).com.juul.krayon.compose/addFontAssociation(kotlin/String, org.jetbrains.compose.resources/FontResource, org.jetbrains.compose.resources/ResourceEnvironment) // com.juul.krayon.compose/addFontAssociation|addFontAssociation@com.juul.krayon.core.Krayon(kotlin.String;org.jetbrains.compose.resources.FontResource;org.jetbrains.compose.resources.ResourceEnvironment){}[0]

@@ -1,0 +1,35 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.juul.krayon:core>
+open annotation class com.juul.krayon.core/InternalKrayonApi : kotlin/Annotation { // com.juul.krayon.core/InternalKrayonApi|null[0]
+    constructor <init>() // com.juul.krayon.core/InternalKrayonApi.<init>|<init>(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: kotlin/Any?> com.juul.krayon.core.cache/Cache { // com.juul.krayon.core.cache/Cache|null[0]
+    abstract fun get(#A): #B? // com.juul.krayon.core.cache/Cache.get|get(1:0){}[0]
+    abstract fun getOrPut(#A, kotlin/Function0<#B>): #B // com.juul.krayon.core.cache/Cache.getOrPut|getOrPut(1:0;kotlin.Function0<1:1>){}[0]
+    abstract fun set(#A, #B) // com.juul.krayon.core.cache/Cache.set|set(1:0;1:1){}[0]
+}
+
+final class <#A: kotlin/Any?, #B: kotlin/Any?> com.juul.krayon.core.cache/InfiniteCache : com.juul.krayon.core.cache/Cache<#A, #B> { // com.juul.krayon.core.cache/InfiniteCache|null[0]
+    constructor <init>() // com.juul.krayon.core.cache/InfiniteCache.<init>|<init>(){}[0]
+
+    final fun get(#A): #B? // com.juul.krayon.core.cache/InfiniteCache.get|get(1:0){}[0]
+    final fun getOrPut(#A, kotlin/Function0<#B>): #B // com.juul.krayon.core.cache/InfiniteCache.getOrPut|getOrPut(1:0;kotlin.Function0<1:1>){}[0]
+    final fun set(#A, #B) // com.juul.krayon.core.cache/InfiniteCache.set|set(1:0;1:1){}[0]
+}
+
+final class <#A: kotlin/Any?, #B: kotlin/Any?> com.juul.krayon.core.cache/LruCache : com.juul.krayon.core.cache/Cache<#A, #B> { // com.juul.krayon.core.cache/LruCache|null[0]
+    constructor <init>(kotlin/Int) // com.juul.krayon.core.cache/LruCache.<init>|<init>(kotlin.Int){}[0]
+
+    final fun get(#A): #B? // com.juul.krayon.core.cache/LruCache.get|get(1:0){}[0]
+    final fun getOrPut(#A, kotlin/Function0<#B>): #B // com.juul.krayon.core.cache/LruCache.getOrPut|getOrPut(1:0;kotlin.Function0<1:1>){}[0]
+    final fun set(#A, #B) // com.juul.krayon.core.cache/LruCache.set|set(1:0;1:1){}[0]
+}
+
+final object com.juul.krayon.core/Krayon // com.juul.krayon.core/Krayon|null[0]

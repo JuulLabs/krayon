@@ -1,12 +1,17 @@
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
-    kotlin("plugin.compose")
-    id("org.jetbrains.compose")
     id("org.jmailen.kotlinter")
     jacoco
     id("org.jetbrains.dokka")
     id("com.vanniktech.maven.publish")
+    alias(libs.plugins.atomicfu)
+}
+
+apply(from = rootProject.file("gradle/jacoco.gradle.kts"))
+
+jacoco {
+    toolVersion = libs.versions.jacoco.get()
 }
 
 kotlin {
@@ -18,46 +23,21 @@ kotlin {
     iosSimulatorArm64()
     iosX64()
     js().browser()
-    jvm("desktop")
+    jvm()
     macosArm64()
     macosX64()
 
     sourceSets {
-
-        applyDefaultHierarchyTemplate()
-
         all {
             languageSettings.optIn("com.juul.krayon.core.InternalKrayonApi")
         }
 
-        commonMain.dependencies {
-            api(projects.core)
-            api(projects.kanvas)
-            api(projects.element)
-            api(compose.components.resources)
-            api(compose.runtime)
-            api(compose.foundation)
-            api(compose.material)
-            implementation(libs.datetime)
+        androidMain.dependencies {
+            implementation(libs.androidx.startup.runtime)
         }
+
         commonTest.dependencies {
             implementation(kotlin("test"))
-        }
-
-        val skiaMain by creating {
-            dependsOn(commonMain.get())
-        }
-
-        val desktopMain by getting {
-            dependsOn(skiaMain)
-        }
-
-        val appleMain by getting {
-            dependsOn(skiaMain)
-        }
-
-        val jsMain by getting {
-            dependsOn(skiaMain)
         }
     }
 }
@@ -66,7 +46,7 @@ android {
     compileSdk = libs.versions.android.compile.get().toInt()
     defaultConfig.minSdk = libs.versions.android.min.get().toInt()
 
-    namespace = "com.juul.krayon.compose"
+    namespace = "com.juul.krayon.core"
 
     lint {
         abortOnError = true
@@ -74,5 +54,3 @@ android {
         disable += "GradleDependency"
     }
 }
-
-compose.resources { generateResClass = never }
