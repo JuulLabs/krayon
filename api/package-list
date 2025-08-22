@@ -8,6 +8,9 @@ module:color
 com.juul.krayon.color
 module:compose
 com.juul.krayon.compose
+module:core
+com.juul.krayon.core
+com.juul.krayon.core.cache
 module:element
 com.juul.krayon.element
 module:element-view
