@@ -528,7 +528,7 @@ table td {
     text-align: center;
   }
   .site-nav .menu-icon::before {
-    font-family: "Font Awesome 6 Free";
+    font-family: "Font Awesome 7 Free";
     font-weight: 900;
   }
   .site-nav .menu-icon > svg path {
