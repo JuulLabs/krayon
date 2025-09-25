@@ -30,28 +30,34 @@ private fun Transform.asMatrix(): Matrix {
     return buffer
 }
 
-private tailrec fun Transform.applyTo(matrix: Matrix) {
+private fun Transform.applyTo(matrix: Matrix) {
     when (this) {
         is InOrder -> transformations.forEach { transform ->
-            @Suppress("NON_TAIL_RECURSIVE_CALL")
             transform.applyTo(matrix)
         }
 
         is Rotate -> if (pivotX == 0f && pivotY == 0f) {
-            matrix.rotateX(degrees)
+            matrix.rotateZ(degrees)
         } else {
-            split().applyTo(matrix)
+            matrix.translate(pivotX, pivotY)
+            matrix.rotateZ(degrees)
+            matrix.translate(-pivotX, -pivotY)
         }
 
         is Scale -> if (pivotX == 0f && pivotY == 0f) {
             matrix.scale(horizontal, vertical)
         } else {
-            split().applyTo(matrix)
+            matrix.translate(pivotX, pivotY)
+            matrix.scale(horizontal, vertical)
+            matrix.translate(-pivotX, -pivotY)
         }
 
         is Skew -> {
-            matrix.values[Matrix.SkewX] = horizontal
-            matrix.values[Matrix.SkewY] = vertical
+            // No helper function for skew, so eat the cost of allocation
+            matrix *= Matrix().apply {
+                values[Matrix.SkewX] = horizontal
+                values[Matrix.SkewY] = vertical
+            }
         }
 
         is Translate -> matrix.translate(horizontal, vertical)
