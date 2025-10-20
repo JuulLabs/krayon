@@ -556,6 +556,7 @@ table td {
   }
   .site-nav .nav-item {
     display: block;
+    margin-right: 15px;
     padding: 5px 0;
     color: rgb(65.25, 65.25, 65.25);
     line-height: 1.5;
