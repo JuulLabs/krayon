@@ -2,7 +2,6 @@ package com.juul.krayon.compose
 
 import androidx.compose.ui.graphics.nativeCanvas
 import com.juul.krayon.kanvas.Paint
-import org.jetbrains.skia.FontHinting
 import org.jetbrains.skia.impl.use
 import org.jetbrains.skia.Font as SkiaFont
 import org.jetbrains.skia.Paint as SkiaPaint
@@ -44,9 +43,7 @@ private fun measureTextWidth(text: String, font: SkiaFont, paint: SkiaPaint): Fl
     // TODO: Figure out why `font.measureTextWidth(text, paint)` doesn't return the same thing every time.
     //       This appears to be a bug on web only, but causes really painful text jumpiness.
     val glyphs = font.getStringGlyphs(text)
-    var totalWidth = 0f
-    for (rect in font.getBounds(glyphs, paint)) {
-        totalWidth += rect.width
-    }
-    return totalWidth
+    val bounds = font.getBounds(glyphs, paint)
+    val positions = font.getXPositions(glyphs)
+    return positions.last() + bounds.last().width
 }
