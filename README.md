@@ -8,8 +8,6 @@
 
 Multiplatform drawing library. Provides a multiplatform canvas and chart rendering framework.
 
-See the [project website](https://juullabs.github.io/krayon/) for documentation and APIs.
-
 # License
 
 ```
