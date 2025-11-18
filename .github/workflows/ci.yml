@@ -38,4 +38,3 @@ jobs:
           -PVERSION_NAME=unspecified
           -PRELEASE_SIGNING_ENABLED=false
           publishToMavenLocal
-      - run: ./gradlew :website:browserBuild
