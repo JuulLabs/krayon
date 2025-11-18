@@ -1,27 +1,14 @@
 plugins {
-    id("com.android.library")
-    kotlin("multiplatform")
-    id("com.vanniktech.maven.publish")
+    id("library-conventions")
 }
 
 kotlin {
-    explicitApi()
-    jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
-
-    androidTarget().publishAllLibraryVariants()
-    iosArm64()
-    iosSimulatorArm64()
-    iosX64()
-    js().browser()
-    jvm()
-    macosArm64()
-    macosX64()
-
     sourceSets {
         commonMain.dependencies {
             api(projects.axis)
             api(projects.color)
             api(projects.element)
+            api(projects.elementView)
             api(projects.hierarchy)
             api(projects.interpolate)
             api(projects.kanvas)
@@ -29,14 +16,6 @@ kotlin {
             api(projects.selection)
             api(projects.shape)
             api(projects.time)
-        }
-
-        androidMain.dependencies {
-            api(projects.elementView)
-        }
-
-        jsMain.dependencies {
-            api(projects.elementView)
         }
     }
 }
@@ -58,16 +37,3 @@ kotlin {
 //         addModule(projects.time)
 //     }
 // }
-
-android {
-    compileSdk = libs.versions.android.compile.get().toInt()
-    defaultConfig.minSdk = libs.versions.android.min.get().toInt()
-
-    namespace = "com.juul.krayon.box"
-
-    lint {
-        abortOnError = true
-        warningsAsErrors = true
-        disable += "GradleDependency"
-    }
-}

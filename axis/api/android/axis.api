@@ -1,0 +1,54 @@
+public final class com/juul/krayon/axis/ContinuousAxis {
+	public final fun applySelection (Lcom/juul/krayon/selection/Selection;)V
+	public final fun getFont ()Lcom/juul/krayon/kanvas/Font;
+	public final fun getFormatter ()Lkotlin/jvm/functions/Function1;
+	public final fun getLineColor-b4wfQcs ()I
+	public final fun getLineWidth ()F
+	public final fun getTextColor-b4wfQcs ()I
+	public final fun getTextSize ()F
+	public final fun getTickCount ()I
+	public final fun getTickPadding ()F
+	public final fun getTickSizeInner ()F
+	public final fun getTickSizeOuter ()F
+	public final fun setFont (Lcom/juul/krayon/kanvas/Font;)V
+	public final fun setFormatter (Lkotlin/jvm/functions/Function1;)V
+	public final fun setLineColor-Z7dcaks (I)V
+	public final fun setLineWidth (F)V
+	public final fun setTextColor-Z7dcaks (I)V
+	public final fun setTextSize (F)V
+	public final fun setTickCount (I)V
+	public final fun setTickPadding (F)V
+	public final fun setTickSizeInner (F)V
+	public final fun setTickSizeOuter (F)V
+}
+
+public final class com/juul/krayon/axis/ContinuousAxisKt {
+	public static final fun axisBottomDouble (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisBottomFloat (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisBottomInstant (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisBottomLocalDateTime (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisLeftDouble (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisLeftFloat (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisLeftInstant (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisLeftLocalDateTime (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisRightDouble (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisRightFloat (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisRightInstant (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisRightLocalDateTime (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisTopDouble (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisTopFloat (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisTopInstant (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun axisTopLocalDateTime (Lcom/juul/krayon/scale/ContinuousScale;)Lcom/juul/krayon/axis/ContinuousAxis;
+	public static final fun call (Lcom/juul/krayon/selection/Selection;Lcom/juul/krayon/axis/ContinuousAxis;)V
+}
+
+public final class com/juul/krayon/axis/Edge : java/lang/Enum {
+	public static final field Bottom Lcom/juul/krayon/axis/Edge;
+	public static final field Left Lcom/juul/krayon/axis/Edge;
+	public static final field Right Lcom/juul/krayon/axis/Edge;
+	public static final field Top Lcom/juul/krayon/axis/Edge;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/juul/krayon/axis/Edge;
+	public static fun values ()[Lcom/juul/krayon/axis/Edge;
+}
+
