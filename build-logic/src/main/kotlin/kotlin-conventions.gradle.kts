@@ -10,6 +10,10 @@ kotlin {
 
     applyDefaultHierarchyTemplate()
 
+    compilerOptions {
+        freeCompilerArgs.add("-Xexpect-actual-classes")
+    }
+
     sourceSets {
         commonTest.dependencies {
             implementation(kotlin("test"))

@@ -1,0 +1,48 @@
+public final class com/juul/krayon/compose/ComposeKanvas : com/juul/krayon/kanvas/Kanvas {
+	public static final field $stable I
+	public fun drawArc (FFFFFFLcom/juul/krayon/kanvas/Paint;)V
+	public fun drawCircle (FFFLcom/juul/krayon/kanvas/Paint;)V
+	public fun drawColor-Z7dcaks (I)V
+	public fun drawLine (FFFFLcom/juul/krayon/kanvas/Paint;)V
+	public fun drawOval (FFFFLcom/juul/krayon/kanvas/Paint;)V
+	public fun drawPath (Lcom/juul/krayon/kanvas/Path;Lcom/juul/krayon/kanvas/Paint;)V
+	public fun drawRect (FFFFLcom/juul/krayon/kanvas/Paint;)V
+	public fun drawText (Ljava/lang/CharSequence;FFLcom/juul/krayon/kanvas/Paint;)V
+	public fun getHeight ()F
+	public fun getWidth ()F
+	public fun pop ()V
+	public fun pushClip (Lcom/juul/krayon/kanvas/Clip;)V
+	public fun pushTransform (Lcom/juul/krayon/kanvas/Transform;)V
+}
+
+public final class com/juul/krayon/compose/ComposePathMarker : com/juul/krayon/kanvas/PathTypeMarker {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/juul/krayon/compose/ComposePathMarker;
+	public fun getBuilder ()Lcom/juul/krayon/kanvas/PathBuilder;
+}
+
+public final class com/juul/krayon/compose/ElementViewKt {
+	public static final fun ElementView (Landroidx/compose/runtime/State;Lcom/juul/krayon/element/UpdateElement;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun ElementView (Lkotlin/jvm/functions/Function0;Lcom/juul/krayon/element/UpdateElement;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun ElementView (Lkotlinx/coroutines/flow/Flow;Lcom/juul/krayon/element/UpdateElement;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+}
+
+public final class com/juul/krayon/compose/InteropKt {
+	public static final fun toCompose-Z7dcaks (I)J
+	public static final fun toKrayon-8_81llA (J)I
+}
+
+public final class com/juul/krayon/compose/KanvasKt {
+	public static final fun Kanvas (Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;I)V
+}
+
+public final class com/juul/krayon/compose/KrayonExtensionsKt {
+	public static final fun addFontAssociation (Lcom/juul/krayon/core/Krayon;Ljava/lang/String;Lorg/jetbrains/compose/resources/FontResource;Lorg/jetbrains/compose/resources/ResourceEnvironment;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/juul/krayon/compose/SkiaIsPointInPath : com/juul/krayon/kanvas/IsPointInPath {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun isPointInPath (Lcom/juul/krayon/kanvas/Transform;Lcom/juul/krayon/kanvas/Path;FF)Z
+}
+
