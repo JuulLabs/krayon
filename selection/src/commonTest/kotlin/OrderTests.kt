@@ -59,8 +59,9 @@ class OrderTests {
         val two = TextElement().apply { text = "2" }
         val three = TextElement().apply { text = "3" }
         val four = TextElement().apply { text = "4" }
+        val five = TextElement().apply { text = "5" }
 
-        val elements = listOf(one, two, three, four)
+        val elements = listOf(one, two, three, four, five)
         for (permutation in elements.permutations()) {
             val root = RootElement()
 
@@ -73,12 +74,12 @@ class OrderTests {
                 ),
             ).order()
 
-            // The order across all children is dependent on the input order, but we only care about these relations
+            // `order` doesn't guarantee an ordering of groups within the list, so just check within each group
             assertTrue { root.children.indexOf(three) < root.children.indexOf(one) }
             assertTrue { root.children.indexOf(four) < root.children.indexOf(two) }
 
             // Sanity check that we didn't lose anything
-            assertEquals(setOf(one, two, three, four), root.children.toSet())
+            assertEquals(setOf(one, two, three, four, five), root.children.toSet())
         }
     }
 
