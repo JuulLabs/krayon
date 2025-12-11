@@ -8,18 +8,17 @@ public fun <E : Element, D, S : Selection<E, D>> S.order(): S {
         val parent = group.parent ?: continue
         val nodes = group.nodes
 
-        var next: E? = null
-        for (index in nodes.lastIndex downTo 0) {
-            val node = nodes[index] ?: continue
+        lateinit var next: E
+        var nextIndexInParent = Int.MAX_VALUE
+        for (indexInGroup in nodes.lastIndex downTo 0) {
+            val node = nodes[indexInGroup] ?: continue
+            val nodeIndexInParent = parent.children.indexOf(node)
 
-            if (next != null) {
-                val children = parent.children
-                val nodeIndex = children.indexOf(node)
-                val nextIndex = children.indexOf(next)
-
-                if (nodeIndex > nextIndex) {
-                    parent.insertBefore(node, next)
-                }
+            if (nodeIndexInParent > nextIndexInParent) {
+                parent.insertBefore(node, next)
+                nextIndexInParent -= 1
+            } else {
+                nextIndexInParent = nodeIndexInParent
             }
 
             next = node
