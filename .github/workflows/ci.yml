@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-publication:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v6
@@ -16,13 +16,23 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - uses: ruby/setup-ruby@v1
+
+      - run: >
+          ./gradlew
+          -PVERSION_NAME=unspecified
+          -PRELEASE_SIGNING_ENABLED=false
+          publishToMavenLocal
+
+  check:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
         with:
-          ruby-version: '3.2'
-          bundler-cache: true
+          distribution: 'temurin'
+          java-version: '17'
       - uses: gradle/actions/setup-gradle@v5
 
-      - run: ./gradlew assemble
       - run: ./gradlew check
       - run: ./gradlew jacocoTestReport
 
@@ -32,9 +42,3 @@ jobs:
           report_individual_runs: 'true'
 
       - uses: codecov/codecov-action@v5
-
-      - run: >
-          ./gradlew
-          -PVERSION_NAME=unspecified
-          -PRELEASE_SIGNING_ENABLED=false
-          publishToMavenLocal
