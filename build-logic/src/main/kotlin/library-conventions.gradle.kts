@@ -40,3 +40,7 @@ android {
         disable += "GradleDependency"
     }
 }
+
+tasks.withType<com.vanniktech.maven.publish.tasks.JavadocJar> {
+    notCompatibleWithConfigurationCache("Attempts to directly use output of DokkaHtml tasks")
+}
