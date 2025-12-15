@@ -6,7 +6,7 @@ import kotlin.time.Duration.Companion.milliseconds
 public object MillisecondInterval : Interval, Interval.Count, Interval.Field {
 
     override fun floor(input: LocalDateTime): LocalDateTime =
-        with(input) { LocalDateTime(year, month, dayOfMonth, hour, minute, second, 1_000_000 * (nanosecond / 1_000_000)) }
+        with(input) { LocalDateTime(year, month, day, hour, minute, second, 1_000_000 * (nanosecond / 1_000_000)) }
 
     override fun offset(input: LocalDateTime, steps: Int): LocalDateTime =
         input + steps.milliseconds

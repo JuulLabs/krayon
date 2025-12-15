@@ -60,6 +60,7 @@ public class Squarify(
             }
             val dummy = Node(parent.data, fillTile).also {
                 it.weight = sumWeight
+                @Suppress("UNCHECKED_CAST")
                 it.children = parent.children.subList(i0, i1) as List<Node<Any?, Tile>>
             }
             val method = if (width < height) Dice else Slice

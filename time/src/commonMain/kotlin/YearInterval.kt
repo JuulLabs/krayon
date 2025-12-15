@@ -9,7 +9,7 @@ import kotlinx.datetime.plus
 public object YearInterval : Interval, Interval.Count, Interval.Field {
 
     override fun floor(input: LocalDateTime): LocalDateTime =
-        with(input) { LocalDateTime(year, month = Month.JANUARY, dayOfMonth = 1, hour = 0, minute = 0) }
+        with(input) { LocalDateTime(year, month = Month.JANUARY, day = 1, hour = 0, minute = 0) }
 
     override fun offset(input: LocalDateTime, steps: Int): LocalDateTime =
         input.date.plus(steps, DateTimeUnit.YEAR)

@@ -11,6 +11,8 @@ kotlin {
     applyDefaultHierarchyTemplate()
 
     compilerOptions {
+        allWarningsAsErrors = true
+        extraWarnings = true
         freeCompilerArgs.add("-Xexpect-actual-classes")
     }
 
