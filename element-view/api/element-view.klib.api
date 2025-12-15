@@ -1,14 +1,18 @@
 // Klib ABI Dump
-// Targets: [js]
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64, wasmJs]
 // Rendering settings:
 // - Signature version: 2
 // - Show manifest properties: true
 // - Show declarations: true
 
 // Library unique name: <com.juul.krayon:element-view>
+// Targets: [js]
 final class <#A: kotlin/Any?> com.juul.krayon.element.view/ElementViewAdapter { // com.juul.krayon.element.view/ElementViewAdapter|null[0]
     constructor <init>(kotlinx.coroutines.flow/Flow<#A>, com.juul.krayon.element/UpdateElement<#A>) // com.juul.krayon.element.view/ElementViewAdapter.<init>|<init>(kotlinx.coroutines.flow.Flow<1:0>;com.juul.krayon.element.UpdateElement<1:0>){}[0]
 }
 
+// Targets: [js]
 final fun (org.w3c.dom/HTMLCanvasElement).com.juul.krayon.element.view/attachAdapter(com.juul.krayon.element.view/ElementViewAdapter<*>, kotlin/Boolean = ...) // com.juul.krayon.element.view/attachAdapter|attachAdapter@org.w3c.dom.HTMLCanvasElement(com.juul.krayon.element.view.ElementViewAdapter<*>;kotlin.Boolean){}[0]
+
+// Targets: [js]
 final fun (org.w3c.dom/HTMLCanvasElement).com.juul.krayon.element.view/detachAdapter() // com.juul.krayon.element.view/detachAdapter|detachAdapter@org.w3c.dom.HTMLCanvasElement(){}[0]

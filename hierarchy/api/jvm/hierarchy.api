@@ -1,0 +1,109 @@
+public final class com/juul/krayon/hierarchy/HierarchyKt {
+	public static final fun flatHierarchy (Ljava/lang/Iterable;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun hierarchy (Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
+}
+
+public final class com/juul/krayon/hierarchy/Node {
+	public final fun getChildren ()Ljava/util/List;
+	public final fun getData ()Ljava/lang/Object;
+	public final fun getLayout ()Ljava/lang/Object;
+	public final fun getParent ()Lcom/juul/krayon/hierarchy/Node;
+	public final fun getWeight ()F
+	public final fun setWeight (F)V
+}
+
+public final class com/juul/krayon/hierarchy/NodeKt {
+	public static final fun ancestors (Lcom/juul/krayon/hierarchy/Node;)Lkotlin/sequences/Sequence;
+	public static final fun count (Lcom/juul/krayon/hierarchy/Node;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun each (Lcom/juul/krayon/hierarchy/Node;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun eachAfter (Lcom/juul/krayon/hierarchy/Node;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun eachAfterIndexed (Lcom/juul/krayon/hierarchy/Node;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun eachBefore (Lcom/juul/krayon/hierarchy/Node;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun eachBeforeIndexed (Lcom/juul/krayon/hierarchy/Node;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun eachIndexed (Lcom/juul/krayon/hierarchy/Node;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun getDepth (Lcom/juul/krayon/hierarchy/Node;)I
+	public static final fun getHeight (Lcom/juul/krayon/hierarchy/Node;)I
+	public static final fun isLeaf (Lcom/juul/krayon/hierarchy/Node;)Z
+	public static final fun removeHierarchy (Lcom/juul/krayon/hierarchy/Node;)Lkotlin/sequences/Sequence;
+	public static final fun sort (Lcom/juul/krayon/hierarchy/Node;Ljava/util/Comparator;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun sum (Lcom/juul/krayon/hierarchy/Node;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun traverseBreadthFirst (Lcom/juul/krayon/hierarchy/Node;)Lkotlin/sequences/Sequence;
+	public static final fun traversePostOrder (Lcom/juul/krayon/hierarchy/Node;)Lkotlin/sequences/Sequence;
+	public static final fun traversePreOrder (Lcom/juul/krayon/hierarchy/Node;)Lkotlin/sequences/Sequence;
+}
+
+public final class com/juul/krayon/hierarchy/SumOfKt {
+	public static final fun sumOf (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)F
+}
+
+public final class com/juul/krayon/hierarchy/treemap/Dice : com/juul/krayon/hierarchy/treemap/TileMethod {
+	public static final field INSTANCE Lcom/juul/krayon/hierarchy/treemap/Dice;
+	public fun tile (Lcom/juul/krayon/hierarchy/Node;)V
+}
+
+public final class com/juul/krayon/hierarchy/treemap/Slice : com/juul/krayon/hierarchy/treemap/TileMethod {
+	public static final field INSTANCE Lcom/juul/krayon/hierarchy/treemap/Slice;
+	public fun tile (Lcom/juul/krayon/hierarchy/Node;)V
+}
+
+public final class com/juul/krayon/hierarchy/treemap/SliceAndDice : com/juul/krayon/hierarchy/treemap/TileMethod {
+	public static final field INSTANCE Lcom/juul/krayon/hierarchy/treemap/SliceAndDice;
+	public fun tile (Lcom/juul/krayon/hierarchy/Node;)V
+}
+
+public final class com/juul/krayon/hierarchy/treemap/Squarify : com/juul/krayon/hierarchy/treemap/TileMethod {
+	public fun <init> ()V
+	public fun <init> (F)V
+	public synthetic fun <init> (FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun tile (Lcom/juul/krayon/hierarchy/Node;)V
+}
+
+public final class com/juul/krayon/hierarchy/treemap/Tile {
+	public final fun copy (FFFF)Lcom/juul/krayon/hierarchy/treemap/Tile;
+	public static synthetic fun copy$default (Lcom/juul/krayon/hierarchy/treemap/Tile;FFFFILjava/lang/Object;)Lcom/juul/krayon/hierarchy/treemap/Tile;
+	public final fun getBottom ()F
+	public final fun getCenterX ()F
+	public final fun getCenterY ()F
+	public final fun getHeight ()F
+	public final fun getLeft ()F
+	public final fun getRight ()F
+	public final fun getTop ()F
+	public final fun getWidth ()F
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/hierarchy/treemap/TileKt {
+	public static final fun tile (FFFF)Lcom/juul/krayon/hierarchy/treemap/Tile;
+}
+
+public abstract interface class com/juul/krayon/hierarchy/treemap/TileMethod {
+	public abstract fun tile (Lcom/juul/krayon/hierarchy/Node;)V
+}
+
+public final class com/juul/krayon/hierarchy/treemap/Treemap {
+	public fun <init> ()V
+	public fun <init> (FFLcom/juul/krayon/hierarchy/treemap/TileMethod;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V
+	public synthetic fun <init> (FFLcom/juul/krayon/hierarchy/treemap/TileMethod;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getHeight ()F
+	public final fun getPaddingBottom ()Lkotlin/jvm/functions/Function1;
+	public final fun getPaddingInner ()Lkotlin/jvm/functions/Function1;
+	public final fun getPaddingLeft ()Lkotlin/jvm/functions/Function1;
+	public final fun getPaddingRight ()Lkotlin/jvm/functions/Function1;
+	public final fun getPaddingTop ()Lkotlin/jvm/functions/Function1;
+	public final fun getTileMethod ()Lcom/juul/krayon/hierarchy/treemap/TileMethod;
+	public final fun getWidth ()F
+	public final fun layout (Lcom/juul/krayon/hierarchy/Node;)Lcom/juul/krayon/hierarchy/Node;
+	public final fun setHeight (F)V
+	public final fun setPaddingBottom (Lkotlin/jvm/functions/Function1;)V
+	public final fun setPaddingInner (Lkotlin/jvm/functions/Function1;)V
+	public final fun setPaddingLeft (Lkotlin/jvm/functions/Function1;)V
+	public final fun setPaddingRight (Lkotlin/jvm/functions/Function1;)V
+	public final fun setPaddingTop (Lkotlin/jvm/functions/Function1;)V
+	public final fun setTileMethod (Lcom/juul/krayon/hierarchy/treemap/TileMethod;)V
+	public final fun setWidth (F)V
+}
+
+public final class com/juul/krayon/hierarchy/treemap/TreemapKt {
+	public static final fun layoutWith (Lcom/juul/krayon/hierarchy/Node;Lcom/juul/krayon/hierarchy/treemap/Treemap;)Lcom/juul/krayon/hierarchy/Node;
+}
+

@@ -1,9 +1,9 @@
 [versions]
-agp = "8.13.0" # 7.4.1 is the maximum version supported by IDEA 2023.1
+agp = "8.13.2"
 android-compile = "36"
 android-min = "21"
 android-target = "36"
-compose = "1.9.1"
+compose = "1.9.3"
 coroutines = "1.10.2"
 jacoco = "0.8.7"
 jvm-toolchain = "11"
@@ -30,7 +30,7 @@ api = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "
 atomicfu = { id = "org.jetbrains.kotlinx.atomicfu", version = "0.29.0" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-dokka = { id = "org.jetbrains.dokka", version = "2.0.0" }
+dokka = { id = "org.jetbrains.dokka", version = "2.1.0" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "5.2.0" }
-maven-publish = { id = "com.vanniktech.maven.publish", version = "0.34.0" }
+maven-publish = { id = "com.vanniktech.maven.publish", version = "0.35.0" }
