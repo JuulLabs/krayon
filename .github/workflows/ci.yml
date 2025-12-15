@@ -19,7 +19,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v5
       - run: ./gradlew lintAnalyzeDebug lintAnalyzeDebugUnitTest lintAnalyzeDebugAndroidTest
 
-  check:
+  api-check:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v6
@@ -28,16 +28,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v5
-
-      - run: ./gradlew check -x lintAnalyzeDebug -x lintAnalyzeDebugUnitTest -x lintAnalyzeDebugAndroidTest
-      - run: ./gradlew jacocoTestReport
-
-      - uses: EnricoMi/publish-unit-test-result-action/macos@v2
-        with:
-          junit_files: '**/build/test-results/**/*.xml'
-          report_individual_runs: 'true'
-
-      - uses: codecov/codecov-action@v5
+      - run: ./gradlew apiCheck
 
   dokka-html:
     runs-on: macos-15
@@ -49,6 +40,17 @@ jobs:
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v5
       - run: ./gradlew dokkaHtml
+
+  kotlin-lint:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v5
+      - run: ./gradlew lintKotlin
 
   publish-local:
     runs-on: macos-15
@@ -66,3 +68,23 @@ jobs:
           -PRELEASE_SIGNING_ENABLED=false
           publishToMavenLocal
           -x dokkaHtml
+
+  tests:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v5
+
+      - run: ./gradlew allTests
+      - run: ./gradlew jacocoTestReport
+
+      - uses: EnricoMi/publish-unit-test-result-action/macos@v2
+        with:
+          junit_files: '**/build/test-results/**/*.xml'
+          report_individual_runs: 'true'
+
+      - uses: codecov/codecov-action@v5
