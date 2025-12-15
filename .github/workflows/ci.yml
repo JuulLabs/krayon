@@ -91,11 +91,11 @@ jobs:
       - uses: gradle/actions/setup-gradle@v5
 
       - run: ./gradlew ${{ matrix.task }}
-      - run: ./gradlew jacocoTestReport
 
+      - run: ./gradlew jacocoTestReport
+        if: matrix.task == 'jvmTest'
       - uses: EnricoMi/publish-unit-test-result-action/macos@v2
+        if: matrix.task == 'jvmTest'
         with:
           junit_files: '**/build/test-results/**/*.xml'
           report_individual_runs: 'true'
-
-      - uses: codecov/codecov-action@v5
