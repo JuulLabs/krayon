@@ -71,6 +71,17 @@ jobs:
 
   tests:
     runs-on: macos-15
+    strategy:
+      fail-fast: false
+      matrix:
+        task:
+          - iosSimulatorArm64Test
+          - iosX64Test
+          - jsBrowserTest
+          - jvmTest
+          - macosArm64Test
+          - macosX64Test
+          - wasmJsBrowserTest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-java@v5
@@ -79,7 +90,7 @@ jobs:
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v5
 
-      - run: ./gradlew allTests
+      - run: ./gradlew ${{ matrix.task }}
       - run: ./gradlew jacocoTestReport
 
       - uses: EnricoMi/publish-unit-test-result-action/macos@v2
