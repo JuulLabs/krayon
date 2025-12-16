@@ -30,7 +30,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v5
       - run: ./gradlew apiCheck
 
-  dokka-html:
+  dokka:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v6
@@ -39,7 +39,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v5
-      - run: ./gradlew dokkaHtml
+      - run: ./gradlew dokkaGenerate
 
   kotlin-lint:
     runs-on: macos-15
@@ -67,7 +67,7 @@ jobs:
           -PVERSION_NAME=unspecified
           -PRELEASE_SIGNING_ENABLED=false
           publishToMavenLocal
-          -x dokkaHtml
+          -x dokkaGeneratePublicationHtml
 
   tests:
     runs-on: macos-15
