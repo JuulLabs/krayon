@@ -20,6 +20,7 @@ public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(
                 .filter { (_, node) -> node != null }
                 .map { (index, node) ->
                     node as Element
+                    @Suppress("UNCHECKED_CAST")
                     Group(
                         node,
                         node.select(arguments(node.data as D, index, group.nodes))

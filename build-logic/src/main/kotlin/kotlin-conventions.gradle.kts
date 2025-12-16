@@ -19,6 +19,12 @@ kotlin {
             implementation(kotlin("test"))
             implementation(libs.coroutines.test)
         }
+
+        all {
+            if (name.startsWith("apple") || name.startsWith("ios") || name.startsWith("macos")) {
+                languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+            }
+        }
     }
 }
 
