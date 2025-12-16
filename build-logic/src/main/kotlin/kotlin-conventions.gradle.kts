@@ -11,8 +11,6 @@ kotlin {
     applyDefaultHierarchyTemplate()
 
     compilerOptions {
-        allWarningsAsErrors = true
-        extraWarnings = true
         freeCompilerArgs.add("-Xexpect-actual-classes")
     }
 
@@ -20,6 +18,12 @@ kotlin {
         commonTest.dependencies {
             implementation(kotlin("test"))
             implementation(libs.coroutines.test)
+        }
+
+        all {
+            if (name.startsWith("apple") || name.startsWith("ios") || name.startsWith("macos")) {
+                languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+            }
         }
     }
 }

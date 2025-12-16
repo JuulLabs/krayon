@@ -245,6 +245,7 @@ public class HtmlKanvas(
             is Paint.Gradient.Sweep -> {
                 val ctx = this.context // ensure a locally bound variable for use in js call
                 if (js("typeof ctx.createConicGradient === \"function\"") as Boolean) {
+                    @Suppress("UNCHECKED_CAST_TO_EXTERNAL_INTERFACE")
                     (ctx as ConicCanvasFillStrokeStyles).createConicGradient(
                         conicStartAngleOffset,
                         paint.centerX.toDouble(),

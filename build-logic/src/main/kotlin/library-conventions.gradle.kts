@@ -26,6 +26,11 @@ kotlin {
     macosArm64()
     macosX64()
     wasmJs().browser()
+
+    compilerOptions {
+        allWarningsAsErrors = true
+        extraWarnings = true
+    }
 }
 
 android {
