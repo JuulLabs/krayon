@@ -14,10 +14,11 @@ jacoco {
     toolVersion = libs.versions.jacoco.get()
 }
 
+@OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
 kotlin {
     explicitApi()
 
-    androidTarget().publishAllLibraryVariants()
+    androidTarget().publishLibraryVariants("debug", "release")
     iosArm64()
     iosSimulatorArm64()
     iosX64()
