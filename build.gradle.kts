@@ -6,6 +6,7 @@ buildscript {
 }
 
 plugins {
+    id("repository-conventions")
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
@@ -24,23 +25,4 @@ apiValidation {
     }
 
     ignoredProjects.addAll(listOf("sample"))
-}
-
-allprojects {
-    group = "com.juul.krayon"
-
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    tasks.withType<Test>().configureEach {
-        testLogging {
-            events("started", "passed", "skipped", "failed", "standardOut", "standardError")
-            exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
-            showExceptions = true
-            showStackTraces = true
-            showCauses = true
-        }
-    }
 }

@@ -1,0 +1,95 @@
+public final class com/juul/krayon/shape/Arc {
+	public final fun cornerRadius (F)Lcom/juul/krayon/shape/Arc;
+	public final fun getCornerRadius ()F
+	public final fun getInnerRadius ()F
+	public final fun getOuterRadius ()F
+	public final fun getPadRadius ()Lkotlin/jvm/functions/Function4;
+	public final fun innerRadius (F)Lcom/juul/krayon/shape/Arc;
+	public final fun invoke (FFF)Lcom/juul/krayon/kanvas/Path;
+	public final fun invoke (Lcom/juul/krayon/shape/Slice;)Lcom/juul/krayon/kanvas/Path;
+	public final fun outerRadius (F)Lcom/juul/krayon/shape/Arc;
+	public final fun padRadius (Lkotlin/jvm/functions/Function4;)Lcom/juul/krayon/shape/Arc;
+}
+
+public final class com/juul/krayon/shape/ArcKt {
+	public static final fun arc (FF)Lcom/juul/krayon/shape/Arc;
+	public static synthetic fun arc$default (FFILjava/lang/Object;)Lcom/juul/krayon/shape/Arc;
+}
+
+public final class com/juul/krayon/shape/Arguments {
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/util/List;
+	public final fun getData ()Ljava/util/List;
+	public final fun getDatum ()Ljava/lang/Object;
+	public final fun getIndex ()I
+}
+
+public final class com/juul/krayon/shape/Line {
+	public final fun curve (Lcom/juul/krayon/shape/curve/Curve;)Lcom/juul/krayon/shape/Line;
+	public final fun defined (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Line;
+	public final fun render (Ljava/util/List;)Lcom/juul/krayon/kanvas/Path;
+	public final fun x (F)Lcom/juul/krayon/shape/Line;
+	public final fun x (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Line;
+	public final fun y (F)Lcom/juul/krayon/shape/Line;
+	public final fun y (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Line;
+}
+
+public final class com/juul/krayon/shape/LineKt {
+	public static final fun line ()Lcom/juul/krayon/shape/Line;
+}
+
+public final class com/juul/krayon/shape/Pie {
+	public final fun endAngle (F)Lcom/juul/krayon/shape/Pie;
+	public final fun getEndAngle ()F
+	public final fun getPadAngle ()F
+	public final fun getStartAngle ()F
+	public final fun invoke (Ljava/util/List;)Ljava/util/List;
+	public final fun invoke ([Ljava/lang/Object;)Ljava/util/List;
+	public final fun padAngle (F)Lcom/juul/krayon/shape/Pie;
+	public final fun startAngle (F)Lcom/juul/krayon/shape/Pie;
+	public final fun value (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Pie;
+}
+
+public final class com/juul/krayon/shape/PieKt {
+	public static final fun pie ()Lcom/juul/krayon/shape/Pie;
+}
+
+public final class com/juul/krayon/shape/Slice {
+	public fun <init> (Ljava/lang/Object;FIFFF)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()F
+	public final fun component3 ()I
+	public final fun component4 ()F
+	public final fun component5 ()F
+	public final fun component6 ()F
+	public final fun copy (Ljava/lang/Object;FIFFF)Lcom/juul/krayon/shape/Slice;
+	public static synthetic fun copy$default (Lcom/juul/krayon/shape/Slice;Ljava/lang/Object;FIFFFILjava/lang/Object;)Lcom/juul/krayon/shape/Slice;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/lang/Object;
+	public final fun getEndAngle ()F
+	public final fun getIndex ()I
+	public final fun getPadAngle ()F
+	public final fun getStartAngle ()F
+	public final fun getValue ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/juul/krayon/shape/curve/Curve {
+	public abstract fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public abstract fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public abstract fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public abstract fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public abstract fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/Linear : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/Linear;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+

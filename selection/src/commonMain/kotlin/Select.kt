@@ -18,6 +18,7 @@ public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.select(
             Group(
                 group.parent,
                 group.nodes.mapIndexed { index, node ->
+                    @Suppress("UNCHECKED_CAST")
                     node?.select(arguments(node.data as D, index, group.nodes))
                         ?.also { it.data = node.data }
                 },

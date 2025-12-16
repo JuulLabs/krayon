@@ -2,13 +2,10 @@
 ![badge][badge-ios]
 ![badge][badge-js]
 ![badge][badge-jvm]
-[![codecov](https://codecov.io/gh/JuulLabs/krayon/branch/main/graph/badge.svg?token=y8btx3pTlr)](https://codecov.io/gh/JuulLabs/krayon)
 
 # Krayon
 
 Multiplatform drawing library. Provides a multiplatform canvas and chart rendering framework.
-
-See the [project website](https://juullabs.github.io/krayon/) for documentation and APIs.
 
 # License
 

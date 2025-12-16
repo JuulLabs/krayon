@@ -18,6 +18,7 @@ public class Treemap<T>(
 ) {
 
     public fun layout(root: Node<T, *>): Node<T, Tile> {
+        @Suppress("UNCHECKED_CAST")
         (root as Node<T, Tile>).layout = tile(0f, 0f, width, height)
         val paddingStack = mutableMapOf(0 to 0f)
         root.eachBefore { node ->

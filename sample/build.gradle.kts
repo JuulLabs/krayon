@@ -1,13 +1,13 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
-    kotlin("multiplatform")
-    kotlin("plugin.compose")
-    id("org.jetbrains.compose")
-    id("com.android.application")
-    id("org.jmailen.kotlinter")
+    id("kotlin-conventions")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.compose)
+    alias(libs.plugins.compose.compiler)
 }
 
+@OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
 kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
@@ -17,6 +17,11 @@ kotlin {
         binaries.executable()
     }
     jvm("desktop")
+    wasmJs {
+        outputModuleName = "application"
+        browser { commonWebpackConfig { outputFileName = "application.js" } }
+        binaries.executable()
+    }
 
     sourceSets {
         commonMain.dependencies {
@@ -52,6 +57,10 @@ kotlin {
         jsMain.dependencies {
             implementation(libs.coroutines.js)
             implementation(compose.html.core) // required because of the compose plugin, but unused.
+        }
+
+        wasmJsMain.dependencies {
+            implementation(projects.compose)
         }
     }
 }

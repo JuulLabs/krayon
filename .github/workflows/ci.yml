@@ -8,34 +8,96 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: macos-14
+  android-lint:
+    runs-on: macos-15
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
-      - uses: ruby/setup-ruby@v1
+      - uses: gradle/actions/setup-gradle@v5
+      - run: ./gradlew lintAnalyzeDebug lintAnalyzeDebugUnitTest lintAnalyzeDebugAndroidTest
+
+  api-check:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
         with:
-          ruby-version: '3.2'
-          bundler-cache: true
-      - uses: gradle/actions/setup-gradle@v4
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v5
+      - run: ./gradlew apiCheck
 
-      - run: ./gradlew assemble
-      - run: ./gradlew check
-      - run: ./gradlew jacocoTestReport
-
-      - uses: EnricoMi/publish-unit-test-result-action/macos@v2
+  dokka:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
         with:
-          junit_files: '**/build/test-results/**/*.xml'
-          report_individual_runs: 'true'
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v5
+      - run: ./gradlew dokkaGenerate
 
-      - uses: codecov/codecov-action@v5
+  kotlin-lint:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v5
+      - run: ./gradlew lintKotlin
+
+  publish-local:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v5
 
       - run: >
           ./gradlew
           -PVERSION_NAME=unspecified
           -PRELEASE_SIGNING_ENABLED=false
           publishToMavenLocal
-      - run: ./gradlew :website:browserBuild
+          -x dokkaGeneratePublicationHtml
+
+  tests:
+    runs-on: macos-15
+    strategy:
+      fail-fast: false
+      matrix:
+        task:
+          - iosSimulatorArm64Test
+          - iosX64Test
+          - jsBrowserTest
+          - jvmTest
+          - macosArm64Test
+          - macosX64Test
+          - testDebugUnitTest
+          - testReleaseUnitTest
+          - wasmJsBrowserTest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v5
+
+      - run: ./gradlew ${{ matrix.task }}
+
+      - run: ./gradlew jacocoTestReport
+        if: matrix.task == 'jvmTest'
+      - uses: EnricoMi/publish-unit-test-result-action/macos@v2
+        if: matrix.task == 'jvmTest'
+        with:
+          junit_files: '**/build/test-results/**/*.xml'
+          report_individual_runs: 'true'
