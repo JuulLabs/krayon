@@ -31,3 +31,13 @@ public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.selectAll(
         },
     )
 }
+
+/** Syntax sugar for calling [asSelection] followed by [selectAll]. */
+public fun <E1 : Element, E2 : Element> E1.selectAll(
+    selector: ElementSelector<E2>
+): Selection<E2, Nothing?> = asSelection().selectAll(selector)
+
+/** Syntax sugar for calling [asSelection] followed by [selectAll]. */
+public inline fun <E1 : Element, E2 : Element> E1.selectAll(
+    crossinline select: E1.(Arguments<Nothing?, E1?>) -> Sequence<E2>,
+): Selection<E2, Nothing?> = asSelection().selectAll(select)
