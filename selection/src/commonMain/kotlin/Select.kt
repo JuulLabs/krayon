@@ -29,7 +29,7 @@ public inline fun <E1 : Element, E2 : Element, D> Selection<E1, D>.select(
 
 /** Syntax sugar for calling [asSelection] followed by [select]. */
 public fun <E1 : Element, E2 : Element> E1.select(
-    selector: ElementSelector<E2>
+    selector: ElementSelector<E2>,
 ): Selection<E2, Nothing?> = asSelection().select(selector)
 
 /** Syntax sugar for calling [asSelection] followed by [select]. */
