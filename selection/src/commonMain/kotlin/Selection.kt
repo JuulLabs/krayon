@@ -21,8 +21,19 @@ public class ExitSelection<E : Element, D>(
 ) : Selection<E, D>(groups)
 
 /**
- * See analogous [d3 function](https://github.com/d3/d3-selection#selection). Note that an
- * explicit root must be specified, because there's no global document object here.
+ * Constructs a selection with a single group containing this element. If no explicit [parent] is provided
+ * for the group, then this element's parent is used.
  */
-public fun <E : Element> E.asSelection(): Selection<E, Nothing?> =
-    Selection(listOf(Group(null, listOf(this))))
+public fun <E : Element> E.asSelection(
+    parent: Element? = this.parent,
+): Selection<E, Nothing?> =
+    Selection(listOf(Group(parent, listOf(this))))
+
+/**
+ * Constructs a selection with a single group containing these elements.  If no explicit [parent] is provided
+ * for the group, then the first element's parent is used.
+ */
+public fun <E : Element> List<E>.asSelection(
+    parent: Element? = this.firstOrNull()?.parent,
+): Selection<E, Nothing?> =
+    Selection(listOf(Group(parent, this)))

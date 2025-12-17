@@ -109,7 +109,10 @@ public class com/juul/krayon/selection/Selection {
 }
 
 public final class com/juul/krayon/selection/SelectionKt {
-	public static final fun asSelection (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/selection/Selection;
+	public static final fun asSelection (Lcom/juul/krayon/element/Element;Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/selection/Selection;
+	public static final fun asSelection (Ljava/util/List;Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/selection/Selection;
+	public static synthetic fun asSelection$default (Lcom/juul/krayon/element/Element;Lcom/juul/krayon/element/Element;ILjava/lang/Object;)Lcom/juul/krayon/selection/Selection;
+	public static synthetic fun asSelection$default (Ljava/util/List;Lcom/juul/krayon/element/Element;ILjava/lang/Object;)Lcom/juul/krayon/selection/Selection;
 }
 
 public final class com/juul/krayon/selection/UpdateSelection : com/juul/krayon/selection/Selection {
