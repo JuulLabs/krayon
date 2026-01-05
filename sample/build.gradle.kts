@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
+@OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
 kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 

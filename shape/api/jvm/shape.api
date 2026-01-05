@@ -25,10 +25,10 @@ public final class com/juul/krayon/shape/Arguments {
 	public final fun getIndex ()I
 }
 
-public final class com/juul/krayon/shape/Line : com/juul/krayon/shape/Shape {
+public final class com/juul/krayon/shape/Line {
 	public final fun curve (Lcom/juul/krayon/shape/curve/Curve;)Lcom/juul/krayon/shape/Line;
 	public final fun defined (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Line;
-	public fun render (Ljava/util/List;)Lcom/juul/krayon/kanvas/Path;
+	public final fun render (Ljava/util/List;)Lcom/juul/krayon/kanvas/Path;
 	public final fun x (F)Lcom/juul/krayon/shape/Line;
 	public final fun x (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Line;
 	public final fun y (F)Lcom/juul/krayon/shape/Line;
@@ -53,10 +53,6 @@ public final class com/juul/krayon/shape/Pie {
 
 public final class com/juul/krayon/shape/PieKt {
 	public static final fun pie ()Lcom/juul/krayon/shape/Pie;
-}
-
-public abstract interface class com/juul/krayon/shape/Shape {
-	public abstract fun render (Ljava/util/List;)Lcom/juul/krayon/kanvas/Path;
 }
 
 public final class com/juul/krayon/shape/Slice {

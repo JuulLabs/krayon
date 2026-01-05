@@ -90,11 +90,15 @@ public final class com/juul/krayon/selection/RemoveKt {
 }
 
 public final class com/juul/krayon/selection/SelectAllKt {
+	public static final fun selectAll (Lcom/juul/krayon/element/Element;Lcom/juul/krayon/element/ElementSelector;)Lcom/juul/krayon/selection/Selection;
+	public static final fun selectAll (Lcom/juul/krayon/element/Element;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/selection/Selection;
 	public static final fun selectAll (Lcom/juul/krayon/selection/Selection;Lcom/juul/krayon/element/ElementSelector;)Lcom/juul/krayon/selection/Selection;
 	public static final fun selectAll (Lcom/juul/krayon/selection/Selection;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/selection/Selection;
 }
 
 public final class com/juul/krayon/selection/SelectKt {
+	public static final fun select (Lcom/juul/krayon/element/Element;Lcom/juul/krayon/element/ElementSelector;)Lcom/juul/krayon/selection/Selection;
+	public static final fun select (Lcom/juul/krayon/element/Element;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/selection/Selection;
 	public static final fun select (Lcom/juul/krayon/selection/Selection;Lcom/juul/krayon/element/ElementSelector;)Lcom/juul/krayon/selection/Selection;
 	public static final fun select (Lcom/juul/krayon/selection/Selection;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/selection/Selection;
 }

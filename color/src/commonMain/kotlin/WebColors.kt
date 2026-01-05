@@ -184,7 +184,7 @@ public val gainsboro: Color = Color(0xFFDCDCDC.toInt())
 
 // CSS Colors not in HTML
 
-public val transparent: Color = Color(0x00000000.toInt())
+public val transparent: Color = Color(0x00000000)
 public val rebeccaPurple: Color = Color(0xFF663399.toInt())
 
 internal val keywordMap = mapOf(

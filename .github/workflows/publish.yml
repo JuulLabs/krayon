@@ -25,4 +25,5 @@ jobs:
           -PsigningInMemoryKeyPassword='${{ secrets.SIGNING_PASSWORD }}'
           -PmavenCentralUsername='${{ secrets.OSS_SONATYPE_NEXUS_USERNAME }}'
           -PmavenCentralPassword='${{ secrets.OSS_SONATYPE_NEXUS_PASSWORD }}'
+          --no-parallel
           publish

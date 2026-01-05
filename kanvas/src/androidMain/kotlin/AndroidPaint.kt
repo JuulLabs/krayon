@@ -114,6 +114,7 @@ private fun androidPaint(context: Context, source: Paint.Text) = AndroidPaint().
     color = source.color.argb
     // Scale text by the difference between dp and sp. By applying this globally, it means that
     // Krayon respect's a user's font scaling even in non-dp environments, like PDF rendering.
+    @Suppress("DEPRECATION") // We don't yet support non-linear font scaling
     val scale = with(context.resources.displayMetrics) { scaledDensity / density }
     textSize = source.size * scale
     typeface = getTypeface(context, source.font)
