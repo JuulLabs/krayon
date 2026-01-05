@@ -30,7 +30,7 @@ public fun <E : Element> E.asSelection(
     Selection(listOf(Group(parent, listOf(this))))
 
 /**
- * Constructs a selection with a single group containing these elements.  If no explicit [parent] is provided
+ * Constructs a selection with a single group containing these elements. If no explicit [parent] is provided
  * for the group, then the first element's parent is used.
  */
 public fun <E : Element> List<E>.asSelection(
