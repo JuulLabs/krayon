@@ -1,8 +1,10 @@
 package com.juul.krayon.element
 
+import androidx.compose.runtime.Stable
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 
+@Stable
 public class LineElement : Element() {
 
     override val tag: String get() = "line"

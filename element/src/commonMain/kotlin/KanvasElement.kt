@@ -1,8 +1,10 @@
 package com.juul.krayon.element
 
+import androidx.compose.runtime.Stable
 import com.juul.krayon.kanvas.Kanvas
 
 /** Breakaway [Element] allowing for raw [Kanvas] drawing. */
+@Stable
 public class KanvasElement : Element() {
 
     override val tag: String get() = "kanvas"

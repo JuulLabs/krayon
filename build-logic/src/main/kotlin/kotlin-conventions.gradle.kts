@@ -21,6 +21,8 @@ kotlin {
         }
 
         all {
+            languageSettings.optIn("com.juul.krayon.core.ExperimentalKrayonApi")
+            languageSettings.optIn("com.juul.krayon.core.InternalKrayonApi")
             if (name.startsWith("apple") || name.startsWith("ios") || name.startsWith("macos")) {
                 languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
             }

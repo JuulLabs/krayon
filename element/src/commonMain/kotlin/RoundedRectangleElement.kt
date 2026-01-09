@@ -1,9 +1,11 @@
 package com.juul.krayon.element
 
+import androidx.compose.runtime.Stable
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Path
 
+@Stable
 public class RoundedRectangleElement : InteractableElement<RoundedRectangleElement>() {
 
     override val tag: String get() = "rounded-rectangle"

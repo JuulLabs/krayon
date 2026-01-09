@@ -3,10 +3,6 @@ plugins {
 }
 kotlin {
     sourceSets {
-        all {
-            languageSettings.optIn("com.juul.krayon.core.InternalKrayonApi")
-        }
-
         commonMain.dependencies {
             api(projects.color)
             api(projects.core)
