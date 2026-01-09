@@ -66,5 +66,8 @@ internal fun pieChart(root: RootElement, width: Float, height: Float, data: PieC
         .each { (slice, index) ->
             paint = paints[index]
             path = arc(slice)
+            onHoverChanged { a, b ->
+                println("Element ${a.data} hover state $b")
+            }
         }
 }

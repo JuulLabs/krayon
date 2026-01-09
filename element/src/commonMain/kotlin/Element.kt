@@ -1,5 +1,7 @@
 package com.juul.krayon.element
 
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateMapOf
 import com.juul.krayon.kanvas.Kanvas
 
 public abstract class Element {
@@ -12,7 +14,7 @@ public abstract class Element {
      * a library consumer. That said, it's still exposed for the cases where it's necessary.
      * **When using this, be very careful not to clobber existing attributes.**
      */
-    public val attributes: MutableMap<String, Any?> = mutableMapOf()
+    public val attributes: MutableMap<String, Any?> = mutableStateMapOf()
 
     /** Analogous to an HTML class, except you can only have one. */
     public var kind: String? by attributes.withDefault { null }
@@ -21,7 +23,7 @@ public abstract class Element {
 
     public open var parent: Element? = null
 
-    private val _children: MutableList<Element> = mutableListOf()
+    private val _children: MutableList<Element> = mutableStateListOf()
     public val children: List<Element> = _children
 
     public open fun <E : Element> appendChild(child: E): E {
