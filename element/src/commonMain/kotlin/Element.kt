@@ -1,9 +1,15 @@
 package com.juul.krayon.element
 
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import com.juul.krayon.core.InternalKrayonApi
 import com.juul.krayon.kanvas.Kanvas
 
+@Stable
 public abstract class Element {
 
     public abstract val tag: String
@@ -11,7 +17,10 @@ public abstract class Element {
     /**
      * This is a delicate API that exposes the raw attribute backing without any type safety. This
      * is frequently used by the internals of Krayon, but is likely something you shouldn't use as
-     * a library consumer. That said, it's still exposed for the cases where it's necessary.
+     * a library consumer. That said, it's still exposed for the cases where it's necessary, such as
+     * implementing new types of element. New attributes defined via `by attributes.withDefault`
+     * automatically satisfy the [Stable] contract.
+     *
      * **When using this, be very careful not to clobber existing attributes.**
      */
     public val attributes: MutableMap<String, Any?> = mutableStateMapOf()
@@ -21,15 +30,16 @@ public abstract class Element {
 
     public var data: Any? by attributes.withDefault { null }
 
-    public open var parent: Element? = null
+    public open var parent: Element? by mutableStateOf(null)
 
-    private val _children: MutableList<Element> = mutableStateListOf()
-    public val children: List<Element> = _children
+    @InternalKrayonApi
+    public val mutableChildren: MutableList<Element> = mutableStateListOf()
+    public val children: List<Element> = mutableChildren
 
     public open fun <E : Element> appendChild(child: E): E {
         child.parent?.removeChild(child)
         child.parent = this
-        _children.add(child)
+        mutableChildren.add(child)
         return child
     }
 
@@ -37,10 +47,10 @@ public abstract class Element {
         child.parent?.removeChild(child)
         child.parent = this
         when (reference) {
-            null -> _children.add(child)
+            null -> mutableChildren.add(child)
             else -> when (val index = children.indexOf(reference)) {
-                -1 -> _children.add(child)
-                else -> _children.add(index, child)
+                -1 -> mutableChildren.add(child)
+                else -> mutableChildren.add(index, child)
             }
         }
         return child
@@ -68,7 +78,7 @@ public abstract class Element {
     }
 
     public fun <E : Element> removeChild(child: E): E {
-        if (_children.remove(child)) {
+        if (mutableChildren.remove(child)) {
             child.parent = null
         }
         return child

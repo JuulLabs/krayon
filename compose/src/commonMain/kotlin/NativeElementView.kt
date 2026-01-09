@@ -6,13 +6,12 @@ import androidx.compose.foundation.interaction.HoverInteraction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -29,6 +28,7 @@ import androidx.compose.ui.graphics.Matrix
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.copy
+import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
@@ -38,7 +38,9 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.juul.krayon.core.ExperimentalKrayonApi
 import com.juul.krayon.element.ClickHandler
+import com.juul.krayon.element.ClipElement
 import com.juul.krayon.element.Element
 import com.juul.krayon.element.GroupElement
 import com.juul.krayon.element.HoverHandler
@@ -48,14 +50,13 @@ import com.juul.krayon.element.TextElement
 import com.juul.krayon.element.TransformElement
 import com.juul.krayon.element.UpdateElement
 import com.juul.krayon.kanvas.Paint.Text.Alignment
-import com.juul.krayon.kanvas.Transform
-import com.juul.krayon.kanvas.split
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onEach
 
 private object NotSet
 
 @Composable
+@ExperimentalKrayonApi
 public fun <T> NativeElementView(
     dataFlow: Flow<T>,
     updateElements: UpdateElement<T>,
@@ -77,6 +78,7 @@ public fun <T> NativeElementView(
     modifier: Modifier = Modifier,
 ) {
     val root = remember { RootElement() }
+    val transformation = remember { ImmutableMatrix() }
     var width by remember { mutableStateOf(0f) }
     var height by remember { mutableStateOf(0f) }
 
@@ -105,7 +107,7 @@ public fun <T> NativeElementView(
         val measurable = subcompose("content") {
             Box(Modifier.size(newWidth.dp, newHeight.dp)) {
                 root.children.forEach {
-                    Element(it, transformation = remember { Matrix() })
+                    Element(it, transformation)
                 }
             }
         }.single()
@@ -120,7 +122,7 @@ public fun <T> NativeElementView(
 @Composable
 private fun BoxScope.Element(
     element: Element,
-    transformation: Matrix,
+    transformation: ImmutableMatrix,
 ) {
     @Suppress("UNCHECKED_CAST")
     if (element is InteractableElement<*>) {
@@ -129,11 +131,27 @@ private fun BoxScope.Element(
 
     when (element) {
         is RootElement -> error("Unexpected root element not found at root: $element")
+        is ClipElement -> {
+            val clip = element.clip?.path?.get(ComposePathMarker)?.copy()?.apply { transform(transformation) }
+            if (clip == null) {
+                element.children.forEach { Element(it, transformation) }
+            } else {
+                Box(
+                    Modifier.matchParentSize().drawWithContent {
+                        clipPath(clip) {
+                            this@drawWithContent.drawContent()
+                        }
+                    },
+                ) {
+                    element.children.forEach { Element(it, transformation) }
+                }
+            }
+        }
+
         is GroupElement -> element.children.forEach { Element(it, transformation) }
         is TransformElement -> {
-            val transform = Matrix().apply { setFrom(transformation) }
-            transform.applyTransformation(LocalDensity.current, element.transform)
-            element.children.forEach { Element(it, transform) }
+            val transformation = transformation.withTransform(LocalDensity.current, element.transform)
+            element.children.forEach { Element(it, transformation) }
         }
 
         is NativeElement -> with(element) { Content() }
@@ -149,16 +167,13 @@ private fun BoxScope.Element(
 }
 
 @Composable
+@Suppress("UNCHECKED_CAST")
 private fun BoxScope.InteractionHandler(
     element: InteractableElement<*>,
-    transformation: Matrix,
+    transformation: ImmutableMatrix,
 ) {
-    // STOPSHIP: It's time to add the internal annotation
-    @Suppress("UNCHECKED_CAST")
-    val hoverHandler = element.attributes["hoverHandler"] as? HoverHandler<Element>
-
-    @Suppress("UNCHECKED_CAST")
-    val clickHandler = element.attributes["clickHandler"] as? ClickHandler<Element>
+    val hoverHandler = element.hoverHandler as HoverHandler<Element>?
+    val clickHandler = element.clickHandler as ClickHandler<Element>?
     if (hoverHandler == null && clickHandler == null) return // Nothing to do here
 
     val shape = object : Shape {
@@ -175,11 +190,7 @@ private fun BoxScope.InteractionHandler(
         val interactionSource = remember { MutableInteractionSource() }
         LaunchedEffect(hoverHandler, interactionSource) {
             interactionSource.interactions.collect { interaction ->
-                if (interaction is HoverInteraction.Enter) {
-                    hoverHandler.onHoverChanged(element, true)
-                } else if (interaction is HoverInteraction.Exit) {
-                    hoverHandler.onHoverChanged(element, false)
-                }
+                hoverHandler.onHoverChanged(element, hovered = interaction is HoverInteraction.Enter)
             }
         }
         modifier = modifier.hoverable(interactionSource)
@@ -195,43 +206,20 @@ private fun BoxScope.InteractionHandler(
     Box(modifier)
 }
 
-@Stable
-private fun Matrix.applyTransformation(density: Density, transform: Transform) {
-    when (transform) {
-        is Transform.Skew -> error("Skew is unsupported by compose graphics layers.")
-
-        is Transform.InOrder -> transform.transformations.forEach { applyTransformation(density, it) }
-
-        is Transform.Translate -> with(density) {
-            translate(transform.horizontal.dp.toPx(), transform.vertical.dp.toPx())
-        }
-
-        is Transform.Rotate -> if (transform.isPivoted) {
-            applyTransformation(density, transform.split())
-        } else {
-            rotateZ(transform.degrees)
-        }
-
-        is Transform.Scale -> if (transform.isPivoted) {
-            applyTransformation(density, transform.split())
-        } else {
-            scale(transform.horizontal, transform.vertical)
-        }
-    }
-}
-
 @Composable
 private fun TextElement(
     element: TextElement,
-    transformation: Matrix,
+    transformation: ImmutableMatrix,
 ) {
     // Disable independent font scaling since it breaks most charts
-    CompositionLocalProvider(LocalDensity provides Density(LocalDensity.current.density, fontScale = 1f)) {
+    CompositionLocalProvider(
+        LocalDensity provides Density(LocalDensity.current.density, fontScale = 1f),
+    ) {
         val paint = element.paint
         BasicText(
             element.text,
             Modifier
-                .offset(element.x.dp, element.y.dp)
+                .absoluteOffset(element.x.dp, element.y.dp)
                 .transform(transformation)
                 .drawWithContent {
                     val translationX = when (paint.alignment) {
@@ -254,11 +242,5 @@ private fun TextElement(
                 },
             ),
         )
-    }
-}
-
-private fun Modifier.transform(transformation: Matrix) = drawWithContent {
-    withTransform({ transform(transformation) }) {
-        this@drawWithContent.drawContent()
     }
 }

@@ -1,5 +1,3 @@
-import org.jetbrains.compose.compose
-
 plugins {
     id("library-conventions")
     alias(libs.plugins.compose)
