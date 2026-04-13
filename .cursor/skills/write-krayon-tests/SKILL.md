@@ -14,42 +14,23 @@ or other platform-specific frameworks in `commonTest`.
 
 ## Naming conventions
 
-- Class: `<Feature>Test` (e.g. `CardinalTest`).
+- Class: `<Feature>Tests` (e.g. `CardinalTests`).
 - Method: `descriptive_camelCase_describingBehavior` (e.g. `cardinal_withDefaultTension_producesExpectedPath`).
 
 ## Floating-point comparisons
 
-```kotlin
-fun assertClose(expected: Float, actual: Float, epsilon: Float = 1e-4f) {
-    assert(kotlin.math.abs(expected - actual) < epsilon) {
-        "Expected $expected but was $actual (epsilon=$epsilon)"
-    }
-}
-```
-
-## Testing curves
-
-Render points through the curve and compare the resulting `Path`:
+Use `assertEquals` with the `absoluteTolerance` parameter:
 
 ```kotlin
-val data = listOf(0f to 0f, 1f to 1f, 2f to 0f)
-val path: Path = line<Pair<Float, Float>>()
-    .x { (d) -> d.first }
-    .y { (d) -> d.second }
-    .curve(SomeCurve())
-    .render(data)
+assertEquals(expected, actual = result, absoluteTolerance = 1e-4f)
 ```
-
-When porting, extract expected values from upstream test suites (e.g. D3's SVG path strings) and adapt for `Float`
-precision.
 
 ## Coverage checklist
 
 1. **Happy path**: typical input produces expected output.
-2. **Edge cases**: single point, two points, collinear/duplicate/empty input.
+2. **Edge cases**: empty, single-element, and boundary inputs.
 3. **Parameter variations**: test non-default configuration values.
-4. **Area mode**: if the feature supports `startArea`/`endArea`, test that too.
-5. **Upstream equivalence**: at least one test uses exact upstream fixture data.
+4. **Upstream equivalence**: when porting, include at least one test using exact upstream fixture data.
 
 ## Running tests
 
