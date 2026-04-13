@@ -4,17 +4,14 @@ import com.juul.krayon.kanvas.Path
 import com.juul.krayon.shape.curve.Curve
 import com.juul.krayon.shape.curve.Linear
 
-private val DEFAULT_DEFINED = { _: Arguments<*> -> true }
-private val DEFAULT_XY = { (datum): Arguments<*> -> (datum as? Number)?.toFloat() ?: 0f }
-
 public fun <D : Any> line(): Line<D> = Line()
 
 public class Line<D : Any> internal constructor() {
 
     private var curve: Curve = Linear
-    private var defined: (Arguments<D>) -> Boolean = DEFAULT_DEFINED
-    private var x: (Arguments<D>) -> Float = DEFAULT_XY
-    private var y: (Arguments<D>) -> Float = DEFAULT_XY
+    private var defined: (Arguments<D>) -> Boolean = { true }
+    private var x: (Arguments<D>) -> Float = pointX
+    private var y: (Arguments<D>) -> Float = pointY
 
     public fun curve(curve: Curve): Line<D> = this.apply { this.curve = curve }
 
@@ -55,6 +52,9 @@ public class Line<D : Any> internal constructor() {
             if (currentlyDefined) {
                 curve.point(this, x(arguments), y(arguments))
             }
+        }
+        if (currentlyDefined) {
+            curve.endLine(this)
         }
     }
 }
