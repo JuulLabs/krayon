@@ -1,6 +1,5 @@
 package com.juul.krayon.shape
 
-
 /** Represents a point in 2D space with x and y coordinates. */
 public data class Point(val x: Float, val y: Float)
 
