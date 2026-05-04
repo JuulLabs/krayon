@@ -5,7 +5,7 @@ android-min = "21"
 android-target = "36"
 compose = "1.9.3"
 coroutines = "1.10.2"
-jacoco = "0.8.7"
+jacoco = "0.8.14"
 jvm-toolchain = "11"
 kotlin = "2.2.10"
 
