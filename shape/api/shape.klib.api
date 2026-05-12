@@ -6,10 +6,6 @@
 // - Show declarations: true
 
 // Library unique name: <com.juul.krayon:shape>
-abstract interface <#A: kotlin/Any> com.juul.krayon.shape/Shape { // com.juul.krayon.shape/Shape|null[0]
-    abstract fun render(kotlin.collections/List<#A?>): com.juul.krayon.kanvas/Path // com.juul.krayon.shape/Shape.render|render(kotlin.collections.List<1:0?>){}[0]
-}
-
 abstract interface com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/Curve|null[0]
     abstract fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Curve.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
     abstract fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Curve.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
@@ -31,7 +27,7 @@ final class <#A: kotlin/Any> com.juul.krayon.shape/Arguments { // com.juul.krayo
     final fun component3(): kotlin.collections/List<#A?> // com.juul.krayon.shape/Arguments.component3|component3(){}[0]
 }
 
-final class <#A: kotlin/Any> com.juul.krayon.shape/Line : com.juul.krayon.shape/Shape<#A> { // com.juul.krayon.shape/Line|null[0]
+final class <#A: kotlin/Any> com.juul.krayon.shape/Line { // com.juul.krayon.shape/Line|null[0]
     final fun curve(com.juul.krayon.shape.curve/Curve): com.juul.krayon.shape/Line<#A> // com.juul.krayon.shape/Line.curve|curve(com.juul.krayon.shape.curve.Curve){}[0]
     final fun defined(kotlin/Function1<com.juul.krayon.shape/Arguments<#A>, kotlin/Boolean>): com.juul.krayon.shape/Line<#A> // com.juul.krayon.shape/Line.defined|defined(kotlin.Function1<com.juul.krayon.shape.Arguments<1:0>,kotlin.Boolean>){}[0]
     final fun render(kotlin.collections/List<#A?>): com.juul.krayon.kanvas/Path // com.juul.krayon.shape/Line.render|render(kotlin.collections.List<1:0?>){}[0]

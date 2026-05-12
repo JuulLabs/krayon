@@ -6,7 +6,7 @@ import kotlin.time.Duration.Companion.hours
 public object HourInterval : Interval, Interval.Count, Interval.Field {
 
     override fun floor(input: LocalDateTime): LocalDateTime =
-        with(input) { LocalDateTime(year, month, dayOfMonth, hour, minute = 0) }
+        with(input) { LocalDateTime(year, month, day, hour, minute = 0) }
 
     override fun offset(input: LocalDateTime, steps: Int): LocalDateTime =
         input + steps.hours

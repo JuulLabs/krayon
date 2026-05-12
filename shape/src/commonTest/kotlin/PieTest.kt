@@ -6,17 +6,17 @@ import kotlin.test.assertEquals
 
 private const val TAU = (2 * PI).toFloat()
 
-public class PieTest {
+class PieTest {
 
     @Test
-    public fun pie_withSingleDatum_fillsFullCircle() {
+    fun pie_withSingleDatum_fillsFullCircle() {
         val slice = pie().invoke(1f).single()
         assertEquals(0f, slice.startAngle)
         assertEquals(TAU, slice.endAngle)
     }
 
     @Test
-    public fun pie_withMultipleDatums_accountsForValue() {
+    fun pie_withMultipleDatums_accountsForValue() {
         val (first, second, third) = pie().invoke(1f, 2f, 3f)
         assertEquals(0f, first.startAngle)
         assertEquals(TAU / 6f, first.endAngle)

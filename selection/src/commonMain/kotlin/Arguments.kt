@@ -32,6 +32,7 @@ public class Arguments<D, T> private constructor(
             arguments.datum = datum
             arguments.index = index
             arguments.data = data
+            @Suppress("UNCHECKED_CAST")
             return arguments as Arguments<D, T>
         }
     }

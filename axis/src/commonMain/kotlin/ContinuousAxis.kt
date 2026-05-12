@@ -160,6 +160,7 @@ public class ContinuousAxis<D : Comparable<D>> internal constructor(
         val path = selection.selectAll(PathElement.withKind("domain"))
             .data(listOf(null))
 
+        @Suppress("UNCHECKED_CAST")
         val tick = selection.selectAll(TransformElement.withKind("tick"))
             .keyedData(values) { (d) -> (d as? D)?.let(scale::scale) }
             .order()

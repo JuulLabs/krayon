@@ -13,7 +13,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
 
       - run: ./gradlew check
 
@@ -25,4 +25,5 @@ jobs:
           -PsigningInMemoryKeyPassword='${{ secrets.SIGNING_PASSWORD }}'
           -PmavenCentralUsername='${{ secrets.OSS_SONATYPE_NEXUS_USERNAME }}'
           -PmavenCentralPassword='${{ secrets.OSS_SONATYPE_NEXUS_PASSWORD }}'
+          --no-parallel
           publish

@@ -2,7 +2,6 @@
 ![badge][badge-ios]
 ![badge][badge-js]
 ![badge][badge-jvm]
-[![codecov](https://codecov.io/gh/JuulLabs/krayon/branch/main/graph/badge.svg?token=y8btx3pTlr)](https://codecov.io/gh/JuulLabs/krayon)
 
 # Krayon
 

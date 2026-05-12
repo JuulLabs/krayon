@@ -27,6 +27,7 @@ private external class OffscreenCanvas(width: Double, height: Double) {
  * Returns the browser-native start angle for conic gradients that will produce behavior matching
  * Krayon's expectations. On some browsers this is 0, and on other browsers this is PI/2.
  */
+@Suppress("UNCHECKED_CAST_TO_EXTERNAL_INTERFACE") // `getContext` type based on function args
 internal val conicStartAngleOffset: Double by lazy {
     // Use off-screen rendering to figure out runtime behavior.
     val canvas = try {

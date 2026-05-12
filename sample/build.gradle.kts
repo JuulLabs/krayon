@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
+@OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
 kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
@@ -84,6 +85,7 @@ android {
     lint {
         // Good habits for a real app, but trying to keep the sample project minimal.
         disable += "AllowBackup"
+        disable += "AndroidGradlePluginVersion"
         disable += "MissingApplicationIcon"
         disable += "Overdraw"
         // False positives for some reason

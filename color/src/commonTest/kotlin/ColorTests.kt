@@ -8,7 +8,7 @@ class ColorTests {
 
     @Test
     fun checkArgbTransformIsCorrect() {
-        assertEquals((0x12345678).toInt(), Color(alpha = 0x12, red = 0x34, green = 0x56, blue = 0x78).argb)
+        assertEquals(0x12345678, Color(alpha = 0x12, red = 0x34, green = 0x56, blue = 0x78).argb)
     }
 
     @Test
@@ -28,7 +28,7 @@ class ColorTests {
 
     @Test
     fun checkComponentsAreMasked() {
-        assertEquals((0x23456789).toInt(), Color(alpha = 0x123, red = 0x345, green = 0x567, blue = 0x789).argb)
+        assertEquals(0x23456789, Color(alpha = 0x123, red = 0x345, green = 0x567, blue = 0x789).argb)
     }
 
     @Test
