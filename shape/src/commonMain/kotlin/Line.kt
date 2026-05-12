@@ -9,7 +9,7 @@ private val DEFAULT_XY = { (datum): Arguments<*> -> (datum as? Number)?.toFloat(
 
 public fun <D : Any> line(): Line<D> = Line()
 
-public class Line<D : Any> internal constructor() : Shape<D> {
+public class Line<D : Any> internal constructor() {
 
     private var curve: Curve = Linear
     private var defined: (Arguments<D>) -> Boolean = DEFAULT_DEFINED
@@ -28,7 +28,7 @@ public class Line<D : Any> internal constructor() : Shape<D> {
 
     public fun y(y: (Arguments<D>) -> Float): Line<D> = this.apply { this.y = y }
 
-    override fun render(data: List<D?>): Path = Path {
+    public fun render(data: List<D?>): Path = Path {
         var currentlyDefined = false
         val arguments = Arguments(Unit, -1, data)
         for ((index, datum) in data.withIndex()) {

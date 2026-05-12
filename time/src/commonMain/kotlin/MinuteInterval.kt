@@ -6,7 +6,7 @@ import kotlin.time.Duration.Companion.minutes
 public object MinuteInterval : Interval, Interval.Count, Interval.Field {
 
     override fun floor(input: LocalDateTime): LocalDateTime =
-        with(input) { LocalDateTime(year, month, dayOfMonth, hour, minute) }
+        with(input) { LocalDateTime(year, month, day, hour, minute) }
 
     override fun offset(input: LocalDateTime, steps: Int): LocalDateTime =
         input + steps.minutes

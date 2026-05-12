@@ -6,7 +6,7 @@ import kotlin.time.Duration.Companion.days
 public object DayInterval : Interval, Interval.Count, Interval.Field {
 
     override fun floor(input: LocalDateTime): LocalDateTime =
-        with(input) { LocalDateTime(year, month, dayOfMonth, hour = 0, minute = 0) }
+        with(input) { LocalDateTime(year, month, day, hour = 0, minute = 0) }
 
     override fun offset(input: LocalDateTime, steps: Int): LocalDateTime =
         input + steps.days
@@ -15,5 +15,5 @@ public object DayInterval : Interval, Interval.Count, Interval.Field {
         (stop - start).inWholeDays.coerceToInt()
 
     override fun field(input: LocalDateTime): Int =
-        input.dayOfMonth
+        input.day
 }

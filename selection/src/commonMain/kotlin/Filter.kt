@@ -11,7 +11,10 @@ public inline fun <E : Element, D> Selection<E, D>.filter(
             Group(
                 group.parent,
                 group.nodes.mapIndexedNotNull { index, node ->
-                    node?.takeIf { node.filter(arguments(node.data as D, index, group.nodes)) }
+                    node?.takeIf {
+                        @Suppress("UNCHECKED_CAST")
+                        node.filter(arguments(node.data as D, index, group.nodes))
+                    }
                 },
             )
         },

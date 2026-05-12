@@ -15,6 +15,7 @@ public inline fun <E : Element, D, S : Selection<E, D>> S.each(
     val arguments = Arguments.Buffer<D, E?>()
     groups.forEach { group ->
         group.nodes.forEachIndexed { index, node ->
+            @Suppress("UNCHECKED_CAST")
             node?.action(arguments(node.data as D, index, group.nodes))
         }
     }

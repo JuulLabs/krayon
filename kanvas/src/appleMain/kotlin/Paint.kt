@@ -199,13 +199,11 @@ private fun drawCurrentPathStroke(context: CGContextRef, paint: Paint.Stroke) {
             Paint.Stroke.Join.Round -> CGLineJoin.kCGLineJoinRound
             Paint.Stroke.Join.Bevel -> CGLineJoin.kCGLineJoinMiter
             is Paint.Stroke.Join.Miter -> CGLineJoin.kCGLineJoinMiter
-            else -> error("Unreachable.")
         },
     )
     val dashLengths = when (val dash = paint.dash) {
         Paint.Stroke.Dash.None -> null
         is Paint.Stroke.Dash.Pattern -> dash.intervals.map { it.toDouble() }.toDoubleArray()
-        else -> error("Unreachable.")
     }
     CGContextSetLineDash(
         context,

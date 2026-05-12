@@ -41,7 +41,7 @@ internal class ComposePathBuilder : PathBuilder<ComposePath> {
         endX: Float,
         endY: Float,
     ) {
-        pathBuffer.quadraticBezierTo(controlX, controlY, endX, endY)
+        pathBuffer.quadraticTo(controlX, controlY, endX, endY)
     }
 
     override fun relativeQuadraticTo(
@@ -50,7 +50,7 @@ internal class ComposePathBuilder : PathBuilder<ComposePath> {
         endX: Float,
         endY: Float,
     ) {
-        pathBuffer.relativeQuadraticBezierTo(controlX, controlY, endX, endY)
+        pathBuffer.relativeQuadraticTo(controlX, controlY, endX, endY)
     }
 
     override fun cubicTo(
