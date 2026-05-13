@@ -9,7 +9,7 @@ on:
 
 jobs:
   android-lint:
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-java@v5
@@ -20,7 +20,7 @@ jobs:
       - run: ./gradlew lintAnalyzeDebug lintAnalyzeDebugUnitTest lintAnalyzeDebugAndroidTest
 
   api-check:
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-java@v5
@@ -31,7 +31,7 @@ jobs:
       - run: ./gradlew apiCheck
 
   dokka:
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-java@v5
@@ -42,7 +42,7 @@ jobs:
       - run: ./gradlew dokkaGenerate
 
   kotlin-lint:
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-java@v5
@@ -53,7 +53,7 @@ jobs:
       - run: ./gradlew lintKotlin
 
   publish-local:
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-java@v5
@@ -70,7 +70,7 @@ jobs:
           -x dokkaGeneratePublicationHtml
 
   tests:
-    runs-on: macos-15
+    runs-on: macos-26
     strategy:
       fail-fast: false
       matrix:
