@@ -28,4 +28,10 @@ public class Path internal constructor(
      * implementation requires some manual cleanup that the general [Path] would be unable to do.
      */
     public fun <P : Any> buildWith(builder: PathBuilder<P>): P = instructions.rebuildWith(builder)
+
+    override fun equals(other: Any?): Boolean = other is Path && instructions == other.instructions
+
+    override fun hashCode(): Int = instructions.hashCode()
+
+    override fun toString(): String = instructions.toString()
 }
