@@ -10,7 +10,7 @@ jvm-toolchain = "11"
 kotlin = "2.2.10"
 
 [libraries]
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.11.0" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.12.1" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.7.1" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.4" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version = "1.2.0" }
