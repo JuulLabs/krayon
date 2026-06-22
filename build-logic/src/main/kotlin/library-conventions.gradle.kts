@@ -51,3 +51,16 @@ kotlin {
         extraWarnings = true
     }
 }
+
+// Robolectric 4.16+ requires Java 17+ for recent SDKs; run host tests on JDK 17 while
+// library code continues to compile with the project JVM toolchain.
+tasks.withType<Test>().configureEach {
+    if (name == "testAndroidHostTest") {
+        javaLauncher.set(
+            javaToolchains.launcherFor {
+                languageVersion.set(JavaLanguageVersion.of(17))
+            },
+        )
+        systemProperty("robolectric.sdk", "35")
+    }
+}
