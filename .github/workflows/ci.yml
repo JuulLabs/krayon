@@ -17,7 +17,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v6
-      - run: ./gradlew lintAnalyzeDebug lintAnalyzeDebugUnitTest lintAnalyzeDebugAndroidTest
+      - run: ./gradlew lint
 
   api-check:
     runs-on: macos-26
@@ -81,8 +81,7 @@ jobs:
           - jvmTest
           - macosArm64Test
           - macosX64Test
-          - testDebugUnitTest
-          - testReleaseUnitTest
+          - testAndroidHostTest
           - wasmJsBrowserTest
     steps:
       - uses: actions/checkout@v6

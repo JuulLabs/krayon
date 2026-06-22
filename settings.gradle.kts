@@ -19,6 +19,7 @@ plugins {
 includeBuild("build-logic")
 
 include(
+    "androidApp",
     "axis",
     "box",
     "color",
