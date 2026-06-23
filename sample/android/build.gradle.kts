@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.sample)
+    implementation(projects.sample.shared)
     implementation(projects.compose)
     implementation(projects.elementView)
     implementation(libs.androidx.activity.compose)

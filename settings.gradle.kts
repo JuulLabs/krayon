@@ -19,7 +19,6 @@ plugins {
 includeBuild("build-logic")
 
 include(
-    "androidApp",
     "axis",
     "box",
     "color",
@@ -30,7 +29,8 @@ include(
     "hierarchy",
     "interpolate",
     "kanvas",
-    "sample",
+    "sample:android",
+    "sample:shared",
     "scale",
     "selection",
     "shape",
