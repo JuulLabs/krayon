@@ -15,7 +15,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.kotlinx.atomicfu)
+            implementation(libs.atomicfu)
         }
 
         commonTest.dependencies {
