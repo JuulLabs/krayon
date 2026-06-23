@@ -24,5 +24,5 @@ apiValidation {
         enabled = true
     }
 
-    ignoredProjects.addAll(listOf("sample"))
+    ignoredProjects.addAll(listOf("sample:shared", "sample:android"))
 }
