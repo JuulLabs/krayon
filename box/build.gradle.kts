@@ -23,7 +23,7 @@ kotlin {
 // Uncomment for local builds for Apple targets
 // kotlinArtifacts {
 //     Native.XCFramework("Krayon") {
-//         targets(macosArm64, macosX64, iosArm64)
+//         targets(macosArm64, iosArm64)
 //         modes(DEBUG, RELEASE)
 //         addModule(projects.axis)
 //         addModule(projects.color)
