@@ -10,7 +10,7 @@ import kotlin.test.assertEquals
 import android.graphics.Paint as AndroidPaint
 
 @RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE)
+@Config(manifest = Config.NONE, sdk = [35])
 class AndroidPaintTests {
 
     @Test

@@ -18,7 +18,7 @@ kotlin {
             implementation(libs.coroutines.android)
         }
 
-        getByName("androidUnitTest").dependencies {
+        getByName("androidHostTest").dependencies {
             implementation(libs.androidx.test)
             implementation(libs.robolectric)
         }
