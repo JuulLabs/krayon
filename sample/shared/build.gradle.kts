@@ -2,7 +2,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     id("kotlin-conventions")
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
 }
@@ -11,7 +11,12 @@ plugins {
 kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
-    androidTarget()
+    android {
+        namespace = "com.juul.krayon.sample.shared"
+        compileSdk = libs.versions.android.compile.get().toInt()
+        minSdk = libs.versions.android.min.get().toInt()
+    }
+
     js {
         browser()
         binaries.executable()
@@ -35,19 +40,6 @@ kotlin {
             implementation(kotlin("test"))
         }
 
-        androidMain.dependencies {
-            implementation(projects.compose)
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.androidx.appcompat)
-            implementation(libs.androidx.lifecycle.runtime)
-            implementation(libs.coroutines.android)
-            implementation(libs.material)
-            implementation(compose.foundation)
-            implementation(compose.preview)
-            implementation(compose.runtime)
-            implementation(compose.ui)
-        }
-
         getByName("desktopMain").dependencies {
             implementation(projects.compose)
             implementation(compose.desktop.currentOs)
@@ -62,36 +54,6 @@ kotlin {
         wasmJsMain.dependencies {
             implementation(projects.compose)
         }
-    }
-}
-
-android {
-    compileSdk = libs.versions.android.compile.get().toInt()
-
-    defaultConfig {
-        minSdk = libs.versions.android.min.get().toInt()
-        targetSdk = libs.versions.android.target.get().toInt()
-        versionCode = 1
-        versionName = "sample"
-    }
-
-    namespace = "com.juul.krayon.sample"
-
-    buildFeatures {
-        resValues = true
-        viewBinding = true
-    }
-
-    lint {
-        // Good habits for a real app, but trying to keep the sample project minimal.
-        disable += "AllowBackup"
-        disable += "AndroidGradlePluginVersion"
-        disable += "MissingApplicationIcon"
-        disable += "Overdraw"
-        // False positives for some reason
-        disable += "MissingClass"
-        disable += "UnusedResources"
-        disable += "GradleDependency"
     }
 }
 
