@@ -76,11 +76,9 @@ jobs:
       matrix:
         task:
           - iosSimulatorArm64Test
-          - iosX64Test
           - jsBrowserTest
           - jvmTest
           - macosArm64Test
-          - macosX64Test
           - testAndroidHostTest
           - wasmJsBrowserTest
     steps:
