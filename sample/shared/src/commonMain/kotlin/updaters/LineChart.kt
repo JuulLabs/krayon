@@ -34,7 +34,7 @@ private val circlePaint = Paint.FillAndStroke(
     Paint.Stroke(steelBlue, 1f),
 )
 
-internal fun lineChart(root: RootElement, width: Float, height: Float, data: List<Point?>) {
+fun lineChart(root: RootElement, width: Float, height: Float, data: List<Point?>) {
     val leftMargin = 40f
     val topMargin = 20f
     val rightMargin = 20f
