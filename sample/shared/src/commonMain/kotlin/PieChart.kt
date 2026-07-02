@@ -35,7 +35,7 @@ private val paints = listOf(red, blue, green, darkMagenta, darkCyan, olive)
         Paint.GradientAndStroke(gradient, stroke)
     }
 
-internal data class PieChart(
+data class PieChart(
     val values: List<Float>,
     val startAngle: Float,
     val endAngle: Float,
@@ -44,7 +44,7 @@ internal data class PieChart(
     val innerRadius: Float,
 )
 
-internal fun pieChart(root: RootElement, width: Float, height: Float, data: PieChart) {
+fun pieChart(root: RootElement, width: Float, height: Float, data: PieChart) {
     // Offset of 1px just so stroke doesn't run outside the edge of the chart
     val arc = arc(minOf(width, height) / 2f - 1f, data.innerRadius)
         .cornerRadius(data.cornerRadius)

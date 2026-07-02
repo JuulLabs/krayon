@@ -12,7 +12,7 @@ import kotlin.time.Duration.Companion.seconds
 import kotlin.time.TimeSource
 
 /** A flow that emits data for a continuously rolling sine wave. By default, completes a full cycle in 10 seconds. */
-internal fun movingSineWave(
+fun movingSineWave(
     period: Duration = 10.seconds,
     samples: Int = 50,
 ): Flow<List<Point?>> = flow {
