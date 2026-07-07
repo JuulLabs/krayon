@@ -1,6 +1,6 @@
 [versions]
 agp = "9.2.1"
-android-compile = "36"
+android-compile = "37"
 android-min = "23"
 android-target = "36"
 compose = "1.11.1"
