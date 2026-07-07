@@ -1,6 +1,6 @@
 package com.juul.krayon.compose
 
-import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.graphics.skiaCanvas
 import com.juul.krayon.kanvas.Paint
 import org.jetbrains.skia.impl.use
 import org.jetbrains.skia.Font as SkiaFont
@@ -9,7 +9,7 @@ import org.jetbrains.skia.Paint as SkiaPaint
 internal actual fun drawText(kanvas: ComposeKanvas, text: CharSequence, x: Float, y: Float, paint: Paint.Text) {
     if (text.isEmpty()) return
     paint.toSkiaFont().use { font ->
-        val canvas = kanvas.scope.drawContext.canvas.nativeCanvas
+        val canvas = kanvas.scope.drawContext.canvas.skiaCanvas
         val string = text.toString()
         val skiaPaint = paint.toSkiaPaint()
         canvas.drawString(
