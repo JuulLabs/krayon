@@ -98,7 +98,7 @@ A simpler, but experimental, approach involves using the [Kotlin Artifacts DSL](
 ```kotlin
 kotlinArtifacts {
     Native.XCFramework("YourLibrary") {
-        targets(macosArm64, macosX64, iosArm64)
+        targets(macosArm64, iosArm64)
         modes(DEBUG, RELEASE)
         addModule("com.juul.krayon:$module:$version")
     }
