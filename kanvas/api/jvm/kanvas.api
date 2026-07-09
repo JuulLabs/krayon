@@ -290,7 +290,10 @@ public final class com/juul/krayon/kanvas/PaintKt {
 public final class com/juul/krayon/kanvas/Path {
 	public fun <init> (Lkotlin/jvm/functions/Function1;)V
 	public final fun buildWith (Lcom/juul/krayon/kanvas/PathBuilder;)Ljava/lang/Object;
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun get (Lcom/juul/krayon/kanvas/PathTypeMarker;)Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public abstract interface class com/juul/krayon/kanvas/PathBuilder {

@@ -1,0 +1,30 @@
+---
+description: Kotlin and KMP coding conventions for Krayon
+globs: "**/*.kt"
+alwaysApply: false
+---
+
+# Kotlin Conventions
+
+## Style & Formatting
+
+- Formatting rules and editor settings are in `.editorconfig`. Kotlinter enforces them.
+- Compiler options (warnings-as-errors, extra warnings, etc.) are in the convention plugins under `build-logic/`.
+- Run `./gradlew lintKotlin` to check, `./gradlew formatKotlin` to fix.
+
+## API Visibility
+
+- Published libraries use `explicitApi()` — every public declaration needs an explicit `public` modifier.
+- Use `internal` for implementation details; prefer `private` when the symbol doesn't leave the file.
+- Cross-module internals use `@InternalKrayonApi` (from `core`). Modules that consume it opt in via `languageSettings.optIn(...)` in Gradle.
+
+## Patterns
+
+- Prefer `@JvmInline value class` for lightweight type-safe wrappers (see `Color`).
+- Use `expect`/`actual` for platform-specific code.
+- Use `contract { }` blocks (`@OptIn(ExperimentalContracts::class)`) for scope functions that callers depend on (e.g. `withClip`, `withTransform`).
+- Common test code goes in `commonTest` with `kotlin("test")` and `kotlinx-coroutines-test`.
+
+## Source Set Hierarchy
+
+The default KMP hierarchy template is applied. The `compose` module adds a custom `skiaMain` source set shared by JVM/Apple/JS/Wasm targets.

@@ -1,0 +1,29 @@
+---
+description: API surface management and binary compatibility rules
+globs: "**/*.api"
+alwaysApply: false
+---
+
+# API Compatibility
+
+Krayon uses the **Kotlin Binary Compatibility Validator** (BCV) to guard against accidental API changes.
+
+## API Dump Files
+
+Each published module has an `api/` directory containing:
+- `*.api` — JVM/Android binary signatures
+- `*.klib.api` — Klib ABI for non-JVM targets
+
+These files are committed to the repo and checked in CI via `./gradlew apiCheck`.
+
+## Workflow
+
+- **After changing public API**: run `./gradlew apiDump` and commit the updated `.api` / `.klib.api` files.
+- **CI will fail** if API dumps are stale — always regenerate before pushing.
+- The `sample` module is excluded from API validation.
+
+## Design Guidelines
+
+- Minimize public API surface; prefer `internal` unless a symbol is intentionally part of the library contract.
+- Breaking changes require careful consideration — the project publishes to Maven Central.
+- Use `@InternalKrayonApi` for symbols that must be `public` for cross-module access but are not part of the user-facing API.
