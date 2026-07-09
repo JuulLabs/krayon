@@ -264,7 +264,6 @@ private class CommandPathBuilder : RelativePathBuilder<SegmentedPath>() {
             when (command) {
                 AbsoluteArc -> lineTo(x, y)
                 RelativeArc -> relativeLineTo(x, y)
-                else -> error("Unreachable.")
             }
         } else {
             val xAxisRotation = args[2]
