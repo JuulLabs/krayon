@@ -1,0 +1,27 @@
+---
+description: Gradle build system conventions for Krayon
+globs: "**/*.gradle.kts"
+alwaysApply: false
+---
+
+# Gradle Build Conventions
+
+## Convention Plugins
+
+Precompiled convention plugins live in `build-logic/src/main/kotlin/`. Read them to understand compiler options, targets, linting, and publishing configuration.
+
+## Adding a New Library Module
+
+1. Create `<module>/build.gradle.kts` applying `library-conventions`.
+2. Add the module name to `settings.gradle.kts`.
+3. Declare KMP targets (or inherit from convention), add `dependencies` in `commonMain`.
+4. Run `./gradlew apiDump` to generate initial API dumps.
+
+## Version Catalog
+
+All dependency versions live in `gradle/libs.versions.toml`. Never hardcode versions in `build.gradle.kts` — use `libs.versions.*`, `libs.plugins.*`, or `libs.*` accessors.
+
+## Dependencies
+
+- Use **typesafe project accessors**: `projects.core`, `projects.kanvas`, etc.
+- Use `api(...)` for transitive public API dependencies, `implementation(...)` for internal-only.
