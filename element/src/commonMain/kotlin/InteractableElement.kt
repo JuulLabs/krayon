@@ -1,7 +1,6 @@
 package com.juul.krayon.element
 
 import androidx.compose.runtime.Stable
-import com.juul.krayon.core.InternalKrayonApi
 import com.juul.krayon.kanvas.Path
 
 /**
@@ -23,12 +22,10 @@ import com.juul.krayon.kanvas.Path
 @Stable
 public abstract class InteractableElement<T : InteractableElement<T>> : Element() {
 
-    @InternalKrayonApi
-    public var clickHandler: ClickHandler<T>? by attributes.withDefault { null }
+    internal var clickHandler: ClickHandler<T>? by attributes.withDefault { null }
         private set
 
-    @InternalKrayonApi
-    public var hoverHandler: HoverHandler<T>? by attributes.withDefault { null }
+    internal var hoverHandler: HoverHandler<T>? by attributes.withDefault { null }
         private set
 
     /** Set the [ClickHandler] for this element. */

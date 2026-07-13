@@ -40,3 +40,8 @@ kotlin {
 }
 
 compose.resources { generateResClass = never }
+
+dependencies {
+    "jvmTestImplementation"("org.jetbrains.compose.ui:ui-test:${libs.versions.compose.get()}")
+    "jvmTestImplementation"(compose.desktop.currentOs)
+}

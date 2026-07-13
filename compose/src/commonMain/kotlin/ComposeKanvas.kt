@@ -14,7 +14,7 @@ import com.juul.krayon.kanvas.Path
 import com.juul.krayon.kanvas.Transform
 
 public class ComposeKanvas internal constructor(
-    public val scope: DrawScope,
+    internal val scope: DrawScope,
 ) : Kanvas {
 
     override val width: Float = scope.size.width / scope.density
