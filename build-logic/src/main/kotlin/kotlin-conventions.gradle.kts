@@ -1,7 +1,6 @@
 plugins {
     id("repository-conventions")
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.atomicfu)
     alias(libs.plugins.kotlinter)
 }
 
@@ -15,6 +14,10 @@ kotlin {
     }
 
     sourceSets {
+        commonMain.dependencies {
+            implementation(libs.atomicfu)
+        }
+
         commonTest.dependencies {
             implementation(kotlin("test"))
             implementation(libs.coroutines.test)

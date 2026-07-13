@@ -16,6 +16,28 @@ public final class com/juul/krayon/shape/ArcKt {
 	public static synthetic fun arc$default (FFILjava/lang/Object;)Lcom/juul/krayon/shape/Arc;
 }
 
+public final class com/juul/krayon/shape/Area {
+	public final fun curve (Lcom/juul/krayon/shape/curve/Curve;)Lcom/juul/krayon/shape/Area;
+	public final fun defined (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Area;
+	public final fun render (Ljava/util/List;)Lcom/juul/krayon/kanvas/Path;
+	public final fun x (F)Lcom/juul/krayon/shape/Area;
+	public final fun x (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Area;
+	public final fun x0 (F)Lcom/juul/krayon/shape/Area;
+	public final fun x0 (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Area;
+	public final fun x1 (F)Lcom/juul/krayon/shape/Area;
+	public final fun x1 (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Area;
+	public final fun y (F)Lcom/juul/krayon/shape/Area;
+	public final fun y (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Area;
+	public final fun y0 (F)Lcom/juul/krayon/shape/Area;
+	public final fun y0 (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Area;
+	public final fun y1 (F)Lcom/juul/krayon/shape/Area;
+	public final fun y1 (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Area;
+}
+
+public final class com/juul/krayon/shape/AreaKt {
+	public static final fun area ()Lcom/juul/krayon/shape/Area;
+}
+
 public final class com/juul/krayon/shape/Arguments {
 	public final fun component1 ()Ljava/lang/Object;
 	public final fun component2 ()I
@@ -53,6 +75,19 @@ public final class com/juul/krayon/shape/Pie {
 
 public final class com/juul/krayon/shape/PieKt {
 	public static final fun pie ()Lcom/juul/krayon/shape/Pie;
+}
+
+public final class com/juul/krayon/shape/Point {
+	public fun <init> (FF)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun copy (FF)Lcom/juul/krayon/shape/Point;
+	public static synthetic fun copy$default (Lcom/juul/krayon/shape/Point;FFILjava/lang/Object;)Lcom/juul/krayon/shape/Point;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getX ()F
+	public final fun getY ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/juul/krayon/shape/Slice {

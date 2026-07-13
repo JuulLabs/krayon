@@ -1,6 +1,6 @@
 // Klib ABI Dump
-// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64, wasmJs]
-// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, macosX64]
+// Targets: [iosArm64, iosSimulatorArm64, js, macosArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, macosArm64]
 // Rendering settings:
 // - Signature version: 2
 // - Show manifest properties: true
@@ -167,6 +167,9 @@ final class com.juul.krayon.kanvas/Path { // com.juul.krayon.kanvas/Path|null[0]
 
     final fun <#A1: kotlin/Any> buildWith(com.juul.krayon.kanvas/PathBuilder<#A1>): #A1 // com.juul.krayon.kanvas/Path.buildWith|buildWith(com.juul.krayon.kanvas.PathBuilder<0:0>){0§<kotlin.Any>}[0]
     final fun <#A1: kotlin/Any> get(com.juul.krayon.kanvas/PathTypeMarker<#A1>): #A1 // com.juul.krayon.kanvas/Path.get|get(com.juul.krayon.kanvas.PathTypeMarker<0:0>){0§<kotlin.Any>}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Path.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Path.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.kanvas/Path.toString|toString(){}[0]
 }
 
 final value class com.juul.krayon.kanvas.svg/PathString { // com.juul.krayon.kanvas.svg/PathString|null[0]

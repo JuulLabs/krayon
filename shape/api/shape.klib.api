@@ -1,5 +1,5 @@
 // Klib ABI Dump
-// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64, wasmJs]
+// Targets: [iosArm64, iosSimulatorArm64, js, macosArm64, wasmJs]
 // Rendering settings:
 // - Signature version: 2
 // - Show manifest properties: true
@@ -12,6 +12,24 @@ abstract interface com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.
     abstract fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/Curve.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
     abstract fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Curve.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
     abstract fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Curve.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final class <#A: kotlin/Any> com.juul.krayon.shape/Area { // com.juul.krayon.shape/Area|null[0]
+    final fun curve(com.juul.krayon.shape.curve/Curve): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.curve|curve(com.juul.krayon.shape.curve.Curve){}[0]
+    final fun defined(kotlin/Function1<com.juul.krayon.shape/Arguments<#A>, kotlin/Boolean>): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.defined|defined(kotlin.Function1<com.juul.krayon.shape.Arguments<1:0>,kotlin.Boolean>){}[0]
+    final fun render(kotlin.collections/List<#A?>): com.juul.krayon.kanvas/Path // com.juul.krayon.shape/Area.render|render(kotlin.collections.List<1:0?>){}[0]
+    final fun x(kotlin/Float): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.x|x(kotlin.Float){}[0]
+    final fun x(kotlin/Function1<com.juul.krayon.shape/Arguments<#A>, kotlin/Float>): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.x|x(kotlin.Function1<com.juul.krayon.shape.Arguments<1:0>,kotlin.Float>){}[0]
+    final fun x0(kotlin/Float): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.x0|x0(kotlin.Float){}[0]
+    final fun x0(kotlin/Function1<com.juul.krayon.shape/Arguments<#A>, kotlin/Float>): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.x0|x0(kotlin.Function1<com.juul.krayon.shape.Arguments<1:0>,kotlin.Float>){}[0]
+    final fun x1(kotlin/Float): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.x1|x1(kotlin.Float){}[0]
+    final fun x1(kotlin/Function1<com.juul.krayon.shape/Arguments<#A>, kotlin/Float>): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.x1|x1(kotlin.Function1<com.juul.krayon.shape.Arguments<1:0>,kotlin.Float>){}[0]
+    final fun y(kotlin/Float): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.y|y(kotlin.Float){}[0]
+    final fun y(kotlin/Function1<com.juul.krayon.shape/Arguments<#A>, kotlin/Float>): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.y|y(kotlin.Function1<com.juul.krayon.shape.Arguments<1:0>,kotlin.Float>){}[0]
+    final fun y0(kotlin/Float): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.y0|y0(kotlin.Float){}[0]
+    final fun y0(kotlin/Function1<com.juul.krayon.shape/Arguments<#A>, kotlin/Float>): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.y0|y0(kotlin.Function1<com.juul.krayon.shape.Arguments<1:0>,kotlin.Float>){}[0]
+    final fun y1(kotlin/Float): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.y1|y1(kotlin.Float){}[0]
+    final fun y1(kotlin/Function1<com.juul.krayon.shape/Arguments<#A>, kotlin/Float>): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/Area.y1|y1(kotlin.Function1<com.juul.krayon.shape.Arguments<1:0>,kotlin.Float>){}[0]
 }
 
 final class <#A: kotlin/Any> com.juul.krayon.shape/Arguments { // com.juul.krayon.shape/Arguments|null[0]
@@ -99,6 +117,22 @@ final class com.juul.krayon.shape/Arc { // com.juul.krayon.shape/Arc|null[0]
     final fun padRadius(kotlin/Function4<com.juul.krayon.shape/Arc, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float>): com.juul.krayon.shape/Arc // com.juul.krayon.shape/Arc.padRadius|padRadius(kotlin.Function4<com.juul.krayon.shape.Arc,kotlin.Float,kotlin.Float,kotlin.Float,kotlin.Float>){}[0]
 }
 
+final class com.juul.krayon.shape/Point { // com.juul.krayon.shape/Point|null[0]
+    constructor <init>(kotlin/Float, kotlin/Float) // com.juul.krayon.shape/Point.<init>|<init>(kotlin.Float;kotlin.Float){}[0]
+
+    final val x // com.juul.krayon.shape/Point.x|{}x[0]
+        final fun <get-x>(): kotlin/Float // com.juul.krayon.shape/Point.x.<get-x>|<get-x>(){}[0]
+    final val y // com.juul.krayon.shape/Point.y|{}y[0]
+        final fun <get-y>(): kotlin/Float // com.juul.krayon.shape/Point.y.<get-y>|<get-y>(){}[0]
+
+    final fun component1(): kotlin/Float // com.juul.krayon.shape/Point.component1|component1(){}[0]
+    final fun component2(): kotlin/Float // com.juul.krayon.shape/Point.component2|component2(){}[0]
+    final fun copy(kotlin/Float = ..., kotlin/Float = ...): com.juul.krayon.shape/Point // com.juul.krayon.shape/Point.copy|copy(kotlin.Float;kotlin.Float){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.shape/Point.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.juul.krayon.shape/Point.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.shape/Point.toString|toString(){}[0]
+}
+
 final object com.juul.krayon.shape.curve/Linear : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/Linear|null[0]
     final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Linear.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
     final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Linear.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
@@ -107,6 +141,7 @@ final object com.juul.krayon.shape.curve/Linear : com.juul.krayon.shape.curve/Cu
     final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Linear.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
 }
 
+final fun <#A: kotlin/Any> com.juul.krayon.shape/area(): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/area|area(){0§<kotlin.Any>}[0]
 final fun <#A: kotlin/Any> com.juul.krayon.shape/line(): com.juul.krayon.shape/Line<#A> // com.juul.krayon.shape/line|line(){0§<kotlin.Any>}[0]
 final fun com.juul.krayon.shape/arc(kotlin/Float, kotlin/Float = ...): com.juul.krayon.shape/Arc // com.juul.krayon.shape/arc|arc(kotlin.Float;kotlin.Float){}[0]
 final fun com.juul.krayon.shape/pie(): com.juul.krayon.shape/Pie<kotlin/Float> // com.juul.krayon.shape/pie|pie(){}[0]

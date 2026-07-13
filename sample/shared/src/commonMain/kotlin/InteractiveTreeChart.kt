@@ -56,7 +56,7 @@ data class InteractiveTreeChart(
     val counts: Map<Letter, Int>,
 )
 
-internal fun interactiveTreeChart(): Pair<Flow<InteractiveTreeChart>, UpdateElement<InteractiveTreeChart>> {
+fun interactiveTreeChart(): Pair<Flow<InteractiveTreeChart>, UpdateElement<InteractiveTreeChart>> {
     val selectionState = MutableStateFlow(null as Letter?)
     val hoveredState = MutableStateFlow(null as Letter?)
     val letterSizes = Letter.values().associateWith { Random.nextInt(50, 500) }
