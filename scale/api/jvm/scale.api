@@ -192,6 +192,37 @@ public final class com/juul/krayon/scale/PowScaleKt {
 	public static synthetic fun sqrtScale$default (Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/scale/PowScale;
 }
 
+public final class com/juul/krayon/scale/QuantileScale : com/juul/krayon/scale/Scale {
+	public final fun domain (Ljava/util/List;)Lcom/juul/krayon/scale/QuantileScale;
+	public final fun getDomain ()Ljava/util/List;
+	public final fun getQuantiles ()Ljava/util/List;
+	public final fun getRange ()Ljava/util/List;
+	public final fun invertExtent (Ljava/lang/Object;)Lkotlin/Pair;
+	public final fun range (Ljava/util/List;)Lcom/juul/krayon/scale/QuantileScale;
+	public fun scale (F)Ljava/lang/Object;
+	public synthetic fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/juul/krayon/scale/QuantileScaleKt {
+	public static final fun quantileScale (Ljava/util/List;Ljava/util/List;)Lcom/juul/krayon/scale/QuantileScale;
+}
+
+public final class com/juul/krayon/scale/QuantizeScale : com/juul/krayon/scale/Scale {
+	public final fun domain (Ljava/util/List;)Lcom/juul/krayon/scale/QuantizeScale;
+	public final fun getDomain ()Ljava/util/List;
+	public final fun getRange ()Ljava/util/List;
+	public final fun getThresholds ()Ljava/util/List;
+	public final fun invertExtent (Ljava/lang/Object;)Lkotlin/Pair;
+	public final fun range (Ljava/util/List;)Lcom/juul/krayon/scale/QuantizeScale;
+	public fun scale (F)Ljava/lang/Object;
+	public synthetic fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/juul/krayon/scale/QuantizeScaleKt {
+	public static final fun quantizeScale (Ljava/util/List;Ljava/util/List;)Lcom/juul/krayon/scale/QuantizeScale;
+	public static synthetic fun quantizeScale$default (Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/scale/QuantizeScale;
+}
+
 public abstract interface class com/juul/krayon/scale/Scale {
 	public abstract fun scale (Ljava/lang/Object;)Ljava/lang/Object;
 }
@@ -224,6 +255,20 @@ public final class com/juul/krayon/scale/SymlogScale : com/juul/krayon/scale/Sca
 public final class com/juul/krayon/scale/SymlogScaleKt {
 	public static final fun symlogScale (Ljava/util/List;Ljava/util/List;F)Lcom/juul/krayon/scale/SymlogScale;
 	public static synthetic fun symlogScale$default (Ljava/util/List;Ljava/util/List;FILjava/lang/Object;)Lcom/juul/krayon/scale/SymlogScale;
+}
+
+public final class com/juul/krayon/scale/ThresholdScale : com/juul/krayon/scale/Scale {
+	public final fun domain (Ljava/util/List;)Lcom/juul/krayon/scale/ThresholdScale;
+	public final fun getDomain ()Ljava/util/List;
+	public final fun getRange ()Ljava/util/List;
+	public final fun invertExtent (Ljava/lang/Object;)Lkotlin/Pair;
+	public final fun range (Ljava/util/List;)Lcom/juul/krayon/scale/ThresholdScale;
+	public fun scale (Ljava/lang/Comparable;)Ljava/lang/Object;
+	public synthetic fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/juul/krayon/scale/ThresholdScaleKt {
+	public static final fun thresholdScale (Ljava/util/List;Ljava/util/List;)Lcom/juul/krayon/scale/ThresholdScale;
 }
 
 public final class com/juul/krayon/scale/TickFormatKt {

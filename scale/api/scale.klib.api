@@ -120,6 +120,34 @@ final class <#A: kotlin/Any?> com.juul.krayon.scale/PowScale : com.juul.krayon.s
     final fun ticks(kotlin/Int = ...): kotlin.collections/List<kotlin/Float> // com.juul.krayon.scale/PowScale.ticks|ticks(kotlin.Int){}[0]
 }
 
+final class <#A: kotlin/Any?> com.juul.krayon.scale/QuantileScale : com.juul.krayon.scale/Scale<kotlin/Float, #A> { // com.juul.krayon.scale/QuantileScale|null[0]
+    final val domain // com.juul.krayon.scale/QuantileScale.domain|{}domain[0]
+        final fun <get-domain>(): kotlin.collections/List<kotlin/Float> // com.juul.krayon.scale/QuantileScale.domain.<get-domain>|<get-domain>(){}[0]
+    final val quantiles // com.juul.krayon.scale/QuantileScale.quantiles|{}quantiles[0]
+        final fun <get-quantiles>(): kotlin.collections/List<kotlin/Float> // com.juul.krayon.scale/QuantileScale.quantiles.<get-quantiles>|<get-quantiles>(){}[0]
+    final val range // com.juul.krayon.scale/QuantileScale.range|{}range[0]
+        final fun <get-range>(): kotlin.collections/List<#A> // com.juul.krayon.scale/QuantileScale.range.<get-range>|<get-range>(){}[0]
+
+    final fun <#A1: kotlin/Any?> range(kotlin.collections/List<#A1>): com.juul.krayon.scale/QuantileScale<#A1> // com.juul.krayon.scale/QuantileScale.range|range(kotlin.collections.List<0:0>){0§<kotlin.Any?>}[0]
+    final fun domain(kotlin.collections/List<kotlin/Float>): com.juul.krayon.scale/QuantileScale<#A> // com.juul.krayon.scale/QuantileScale.domain|domain(kotlin.collections.List<kotlin.Float>){}[0]
+    final fun invertExtent(#A): kotlin/Pair<kotlin/Float, kotlin/Float> // com.juul.krayon.scale/QuantileScale.invertExtent|invertExtent(1:0){}[0]
+    final fun scale(kotlin/Float): #A // com.juul.krayon.scale/QuantileScale.scale|scale(kotlin.Float){}[0]
+}
+
+final class <#A: kotlin/Any?> com.juul.krayon.scale/QuantizeScale : com.juul.krayon.scale/Scale<kotlin/Float, #A> { // com.juul.krayon.scale/QuantizeScale|null[0]
+    final val domain // com.juul.krayon.scale/QuantizeScale.domain|{}domain[0]
+        final fun <get-domain>(): kotlin.collections/List<kotlin/Float> // com.juul.krayon.scale/QuantizeScale.domain.<get-domain>|<get-domain>(){}[0]
+    final val range // com.juul.krayon.scale/QuantizeScale.range|{}range[0]
+        final fun <get-range>(): kotlin.collections/List<#A> // com.juul.krayon.scale/QuantizeScale.range.<get-range>|<get-range>(){}[0]
+    final val thresholds // com.juul.krayon.scale/QuantizeScale.thresholds|{}thresholds[0]
+        final fun <get-thresholds>(): kotlin.collections/List<kotlin/Float> // com.juul.krayon.scale/QuantizeScale.thresholds.<get-thresholds>|<get-thresholds>(){}[0]
+
+    final fun <#A1: kotlin/Any?> range(kotlin.collections/List<#A1>): com.juul.krayon.scale/QuantizeScale<#A1> // com.juul.krayon.scale/QuantizeScale.range|range(kotlin.collections.List<0:0>){0§<kotlin.Any?>}[0]
+    final fun domain(kotlin.collections/List<kotlin/Float>): com.juul.krayon.scale/QuantizeScale<#A> // com.juul.krayon.scale/QuantizeScale.domain|domain(kotlin.collections.List<kotlin.Float>){}[0]
+    final fun invertExtent(#A): kotlin/Pair<kotlin/Float, kotlin/Float> // com.juul.krayon.scale/QuantizeScale.invertExtent|invertExtent(1:0){}[0]
+    final fun scale(kotlin/Float): #A // com.juul.krayon.scale/QuantizeScale.scale|scale(kotlin.Float){}[0]
+}
+
 final class <#A: kotlin/Any?> com.juul.krayon.scale/SymlogScale : com.juul.krayon.scale/Scale<kotlin/Float, #A> { // com.juul.krayon.scale/SymlogScale|null[0]
     final val clamp // com.juul.krayon.scale/SymlogScale.clamp|{}clamp[0]
         final fun <get-clamp>(): kotlin/Boolean // com.juul.krayon.scale/SymlogScale.clamp.<get-clamp>|<get-clamp>(){}[0]
@@ -150,6 +178,18 @@ final class <#A: kotlin/Comparable<#A>, #B: kotlin/Any?> com.juul.krayon.scale/C
     final fun <#A1: kotlin/Any?> range(kotlin.collections/List<#A1>, kotlin/Function2<#A1, #A1, com.juul.krayon.interpolate/Interpolator<#A1>>): com.juul.krayon.scale/ContinuousScale<#A, #A1> // com.juul.krayon.scale/ContinuousScale.range|range(kotlin.collections.List<0:0>;kotlin.Function2<0:0,0:0,com.juul.krayon.interpolate.Interpolator<0:0>>){0§<kotlin.Any?>}[0]
     final fun <#A1: kotlin/Comparable<#A1>> domain(kotlin.collections/List<#A1>, kotlin/Function2<#A1, #A1, com.juul.krayon.interpolate/Inverter<#A1>>): com.juul.krayon.scale/ContinuousScale<#A1, #B> // com.juul.krayon.scale/ContinuousScale.domain|domain(kotlin.collections.List<0:0>;kotlin.Function2<0:0,0:0,com.juul.krayon.interpolate.Inverter<0:0>>){0§<kotlin.Comparable<0:0>>}[0]
     final fun scale(#A): #B // com.juul.krayon.scale/ContinuousScale.scale|scale(1:0){}[0]
+}
+
+final class <#A: kotlin/Comparable<#A>, #B: kotlin/Any?> com.juul.krayon.scale/ThresholdScale : com.juul.krayon.scale/Scale<#A, #B> { // com.juul.krayon.scale/ThresholdScale|null[0]
+    final val domain // com.juul.krayon.scale/ThresholdScale.domain|{}domain[0]
+        final fun <get-domain>(): kotlin.collections/List<#A> // com.juul.krayon.scale/ThresholdScale.domain.<get-domain>|<get-domain>(){}[0]
+    final val range // com.juul.krayon.scale/ThresholdScale.range|{}range[0]
+        final fun <get-range>(): kotlin.collections/List<#B> // com.juul.krayon.scale/ThresholdScale.range.<get-range>|<get-range>(){}[0]
+
+    final fun <#A1: kotlin/Any?> range(kotlin.collections/List<#A1>): com.juul.krayon.scale/ThresholdScale<#A, #A1> // com.juul.krayon.scale/ThresholdScale.range|range(kotlin.collections.List<0:0>){0§<kotlin.Any?>}[0]
+    final fun domain(kotlin.collections/List<#A>): com.juul.krayon.scale/ThresholdScale<#A, #B> // com.juul.krayon.scale/ThresholdScale.domain|domain(kotlin.collections.List<1:0>){}[0]
+    final fun invertExtent(#B): kotlin/Pair<#A?, #A?> // com.juul.krayon.scale/ThresholdScale.invertExtent|invertExtent(1:1){}[0]
+    final fun scale(#A): #B // com.juul.krayon.scale/ThresholdScale.scale|scale(1:0){}[0]
 }
 
 final object com.juul.krayon.scale/DoubleTicker : com.juul.krayon.scale/Ticker<kotlin/Double> { // com.juul.krayon.scale/DoubleTicker|null[0]
@@ -184,6 +224,9 @@ final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.j
 final fun <#A: kotlin/Any?> (com.juul.krayon.scale/ContinuousScale<*, #A>).com.juul.krayon.scale/domain(kotlin/IntArray...): com.juul.krayon.scale/ContinuousScale<kotlin/Int, #A> // com.juul.krayon.scale/domain|domain@com.juul.krayon.scale.ContinuousScale<*,0:0>(kotlin.IntArray...){0§<kotlin.Any?>}[0]
 final fun <#A: kotlin/Any?> com.juul.krayon.scale/bandScale(kotlin.collections/List<#A> = ..., kotlin.collections/List<kotlin/Float> = ...): com.juul.krayon.scale/BandScale<#A> // com.juul.krayon.scale/bandScale|bandScale(kotlin.collections.List<0:0>;kotlin.collections.List<kotlin.Float>){0§<kotlin.Any?>}[0]
 final fun <#A: kotlin/Any?> com.juul.krayon.scale/pointScale(kotlin.collections/List<#A> = ..., kotlin.collections/List<kotlin/Float> = ...): com.juul.krayon.scale/PointScale<#A> // com.juul.krayon.scale/pointScale|pointScale(kotlin.collections.List<0:0>;kotlin.collections.List<kotlin.Float>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> com.juul.krayon.scale/quantileScale(kotlin.collections/List<kotlin/Float>, kotlin.collections/List<#A>): com.juul.krayon.scale/QuantileScale<#A> // com.juul.krayon.scale/quantileScale|quantileScale(kotlin.collections.List<kotlin.Float>;kotlin.collections.List<0:0>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> com.juul.krayon.scale/quantizeScale(kotlin.collections/List<kotlin/Float> = ..., kotlin.collections/List<#A>): com.juul.krayon.scale/QuantizeScale<#A> // com.juul.krayon.scale/quantizeScale|quantizeScale(kotlin.collections.List<kotlin.Float>;kotlin.collections.List<0:0>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Comparable<#A>, #B: kotlin/Any?> com.juul.krayon.scale/thresholdScale(kotlin.collections/List<#A>, kotlin.collections/List<#B>): com.juul.krayon.scale/ThresholdScale<#A, #B> // com.juul.krayon.scale/thresholdScale|thresholdScale(kotlin.collections.List<0:0>;kotlin.collections.List<0:1>){0§<kotlin.Comparable<0:0>>;1§<kotlin.Any?>}[0]
 final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin.collections/List<com.juul.krayon.color/Color>): com.juul.krayon.scale/ContinuousScale<#A, com.juul.krayon.color/Color> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.collections.List<com.juul.krayon.color.Color>){0§<kotlin.Comparable<0:0>>}[0]
 final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin.collections/List<kotlin.time/Instant>): com.juul.krayon.scale/ContinuousScale<#A, kotlin.time/Instant> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.collections.List<kotlin.time.Instant>){0§<kotlin.Comparable<0:0>>}[0]
 final fun <#A: kotlin/Comparable<#A>> (com.juul.krayon.scale/ContinuousScale<#A, *>).com.juul.krayon.scale/range(kotlin.collections/List<kotlin/Double>): com.juul.krayon.scale/ContinuousScale<#A, kotlin/Double> // com.juul.krayon.scale/range|range@com.juul.krayon.scale.ContinuousScale<0:0,*>(kotlin.collections.List<kotlin.Double>){0§<kotlin.Comparable<0:0>>}[0]
