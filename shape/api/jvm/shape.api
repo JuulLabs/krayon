@@ -90,6 +90,46 @@ public final class com/juul/krayon/shape/Point {
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class com/juul/krayon/shape/Series : java/util/List, kotlin/jvm/internal/markers/KMappedMarker {
+	public fun add (ILcom/juul/krayon/shape/StackPoint;)V
+	public synthetic fun add (ILjava/lang/Object;)V
+	public fun add (Lcom/juul/krayon/shape/StackPoint;)Z
+	public synthetic fun add (Ljava/lang/Object;)Z
+	public fun addAll (ILjava/util/Collection;)Z
+	public fun addAll (Ljava/util/Collection;)Z
+	public fun clear ()V
+	public fun contains (Lcom/juul/krayon/shape/StackPoint;)Z
+	public final fun contains (Ljava/lang/Object;)Z
+	public fun containsAll (Ljava/util/Collection;)Z
+	public fun get (I)Lcom/juul/krayon/shape/StackPoint;
+	public synthetic fun get (I)Ljava/lang/Object;
+	public final fun getIndex ()I
+	public final fun getKey ()Ljava/lang/Object;
+	public fun getSize ()I
+	public fun indexOf (Lcom/juul/krayon/shape/StackPoint;)I
+	public final fun indexOf (Ljava/lang/Object;)I
+	public fun isEmpty ()Z
+	public fun iterator ()Ljava/util/Iterator;
+	public fun lastIndexOf (Lcom/juul/krayon/shape/StackPoint;)I
+	public final fun lastIndexOf (Ljava/lang/Object;)I
+	public fun listIterator ()Ljava/util/ListIterator;
+	public fun listIterator (I)Ljava/util/ListIterator;
+	public fun remove (I)Lcom/juul/krayon/shape/StackPoint;
+	public synthetic fun remove (I)Ljava/lang/Object;
+	public fun remove (Ljava/lang/Object;)Z
+	public fun removeAll (Ljava/util/Collection;)Z
+	public fun replaceAll (Ljava/util/function/UnaryOperator;)V
+	public fun retainAll (Ljava/util/Collection;)Z
+	public fun set (ILcom/juul/krayon/shape/StackPoint;)Lcom/juul/krayon/shape/StackPoint;
+	public synthetic fun set (ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun size ()I
+	public fun sort (Ljava/util/Comparator;)V
+	public fun subList (II)Ljava/util/List;
+	public fun toArray ()[Ljava/lang/Object;
+	public fun toArray ([Ljava/lang/Object;)[Ljava/lang/Object;
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class com/juul/krayon/shape/Slice {
 	public fun <init> (Ljava/lang/Object;FIFFF)V
 	public final fun component1 ()Ljava/lang/Object;
@@ -108,6 +148,90 @@ public final class com/juul/krayon/shape/Slice {
 	public final fun getStartAngle ()F
 	public final fun getValue ()F
 	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/shape/Stack {
+	public final fun invoke (Ljava/util/List;)Ljava/util/List;
+	public final fun keys (Ljava/util/List;)Lcom/juul/krayon/shape/Stack;
+	public final fun offset (Lcom/juul/krayon/shape/StackOffset;)Lcom/juul/krayon/shape/Stack;
+	public final fun order (Lcom/juul/krayon/shape/StackOrder;)Lcom/juul/krayon/shape/Stack;
+	public final fun value (Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/shape/Stack;
+}
+
+public final class com/juul/krayon/shape/StackKt {
+	public static final fun stack ()Lcom/juul/krayon/shape/Stack;
+}
+
+public abstract interface class com/juul/krayon/shape/StackOffset {
+	public abstract fun invoke (Ljava/util/List;[I)V
+}
+
+public final class com/juul/krayon/shape/StackOffsetDiverging : com/juul/krayon/shape/StackOffset {
+	public static final field INSTANCE Lcom/juul/krayon/shape/StackOffsetDiverging;
+	public fun invoke (Ljava/util/List;[I)V
+}
+
+public final class com/juul/krayon/shape/StackOffsetExpand : com/juul/krayon/shape/StackOffset {
+	public static final field INSTANCE Lcom/juul/krayon/shape/StackOffsetExpand;
+	public fun invoke (Ljava/util/List;[I)V
+}
+
+public final class com/juul/krayon/shape/StackOffsetNone : com/juul/krayon/shape/StackOffset {
+	public static final field INSTANCE Lcom/juul/krayon/shape/StackOffsetNone;
+	public fun invoke (Ljava/util/List;[I)V
+}
+
+public final class com/juul/krayon/shape/StackOffsetSilhouette : com/juul/krayon/shape/StackOffset {
+	public static final field INSTANCE Lcom/juul/krayon/shape/StackOffsetSilhouette;
+	public fun invoke (Ljava/util/List;[I)V
+}
+
+public final class com/juul/krayon/shape/StackOffsetWiggle : com/juul/krayon/shape/StackOffset {
+	public static final field INSTANCE Lcom/juul/krayon/shape/StackOffsetWiggle;
+	public fun invoke (Ljava/util/List;[I)V
+}
+
+public abstract interface class com/juul/krayon/shape/StackOrder {
+	public abstract fun invoke (Ljava/util/List;)[I
+}
+
+public final class com/juul/krayon/shape/StackOrderAppearance : com/juul/krayon/shape/StackOrder {
+	public static final field INSTANCE Lcom/juul/krayon/shape/StackOrderAppearance;
+	public fun invoke (Ljava/util/List;)[I
+}
+
+public final class com/juul/krayon/shape/StackOrderAscending : com/juul/krayon/shape/StackOrder {
+	public static final field INSTANCE Lcom/juul/krayon/shape/StackOrderAscending;
+	public fun invoke (Ljava/util/List;)[I
+}
+
+public final class com/juul/krayon/shape/StackOrderDescending : com/juul/krayon/shape/StackOrder {
+	public static final field INSTANCE Lcom/juul/krayon/shape/StackOrderDescending;
+	public fun invoke (Ljava/util/List;)[I
+}
+
+public final class com/juul/krayon/shape/StackOrderInsideOut : com/juul/krayon/shape/StackOrder {
+	public static final field INSTANCE Lcom/juul/krayon/shape/StackOrderInsideOut;
+	public fun invoke (Ljava/util/List;)[I
+}
+
+public final class com/juul/krayon/shape/StackOrderNone : com/juul/krayon/shape/StackOrder {
+	public static final field INSTANCE Lcom/juul/krayon/shape/StackOrderNone;
+	public fun invoke (Ljava/util/List;)[I
+}
+
+public final class com/juul/krayon/shape/StackOrderReverse : com/juul/krayon/shape/StackOrder {
+	public static final field INSTANCE Lcom/juul/krayon/shape/StackOrderReverse;
+	public fun invoke (Ljava/util/List;)[I
+}
+
+public final class com/juul/krayon/shape/StackPoint {
+	public final fun getData ()Ljava/lang/Object;
+	public final fun getHigh ()F
+	public final fun getLow ()F
+	public final fun setHigh (F)V
+	public final fun setLow (F)V
 	public fun toString ()Ljava/lang/String;
 }
 

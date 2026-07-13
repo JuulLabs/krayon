@@ -6,6 +6,14 @@
 // - Show declarations: true
 
 // Library unique name: <com.juul.krayon:shape>
+abstract fun interface com.juul.krayon.shape/StackOffset { // com.juul.krayon.shape/StackOffset|null[0]
+    abstract fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>, kotlin/IntArray) // com.juul.krayon.shape/StackOffset.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>;kotlin.IntArray){}[0]
+}
+
+abstract fun interface com.juul.krayon.shape/StackOrder { // com.juul.krayon.shape/StackOrder|null[0]
+    abstract fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>): kotlin/IntArray // com.juul.krayon.shape/StackOrder.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>){}[0]
+}
+
 abstract interface com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/Curve|null[0]
     abstract fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Curve.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
     abstract fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Curve.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
@@ -55,6 +63,14 @@ final class <#A: kotlin/Any> com.juul.krayon.shape/Line { // com.juul.krayon.sha
     final fun y(kotlin/Function1<com.juul.krayon.shape/Arguments<#A>, kotlin/Float>): com.juul.krayon.shape/Line<#A> // com.juul.krayon.shape/Line.y|y(kotlin.Function1<com.juul.krayon.shape.Arguments<1:0>,kotlin.Float>){}[0]
 }
 
+final class <#A: kotlin/Any?, #B: kotlin/Any?> com.juul.krayon.shape/Stack { // com.juul.krayon.shape/Stack|null[0]
+    final fun invoke(kotlin.collections/List<#A>): kotlin.collections/List<com.juul.krayon.shape/Series<#A, #B>> // com.juul.krayon.shape/Stack.invoke|invoke(kotlin.collections.List<1:0>){}[0]
+    final fun keys(kotlin.collections/List<#B>): com.juul.krayon.shape/Stack<#A, #B> // com.juul.krayon.shape/Stack.keys|keys(kotlin.collections.List<1:1>){}[0]
+    final fun offset(com.juul.krayon.shape/StackOffset): com.juul.krayon.shape/Stack<#A, #B> // com.juul.krayon.shape/Stack.offset|offset(com.juul.krayon.shape.StackOffset){}[0]
+    final fun order(com.juul.krayon.shape/StackOrder): com.juul.krayon.shape/Stack<#A, #B> // com.juul.krayon.shape/Stack.order|order(com.juul.krayon.shape.StackOrder){}[0]
+    final fun value(kotlin/Function2<#A, #B, kotlin/Float>): com.juul.krayon.shape/Stack<#A, #B> // com.juul.krayon.shape/Stack.value|value(kotlin.Function2<1:0,1:1,kotlin.Float>){}[0]
+}
+
 final class <#A: kotlin/Any?> com.juul.krayon.shape/Pie { // com.juul.krayon.shape/Pie|null[0]
     final var endAngle // com.juul.krayon.shape/Pie.endAngle|{}endAngle[0]
         final fun <get-endAngle>(): kotlin/Float // com.juul.krayon.shape/Pie.endAngle.<get-endAngle>|<get-endAngle>(){}[0]
@@ -97,6 +113,45 @@ final class <#A: kotlin/Any?> com.juul.krayon.shape/Slice { // com.juul.krayon.s
     final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.shape/Slice.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // com.juul.krayon.shape/Slice.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // com.juul.krayon.shape/Slice.toString|toString(){}[0]
+}
+
+final class <#A: out kotlin/Any?, #B: out kotlin/Any?> com.juul.krayon.shape/Series : kotlin.collections/List<com.juul.krayon.shape/StackPoint<#A>> { // com.juul.krayon.shape/Series|null[0]
+    final val key // com.juul.krayon.shape/Series.key|{}key[0]
+        final fun <get-key>(): #B // com.juul.krayon.shape/Series.key.<get-key>|<get-key>(){}[0]
+    final val size // com.juul.krayon.shape/Series.size|{}size[0]
+        final fun <get-size>(): kotlin/Int // com.juul.krayon.shape/Series.size.<get-size>|<get-size>(){}[0]
+
+    final var index // com.juul.krayon.shape/Series.index|{}index[0]
+        final fun <get-index>(): kotlin/Int // com.juul.krayon.shape/Series.index.<get-index>|<get-index>(){}[0]
+
+    final fun contains(com.juul.krayon.shape/StackPoint<#A>): kotlin/Boolean // com.juul.krayon.shape/Series.contains|contains(com.juul.krayon.shape.StackPoint<1:0>){}[0]
+    final fun containsAll(kotlin.collections/Collection<com.juul.krayon.shape/StackPoint<#A>>): kotlin/Boolean // com.juul.krayon.shape/Series.containsAll|containsAll(kotlin.collections.Collection<com.juul.krayon.shape.StackPoint<1:0>>){}[0]
+    final fun get(kotlin/Int): com.juul.krayon.shape/StackPoint<#A> // com.juul.krayon.shape/Series.get|get(kotlin.Int){}[0]
+    final fun indexOf(com.juul.krayon.shape/StackPoint<#A>): kotlin/Int // com.juul.krayon.shape/Series.indexOf|indexOf(com.juul.krayon.shape.StackPoint<1:0>){}[0]
+    final fun isEmpty(): kotlin/Boolean // com.juul.krayon.shape/Series.isEmpty|isEmpty(){}[0]
+    final fun iterator(): kotlin.collections/Iterator<com.juul.krayon.shape/StackPoint<#A>> // com.juul.krayon.shape/Series.iterator|iterator(){}[0]
+    final fun lastIndexOf(com.juul.krayon.shape/StackPoint<#A>): kotlin/Int // com.juul.krayon.shape/Series.lastIndexOf|lastIndexOf(com.juul.krayon.shape.StackPoint<1:0>){}[0]
+    final fun listIterator(): kotlin.collections/ListIterator<com.juul.krayon.shape/StackPoint<#A>> // com.juul.krayon.shape/Series.listIterator|listIterator(){}[0]
+    final fun listIterator(kotlin/Int): kotlin.collections/ListIterator<com.juul.krayon.shape/StackPoint<#A>> // com.juul.krayon.shape/Series.listIterator|listIterator(kotlin.Int){}[0]
+    final fun subList(kotlin/Int, kotlin/Int): kotlin.collections/List<com.juul.krayon.shape/StackPoint<#A>> // com.juul.krayon.shape/Series.subList|subList(kotlin.Int;kotlin.Int){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.shape/Series.toString|toString(){}[0]
+
+    // Targets: [js]
+    final fun asJsReadonlyArrayView(): kotlin.js.collections/JsReadonlyArray<com.juul.krayon.shape/StackPoint<#A>> // com.juul.krayon.shape/Series.asJsReadonlyArrayView|asJsReadonlyArrayView(){}[0]
+}
+
+final class <#A: out kotlin/Any?> com.juul.krayon.shape/StackPoint { // com.juul.krayon.shape/StackPoint|null[0]
+    final val data // com.juul.krayon.shape/StackPoint.data|{}data[0]
+        final fun <get-data>(): #A // com.juul.krayon.shape/StackPoint.data.<get-data>|<get-data>(){}[0]
+
+    final var high // com.juul.krayon.shape/StackPoint.high|{}high[0]
+        final fun <get-high>(): kotlin/Float // com.juul.krayon.shape/StackPoint.high.<get-high>|<get-high>(){}[0]
+        final fun <set-high>(kotlin/Float) // com.juul.krayon.shape/StackPoint.high.<set-high>|<set-high>(kotlin.Float){}[0]
+    final var low // com.juul.krayon.shape/StackPoint.low|{}low[0]
+        final fun <get-low>(): kotlin/Float // com.juul.krayon.shape/StackPoint.low.<get-low>|<get-low>(){}[0]
+        final fun <set-low>(kotlin/Float) // com.juul.krayon.shape/StackPoint.low.<set-low>|<set-low>(kotlin.Float){}[0]
+
+    final fun toString(): kotlin/String // com.juul.krayon.shape/StackPoint.toString|toString(){}[0]
 }
 
 final class com.juul.krayon.shape.curve/Cardinal : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/Cardinal|null[0]
@@ -297,7 +352,52 @@ final object com.juul.krayon.shape.curve/StepBefore : com.juul.krayon.shape.curv
     final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/StepBefore.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
 }
 
+final object com.juul.krayon.shape/StackOffsetDiverging : com.juul.krayon.shape/StackOffset { // com.juul.krayon.shape/StackOffsetDiverging|null[0]
+    final fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>, kotlin/IntArray) // com.juul.krayon.shape/StackOffsetDiverging.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>;kotlin.IntArray){}[0]
+}
+
+final object com.juul.krayon.shape/StackOffsetExpand : com.juul.krayon.shape/StackOffset { // com.juul.krayon.shape/StackOffsetExpand|null[0]
+    final fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>, kotlin/IntArray) // com.juul.krayon.shape/StackOffsetExpand.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>;kotlin.IntArray){}[0]
+}
+
+final object com.juul.krayon.shape/StackOffsetNone : com.juul.krayon.shape/StackOffset { // com.juul.krayon.shape/StackOffsetNone|null[0]
+    final fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>, kotlin/IntArray) // com.juul.krayon.shape/StackOffsetNone.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>;kotlin.IntArray){}[0]
+}
+
+final object com.juul.krayon.shape/StackOffsetSilhouette : com.juul.krayon.shape/StackOffset { // com.juul.krayon.shape/StackOffsetSilhouette|null[0]
+    final fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>, kotlin/IntArray) // com.juul.krayon.shape/StackOffsetSilhouette.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>;kotlin.IntArray){}[0]
+}
+
+final object com.juul.krayon.shape/StackOffsetWiggle : com.juul.krayon.shape/StackOffset { // com.juul.krayon.shape/StackOffsetWiggle|null[0]
+    final fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>, kotlin/IntArray) // com.juul.krayon.shape/StackOffsetWiggle.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>;kotlin.IntArray){}[0]
+}
+
+final object com.juul.krayon.shape/StackOrderAppearance : com.juul.krayon.shape/StackOrder { // com.juul.krayon.shape/StackOrderAppearance|null[0]
+    final fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>): kotlin/IntArray // com.juul.krayon.shape/StackOrderAppearance.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>){}[0]
+}
+
+final object com.juul.krayon.shape/StackOrderAscending : com.juul.krayon.shape/StackOrder { // com.juul.krayon.shape/StackOrderAscending|null[0]
+    final fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>): kotlin/IntArray // com.juul.krayon.shape/StackOrderAscending.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>){}[0]
+}
+
+final object com.juul.krayon.shape/StackOrderDescending : com.juul.krayon.shape/StackOrder { // com.juul.krayon.shape/StackOrderDescending|null[0]
+    final fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>): kotlin/IntArray // com.juul.krayon.shape/StackOrderDescending.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>){}[0]
+}
+
+final object com.juul.krayon.shape/StackOrderInsideOut : com.juul.krayon.shape/StackOrder { // com.juul.krayon.shape/StackOrderInsideOut|null[0]
+    final fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>): kotlin/IntArray // com.juul.krayon.shape/StackOrderInsideOut.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>){}[0]
+}
+
+final object com.juul.krayon.shape/StackOrderNone : com.juul.krayon.shape/StackOrder { // com.juul.krayon.shape/StackOrderNone|null[0]
+    final fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>): kotlin/IntArray // com.juul.krayon.shape/StackOrderNone.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>){}[0]
+}
+
+final object com.juul.krayon.shape/StackOrderReverse : com.juul.krayon.shape/StackOrder { // com.juul.krayon.shape/StackOrderReverse|null[0]
+    final fun invoke(kotlin.collections/List<com.juul.krayon.shape/Series<*, *>>): kotlin/IntArray // com.juul.krayon.shape/StackOrderReverse.invoke|invoke(kotlin.collections.List<com.juul.krayon.shape.Series<*,*>>){}[0]
+}
+
 final fun <#A: kotlin/Any> com.juul.krayon.shape/area(): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/area|area(){0§<kotlin.Any>}[0]
 final fun <#A: kotlin/Any> com.juul.krayon.shape/line(): com.juul.krayon.shape/Line<#A> // com.juul.krayon.shape/line|line(){0§<kotlin.Any>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> com.juul.krayon.shape/stack(): com.juul.krayon.shape/Stack<#A, #B> // com.juul.krayon.shape/stack|stack(){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
 final fun com.juul.krayon.shape/arc(kotlin/Float, kotlin/Float = ...): com.juul.krayon.shape/Arc // com.juul.krayon.shape/arc|arc(kotlin.Float;kotlin.Float){}[0]
 final fun com.juul.krayon.shape/pie(): com.juul.krayon.shape/Pie<kotlin/Float> // com.juul.krayon.shape/pie|pie(){}[0]
