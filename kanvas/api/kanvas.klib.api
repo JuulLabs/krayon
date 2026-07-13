@@ -7,6 +7,10 @@
 // - Show declarations: true
 
 // Library unique name: <com.juul.krayon:kanvas>
+abstract fun interface com.juul.krayon.kanvas/MeasureText { // com.juul.krayon.kanvas/MeasureText|null[0]
+    abstract fun measureText(kotlin/CharSequence, com.juul.krayon.kanvas/Paint.Text): com.juul.krayon.kanvas/TextMetrics // com.juul.krayon.kanvas/MeasureText.measureText|measureText(kotlin.CharSequence;com.juul.krayon.kanvas.Paint.Text){}[0]
+}
+
 abstract interface <#A: kotlin/Any> com.juul.krayon.kanvas/PathTypeMarker { // com.juul.krayon.kanvas/PathTypeMarker|null[0]
     abstract val builder // com.juul.krayon.kanvas/PathTypeMarker.builder|{}builder[0]
         abstract fun <get-builder>(): com.juul.krayon.kanvas/PathBuilder<#A> // com.juul.krayon.kanvas/PathTypeMarker.builder.<get-builder>|<get-builder>(){}[0]
@@ -170,6 +174,27 @@ final class com.juul.krayon.kanvas/Path { // com.juul.krayon.kanvas/Path|null[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/Path.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/Path.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // com.juul.krayon.kanvas/Path.toString|toString(){}[0]
+}
+
+final class com.juul.krayon.kanvas/TextMetrics { // com.juul.krayon.kanvas/TextMetrics|null[0]
+    constructor <init>(kotlin/Float, kotlin/Float, kotlin/Float) // com.juul.krayon.kanvas/TextMetrics.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+
+    final val ascent // com.juul.krayon.kanvas/TextMetrics.ascent|{}ascent[0]
+        final fun <get-ascent>(): kotlin/Float // com.juul.krayon.kanvas/TextMetrics.ascent.<get-ascent>|<get-ascent>(){}[0]
+    final val descent // com.juul.krayon.kanvas/TextMetrics.descent|{}descent[0]
+        final fun <get-descent>(): kotlin/Float // com.juul.krayon.kanvas/TextMetrics.descent.<get-descent>|<get-descent>(){}[0]
+    final val height // com.juul.krayon.kanvas/TextMetrics.height|{}height[0]
+        final fun <get-height>(): kotlin/Float // com.juul.krayon.kanvas/TextMetrics.height.<get-height>|<get-height>(){}[0]
+    final val width // com.juul.krayon.kanvas/TextMetrics.width|{}width[0]
+        final fun <get-width>(): kotlin/Float // com.juul.krayon.kanvas/TextMetrics.width.<get-width>|<get-width>(){}[0]
+
+    final fun component1(): kotlin/Float // com.juul.krayon.kanvas/TextMetrics.component1|component1(){}[0]
+    final fun component2(): kotlin/Float // com.juul.krayon.kanvas/TextMetrics.component2|component2(){}[0]
+    final fun component3(): kotlin/Float // com.juul.krayon.kanvas/TextMetrics.component3|component3(){}[0]
+    final fun copy(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ...): com.juul.krayon.kanvas/TextMetrics // com.juul.krayon.kanvas/TextMetrics.copy|copy(kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.kanvas/TextMetrics.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.juul.krayon.kanvas/TextMetrics.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.kanvas/TextMetrics.toString|toString(){}[0]
 }
 
 final value class com.juul.krayon.kanvas.svg/PathString { // com.juul.krayon.kanvas.svg/PathString|null[0]
@@ -584,7 +609,7 @@ final inline fun (com.juul.krayon.kanvas/Kanvas).com.juul.krayon.kanvas/withClip
 final inline fun (com.juul.krayon.kanvas/Kanvas).com.juul.krayon.kanvas/withTransform(com.juul.krayon.kanvas/Transform, kotlin/Function1<com.juul.krayon.kanvas/Kanvas, kotlin/Unit>) // com.juul.krayon.kanvas/withTransform|withTransform@com.juul.krayon.kanvas.Kanvas(com.juul.krayon.kanvas.Transform;kotlin.Function1<com.juul.krayon.kanvas.Kanvas,kotlin.Unit>){}[0]
 
 // Targets: [apple]
-final class com.juul.krayon.kanvas/CGContextKanvas : com.juul.krayon.kanvas/Kanvas { // com.juul.krayon.kanvas/CGContextKanvas|null[0]
+final class com.juul.krayon.kanvas/CGContextKanvas : com.juul.krayon.kanvas/Kanvas, com.juul.krayon.kanvas/MeasureText { // com.juul.krayon.kanvas/CGContextKanvas|null[0]
     constructor <init>(kotlinx.cinterop/CPointer<cnames.structs/CGContext>, kotlin/Double, kotlin/Double) // com.juul.krayon.kanvas/CGContextKanvas.<init>|<init>(kotlinx.cinterop.CPointer<cnames.structs.CGContext>;kotlin.Double;kotlin.Double){}[0]
     constructor <init>(kotlinx.cinterop/CPointerVarOf<kotlinx.cinterop/CPointer<cnames.structs/CGContext>>, kotlin/Double, kotlin/Double) // com.juul.krayon.kanvas/CGContextKanvas.<init>|<init>(kotlinx.cinterop.CPointerVarOf<kotlinx.cinterop.CPointer<cnames.structs.CGContext>>;kotlin.Double;kotlin.Double){}[0]
 
@@ -601,9 +626,15 @@ final class com.juul.krayon.kanvas/CGContextKanvas : com.juul.krayon.kanvas/Kanv
     final fun drawPath(com.juul.krayon.kanvas/Path, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/CGContextKanvas.drawPath|drawPath(com.juul.krayon.kanvas.Path;com.juul.krayon.kanvas.Paint){}[0]
     final fun drawRect(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/CGContextKanvas.drawRect|drawRect(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
     final fun drawText(kotlin/CharSequence, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/CGContextKanvas.drawText|drawText(kotlin.CharSequence;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun measureText(kotlin/CharSequence, com.juul.krayon.kanvas/Paint.Text): com.juul.krayon.kanvas/TextMetrics // com.juul.krayon.kanvas/CGContextKanvas.measureText|measureText(kotlin.CharSequence;com.juul.krayon.kanvas.Paint.Text){}[0]
     final fun pop() // com.juul.krayon.kanvas/CGContextKanvas.pop|pop(){}[0]
     final fun pushClip(com.juul.krayon.kanvas/Clip) // com.juul.krayon.kanvas/CGContextKanvas.pushClip|pushClip(com.juul.krayon.kanvas.Clip){}[0]
     final fun pushTransform(com.juul.krayon.kanvas/Transform) // com.juul.krayon.kanvas/CGContextKanvas.pushTransform|pushTransform(com.juul.krayon.kanvas.Transform){}[0]
+}
+
+// Targets: [apple]
+final object com.juul.krayon.kanvas/CoreTextMeasurement : com.juul.krayon.kanvas/MeasureText { // com.juul.krayon.kanvas/CoreTextMeasurement|null[0]
+    final fun measureText(kotlin/CharSequence, com.juul.krayon.kanvas/Paint.Text): com.juul.krayon.kanvas/TextMetrics // com.juul.krayon.kanvas/CoreTextMeasurement.measureText|measureText(kotlin.CharSequence;com.juul.krayon.kanvas.Paint.Text){}[0]
 }
 
 // Targets: [apple]
@@ -612,7 +643,7 @@ final object com.juul.krayon.kanvas/IsPointInCGPath : com.juul.krayon.kanvas/IsP
 }
 
 // Targets: [js]
-final class com.juul.krayon.kanvas/HtmlKanvas : com.juul.krayon.kanvas/IsPointInPath, com.juul.krayon.kanvas/Kanvas { // com.juul.krayon.kanvas/HtmlKanvas|null[0]
+final class com.juul.krayon.kanvas/HtmlKanvas : com.juul.krayon.kanvas/IsPointInPath, com.juul.krayon.kanvas/Kanvas, com.juul.krayon.kanvas/MeasureText { // com.juul.krayon.kanvas/HtmlKanvas|null[0]
     constructor <init>(org.w3c.dom/HTMLCanvasElement, kotlin/Float = ...) // com.juul.krayon.kanvas/HtmlKanvas.<init>|<init>(org.w3c.dom.HTMLCanvasElement;kotlin.Float){}[0]
 
     final val context // com.juul.krayon.kanvas/HtmlKanvas.context|{}context[0]
@@ -631,9 +662,17 @@ final class com.juul.krayon.kanvas/HtmlKanvas : com.juul.krayon.kanvas/IsPointIn
     final fun drawRect(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/HtmlKanvas.drawRect|drawRect(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
     final fun drawText(kotlin/CharSequence, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.kanvas/HtmlKanvas.drawText|drawText(kotlin.CharSequence;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
     final fun isPointInPath(com.juul.krayon.kanvas/Transform, com.juul.krayon.kanvas/Path, kotlin/Float, kotlin/Float): kotlin/Boolean // com.juul.krayon.kanvas/HtmlKanvas.isPointInPath|isPointInPath(com.juul.krayon.kanvas.Transform;com.juul.krayon.kanvas.Path;kotlin.Float;kotlin.Float){}[0]
+    final fun measureText(kotlin/CharSequence, com.juul.krayon.kanvas/Paint.Text): com.juul.krayon.kanvas/TextMetrics // com.juul.krayon.kanvas/HtmlKanvas.measureText|measureText(kotlin.CharSequence;com.juul.krayon.kanvas.Paint.Text){}[0]
     final fun pop() // com.juul.krayon.kanvas/HtmlKanvas.pop|pop(){}[0]
     final fun pushClip(com.juul.krayon.kanvas/Clip) // com.juul.krayon.kanvas/HtmlKanvas.pushClip|pushClip(com.juul.krayon.kanvas.Clip){}[0]
     final fun pushTransform(com.juul.krayon.kanvas/Transform) // com.juul.krayon.kanvas/HtmlKanvas.pushTransform|pushTransform(com.juul.krayon.kanvas.Transform){}[0]
+}
+
+// Targets: [js]
+final class com.juul.krayon.kanvas/HtmlTextMeasurement : com.juul.krayon.kanvas/MeasureText { // com.juul.krayon.kanvas/HtmlTextMeasurement|null[0]
+    constructor <init>() // com.juul.krayon.kanvas/HtmlTextMeasurement.<init>|<init>(){}[0]
+
+    final fun measureText(kotlin/CharSequence, com.juul.krayon.kanvas/Paint.Text): com.juul.krayon.kanvas/TextMetrics // com.juul.krayon.kanvas/HtmlTextMeasurement.measureText|measureText(kotlin.CharSequence;com.juul.krayon.kanvas.Paint.Text){}[0]
 }
 
 // Targets: [js]

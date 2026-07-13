@@ -74,6 +74,10 @@ public final class com/juul/krayon/kanvas/KanvasKt {
 	public static final fun withTransform (Lcom/juul/krayon/kanvas/Kanvas;Lcom/juul/krayon/kanvas/Transform;Lkotlin/jvm/functions/Function1;)V
 }
 
+public abstract interface class com/juul/krayon/kanvas/MeasureText {
+	public abstract fun measureText (Ljava/lang/CharSequence;Lcom/juul/krayon/kanvas/Paint$Text;)Lcom/juul/krayon/kanvas/TextMetrics;
+}
+
 public abstract class com/juul/krayon/kanvas/Paint {
 }
 
@@ -346,6 +350,22 @@ public final class com/juul/krayon/kanvas/RelativePathBuilder$State {
 	public final fun getCloseToY ()F
 	public final fun getLastX ()F
 	public final fun getLastY ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/kanvas/TextMetrics {
+	public fun <init> (FFF)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun copy (FFF)Lcom/juul/krayon/kanvas/TextMetrics;
+	public static synthetic fun copy$default (Lcom/juul/krayon/kanvas/TextMetrics;FFFILjava/lang/Object;)Lcom/juul/krayon/kanvas/TextMetrics;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAscent ()F
+	public final fun getDescent ()F
+	public final fun getHeight ()F
+	public final fun getWidth ()F
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
