@@ -39,18 +39,16 @@ class BisectTests {
     }
 
     @Test
-    fun bisector_withAccessor_bisectsByKey() {
-        data class Point(val x: Int)
+    fun bisectLeft_withSelector_bisectsByKey() {
         val points = listOf(Point(1), Point(3), Point(3), Point(8))
-        val bisector = bisector<Point, Int> { it.x }
-        assertEquals(1, bisector.left(points, 3))
-        assertEquals(3, bisector.right(points, 3))
+        assertEquals(1, points.bisectLeft(3) { it.x })
     }
 
     @Test
-    fun bisector_withComparator_bisectsElements() {
-        val bisector = bisector<Int>(naturalOrder())
-        assertEquals(2, bisector.left(values, 3))
-        assertEquals(5, bisector.right(values, 3))
+    fun bisectRight_withSelector_bisectsByKey() {
+        val points = listOf(Point(1), Point(3), Point(3), Point(8))
+        assertEquals(3, points.bisectRight(3) { it.x })
     }
+
+    private data class Point(val x: Int)
 }
