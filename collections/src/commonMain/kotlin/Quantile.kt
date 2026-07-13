@@ -3,36 +3,26 @@ package com.juul.krayon.collections
 import kotlin.math.floor
 
 /**
- * Computes the [p]-quantile (with `p` in `[0, 1]`) of the numeric values produced by [selector],
- * using linear interpolation. See equivalent [d3 function](https://github.com/d3/d3-array#quantile).
+ * The [probability]-quantile (with `probability` in `[0, 1]`) using linear interpolation between
+ * adjacent ranks. `NaN` values are ignored. Returns `null` when empty.
  */
-public inline fun <T> Iterable<T>.quantile(p: Double, selector: (T) -> Double?): Double? {
-    val numbers = ArrayList<Double>()
-    for (element in this) {
-        val value = selector(element) ?: continue
-        if (!value.isNaN()) numbers.add(value)
-    }
-    numbers.sort()
-    return numbers.quantileSorted(p) { it }
-}
+public fun Iterable<Double>.quantile(probability: Double): Double? =
+    filterNot { it.isNaN() }.sorted().quantileSorted(probability)
 
 /**
- * Computes the [p]-quantile of the values produced by [selector], assuming the receiver is already
- * sorted in ascending order by those values. See equivalent
- * [d3 function](https://github.com/d3/d3-array#quantileSorted).
+ * The [probability]-quantile of a list already sorted in ascending order (and free of `NaN`).
+ * Returns `null` when empty. Prefer this over [quantile] when the values are already sorted.
  */
-public inline fun <T> List<T>.quantileSorted(p: Double, selector: (T) -> Double): Double? {
-    val n = size
-    if (n == 0 || p.isNaN()) return null
-    if (p <= 0 || n < 2) return selector(this[0])
-    if (p >= 1) return selector(this[n - 1])
-    val i = (n - 1) * p
-    val i0 = floor(i).toInt()
-    val value0 = selector(this[i0])
-    val value1 = selector(this[i0 + 1])
-    return value0 + (value1 - value0) * (i - i0)
+public fun List<Double>.quantileSorted(probability: Double): Double? {
+    if (isEmpty() || probability.isNaN()) return null
+    if (probability <= 0 || size < 2) return first()
+    if (probability >= 1) return last()
+    val rank = (size - 1) * probability
+    val lowerIndex = floor(rank).toInt()
+    val lower = this[lowerIndex]
+    val upper = this[lowerIndex + 1]
+    return lower + (upper - lower) * (rank - lowerIndex)
 }
 
-/** See equivalent [d3 function](https://github.com/d3/d3-array#median). */
-public inline fun <T> Iterable<T>.median(selector: (T) -> Double?): Double? =
-    quantile(0.5, selector)
+/** The median value, equivalent to the `0.5` [quantile]. */
+public fun Iterable<Double>.median(): Double? = quantile(0.5)

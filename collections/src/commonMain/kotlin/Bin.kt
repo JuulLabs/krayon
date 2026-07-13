@@ -12,198 +12,176 @@ import kotlin.math.min
 import kotlin.math.pow
 
 /**
- * A single bin produced by [bin]/[Binner]. Behaves as a [List] of the values it contains, with
- * [x0] (inclusive lower bound) and [x1] (upper bound; inclusive only for the last bin).
+ * A histogram bin, behaving as the [List] of values it contains, bounded by [lowerBound]
+ * (inclusive) and [upperBound] (inclusive only for the final bin, otherwise exclusive).
  */
 public class Bin<out T> internal constructor(
-    public val x0: Double,
-    public val x1: Double,
-    private val values: List<T>,
+    public val lowerBound: Double,
+    public val upperBound: Double,
+    values: List<T>,
 ) : List<T> by values {
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is Bin<*>) return false
-        return x0 == other.x0 && x1 == other.x1 && values == other.values
-    }
+    override fun equals(other: Any?): Boolean =
+        this === other ||
+            (other is Bin<*> && lowerBound == other.lowerBound && upperBound == other.upperBound && toList() == other.toList())
 
-    override fun hashCode(): Int {
-        var result = x0.hashCode()
-        result = 31 * result + x1.hashCode()
-        result = 31 * result + values.hashCode()
-        return result
-    }
+    override fun hashCode(): Int = (lowerBound.hashCode() * 31 + upperBound.hashCode()) * 31 + toList().hashCode()
 
-    override fun toString(): String = "Bin(x0=$x0, x1=$x1, values=$values)"
+    override fun toString(): String = "Bin($lowerBound..$upperBound, ${toList()})"
 }
 
-internal sealed interface ThresholdSpec {
-    class Count(val strategy: (values: List<Double>, min: Double, max: Double) -> Int) : ThresholdSpec
+/** Strategy for choosing histogram bin boundaries. See [bin]. */
+public sealed interface Thresholds {
 
-    class Values(val strategy: (values: List<Double>, min: Double, max: Double) -> List<Double>) : ThresholdSpec
+    /** [Sturges' formula](https://en.wikipedia.org/wiki/Histogram#Sturges'_formula); the default. */
+    public data object Sturges : Thresholds
+
+    /** [Scott's normal reference rule](https://en.wikipedia.org/wiki/Histogram#Scott's_normal_reference_rule). */
+    public data object Scott : Thresholds
+
+    /** The [Freedman–Diaconis rule](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule). */
+    public data object FreedmanDiaconis : Thresholds
+
+    /** An approximate number of bins; the exact count is adjusted to produce human-friendly boundaries. */
+    public data class Count(val count: Int) : Thresholds
+
+    /** Explicit interior boundary values. */
+    public data class Boundaries(val values: List<Double>) : Thresholds
 }
 
 /**
- * Bins discrete samples into consecutive, non-overlapping intervals. Configured with a fluent
- * builder mirroring [d3's bin generator](https://github.com/d3/d3-array#bins).
+ * Groups values into consecutive, non-overlapping [Bin]s. Mirrors
+ * [d3.bin](https://github.com/d3/d3-array#bins).
+ *
+ * @param domain restricts and scales binning to `[start, endInclusive]`; defaults to the extent of
+ *   the mapped values, in which case the bounds are rounded to human-friendly values.
+ * @param thresholds the [Thresholds] strategy for choosing bin boundaries.
+ * @param value maps each element to the number that determines its bin.
  */
-public class Binner<T> internal constructor(
-    private val valueAccessor: (T) -> Double,
-    private val domainAccessor: ((values: List<Double>) -> Pair<Double, Double>)?,
-    private val thresholdSpec: ThresholdSpec,
-) {
+public fun <T> Iterable<T>.bin(
+    domain: ((values: List<Double>) -> ClosedFloatingPointRange<Double>)? = null,
+    thresholds: Thresholds = Thresholds.Sturges,
+    value: (T) -> Double,
+): List<Bin<T>> {
+    val elements = toList()
+    val values = elements.map(value)
 
-    /** Sets the accessor used to read the numeric value of each datum. */
-    public fun value(selector: (T) -> Double): Binner<T> =
-        Binner(selector, domainAccessor, thresholdSpec)
+    val usingDefaultDomain = domain == null
+    val extent = domain?.invoke(values) ?: values.extent()
+    var lowerBound = extent.start
+    var upperBound = extent.endInclusive
+    var uniformStep = Double.NaN
 
-    /** Sets a custom domain function `[x0, x1]` computed from the mapped values. */
-    public fun domain(selector: (values: List<Double>) -> Pair<Double, Double>): Binner<T> =
-        Binner(valueAccessor, selector, thresholdSpec)
-
-    /** Sets a fixed domain `[min, max]`. */
-    public fun domain(min: Double, max: Double): Binner<T> =
-        Binner(valueAccessor, { min to max }, thresholdSpec)
-
-    /** Sets the approximate number of bins to produce. */
-    public fun thresholds(count: Int): Binner<T> =
-        Binner(valueAccessor, domainAccessor, ThresholdSpec.Count { _, _, _ -> count })
-
-    /** Sets a strategy computing the approximate number of bins, e.g. [thresholdSturges]. */
-    public fun thresholds(strategy: (values: List<Double>, min: Double, max: Double) -> Int): Binner<T> =
-        Binner(valueAccessor, domainAccessor, ThresholdSpec.Count(strategy))
-
-    /** Sets explicit threshold values used as bin boundaries. */
-    public fun thresholds(values: List<Double>): Binner<T> =
-        Binner(valueAccessor, domainAccessor, ThresholdSpec.Values { _, _, _ -> values })
-
-    /** Computes the bins for [data]. */
-    public operator fun invoke(data: Iterable<T>): List<Bin<T>> {
-        val dataList = data.toList()
-        val n = dataList.size
-        val values = DoubleArray(n) { valueAccessor(dataList[it]) }
-        val valueList = values.asList()
-
-        val isExtent = domainAccessor == null
-        val domain = domainAccessor?.invoke(valueList) ?: extent(valueList)
-        var x0 = domain.first
-        var x1 = domain.second
-        var step = Double.NaN
-
-        val computed: MutableList<Double> = when (val spec = thresholdSpec) {
-            is ThresholdSpec.Values -> spec.strategy(valueList, x0, x1).toMutableList()
-            is ThresholdSpec.Count -> {
-                val originalMax = x1
-                val count = spec.strategy(valueList, x0, x1)
-                if (isExtent) {
-                    val niced = nice(x0, x1, count)
-                    x0 = niced.first
-                    x1 = niced.second
-                }
-                val tz = ticks(x0, x1, count).toMutableList()
-                if (tz.isNotEmpty() && tz.first() <= x0) step = tickIncrement(x0, x1, count)
-                if (tz.isNotEmpty() && tz.last() >= x1) {
-                    if (originalMax >= x1 && isExtent) {
-                        val increment = tickIncrement(x0, x1, count)
-                        if (increment.isFinite()) {
-                            if (increment > 0) {
-                                x1 = (floor(x1 / increment) + 1) * increment
-                            } else if (increment < 0) {
-                                x1 = (ceil(x1 * -increment) + 1) / -increment
-                            }
-                        }
-                    } else {
-                        tz.removeAt(tz.size - 1)
+    val boundaries: List<Double> = if (thresholds is Thresholds.Boundaries) {
+        thresholds.values
+    } else {
+        val count = thresholds.binCount(values, lowerBound, upperBound)
+        val maxValue = upperBound
+        if (usingDefaultDomain) {
+            val (niceLower, niceUpper) = nice(lowerBound, upperBound, count)
+            lowerBound = niceLower
+            upperBound = niceUpper
+        }
+        val ticks = ticks(lowerBound, upperBound, count).toMutableList()
+        if (ticks.firstOrNull()?.let { it <= lowerBound } == true) {
+            uniformStep = tickIncrement(lowerBound, upperBound, count)
+        }
+        if (ticks.lastOrNull()?.let { it >= upperBound } == true) {
+            if (maxValue >= upperBound && usingDefaultDomain) {
+                val increment = tickIncrement(lowerBound, upperBound, count)
+                if (increment.isFinite()) {
+                    upperBound = when {
+                        increment > 0 -> (floor(upperBound / increment) + 1) * increment
+                        increment < 0 -> (ceil(upperBound * -increment) + 1) / -increment
+                        else -> upperBound
                     }
                 }
-                tz
+            } else {
+                ticks.removeAt(ticks.lastIndex)
             }
         }
+        ticks
+    }
 
-        var a = 0
-        var b = computed.size
-        while (a < computed.size && computed[a] <= x0) a++
-        while (b > 0 && computed[b - 1] > x1) b--
-        val thresholds = if (a != 0 || b < computed.size) computed.subList(a, b) else computed
-        val m = thresholds.size
+    val interior = boundaries.trimmedTo(lowerBound, upperBound)
+    val binCount = interior.size + 1
+    val contents = List(binCount) { mutableListOf<T>() }
 
-        val binValues = List(m + 1) { ArrayList<T>() }
-        when {
-            step.isFinite() && step > 0 -> for (i in 0 until n) {
-                val x = values[i]
-                if (!x.isNaN() && x in x0..x1) {
-                    binValues[min(m, floor((x - x0) / step).toInt())].add(dataList[i])
-                }
+    for ((index, x) in values.withIndex()) {
+        if (x.isNaN() || x < lowerBound || x > upperBound) continue
+        val bin = when {
+            uniformStep > 0 -> min(interior.size, floor((x - lowerBound) / uniformStep).toInt())
+            uniformStep < 0 -> {
+                val approximate = floor((lowerBound - x) * uniformStep).toInt()
+                val correction = if (approximate < interior.size && interior[approximate] <= x) 1 else 0
+                min(interior.size, approximate + correction)
             }
-            step.isFinite() && step < 0 -> for (i in 0 until n) {
-                val x = values[i]
-                if (!x.isNaN() && x in x0..x1) {
-                    val j = floor((x0 - x) * step).toInt()
-                    val offset = if (j < thresholds.size && thresholds[j] <= x) 1 else 0
-                    binValues[min(m, j + offset)].add(dataList[i])
-                }
-            }
-            else -> for (i in 0 until n) {
-                val x = values[i]
-                if (!x.isNaN() && x in x0..x1) {
-                    binValues[thresholds.bisect(x, 0, m)].add(dataList[i])
-                }
-            }
+            else -> interior.bisect(x)
         }
+        contents[bin].add(elements[index])
+    }
 
-        return List(m + 1) { i ->
-            val binX0 = if (i > 0) thresholds[i - 1] else x0
-            val binX1 = if (i < m) thresholds[i] else x1
-            Bin(binX0, binX1, binValues[i])
-        }
+    return List(binCount) { i ->
+        Bin(
+            lowerBound = if (i > 0) interior[i - 1] else lowerBound,
+            upperBound = if (i < interior.size) interior[i] else upperBound,
+            values = contents[i],
+        )
     }
 }
 
-/** Creates a [Binner] reading numeric values via [value]. See [d3.bin](https://github.com/d3/d3-array#bin). */
-public fun <T> bin(value: (T) -> Double): Binner<T> =
-    Binner(value, null, ThresholdSpec.Count(::thresholdSturges))
+private fun List<Double>.trimmedTo(lowerBound: Double, upperBound: Double): List<Double> {
+    var start = 0
+    var end = size
+    while (start < size && this[start] <= lowerBound) start++
+    while (end > 0 && this[end - 1] > upperBound) end--
+    return if (start != 0 || end < size) subList(start, end) else this
+}
 
-/** Alias for [bin]. See [d3.histogram](https://github.com/d3/d3-array#bin). */
-public fun <T> histogram(value: (T) -> Double): Binner<T> = bin(value)
+private fun Thresholds.binCount(values: List<Double>, lowerBound: Double, upperBound: Double): Int =
+    when (this) {
+        is Thresholds.Count -> count
+        Thresholds.Sturges -> sturgesBinCount(values)
+        Thresholds.Scott -> scottBinCount(values, lowerBound, upperBound)
+        Thresholds.FreedmanDiaconis -> freedmanDiaconisBinCount(values, lowerBound, upperBound)
+        is Thresholds.Boundaries -> error("Boundaries thresholds do not have a bin count")
+    }
 
-/** See equivalent [d3 function](https://github.com/d3/d3-array#thresholdSturges). */
-public fun thresholdSturges(values: List<Double>, min: Double, max: Double): Int {
-    val count = values.count { it }
+private fun sturgesBinCount(values: List<Double>): Int {
+    val count = values.count { !it.isNaN() }
     if (count == 0) return 1
     return max(1.0, ceil(ln(count.toDouble()) / ln(2.0)) + 1.0).toInt()
 }
 
-/** See equivalent [d3 function](https://github.com/d3/d3-array#thresholdScott). */
-public fun thresholdScott(values: List<Double>, min: Double, max: Double): Int {
-    val count = values.count { it }
-    val deviation = values.deviation { it }
+private fun scottBinCount(values: List<Double>, lowerBound: Double, upperBound: Double): Int {
+    val count = values.count { !it.isNaN() }
+    val deviation = values.standardDeviation()
     return if (count > 0 && deviation != null && deviation != 0.0) {
-        ceil((max - min) * cbrt(count.toDouble()) / (3.49 * deviation)).toInt()
+        ceil((upperBound - lowerBound) * cbrt(count.toDouble()) / (3.49 * deviation)).toInt()
     } else {
         1
     }
 }
 
-/** See equivalent [d3 function](https://github.com/d3/d3-array#thresholdFreedmanDiaconis). */
-public fun thresholdFreedmanDiaconis(values: List<Double>, min: Double, max: Double): Int {
-    val count = values.count { it }
-    val q3 = values.quantile(0.75) { it }
-    val q1 = values.quantile(0.25) { it }
-    val d = if (q3 != null && q1 != null) q3 - q1 else null
-    return if (count > 0 && d != null && d != 0.0) {
-        ceil((max - min) / (2 * d * count.toDouble().pow(-1.0 / 3.0))).toInt()
+private fun freedmanDiaconisBinCount(values: List<Double>, lowerBound: Double, upperBound: Double): Int {
+    val count = values.count { !it.isNaN() }
+    val thirdQuartile = values.quantile(0.75)
+    val firstQuartile = values.quantile(0.25)
+    val interquartileRange = if (thirdQuartile != null && firstQuartile != null) thirdQuartile - firstQuartile else null
+    return if (count > 0 && interquartileRange != null && interquartileRange != 0.0) {
+        ceil((upperBound - lowerBound) / (2 * interquartileRange * count.toDouble().pow(-1.0 / 3.0))).toInt()
     } else {
         1
     }
 }
 
-private fun extent(values: List<Double>): Pair<Double, Double> {
+private fun List<Double>.extent(): ClosedFloatingPointRange<Double> {
     var min = Double.NaN
     var max = Double.NaN
-    for (value in values) {
+    for (value in this) {
         if (value.isNaN()) continue
         if (min.isNaN() || value < min) min = value
         if (max.isNaN() || value > max) max = value
     }
-    return min to max
+    return if (min.isNaN()) 0.0..0.0 else min..max
 }

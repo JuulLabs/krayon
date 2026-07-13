@@ -8,85 +8,77 @@ import kotlin.math.pow
 import kotlin.math.roundToLong
 import kotlin.math.sqrt
 
-private val e10 = sqrt(50.0)
-private val e5 = sqrt(10.0)
-private val e2 = sqrt(2.0)
+// Ported from d3-array's ticks.js to keep histogram bin boundaries identical to d3. Kept internal
+// because the public `ticks`/`tickIncrement`/`nice` helpers already live in the `scale` module.
 
-internal data class TickSpec(val i1: Double, val i2: Double, val inc: Double)
+private val sqrt50 = sqrt(50.0)
+private val sqrt10 = sqrt(10.0)
+private val sqrt2 = sqrt(2.0)
 
-internal fun tickSpec(start: Double, stop: Double, count: Int): TickSpec {
-    val step = (stop - start) / max(0, count)
-    val power = floor(log10(step))
-    val error = step / 10.0.pow(power)
+private data class TickSpec(val firstStep: Double, val lastStep: Double, val increment: Double)
+
+private fun tickSpec(start: Double, stop: Double, count: Int): TickSpec {
+    val rawStep = (stop - start) / max(0, count)
+    val power = floor(log10(rawStep))
+    val error = rawStep / 10.0.pow(power)
     val factor = when {
-        error >= e10 -> 10.0
-        error >= e5 -> 5.0
-        error >= e2 -> 2.0
+        error >= sqrt50 -> 10.0
+        error >= sqrt10 -> 5.0
+        error >= sqrt2 -> 2.0
         else -> 1.0
     }
-    var i1: Double
-    var i2: Double
-    var inc: Double
+    var firstStep: Double
+    var lastStep: Double
+    var increment: Double
     if (power < 0) {
-        inc = 10.0.pow(-power) / factor
-        i1 = (start * inc).roundToLong().toDouble()
-        i2 = (stop * inc).roundToLong().toDouble()
-        if (i1 / inc < start) i1++
-        if (i2 / inc > stop) i2--
-        inc = -inc
+        increment = 10.0.pow(-power) / factor
+        firstStep = (start * increment).roundToLong().toDouble()
+        lastStep = (stop * increment).roundToLong().toDouble()
+        if (firstStep / increment < start) firstStep++
+        if (lastStep / increment > stop) lastStep--
+        increment = -increment
     } else {
-        inc = 10.0.pow(power) * factor
-        i1 = (start / inc).roundToLong().toDouble()
-        i2 = (stop / inc).roundToLong().toDouble()
-        if (i1 * inc < start) i1++
-        if (i2 * inc > stop) i2--
+        increment = 10.0.pow(power) * factor
+        firstStep = (start / increment).roundToLong().toDouble()
+        lastStep = (stop / increment).roundToLong().toDouble()
+        if (firstStep * increment < start) firstStep++
+        if (lastStep * increment > stop) lastStep--
     }
-    if (i2 < i1 && count in 1..1) return tickSpec(start, stop, count * 2)
-    return TickSpec(i1, i2, inc)
+    if (lastStep < firstStep && count in 1..1) return tickSpec(start, stop, count * 2)
+    return TickSpec(firstStep, lastStep, increment)
 }
 
 internal fun ticks(start: Double, stop: Double, count: Int): List<Double> {
     if (count <= 0) return emptyList()
     if (start == stop) return listOf(start)
     val reverse = stop < start
-    val (i1, i2, inc) = if (reverse) tickSpec(stop, start, count) else tickSpec(start, stop, count)
-    if (i2 < i1) return emptyList()
-    val n = (i2 - i1 + 1).toInt()
-    val result = DoubleArray(n)
-    if (reverse) {
-        if (inc < 0) {
-            for (i in 0 until n) result[i] = (i2 - i) / -inc
-        } else {
-            for (i in 0 until n) result[i] = (i2 - i) * inc
-        }
-    } else {
-        if (inc < 0) {
-            for (i in 0 until n) result[i] = (i1 + i) / -inc
-        } else {
-            for (i in 0 until n) result[i] = (i1 + i) * inc
-        }
+    val (firstStep, lastStep, increment) = if (reverse) tickSpec(stop, start, count) else tickSpec(start, stop, count)
+    if (lastStep < firstStep) return emptyList()
+    val size = (lastStep - firstStep + 1).toInt()
+    return List(size) { i ->
+        val step = if (reverse) lastStep - i else firstStep + i
+        if (increment < 0) step / -increment else step * increment
     }
-    return result.asList()
 }
 
 internal fun tickIncrement(start: Double, stop: Double, count: Int): Double =
-    tickSpec(start, stop, count).inc
+    tickSpec(start, stop, count).increment
 
 internal fun nice(start: Double, stop: Double, count: Int): Pair<Double, Double> {
     var lower = start
     var upper = stop
-    var previousStep: Double? = null
+    var previousIncrement: Double? = null
     while (true) {
-        val step = tickIncrement(lower, upper, count)
-        if (step == previousStep || step == 0.0 || !step.isFinite()) {
+        val increment = tickIncrement(lower, upper, count)
+        if (increment == previousIncrement || increment == 0.0 || !increment.isFinite()) {
             return lower to upper
-        } else if (step > 0) {
-            lower = floor(lower / step) * step
-            upper = ceil(upper / step) * step
+        } else if (increment > 0) {
+            lower = floor(lower / increment) * increment
+            upper = ceil(upper / increment) * increment
         } else {
-            lower = ceil(lower * step) / step
-            upper = floor(upper * step) / step
+            lower = ceil(lower * increment) / increment
+            upper = floor(upper * increment) / increment
         }
-        previousStep = step
+        previousIncrement = increment
     }
 }
