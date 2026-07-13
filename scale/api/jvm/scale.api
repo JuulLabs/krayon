@@ -1,3 +1,28 @@
+public final class com/juul/krayon/scale/BandScale : com/juul/krayon/scale/Scale {
+	public final fun align (F)Lcom/juul/krayon/scale/BandScale;
+	public final fun domain (Ljava/util/List;)Lcom/juul/krayon/scale/BandScale;
+	public final fun getAlign ()F
+	public final fun getBandwidth ()F
+	public final fun getDomain ()Ljava/util/List;
+	public final fun getPaddingInner ()F
+	public final fun getPaddingOuter ()F
+	public final fun getRange ()Ljava/util/List;
+	public final fun getRound ()Z
+	public final fun getStep ()F
+	public final fun padding (F)Lcom/juul/krayon/scale/BandScale;
+	public final fun paddingInner (F)Lcom/juul/krayon/scale/BandScale;
+	public final fun paddingOuter (F)Lcom/juul/krayon/scale/BandScale;
+	public final fun range (Ljava/util/List;)Lcom/juul/krayon/scale/BandScale;
+	public final fun round (Z)Lcom/juul/krayon/scale/BandScale;
+	public fun scale (Ljava/lang/Object;)Ljava/lang/Float;
+	public synthetic fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/juul/krayon/scale/BandScaleKt {
+	public static final fun bandScale (Ljava/util/List;Ljava/util/List;)Lcom/juul/krayon/scale/BandScale;
+	public static synthetic fun bandScale$default (Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/scale/BandScale;
+}
+
 public final class com/juul/krayon/scale/ContinuousScale : com/juul/krayon/scale/Scale {
 	public final fun domain (Ljava/util/List;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/scale/ContinuousScale;
 	public final fun getDomain ()Ljava/util/List;
@@ -76,6 +101,42 @@ public final class com/juul/krayon/scale/MinKt {
 public final class com/juul/krayon/scale/NiceKt {
 	public static final fun nice (DDI)Ljava/util/List;
 	public static final fun nice (FFI)Ljava/util/List;
+}
+
+public final class com/juul/krayon/scale/OrdinalScale : com/juul/krayon/scale/Scale {
+	public final fun domain (Ljava/util/List;)Lcom/juul/krayon/scale/OrdinalScale;
+	public final fun getDomain ()Ljava/util/List;
+	public final fun getRange ()Ljava/util/List;
+	public final fun range (Ljava/util/List;)Lcom/juul/krayon/scale/OrdinalScale;
+	public fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+	public final fun unknown (Ljava/lang/Object;)Lcom/juul/krayon/scale/OrdinalScale;
+}
+
+public final class com/juul/krayon/scale/OrdinalScaleKt {
+	public static final fun ordinalScale (Ljava/util/List;Ljava/util/List;)Lcom/juul/krayon/scale/OrdinalScale;
+	public static synthetic fun ordinalScale$default (Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/scale/OrdinalScale;
+}
+
+public final class com/juul/krayon/scale/PointScale : com/juul/krayon/scale/Scale {
+	public final fun align (F)Lcom/juul/krayon/scale/PointScale;
+	public final fun domain (Ljava/util/List;)Lcom/juul/krayon/scale/PointScale;
+	public final fun getAlign ()F
+	public final fun getBandwidth ()F
+	public final fun getDomain ()Ljava/util/List;
+	public final fun getPadding ()F
+	public final fun getRange ()Ljava/util/List;
+	public final fun getRound ()Z
+	public final fun getStep ()F
+	public final fun padding (F)Lcom/juul/krayon/scale/PointScale;
+	public final fun range (Ljava/util/List;)Lcom/juul/krayon/scale/PointScale;
+	public final fun round (Z)Lcom/juul/krayon/scale/PointScale;
+	public fun scale (Ljava/lang/Object;)Ljava/lang/Float;
+	public synthetic fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/juul/krayon/scale/PointScaleKt {
+	public static final fun pointScale (Ljava/util/List;Ljava/util/List;)Lcom/juul/krayon/scale/PointScale;
+	public static synthetic fun pointScale$default (Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/scale/PointScale;
 }
 
 public abstract interface class com/juul/krayon/scale/Scale {
