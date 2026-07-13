@@ -1,0 +1,45 @@
+public final class com/juul/krayon/transition/EaseKt {
+	public static final fun easeBackIn (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeBackIn$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easeBackInOut (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeBackInOut$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easeBackOut (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeBackOut$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easeElasticIn (FF)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeElasticIn$default (FFILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easeElasticInOut (FF)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeElasticInOut$default (FFILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easeElasticOut (FF)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeElasticOut$default (FFILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easePolyIn (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easePolyIn$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easePolyInOut (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easePolyInOut$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easePolyOut (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easePolyOut$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseBounceIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseBounceInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseBounceOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCircleIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCircleInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCircleOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCubic ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCubicIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCubicInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCubicOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseExpIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseExpInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseExpOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseLinear ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseQuadIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseQuadInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseQuadOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseSinIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseSinInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseSinOut ()Lcom/juul/krayon/transition/Easing;
+}
+
+public abstract interface class com/juul/krayon/transition/Easing {
+	public abstract fun ease (F)F
+}
+

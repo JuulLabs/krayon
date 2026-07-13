@@ -35,4 +35,5 @@ include(
     "selection",
     "shape",
     "time",
+    "transition",
 )
