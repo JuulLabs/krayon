@@ -1,8 +1,33 @@
+public final class com/juul/krayon/interpolate/BasisKt {
+	public static final fun interpolateBasis (Ljava/util/List;)Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun interpolateBasisClosed (Ljava/util/List;)Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun interpolateRgbBasis (Ljava/util/List;)Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun interpolateRgbBasisClosed (Ljava/util/List;)Lcom/juul/krayon/interpolate/Interpolator;
+}
+
 public abstract interface class com/juul/krayon/interpolate/BidirectionalInterpolator : com/juul/krayon/interpolate/Interpolator, com/juul/krayon/interpolate/Inverter {
 }
 
 public final class com/juul/krayon/interpolate/ClampKt {
 	public static final fun clamp (Lcom/juul/krayon/interpolate/Interpolator;)Lcom/juul/krayon/interpolate/Interpolator;
+}
+
+public final class com/juul/krayon/interpolate/ColorInterpolatorsKt {
+	public static final fun interpolateCubehelix-5Jni88Q (IIF)Lcom/juul/krayon/interpolate/Interpolator;
+	public static synthetic fun interpolateCubehelix-5Jni88Q$default (IIFILjava/lang/Object;)Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun interpolateCubehelixLong-5Jni88Q (IIF)Lcom/juul/krayon/interpolate/Interpolator;
+	public static synthetic fun interpolateCubehelixLong-5Jni88Q$default (IIFILjava/lang/Object;)Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun interpolateHcl-h4DbW5E (II)Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun interpolateHclLong-h4DbW5E (II)Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun interpolateHsl-h4DbW5E (II)Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun interpolateHslLong-h4DbW5E (II)Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun interpolateLab-h4DbW5E (II)Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun interpolateRgb-5Jni88Q (IIF)Lcom/juul/krayon/interpolate/Interpolator;
+	public static synthetic fun interpolateRgb-5Jni88Q$default (IIFILjava/lang/Object;)Lcom/juul/krayon/interpolate/Interpolator;
+}
+
+public final class com/juul/krayon/interpolate/DiscreteInterpolatorKt {
+	public static final fun interpolateDiscrete (Ljava/util/List;)Lcom/juul/krayon/interpolate/Interpolator;
 }
 
 public abstract interface class com/juul/krayon/interpolate/Interpolator {
@@ -21,5 +46,36 @@ public final class com/juul/krayon/interpolate/InterpolatorKt {
 
 public abstract interface class com/juul/krayon/interpolate/Inverter {
 	public abstract fun invert (Ljava/lang/Object;)F
+}
+
+public final class com/juul/krayon/interpolate/ListInterpolatorKt {
+	public static final fun interpolateList (Ljava/util/List;Ljava/util/List;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/interpolate/Interpolator;
+}
+
+public final class com/juul/krayon/interpolate/PiecewiseKt {
+	public static final fun piecewise (Ljava/util/List;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/interpolate/Interpolator;
+}
+
+public final class com/juul/krayon/interpolate/QuantizeKt {
+	public static final fun quantize (ILcom/juul/krayon/interpolate/Interpolator;)Ljava/util/List;
+}
+
+public final class com/juul/krayon/interpolate/RoundInterpolatorKt {
+	public static final fun interpolateRound (DD)Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun interpolateRound (FF)Lcom/juul/krayon/interpolate/Interpolator;
+}
+
+public final class com/juul/krayon/interpolate/SchemeInterpolatorsKt {
+	public static final fun getInterpolateBlues ()Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun getInterpolateGreens ()Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun getInterpolateGreys ()Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun getInterpolateRdBu ()Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun getInterpolateReds ()Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun getInterpolateSpectral ()Lcom/juul/krayon/interpolate/Interpolator;
+	public static final fun getInterpolateViridis ()Lcom/juul/krayon/interpolate/Interpolator;
+}
+
+public final class com/juul/krayon/interpolate/StringInterpolatorKt {
+	public static final fun interpolateString (Ljava/lang/String;Ljava/lang/String;)Lcom/juul/krayon/interpolate/Interpolator;
 }
 
