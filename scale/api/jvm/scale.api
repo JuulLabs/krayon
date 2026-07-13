@@ -90,6 +90,31 @@ public final class com/juul/krayon/scale/LocalDateTimeTicker : com/juul/krayon/s
 	public fun ticks (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/LocalDateTime;I)Ljava/util/List;
 }
 
+public final class com/juul/krayon/scale/LogScale : com/juul/krayon/scale/Scale {
+	public final fun base (F)Lcom/juul/krayon/scale/LogScale;
+	public final fun clamp (Z)Lcom/juul/krayon/scale/LogScale;
+	public static synthetic fun clamp$default (Lcom/juul/krayon/scale/LogScale;ZILjava/lang/Object;)Lcom/juul/krayon/scale/LogScale;
+	public final fun domain (Ljava/util/List;)Lcom/juul/krayon/scale/LogScale;
+	public final fun getBase ()F
+	public final fun getClamp ()Z
+	public final fun getDomain ()Ljava/util/List;
+	public final fun getRange ()Ljava/util/List;
+	public final fun invert (Ljava/lang/Object;)F
+	public final fun nice ()Lcom/juul/krayon/scale/LogScale;
+	public final fun range (Ljava/util/List;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/scale/LogScale;
+	public fun scale (F)Ljava/lang/Object;
+	public synthetic fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+	public final fun tickFormat (I)Lkotlin/jvm/functions/Function1;
+	public static synthetic fun tickFormat$default (Lcom/juul/krayon/scale/LogScale;IILjava/lang/Object;)Lkotlin/jvm/functions/Function1;
+	public final fun ticks (I)Ljava/util/List;
+	public static synthetic fun ticks$default (Lcom/juul/krayon/scale/LogScale;IILjava/lang/Object;)Ljava/util/List;
+}
+
+public final class com/juul/krayon/scale/LogScaleKt {
+	public static final fun logScale (Ljava/util/List;Ljava/util/List;F)Lcom/juul/krayon/scale/LogScale;
+	public static synthetic fun logScale$default (Ljava/util/List;Ljava/util/List;FILjava/lang/Object;)Lcom/juul/krayon/scale/LogScale;
+}
+
 public final class com/juul/krayon/scale/MaxKt {
 	public static final fun max (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Comparable;
 }
@@ -139,12 +164,70 @@ public final class com/juul/krayon/scale/PointScaleKt {
 	public static synthetic fun pointScale$default (Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/scale/PointScale;
 }
 
+public final class com/juul/krayon/scale/PowScale : com/juul/krayon/scale/Scale {
+	public final fun clamp (Z)Lcom/juul/krayon/scale/PowScale;
+	public static synthetic fun clamp$default (Lcom/juul/krayon/scale/PowScale;ZILjava/lang/Object;)Lcom/juul/krayon/scale/PowScale;
+	public final fun domain (Ljava/util/List;)Lcom/juul/krayon/scale/PowScale;
+	public final fun exponent (F)Lcom/juul/krayon/scale/PowScale;
+	public final fun getClamp ()Z
+	public final fun getDomain ()Ljava/util/List;
+	public final fun getExponent ()F
+	public final fun getRange ()Ljava/util/List;
+	public final fun invert (Ljava/lang/Object;)F
+	public final fun nice (I)Lcom/juul/krayon/scale/PowScale;
+	public static synthetic fun nice$default (Lcom/juul/krayon/scale/PowScale;IILjava/lang/Object;)Lcom/juul/krayon/scale/PowScale;
+	public final fun range (Ljava/util/List;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/scale/PowScale;
+	public fun scale (F)Ljava/lang/Object;
+	public synthetic fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+	public final fun tickFormat (I)Lkotlin/jvm/functions/Function1;
+	public static synthetic fun tickFormat$default (Lcom/juul/krayon/scale/PowScale;IILjava/lang/Object;)Lkotlin/jvm/functions/Function1;
+	public final fun ticks (I)Ljava/util/List;
+	public static synthetic fun ticks$default (Lcom/juul/krayon/scale/PowScale;IILjava/lang/Object;)Ljava/util/List;
+}
+
+public final class com/juul/krayon/scale/PowScaleKt {
+	public static final fun powScale (Ljava/util/List;Ljava/util/List;F)Lcom/juul/krayon/scale/PowScale;
+	public static synthetic fun powScale$default (Ljava/util/List;Ljava/util/List;FILjava/lang/Object;)Lcom/juul/krayon/scale/PowScale;
+	public static final fun sqrtScale (Ljava/util/List;Ljava/util/List;)Lcom/juul/krayon/scale/PowScale;
+	public static synthetic fun sqrtScale$default (Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/scale/PowScale;
+}
+
 public abstract interface class com/juul/krayon/scale/Scale {
 	public abstract fun scale (Ljava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class com/juul/krayon/scale/ScaleKt {
 	public static final fun invoke (Lcom/juul/krayon/scale/Scale;Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/juul/krayon/scale/SymlogScale : com/juul/krayon/scale/Scale {
+	public final fun clamp (Z)Lcom/juul/krayon/scale/SymlogScale;
+	public static synthetic fun clamp$default (Lcom/juul/krayon/scale/SymlogScale;ZILjava/lang/Object;)Lcom/juul/krayon/scale/SymlogScale;
+	public final fun constant (F)Lcom/juul/krayon/scale/SymlogScale;
+	public final fun domain (Ljava/util/List;)Lcom/juul/krayon/scale/SymlogScale;
+	public final fun getClamp ()Z
+	public final fun getConstant ()F
+	public final fun getDomain ()Ljava/util/List;
+	public final fun getRange ()Ljava/util/List;
+	public final fun invert (Ljava/lang/Object;)F
+	public final fun nice (I)Lcom/juul/krayon/scale/SymlogScale;
+	public static synthetic fun nice$default (Lcom/juul/krayon/scale/SymlogScale;IILjava/lang/Object;)Lcom/juul/krayon/scale/SymlogScale;
+	public final fun range (Ljava/util/List;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/scale/SymlogScale;
+	public fun scale (F)Ljava/lang/Object;
+	public synthetic fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+	public final fun tickFormat (I)Lkotlin/jvm/functions/Function1;
+	public static synthetic fun tickFormat$default (Lcom/juul/krayon/scale/SymlogScale;IILjava/lang/Object;)Lkotlin/jvm/functions/Function1;
+	public final fun ticks (I)Ljava/util/List;
+	public static synthetic fun ticks$default (Lcom/juul/krayon/scale/SymlogScale;IILjava/lang/Object;)Ljava/util/List;
+}
+
+public final class com/juul/krayon/scale/SymlogScaleKt {
+	public static final fun symlogScale (Ljava/util/List;Ljava/util/List;F)Lcom/juul/krayon/scale/SymlogScale;
+	public static synthetic fun symlogScale$default (Ljava/util/List;Ljava/util/List;FILjava/lang/Object;)Lcom/juul/krayon/scale/SymlogScale;
+}
+
+public final class com/juul/krayon/scale/TickFormatKt {
+	public static final fun tickFormat (FFI)Lkotlin/jvm/functions/Function1;
 }
 
 public abstract interface class com/juul/krayon/scale/Ticker {
