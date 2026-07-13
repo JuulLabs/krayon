@@ -27,19 +27,19 @@ internal actual fun drawText(kanvas: ComposeKanvas, text: CharSequence, x: Float
     }
 }
 
-private fun Paint.Text.toSkiaFont(): SkiaFont {
+internal fun Paint.Text.toSkiaFont(): SkiaFont {
     val font = SkiaFont(font.toNativeTypeface(), size)
     font.isSubpixel = true
     return font
 }
 
-private fun Paint.Text.toSkiaPaint(): SkiaPaint {
+internal fun Paint.Text.toSkiaPaint(): SkiaPaint {
     val paint = SkiaPaint()
     paint.color = color.argb
     return paint
 }
 
-private fun measureTextWidth(text: String, font: SkiaFont, paint: SkiaPaint): Float {
+internal fun measureTextWidth(text: String, font: SkiaFont, paint: SkiaPaint): Float {
     // TODO: Figure out why `font.measureTextWidth(text, paint)` doesn't return the same thing every time.
     //       This appears to be a bug on web only, but causes really painful text jumpiness.
     val glyphs = font.getStringGlyphs(text)

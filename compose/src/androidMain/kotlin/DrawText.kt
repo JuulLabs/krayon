@@ -9,7 +9,7 @@ internal actual fun drawText(kanvas: ComposeKanvas, text: CharSequence, x: Float
     canvas.drawText(text.toString(), x, y, androidPaint(paint))
 }
 
-private fun androidPaint(source: Paint.Text) = AndroidPaint().apply {
+internal fun androidPaint(source: Paint.Text) = AndroidPaint().apply {
     style = AndroidPaint.Style.FILL
     isAntiAlias = true
     color = source.color.argb
