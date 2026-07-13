@@ -7,66 +7,67 @@ import kotlin.math.pow
 /**
  * A color in the HSL (hue, saturation, lightness) color space.
  *
- * [h] is in degrees `[0, 360)`, [s] and [l] are in `[0, 1]`, and [opacity] is in `[0, 1]`. An
- * achromatic color has a hue (and possibly saturation) of [Float.NaN], mirroring d3-color.
+ * [hue] is in degrees `[0, 360)`, [saturation] and [lightness] are in `[0, 1]`, and [opacity] is in
+ * `[0, 1]`. An achromatic color has a hue (and possibly saturation) of [Float.NaN], mirroring
+ * d3-color.
  */
 public data class Hsl(
-    public val h: Float,
-    public val s: Float,
-    public val l: Float,
+    public val hue: Float,
+    public val saturation: Float,
+    public val lightness: Float,
     public val opacity: Float = 1f,
 ) {
     /** Returns a brighter copy of this color by scaling lightness. */
-    public fun brighter(k: Float = 1f): Hsl = Hsl(h, s, l * (1f / DARKER).pow(k), opacity)
+    public fun brighter(k: Float = 1f): Hsl = Hsl(hue, saturation, lightness * (1f / DARKER).pow(k), opacity)
 
     /** Returns a darker copy of this color by scaling lightness. */
-    public fun darker(k: Float = 1f): Hsl = Hsl(h, s, l * DARKER.pow(k), opacity)
+    public fun darker(k: Float = 1f): Hsl = Hsl(hue, saturation, lightness * DARKER.pow(k), opacity)
 }
 
 /** Converts this ARGB color to the HSL color space. */
 public fun Color.toHsl(): Hsl {
-    val r = redFraction()
-    val g = greenFraction()
-    val b = blueFraction()
-    val min = min(r, min(g, b))
-    val max = max(r, max(g, b))
-    var h = Float.NaN
-    var s = max - min
-    val l = (max + min) / 2f
-    if (s != 0f) {
-        h = when (max) {
-            r -> (g - b) / s + (if (g < b) 6f else 0f)
-            g -> (b - r) / s + 2f
-            else -> (r - g) / s + 4f
+    val red = redFraction()
+    val green = greenFraction()
+    val blue = blueFraction()
+    val minimum = min(red, min(green, blue))
+    val maximum = max(red, max(green, blue))
+    var hue = Float.NaN
+    var saturation = maximum - minimum
+    val lightness = (maximum + minimum) / 2f
+    if (saturation != 0f) {
+        hue = when (maximum) {
+            red -> (green - blue) / saturation + (if (green < blue) 6f else 0f)
+            green -> (blue - red) / saturation + 2f
+            else -> (red - green) / saturation + 4f
         }
-        s /= if (l < 0.5f) max + min else 2f - max - min
-        h *= 60f
+        saturation /= if (lightness < 0.5f) maximum + minimum else 2f - maximum - minimum
+        hue *= 60f
     } else {
-        s = if (l > 0f && l < 1f) 0f else Float.NaN
+        saturation = if (lightness > 0f && lightness < 1f) 0f else Float.NaN
     }
-    return Hsl(h, s, l, opacityFraction())
+    return Hsl(hue, saturation, lightness, opacityFraction())
 }
 
 /** Converts this HSL color to an ARGB [Color]. */
 public fun Hsl.toColor(): Color {
-    val hue = if (h.isNaN()) 0f else (h % 360f).let { if (it < 0f) it + 360f else it }
-    val sat = if (s.isNaN()) 0f else s
-    val m2 = l + (if (l < 0.5f) l else 1f - l) * sat
-    val m1 = 2f * l - m2
+    val normalizedHue = if (hue.isNaN()) 0f else (hue % 360f).let { if (it < 0f) it + 360f else it }
+    val normalizedSaturation = if (saturation.isNaN()) 0f else saturation
+    val upper = lightness + (if (lightness < 0.5f) lightness else 1f - lightness) * normalizedSaturation
+    val lower = 2f * lightness - upper
     return Color(
         alpha = opacityToAlpha(opacity),
-        red = channelToInt(hsl2rgb(if (hue >= 240f) hue - 240f else hue + 120f, m1, m2)),
-        green = channelToInt(hsl2rgb(hue, m1, m2)),
-        blue = channelToInt(hsl2rgb(if (hue < 120f) hue + 240f else hue - 120f, m1, m2)),
+        red = channelToInt(hueToRgb(if (normalizedHue >= 240f) normalizedHue - 240f else normalizedHue + 120f, lower, upper)),
+        green = channelToInt(hueToRgb(normalizedHue, lower, upper)),
+        blue = channelToInt(hueToRgb(if (normalizedHue < 120f) normalizedHue + 240f else normalizedHue - 120f, lower, upper)),
     )
 }
 
-private fun hsl2rgb(h: Float, m1: Float, m2: Float): Float {
-    val v = when {
-        h < 60f -> m1 + (m2 - m1) * h / 60f
-        h < 180f -> m2
-        h < 240f -> m1 + (m2 - m1) * (240f - h) / 60f
-        else -> m1
+private fun hueToRgb(hue: Float, lower: Float, upper: Float): Float {
+    val value = when {
+        hue < 60f -> lower + (upper - lower) * hue / 60f
+        hue < 180f -> upper
+        hue < 240f -> lower + (upper - lower) * (240f - hue) / 60f
+        else -> lower
     }
-    return v * 255f
+    return value * 255f
 }

@@ -11,14 +11,14 @@ internal const val RADIANS: Float = PI.toFloat() / 180f
 internal const val DARKER: Float = 0.7f
 
 /** Converts an sRGB channel in `[0, 255]` to linear-light RGB in `[0, 1]`. */
-internal fun rgb2lrgb(x: Float): Float {
-    val v = x / 255f
-    return if (v <= 0.04045f) v / 12.92f else ((v + 0.055f) / 1.055f).pow(2.4f)
+internal fun srgbToLinear(channel: Float): Float {
+    val normalized = channel / 255f
+    return if (normalized <= 0.04045f) normalized / 12.92f else ((normalized + 0.055f) / 1.055f).pow(2.4f)
 }
 
 /** Converts a linear-light RGB channel in `[0, 1]` to an sRGB channel in `[0, 255]`. */
-internal fun lrgb2rgb(x: Float): Float =
-    255f * (if (x <= 0.0031308f) 12.92f * x else 1.055f * x.pow(1f / 2.4f) - 0.055f)
+internal fun linearToSrgb(channel: Float): Float =
+    255f * (if (channel <= 0.0031308f) 12.92f * channel else 1.055f * channel.pow(1f / 2.4f) - 0.055f)
 
 internal fun Color.redFraction(): Float = red / 255f
 

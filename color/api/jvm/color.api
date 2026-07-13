@@ -45,10 +45,10 @@ public final class com/juul/krayon/color/Cubehelix {
 	public final fun darker (F)Lcom/juul/krayon/color/Cubehelix;
 	public static synthetic fun darker$default (Lcom/juul/krayon/color/Cubehelix;FILjava/lang/Object;)Lcom/juul/krayon/color/Cubehelix;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getH ()F
-	public final fun getL ()F
+	public final fun getHue ()F
+	public final fun getLightness ()F
 	public final fun getOpacity ()F
-	public final fun getS ()F
+	public final fun getSaturation ()F
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -72,9 +72,9 @@ public final class com/juul/krayon/color/Hcl {
 	public final fun darker (F)Lcom/juul/krayon/color/Hcl;
 	public static synthetic fun darker$default (Lcom/juul/krayon/color/Hcl;FILjava/lang/Object;)Lcom/juul/krayon/color/Hcl;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getC ()F
-	public final fun getH ()F
-	public final fun getL ()F
+	public final fun getChroma ()F
+	public final fun getHue ()F
+	public final fun getLightness ()F
 	public final fun getOpacity ()F
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -103,10 +103,10 @@ public final class com/juul/krayon/color/Hsl {
 	public final fun darker (F)Lcom/juul/krayon/color/Hsl;
 	public static synthetic fun darker$default (Lcom/juul/krayon/color/Hsl;FILjava/lang/Object;)Lcom/juul/krayon/color/Hsl;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getH ()F
-	public final fun getL ()F
+	public final fun getHue ()F
+	public final fun getLightness ()F
 	public final fun getOpacity ()F
-	public final fun getS ()F
+	public final fun getSaturation ()F
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -132,7 +132,7 @@ public final class com/juul/krayon/color/Lab {
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getA ()F
 	public final fun getB ()F
-	public final fun getL ()F
+	public final fun getLightness ()F
 	public final fun getOpacity ()F
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;

@@ -35,9 +35,9 @@ public fun interpolateHslLong(start: Color, stop: Color): Interpolator<Color> =
     hslInterpolator(start.toHsl(), stop.toHsl(), ::interpolateChannel)
 
 private fun hslInterpolator(start: Hsl, stop: Hsl, hue: (Float, Float) -> (Float) -> Float): Interpolator<Color> {
-    val h = hue(start.h, stop.h)
-    val s = interpolateChannel(start.s, stop.s)
-    val l = interpolateChannel(start.l, stop.l)
+    val h = hue(start.hue, stop.hue)
+    val s = interpolateChannel(start.saturation, stop.saturation)
+    val l = interpolateChannel(start.lightness, stop.lightness)
     val o = interpolateChannel(start.opacity, stop.opacity)
     return FunctionInterpolator { t -> Hsl(h(t), s(t), l(t), o(t)).toColor() }
 }
@@ -46,7 +46,7 @@ private fun hslInterpolator(start: Hsl, stop: Hsl, hue: (Float, Float) -> (Float
 public fun interpolateLab(start: Color, stop: Color): Interpolator<Color> {
     val startLab = start.toLab()
     val stopLab = stop.toLab()
-    val l = interpolateChannel(startLab.l, stopLab.l)
+    val l = interpolateChannel(startLab.lightness, stopLab.lightness)
     val a = interpolateChannel(startLab.a, stopLab.a)
     val b = interpolateChannel(startLab.b, stopLab.b)
     val o = interpolateChannel(startLab.opacity, stopLab.opacity)
@@ -62,9 +62,9 @@ public fun interpolateHclLong(start: Color, stop: Color): Interpolator<Color> =
     hclInterpolator(start.toHcl(), stop.toHcl(), ::interpolateChannel)
 
 private fun hclInterpolator(start: Hcl, stop: Hcl, hue: (Float, Float) -> (Float) -> Float): Interpolator<Color> {
-    val h = hue(start.h, stop.h)
-    val c = interpolateChannel(start.c, stop.c)
-    val l = interpolateChannel(start.l, stop.l)
+    val h = hue(start.hue, stop.hue)
+    val c = interpolateChannel(start.chroma, stop.chroma)
+    val l = interpolateChannel(start.lightness, stop.lightness)
     val o = interpolateChannel(start.opacity, stop.opacity)
     return FunctionInterpolator { t -> Hcl(h(t), c(t), l(t), o(t)).toColor() }
 }
@@ -83,9 +83,9 @@ private fun cubehelixInterpolator(
     gamma: Float,
     hue: (Float, Float) -> (Float) -> Float,
 ): Interpolator<Color> {
-    val h = hue(start.h, stop.h)
-    val s = interpolateChannel(start.s, stop.s)
-    val l = interpolateChannel(start.l, stop.l)
+    val h = hue(start.hue, stop.hue)
+    val s = interpolateChannel(start.saturation, stop.saturation)
+    val l = interpolateChannel(start.lightness, stop.lightness)
     val o = interpolateChannel(start.opacity, stop.opacity)
     return FunctionInterpolator { t -> Cubehelix(h(t), s(t), l(t.pow(gamma)), o(t)).toColor() }
 }
