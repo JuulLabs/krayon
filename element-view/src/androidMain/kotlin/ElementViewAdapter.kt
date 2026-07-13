@@ -7,19 +7,26 @@ import com.juul.krayon.element.RootElement
 import com.juul.krayon.element.UpdateElement
 import com.juul.krayon.kanvas.AndroidKanvas
 import com.juul.krayon.kanvas.ScaledIsPointInPath
+import com.juul.krayon.transition.hasPendingTransitions
+import com.juul.krayon.transition.tickTransitions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
+import kotlin.time.TimeSource
 
 private val EMPTY_STATE = AdapterState<ElementView>(null, RootElement(), 0, 0)
+
+/** Frame pacing for transition animations, roughly 60fps. */
+private const val FRAME_DELAY_MS = 16L
 
 public class ElementViewAdapter<T>(
     private val dataSource: Flow<T>,
@@ -95,16 +102,30 @@ public class ElementViewAdapter<T>(
                 state.value.view?.invalidate()
             }
         }
+        val origin = TimeSource.Monotonic.markNow()
         scope.launch {
             state.collectLatest { state ->
                 if (state.view == null) return@collectLatest
                 if (state.width == 0 || state.height == 0) return@collectLatest
                 val scalingFactor = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1f, state.view.resources.displayMetrics)
-                dataSource.collect { data ->
-                    updater.update(state.root, state.width / scalingFactor, state.height / scalingFactor, data)
+
+                suspend fun drawFrame() {
                     val bitmap = pool.acquire(state.width, state.height)
                     state.root.draw(AndroidKanvas(state.view.context, Canvas(bitmap), scalingFactor))
                     buffer.emit(bitmap)
+                }
+
+                dataSource.collectLatest { data ->
+                    // Sync the transition clock before updating so new transitions reference "now".
+                    state.root.tickTransitions(origin.elapsedNow().inWholeMilliseconds)
+                    updater.update(state.root, state.width / scalingFactor, state.height / scalingFactor, data)
+                    drawFrame()
+                    // Keep drawing frames while any transition is animating.
+                    while (state.root.hasPendingTransitions) {
+                        delay(FRAME_DELAY_MS)
+                        state.root.tickTransitions(origin.elapsedNow().inWholeMilliseconds)
+                        drawFrame()
+                    }
                 }
             }
         }

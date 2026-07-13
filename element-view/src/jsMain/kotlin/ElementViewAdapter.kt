@@ -3,6 +3,8 @@ package com.juul.krayon.element.view
 import com.juul.krayon.element.RootElement
 import com.juul.krayon.element.UpdateElement
 import com.juul.krayon.kanvas.HtmlKanvas
+import com.juul.krayon.transition.hasPendingTransitions
+import com.juul.krayon.transition.tickTransitions
 import kotlinx.browser.window
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -14,6 +16,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.w3c.dom.HTMLCanvasElement
 import kotlin.coroutines.CoroutineContext
+import kotlin.time.TimeSource
 
 private val EMPTY_STATE = AdapterState<HTMLCanvasElement>(null, RootElement(), 0, 0)
 
@@ -74,17 +77,30 @@ public class ElementViewAdapter<T>(
     }
 
     private fun launchRenderingIn(scope: CoroutineScope) {
+        val origin = TimeSource.Monotonic.markNow()
         scope.launch {
             state.collectLatest { state ->
                 if (state.view == null) return@collectLatest
                 if (state.width == 0 || state.height == 0) return@collectLatest
-                dataSource.collect { data ->
-                    updater.update(state.root, state.width.toFloat(), state.height.toFloat(), data)
+
+                fun draw() {
                     val canvas = HtmlKanvas(state.view, state.scale)
                     canvas.context.clearRect(0.0, 0.0, state.width.toDouble(), state.height.toDouble())
                     state.root.draw(canvas)
                     canvas.context.resetTransform()
-                    window.awaitAnimationFrame()
+                }
+
+                dataSource.collectLatest { data ->
+                    // Sync the transition clock before updating so new transitions reference "now".
+                    state.root.tickTransitions(origin.elapsedNow().inWholeMilliseconds)
+                    updater.update(state.root, state.width.toFloat(), state.height.toFloat(), data)
+                    draw()
+                    // Keep drawing frames while any transition is animating.
+                    while (state.root.hasPendingTransitions) {
+                        window.awaitAnimationFrame()
+                        state.root.tickTransitions(origin.elapsedNow().inWholeMilliseconds)
+                        draw()
+                    }
                 }
             }
         }
