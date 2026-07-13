@@ -47,6 +47,26 @@ public final class com/juul/krayon/shape/Arguments {
 	public final fun getIndex ()I
 }
 
+public final class com/juul/krayon/shape/Asterisk : com/juul/krayon/shape/SymbolType {
+	public static final field INSTANCE Lcom/juul/krayon/shape/Asterisk;
+	public fun draw (Lcom/juul/krayon/kanvas/PathBuilder;F)V
+}
+
+public final class com/juul/krayon/shape/Circle : com/juul/krayon/shape/SymbolType {
+	public static final field INSTANCE Lcom/juul/krayon/shape/Circle;
+	public fun draw (Lcom/juul/krayon/kanvas/PathBuilder;F)V
+}
+
+public final class com/juul/krayon/shape/Cross : com/juul/krayon/shape/SymbolType {
+	public static final field INSTANCE Lcom/juul/krayon/shape/Cross;
+	public fun draw (Lcom/juul/krayon/kanvas/PathBuilder;F)V
+}
+
+public final class com/juul/krayon/shape/Diamond : com/juul/krayon/shape/SymbolType {
+	public static final field INSTANCE Lcom/juul/krayon/shape/Diamond;
+	public fun draw (Lcom/juul/krayon/kanvas/PathBuilder;F)V
+}
+
 public final class com/juul/krayon/shape/Line {
 	public final fun curve (Lcom/juul/krayon/shape/curve/Curve;)Lcom/juul/krayon/shape/Line;
 	public final fun defined (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Line;
@@ -75,6 +95,11 @@ public final class com/juul/krayon/shape/Pie {
 
 public final class com/juul/krayon/shape/PieKt {
 	public static final fun pie ()Lcom/juul/krayon/shape/Pie;
+}
+
+public final class com/juul/krayon/shape/Plus : com/juul/krayon/shape/SymbolType {
+	public static final field INSTANCE Lcom/juul/krayon/shape/Plus;
+	public fun draw (Lcom/juul/krayon/kanvas/PathBuilder;F)V
 }
 
 public final class com/juul/krayon/shape/Point {
@@ -149,6 +174,11 @@ public final class com/juul/krayon/shape/Slice {
 	public final fun getValue ()F
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/shape/Square : com/juul/krayon/shape/SymbolType {
+	public static final field INSTANCE Lcom/juul/krayon/shape/Square;
+	public fun draw (Lcom/juul/krayon/kanvas/PathBuilder;F)V
 }
 
 public final class com/juul/krayon/shape/Stack {
@@ -233,6 +263,50 @@ public final class com/juul/krayon/shape/StackPoint {
 	public final fun setHigh (F)V
 	public final fun setLow (F)V
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/shape/Star : com/juul/krayon/shape/SymbolType {
+	public static final field INSTANCE Lcom/juul/krayon/shape/Star;
+	public fun draw (Lcom/juul/krayon/kanvas/PathBuilder;F)V
+}
+
+public final class com/juul/krayon/shape/Symbol {
+	public final fun render (Ljava/lang/Object;ILjava/util/List;)Lcom/juul/krayon/kanvas/Path;
+	public static synthetic fun render$default (Lcom/juul/krayon/shape/Symbol;Ljava/lang/Object;ILjava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/kanvas/Path;
+	public final fun size (F)Lcom/juul/krayon/shape/Symbol;
+	public final fun size (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Symbol;
+	public final fun type (Lcom/juul/krayon/shape/SymbolType;)Lcom/juul/krayon/shape/Symbol;
+	public final fun type (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/shape/Symbol;
+}
+
+public final class com/juul/krayon/shape/SymbolKt {
+	public static final fun symbol ()Lcom/juul/krayon/shape/Symbol;
+}
+
+public abstract interface class com/juul/krayon/shape/SymbolType {
+	public abstract fun draw (Lcom/juul/krayon/kanvas/PathBuilder;F)V
+}
+
+public final class com/juul/krayon/shape/SymbolTypesKt {
+	public static final fun getSymbolsFill ()Ljava/util/List;
+	public static final fun getSymbolsStroke ()Ljava/util/List;
+	public static final fun render (Lcom/juul/krayon/shape/SymbolType;F)Lcom/juul/krayon/kanvas/Path;
+	public static synthetic fun render$default (Lcom/juul/krayon/shape/SymbolType;FILjava/lang/Object;)Lcom/juul/krayon/kanvas/Path;
+}
+
+public final class com/juul/krayon/shape/Times : com/juul/krayon/shape/SymbolType {
+	public static final field INSTANCE Lcom/juul/krayon/shape/Times;
+	public fun draw (Lcom/juul/krayon/kanvas/PathBuilder;F)V
+}
+
+public final class com/juul/krayon/shape/Triangle : com/juul/krayon/shape/SymbolType {
+	public static final field INSTANCE Lcom/juul/krayon/shape/Triangle;
+	public fun draw (Lcom/juul/krayon/kanvas/PathBuilder;F)V
+}
+
+public final class com/juul/krayon/shape/Wye : com/juul/krayon/shape/SymbolType {
+	public static final field INSTANCE Lcom/juul/krayon/shape/Wye;
+	public fun draw (Lcom/juul/krayon/kanvas/PathBuilder;F)V
 }
 
 public final class com/juul/krayon/shape/curve/Basis : com/juul/krayon/shape/curve/Curve {
