@@ -99,6 +99,66 @@ final class <#A: kotlin/Any?> com.juul.krayon.shape/Slice { // com.juul.krayon.s
     final fun toString(): kotlin/String // com.juul.krayon.shape/Slice.toString|toString(){}[0]
 }
 
+final class com.juul.krayon.shape.curve/Cardinal : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/Cardinal|null[0]
+    constructor <init>(kotlin/Float = ...) // com.juul.krayon.shape.curve/Cardinal.<init>|<init>(kotlin.Float){}[0]
+
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Cardinal.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Cardinal.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/Cardinal.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Cardinal.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Cardinal.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final class com.juul.krayon.shape.curve/CardinalClosed : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/CardinalClosed|null[0]
+    constructor <init>(kotlin/Float = ...) // com.juul.krayon.shape.curve/CardinalClosed.<init>|<init>(kotlin.Float){}[0]
+
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CardinalClosed.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CardinalClosed.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/CardinalClosed.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CardinalClosed.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CardinalClosed.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final class com.juul.krayon.shape.curve/CardinalOpen : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/CardinalOpen|null[0]
+    constructor <init>(kotlin/Float = ...) // com.juul.krayon.shape.curve/CardinalOpen.<init>|<init>(kotlin.Float){}[0]
+
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CardinalOpen.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CardinalOpen.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/CardinalOpen.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CardinalOpen.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CardinalOpen.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final class com.juul.krayon.shape.curve/CatmullRom : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/CatmullRom|null[0]
+    constructor <init>(kotlin/Float = ...) // com.juul.krayon.shape.curve/CatmullRom.<init>|<init>(kotlin.Float){}[0]
+
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRom.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRom.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/CatmullRom.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRom.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRom.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final class com.juul.krayon.shape.curve/CatmullRomClosed : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/CatmullRomClosed|null[0]
+    constructor <init>(kotlin/Float = ...) // com.juul.krayon.shape.curve/CatmullRomClosed.<init>|<init>(kotlin.Float){}[0]
+
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRomClosed.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRomClosed.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/CatmullRomClosed.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRomClosed.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRomClosed.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final class com.juul.krayon.shape.curve/CatmullRomOpen : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/CatmullRomOpen|null[0]
+    constructor <init>(kotlin/Float = ...) // com.juul.krayon.shape.curve/CatmullRomOpen.<init>|<init>(kotlin.Float){}[0]
+
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRomOpen.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRomOpen.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/CatmullRomOpen.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRomOpen.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/CatmullRomOpen.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
 final class com.juul.krayon.shape/Arc { // com.juul.krayon.shape/Arc|null[0]
     final var cornerRadius // com.juul.krayon.shape/Arc.cornerRadius|{}cornerRadius[0]
         final fun <get-cornerRadius>(): kotlin/Float // com.juul.krayon.shape/Arc.cornerRadius.<get-cornerRadius>|<get-cornerRadius>(){}[0]
@@ -133,12 +193,108 @@ final class com.juul.krayon.shape/Point { // com.juul.krayon.shape/Point|null[0]
     final fun toString(): kotlin/String // com.juul.krayon.shape/Point.toString|toString(){}[0]
 }
 
+final object com.juul.krayon.shape.curve/Basis : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/Basis|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Basis.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Basis.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/Basis.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Basis.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Basis.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final object com.juul.krayon.shape.curve/BasisClosed : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/BasisClosed|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BasisClosed.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BasisClosed.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/BasisClosed.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BasisClosed.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BasisClosed.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final object com.juul.krayon.shape.curve/BasisOpen : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/BasisOpen|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BasisOpen.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BasisOpen.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/BasisOpen.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BasisOpen.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BasisOpen.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final object com.juul.krayon.shape.curve/BumpX : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/BumpX|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BumpX.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BumpX.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/BumpX.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BumpX.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BumpX.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final object com.juul.krayon.shape.curve/BumpY : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/BumpY|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BumpY.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BumpY.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/BumpY.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BumpY.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/BumpY.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
 final object com.juul.krayon.shape.curve/Linear : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/Linear|null[0]
     final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Linear.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
     final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Linear.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
     final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/Linear.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
     final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Linear.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
     final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Linear.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final object com.juul.krayon.shape.curve/LinearClosed : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/LinearClosed|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/LinearClosed.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/LinearClosed.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/LinearClosed.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/LinearClosed.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/LinearClosed.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final object com.juul.krayon.shape.curve/MonotoneX : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/MonotoneX|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/MonotoneX.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/MonotoneX.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/MonotoneX.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/MonotoneX.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/MonotoneX.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final object com.juul.krayon.shape.curve/MonotoneY : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/MonotoneY|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/MonotoneY.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/MonotoneY.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/MonotoneY.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/MonotoneY.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/MonotoneY.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final object com.juul.krayon.shape.curve/Natural : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/Natural|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Natural.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Natural.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/Natural.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Natural.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Natural.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final object com.juul.krayon.shape.curve/Step : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/Step|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Step.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Step.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/Step.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Step.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/Step.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final object com.juul.krayon.shape.curve/StepAfter : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/StepAfter|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/StepAfter.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/StepAfter.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/StepAfter.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/StepAfter.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/StepAfter.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+}
+
+final object com.juul.krayon.shape.curve/StepBefore : com.juul.krayon.shape.curve/Curve { // com.juul.krayon.shape.curve/StepBefore|null[0]
+    final fun endArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/StepBefore.endArea|endArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun endLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/StepBefore.endLine|endLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun point(com.juul.krayon.kanvas/PathBuilder<*>, kotlin/Float, kotlin/Float) // com.juul.krayon.shape.curve/StepBefore.point|point(com.juul.krayon.kanvas.PathBuilder<*>;kotlin.Float;kotlin.Float){}[0]
+    final fun startArea(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/StepBefore.startArea|startArea(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
+    final fun startLine(com.juul.krayon.kanvas/PathBuilder<*>) // com.juul.krayon.shape.curve/StepBefore.startLine|startLine(com.juul.krayon.kanvas.PathBuilder<*>){}[0]
 }
 
 final fun <#A: kotlin/Any> com.juul.krayon.shape/area(): com.juul.krayon.shape/Area<#A> // com.juul.krayon.shape/area|area(){0§<kotlin.Any>}[0]

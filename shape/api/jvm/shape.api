@@ -111,6 +111,117 @@ public final class com/juul/krayon/shape/Slice {
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class com/juul/krayon/shape/curve/Basis : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/Basis;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/BasisClosed : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/BasisClosed;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/BasisOpen : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/BasisOpen;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/BumpX : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/BumpX;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/BumpY : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/BumpY;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/Cardinal : com/juul/krayon/shape/curve/Curve {
+	public fun <init> ()V
+	public fun <init> (F)V
+	public synthetic fun <init> (FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/CardinalClosed : com/juul/krayon/shape/curve/Curve {
+	public fun <init> ()V
+	public fun <init> (F)V
+	public synthetic fun <init> (FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/CardinalOpen : com/juul/krayon/shape/curve/Curve {
+	public fun <init> ()V
+	public fun <init> (F)V
+	public synthetic fun <init> (FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/CatmullRom : com/juul/krayon/shape/curve/Curve {
+	public fun <init> ()V
+	public fun <init> (F)V
+	public synthetic fun <init> (FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/CatmullRomClosed : com/juul/krayon/shape/curve/Curve {
+	public fun <init> ()V
+	public fun <init> (F)V
+	public synthetic fun <init> (FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/CatmullRomOpen : com/juul/krayon/shape/curve/Curve {
+	public fun <init> ()V
+	public fun <init> (F)V
+	public synthetic fun <init> (FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
 public abstract interface class com/juul/krayon/shape/curve/Curve {
 	public abstract fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
 	public abstract fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
@@ -121,6 +232,69 @@ public abstract interface class com/juul/krayon/shape/curve/Curve {
 
 public final class com/juul/krayon/shape/curve/Linear : com/juul/krayon/shape/curve/Curve {
 	public static final field INSTANCE Lcom/juul/krayon/shape/curve/Linear;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/LinearClosed : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/LinearClosed;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/MonotoneX : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/MonotoneX;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/MonotoneY : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/MonotoneY;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/Natural : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/Natural;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/Step : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/Step;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/StepAfter : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/StepAfter;
+	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
+	public fun startArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
+	public fun startLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
+}
+
+public final class com/juul/krayon/shape/curve/StepBefore : com/juul/krayon/shape/curve/Curve {
+	public static final field INSTANCE Lcom/juul/krayon/shape/curve/StepBefore;
 	public fun endArea (Lcom/juul/krayon/kanvas/PathBuilder;)V
 	public fun endLine (Lcom/juul/krayon/kanvas/PathBuilder;)V
 	public fun point (Lcom/juul/krayon/kanvas/PathBuilder;FF)V
