@@ -6,10 +6,6 @@ plugins {
 
 kotlin {
     sourceSets {
-        all {
-            languageSettings.optIn("com.juul.krayon.core.InternalKrayonApi")
-        }
-
         commonMain.dependencies {
             api(projects.core)
             api(projects.kanvas)
@@ -44,3 +40,8 @@ kotlin {
 }
 
 compose.resources { generateResClass = never }
+
+dependencies {
+    "jvmTestImplementation"("org.jetbrains.compose.ui:ui-test:${libs.versions.compose.get()}")
+    "jvmTestImplementation"(compose.desktop.currentOs)
+}
