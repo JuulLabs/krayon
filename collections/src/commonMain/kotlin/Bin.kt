@@ -39,6 +39,7 @@ public class Bin<out T> internal constructor(
 
 internal sealed interface ThresholdSpec {
     class Count(val strategy: (values: List<Double>, min: Double, max: Double) -> Int) : ThresholdSpec
+
     class Values(val strategy: (values: List<Double>, min: Double, max: Double) -> List<Double>) : ThresholdSpec
 }
 
@@ -105,8 +106,11 @@ public class Binner<T> internal constructor(
                     if (originalMax >= x1 && isExtent) {
                         val increment = tickIncrement(x0, x1, count)
                         if (increment.isFinite()) {
-                            if (increment > 0) x1 = (floor(x1 / increment) + 1) * increment
-                            else if (increment < 0) x1 = (ceil(x1 * -increment) + 1) / -increment
+                            if (increment > 0) {
+                                x1 = (floor(x1 / increment) + 1) * increment
+                            } else if (increment < 0) {
+                                x1 = (ceil(x1 * -increment) + 1) / -increment
+                            }
                         }
                     } else {
                         tz.removeAt(tz.size - 1)

@@ -54,11 +54,17 @@ internal fun ticks(start: Double, stop: Double, count: Int): List<Double> {
     val n = (i2 - i1 + 1).toInt()
     val result = DoubleArray(n)
     if (reverse) {
-        if (inc < 0) for (i in 0 until n) result[i] = (i2 - i) / -inc
-        else for (i in 0 until n) result[i] = (i2 - i) * inc
+        if (inc < 0) {
+            for (i in 0 until n) result[i] = (i2 - i) / -inc
+        } else {
+            for (i in 0 until n) result[i] = (i2 - i) * inc
+        }
     } else {
-        if (inc < 0) for (i in 0 until n) result[i] = (i1 + i) / -inc
-        else for (i in 0 until n) result[i] = (i1 + i) * inc
+        if (inc < 0) {
+            for (i in 0 until n) result[i] = (i1 + i) / -inc
+        } else {
+            for (i in 0 until n) result[i] = (i1 + i) * inc
+        }
     }
     return result.asList()
 }
