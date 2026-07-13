@@ -24,12 +24,35 @@ public final class com/juul/krayon/scale/BandScaleKt {
 }
 
 public final class com/juul/krayon/scale/ContinuousScale : com/juul/krayon/scale/Scale {
+	public final fun clamp (Z)Lcom/juul/krayon/scale/ContinuousScale;
+	public static synthetic fun clamp$default (Lcom/juul/krayon/scale/ContinuousScale;ZILjava/lang/Object;)Lcom/juul/krayon/scale/ContinuousScale;
 	public final fun domain (Ljava/util/List;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/scale/ContinuousScale;
+	public final fun getClamp ()Z
 	public final fun getDomain ()Ljava/util/List;
 	public final fun getRange ()Ljava/util/List;
+	public final fun invert (Ljava/lang/Object;)Ljava/lang/Comparable;
 	public final fun range (Ljava/util/List;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/scale/ContinuousScale;
 	public fun scale (Ljava/lang/Comparable;)Ljava/lang/Object;
 	public synthetic fun scale (Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/juul/krayon/scale/ContinuousScaleFeaturesKt {
+	public static final fun niceDouble (Lcom/juul/krayon/scale/ContinuousScale;I)Lcom/juul/krayon/scale/ContinuousScale;
+	public static synthetic fun niceDouble$default (Lcom/juul/krayon/scale/ContinuousScale;IILjava/lang/Object;)Lcom/juul/krayon/scale/ContinuousScale;
+	public static final fun niceFloat (Lcom/juul/krayon/scale/ContinuousScale;I)Lcom/juul/krayon/scale/ContinuousScale;
+	public static synthetic fun niceFloat$default (Lcom/juul/krayon/scale/ContinuousScale;IILjava/lang/Object;)Lcom/juul/krayon/scale/ContinuousScale;
+	public static final fun tickFormatDouble (Lcom/juul/krayon/scale/ContinuousScale;I)Lkotlin/jvm/functions/Function1;
+	public static synthetic fun tickFormatDouble$default (Lcom/juul/krayon/scale/ContinuousScale;IILjava/lang/Object;)Lkotlin/jvm/functions/Function1;
+	public static final fun tickFormatFloat (Lcom/juul/krayon/scale/ContinuousScale;I)Lkotlin/jvm/functions/Function1;
+	public static synthetic fun tickFormatFloat$default (Lcom/juul/krayon/scale/ContinuousScale;IILjava/lang/Object;)Lkotlin/jvm/functions/Function1;
+	public static final fun ticksDouble (Lcom/juul/krayon/scale/ContinuousScale;I)Ljava/util/List;
+	public static synthetic fun ticksDouble$default (Lcom/juul/krayon/scale/ContinuousScale;IILjava/lang/Object;)Ljava/util/List;
+	public static final fun ticksFloat (Lcom/juul/krayon/scale/ContinuousScale;I)Ljava/util/List;
+	public static synthetic fun ticksFloat$default (Lcom/juul/krayon/scale/ContinuousScale;IILjava/lang/Object;)Ljava/util/List;
+	public static final fun ticksInstant (Lcom/juul/krayon/scale/ContinuousScale;I)Ljava/util/List;
+	public static synthetic fun ticksInstant$default (Lcom/juul/krayon/scale/ContinuousScale;IILjava/lang/Object;)Ljava/util/List;
+	public static final fun ticksLocalDateTime (Lcom/juul/krayon/scale/ContinuousScale;I)Ljava/util/List;
+	public static synthetic fun ticksLocalDateTime$default (Lcom/juul/krayon/scale/ContinuousScale;IILjava/lang/Object;)Ljava/util/List;
 }
 
 public final class com/juul/krayon/scale/ContinuousScaleKt {
@@ -272,6 +295,7 @@ public final class com/juul/krayon/scale/ThresholdScaleKt {
 }
 
 public final class com/juul/krayon/scale/TickFormatKt {
+	public static final fun tickFormat (DDI)Lkotlin/jvm/functions/Function1;
 	public static final fun tickFormat (FFI)Lkotlin/jvm/functions/Function1;
 }
 

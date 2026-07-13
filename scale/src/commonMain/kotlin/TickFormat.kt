@@ -13,24 +13,29 @@ import kotlin.math.roundToLong
  * d3-format specifier language.
  */
 public fun tickFormat(start: Float, stop: Float, count: Int): (Float) -> String {
-    val step = tickStep(start, stop, count)
-    val precision = precisionFixed(step)
+    val precision = precisionFixed(tickStep(start, stop, count).toDouble())
+    return { value -> formatFixed(value.toDouble(), precision) }
+}
+
+/** [Double] equivalent of [tickFormat]. */
+public fun tickFormat(start: Double, stop: Double, count: Int): (Double) -> String {
+    val precision = precisionFixed(tickStep(start, stop, count))
     return { value -> formatFixed(value, precision) }
 }
 
 /** The number of decimal places needed to represent a fixed-point value spaced by [step]. */
-internal fun precisionFixed(step: Float): Int {
-    if (step == 0f || step.isNaN() || step.isInfinite()) return 0
+internal fun precisionFixed(step: Double): Int {
+    if (step == 0.0 || step.isNaN() || step.isInfinite()) return 0
     return maxOf(0, -floor(log10(abs(step))).toInt())
 }
 
 /** Formats [value] with exactly [decimals] digits after the decimal point (no locale, no grouping). */
-internal fun formatFixed(value: Float, decimals: Int): String {
+internal fun formatFixed(value: Double, decimals: Int): String {
     if (value.isNaN()) return "NaN"
-    if (value.isInfinite()) return if (value > 0f) "Infinity" else "-Infinity"
+    if (value.isInfinite()) return if (value > 0.0) "Infinity" else "-Infinity"
 
-    val negative = value < 0f
-    val magnitude = abs(value.toDouble())
+    val negative = value < 0.0
+    val magnitude = abs(value)
     val factor = tenToThe(decimals)
     val scaled = (magnitude * factor).roundToLong()
 
