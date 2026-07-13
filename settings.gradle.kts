@@ -26,6 +26,7 @@ include(
     "core",
     "element",
     "element-view",
+    "format",
     "hierarchy",
     "interpolate",
     "kanvas",
