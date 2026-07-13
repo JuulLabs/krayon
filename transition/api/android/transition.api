@@ -1,0 +1,115 @@
+public final class com/juul/krayon/transition/AttrKt {
+	public static final fun attrColor (Lcom/juul/krayon/transition/Transition;Lkotlin/reflect/KMutableProperty1;I)Lcom/juul/krayon/transition/Transition;
+	public static final fun attrColorOf (Lcom/juul/krayon/transition/Transition;Lkotlin/reflect/KMutableProperty1;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/transition/Transition;
+	public static final fun attrDouble (Lcom/juul/krayon/transition/Transition;Lkotlin/reflect/KMutableProperty1;D)Lcom/juul/krayon/transition/Transition;
+	public static final fun attrDoubleOf (Lcom/juul/krayon/transition/Transition;Lkotlin/reflect/KMutableProperty1;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/transition/Transition;
+	public static final fun attrFloat (Lcom/juul/krayon/transition/Transition;Lkotlin/reflect/KMutableProperty1;F)Lcom/juul/krayon/transition/Transition;
+	public static final fun attrFloatOf (Lcom/juul/krayon/transition/Transition;Lkotlin/reflect/KMutableProperty1;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/transition/Transition;
+	public static final fun attrInt (Lcom/juul/krayon/transition/Transition;Lkotlin/reflect/KMutableProperty1;I)Lcom/juul/krayon/transition/Transition;
+	public static final fun attrIntOf (Lcom/juul/krayon/transition/Transition;Lkotlin/reflect/KMutableProperty1;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/transition/Transition;
+}
+
+public final class com/juul/krayon/transition/EaseKt {
+	public static final fun easeBackIn (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeBackIn$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easeBackInOut (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeBackInOut$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easeBackOut (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeBackOut$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easeElasticIn (FF)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeElasticIn$default (FFILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easeElasticInOut (FF)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeElasticInOut$default (FFILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easeElasticOut (FF)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easeElasticOut$default (FFILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easePolyIn (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easePolyIn$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easePolyInOut (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easePolyInOut$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun easePolyOut (F)Lcom/juul/krayon/transition/Easing;
+	public static synthetic fun easePolyOut$default (FILjava/lang/Object;)Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseBounceIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseBounceInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseBounceOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCircleIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCircleInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCircleOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCubic ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCubicIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCubicInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseCubicOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseExpIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseExpInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseExpOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseLinear ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseQuadIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseQuadInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseQuadOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseSinIn ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseSinInOut ()Lcom/juul/krayon/transition/Easing;
+	public static final fun getEaseSinOut ()Lcom/juul/krayon/transition/Easing;
+}
+
+public abstract interface class com/juul/krayon/transition/Easing {
+	public abstract fun ease (F)F
+}
+
+public final class com/juul/krayon/transition/InterruptKt {
+	public static final fun interrupt (Lcom/juul/krayon/selection/Selection;Ljava/lang/String;)Lcom/juul/krayon/selection/Selection;
+	public static final fun interrupt (Lcom/juul/krayon/transition/Transition;)Lcom/juul/krayon/transition/Transition;
+	public static synthetic fun interrupt$default (Lcom/juul/krayon/selection/Selection;Ljava/lang/String;ILjava/lang/Object;)Lcom/juul/krayon/selection/Selection;
+}
+
+public final class com/juul/krayon/transition/OnKt {
+	public static final fun on (Lcom/juul/krayon/transition/Transition;Lcom/juul/krayon/transition/TransitionEvent;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/transition/Transition;
+}
+
+public final class com/juul/krayon/transition/OperatorsKt {
+	public static final fun call (Lcom/juul/krayon/transition/Transition;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/transition/Transition;
+	public static final fun each (Lcom/juul/krayon/transition/Transition;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/transition/Transition;
+	public static final fun filter (Lcom/juul/krayon/transition/Transition;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/transition/Transition;
+	public static final fun merge (Lcom/juul/krayon/transition/Transition;Lcom/juul/krayon/transition/Transition;)Lcom/juul/krayon/transition/Transition;
+}
+
+public final class com/juul/krayon/transition/RemoveKt {
+	public static final fun remove (Lcom/juul/krayon/transition/Transition;)Lcom/juul/krayon/transition/Transition;
+}
+
+public final class com/juul/krayon/transition/RootSchedulerKt {
+	public static final fun getHasPendingTransitions (Lcom/juul/krayon/element/RootElement;)Z
+	public static final fun tickTransitions (Lcom/juul/krayon/element/RootElement;J)Z
+}
+
+public final class com/juul/krayon/transition/TimingKt {
+	public static final fun delay (Lcom/juul/krayon/transition/Transition;J)Lcom/juul/krayon/transition/Transition;
+	public static final fun delay (Lcom/juul/krayon/transition/Transition;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/transition/Transition;
+	public static final fun duration (Lcom/juul/krayon/transition/Transition;J)Lcom/juul/krayon/transition/Transition;
+	public static final fun duration (Lcom/juul/krayon/transition/Transition;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/transition/Transition;
+	public static final fun ease (Lcom/juul/krayon/transition/Transition;Lcom/juul/krayon/transition/Easing;)Lcom/juul/krayon/transition/Transition;
+}
+
+public class com/juul/krayon/transition/Transition {
+	public final fun getGroups ()Ljava/util/List;
+}
+
+public final class com/juul/krayon/transition/TransitionEvent : java/lang/Enum {
+	public static final field Cancel Lcom/juul/krayon/transition/TransitionEvent;
+	public static final field End Lcom/juul/krayon/transition/TransitionEvent;
+	public static final field Interrupt Lcom/juul/krayon/transition/TransitionEvent;
+	public static final field Start Lcom/juul/krayon/transition/TransitionEvent;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/juul/krayon/transition/TransitionEvent;
+	public static fun values ()[Lcom/juul/krayon/transition/TransitionEvent;
+}
+
+public final class com/juul/krayon/transition/TransitionKt {
+	public static final fun selection (Lcom/juul/krayon/transition/Transition;)Lcom/juul/krayon/selection/Selection;
+	public static final fun transition (Lcom/juul/krayon/selection/Selection;Ljava/lang/String;)Lcom/juul/krayon/transition/Transition;
+	public static final fun transition (Lcom/juul/krayon/transition/Transition;)Lcom/juul/krayon/transition/Transition;
+	public static synthetic fun transition$default (Lcom/juul/krayon/selection/Selection;Ljava/lang/String;ILjava/lang/Object;)Lcom/juul/krayon/transition/Transition;
+}
+
+public final class com/juul/krayon/transition/TweenKt {
+	public static final fun tween (Lcom/juul/krayon/transition/Transition;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/transition/Transition;
+}
+
