@@ -14,9 +14,9 @@ public final class com/juul/krayon/collections/Bin : java/util/List, kotlin/jvm/
 	public fun containsAll (Ljava/util/Collection;)Z
 	public fun equals (Ljava/lang/Object;)Z
 	public fun get (I)Ljava/lang/Object;
+	public final fun getLowerBound ()D
 	public fun getSize ()I
-	public final fun getX0 ()D
-	public final fun getX1 ()D
+	public final fun getUpperBound ()D
 	public fun hashCode ()I
 	public fun indexOf (Ljava/lang/Object;)I
 	public fun isEmpty ()Z
@@ -39,85 +39,32 @@ public final class com/juul/krayon/collections/Bin : java/util/List, kotlin/jvm/
 }
 
 public final class com/juul/krayon/collections/BinKt {
-	public static final fun bin (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/collections/Binner;
-	public static final fun histogram (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/collections/Binner;
-	public static final fun thresholdFreedmanDiaconis (Ljava/util/List;DD)I
-	public static final fun thresholdScott (Ljava/util/List;DD)I
-	public static final fun thresholdSturges (Ljava/util/List;DD)I
-}
-
-public final class com/juul/krayon/collections/Binner {
-	public final fun domain (DD)Lcom/juul/krayon/collections/Binner;
-	public final fun domain (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/collections/Binner;
-	public final fun invoke (Ljava/lang/Iterable;)Ljava/util/List;
-	public final fun thresholds (I)Lcom/juul/krayon/collections/Binner;
-	public final fun thresholds (Ljava/util/List;)Lcom/juul/krayon/collections/Binner;
-	public final fun thresholds (Lkotlin/jvm/functions/Function3;)Lcom/juul/krayon/collections/Binner;
-	public final fun value (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/collections/Binner;
+	public static final fun bin (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lcom/juul/krayon/collections/Thresholds;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
+	public static synthetic fun bin$default (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lcom/juul/krayon/collections/Thresholds;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/util/List;
 }
 
 public final class com/juul/krayon/collections/BisectKt {
 	public static final fun bisect (Ljava/util/List;Ljava/lang/Comparable;II)I
 	public static synthetic fun bisect$default (Ljava/util/List;Ljava/lang/Comparable;IIILjava/lang/Object;)I
 	public static final fun bisectLeft (Ljava/util/List;Ljava/lang/Comparable;II)I
+	public static final fun bisectLeft (Ljava/util/List;Ljava/lang/Comparable;IILkotlin/jvm/functions/Function1;)I
 	public static synthetic fun bisectLeft$default (Ljava/util/List;Ljava/lang/Comparable;IIILjava/lang/Object;)I
+	public static synthetic fun bisectLeft$default (Ljava/util/List;Ljava/lang/Comparable;IILkotlin/jvm/functions/Function1;ILjava/lang/Object;)I
 	public static final fun bisectRight (Ljava/util/List;Ljava/lang/Comparable;II)I
+	public static final fun bisectRight (Ljava/util/List;Ljava/lang/Comparable;IILkotlin/jvm/functions/Function1;)I
 	public static synthetic fun bisectRight$default (Ljava/util/List;Ljava/lang/Comparable;IIILjava/lang/Object;)I
-	public static final fun bisector (Ljava/util/Comparator;)Lcom/juul/krayon/collections/Bisector;
-	public static final fun bisector (Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/collections/Bisector;
+	public static synthetic fun bisectRight$default (Ljava/util/List;Ljava/lang/Comparable;IILkotlin/jvm/functions/Function1;ILjava/lang/Object;)I
 }
 
-public final class com/juul/krayon/collections/Bisector {
-	public final fun left (Ljava/util/List;Ljava/lang/Object;II)I
-	public static synthetic fun left$default (Lcom/juul/krayon/collections/Bisector;Ljava/util/List;Ljava/lang/Object;IIILjava/lang/Object;)I
-	public final fun right (Ljava/util/List;Ljava/lang/Object;II)I
-	public static synthetic fun right$default (Lcom/juul/krayon/collections/Bisector;Ljava/util/List;Ljava/lang/Object;IIILjava/lang/Object;)I
-}
-
-public final class com/juul/krayon/collections/FsumKt {
-	public static final fun fcumsum (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-	public static final fun fsum (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)D
-}
-
-public final class com/juul/krayon/collections/GroupingKt {
-	public static final fun flatGroup (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-	public static final fun flatGroup (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-	public static final fun flatRollup (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-	public static final fun flatRollup (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-	public static final fun group (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;
-	public static final fun group (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;
-	public static final fun groups (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-	public static final fun index (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;
-	public static final fun indexes (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-	public static final fun rollup (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;
-	public static final fun rollup (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;
-	public static final fun rollups (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-}
-
-public final class com/juul/krayon/collections/OrderingKt {
-	public static final fun ascending (Ljava/lang/Comparable;Ljava/lang/Comparable;)I
-	public static final fun ascendingKey (Lkotlin/jvm/functions/Function1;)Ljava/util/Comparator;
-	public static final fun descending (Ljava/lang/Comparable;Ljava/lang/Comparable;)I
-	public static final fun descendingKey (Lkotlin/jvm/functions/Function1;)Ljava/util/Comparator;
-	public static final fun greatest (Ljava/lang/Iterable;Ljava/util/Comparator;)Ljava/lang/Object;
-	public static final fun greatest (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun greatestIndex (Ljava/lang/Iterable;Ljava/util/Comparator;)I
-	public static final fun greatestIndex (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)I
-	public static final fun least (Ljava/lang/Iterable;Ljava/util/Comparator;)Ljava/lang/Object;
-	public static final fun least (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun leastIndex (Ljava/lang/Iterable;Ljava/util/Comparator;)I
-	public static final fun leastIndex (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)I
+public final class com/juul/krayon/collections/PreciseSumKt {
+	public static final fun preciseCumulativeSums (Ljava/lang/Iterable;)Ljava/util/List;
+	public static final fun preciseSum (Ljava/lang/Iterable;)D
 }
 
 public final class com/juul/krayon/collections/QuantileKt {
-	public static final fun median (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Double;
-	public static final fun quantile (Ljava/lang/Iterable;DLkotlin/jvm/functions/Function1;)Ljava/lang/Double;
-	public static final fun quantileSorted (Ljava/util/List;DLkotlin/jvm/functions/Function1;)Ljava/lang/Double;
-}
-
-public final class com/juul/krayon/collections/QuickselectKt {
-	public static final fun quickselect (Ljava/util/List;IIILjava/util/Comparator;)Ljava/util/List;
-	public static synthetic fun quickselect$default (Ljava/util/List;IIILjava/util/Comparator;ILjava/lang/Object;)Ljava/util/List;
+	public static final fun median (Ljava/lang/Iterable;)Ljava/lang/Double;
+	public static final fun quantile (Ljava/lang/Iterable;D)Ljava/lang/Double;
+	public static final fun quantileSorted (Ljava/util/List;D)Ljava/lang/Double;
 }
 
 public final class com/juul/krayon/collections/RankKt {
@@ -125,42 +72,59 @@ public final class com/juul/krayon/collections/RankKt {
 	public static final fun rank (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)[I
 }
 
-public final class com/juul/krayon/collections/SetsKt {
-	public static final fun difference (Ljava/lang/Iterable;[Ljava/lang/Iterable;)Ljava/util/Set;
-	public static final fun disjoint (Ljava/lang/Iterable;Ljava/lang/Iterable;)Z
-	public static final fun intersection ([Ljava/lang/Iterable;)Ljava/util/Set;
-	public static final fun subset (Ljava/lang/Iterable;Ljava/lang/Iterable;)Z
-	public static final fun superset (Ljava/lang/Iterable;Ljava/lang/Iterable;)Z
-	public static final fun union ([Ljava/lang/Iterable;)Ljava/util/Set;
-}
-
-public final class com/juul/krayon/collections/Shuffler {
-	public final fun shuffle (Ljava/util/List;II)Ljava/util/List;
-	public static synthetic fun shuffle$default (Lcom/juul/krayon/collections/Shuffler;Ljava/util/List;IIILjava/lang/Object;)Ljava/util/List;
-}
-
 public final class com/juul/krayon/collections/StatisticsKt {
-	public static final fun count (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)I
-	public static final fun cumsum (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-	public static final fun deviation (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Double;
-	public static final fun mean (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Double;
-	public static final fun mode (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Double;
-	public static final fun sum (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)D
-	public static final fun variance (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Double;
+	public static final fun standardDeviation (Ljava/lang/Iterable;)Ljava/lang/Double;
+	public static final fun variance (Ljava/lang/Iterable;)Ljava/lang/Double;
+}
+
+public abstract interface class com/juul/krayon/collections/Thresholds {
+}
+
+public final class com/juul/krayon/collections/Thresholds$Boundaries : com/juul/krayon/collections/Thresholds {
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/juul/krayon/collections/Thresholds$Boundaries;
+	public static synthetic fun copy$default (Lcom/juul/krayon/collections/Thresholds$Boundaries;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/collections/Thresholds$Boundaries;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getValues ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/collections/Thresholds$Count : com/juul/krayon/collections/Thresholds {
+	public fun <init> (I)V
+	public final fun component1 ()I
+	public final fun copy (I)Lcom/juul/krayon/collections/Thresholds$Count;
+	public static synthetic fun copy$default (Lcom/juul/krayon/collections/Thresholds$Count;IILjava/lang/Object;)Lcom/juul/krayon/collections/Thresholds$Count;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCount ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/collections/Thresholds$FreedmanDiaconis : com/juul/krayon/collections/Thresholds {
+	public static final field INSTANCE Lcom/juul/krayon/collections/Thresholds$FreedmanDiaconis;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/collections/Thresholds$Scott : com/juul/krayon/collections/Thresholds {
+	public static final field INSTANCE Lcom/juul/krayon/collections/Thresholds$Scott;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/collections/Thresholds$Sturges : com/juul/krayon/collections/Thresholds {
+	public static final field INSTANCE Lcom/juul/krayon/collections/Thresholds$Sturges;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/juul/krayon/collections/TransformationsKt {
 	public static final fun cross (Ljava/lang/Iterable;Ljava/lang/Iterable;)Ljava/util/List;
-	public static final fun cross (Ljava/lang/Iterable;Ljava/lang/Iterable;Lkotlin/jvm/functions/Function2;)Ljava/util/List;
-	public static final fun merge (Ljava/lang/Iterable;)Ljava/util/List;
-	public static final fun pairs (Ljava/lang/Iterable;)Ljava/util/List;
-	public static final fun pairs (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function2;)Ljava/util/List;
-	public static final fun permute (Ljava/util/List;Ljava/lang/Iterable;)Ljava/util/List;
-	public static final fun permute (Ljava/util/Map;Ljava/lang/Iterable;)Ljava/util/List;
-	public static final fun shuffle (Ljava/util/List;IILkotlin/random/Random;)Ljava/util/List;
-	public static synthetic fun shuffle$default (Ljava/util/List;IILkotlin/random/Random;ILjava/lang/Object;)Ljava/util/List;
-	public static final fun shuffler (Lkotlin/random/Random;)Lcom/juul/krayon/collections/Shuffler;
 	public static final fun transpose (Ljava/util/List;)Ljava/util/List;
-	public static final fun zip ([Ljava/util/List;)Ljava/util/List;
 }
 
