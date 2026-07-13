@@ -19,7 +19,7 @@ import com.juul.krayon.selection.data
 import com.juul.krayon.selection.each
 import com.juul.krayon.selection.join
 import com.juul.krayon.selection.selectAll
-import com.juul.krayon.transition.attr
+import com.juul.krayon.transition.attribute
 import com.juul.krayon.transition.delay
 import com.juul.krayon.transition.duration
 import com.juul.krayon.transition.ease
@@ -79,7 +79,7 @@ fun animatedBarChart(root: RootElement, width: Float, height: Float, data: List<
         .duration(750)
         .ease(easeCubicInOut)
         .delay { (_, index) -> index * 30L }
-        .attr(RectangleElement::top) { (value) -> y.scale(value) }
+        .attribute(RectangleElement::top) { (value) -> y.scale(value) }
         .tween("fill") {
             val value = this.data as Float
             val target = lerp(coolColor, warmColor, value)

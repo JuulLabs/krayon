@@ -18,62 +18,62 @@ import kotlin.reflect.KMutableProperty1
  * This is the type-safe analogue of d3's [transition.attr](https://d3js.org/d3-transition/modifying#transition_attr):
  * where d3 uses a string attribute name, Krayon uses a strongly-typed property reference.
  */
-@JvmName("attrFloat")
-public fun <E : Element, D> Transition<E, D>.attr(
+@JvmName("attributeFloat")
+public fun <E : Element, D> Transition<E, D>.attribute(
     property: KMutableProperty1<E, Float>,
     target: Float,
-): Transition<E, D> = attr(property) { target }
+): Transition<E, D> = attribute(property) { target }
 
 /** Animates the [property] towards a target computed per element from its datum and index. */
-@JvmName("attrFloatOf")
-public fun <E : Element, D> Transition<E, D>.attr(
+@JvmName("attributeFloatOf")
+public fun <E : Element, D> Transition<E, D>.attribute(
     property: KMutableProperty1<E, Float>,
     target: E.(Arguments<D, E?>) -> Float,
-): Transition<E, D> = animateAttr(property, target) { start, end -> interpolator(start, end) }
+): Transition<E, D> = animateAttribute(property, target) { start, end -> interpolator(start, end) }
 
 /** Animates a [Double] [property] towards a constant [target]. */
-@JvmName("attrDouble")
-public fun <E : Element, D> Transition<E, D>.attr(
+@JvmName("attributeDouble")
+public fun <E : Element, D> Transition<E, D>.attribute(
     property: KMutableProperty1<E, Double>,
     target: Double,
-): Transition<E, D> = attr(property) { target }
+): Transition<E, D> = attribute(property) { target }
 
 /** Animates a [Double] [property] towards a target computed per element. */
-@JvmName("attrDoubleOf")
-public fun <E : Element, D> Transition<E, D>.attr(
+@JvmName("attributeDoubleOf")
+public fun <E : Element, D> Transition<E, D>.attribute(
     property: KMutableProperty1<E, Double>,
     target: E.(Arguments<D, E?>) -> Double,
-): Transition<E, D> = animateAttr(property, target) { start, end -> interpolator(start, end) }
+): Transition<E, D> = animateAttribute(property, target) { start, end -> interpolator(start, end) }
 
 /** Animates an [Int] [property] towards a constant [target]. */
-@JvmName("attrInt")
-public fun <E : Element, D> Transition<E, D>.attr(
+@JvmName("attributeInt")
+public fun <E : Element, D> Transition<E, D>.attribute(
     property: KMutableProperty1<E, Int>,
     target: Int,
-): Transition<E, D> = attr(property) { target }
+): Transition<E, D> = attribute(property) { target }
 
 /** Animates an [Int] [property] towards a target computed per element. */
-@JvmName("attrIntOf")
-public fun <E : Element, D> Transition<E, D>.attr(
+@JvmName("attributeIntOf")
+public fun <E : Element, D> Transition<E, D>.attribute(
     property: KMutableProperty1<E, Int>,
     target: E.(Arguments<D, E?>) -> Int,
-): Transition<E, D> = animateAttr(property, target) { start, end -> interpolator(start, end) }
+): Transition<E, D> = animateAttribute(property, target) { start, end -> interpolator(start, end) }
 
 /** Animates a [Color] [property] towards a constant [target], interpolating in ARGB space. */
-@JvmName("attrColor")
-public fun <E : Element, D> Transition<E, D>.attr(
+@JvmName("attributeColor")
+public fun <E : Element, D> Transition<E, D>.attribute(
     property: KMutableProperty1<E, Color>,
     target: Color,
-): Transition<E, D> = attr(property) { target }
+): Transition<E, D> = attribute(property) { target }
 
 /** Animates a [Color] [property] towards a target computed per element. */
-@JvmName("attrColorOf")
-public fun <E : Element, D> Transition<E, D>.attr(
+@JvmName("attributeColorOf")
+public fun <E : Element, D> Transition<E, D>.attribute(
     property: KMutableProperty1<E, Color>,
     target: E.(Arguments<D, E?>) -> Color,
-): Transition<E, D> = animateAttr(property, target) { start, end -> interpolator(start, end) }
+): Transition<E, D> = animateAttribute(property, target) { start, end -> interpolator(start, end) }
 
-private inline fun <E : Element, D, V> Transition<E, D>.animateAttr(
+private inline fun <E : Element, D, V> Transition<E, D>.animateAttribute(
     property: KMutableProperty1<E, V>,
     crossinline target: E.(Arguments<D, E?>) -> V,
     crossinline interpolatorFor: (start: V, end: V) -> Interpolator<V>,
@@ -81,7 +81,7 @@ private inline fun <E : Element, D, V> Transition<E, D>.animateAttr(
     Selection(groups).each { arguments ->
         val element = this
         val end = target(arguments)
-        scheduler.scheduleFor(element, id)?.tweens?.set("attr.${property.name}") {
+        scheduler.scheduleFor(element, id)?.tweens?.set("attribute.${property.name}") {
             val interpolate = interpolatorFor(property.get(element), end)
             val applier: (Float) -> Unit = { fraction -> property.set(element, interpolate.interpolate(fraction)) }
             applier

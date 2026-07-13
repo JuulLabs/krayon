@@ -35,7 +35,7 @@ class TransitionTests {
     fun floatAttr_interpolatesLinearly() {
         val (root, selection) = setup(1)
         selection.each { floatValue = 0f }
-        selection.transition().duration(250).ease(easeLinear).attr(AnimatableElement::floatValue, 100f)
+        selection.transition().duration(250).ease(easeLinear).attribute(AnimatableElement::floatValue, 100f)
         val element = root.animatables().single()
 
         assertTrue(root.tickTransitions(0))
@@ -52,8 +52,8 @@ class TransitionTests {
     fun easing_isAppliedToFraction() {
         val (root, selection) = setup(1)
         selection.each { floatValue = 0f }
-        // easeQuadIn(0.5) == 0.25, so value should be 25 at the midpoint of time.
-        selection.transition().duration(100).ease(easeQuadIn).attr(AnimatableElement::floatValue, 100f)
+        // easeQuadraticIn(0.5) == 0.25, so value should be 25 at the midpoint of time.
+        selection.transition().duration(100).ease(easeQuadraticIn).attribute(AnimatableElement::floatValue, 100f)
         val element = root.animatables().single()
         root.tickTransitions(0)
         root.tickTransitions(50)
@@ -64,7 +64,7 @@ class TransitionTests {
     fun delay_shiftsStart() {
         val (root, selection) = setup(1)
         selection.each { floatValue = 0f }
-        selection.transition().delay(100).duration(100).ease(easeLinear).attr(AnimatableElement::floatValue, 100f)
+        selection.transition().delay(100).duration(100).ease(easeLinear).attribute(AnimatableElement::floatValue, 100f)
         val element = root.animatables().single()
 
         root.tickTransitions(0)
@@ -81,7 +81,7 @@ class TransitionTests {
     fun durationZero_snapsToTarget() {
         val (root, selection) = setup(1)
         selection.each { floatValue = 10f }
-        selection.transition().duration(0).attr(AnimatableElement::floatValue, 99f)
+        selection.transition().duration(0).attribute(AnimatableElement::floatValue, 99f)
         val element = root.animatables().single()
         root.tickTransitions(0)
         assertEquals(99f, element.floatValue, 1e-4f)
@@ -97,9 +97,9 @@ class TransitionTests {
             color = black
         }
         selection.transition().duration(100).ease(easeLinear)
-            .attr(AnimatableElement::intValue, 100)
-            .attr(AnimatableElement::doubleValue, 10.0)
-            .attr(AnimatableElement::color, white)
+            .attribute(AnimatableElement::intValue, 100)
+            .attribute(AnimatableElement::doubleValue, 10.0)
+            .attribute(AnimatableElement::color, white)
         val element = root.animatables().single()
 
         root.tickTransitions(0)
@@ -123,7 +123,7 @@ class TransitionTests {
         selection.each { floatValue = 0f }
         selection.transition().duration(100).ease(easeLinear)
             .delay { (_, index) -> index * 100L }
-            .attr(AnimatableElement::floatValue, 100f)
+            .attribute(AnimatableElement::floatValue, 100f)
         val elements = root.animatables()
 
         root.tickTransitions(0)
@@ -145,7 +145,7 @@ class TransitionTests {
         selection.transition().duration(100)
             .on(TransitionEvent.Start) { starts++ }
             .on(TransitionEvent.End) { ends++ }
-            .attr(AnimatableElement::floatValue, 1f)
+            .attribute(AnimatableElement::floatValue, 1f)
 
         root.tickTransitions(0)
         assertEquals(1, starts)
@@ -161,7 +161,7 @@ class TransitionTests {
     @Test
     fun remove_detachesElementOnEnd() {
         val (root, selection) = setup(1)
-        selection.transition().duration(100).attr(AnimatableElement::floatValue, 1f).remove()
+        selection.transition().duration(100).attribute(AnimatableElement::floatValue, 1f).remove()
         val element = root.animatables().single()
 
         root.tickTransitions(0)
@@ -175,8 +175,8 @@ class TransitionTests {
     fun chainedTransition_runsSequentially() {
         val (root, selection) = setup(1)
         selection.each { floatValue = 0f }
-        val first = selection.transition().duration(100).ease(easeLinear).attr(AnimatableElement::floatValue, 100f)
-        first.transition().duration(100).ease(easeLinear).attr(AnimatableElement::floatValue, 0f)
+        val first = selection.transition().duration(100).ease(easeLinear).attribute(AnimatableElement::floatValue, 100f)
+        first.transition().duration(100).ease(easeLinear).attribute(AnimatableElement::floatValue, 0f)
         val element = root.animatables().single()
 
         root.tickTransitions(0)
@@ -196,7 +196,7 @@ class TransitionTests {
         var interrupts = 0
         selection.transition().duration(100).ease(easeLinear)
             .on(TransitionEvent.Interrupt) { interrupts++ }
-            .attr(AnimatableElement::floatValue, 100f)
+            .attribute(AnimatableElement::floatValue, 100f)
         val element = root.animatables().single()
 
         root.tickTransitions(0)
@@ -204,7 +204,7 @@ class TransitionTests {
         assertEquals(50f, element.floatValue, 1e-4f)
 
         // A new transition of the same (default) name interrupts the running one.
-        selection.transition().duration(100).ease(easeLinear).attr(AnimatableElement::floatValue, 150f)
+        selection.transition().duration(100).ease(easeLinear).attribute(AnimatableElement::floatValue, 150f)
         assertEquals(1, interrupts)
 
         root.tickTransitions(50) // new transition starts, reads current value 50
@@ -221,7 +221,7 @@ class TransitionTests {
         var interrupts = 0
         selection.transition().duration(100)
             .on(TransitionEvent.Interrupt) { interrupts++ }
-            .attr(AnimatableElement::floatValue, 100f)
+            .attribute(AnimatableElement::floatValue, 100f)
 
         root.tickTransitions(0)
         assertTrue(root.hasPendingTransitions)
@@ -238,7 +238,7 @@ class TransitionTests {
         selection.transition().delay(100).duration(100)
             .on(TransitionEvent.Cancel) { cancels++ }
             .on(TransitionEvent.Interrupt) { interrupts++ }
-            .attr(AnimatableElement::floatValue, 100f)
+            .attribute(AnimatableElement::floatValue, 100f)
 
         root.tickTransitions(0) // scheduled, not started (delay 100)
         selection.interrupt()
@@ -263,12 +263,12 @@ class TransitionTests {
     fun schedulers_areIndependentPerRoot() {
         val (rootA, selectionA) = setup(1)
         val (rootB, selectionB) = setup(1)
-        selectionA.transition().duration(100).attr(AnimatableElement::floatValue, 1f)
+        selectionA.transition().duration(100).attribute(AnimatableElement::floatValue, 1f)
 
         assertTrue(rootA.hasPendingTransitions)
         assertFalse(rootB.hasPendingTransitions)
 
-        selectionB.transition().duration(100).attr(AnimatableElement::floatValue, 1f)
+        selectionB.transition().duration(100).attribute(AnimatableElement::floatValue, 1f)
         rootA.tickTransitions(0)
         rootA.tickTransitions(100)
         assertFalse(rootA.hasPendingTransitions)

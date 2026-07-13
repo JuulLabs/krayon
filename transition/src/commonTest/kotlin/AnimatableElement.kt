@@ -7,7 +7,7 @@ import com.juul.krayon.element.ElementBuilder
 import com.juul.krayon.element.ElementSelector
 import com.juul.krayon.kanvas.Kanvas
 
-/** A minimal element exposing one property of each interpolatable type, for exercising [attr]. */
+/** A minimal element exposing one property of each interpolatable type, for exercising [attribute]. */
 class AnimatableElement : Element() {
 
     override val tag: String get() = "animatable"

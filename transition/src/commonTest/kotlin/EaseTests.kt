@@ -10,25 +10,25 @@ class EaseTests {
 
     private val allEasings: List<Pair<String, Easing>> = listOf(
         "linear" to easeLinear,
-        "quadIn" to easeQuadIn,
-        "quadOut" to easeQuadOut,
-        "quadInOut" to easeQuadInOut,
+        "quadraticIn" to easeQuadraticIn,
+        "quadraticOut" to easeQuadraticOut,
+        "quadraticInOut" to easeQuadraticInOut,
         "cubicIn" to easeCubicIn,
         "cubicOut" to easeCubicOut,
         "cubicInOut" to easeCubicInOut,
         "cubic" to easeCubic,
-        "sinIn" to easeSinIn,
-        "sinOut" to easeSinOut,
-        "sinInOut" to easeSinInOut,
-        "expIn" to easeExpIn,
-        "expOut" to easeExpOut,
-        "expInOut" to easeExpInOut,
-        "circleIn" to easeCircleIn,
-        "circleOut" to easeCircleOut,
-        "circleInOut" to easeCircleInOut,
-        "polyIn" to easePolyIn(),
-        "polyOut" to easePolyOut(),
-        "polyInOut" to easePolyInOut(),
+        "sinusoidalIn" to easeSinusoidalIn,
+        "sinusoidalOut" to easeSinusoidalOut,
+        "sinusoidalInOut" to easeSinusoidalInOut,
+        "exponentialIn" to easeExponentialIn,
+        "exponentialOut" to easeExponentialOut,
+        "exponentialInOut" to easeExponentialInOut,
+        "circularIn" to easeCircularIn,
+        "circularOut" to easeCircularOut,
+        "circularInOut" to easeCircularInOut,
+        "polynomialIn" to easePolynomialIn(),
+        "polynomialOut" to easePolynomialOut(),
+        "polynomialInOut" to easePolynomialInOut(),
         "elasticIn" to easeElasticIn(),
         "elasticOut" to easeElasticOut(),
         "elasticInOut" to easeElasticInOut(),
@@ -58,28 +58,28 @@ class EaseTests {
 
     @Test
     fun polynomialFamilies_matchKnownValues() {
-        assertEquals(0.25f, easeQuadIn.ease(0.5f), tolerance)
-        assertEquals(0.75f, easeQuadOut.ease(0.5f), tolerance)
-        assertEquals(0.5f, easeQuadInOut.ease(0.5f), tolerance)
+        assertEquals(0.25f, easeQuadraticIn.ease(0.5f), tolerance)
+        assertEquals(0.75f, easeQuadraticOut.ease(0.5f), tolerance)
+        assertEquals(0.5f, easeQuadraticInOut.ease(0.5f), tolerance)
         assertEquals(0.125f, easeCubicIn.ease(0.5f), tolerance)
         assertEquals(0.875f, easeCubicOut.ease(0.5f), tolerance)
         assertEquals(0.5f, easeCubicInOut.ease(0.5f), tolerance)
-        // poly defaults to exponent 3, so it must match cubic.
-        assertEquals(easeCubicIn.ease(0.3f), easePolyIn().ease(0.3f), tolerance)
-        assertEquals(easeCubicOut.ease(0.7f), easePolyOut().ease(0.7f), tolerance)
-        // exponent 2 must match quad.
-        assertEquals(easeQuadIn.ease(0.4f), easePolyIn(2f).ease(0.4f), tolerance)
+        // Polynomial defaults to exponent 3, so it must match cubic.
+        assertEquals(easeCubicIn.ease(0.3f), easePolynomialIn().ease(0.3f), tolerance)
+        assertEquals(easeCubicOut.ease(0.7f), easePolynomialOut().ease(0.7f), tolerance)
+        // Exponent 2 must match quadratic.
+        assertEquals(easeQuadraticIn.ease(0.4f), easePolynomialIn(2f).ease(0.4f), tolerance)
     }
 
     @Test
     fun symmetricInOut_easingsAreSymmetric() {
         val symmetric = listOf(
-            "quadInOut" to easeQuadInOut,
+            "quadraticInOut" to easeQuadraticInOut,
             "cubicInOut" to easeCubicInOut,
-            "sinInOut" to easeSinInOut,
-            "expInOut" to easeExpInOut,
-            "circleInOut" to easeCircleInOut,
-            "polyInOut" to easePolyInOut(),
+            "sinusoidalInOut" to easeSinusoidalInOut,
+            "exponentialInOut" to easeExponentialInOut,
+            "circularInOut" to easeCircularInOut,
+            "polynomialInOut" to easePolynomialInOut(),
             "bounceInOut" to easeBounceInOut,
         )
         for ((name, easing) in symmetric) {
