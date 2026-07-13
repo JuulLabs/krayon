@@ -11,6 +11,8 @@
 <h1>Krayon Sample</h1>
 <h2>Line Chart</h2>
 <canvas id="line-canvas" style="height: 480px; width: 854px"></canvas>
+<h2>Animated Bar Chart</h2>
+<canvas id="bars-canvas" style="height: 320px; width: 854px"></canvas>
 <h2>Pie Chart</h2>
 <table>
     <tr>
@@ -42,6 +44,7 @@
 </body>
 <script>
     sample.setupMovingSineWave(document.getElementById("line-canvas"));
+    sample.setupAnimatedBars(document.getElementById("bars-canvas"));
     sample.setupPieChart(document.getElementById("pie-canvas"));
     sample.setupInteractiveChart(document.getElementById("interaction-canvas"));
 </script>

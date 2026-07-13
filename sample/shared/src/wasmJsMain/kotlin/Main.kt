@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.ComposeViewport
 import com.juul.krayon.compose.ElementView
 import com.juul.krayon.sample.data.movingSineWave
+import com.juul.krayon.sample.data.randomBars
+import com.juul.krayon.sample.updaters.animatedBarChart
 import com.juul.krayon.sample.updaters.lineChart
 import kotlin.math.PI
 
@@ -38,11 +40,21 @@ fun main() {
                     .padding(16.dp),
             ) {
                 LineChart()
+                AnimatedBarChart()
                 PieChart()
                 TouchChart()
             }
         }
     }
+}
+
+@Composable
+private fun AnimatedBarChart() {
+    ElementView(
+        remember { randomBars() },
+        ::animatedBarChart,
+        Modifier.defaultMinSize(360.dp, 240.dp).fillMaxWidth(),
+    )
 }
 
 @Composable
