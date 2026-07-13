@@ -1,3 +1,6 @@
+public abstract interface annotation class com/juul/krayon/core/ExperimentalKrayonApi : java/lang/annotation/Annotation {
+}
+
 public abstract interface annotation class com/juul/krayon/core/InternalKrayonApi : java/lang/annotation/Annotation {
 }
 
