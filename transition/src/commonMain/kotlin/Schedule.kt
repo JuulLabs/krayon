@@ -18,7 +18,7 @@ internal class Schedule(
     var duration: Long,
     var ease: Easing,
 ) {
-    /** Deferred tween factories keyed by name. Invoked once at [start] to produce per-frame appliers. */
+    /** Invoked once at [start] to produce per-frame appliers, so start values reflect current element state. */
     val tweens: LinkedHashMap<String, () -> ((Float) -> Unit)?> = LinkedHashMap()
 
     private val listeners: HashMap<TransitionEvent, MutableList<() -> Unit>> = HashMap()
@@ -28,7 +28,6 @@ internal class Schedule(
 
     private var appliers: List<(Float) -> Unit> = emptyList()
 
-    /** The absolute time (same clock as [Scheduler.currentTime]) at which this schedule should start. */
     val startTime: Long get() = referenceTime + delay
 
     fun addListener(event: TransitionEvent, listener: () -> Unit) {
@@ -41,8 +40,10 @@ internal class Schedule(
 
     fun start() {
         state = ScheduleState.STARTED
-        appliers = tweens.values.mapNotNull { factory -> factory() }
+        // Matches d3: tweens initialize after the start event, so start listeners may mutate
+        // attributes and have those mutations picked up as tween starting values.
         fire(TransitionEvent.Start)
+        appliers = tweens.values.mapNotNull { factory -> factory() }
     }
 
     fun applyFrame(easedFraction: Float) {

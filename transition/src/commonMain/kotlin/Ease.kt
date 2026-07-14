@@ -22,18 +22,16 @@ public fun interface Easing {
 private const val HALF_PI: Float = (PI / 2).toFloat()
 private const val TAU: Float = (2 * PI).toFloat()
 
-/** Linear easing; the identity function. See [d3.easeLinear](https://d3js.org/d3-ease#easeLinear). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeLinear). */
 public val easeLinear: Easing = Easing { it }
 
-// region Polynomial
-
-/** Polynomial easing-in with the given [exponent]. See [d3.easePolyIn](https://d3js.org/d3-ease#easePolyIn). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easePolyIn). */
 public fun easePolynomialIn(exponent: Float = 3f): Easing = Easing { t -> t.pow(exponent) }
 
-/** Polynomial easing-out with the given [exponent]. See [d3.easePolyOut](https://d3js.org/d3-ease#easePolyOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easePolyOut). */
 public fun easePolynomialOut(exponent: Float = 3f): Easing = Easing { t -> 1f - (1f - t).pow(exponent) }
 
-/** Symmetric polynomial easing with the given [exponent]. See [d3.easePolyInOut](https://d3js.org/d3-ease#easePolyInOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easePolyInOut). */
 public fun easePolynomialInOut(exponent: Float = 3f): Easing = Easing { fraction ->
     val t = fraction * 2f
     if (t <= 1f) {
@@ -43,17 +41,13 @@ public fun easePolynomialInOut(exponent: Float = 3f): Easing = Easing { fraction
     }
 }
 
-// endregion
-
-// region Quadratic
-
-/** Quadratic easing-in. See [d3.easeQuadIn](https://d3js.org/d3-ease#easeQuadIn). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeQuadIn). */
 public val easeQuadraticIn: Easing = Easing { t -> t * t }
 
-/** Quadratic easing-out. See [d3.easeQuadOut](https://d3js.org/d3-ease#easeQuadOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeQuadOut). */
 public val easeQuadraticOut: Easing = Easing { t -> t * (2f - t) }
 
-/** Symmetric quadratic easing. See [d3.easeQuadInOut](https://d3js.org/d3-ease#easeQuadInOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeQuadInOut). */
 public val easeQuadraticInOut: Easing = Easing { fraction ->
     val t = fraction * 2f
     if (t <= 1f) {
@@ -64,20 +58,16 @@ public val easeQuadraticInOut: Easing = Easing { fraction ->
     }
 }
 
-// endregion
-
-// region Cubic
-
-/** Cubic easing-in. See [d3.easeCubicIn](https://d3js.org/d3-ease#easeCubicIn). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeCubicIn). */
 public val easeCubicIn: Easing = Easing { t -> t * t * t }
 
-/** Cubic easing-out. See [d3.easeCubicOut](https://d3js.org/d3-ease#easeCubicOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeCubicOut). */
 public val easeCubicOut: Easing = Easing { fraction ->
     val t = fraction - 1f
     t * t * t + 1f
 }
 
-/** Symmetric cubic easing. See [d3.easeCubicInOut](https://d3js.org/d3-ease#easeCubicInOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeCubicInOut). */
 public val easeCubicInOut: Easing = Easing { fraction ->
     val t = fraction * 2f
     if (t <= 1f) {
@@ -88,25 +78,17 @@ public val easeCubicInOut: Easing = Easing { fraction ->
     }
 }
 
-/** Alias for [easeCubicInOut]; the default transition easing. See [d3.easeCubic](https://d3js.org/d3-ease#easeCubic). */
+/** Alias for [easeCubicInOut]; the default easing of [transition]. */
 public val easeCubic: Easing = easeCubicInOut
 
-// endregion
-
-// region Sinusoidal
-
-/** Sinusoidal easing-in. See [d3.easeSinIn](https://d3js.org/d3-ease#easeSinIn). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeSinIn). */
 public val easeSinusoidalIn: Easing = Easing { t -> if (t == 1f) 1f else 1f - cos(t * HALF_PI) }
 
-/** Sinusoidal easing-out. See [d3.easeSinOut](https://d3js.org/d3-ease#easeSinOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeSinOut). */
 public val easeSinusoidalOut: Easing = Easing { t -> sin(t * HALF_PI) }
 
-/** Symmetric sinusoidal easing. See [d3.easeSinInOut](https://d3js.org/d3-ease#easeSinInOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeSinInOut). */
 public val easeSinusoidalInOut: Easing = Easing { t -> (1f - cos(PI.toFloat() * t)) / 2f }
-
-// endregion
-
-// region Exponential
 
 /** Normalized `2^(-10t)` so that `tpmt(0) == 1` and `tpmt(1) == 0` (matches d3-ease). */
 private fun tpmt(x: Float): Float {
@@ -114,13 +96,13 @@ private fun tpmt(x: Float): Float {
     return (raw * 1.0009775171065494).toFloat()
 }
 
-/** Exponential easing-in. See [d3.easeExpIn](https://d3js.org/d3-ease#easeExpIn). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeExpIn). */
 public val easeExponentialIn: Easing = Easing { t -> tpmt(1f - t) }
 
-/** Exponential easing-out. See [d3.easeExpOut](https://d3js.org/d3-ease#easeExpOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeExpOut). */
 public val easeExponentialOut: Easing = Easing { t -> 1f - tpmt(t) }
 
-/** Symmetric exponential easing. See [d3.easeExpInOut](https://d3js.org/d3-ease#easeExpInOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeExpInOut). */
 public val easeExponentialInOut: Easing = Easing { fraction ->
     val t = fraction * 2f
     if (t <= 1f) {
@@ -130,20 +112,16 @@ public val easeExponentialInOut: Easing = Easing { fraction ->
     }
 }
 
-// endregion
-
-// region Circular
-
-/** Circular easing-in. See [d3.easeCircleIn](https://d3js.org/d3-ease#easeCircleIn). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeCircleIn). */
 public val easeCircularIn: Easing = Easing { t -> 1f - sqrt(1f - t * t) }
 
-/** Circular easing-out. See [d3.easeCircleOut](https://d3js.org/d3-ease#easeCircleOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeCircleOut). */
 public val easeCircularOut: Easing = Easing { fraction ->
     val t = fraction - 1f
     sqrt(1f - t * t)
 }
 
-/** Symmetric circular easing. See [d3.easeCircleInOut](https://d3js.org/d3-ease#easeCircleInOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeCircleInOut). */
 public val easeCircularInOut: Easing = Easing { fraction ->
     val t = fraction * 2f
     if (t <= 1f) {
@@ -154,14 +132,10 @@ public val easeCircularInOut: Easing = Easing { fraction ->
     }
 }
 
-// endregion
-
-// region Elastic
-
 private const val DEFAULT_AMPLITUDE: Float = 1f
 private const val DEFAULT_PERIOD: Float = 0.3f
 
-/** Elastic easing-in. See [d3.easeElasticIn](https://d3js.org/d3-ease#easeElasticIn). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeElasticIn). */
 public fun easeElasticIn(amplitude: Float = DEFAULT_AMPLITUDE, period: Float = DEFAULT_PERIOD): Easing {
     val a = maxOf(1f, amplitude)
     val p = period / TAU
@@ -172,7 +146,7 @@ public fun easeElasticIn(amplitude: Float = DEFAULT_AMPLITUDE, period: Float = D
     }
 }
 
-/** Elastic easing-out. See [d3.easeElasticOut](https://d3js.org/d3-ease#easeElasticOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeElasticOut). */
 public fun easeElasticOut(amplitude: Float = DEFAULT_AMPLITUDE, period: Float = DEFAULT_PERIOD): Easing {
     val a = maxOf(1f, amplitude)
     val p = period / TAU
@@ -180,7 +154,7 @@ public fun easeElasticOut(amplitude: Float = DEFAULT_AMPLITUDE, period: Float = 
     return Easing { t -> 1f - a * tpmt(t) * sin((t + s) / p) }
 }
 
-/** Symmetric elastic easing. See [d3.easeElasticInOut](https://d3js.org/d3-ease#easeElasticInOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeElasticInOut). */
 public fun easeElasticInOut(amplitude: Float = DEFAULT_AMPLITUDE, period: Float = DEFAULT_PERIOD): Easing {
     val a = maxOf(1f, amplitude)
     val p = period / TAU
@@ -195,24 +169,20 @@ public fun easeElasticInOut(amplitude: Float = DEFAULT_AMPLITUDE, period: Float 
     }
 }
 
-// endregion
-
-// region Back
-
 private const val DEFAULT_OVERSHOOT: Float = 1.70158f
 
-/** Anticipatory (back) easing-in. See [d3.easeBackIn](https://d3js.org/d3-ease#easeBackIn). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeBackIn). */
 public fun easeBackIn(overshoot: Float = DEFAULT_OVERSHOOT): Easing =
     Easing { t -> t * t * (overshoot * (t - 1f) + t) }
 
-/** Anticipatory (back) easing-out. See [d3.easeBackOut](https://d3js.org/d3-ease#easeBackOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeBackOut). */
 public fun easeBackOut(overshoot: Float = DEFAULT_OVERSHOOT): Easing =
     Easing { fraction ->
         val t = fraction - 1f
         t * t * ((t + 1f) * overshoot + t) + 1f
     }
 
-/** Symmetric anticipatory (back) easing. See [d3.easeBackInOut](https://d3js.org/d3-ease#easeBackInOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeBackInOut). */
 public fun easeBackInOut(overshoot: Float = DEFAULT_OVERSHOOT): Easing = Easing { fraction ->
     val t = fraction * 2f
     if (t < 1f) {
@@ -222,10 +192,6 @@ public fun easeBackInOut(overshoot: Float = DEFAULT_OVERSHOOT): Easing = Easing 
         (u * u * ((overshoot + 1f) * u + overshoot) + 2f) / 2f
     }
 }
-
-// endregion
-
-// region Bounce
 
 private const val B1: Float = 4f / 11f
 private const val B2: Float = 6f / 11f
@@ -254,16 +220,14 @@ private fun bounceOut(t: Float): Float = when {
     }
 }
 
-/** Bounce easing-in. See [d3.easeBounceIn](https://d3js.org/d3-ease#easeBounceIn). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeBounceIn). */
 public val easeBounceIn: Easing = Easing { t -> 1f - bounceOut(1f - t) }
 
-/** Bounce easing-out. See [d3.easeBounceOut](https://d3js.org/d3-ease#easeBounceOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeBounceOut). */
 public val easeBounceOut: Easing = Easing { t -> bounceOut(t) }
 
-/** Symmetric bounce easing. See [d3.easeBounceInOut](https://d3js.org/d3-ease#easeBounceInOut). */
+/** See analogous [d3 easing](https://d3js.org/d3-ease#easeBounceInOut). */
 public val easeBounceInOut: Easing = Easing { fraction ->
     val t = fraction * 2f
     if (t <= 1f) (1f - bounceOut(1f - t)) / 2f else (bounceOut(t - 1f) + 1f) / 2f
 }
-
-// endregion

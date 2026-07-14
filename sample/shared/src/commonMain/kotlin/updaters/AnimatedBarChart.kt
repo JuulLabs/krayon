@@ -31,10 +31,9 @@ private val coolColor = steelBlue
 private val warmColor = red
 
 /**
- * An animated bar chart demonstrating Krayon's D3-style transitions. Each time the [data] changes,
- * bars smoothly animate their height (with a staggered per-bar delay and cubic-in-out easing) and
- * their fill color (via a custom tween) from their current state to the new target state. New bars
- * grow up from the baseline.
+ * An animated bar chart demonstrating transitions. Each time the [data] changes, bars animate their
+ * height (via [attribute]) and fill color (via a custom [tween]) towards the new values, with a
+ * staggered per-bar [delay]. New bars grow up from the baseline.
  */
 fun animatedBarChart(root: RootElement, width: Float, height: Float, data: List<Float>) {
     val margin = 12f
@@ -67,14 +66,13 @@ fun animatedBarChart(root: RootElement, width: Float, height: Float, data: List<
             }
         }
 
-    // Non-animated layout (horizontal position and baseline) applied every frame.
+    // Horizontal layout snaps instantly (via each); only height and color animate (via transition).
     bars.each { (_, index) ->
         left = index * bandWidth + barPadding
         right = (index + 1) * bandWidth - barPadding
         bottom = innerHeight
     }
 
-    // Animate height and fill color towards the new data.
     bars.transition("bars")
         .duration(750)
         .ease(easeCubicInOut)

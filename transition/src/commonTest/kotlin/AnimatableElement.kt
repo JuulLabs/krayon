@@ -17,9 +17,7 @@ class AnimatableElement : Element() {
     var intValue: Int by attributes.withDefault { 0 }
     var color: Color by attributes.withDefault { black }
 
-    override fun draw(kanvas: Kanvas) {
-        // No-op: these elements exist only to hold animatable attributes in tests.
-    }
+    override fun draw(kanvas: Kanvas) = Unit
 
     companion object : ElementBuilder<AnimatableElement>, ElementSelector<AnimatableElement> {
         override fun build(): AnimatableElement = AnimatableElement()

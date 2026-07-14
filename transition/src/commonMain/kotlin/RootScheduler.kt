@@ -3,19 +3,18 @@ package com.juul.krayon.transition
 import com.juul.krayon.element.Element
 import com.juul.krayon.element.RootElement
 
+// Storing the scheduler in the root's attribute map ties its lifecycle to the element tree, so it is
+// discarded along with the tree (e.g. on resize) without any explicit cleanup hook.
 private const val SCHEDULER_KEY: String = "com.juul.krayon.transition.scheduler"
 
-/** Gets, or lazily creates, the [Scheduler] associated with this element tree. */
 internal fun RootElement.scheduler(): Scheduler {
     val existing = attributes[SCHEDULER_KEY]
     if (existing is Scheduler) return existing
     return Scheduler().also { attributes[SCHEDULER_KEY] = it }
 }
 
-/** Returns the already-created [Scheduler] for this tree, if any, without creating one. */
 internal fun RootElement.existingScheduler(): Scheduler? = attributes[SCHEDULER_KEY] as? Scheduler
 
-/** Walks up the parent chain to find the [RootElement] this element is attached to, if any. */
 internal fun Element.rootOrNull(): RootElement? {
     var current: Element? = this
     while (current != null) {
@@ -30,8 +29,7 @@ internal fun Element.rootOrNull(): RootElement? {
  * interpolated attribute values to elements. Returns `true` while any transition is still pending or
  * running, signalling that another frame should be drawn.
  *
- * Platform render loops call this each frame while [hasPendingTransitions] is true. It is also the
- * seam used by tests to drive transitions deterministically.
+ * The built-in `ElementView`s call this each frame, so you usually won't need to call it yourself.
  */
 public fun RootElement.tickTransitions(now: Long): Boolean = scheduler().tick(now)
 

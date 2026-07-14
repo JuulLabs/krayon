@@ -93,11 +93,8 @@ class EaseTests {
 
     @Test
     fun backAndElastic_overshoot() {
-        // Back easing-in dips below zero before returning.
         assertTrue(easeBackIn().ease(0.3f) < 0f, "backIn should undershoot")
-        // Back easing-out overshoots above one before settling.
         assertTrue(easeBackOut().ease(0.7f) > 1f, "backOut should overshoot")
-        // Elastic oscillates; out easing exceeds 1 somewhere in the middle.
         val elasticOut = easeElasticOut()
         assertTrue((1..9).any { elasticOut.ease(it / 10f) > 1f }, "elasticOut should overshoot")
     }

@@ -9,12 +9,12 @@ public enum class TransitionEvent {
     /** Dispatched when the transition starts, immediately before its tweens are initialized. */
     Start,
 
-    /** Dispatched when the transition completes. */
+    /** Dispatched when the transition completes normally. */
     End,
 
-    /** Dispatched when a running transition is interrupted by a newer transition of the same name. */
+    /** Dispatched when a *running* transition is stopped early, either by [interrupt] or by a replacement of the same name. */
     Interrupt,
 
-    /** Dispatched when a scheduled-but-not-yet-started transition is cancelled. */
+    /** Dispatched when a *pending* transition is stopped before starting, either by [interrupt] or by a replacement of the same name. */
     Cancel,
 }

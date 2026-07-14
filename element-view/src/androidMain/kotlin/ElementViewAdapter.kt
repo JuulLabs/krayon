@@ -116,11 +116,11 @@ public class ElementViewAdapter<T>(
                 }
 
                 dataSource.collectLatest { data ->
-                    // Sync the transition clock before updating so new transitions reference "now".
+                    // Ticking before the update syncs the transition clock, so that transitions
+                    // created inside the update reference the current frame time.
                     state.root.tickTransitions(origin.elapsedNow().inWholeMilliseconds)
                     updater.update(state.root, state.width / scalingFactor, state.height / scalingFactor, data)
                     drawFrame()
-                    // Keep drawing frames while any transition is animating.
                     while (state.root.hasPendingTransitions) {
                         delay(FRAME_DELAY_MS)
                         state.root.tickTransitions(origin.elapsedNow().inWholeMilliseconds)

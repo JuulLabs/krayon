@@ -10,10 +10,7 @@ import com.juul.krayon.selection.each
  * instantaneously (as [Selection.each] does), a transition interpolates each element from its current
  * state to a target state over a duration.
  *
- * Create one with [transition]. Configure timing with [duration], [delay], and [ease]; specify targets
- * with [attr] or [tween]; observe lifecycle with [on]; and remove elements when done with [remove].
- *
- * See the analogous [d3-transition](https://d3js.org/d3-transition) module.
+ * See the analogous [d3 module](https://d3js.org/d3-transition).
  */
 public open class Transition<E : Element, D> internal constructor(
     public val groups: List<Group<E, D>>,
@@ -23,11 +20,12 @@ public open class Transition<E : Element, D> internal constructor(
 )
 
 /**
- * Returns a new transition on the selected elements with the given [name]. Timing defaults to a
- * duration of 250ms, no delay, and [easeCubicInOut] easing, matching d3.
+ * Returns a new transition on the selected elements. Defaults to a duration of 250ms, no delay, and
+ * [easeCubicInOut] easing. Replaces any active or pending transition with the same [name] on the same
+ * elements.
  *
- * The selected elements must be attached to a [com.juul.krayon.element.RootElement]; that root owns the
- * scheduler that drives the animation.
+ * The selected elements must be attached to a [com.juul.krayon.element.RootElement], whose scheduler
+ * drives the animation.
  *
  * See the analogous [d3 function](https://d3js.org/d3-transition/selecting#selection_transition).
  */
@@ -54,8 +52,8 @@ public fun <E : Element, D> Selection<E, D>.transition(name: String = ""): Trans
 }
 
 /**
- * Returns a new transition on the same elements as this transition, scheduled to start when this one
- * ends. The new transition inherits this transition's name, per-element duration, and easing.
+ * Returns a new transition on the same elements, scheduled to start when this one ends and inheriting
+ * its name, per-element duration, and easing.
  *
  * See the analogous [d3 function](https://d3js.org/d3-transition/control-flow#transition_transition).
  */
@@ -64,16 +62,14 @@ public fun <E : Element, D> Transition<E, D>.transition(): Transition<E, D> {
     forEachElement { element ->
         val parent = scheduler.scheduleFor(element, id)
         val reference = if (parent != null) parent.startTime + parent.duration else scheduler.currentTime
-        val duration = parent?.duration ?: DEFAULT_DURATION
-        val ease = parent?.ease ?: easeCubicInOut
         scheduler.create(
             element = element,
             id = newId,
             name = name,
             referenceTime = reference,
             delay = 0L,
-            duration = duration,
-            ease = ease,
+            duration = parent?.duration ?: DEFAULT_DURATION,
+            ease = parent?.ease ?: easeCubicInOut,
             interruptSiblings = false,
         )
     }

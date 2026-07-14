@@ -84,16 +84,13 @@ public fun <T> ElementView(
             }.collectLatest { (data, width, height) ->
                 // It's possible to have a negative size in compose. No-op in that case.
                 if (width > 0 && height > 0) {
-                    // withFrameMillis syncs to the device framerate and provides a monotonic time for transitions.
-                    val frameMillis = withFrameMillis { it }
-                    // Sync the transition clock before updating so new transitions reference "now".
-                    root.tickTransitions(frameMillis)
+                    // Ticking before the update syncs the transition clock, so that transitions
+                    // created inside the update reference the current frame time.
+                    root.tickTransitions(withFrameMillis { it })
                     updateElements.update(root, width, height, data)
                     frameTime.value = Clock.System.now()
-                    // Keep drawing frames while any transition is animating.
                     while (root.hasPendingTransitions) {
-                        val tickMillis = withFrameMillis { it }
-                        root.tickTransitions(tickMillis)
+                        root.tickTransitions(withFrameMillis { it })
                         frameTime.value = Clock.System.now()
                     }
                 }

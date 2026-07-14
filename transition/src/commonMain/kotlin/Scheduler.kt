@@ -5,9 +5,8 @@ import com.juul.krayon.element.Element
 internal const val DEFAULT_DURATION: Long = 250L
 
 /**
- * Owns and advances all [Schedule]s for a single element tree (one per [com.juul.krayon.element.RootElement]).
- * The scheduler is deterministic: it only advances when [tick] is called with a monotonic time, which
- * makes both the render-loop integration and unit testing straightforward.
+ * Owns and advances all [Schedule]s for a single element tree. Deterministic by design: state only
+ * changes inside [tick], so render loops and tests drive animations the same way.
  */
 internal class Scheduler {
 
@@ -25,9 +24,8 @@ internal class Scheduler {
     fun scheduleFor(element: Element, id: Long): Schedule? = perElement[element]?.get(id)
 
     /**
-     * Registers a new [Schedule]. When [interruptSiblings] is true (the default for a freshly created
-     * transition), any existing schedule on [element] with the same [name] is interrupted (if running)
-     * or cancelled (if merely pending), matching d3's replace-by-name semantics.
+     * Registers a new [Schedule]. When [interruptSiblings] is true, existing schedules on [element]
+     * with the same [name] are evicted first, matching d3's replace-by-name semantics.
      */
     fun create(
         element: Element,
@@ -41,11 +39,7 @@ internal class Scheduler {
     ): Schedule {
         val schedules = perElement.getOrPut(element) { LinkedHashMap() }
         if (interruptSiblings) {
-            val victims = schedules.values.filter { it.name == name && it.id != id }
-            for (victim in victims) {
-                victim.fire(if (victim.state == ScheduleState.STARTED) TransitionEvent.Interrupt else TransitionEvent.Cancel)
-                schedules.remove(victim.id)
-            }
+            schedules.values.filter { it.name == name }.forEach(::evict)
         }
         val schedule = Schedule(element, id, name, referenceTime, delay, duration, ease)
         schedules[id] = schedule
@@ -68,7 +62,7 @@ internal class Scheduler {
                 schedule.applyFrame(schedule.ease.ease(fraction))
                 if (fraction >= 1f) {
                     schedule.end()
-                    remove(schedule)
+                    perElement[schedule.element]?.remove(schedule.id)
                 }
             }
         }
@@ -78,25 +72,20 @@ internal class Scheduler {
 
     fun interruptByName(element: Element, name: String) {
         val schedules = perElement[element] ?: return
-        val victims = schedules.values.filter { it.name == name }
-        for (victim in victims) {
-            victim.fire(if (victim.state == ScheduleState.STARTED) TransitionEvent.Interrupt else TransitionEvent.Cancel)
-            schedules.remove(victim.id)
-        }
+        schedules.values.filter { it.name == name }.forEach(::evict)
         pruneEmpty()
     }
 
     fun interruptById(element: Element, id: Long) {
-        val schedules = perElement[element] ?: return
-        val victim = schedules[id] ?: return
-        victim.fire(if (victim.state == ScheduleState.STARTED) TransitionEvent.Interrupt else TransitionEvent.Cancel)
-        schedules.remove(id)
+        perElement[element]?.get(id)?.let(::evict)
         pruneEmpty()
     }
 
     fun hasPending(): Boolean = perElement.values.any { it.isNotEmpty() }
 
-    private fun remove(schedule: Schedule) {
+    /** Removes [schedule] without completing it, firing [TransitionEvent.Interrupt] or [TransitionEvent.Cancel]. */
+    private fun evict(schedule: Schedule) {
+        schedule.fire(if (schedule.state == ScheduleState.STARTED) TransitionEvent.Interrupt else TransitionEvent.Cancel)
         perElement[schedule.element]?.remove(schedule.id)
     }
 
