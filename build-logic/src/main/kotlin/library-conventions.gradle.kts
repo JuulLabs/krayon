@@ -22,6 +22,9 @@ kotlin {
         namespace = "com.juul.krayon.${project.name.replace("-", ".")}"
         compileSdk = libs.versions.android.compile.get().toInt()
         minSdk = libs.versions.android.min.get().toInt()
+        aarMetadata {
+            minCompileSdk = libs.versions.android.min.get().toInt()
+        }
 
         androidResources { enable = true }
 
