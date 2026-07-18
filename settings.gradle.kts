@@ -24,6 +24,7 @@ include(
     "color",
     "compose",
     "core",
+    "documentation",
     "element",
     "element-view",
     "hierarchy",
