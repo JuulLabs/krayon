@@ -30,17 +30,17 @@ fun D3Screen() {
             | D3 module | Krayon module | Notes |
             |---|---|---|
             | d3-selection | `selection` | near 1-to-1 |
-            | d3-scale | `scale` | continuous scales only (linear & time) |
+            | d3-scale | `scale` | linear & time scales |
             | d3-shape | `shape` | line, area, pie, arc |
             | d3-axis | `axis` | four edges, configurable ticks |
             | d3-hierarchy | `hierarchy` | hierarchy + treemap |
-            | d3-color | `color` | ARGB colors, named constants, lerp |
+            | d3-color | `color` | colors, constants, lerp |
             | d3-interpolate | `interpolate` | numbers, time, colors |
             | d3-time | `time` | calendar intervals for time ticks |
             | DOM | `element` | the multiplatform stand-in |
             | Canvas/SVG | `kanvas` | pluggable render backends |
             | — | `compose` | Compose bridge (`ElementView`) |
-            | — | `box` | aggregate of all published modules |
+            | — | `box` | aggregate module |
 
             ## Phrase book
 
