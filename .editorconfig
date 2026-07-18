@@ -31,6 +31,9 @@ ktlint_standard_if-else-wrapping = disabled
 ktlint_standard_no-multi-spaces = disabled
 ktlint_standard_value-argument-comment = disabled
 
+# Sample datasets read better as compact literal lists.
+ktlint_standard_argument-list-wrapping = disabled
+
 # `if-else-wrapping` is disabled because it depends on `discouraged-comment-location`.
 ktlint_standard_discouraged-comment-location = disabled
 ktlint_standard_if-else-wrapping = disabled

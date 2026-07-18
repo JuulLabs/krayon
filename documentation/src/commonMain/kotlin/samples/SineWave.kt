@@ -22,15 +22,15 @@ import com.juul.krayon.selection.each
 import com.juul.krayon.selection.join
 import com.juul.krayon.selection.selectAll
 import com.juul.krayon.shape.line
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.isActive
 import kotlin.math.PI
 import kotlin.math.sin
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.TimeSource
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.isActive
 
 /**
  * Emits a rolling window of sine wave samples, as fast as they are collected.

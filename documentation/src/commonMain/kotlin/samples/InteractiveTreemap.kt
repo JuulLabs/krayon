@@ -27,13 +27,22 @@ import com.juul.krayon.selection.data
 import com.juul.krayon.selection.each
 import com.juul.krayon.selection.join
 import com.juul.krayon.selection.selectAll
-import kotlin.random.Random
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlin.random.Random
 
 enum class Letter {
-    Alpha, Beta, Gamma, Delta, Epsilon, Zeta, Eta, Theta, Iota, Kappa,
+    Alpha,
+    Beta,
+    Gamma,
+    Delta,
+    Epsilon,
+    Zeta,
+    Eta,
+    Theta,
+    Iota,
+    Kappa,
 }
 
 data class InteractiveTreemap(
