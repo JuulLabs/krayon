@@ -49,9 +49,8 @@ val samples: List<Sample> = listOf(
         title = "Bar chart",
         description = """
             The frequency of letters in English text, drawn with one `RectangleElement` per letter.
-            A continuous [scale](../concepts/scales) maps frequency to bar height, and an
-            [axis](../concepts/axes) provides reference lines. Krayon has no band scale yet, so bar
-            positions are computed with simple index math.
+            A continuous scale maps frequency to bar height, and an axis provides reference lines.
+            Krayon has no band scale yet, so bar positions are computed with simple index math.
         """.trimIndent(),
         d3Counterpart = "Bar chart",
         d3Url = "https://observablehq.com/@d3/bar-chart/2",
