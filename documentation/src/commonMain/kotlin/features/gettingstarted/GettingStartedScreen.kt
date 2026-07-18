@@ -50,11 +50,11 @@ fun GettingStartedScreen() {
 
             | Platform | Entry point | Module |
             |---|---|---|
-            | Compose (Android, iOS, desktop, web) | `ElementView(data, ::chart)` composable | `compose` |
-            | Android `View` | `ElementView` / `ElementViewAdapter` | `element-view` |
-            | Browser (Kotlin/JS) | `root.draw(HtmlKanvas(canvas))` | `kanvas` |
-            | iOS / macOS | `root.draw(CGContextKanvas(context))` | `kanvas` |
-            | SVG (any platform) | `root.draw(SvgKanvas(width, height))` | `kanvas` |
+            | Compose (all platforms) | `ElementView(data, ::chart)` | `compose` |
+            | Android `View` | `ElementView` | `element-view` |
+            | Browser (Kotlin/JS) | `HtmlKanvas(canvas)` | `kanvas` |
+            | iOS / macOS | `CGContextKanvas(context)` | `kanvas` |
+            | SVG (any platform) | `SvgKanvas(width, height)` | `kanvas` |
 
             ## Your first chart
 

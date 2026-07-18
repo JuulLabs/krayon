@@ -34,9 +34,9 @@ private data class Ramp(
 
 /** Scales can interpolate over any range — including colors. */
 private val ramps = listOf(
-    Ramp("White → SteelBlue", listOf(white, steelBlue)),
-    Ramp("Crimson → Gold → SeaGreen", listOf(crimson, gold, seaGreen)),
-    Ramp("Blue → White → Red", listOf(mediumBlue, white, crimson)),
+    Ramp("white, steelBlue", listOf(white, steelBlue)),
+    Ramp("crimson, gold, seaGreen", listOf(crimson, gold, seaGreen)),
+    Ramp("mediumBlue, white, crimson", listOf(mediumBlue, white, crimson)),
 )
 
 private const val SWATCH_COUNT = 64

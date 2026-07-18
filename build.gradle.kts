@@ -18,6 +18,25 @@ plugins {
     alias(libs.plugins.api)
 }
 
+// Aggregates each module's documentation into a single site (under `build/dokka/html`),
+// published to https://juullabs.github.io/krayon/api/ by the `gh-pages` workflow.
+dependencies {
+    dokka(project(":axis"))
+    dokka(project(":box"))
+    dokka(project(":color"))
+    dokka(project(":compose"))
+    dokka(project(":core"))
+    dokka(project(":element"))
+    dokka(project(":element-view"))
+    dokka(project(":hierarchy"))
+    dokka(project(":interpolate"))
+    dokka(project(":kanvas"))
+    dokka(project(":scale"))
+    dokka(project(":selection"))
+    dokka(project(":shape"))
+    dokka(project(":time"))
+}
+
 apiValidation {
     @OptIn(kotlinx.validation.ExperimentalBCVApi::class)
     klib {

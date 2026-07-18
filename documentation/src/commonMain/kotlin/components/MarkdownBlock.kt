@@ -1,8 +1,10 @@
 package com.juul.krayon.documentation.components
 
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import com.juul.krayon.documentation.theme.AppTheme
 import com.mikepenz.markdown.compose.components.markdownComponents
 import com.mikepenz.markdown.compose.elements.MarkdownHighlightedCodeBlock
@@ -41,6 +43,11 @@ fun MarkdownBlock(content: String, modifier: Modifier = Modifier) {
             },
         ),
         typography = markdownTypography(
+            // Page titles are outside of markdown, so tame the heading sizes.
+            h1 = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.SemiBold),
+            h2 = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.SemiBold),
+            h3 = MaterialTheme.typography.h6,
+            h4 = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.SemiBold),
             code = codeStyle,
             inlineCode = codeStyle,
         ),
