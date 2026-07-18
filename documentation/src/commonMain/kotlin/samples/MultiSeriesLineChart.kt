@@ -96,18 +96,19 @@ fun multiSeriesLineChart(root: RootElement, width: Float, height: Float, data: L
             },
         )
 
-    body.selectAll(PathElement)
+    // The "series" kinds keep these joins from matching the axes' internal elements.
+    body.selectAll(PathElement.withKind("series"))
         .data(data)
-        .join(PathElement)
+        .join { append(PathElement).each { kind = "series" } }
         .each { (series) ->
             path = temperatureLine.render(series.points)
             paint = Paint.Stroke(series.color, 2f, join = Paint.Stroke.Join.Round)
         }
 
     // Direct labeling at the end of each line beats a separate legend.
-    body.selectAll(TextElement)
+    body.selectAll(TextElement.withKind("series-label"))
         .data(data)
-        .join(TextElement)
+        .join { append(TextElement).each { kind = "series-label" } }
         .each { (series) ->
             val (lastMonth, lastTemperature) = series.points.last()
             text = series.name

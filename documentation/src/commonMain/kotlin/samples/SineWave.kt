@@ -90,9 +90,10 @@ fun sineWaveChart(root: RootElement, width: Float, height: Float, data: List<Poi
         .join { append(GroupElement).each { kind = "y-axis" } }
         .call(axisLeft(y))
 
-    body.selectAll(PathElement)
+    // The "wave" kind keeps this join from matching the axes' internal PathElements.
+    body.selectAll(PathElement.withKind("wave"))
         .data(listOf(data))
-        .join(PathElement)
+        .join { append(PathElement).each { kind = "wave" } }
         .each { (points) ->
             path = waveLine.render(points)
             paint = wavePaint

@@ -77,9 +77,10 @@ fun lineChart(root: RootElement, width: Float, height: Float, data: List<Point>)
             },
         )
 
-    body.selectAll(PathElement)
+    // The "line" kind keeps this join from matching the axes' internal PathElements.
+    body.selectAll(PathElement.withKind("line"))
         .data(listOf(data))
-        .join(PathElement)
+        .join { append(PathElement).each { kind = "line" } }
         .each { (points) ->
             path = temperatureLine.render(points)
             paint = linePaint

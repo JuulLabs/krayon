@@ -36,7 +36,7 @@ private val monthNames = listOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
 private val linePaint = Paint.Stroke(steelBlue, 2f, join = Paint.Stroke.Join.Round)
 
 fun areaChart(root: RootElement, width: Float, height: Float, data: List<Point>) {
-    val margin = Margin(top = 16f, right = 16f, bottom = 32f, left = 40f)
+    val margin = Margin(top = 16f, right = 16f, bottom = 32f, left = 48f)
     val innerWidth = width - margin.left - margin.right
     val innerHeight = height - margin.top - margin.bottom
 
@@ -77,7 +77,7 @@ fun areaChart(root: RootElement, width: Float, height: Float, data: List<Point>)
         .each { transform = Transform.Translate(vertical = innerHeight) }
         .call(
             axisBottom(x).apply {
-                tickCount = 12
+                tickCount = 6
                 formatter = { month -> monthNames.getOrNull(month.toInt() - 1) ?: "" }
             },
         )
