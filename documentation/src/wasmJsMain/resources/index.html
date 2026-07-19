@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1"/>
+    <title>Krayon — Kotlin multiplatform data visualization</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: #ffffff;
+        }
+        @media (prefers-color-scheme: dark) {
+            html, body {
+                background: #121212;
+            }
+            #loading {
+                color: #89b4d4;
+            }
+            #loading .spinner {
+                border-color: #89b4d433;
+                border-top-color: #89b4d4;
+            }
+        }
+        #loading {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            font-family: system-ui, sans-serif;
+            color: #4682b4;
+        }
+        #loading .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #4682b433;
+            border-top-color: #4682b4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+<div id="loading">
+    <div class="spinner"></div>
+    <div>Loading Krayon documentation&hellip;</div>
+</div>
+<script src="documentation.js"></script>
+</body>
+</html>
