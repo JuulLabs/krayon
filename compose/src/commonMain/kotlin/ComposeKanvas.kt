@@ -9,13 +9,15 @@ import androidx.compose.ui.graphics.drawscope.scale
 import com.juul.krayon.color.Color
 import com.juul.krayon.kanvas.Clip
 import com.juul.krayon.kanvas.Kanvas
+import com.juul.krayon.kanvas.MeasureText
 import com.juul.krayon.kanvas.Paint
 import com.juul.krayon.kanvas.Path
+import com.juul.krayon.kanvas.TextMetrics
 import com.juul.krayon.kanvas.Transform
 
 public class ComposeKanvas internal constructor(
     internal val scope: DrawScope,
-) : Kanvas {
+) : Kanvas, MeasureText {
 
     override val width: Float = scope.size.width / scope.density
     override val height: Float = scope.size.height / scope.density
@@ -100,6 +102,9 @@ public class ComposeKanvas internal constructor(
         // Delegate to expect/actual function
         drawText(this, text, x, y, paint)
     }
+
+    override fun measureText(text: CharSequence, paint: Paint.Text): TextMetrics =
+        com.juul.krayon.compose.measureText(text, paint)
 
     override fun pushClip(clip: Clip) {
         scope.drawContext.canvas.save()

@@ -16,15 +16,15 @@ import org.w3c.dom.ROUND
 import org.w3c.dom.SQUARE
 import kotlin.math.PI
 
-private val WHITESPACE = Regex("\\s")
-
 public class HtmlKanvas(
     element: HTMLCanvasElement,
     private val scalingFactor: Float = 1f,
-) : Kanvas, IsPointInPath {
+) : Kanvas, IsPointInPath, MeasureText {
 
     /** The raw HTMLCanvas's 2d rendering context. */
     public val context: CanvasRenderingContext2D = element.getContext("2d") as CanvasRenderingContext2D
+
+    private val textMeasurement = HtmlTextMeasurement()
 
     override val width: Float
         get() = context.canvas.width / scalingFactor
@@ -110,6 +110,9 @@ public class HtmlKanvas(
         applyStyle(paint)
         context.fillText(text.toString(), x.toDouble(), y.toDouble())
     }
+
+    override fun measureText(text: CharSequence, paint: Paint.Text): TextMetrics =
+        textMeasurement.measureText(text, paint)
 
     override fun pushClip(clip: Clip) {
         context.save()
@@ -269,11 +272,7 @@ public class HtmlKanvas(
             Paint.Text.Alignment.Center -> CanvasTextAlign.CENTER
             Paint.Text.Alignment.Right -> CanvasTextAlign.RIGHT
         }
-        val size = "${paint.size}px"
-        val name = paint.font.names.joinToString { font ->
-            if (WHITESPACE in font) "\"$font\"" else font
-        }
-        context.font = "$size $name"
+        context.font = paint.cssFont()
     }
 
     override fun isPointInPath(transform: Transform, path: Path, x: Float, y: Float): Boolean {

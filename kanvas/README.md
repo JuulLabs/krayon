@@ -136,6 +136,27 @@ Drawing to your Krayon canvas directly from Swift isn't recommend -- the API is 
 you should call a Kotlin function that handles drawing for you. As an example, using the `element`
 module, you might simply have `yourRootElement.draw(kanvas: kanvas)`.
 
+## Measuring Text
+
+Layout code often needs to know how large text will be before it is drawn (for example, to reserve
+space for axis labels). Backends that can measure text implement the `MeasureText` capability, which
+returns primitive, single-line `TextMetrics` (width plus baseline-relative `ascent`/`descent`, and a
+`height` convenience). This mirrors the `IsPointInPath` capability: the platform `Kanvas`
+implementations that can measure text also implement `MeasureText`, and standalone implementations
+exist for use where a `Kanvas` is not available (such as chart layout code). Line wrapping is not
+performed.
+
+```kotlin
+val paint = Paint.Text(black, size = 14f, Paint.Text.Alignment.Left, Font(sansSerif))
+
+// From any Kanvas that supports measurement (Android, HTML, Core Graphics, Compose):
+val metrics = (kanvas as MeasureText).measureText("Hello", paint)
+
+// Or, during layout, from a standalone measurer (no Kanvas required):
+val measurer: MeasureText = AndroidTextMeasurement(context) // HtmlTextMeasurement() / CoreTextMeasurement
+val width = measurer.measureText("Hello", paint).width
+```
+
 [badge-android]: http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat
 [badge-ios]: http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat
 [badge-js]: http://img.shields.io/badge/platform-js-F8DB5D.svg?style=flat

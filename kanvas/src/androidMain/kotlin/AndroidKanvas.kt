@@ -25,7 +25,9 @@ public class AndroidKanvas internal constructor(
     private var canvas: Canvas?,
     private val scalingFactor: Float = 1f,
     private val paintCache: PaintCache = PaintCache(context),
-) : Kanvas {
+) : Kanvas, MeasureText {
+
+    private val textMeasurement = AndroidTextMeasurement(context, paintCache)
 
     private val preTransform = Transform.Scale(horizontal = scalingFactor, vertical = scalingFactor)
 
@@ -111,6 +113,9 @@ public class AndroidKanvas internal constructor(
         require(paint is Paint.Text)
         withPaint(paint) { drawText(text, 0, text.length, x, y, it) }
     }
+
+    override fun measureText(text: CharSequence, paint: Paint.Text): TextMetrics =
+        textMeasurement.measureText(text, paint)
 
     @Suppress("DEPRECATION")
     override fun pushClip(clip: Clip) {

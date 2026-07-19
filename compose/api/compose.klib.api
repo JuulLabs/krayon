@@ -6,7 +6,7 @@
 // - Show declarations: true
 
 // Library unique name: <com.juul.krayon:compose>
-final class com.juul.krayon.compose/ComposeKanvas : com.juul.krayon.kanvas/Kanvas { // com.juul.krayon.compose/ComposeKanvas|null[0]
+final class com.juul.krayon.compose/ComposeKanvas : com.juul.krayon.kanvas/Kanvas, com.juul.krayon.kanvas/MeasureText { // com.juul.krayon.compose/ComposeKanvas|null[0]
     final val height // com.juul.krayon.compose/ComposeKanvas.height|{}height[0]
         final fun <get-height>(): kotlin/Float // com.juul.krayon.compose/ComposeKanvas.height.<get-height>|<get-height>(){}[0]
     final val width // com.juul.krayon.compose/ComposeKanvas.width|{}width[0]
@@ -20,6 +20,7 @@ final class com.juul.krayon.compose/ComposeKanvas : com.juul.krayon.kanvas/Kanva
     final fun drawPath(com.juul.krayon.kanvas/Path, com.juul.krayon.kanvas/Paint) // com.juul.krayon.compose/ComposeKanvas.drawPath|drawPath(com.juul.krayon.kanvas.Path;com.juul.krayon.kanvas.Paint){}[0]
     final fun drawRect(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.compose/ComposeKanvas.drawRect|drawRect(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
     final fun drawText(kotlin/CharSequence, kotlin/Float, kotlin/Float, com.juul.krayon.kanvas/Paint) // com.juul.krayon.compose/ComposeKanvas.drawText|drawText(kotlin.CharSequence;kotlin.Float;kotlin.Float;com.juul.krayon.kanvas.Paint){}[0]
+    final fun measureText(kotlin/CharSequence, com.juul.krayon.kanvas/Paint.Text): com.juul.krayon.kanvas/TextMetrics // com.juul.krayon.compose/ComposeKanvas.measureText|measureText(kotlin.CharSequence;com.juul.krayon.kanvas.Paint.Text){}[0]
     final fun pop() // com.juul.krayon.compose/ComposeKanvas.pop|pop(){}[0]
     final fun pushClip(com.juul.krayon.kanvas/Clip) // com.juul.krayon.compose/ComposeKanvas.pushClip|pushClip(com.juul.krayon.kanvas.Clip){}[0]
     final fun pushTransform(com.juul.krayon.kanvas/Transform) // com.juul.krayon.compose/ComposeKanvas.pushTransform|pushTransform(com.juul.krayon.kanvas.Transform){}[0]
@@ -49,4 +50,5 @@ final fun com.juul.krayon.compose/Kanvas(androidx.compose.ui/Modifier, kotlin/Fu
 final fun com.juul.krayon.compose/com_juul_krayon_compose_ComposeKanvas$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_ComposeKanvas$stableprop_getter|com_juul_krayon_compose_ComposeKanvas$stableprop_getter(){}[0]
 final fun com.juul.krayon.compose/com_juul_krayon_compose_ComposePathMarker$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_ComposePathMarker$stableprop_getter|com_juul_krayon_compose_ComposePathMarker$stableprop_getter(){}[0]
 final fun com.juul.krayon.compose/com_juul_krayon_compose_SkiaIsPointInPath$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_SkiaIsPointInPath$stableprop_getter|com_juul_krayon_compose_SkiaIsPointInPath$stableprop_getter(){}[0]
+final fun com.juul.krayon.compose/textMeasurement(): com.juul.krayon.kanvas/MeasureText // com.juul.krayon.compose/textMeasurement|textMeasurement(){}[0]
 final suspend fun (com.juul.krayon.core/Krayon).com.juul.krayon.compose/addFontAssociation(kotlin/String, org.jetbrains.compose.resources/FontResource, org.jetbrains.compose.resources/ResourceEnvironment) // com.juul.krayon.compose/addFontAssociation|addFontAssociation@com.juul.krayon.core.Krayon(kotlin.String;org.jetbrains.compose.resources.FontResource;org.jetbrains.compose.resources.ResourceEnvironment){}[0]

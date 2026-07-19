@@ -40,6 +40,15 @@ kotlin {
         val wasmJsMain by getting {
             dependsOn(skiaMain)
         }
+
+        getByName("jvmTest").dependencies {
+            implementation(compose.desktop.currentOs)
+        }
+
+        getByName("androidHostTest").dependencies {
+            implementation(libs.androidx.test)
+            implementation(libs.robolectric)
+        }
     }
 }
 

@@ -23,7 +23,7 @@ public class CGContextKanvas(
     private val unmanagedContext: CGContextRef,
     width: Double,
     height: Double,
-) : Kanvas {
+) : Kanvas, MeasureText {
 
     /** When calling from Swift, use `&yourCgContext`. */
     public constructor(
@@ -94,6 +94,9 @@ public class CGContextKanvas(
         // Manually adjust by doing `height - y` and calling it a day.
         drawText(unmanagedContext, text.toString(), x.toDouble(), (height - y).toDouble(), paint)
     }
+
+    override fun measureText(text: CharSequence, paint: Paint.Text): TextMetrics =
+        CoreTextMeasurement.measureText(text, paint)
 
     override fun pushClip(clip: Clip) {
         CGContextSaveGState(unmanagedContext)

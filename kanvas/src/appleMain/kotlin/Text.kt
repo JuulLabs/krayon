@@ -35,7 +35,7 @@ internal fun drawText(context: CGContextRef, text: String, x: Double, y: Double,
     CFRelease(line)
 }
 
-private val Paint.Text.ctFont: CTFontRef
+internal val Paint.Text.ctFont: CTFontRef
     get() = font.names.asSequence()
         .map { name -> FontCache[name, size] }
         .filterNotNull()
