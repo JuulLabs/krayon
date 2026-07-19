@@ -3,6 +3,11 @@ public final class com/juul/krayon/hierarchy/HierarchyKt {
 	public static final fun hierarchy (Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
 }
 
+public final class com/juul/krayon/hierarchy/Link {
+	public final fun getSource ()Lcom/juul/krayon/hierarchy/Node;
+	public final fun getTarget ()Lcom/juul/krayon/hierarchy/Node;
+}
+
 public final class com/juul/krayon/hierarchy/Node {
 	public final fun getChildren ()Ljava/util/List;
 	public final fun getData ()Ljava/lang/Object;
@@ -14,7 +19,9 @@ public final class com/juul/krayon/hierarchy/Node {
 
 public final class com/juul/krayon/hierarchy/NodeKt {
 	public static final fun ancestors (Lcom/juul/krayon/hierarchy/Node;)Lkotlin/sequences/Sequence;
+	public static final fun copy (Lcom/juul/krayon/hierarchy/Node;)Lcom/juul/krayon/hierarchy/Node;
 	public static final fun count (Lcom/juul/krayon/hierarchy/Node;)Lcom/juul/krayon/hierarchy/Node;
+	public static final fun descendants (Lcom/juul/krayon/hierarchy/Node;)Ljava/util/List;
 	public static final fun each (Lcom/juul/krayon/hierarchy/Node;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
 	public static final fun eachAfter (Lcom/juul/krayon/hierarchy/Node;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
 	public static final fun eachAfterIndexed (Lcom/juul/krayon/hierarchy/Node;Lkotlin/jvm/functions/Function2;)Lcom/juul/krayon/hierarchy/Node;
@@ -24,6 +31,9 @@ public final class com/juul/krayon/hierarchy/NodeKt {
 	public static final fun getDepth (Lcom/juul/krayon/hierarchy/Node;)I
 	public static final fun getHeight (Lcom/juul/krayon/hierarchy/Node;)I
 	public static final fun isLeaf (Lcom/juul/krayon/hierarchy/Node;)Z
+	public static final fun leaves (Lcom/juul/krayon/hierarchy/Node;)Ljava/util/List;
+	public static final fun links (Lcom/juul/krayon/hierarchy/Node;)Ljava/util/List;
+	public static final fun path (Lcom/juul/krayon/hierarchy/Node;Lcom/juul/krayon/hierarchy/Node;)Ljava/util/List;
 	public static final fun removeHierarchy (Lcom/juul/krayon/hierarchy/Node;)Lkotlin/sequences/Sequence;
 	public static final fun sort (Lcom/juul/krayon/hierarchy/Node;Ljava/util/Comparator;)Lcom/juul/krayon/hierarchy/Node;
 	public static final fun sum (Lcom/juul/krayon/hierarchy/Node;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
@@ -32,8 +42,113 @@ public final class com/juul/krayon/hierarchy/NodeKt {
 	public static final fun traversePreOrder (Lcom/juul/krayon/hierarchy/Node;)Lkotlin/sequences/Sequence;
 }
 
+public final class com/juul/krayon/hierarchy/Point {
+	public final fun getX ()F
+	public final fun getY ()F
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/hierarchy/StratifyKt {
+	public static final fun stratify (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lcom/juul/krayon/hierarchy/Node;
+}
+
 public final class com/juul/krayon/hierarchy/SumOfKt {
 	public static final fun sumOf (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)F
+}
+
+public final class com/juul/krayon/hierarchy/cluster/Cluster {
+	public fun <init> ()V
+	public fun <init> (FFZLkotlin/jvm/functions/Function2;)V
+	public synthetic fun <init> (FFZLkotlin/jvm/functions/Function2;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getHeight ()F
+	public final fun getNodeSize ()Z
+	public final fun getSeparation ()Lkotlin/jvm/functions/Function2;
+	public final fun getWidth ()F
+	public final fun layout (Lcom/juul/krayon/hierarchy/Node;)Lcom/juul/krayon/hierarchy/Node;
+	public final fun setHeight (F)V
+	public final fun setNodeSize (Z)V
+	public final fun setSeparation (Lkotlin/jvm/functions/Function2;)V
+	public final fun setWidth (F)V
+}
+
+public final class com/juul/krayon/hierarchy/cluster/ClusterKt {
+	public static final fun defaultSeparation ()Lkotlin/jvm/functions/Function2;
+	public static final fun layoutWith (Lcom/juul/krayon/hierarchy/Node;Lcom/juul/krayon/hierarchy/cluster/Cluster;)Lcom/juul/krayon/hierarchy/Node;
+}
+
+public final class com/juul/krayon/hierarchy/pack/Circle {
+	public final fun getRadius ()F
+	public final fun getX ()F
+	public final fun getY ()F
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/hierarchy/pack/Pack {
+	public fun <init> ()V
+	public fun <init> (FFLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V
+	public synthetic fun <init> (FFLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getHeight ()F
+	public final fun getPadding ()Lkotlin/jvm/functions/Function1;
+	public final fun getRadius ()Lkotlin/jvm/functions/Function1;
+	public final fun getWidth ()F
+	public final fun layout (Lcom/juul/krayon/hierarchy/Node;)Lcom/juul/krayon/hierarchy/Node;
+	public final fun setHeight (F)V
+	public final fun setPadding (Lkotlin/jvm/functions/Function1;)V
+	public final fun setRadius (Lkotlin/jvm/functions/Function1;)V
+	public final fun setWidth (F)V
+}
+
+public final class com/juul/krayon/hierarchy/pack/PackKt {
+	public static final fun layoutWith (Lcom/juul/krayon/hierarchy/Node;Lcom/juul/krayon/hierarchy/pack/Pack;)Lcom/juul/krayon/hierarchy/Node;
+}
+
+public final class com/juul/krayon/hierarchy/partition/Cell {
+	public final fun getHeight ()F
+	public final fun getWidth ()F
+	public final fun getX0 ()F
+	public final fun getX1 ()F
+	public final fun getY0 ()F
+	public final fun getY1 ()F
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/hierarchy/partition/Partition {
+	public fun <init> ()V
+	public fun <init> (FFFZ)V
+	public synthetic fun <init> (FFFZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getHeight ()F
+	public final fun getPadding ()F
+	public final fun getRound ()Z
+	public final fun getWidth ()F
+	public final fun layout (Lcom/juul/krayon/hierarchy/Node;)Lcom/juul/krayon/hierarchy/Node;
+	public final fun setHeight (F)V
+	public final fun setPadding (F)V
+	public final fun setRound (Z)V
+	public final fun setWidth (F)V
+}
+
+public final class com/juul/krayon/hierarchy/partition/PartitionKt {
+	public static final fun layoutWith (Lcom/juul/krayon/hierarchy/Node;Lcom/juul/krayon/hierarchy/partition/Partition;)Lcom/juul/krayon/hierarchy/Node;
+}
+
+public final class com/juul/krayon/hierarchy/tree/Tree {
+	public fun <init> ()V
+	public fun <init> (FFZLkotlin/jvm/functions/Function2;)V
+	public synthetic fun <init> (FFZLkotlin/jvm/functions/Function2;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getHeight ()F
+	public final fun getNodeSize ()Z
+	public final fun getSeparation ()Lkotlin/jvm/functions/Function2;
+	public final fun getWidth ()F
+	public final fun layout (Lcom/juul/krayon/hierarchy/Node;)Lcom/juul/krayon/hierarchy/Node;
+	public final fun setHeight (F)V
+	public final fun setNodeSize (Z)V
+	public final fun setSeparation (Lkotlin/jvm/functions/Function2;)V
+	public final fun setWidth (F)V
+}
+
+public final class com/juul/krayon/hierarchy/tree/TreeKt {
+	public static final fun defaultSeparation ()Lkotlin/jvm/functions/Function2;
+	public static final fun layoutWith (Lcom/juul/krayon/hierarchy/Node;Lcom/juul/krayon/hierarchy/tree/Tree;)Lcom/juul/krayon/hierarchy/Node;
 }
 
 public final class com/juul/krayon/hierarchy/treemap/Dice : com/juul/krayon/hierarchy/treemap/TileMethod {

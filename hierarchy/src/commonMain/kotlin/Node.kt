@@ -40,7 +40,7 @@ public fun <T, L> Node<T, L>.ancestors(): Sequence<Node<T, L>> = sequence {
     var current: Node<T, L>? = this@ancestors
     while (current != null) {
         yield(current)
-        current = parent
+        current = current.parent
     }
 }
 
@@ -120,3 +120,69 @@ public fun <T, L> Node<T?, L>.removeHierarchy(): Sequence<Pair<T, L>> =
     traverseBreadthFirst()
         .filter { it.data != null }
         .map { checkNotNull(it.data) to it.layout }
+
+/** A directed edge from a parent [source] node to a child [target] node, as returned by [links]. */
+public class Link<T, L> internal constructor(
+    public val source: Node<T, L>,
+    public val target: Node<T, L>,
+)
+
+/** Returns all descendant nodes in breadth-first order, starting with `this`. */
+public fun <T, L> Node<T, L>.descendants(): List<Node<T, L>> = traverseBreadthFirst().toList()
+
+/** Returns all leaf nodes (those with no children) in pre-order. */
+public fun <T, L> Node<T, L>.leaves(): List<Node<T, L>> = traversePreOrder().filter { it.isLeaf }.toList()
+
+/** Returns a [Link] from each node's parent to that node, for every descendant except `this`, in breadth-first order. */
+public fun <T, L> Node<T, L>.links(): List<Link<T, L>> {
+    val root = this
+    val result = mutableListOf<Link<T, L>>()
+    traverseBreadthFirst().forEach { node ->
+        if (node !== root) result += Link(checkNotNull(node.parent), node)
+    }
+    return result
+}
+
+/** Returns the shortest path of nodes from `this` to [target], passing through their least common ancestor. */
+public fun <T, L> Node<T, L>.path(target: Node<T, L>): List<Node<T, L>> {
+    val ancestor = leastCommonAncestor(this, target)
+    val nodes = mutableListOf(this)
+    var start: Node<T, L> = this
+    while (start !== ancestor) {
+        start = checkNotNull(start.parent)
+        nodes.add(start)
+    }
+    val split = nodes.size
+    var end: Node<T, L> = target
+    while (end !== ancestor) {
+        nodes.add(split, end)
+        end = checkNotNull(end.parent)
+    }
+    return nodes
+}
+
+private fun <T, L> leastCommonAncestor(a: Node<T, L>, b: Node<T, L>): Node<T, L>? {
+    if (a === b) return a
+    val aNodes = a.ancestors().toMutableList()
+    val bNodes = b.ancestors().toMutableList()
+    var common: Node<T, L>? = null
+    var x = aNodes.removeLastOrNull()
+    var y = bNodes.removeLastOrNull()
+    while (x === y && x != null) {
+        common = x
+        x = aNodes.removeLastOrNull()
+        y = bNodes.removeLastOrNull()
+    }
+    return common
+}
+
+/** Returns a deep copy of the subtree rooted at `this`, detached from any parent. Data and layout references are shared. */
+public fun <T, L> Node<T, L>.copy(): Node<T, L> {
+    fun copyNode(source: Node<T, L>, parent: Node<T, L>?): Node<T, L> {
+        val node = Node(source.data, source.layout, parent)
+        node.weight = source.weight
+        node.children = source.children.map { copyNode(it, node) }
+        return node
+    }
+    return copyNode(this, null)
+}
