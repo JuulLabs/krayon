@@ -1,6 +1,5 @@
 package com.juul.krayon.documentation.features.concepts
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,18 +12,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.FixedScale
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import com.juul.krayon.color.crimson
 import com.juul.krayon.color.lightSteelBlue
 import com.juul.krayon.color.steelBlue
 import com.juul.krayon.compose.ElementView
+import com.juul.krayon.documentation.components.ClassStructureDiagram
 import com.juul.krayon.documentation.components.CodeBlock
 import com.juul.krayon.documentation.components.DemoCard
 import com.juul.krayon.documentation.components.MarkdownBlock
-import com.juul.krayon.documentation.generated.resources.Res
-import com.juul.krayon.documentation.generated.resources.class_structure
 import com.juul.krayon.element.CircleElement
 import com.juul.krayon.element.LineElement
 import com.juul.krayon.element.RectangleElement
@@ -36,7 +33,6 @@ import com.juul.krayon.selection.data
 import com.juul.krayon.selection.each
 import com.juul.krayon.selection.join
 import com.juul.krayon.selection.selectAll
-import org.jetbrains.compose.resources.painterResource
 
 /** A tiny scene used to demonstrate that one element tree renders to any Kanvas. */
 private fun miniScene(root: RootElement, width: Float, height: Float, data: Unit) {
@@ -123,16 +119,7 @@ fun RenderingScreen() {
             """,
             Modifier.padding(vertical = 8.dp),
         )
-        Image(
-            painter = painterResource(Res.drawable.class_structure),
-            contentDescription = "Element tree renders through Kanvas implementations on each platform",
-            contentScale = FixedScale(2f),
-            modifier = Modifier
-                .padding(vertical = 8.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .background(Color.White)
-                .padding(12.dp),
-        )
+        ClassStructureDiagram()
         MarkdownBlock(
             """
             | Kanvas | Platform | Module |

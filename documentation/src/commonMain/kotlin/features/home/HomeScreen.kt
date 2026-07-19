@@ -1,7 +1,5 @@
 package com.juul.krayon.documentation.features.home
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,24 +8,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.FixedScale
 import androidx.compose.ui.unit.dp
 import com.juul.krayon.documentation.Screen
+import com.juul.krayon.documentation.components.DataToDomDiagram
 import com.juul.krayon.documentation.components.DemoCard
 import com.juul.krayon.documentation.components.MarkdownBlock
 import com.juul.krayon.documentation.features.gallery.SineWaveDemo
-import com.juul.krayon.documentation.generated.resources.Res
-import com.juul.krayon.documentation.generated.resources.data_to_dom
-import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun HomeScreen(onNavigate: (Screen) -> Unit) {
@@ -78,16 +70,7 @@ fun HomeScreen(onNavigate: (Screen) -> Unit) {
             """,
             Modifier.padding(vertical = 8.dp),
         )
-        Image(
-            painter = painterResource(Res.drawable.data_to_dom),
-            contentDescription = "Data flows through Krayon to platform canvases",
-            contentScale = FixedScale(2f),
-            modifier = Modifier
-                .padding(vertical = 8.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .background(Color.White)
-                .padding(12.dp),
-        )
+        DataToDomDiagram()
         MarkdownBlock(
             """
             A chart in Krayon is an ordinary Kotlin function of its data:

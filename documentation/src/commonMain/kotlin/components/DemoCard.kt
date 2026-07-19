@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -43,7 +44,10 @@ fun DemoCard(
                     .padding(8.dp),
             ) {
                 CompositionLocalProvider(LocalContentColor provides MaterialTheme.colors.onSurface) {
-                    content()
+                    // Text selection gestures shouldn't compete with chart hover/drag interactions.
+                    DisableSelection {
+                        content()
+                    }
                 }
             }
         }

@@ -29,9 +29,8 @@ Useful for a faster development loop:
 |---|---|
 | `src/commonMain/kotlin/samples/` | Chart samples: pure `(RootElement, width, height, data)` functions shown in the gallery |
 | `src/commonMain/kotlin/features/` | Screens (home, getting started, concepts, D3 guide, gallery) |
-| `src/commonMain/kotlin/components/` | Shared UI (markdown rendering, code display, demo framing) |
-| `src/commonMain/composeResources/` | Static resources (fonts, diagram images) |
-| `mermaid/` | Diagram sources (see below) |
+| `src/commonMain/kotlin/components/` | Shared UI (markdown rendering, code display, demo framing, Krayon-drawn diagrams) |
+| `src/commonMain/composeResources/` | Static resources (fonts) |
 
 ## Sample code display
 
@@ -42,9 +41,8 @@ code the app compiled and ran — it cannot drift.
 
 ## Diagrams
 
-Mermaid sources live in `mermaid/` with `.mermaid` extensions. To convert them to PNGs (in
-`src/commonMain/composeResources/drawable/`), run `mermaid/convert.sh` (requires
-[mermaid-cli](https://github.com/mermaid-js/mermaid-cli)).
+Architecture diagrams (e.g. on the home and "Elements & rendering" pages) are drawn live by
+Krayon itself — see `src/commonMain/kotlin/components/Diagrams.kt`.
 
 ## Deployment
 

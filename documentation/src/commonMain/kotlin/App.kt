@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -56,8 +57,11 @@ fun App(
                     contentAlignment = Alignment.TopCenter,
                     modifier = Modifier.fillMaxSize().verticalScroll(scrollState),
                 ) {
-                    Column(Modifier.widthIn(max = 920.dp).padding(horizontal = 24.dp, vertical = 24.dp)) {
-                        AppNavHost(navController)
+                    // Documentation text (including rendered markdown) is selectable.
+                    SelectionContainer {
+                        Column(Modifier.widthIn(max = 920.dp).padding(horizontal = 24.dp, vertical = 24.dp)) {
+                            AppNavHost(navController)
+                        }
                     }
                 }
             }
