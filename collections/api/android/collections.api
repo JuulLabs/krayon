@@ -1,0 +1,130 @@
+public final class com/juul/krayon/collections/Adder {
+	public fun <init> ()V
+	public final fun add (D)Lcom/juul/krayon/collections/Adder;
+	public final fun value ()D
+}
+
+public final class com/juul/krayon/collections/Bin : java/util/List, kotlin/jvm/internal/markers/KMappedMarker {
+	public fun add (ILjava/lang/Object;)V
+	public fun add (Ljava/lang/Object;)Z
+	public fun addAll (ILjava/util/Collection;)Z
+	public fun addAll (Ljava/util/Collection;)Z
+	public fun clear ()V
+	public fun contains (Ljava/lang/Object;)Z
+	public fun containsAll (Ljava/util/Collection;)Z
+	public fun equals (Ljava/lang/Object;)Z
+	public fun get (I)Ljava/lang/Object;
+	public final fun getLowerBound ()D
+	public fun getSize ()I
+	public final fun getUpperBound ()D
+	public fun hashCode ()I
+	public fun indexOf (Ljava/lang/Object;)I
+	public fun isEmpty ()Z
+	public fun iterator ()Ljava/util/Iterator;
+	public fun lastIndexOf (Ljava/lang/Object;)I
+	public fun listIterator ()Ljava/util/ListIterator;
+	public fun listIterator (I)Ljava/util/ListIterator;
+	public fun remove (I)Ljava/lang/Object;
+	public fun remove (Ljava/lang/Object;)Z
+	public fun removeAll (Ljava/util/Collection;)Z
+	public fun replaceAll (Ljava/util/function/UnaryOperator;)V
+	public fun retainAll (Ljava/util/Collection;)Z
+	public fun set (ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun size ()I
+	public fun sort (Ljava/util/Comparator;)V
+	public fun subList (II)Ljava/util/List;
+	public fun toArray ()[Ljava/lang/Object;
+	public fun toArray ([Ljava/lang/Object;)[Ljava/lang/Object;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/collections/BinKt {
+	public static final fun bin (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lcom/juul/krayon/collections/Thresholds;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
+	public static synthetic fun bin$default (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lcom/juul/krayon/collections/Thresholds;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/util/List;
+}
+
+public final class com/juul/krayon/collections/BisectKt {
+	public static final fun bisect (Ljava/util/List;Ljava/lang/Comparable;II)I
+	public static synthetic fun bisect$default (Ljava/util/List;Ljava/lang/Comparable;IIILjava/lang/Object;)I
+	public static final fun bisectLeft (Ljava/util/List;Ljava/lang/Comparable;II)I
+	public static final fun bisectLeft (Ljava/util/List;Ljava/lang/Comparable;IILkotlin/jvm/functions/Function1;)I
+	public static synthetic fun bisectLeft$default (Ljava/util/List;Ljava/lang/Comparable;IIILjava/lang/Object;)I
+	public static synthetic fun bisectLeft$default (Ljava/util/List;Ljava/lang/Comparable;IILkotlin/jvm/functions/Function1;ILjava/lang/Object;)I
+	public static final fun bisectRight (Ljava/util/List;Ljava/lang/Comparable;II)I
+	public static final fun bisectRight (Ljava/util/List;Ljava/lang/Comparable;IILkotlin/jvm/functions/Function1;)I
+	public static synthetic fun bisectRight$default (Ljava/util/List;Ljava/lang/Comparable;IIILjava/lang/Object;)I
+	public static synthetic fun bisectRight$default (Ljava/util/List;Ljava/lang/Comparable;IILkotlin/jvm/functions/Function1;ILjava/lang/Object;)I
+}
+
+public final class com/juul/krayon/collections/PreciseSumKt {
+	public static final fun preciseCumulativeSums (Ljava/lang/Iterable;)Ljava/util/List;
+	public static final fun preciseSum (Ljava/lang/Iterable;)D
+}
+
+public final class com/juul/krayon/collections/QuantileKt {
+	public static final fun median (Ljava/lang/Iterable;)Ljava/lang/Double;
+	public static final fun quantile (Ljava/lang/Iterable;D)Ljava/lang/Double;
+	public static final fun quantileSorted (Ljava/util/List;D)Ljava/lang/Double;
+}
+
+public final class com/juul/krayon/collections/RankKt {
+	public static final fun rank (Ljava/lang/Iterable;Ljava/util/Comparator;)[I
+	public static final fun rank (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)[I
+}
+
+public final class com/juul/krayon/collections/StatisticsKt {
+	public static final fun standardDeviation (Ljava/lang/Iterable;)Ljava/lang/Double;
+	public static final fun variance (Ljava/lang/Iterable;)Ljava/lang/Double;
+}
+
+public abstract interface class com/juul/krayon/collections/Thresholds {
+}
+
+public final class com/juul/krayon/collections/Thresholds$Boundaries : com/juul/krayon/collections/Thresholds {
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/juul/krayon/collections/Thresholds$Boundaries;
+	public static synthetic fun copy$default (Lcom/juul/krayon/collections/Thresholds$Boundaries;Ljava/util/List;ILjava/lang/Object;)Lcom/juul/krayon/collections/Thresholds$Boundaries;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getValues ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/collections/Thresholds$Count : com/juul/krayon/collections/Thresholds {
+	public fun <init> (I)V
+	public final fun component1 ()I
+	public final fun copy (I)Lcom/juul/krayon/collections/Thresholds$Count;
+	public static synthetic fun copy$default (Lcom/juul/krayon/collections/Thresholds$Count;IILjava/lang/Object;)Lcom/juul/krayon/collections/Thresholds$Count;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCount ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/collections/Thresholds$FreedmanDiaconis : com/juul/krayon/collections/Thresholds {
+	public static final field INSTANCE Lcom/juul/krayon/collections/Thresholds$FreedmanDiaconis;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/collections/Thresholds$Scott : com/juul/krayon/collections/Thresholds {
+	public static final field INSTANCE Lcom/juul/krayon/collections/Thresholds$Scott;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/collections/Thresholds$Sturges : com/juul/krayon/collections/Thresholds {
+	public static final field INSTANCE Lcom/juul/krayon/collections/Thresholds$Sturges;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/collections/TransformationsKt {
+	public static final fun cross (Ljava/lang/Iterable;Ljava/lang/Iterable;)Ljava/util/List;
+	public static final fun transpose (Ljava/util/List;)Ljava/util/List;
+}
+

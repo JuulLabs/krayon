@@ -21,6 +21,7 @@ includeBuild("build-logic")
 include(
     "axis",
     "box",
+    "collections",
     "color",
     "compose",
     "core",

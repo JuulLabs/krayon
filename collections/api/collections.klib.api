@@ -1,0 +1,104 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, js, macosArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.juul.krayon:collections>
+sealed interface com.juul.krayon.collections/Thresholds { // com.juul.krayon.collections/Thresholds|null[0]
+    final class Boundaries : com.juul.krayon.collections/Thresholds { // com.juul.krayon.collections/Thresholds.Boundaries|null[0]
+        constructor <init>(kotlin.collections/List<kotlin/Double>) // com.juul.krayon.collections/Thresholds.Boundaries.<init>|<init>(kotlin.collections.List<kotlin.Double>){}[0]
+
+        final val values // com.juul.krayon.collections/Thresholds.Boundaries.values|{}values[0]
+            final fun <get-values>(): kotlin.collections/List<kotlin/Double> // com.juul.krayon.collections/Thresholds.Boundaries.values.<get-values>|<get-values>(){}[0]
+
+        final fun component1(): kotlin.collections/List<kotlin/Double> // com.juul.krayon.collections/Thresholds.Boundaries.component1|component1(){}[0]
+        final fun copy(kotlin.collections/List<kotlin/Double> = ...): com.juul.krayon.collections/Thresholds.Boundaries // com.juul.krayon.collections/Thresholds.Boundaries.copy|copy(kotlin.collections.List<kotlin.Double>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.collections/Thresholds.Boundaries.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.collections/Thresholds.Boundaries.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.collections/Thresholds.Boundaries.toString|toString(){}[0]
+    }
+
+    final class Count : com.juul.krayon.collections/Thresholds { // com.juul.krayon.collections/Thresholds.Count|null[0]
+        constructor <init>(kotlin/Int) // com.juul.krayon.collections/Thresholds.Count.<init>|<init>(kotlin.Int){}[0]
+
+        final val count // com.juul.krayon.collections/Thresholds.Count.count|{}count[0]
+            final fun <get-count>(): kotlin/Int // com.juul.krayon.collections/Thresholds.Count.count.<get-count>|<get-count>(){}[0]
+
+        final fun component1(): kotlin/Int // com.juul.krayon.collections/Thresholds.Count.component1|component1(){}[0]
+        final fun copy(kotlin/Int = ...): com.juul.krayon.collections/Thresholds.Count // com.juul.krayon.collections/Thresholds.Count.copy|copy(kotlin.Int){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.collections/Thresholds.Count.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.collections/Thresholds.Count.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.collections/Thresholds.Count.toString|toString(){}[0]
+    }
+
+    final object FreedmanDiaconis : com.juul.krayon.collections/Thresholds { // com.juul.krayon.collections/Thresholds.FreedmanDiaconis|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.collections/Thresholds.FreedmanDiaconis.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.collections/Thresholds.FreedmanDiaconis.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.collections/Thresholds.FreedmanDiaconis.toString|toString(){}[0]
+    }
+
+    final object Scott : com.juul.krayon.collections/Thresholds { // com.juul.krayon.collections/Thresholds.Scott|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.collections/Thresholds.Scott.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.collections/Thresholds.Scott.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.collections/Thresholds.Scott.toString|toString(){}[0]
+    }
+
+    final object Sturges : com.juul.krayon.collections/Thresholds { // com.juul.krayon.collections/Thresholds.Sturges|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.collections/Thresholds.Sturges.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.juul.krayon.collections/Thresholds.Sturges.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.juul.krayon.collections/Thresholds.Sturges.toString|toString(){}[0]
+    }
+}
+
+final class <#A: out kotlin/Any?> com.juul.krayon.collections/Bin : kotlin.collections/List<#A> { // com.juul.krayon.collections/Bin|null[0]
+    final val lowerBound // com.juul.krayon.collections/Bin.lowerBound|{}lowerBound[0]
+        final fun <get-lowerBound>(): kotlin/Double // com.juul.krayon.collections/Bin.lowerBound.<get-lowerBound>|<get-lowerBound>(){}[0]
+    final val size // com.juul.krayon.collections/Bin.size|{}size[0]
+        final fun <get-size>(): kotlin/Int // com.juul.krayon.collections/Bin.size.<get-size>|<get-size>(){}[0]
+    final val upperBound // com.juul.krayon.collections/Bin.upperBound|{}upperBound[0]
+        final fun <get-upperBound>(): kotlin/Double // com.juul.krayon.collections/Bin.upperBound.<get-upperBound>|<get-upperBound>(){}[0]
+
+    final fun contains(#A): kotlin/Boolean // com.juul.krayon.collections/Bin.contains|contains(1:0){}[0]
+    final fun containsAll(kotlin.collections/Collection<#A>): kotlin/Boolean // com.juul.krayon.collections/Bin.containsAll|containsAll(kotlin.collections.Collection<1:0>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.collections/Bin.equals|equals(kotlin.Any?){}[0]
+    final fun get(kotlin/Int): #A // com.juul.krayon.collections/Bin.get|get(kotlin.Int){}[0]
+    final fun hashCode(): kotlin/Int // com.juul.krayon.collections/Bin.hashCode|hashCode(){}[0]
+    final fun indexOf(#A): kotlin/Int // com.juul.krayon.collections/Bin.indexOf|indexOf(1:0){}[0]
+    final fun isEmpty(): kotlin/Boolean // com.juul.krayon.collections/Bin.isEmpty|isEmpty(){}[0]
+    final fun iterator(): kotlin.collections/Iterator<#A> // com.juul.krayon.collections/Bin.iterator|iterator(){}[0]
+    final fun lastIndexOf(#A): kotlin/Int // com.juul.krayon.collections/Bin.lastIndexOf|lastIndexOf(1:0){}[0]
+    final fun listIterator(): kotlin.collections/ListIterator<#A> // com.juul.krayon.collections/Bin.listIterator|listIterator(){}[0]
+    final fun listIterator(kotlin/Int): kotlin.collections/ListIterator<#A> // com.juul.krayon.collections/Bin.listIterator|listIterator(kotlin.Int){}[0]
+    final fun subList(kotlin/Int, kotlin/Int): kotlin.collections/List<#A> // com.juul.krayon.collections/Bin.subList|subList(kotlin.Int;kotlin.Int){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.collections/Bin.toString|toString(){}[0]
+
+    // Targets: [js]
+    final fun asJsReadonlyArrayView(): kotlin.js.collections/JsReadonlyArray<#A> // com.juul.krayon.collections/Bin.asJsReadonlyArrayView|asJsReadonlyArrayView(){}[0]
+}
+
+final class com.juul.krayon.collections/Adder { // com.juul.krayon.collections/Adder|null[0]
+    constructor <init>() // com.juul.krayon.collections/Adder.<init>|<init>(){}[0]
+
+    final fun add(kotlin/Double): com.juul.krayon.collections/Adder // com.juul.krayon.collections/Adder.add|add(kotlin.Double){}[0]
+    final fun value(): kotlin/Double // com.juul.krayon.collections/Adder.value|value(){}[0]
+}
+
+final fun (kotlin.collections/Iterable<kotlin/Double>).com.juul.krayon.collections/median(): kotlin/Double? // com.juul.krayon.collections/median|median@kotlin.collections.Iterable<kotlin.Double>(){}[0]
+final fun (kotlin.collections/Iterable<kotlin/Double>).com.juul.krayon.collections/preciseCumulativeSums(): kotlin.collections/List<kotlin/Double> // com.juul.krayon.collections/preciseCumulativeSums|preciseCumulativeSums@kotlin.collections.Iterable<kotlin.Double>(){}[0]
+final fun (kotlin.collections/Iterable<kotlin/Double>).com.juul.krayon.collections/preciseSum(): kotlin/Double // com.juul.krayon.collections/preciseSum|preciseSum@kotlin.collections.Iterable<kotlin.Double>(){}[0]
+final fun (kotlin.collections/Iterable<kotlin/Double>).com.juul.krayon.collections/quantile(kotlin/Double): kotlin/Double? // com.juul.krayon.collections/quantile|quantile@kotlin.collections.Iterable<kotlin.Double>(kotlin.Double){}[0]
+final fun (kotlin.collections/Iterable<kotlin/Double>).com.juul.krayon.collections/standardDeviation(): kotlin/Double? // com.juul.krayon.collections/standardDeviation|standardDeviation@kotlin.collections.Iterable<kotlin.Double>(){}[0]
+final fun (kotlin.collections/Iterable<kotlin/Double>).com.juul.krayon.collections/variance(): kotlin/Double? // com.juul.krayon.collections/variance|variance@kotlin.collections.Iterable<kotlin.Double>(){}[0]
+final fun (kotlin.collections/List<kotlin/Double>).com.juul.krayon.collections/quantileSorted(kotlin/Double): kotlin/Double? // com.juul.krayon.collections/quantileSorted|quantileSorted@kotlin.collections.List<kotlin.Double>(kotlin.Double){}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> (kotlin.collections/Iterable<#A>).com.juul.krayon.collections/cross(kotlin.collections/Iterable<#B>): kotlin.collections/List<kotlin/Pair<#A, #B>> // com.juul.krayon.collections/cross|cross@kotlin.collections.Iterable<0:0>(kotlin.collections.Iterable<0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Comparable<#B>> (kotlin.collections/Iterable<#A>).com.juul.krayon.collections/rank(kotlin/Function1<#A, #B>): kotlin/IntArray // com.juul.krayon.collections/rank|rank@kotlin.collections.Iterable<0:0>(kotlin.Function1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Comparable<0:1>>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Comparable<#B>> (kotlin.collections/List<#A>).com.juul.krayon.collections/bisectLeft(#B, kotlin/Int = ..., kotlin/Int = ..., kotlin/Function1<#A, #B>): kotlin/Int // com.juul.krayon.collections/bisectLeft|bisectLeft@kotlin.collections.List<0:0>(0:1;kotlin.Int;kotlin.Int;kotlin.Function1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Comparable<0:1>>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Comparable<#B>> (kotlin.collections/List<#A>).com.juul.krayon.collections/bisectRight(#B, kotlin/Int = ..., kotlin/Int = ..., kotlin/Function1<#A, #B>): kotlin/Int // com.juul.krayon.collections/bisectRight|bisectRight@kotlin.collections.List<0:0>(0:1;kotlin.Int;kotlin.Int;kotlin.Function1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Comparable<0:1>>}[0]
+final fun <#A: kotlin/Any?> (kotlin.collections/Iterable<#A>).com.juul.krayon.collections/bin(kotlin/Function1<kotlin.collections/List<kotlin/Double>, kotlin.ranges/ClosedFloatingPointRange<kotlin/Double>>? = ..., com.juul.krayon.collections/Thresholds = ..., kotlin/Function1<#A, kotlin/Double>): kotlin.collections/List<com.juul.krayon.collections/Bin<#A>> // com.juul.krayon.collections/bin|bin@kotlin.collections.Iterable<0:0>(kotlin.Function1<kotlin.collections.List<kotlin.Double>,kotlin.ranges.ClosedFloatingPointRange<kotlin.Double>>?;com.juul.krayon.collections.Thresholds;kotlin.Function1<0:0,kotlin.Double>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (kotlin.collections/Iterable<#A>).com.juul.krayon.collections/rank(kotlin/Comparator<in #A>): kotlin/IntArray // com.juul.krayon.collections/rank|rank@kotlin.collections.Iterable<0:0>(kotlin.Comparator<in|0:0>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (kotlin.collections/List<kotlin.collections/List<#A>>).com.juul.krayon.collections/transpose(): kotlin.collections/List<kotlin.collections/List<#A>> // com.juul.krayon.collections/transpose|transpose@kotlin.collections.List<kotlin.collections.List<0:0>>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Comparable<#A>> (kotlin.collections/List<#A>).com.juul.krayon.collections/bisect(#A, kotlin/Int = ..., kotlin/Int = ...): kotlin/Int // com.juul.krayon.collections/bisect|bisect@kotlin.collections.List<0:0>(0:0;kotlin.Int;kotlin.Int){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (kotlin.collections/List<#A>).com.juul.krayon.collections/bisectLeft(#A, kotlin/Int = ..., kotlin/Int = ...): kotlin/Int // com.juul.krayon.collections/bisectLeft|bisectLeft@kotlin.collections.List<0:0>(0:0;kotlin.Int;kotlin.Int){0§<kotlin.Comparable<0:0>>}[0]
+final fun <#A: kotlin/Comparable<#A>> (kotlin.collections/List<#A>).com.juul.krayon.collections/bisectRight(#A, kotlin/Int = ..., kotlin/Int = ...): kotlin/Int // com.juul.krayon.collections/bisectRight|bisectRight@kotlin.collections.List<0:0>(0:0;kotlin.Int;kotlin.Int){0§<kotlin.Comparable<0:0>>}[0]
