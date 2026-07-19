@@ -49,15 +49,16 @@ private fun DiagramPanel(
             color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f),
             modifier = Modifier.padding(top = 4.dp),
         )
-        SampleCodeView(codePath, Modifier.padding(top = 8.dp))
+        CollapsibleSource(label = "Show the code that draws this diagram ($codePath)", modifier = Modifier.padding(top = 4.dp)) {
+            SampleCodeView(codePath)
+        }
     }
 }
 
 @Composable
 fun DataToDomDiagram(modifier: Modifier = Modifier) {
     DiagramPanel(
-        caption = "Rendered live by Krayon — not an image. Drawn by the code below " +
-            "(plus a small shared box-and-arrow renderer, DiagramRenderer.kt).",
+        caption = "Rendered live by Krayon — not an image.",
         height = 120.dp,
         codePath = "DataToDomDiagram.kt",
     ) {
@@ -68,8 +69,7 @@ fun DataToDomDiagram(modifier: Modifier = Modifier) {
 @Composable
 fun ClassStructureDiagram(modifier: Modifier = Modifier) {
     DiagramPanel(
-        caption = "Rendered live by Krayon — not an image. Drawn by the code below, " +
-            "via the shared box-and-arrow renderer that follows.",
+        caption = "Rendered live by Krayon — not an image.",
         height = 392.dp,
         codePath = "ClassStructureDiagram.kt",
     ) {
@@ -80,5 +80,7 @@ fun ClassStructureDiagram(modifier: Modifier = Modifier) {
 /** The shared box-and-arrow renderer's source, shown on the rendering concepts page. */
 @Composable
 fun DiagramRendererSource(modifier: Modifier = Modifier) {
-    SampleCodeView("DiagramRenderer.kt", modifier)
+    CollapsibleSource(label = "Show the shared renderer (DiagramRenderer.kt)", modifier = modifier) {
+        SampleCodeView("DiagramRenderer.kt")
+    }
 }
