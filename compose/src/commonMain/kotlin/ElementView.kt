@@ -26,9 +26,12 @@ import androidx.compose.ui.input.pointer.PointerType
 import androidx.compose.ui.input.pointer.pointerInput
 import com.juul.krayon.element.RootElement
 import com.juul.krayon.element.UpdateElement
+import com.juul.krayon.transition.hasPendingTransitions
+import com.juul.krayon.transition.tickTransitions
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.isActive
 import kotlin.time.Clock
@@ -78,10 +81,16 @@ public fun <T> ElementView(
         LaunchedEffect(dataSource, updateElements) {
             combine(dataSource, width, height) { data, width, height ->
                 Triple(data, width, height)
-            }.collect { (data, width, height) ->
-                withFrameMillis { // We don't actually need the frame time here, but this causes sync with the device framerate
-                    if (width > 0 && height > 0) { // It's possible to have a negative size in compose. No-op in that case.
-                        updateElements.update(root, width, height, data)
+            }.collectLatest { (data, width, height) ->
+                // It's possible to have a negative size in compose. No-op in that case.
+                if (width > 0 && height > 0) {
+                    // Ticking before the update syncs the transition clock, so that transitions
+                    // created inside the update reference the current frame time.
+                    root.tickTransitions(withFrameMillis { it })
+                    updateElements.update(root, width, height, data)
+                    frameTime.value = Clock.System.now()
+                    while (root.hasPendingTransitions) {
+                        root.tickTransitions(withFrameMillis { it })
                         frameTime.value = Clock.System.now()
                     }
                 }

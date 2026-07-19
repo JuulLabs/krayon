@@ -16,6 +16,7 @@ kotlin {
             api(projects.selection)
             api(projects.shape)
             api(projects.time)
+            api(projects.transition)
         }
     }
 }

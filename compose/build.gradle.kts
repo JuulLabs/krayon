@@ -14,6 +14,7 @@ kotlin {
             api(projects.core)
             api(projects.kanvas)
             api(projects.element)
+            api(projects.transition)
             api(compose.components.resources)
             api(compose.runtime)
             api(compose.foundation)

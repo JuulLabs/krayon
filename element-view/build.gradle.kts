@@ -6,6 +6,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.element)
+            api(projects.transition)
             api(libs.coroutines.core)
         }
 
