@@ -65,4 +65,35 @@ class ToColorTests {
     fun toColorOrNull_onInvalidCharacter_returnsNull() {
         assertNull("#fgf".toColorOrNull())
     }
+
+    @Test
+    fun toColor_withRgbFunction_succeeds() {
+        assertEquals(red, "rgb(255, 0, 0)".toColor())
+        assertEquals(cornflowerBlue, "rgb(100, 149, 237)".toColor())
+    }
+
+    @Test
+    fun toColor_withRgbPercentFunction_succeeds() {
+        assertEquals(red, "rgb(100%, 0%, 0%)".toColor())
+    }
+
+    @Test
+    fun toColor_withRgbaFunction_succeeds() {
+        assertEquals(red.copy(alpha = 0x80), "rgba(255, 0, 0, 0.5)".toColor())
+    }
+
+    @Test
+    fun toColor_withHslFunction_succeeds() {
+        assertEquals(lime, "hsl(120, 100%, 50%)".toColor())
+    }
+
+    @Test
+    fun toColor_withHslaFunction_succeeds() {
+        assertEquals(lime.copy(alpha = 0x80), "hsla(120, 100%, 50%, 0.5)".toColor())
+    }
+
+    @Test
+    fun toColor_withUnknownFunction_throwsException() {
+        assertFailsWith<IllegalArgumentException> { "cmyk(0,0,0,0)".toColor() }
+    }
 }

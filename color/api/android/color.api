@@ -1,3 +1,10 @@
+public final class com/juul/krayon/color/BrightnessKt {
+	public static final fun brighter-L9i1qkA (IF)I
+	public static synthetic fun brighter-L9i1qkA$default (IFILjava/lang/Object;)I
+	public static final fun darker-L9i1qkA (IF)I
+	public static synthetic fun darker-L9i1qkA$default (IFILjava/lang/Object;)I
+}
+
 public final class com/juul/krayon/color/Color {
 	public static final synthetic fun box-impl (I)Lcom/juul/krayon/color/Color;
 	public static fun constructor-impl (FFF)I
@@ -24,6 +31,118 @@ public final class com/juul/krayon/color/Color {
 	public final synthetic fun unbox-impl ()I
 }
 
+public final class com/juul/krayon/color/Cubehelix {
+	public fun <init> (FFFF)V
+	public synthetic fun <init> (FFFFILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun brighter (F)Lcom/juul/krayon/color/Cubehelix;
+	public static synthetic fun brighter$default (Lcom/juul/krayon/color/Cubehelix;FILjava/lang/Object;)Lcom/juul/krayon/color/Cubehelix;
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun component4 ()F
+	public final fun copy (FFFF)Lcom/juul/krayon/color/Cubehelix;
+	public static synthetic fun copy$default (Lcom/juul/krayon/color/Cubehelix;FFFFILjava/lang/Object;)Lcom/juul/krayon/color/Cubehelix;
+	public final fun darker (F)Lcom/juul/krayon/color/Cubehelix;
+	public static synthetic fun darker$default (Lcom/juul/krayon/color/Cubehelix;FILjava/lang/Object;)Lcom/juul/krayon/color/Cubehelix;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHue ()F
+	public final fun getLightness ()F
+	public final fun getOpacity ()F
+	public final fun getSaturation ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/color/CubehelixKt {
+	public static final fun toColor (Lcom/juul/krayon/color/Cubehelix;)I
+	public static final fun toCubehelix-Z7dcaks (I)Lcom/juul/krayon/color/Cubehelix;
+}
+
+public final class com/juul/krayon/color/Hcl {
+	public fun <init> (FFFF)V
+	public synthetic fun <init> (FFFFILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun brighter (F)Lcom/juul/krayon/color/Hcl;
+	public static synthetic fun brighter$default (Lcom/juul/krayon/color/Hcl;FILjava/lang/Object;)Lcom/juul/krayon/color/Hcl;
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun component4 ()F
+	public final fun copy (FFFF)Lcom/juul/krayon/color/Hcl;
+	public static synthetic fun copy$default (Lcom/juul/krayon/color/Hcl;FFFFILjava/lang/Object;)Lcom/juul/krayon/color/Hcl;
+	public final fun darker (F)Lcom/juul/krayon/color/Hcl;
+	public static synthetic fun darker$default (Lcom/juul/krayon/color/Hcl;FILjava/lang/Object;)Lcom/juul/krayon/color/Hcl;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getChroma ()F
+	public final fun getHue ()F
+	public final fun getLightness ()F
+	public final fun getOpacity ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/color/HclKt {
+	public static final fun lch (FFFF)Lcom/juul/krayon/color/Hcl;
+	public static synthetic fun lch$default (FFFFILjava/lang/Object;)Lcom/juul/krayon/color/Hcl;
+	public static final fun toColor (Lcom/juul/krayon/color/Hcl;)I
+	public static final fun toHcl (Lcom/juul/krayon/color/Lab;)Lcom/juul/krayon/color/Hcl;
+	public static final fun toHcl-Z7dcaks (I)Lcom/juul/krayon/color/Hcl;
+	public static final fun toLab (Lcom/juul/krayon/color/Hcl;)Lcom/juul/krayon/color/Lab;
+}
+
+public final class com/juul/krayon/color/Hsl {
+	public fun <init> (FFFF)V
+	public synthetic fun <init> (FFFFILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun brighter (F)Lcom/juul/krayon/color/Hsl;
+	public static synthetic fun brighter$default (Lcom/juul/krayon/color/Hsl;FILjava/lang/Object;)Lcom/juul/krayon/color/Hsl;
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun component4 ()F
+	public final fun copy (FFFF)Lcom/juul/krayon/color/Hsl;
+	public static synthetic fun copy$default (Lcom/juul/krayon/color/Hsl;FFFFILjava/lang/Object;)Lcom/juul/krayon/color/Hsl;
+	public final fun darker (F)Lcom/juul/krayon/color/Hsl;
+	public static synthetic fun darker$default (Lcom/juul/krayon/color/Hsl;FILjava/lang/Object;)Lcom/juul/krayon/color/Hsl;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHue ()F
+	public final fun getLightness ()F
+	public final fun getOpacity ()F
+	public final fun getSaturation ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/color/HslKt {
+	public static final fun toColor (Lcom/juul/krayon/color/Hsl;)I
+	public static final fun toHsl-Z7dcaks (I)Lcom/juul/krayon/color/Hsl;
+}
+
+public final class com/juul/krayon/color/Lab {
+	public fun <init> (FFFF)V
+	public synthetic fun <init> (FFFFILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun brighter (F)Lcom/juul/krayon/color/Lab;
+	public static synthetic fun brighter$default (Lcom/juul/krayon/color/Lab;FILjava/lang/Object;)Lcom/juul/krayon/color/Lab;
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun component4 ()F
+	public final fun copy (FFFF)Lcom/juul/krayon/color/Lab;
+	public static synthetic fun copy$default (Lcom/juul/krayon/color/Lab;FFFFILjava/lang/Object;)Lcom/juul/krayon/color/Lab;
+	public final fun darker (F)Lcom/juul/krayon/color/Lab;
+	public static synthetic fun darker$default (Lcom/juul/krayon/color/Lab;FILjava/lang/Object;)Lcom/juul/krayon/color/Lab;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getA ()F
+	public final fun getB ()F
+	public final fun getLightness ()F
+	public final fun getOpacity ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/krayon/color/LabKt {
+	public static final fun toColor (Lcom/juul/krayon/color/Lab;)I
+	public static final fun toLab-Z7dcaks (I)Lcom/juul/krayon/color/Lab;
+}
+
 public final class com/juul/krayon/color/LerpKt {
 	public static final fun lerp-5Jni88Q (IIF)I
 }
@@ -31,6 +150,21 @@ public final class com/juul/krayon/color/LerpKt {
 public final class com/juul/krayon/color/NextColorKt {
 	public static final fun nextColor (Lkotlin/random/Random;Z)I
 	public static synthetic fun nextColor$default (Lkotlin/random/Random;ZILjava/lang/Object;)I
+}
+
+public final class com/juul/krayon/color/SchemesKt {
+	public static final fun getSchemeBlues ()Ljava/util/List;
+	public static final fun getSchemeCategory10 ()Ljava/util/List;
+	public static final fun getSchemeGreens ()Ljava/util/List;
+	public static final fun getSchemeGreys ()Ljava/util/List;
+	public static final fun getSchemeRdBu ()Ljava/util/List;
+	public static final fun getSchemeReds ()Ljava/util/List;
+	public static final fun getSchemeSet1 ()Ljava/util/List;
+	public static final fun getSchemeSet2 ()Ljava/util/List;
+	public static final fun getSchemeSet3 ()Ljava/util/List;
+	public static final fun getSchemeSpectral ()Ljava/util/List;
+	public static final fun getSchemeTableau10 ()Ljava/util/List;
+	public static final fun getSchemeViridis ()Ljava/util/List;
 }
 
 public final class com/juul/krayon/color/ToColorKt {
