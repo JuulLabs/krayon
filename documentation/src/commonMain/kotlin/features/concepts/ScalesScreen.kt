@@ -145,9 +145,9 @@ private fun scaleMappingChart(root: RootElement, width: Float, height: Float, in
         .join { append(TextElement).each { kind = "readout" } }
         .each { (value) ->
             text = "scale(${value.toInt()}) = ${demoScale.scale(value).roundToInt()}px"
-            x = innerWidth / 2f
-            y = height * 0.5f + 4f
-            paint = Paint.Text(crimson, 13f, Paint.Text.Alignment.Center, labelFont)
+            x = 0f
+            y = 16f
+            paint = Paint.Text(crimson, 13f, Paint.Text.Alignment.Left, labelFont)
         }
 }
 
