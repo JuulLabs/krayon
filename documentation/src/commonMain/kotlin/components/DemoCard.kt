@@ -1,20 +1,29 @@
 package com.juul.krayon.documentation.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.juul.krayon.documentation.theme.PaperTheme
 
-/** Frames a live chart demo, with an optional caption below it. */
+/**
+ * Frames a live chart demo, with an optional caption below it.
+ *
+ * The framed area always uses a light background (see [PaperTheme]), because the chart samples
+ * draw with hardcoded colors that are designed for light backgrounds.
+ */
 @Composable
 fun DemoCard(
     modifier: Modifier = Modifier,
@@ -23,15 +32,20 @@ fun DemoCard(
     content: @Composable () -> Unit,
 ) {
     Column(modifier.fillMaxWidth().padding(vertical = 8.dp)) {
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .height(height)
-                .clip(RoundedCornerShape(8.dp))
-                .border(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f), RoundedCornerShape(8.dp))
-                .padding(8.dp),
-        ) {
-            content()
+        PaperTheme {
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .height(height)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(MaterialTheme.colors.surface)
+                    .border(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f), RoundedCornerShape(8.dp))
+                    .padding(8.dp),
+            ) {
+                CompositionLocalProvider(LocalContentColor provides MaterialTheme.colors.onSurface) {
+                    content()
+                }
+            }
         }
         if (caption != null) {
             Text(

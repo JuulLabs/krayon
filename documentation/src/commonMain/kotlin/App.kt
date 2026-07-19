@@ -1,6 +1,7 @@
 package com.juul.krayon.documentation
 
 import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,7 +13,9 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -29,9 +32,17 @@ fun App(
     navController: NavHostController = rememberNavController(),
     onNavHostReady: suspend (NavController) -> Unit = {},
 ) {
-    AppTheme {
+    val systemDarkTheme = isSystemInDarkTheme()
+    var darkTheme by remember { mutableStateOf(systemDarkTheme) }
+    AppTheme(darkTheme) {
         Scaffold(
-            topBar = { TopBar(onTitleClick = { navController.navigateTo(Screen.Home) }) },
+            topBar = {
+                TopBar(
+                    darkTheme = darkTheme,
+                    onDarkThemeChange = { darkTheme = it },
+                    onTitleClick = { navController.navigateTo(Screen.Home) },
+                )
+            },
         ) { padding ->
             Row(Modifier.fillMaxSize().padding(padding)) {
                 val currentBackStackEntry by navController.currentBackStackEntryAsState()

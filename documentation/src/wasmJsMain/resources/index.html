@@ -13,6 +13,18 @@
             overflow: hidden;
             background: #ffffff;
         }
+        @media (prefers-color-scheme: dark) {
+            html, body {
+                background: #121212;
+            }
+            #loading {
+                color: #89b4d4;
+            }
+            #loading .spinner {
+                border-color: #89b4d433;
+                border-top-color: #89b4d4;
+            }
+        }
         #loading {
             position: absolute;
             inset: 0;

@@ -1,6 +1,7 @@
 package com.juul.krayon.documentation.features.home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,8 +14,11 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.FixedScale
 import androidx.compose.ui.unit.dp
 import com.juul.krayon.documentation.Screen
@@ -78,7 +82,11 @@ fun HomeScreen(onNavigate: (Screen) -> Unit) {
             painter = painterResource(Res.drawable.data_to_dom),
             contentDescription = "Data flows through Krayon to platform canvases",
             contentScale = FixedScale(2f),
-            modifier = Modifier.padding(vertical = 8.dp),
+            modifier = Modifier
+                .padding(vertical = 8.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color.White)
+                .padding(12.dp),
         )
         MarkdownBlock(
             """

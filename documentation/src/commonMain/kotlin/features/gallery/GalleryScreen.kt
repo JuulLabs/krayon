@@ -1,5 +1,6 @@
 package com.juul.krayon.documentation.features.gallery
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -20,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.juul.krayon.documentation.components.MarkdownBlock
+import com.juul.krayon.documentation.theme.PaperTheme
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -48,27 +50,32 @@ fun GalleryScreen(onSampleClick: (Sample) -> Unit) {
 
 @Composable
 private fun SampleCard(sample: Sample, onClick: () -> Unit) {
-    Column(
-        Modifier
-            .width(272.dp)
-            .clip(RoundedCornerShape(8.dp))
-            .border(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f), RoundedCornerShape(8.dp))
-            .clickable(onClick = onClick)
-            .padding(12.dp),
-    ) {
-        Box(Modifier.fillMaxWidth().height(160.dp)) {
-            sample.content(Modifier.fillMaxWidth().height(160.dp), false)
+    // Charts draw with light-background colors, so cards are always "paper" (see PaperTheme).
+    PaperTheme {
+        Column(
+            Modifier
+                .width(272.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(MaterialTheme.colors.surface)
+                .border(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f), RoundedCornerShape(8.dp))
+                .clickable(onClick = onClick)
+                .padding(12.dp),
+        ) {
+            Box(Modifier.fillMaxWidth().height(160.dp)) {
+                sample.content(Modifier.fillMaxWidth().height(160.dp), false)
+            }
+            Text(
+                text = sample.title,
+                style = MaterialTheme.typography.subtitle1,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colors.onSurface,
+                modifier = Modifier.padding(top = 8.dp),
+            )
+            Text(
+                text = sample.modules.joinToString(" · "),
+                style = MaterialTheme.typography.caption,
+                color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f),
+            )
         }
-        Text(
-            text = sample.title,
-            style = MaterialTheme.typography.subtitle1,
-            fontWeight = FontWeight.SemiBold,
-            modifier = Modifier.padding(top = 8.dp),
-        )
-        Text(
-            text = sample.modules.joinToString(" · "),
-            style = MaterialTheme.typography.caption,
-            color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f),
-        )
     }
 }
