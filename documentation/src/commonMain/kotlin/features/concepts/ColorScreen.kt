@@ -2,15 +2,76 @@ package com.juul.krayon.documentation.features.concepts
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.juul.krayon.color.black
+import com.juul.krayon.color.crimson
+import com.juul.krayon.color.lerp
+import com.juul.krayon.color.steelBlue
+import com.juul.krayon.compose.ElementView
 import com.juul.krayon.documentation.components.DemoCard
 import com.juul.krayon.documentation.components.MarkdownBlock
+import com.juul.krayon.documentation.components.ValueSlider
 import com.juul.krayon.documentation.features.gallery.DonutDemo
+import com.juul.krayon.element.RectangleElement
+import com.juul.krayon.element.RootElement
+import com.juul.krayon.element.TextElement
+import com.juul.krayon.element.withKind
+import com.juul.krayon.kanvas.Font
+import com.juul.krayon.kanvas.Paint
+import com.juul.krayon.kanvas.sansSerif
+import com.juul.krayon.selection.append
+import com.juul.krayon.selection.asSelection
+import com.juul.krayon.selection.data
+import com.juul.krayon.selection.each
+import com.juul.krayon.selection.join
+import com.juul.krayon.selection.selectAll
+
+private val swatchLabelPaint = Paint.Text(black, 12f, Paint.Text.Alignment.Center, Font(sansSerif))
+
+/** Three swatches: two fixed endpoints and the [lerp] blend between them. */
+private fun lerpChart(root: RootElement, width: Float, height: Float, percent: Float) {
+    val swatchSize = minOf(height * 0.5f, 72f)
+    val swatchTop = height * 0.2f
+    val blended = lerp(crimson, steelBlue, percent)
+
+    val swatches = listOf(
+        Triple("crimson", crimson, width * 0.15f),
+        Triple("lerp(crimson, steelBlue, ${(percent * 100).toInt() / 100f}f)", blended, width * 0.5f),
+        Triple("steelBlue", steelBlue, width * 0.85f),
+    )
+
+    root.asSelection()
+        .selectAll(RectangleElement)
+        .data(swatches)
+        .join(RectangleElement)
+        .each { (swatch) ->
+            val (_, color, center) = swatch
+            left = center - swatchSize / 2f
+            right = center + swatchSize / 2f
+            top = swatchTop
+            bottom = swatchTop + swatchSize
+            paint = Paint.Fill(color)
+        }
+
+    root.asSelection()
+        .selectAll(TextElement.withKind("label"))
+        .data(swatches)
+        .join { append(TextElement).each { kind = "label" } }
+        .each { (swatch) ->
+            text = swatch.first
+            x = swatch.third
+            y = swatchTop + swatchSize + 20f
+            paint = swatchLabelPaint
+        }
+}
 
 @Composable
 fun ColorScreen() {
@@ -38,7 +99,12 @@ fun ColorScreen() {
             ```kotlin
             val highlight = lerp(baseColor, white, 0.25f)   // 25% towards white
             ```
-
+            """,
+            Modifier.padding(vertical = 8.dp),
+        )
+        LerpDemo()
+        MarkdownBlock(
+            """
             ## Interpolators
 
             The `interpolate` module defines the `Interpolator` abstraction that scales are built
@@ -78,5 +144,16 @@ fun ColorScreen() {
             """,
             Modifier.padding(vertical = 8.dp),
         )
+    }
+}
+
+@Composable
+private fun LerpDemo() {
+    val percent = remember { mutableStateOf(0.5f) }
+    DemoCard(height = 200.dp, caption = "lerp blends channel-by-channel between the two endpoint colors.") {
+        Column(Modifier.fillMaxSize()) {
+            ElementView(percent, ::lerpChart, Modifier.fillMaxWidth().weight(1f))
+            ValueSlider("Percent", 0f, 1f, percent)
+        }
     }
 }
