@@ -1,0 +1,105 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, js, macosArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.juul.krayon:format>
+final class com.juul.krayon.format/FormatLocale { // com.juul.krayon.format/FormatLocale|null[0]
+    constructor <init>(com.juul.krayon.format/FormatLocaleDefinition) // com.juul.krayon.format/FormatLocale.<init>|<init>(com.juul.krayon.format.FormatLocaleDefinition){}[0]
+
+    final fun format(com.juul.krayon.format/FormatSpecifier): com.juul.krayon.format/NumberFormat // com.juul.krayon.format/FormatLocale.format|format(com.juul.krayon.format.FormatSpecifier){}[0]
+    final fun format(kotlin/String): com.juul.krayon.format/NumberFormat // com.juul.krayon.format/FormatLocale.format|format(kotlin.String){}[0]
+    final fun formatPrefix(kotlin/String, kotlin/Double): com.juul.krayon.format/NumberFormat // com.juul.krayon.format/FormatLocale.formatPrefix|formatPrefix(kotlin.String;kotlin.Double){}[0]
+}
+
+final class com.juul.krayon.format/FormatLocaleDefinition { // com.juul.krayon.format/FormatLocaleDefinition|null[0]
+    constructor <init>(kotlin/String = ..., kotlin/String? = ..., kotlin.collections/List<kotlin/Int>? = ..., kotlin/String = ..., kotlin/String = ..., kotlin.collections/List<kotlin/String>? = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String = ...) // com.juul.krayon.format/FormatLocaleDefinition.<init>|<init>(kotlin.String;kotlin.String?;kotlin.collections.List<kotlin.Int>?;kotlin.String;kotlin.String;kotlin.collections.List<kotlin.String>?;kotlin.String;kotlin.String;kotlin.String){}[0]
+
+    final val currencyPrefix // com.juul.krayon.format/FormatLocaleDefinition.currencyPrefix|{}currencyPrefix[0]
+        final fun <get-currencyPrefix>(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.currencyPrefix.<get-currencyPrefix>|<get-currencyPrefix>(){}[0]
+    final val currencySuffix // com.juul.krayon.format/FormatLocaleDefinition.currencySuffix|{}currencySuffix[0]
+        final fun <get-currencySuffix>(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.currencySuffix.<get-currencySuffix>|<get-currencySuffix>(){}[0]
+    final val decimal // com.juul.krayon.format/FormatLocaleDefinition.decimal|{}decimal[0]
+        final fun <get-decimal>(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.decimal.<get-decimal>|<get-decimal>(){}[0]
+    final val grouping // com.juul.krayon.format/FormatLocaleDefinition.grouping|{}grouping[0]
+        final fun <get-grouping>(): kotlin.collections/List<kotlin/Int>? // com.juul.krayon.format/FormatLocaleDefinition.grouping.<get-grouping>|<get-grouping>(){}[0]
+    final val minus // com.juul.krayon.format/FormatLocaleDefinition.minus|{}minus[0]
+        final fun <get-minus>(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.minus.<get-minus>|<get-minus>(){}[0]
+    final val nan // com.juul.krayon.format/FormatLocaleDefinition.nan|{}nan[0]
+        final fun <get-nan>(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.nan.<get-nan>|<get-nan>(){}[0]
+    final val numerals // com.juul.krayon.format/FormatLocaleDefinition.numerals|{}numerals[0]
+        final fun <get-numerals>(): kotlin.collections/List<kotlin/String>? // com.juul.krayon.format/FormatLocaleDefinition.numerals.<get-numerals>|<get-numerals>(){}[0]
+    final val percent // com.juul.krayon.format/FormatLocaleDefinition.percent|{}percent[0]
+        final fun <get-percent>(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.percent.<get-percent>|<get-percent>(){}[0]
+    final val thousands // com.juul.krayon.format/FormatLocaleDefinition.thousands|{}thousands[0]
+        final fun <get-thousands>(): kotlin/String? // com.juul.krayon.format/FormatLocaleDefinition.thousands.<get-thousands>|<get-thousands>(){}[0]
+
+    final fun component1(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // com.juul.krayon.format/FormatLocaleDefinition.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/List<kotlin/Int>? // com.juul.krayon.format/FormatLocaleDefinition.component3|component3(){}[0]
+    final fun component4(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.component4|component4(){}[0]
+    final fun component5(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.component5|component5(){}[0]
+    final fun component6(): kotlin.collections/List<kotlin/String>? // com.juul.krayon.format/FormatLocaleDefinition.component6|component6(){}[0]
+    final fun component7(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.component7|component7(){}[0]
+    final fun component8(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.component8|component8(){}[0]
+    final fun component9(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.component9|component9(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String? = ..., kotlin.collections/List<kotlin/Int>? = ..., kotlin/String = ..., kotlin/String = ..., kotlin.collections/List<kotlin/String>? = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String = ...): com.juul.krayon.format/FormatLocaleDefinition // com.juul.krayon.format/FormatLocaleDefinition.copy|copy(kotlin.String;kotlin.String?;kotlin.collections.List<kotlin.Int>?;kotlin.String;kotlin.String;kotlin.collections.List<kotlin.String>?;kotlin.String;kotlin.String;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.format/FormatLocaleDefinition.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.juul.krayon.format/FormatLocaleDefinition.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.format/FormatLocaleDefinition.toString|toString(){}[0]
+}
+
+final class com.juul.krayon.format/FormatSpecifier { // com.juul.krayon.format/FormatSpecifier|null[0]
+    constructor <init>(kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/Boolean = ..., kotlin/Int? = ..., kotlin/Boolean = ..., kotlin/Int? = ..., kotlin/Boolean = ..., kotlin/String? = ...) // com.juul.krayon.format/FormatSpecifier.<init>|<init>(kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.Boolean;kotlin.Int?;kotlin.Boolean;kotlin.Int?;kotlin.Boolean;kotlin.String?){}[0]
+
+    final var align // com.juul.krayon.format/FormatSpecifier.align|{}align[0]
+        final fun <get-align>(): kotlin/String // com.juul.krayon.format/FormatSpecifier.align.<get-align>|<get-align>(){}[0]
+        final fun <set-align>(kotlin/String) // com.juul.krayon.format/FormatSpecifier.align.<set-align>|<set-align>(kotlin.String){}[0]
+    final var comma // com.juul.krayon.format/FormatSpecifier.comma|{}comma[0]
+        final fun <get-comma>(): kotlin/Boolean // com.juul.krayon.format/FormatSpecifier.comma.<get-comma>|<get-comma>(){}[0]
+        final fun <set-comma>(kotlin/Boolean) // com.juul.krayon.format/FormatSpecifier.comma.<set-comma>|<set-comma>(kotlin.Boolean){}[0]
+    final var fill // com.juul.krayon.format/FormatSpecifier.fill|{}fill[0]
+        final fun <get-fill>(): kotlin/String // com.juul.krayon.format/FormatSpecifier.fill.<get-fill>|<get-fill>(){}[0]
+        final fun <set-fill>(kotlin/String) // com.juul.krayon.format/FormatSpecifier.fill.<set-fill>|<set-fill>(kotlin.String){}[0]
+    final var precision // com.juul.krayon.format/FormatSpecifier.precision|{}precision[0]
+        final fun <get-precision>(): kotlin/Int? // com.juul.krayon.format/FormatSpecifier.precision.<get-precision>|<get-precision>(){}[0]
+        final fun <set-precision>(kotlin/Int?) // com.juul.krayon.format/FormatSpecifier.precision.<set-precision>|<set-precision>(kotlin.Int?){}[0]
+    final var sign // com.juul.krayon.format/FormatSpecifier.sign|{}sign[0]
+        final fun <get-sign>(): kotlin/String // com.juul.krayon.format/FormatSpecifier.sign.<get-sign>|<get-sign>(){}[0]
+        final fun <set-sign>(kotlin/String) // com.juul.krayon.format/FormatSpecifier.sign.<set-sign>|<set-sign>(kotlin.String){}[0]
+    final var symbol // com.juul.krayon.format/FormatSpecifier.symbol|{}symbol[0]
+        final fun <get-symbol>(): kotlin/String // com.juul.krayon.format/FormatSpecifier.symbol.<get-symbol>|<get-symbol>(){}[0]
+        final fun <set-symbol>(kotlin/String) // com.juul.krayon.format/FormatSpecifier.symbol.<set-symbol>|<set-symbol>(kotlin.String){}[0]
+    final var trim // com.juul.krayon.format/FormatSpecifier.trim|{}trim[0]
+        final fun <get-trim>(): kotlin/Boolean // com.juul.krayon.format/FormatSpecifier.trim.<get-trim>|<get-trim>(){}[0]
+        final fun <set-trim>(kotlin/Boolean) // com.juul.krayon.format/FormatSpecifier.trim.<set-trim>|<set-trim>(kotlin.Boolean){}[0]
+    final var type // com.juul.krayon.format/FormatSpecifier.type|{}type[0]
+        final fun <get-type>(): kotlin/String // com.juul.krayon.format/FormatSpecifier.type.<get-type>|<get-type>(){}[0]
+        final fun <set-type>(kotlin/String) // com.juul.krayon.format/FormatSpecifier.type.<set-type>|<set-type>(kotlin.String){}[0]
+    final var width // com.juul.krayon.format/FormatSpecifier.width|{}width[0]
+        final fun <get-width>(): kotlin/Int? // com.juul.krayon.format/FormatSpecifier.width.<get-width>|<get-width>(){}[0]
+        final fun <set-width>(kotlin/Int?) // com.juul.krayon.format/FormatSpecifier.width.<set-width>|<set-width>(kotlin.Int?){}[0]
+    final var zero // com.juul.krayon.format/FormatSpecifier.zero|{}zero[0]
+        final fun <get-zero>(): kotlin/Boolean // com.juul.krayon.format/FormatSpecifier.zero.<get-zero>|<get-zero>(){}[0]
+        final fun <set-zero>(kotlin/Boolean) // com.juul.krayon.format/FormatSpecifier.zero.<set-zero>|<set-zero>(kotlin.Boolean){}[0]
+
+    final fun toString(): kotlin/String // com.juul.krayon.format/FormatSpecifier.toString|toString(){}[0]
+}
+
+final class com.juul.krayon.format/NumberFormat { // com.juul.krayon.format/NumberFormat|null[0]
+    final fun invoke(kotlin/Double): kotlin/String // com.juul.krayon.format/NumberFormat.invoke|invoke(kotlin.Double){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.format/NumberFormat.toString|toString(){}[0]
+}
+
+final val com.juul.krayon.format/enUS // com.juul.krayon.format/enUS|{}enUS[0]
+    final fun <get-enUS>(): com.juul.krayon.format/FormatLocaleDefinition // com.juul.krayon.format/enUS.<get-enUS>|<get-enUS>(){}[0]
+
+final fun com.juul.krayon.format/format(com.juul.krayon.format/FormatSpecifier): com.juul.krayon.format/NumberFormat // com.juul.krayon.format/format|format(com.juul.krayon.format.FormatSpecifier){}[0]
+final fun com.juul.krayon.format/format(kotlin/String): com.juul.krayon.format/NumberFormat // com.juul.krayon.format/format|format(kotlin.String){}[0]
+final fun com.juul.krayon.format/formatPrefix(kotlin/String, kotlin/Double): com.juul.krayon.format/NumberFormat // com.juul.krayon.format/formatPrefix|formatPrefix(kotlin.String;kotlin.Double){}[0]
+final fun com.juul.krayon.format/formatSpecifier(kotlin/String): com.juul.krayon.format/FormatSpecifier // com.juul.krayon.format/formatSpecifier|formatSpecifier(kotlin.String){}[0]
+final fun com.juul.krayon.format/precisionFixed(kotlin/Double): kotlin/Int // com.juul.krayon.format/precisionFixed|precisionFixed(kotlin.Double){}[0]
+final fun com.juul.krayon.format/precisionPrefix(kotlin/Double, kotlin/Double): kotlin/Int // com.juul.krayon.format/precisionPrefix|precisionPrefix(kotlin.Double;kotlin.Double){}[0]
+final fun com.juul.krayon.format/precisionRound(kotlin/Double, kotlin/Double): kotlin/Int // com.juul.krayon.format/precisionRound|precisionRound(kotlin.Double;kotlin.Double){}[0]
