@@ -116,6 +116,7 @@ public class ContinuousScale<D : Comparable<D>, R> internal constructor(
     public val range: List<R>,
     private val getInverter: (start: D, stop: D) -> Inverter<D>,
     private val getInterpolator: (start: R, stop: R) -> Interpolator<R>,
+    public val clamp: Boolean = false,
 ) : Scale<D, R> {
 
     /** Wrapper for internal sanity-checked state. This is to allow a fluent builder-like API without an explicit `build` function. */
@@ -142,26 +143,56 @@ public class ContinuousScale<D : Comparable<D>, R> internal constructor(
     private val state by lazy { State() }
 
     override fun scale(input: D): R = with(state) {
+        val value = if (clamp) input.coerceIn(sortedDomain.first(), sortedDomain.last()) else input
         val index = subdomains.binarySearch { subdomain ->
             when {
-                input > subdomain.endInclusive -> -1
-                input < subdomain.start -> 1
+                value > subdomain.endInclusive -> -1
+                value < subdomain.start -> 1
                 else -> 0
             }
         }
-        check(index >= 0) { "No matching subdomain found for input $input in subdomains $subdomains." }
-        return interpolators[index].interpolate(inverters[index].invert(input))
+        check(index >= 0) { "No matching subdomain found for input $value in subdomains $subdomains." }
+        return interpolators[index].interpolate(inverters[index].invert(value))
+    }
+
+    /**
+     * Maps a value from the [range] back to the [domain] (the inverse of [scale]).
+     *
+     * Requires a numeric, monotonic range: the range's interpolators must support inversion and the domain's inverters
+     * must support interpolation, both of which hold for the built-in numeric types.
+     */
+    @Suppress("UNCHECKED_CAST")
+    public fun invert(value: R): D = with(state) {
+        val count = interpolators.size
+        var i = 0
+        while (i < count) {
+            val rangeInverter = interpolators[i] as? Inverter<R>
+                ?: throw UnsupportedOperationException("Cannot invert a scale whose range is not invertible.")
+            val fraction = rangeInverter.invert(value)
+            if (i == count - 1 || fraction <= 1f) {
+                val domainInterpolator = inverters[i] as? Interpolator<D>
+                    ?: throw UnsupportedOperationException("Cannot invert a scale whose domain is not interpolatable.")
+                val result = domainInterpolator.interpolate(fraction)
+                return if (clamp) result.coerceIn(sortedDomain.first(), sortedDomain.last()) else result
+            }
+            i++
+        }
+        error("Unreachable: interpolators is guaranteed non-empty.")
     }
 
     public fun <D2 : Comparable<D2>> domain(
         domain: List<D2>,
         getInverter: (start: D2, stop: D2) -> Inverter<D2>,
-    ): ContinuousScale<D2, R> = ContinuousScale(domain, range, getInverter, getInterpolator)
+    ): ContinuousScale<D2, R> = ContinuousScale(domain, range, getInverter, getInterpolator, clamp)
 
     public fun <R2> range(
         range: List<R2>,
         getInterpolator: (start: R2, stop: R2) -> Interpolator<R2>,
-    ): ContinuousScale<D, R2> = ContinuousScale(domain, range, getInverter, getInterpolator)
+    ): ContinuousScale<D, R2> = ContinuousScale(domain, range, getInverter, getInterpolator, clamp)
+
+    /** Returns a copy that coerces inputs (and [invert] outputs) to the domain/range bounds instead of throwing/extrapolating. */
+    public fun clamp(clamp: Boolean = true): ContinuousScale<D, R> =
+        ContinuousScale(domain, range, getInverter, getInterpolator, clamp)
 }
 
 private fun <T : Comparable<T>> Iterable<T>.isAscending(): Boolean =
