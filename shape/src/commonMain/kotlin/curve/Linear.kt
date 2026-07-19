@@ -46,6 +46,3 @@ public object Linear : Curve {
         }
     }
 }
-
-/** Emulate JS truthiness. */
-private fun Float.truthy(): Boolean = (!this.isNaN() && this != 0f)
