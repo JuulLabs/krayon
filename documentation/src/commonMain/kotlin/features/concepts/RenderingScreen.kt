@@ -21,6 +21,7 @@ import com.juul.krayon.compose.ElementView
 import com.juul.krayon.documentation.components.ClassStructureDiagram
 import com.juul.krayon.documentation.components.CodeBlock
 import com.juul.krayon.documentation.components.DemoCard
+import com.juul.krayon.documentation.components.DiagramRendererSource
 import com.juul.krayon.documentation.components.MarkdownBlock
 import com.juul.krayon.element.CircleElement
 import com.juul.krayon.element.LineElement
@@ -120,6 +121,14 @@ fun RenderingScreen() {
             Modifier.padding(vertical = 8.dp),
         )
         ClassStructureDiagram()
+        MarkdownBlock(
+            """
+            The box-and-arrow renderer behind both of this site's diagrams is itself an ordinary
+            Krayon "chart" — rounded rectangles, text, lines, and arrowhead paths bound to data:
+            """,
+            Modifier.padding(vertical = 8.dp),
+        )
+        DiagramRendererSource()
         MarkdownBlock(
             """
             | Kanvas | Platform | Module |
