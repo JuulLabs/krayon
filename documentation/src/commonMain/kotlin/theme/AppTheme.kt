@@ -29,7 +29,7 @@ private val KrayonBlueLight = Color(0xFF89B4D4)
 val LocalDarkMode: ProvidableCompositionLocal<Boolean> = staticCompositionLocalOf { false }
 
 /**
- * A always-light "paper" theme for the panels that charts are drawn on.
+ * An always-light "paper" theme for the panels that charts are drawn on.
  *
  * The chart samples are teaching material with hardcoded colors (black axes, web colors), so
  * rather than complicating them with theme plumbing, charts — and the controls that sit next to

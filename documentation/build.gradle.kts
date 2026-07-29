@@ -10,12 +10,7 @@ kotlin {
 
     jvm("desktop")
     wasmJs {
-        outputModuleName = "documentation"
-        browser {
-            commonWebpackConfig {
-                outputFileName = "documentation.js"
-            }
-        }
+        browser()
         binaries.executable()
     }
 
@@ -57,10 +52,8 @@ tasks.withType<org.jmailen.gradle.kotlinter.tasks.FormatTask>().configureEach {
     exclude { it.file.path.contains("/generated/") }
 }
 
-// Assembles the Compose resources directory by merging the static resources with a copy of the
-// chart sample sources, so that the code displayed in the app is always the exact code that the
-// app compiles and runs.
-val syncDocumentationResources by tasks.registering(Sync::class) {
+val syncDocumentationResources = tasks.register<Sync>("syncDocumentationResources") {
+    description = "Syncs sample sources into the Compose resources directory for code display."
     from(layout.projectDirectory.dir("src/commonMain/composeResources"))
     from(layout.projectDirectory.dir("src/commonMain/kotlin/samples")) {
         include("**/*.kt")
