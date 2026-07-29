@@ -1,42 +1,39 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>CGContextKanvas</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
-<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     krayon
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
@@ -44,78 +41,88 @@
         <div class="library-version" id="library-version">
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":kanvas:dokkaHtmlPartial/appleMain">apple</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":kanvas/appleMain">apple</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":kanvas/commonMain">common</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":kanvas:dokkaHtmlPartial/appleMain" data-filter=":kanvas:dokkaHtmlPartial/appleMain">
+                                <input type="checkbox" class="checkbox--input" id=":kanvas/appleMain" data-filter=":kanvas/appleMain">
                                 <span class="checkbox--icon"></span>
                                 apple
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kanvas/commonMain" data-filter=":kanvas/commonMain">
+                                <span class="checkbox--icon"></span>
+                                common
                             </label>
                         </li>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
             <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     krayon
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageids="kanvas::com.juul.krayon.kanvas/CGContextKanvas///PointingToDeclaration//-1417192123">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="kanvas::com.juul.krayon.kanvas/CGContextKanvas///PointingToDeclaration//1579457457">
   <div class="breadcrumbs"><a href="../../index.html">kanvas</a><span class="delimiter">/</span><a href="../index.html">com.juul.krayon.kanvas</a><span class="delimiter">/</span><span class="current">CGContextKanvas</span></div>
   <div class="cover ">
     <h1 class="cover"><span>CGContext</span><wbr><span><span>Kanvas</span></span></h1>
     <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">CGContextKanvas</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">unmanagedContext<span class="token operator">: </span><span data-unresolved-link="platform.CoreGraphics/CGContextRef///PointingToDeclaration/">CGContextRef</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">It is the calling code's responsibility to ensure that <a href="../../../kanvas/com.juul.krayon.kanvas/-c-g-context-kanvas/unmanaged-context.html">unmanagedContext</a> outlives this object.</p></div>    </div>
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">CGContextKanvas</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">unmanagedContext<span class="token operator">: </span><span data-unresolved-link="platform.CoreGraphics/CGContextRef///PointingToDeclaration/">CGContextRef</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span> : <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/index.html">Kanvas</a></div><p class="paragraph">It is the calling code's responsibility to ensure that <a href="../../../kanvas/com.juul.krayon.kanvas/-c-g-context-kanvas/--root--.html">unmanagedContext</a> outlives this object.</p></div>    </div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
-        <div class="table"><a data-name="913271731%2FConstructors%2F-1417192123" anchor-label="CGContextKanvas" id="913271731%2FConstructors%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="913271731%2FConstructors%2F1579457457" anchor-label="CGContextKanvas" id="913271731%2FConstructors%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-c-g-context-kanvas.html"><span>CGContext</span><wbr><span><span>Kanvas</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="913271731%2FConstructors%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="913271731%2FConstructors%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ptr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlinx.cinterop/-c-pointer-var-of/index.html">CPointerVarOf</a><span class="token operator">&lt;</span><span data-unresolved-link="platform.CoreGraphics/CGContextRef///PointingToDeclaration/">CGContextRef</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">When calling from Swift, use <code class="lang-kotlin">&amp;yourCgContext</code>.</p></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">unmanagedContext<span class="token operator">: </span><span data-unresolved-link="platform.CoreGraphics/CGContextRef///PointingToDeclaration/">CGContextRef</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">When calling from Swift, pass <code class="lang-kotlin">Unmanaged.passUnretained/passRetained(yourCgContext)</code></p></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">unmanagedContext<span class="token operator">: </span><span data-unresolved-link="platform.CoreGraphics/CGContextRef///PointingToDeclaration/">CGContextRef</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">When calling from Swift, pass <code class="lang-kotlin">Unmanaged.passUnretained/passRetained(yourCgContext)</code></p></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ptr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlinx.cinterop/-c-pointer-var-of/index.html">CPointerVarOf</a><span class="token operator">&lt;</span><span data-unresolved-link="platform.CoreGraphics/CGContextRef///PointingToDeclaration/">CGContextRef</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">When calling from Swift, use <code class="lang-kotlin">&amp;yourCgContext</code>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -123,37 +130,37 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="-292577996%2FProperties%2F-1417192123" anchor-label="height" id="-292577996%2FProperties%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-292577996%2FProperties%2F1579457457" anchor-label="height" id="-292577996%2FProperties%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="height.html"><span><span>height</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-292577996%2FProperties%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-292577996%2FProperties%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="height.html">height</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="height.html">height</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Gets the height of the canvas.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="445812793%2FProperties%2F-1417192123" anchor-label="width" id="445812793%2FProperties%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+<a data-name="445812793%2FProperties%2F1579457457" anchor-label="width" id="445812793%2FProperties%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="width.html"><span><span>width</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="445812793%2FProperties%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="445812793%2FProperties%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="width.html">width</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="width.html">width</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Gets the width of the canvas.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -161,190 +168,220 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="654502673%2FFunctions%2F-1417192123" anchor-label="drawArc" id="654502673%2FFunctions%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="2122428768%2FFunctions%2F1579457457" anchor-label="drawArc" id="2122428768%2FFunctions%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="draw-arc.html"><span>draw</span><wbr><span><span>Arc</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="654502673%2FFunctions%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2122428768%2FFunctions%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="draw-arc.html"><span class="token function">drawArc</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">top<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">bottom<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">startAngle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">sweepAngle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="draw-arc.html"><span class="token function">drawArc</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">top<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">bottom<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">startAngle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">sweepAngle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><a href="../../../kanvas/com.juul.krayon.kanvas/-paint/index.html">Paint</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Draw an arc that fits in the oval defined by the rectangle <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-arc.html">left</a>, <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-arc.html">top</a>, <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-arc.html">right</a>, and <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-arc.html">bottom</a>, from <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-arc.html">startAngle</a> (in degrees, with 0 at the right) to <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-arc.html">startAngle</a> + <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-arc.html">sweepAngle</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1823385403%2FFunctions%2F-1417192123" anchor-label="drawCircle" id="1823385403%2FFunctions%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+<a data-name="-678302858%2FFunctions%2F1579457457" anchor-label="drawCircle" id="-678302858%2FFunctions%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="draw-circle.html"><span>draw</span><wbr><span><span>Circle</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1823385403%2FFunctions%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-678302858%2FFunctions%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="draw-circle.html"><span class="token function">drawCircle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">centerX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">centerY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">radius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="draw-circle.html"><span class="token function">drawCircle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">centerX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">centerY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">radius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><a href="../../../kanvas/com.juul.krayon.kanvas/-paint/index.html">Paint</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Draw a circle at <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-circle.html">centerX</a>, <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-circle.html">centerY</a> with size defined by its <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-circle.html">radius</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1751008217%2FFunctions%2F-1417192123" anchor-label="drawColor" id="-1751008217%2FFunctions%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+<a data-name="-384398245%2FFunctions%2F1579457457" anchor-label="drawColor" id="-384398245%2FFunctions%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="draw-color.html"><span>draw</span><wbr><span><span>Color</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1751008217%2FFunctions%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-384398245%2FFunctions%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="draw-color.html"><span class="token function">drawColor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">color<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="draw-color.html"><span class="token function">drawColor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">color<span class="token operator">: </span><a href="../../../color/com.juul.krayon.color/-color/index.html">Color</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Draw a <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-color.html">color</a> over the entire canvas. Implementations may or may not restrict this to the current clip.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1071163071%2FFunctions%2F-1417192123" anchor-label="drawLine" id="1071163071%2FFunctions%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+<a data-name="372012658%2FFunctions%2F1579457457" anchor-label="drawLine" id="372012658%2FFunctions%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="draw-line.html"><span>draw</span><wbr><span><span>Line</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1071163071%2FFunctions%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="372012658%2FFunctions%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="draw-line.html"><span class="token function">drawLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">startX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">startY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">endX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">endY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="draw-line.html"><span class="token function">drawLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">startX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">startY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">endX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">endY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><a href="../../../kanvas/com.juul.krayon.kanvas/-paint/index.html">Paint</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Draw a line from <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-line.html">startX</a>, <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-line.html">startY</a> to <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-line.html">endX</a>, <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-line.html">endY</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-805343203%2FFunctions%2F-1417192123" anchor-label="drawOval" id="-805343203%2FFunctions%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+<a data-name="2024135636%2FFunctions%2F1579457457" anchor-label="drawOval" id="2024135636%2FFunctions%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="draw-oval.html"><span>draw</span><wbr><span><span>Oval</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-805343203%2FFunctions%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2024135636%2FFunctions%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="draw-oval.html"><span class="token function">drawOval</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">top<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">bottom<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="draw-oval.html"><span class="token function">drawOval</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">top<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">bottom<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><a href="../../../kanvas/com.juul.krayon.kanvas/-paint/index.html">Paint</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Draw an oval defined by the rectangle <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-oval.html">left</a>, <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-oval.html">top</a>, <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-oval.html">right</a>, and <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-oval.html">bottom</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1847497054%2FFunctions%2F-1417192123" anchor-label="drawPath" id="1847497054%2FFunctions%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+<a data-name="-682662032%2FFunctions%2F1579457457" anchor-label="drawPath" id="-682662032%2FFunctions%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="draw-path.html"><span>draw</span><wbr><span><span>Path</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1847497054%2FFunctions%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-682662032%2FFunctions%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="draw-path.html"><span class="token function">drawPath</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">path<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="draw-path.html"><span class="token function">drawPath</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">path<span class="token operator">: </span><a href="../../../kanvas/com.juul.krayon.kanvas/-path/index.html">Path</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><a href="../../../kanvas/com.juul.krayon.kanvas/-paint/index.html">Paint</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Draws a <a href="../../../kanvas/com.juul.krayon.kanvas/-path/index.html">Path</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1871165615%2FFunctions%2F-1417192123" anchor-label="drawRect" id="1871165615%2FFunctions%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+<a data-name="-281724286%2FFunctions%2F1579457457" anchor-label="drawRect" id="-281724286%2FFunctions%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="draw-rect.html"><span>draw</span><wbr><span><span>Rect</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1871165615%2FFunctions%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-281724286%2FFunctions%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="draw-rect.html"><span class="token function">drawRect</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">top<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">bottom<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="draw-rect.html"><span class="token function">drawRect</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">top<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">bottom<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><a href="../../../kanvas/com.juul.krayon.kanvas/-paint/index.html">Paint</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Draws the rectangle <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-rect.html">left</a>, <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-rect.html">top</a>, <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-rect.html">right</a>, <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-rect.html">bottom</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1546116279%2FFunctions%2F-1417192123" anchor-label="drawText" id="1546116279%2FFunctions%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+<a data-name="2084785018%2FFunctions%2F1579457457" anchor-label="drawText" id="2084785018%2FFunctions%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="draw-text.html"><span>draw</span><wbr><span><span>Text</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1546116279%2FFunctions%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2084785018%2FFunctions%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="draw-text.html"><span class="token function">drawText</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">text<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-char-sequence/index.html">CharSequence</a><span class="token punctuation">, </span></span><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="draw-text.html"><span class="token function">drawText</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">text<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-char-sequence/index.html">CharSequence</a><span class="token punctuation">, </span></span><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">paint<span class="token operator">: </span><a href="../../../kanvas/com.juul.krayon.kanvas/-paint/index.html">Paint</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Draws a string of <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-text.html">text</a> at <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-text.html">x</a>, <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-text.html">y</a>. Exact horizontal behavior is controlled by the <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/draw-text.html">paint</a>'s <a href="../../../kanvas/com.juul.krayon.kanvas/-paint/-text/-alignment/index.html">alignment</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="771073678%2FFunctions%2F-1417192123" anchor-label="pop" id="771073678%2FFunctions%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+<a data-name="771073678%2FFunctions%2F1579457457" anchor-label="pop" id="771073678%2FFunctions%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="pop.html"><span><span>pop</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="771073678%2FFunctions%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="771073678%2FFunctions%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="pop.html"><span class="token function">pop</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="pop.html"><span class="token function">pop</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes the last <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/push-clip.html">pushClip</a> or <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/push-transform.html">pushTransform</a> operation.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="67547397%2FFunctions%2F-1417192123" anchor-label="pushClip" id="67547397%2FFunctions%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+<a data-name="425948564%2FFunctions%2F1579457457" anchor-label="pushClip" id="425948564%2FFunctions%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="push-clip.html"><span>push</span><wbr><span><span>Clip</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="67547397%2FFunctions%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="425948564%2FFunctions%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="push-clip.html"><span class="token function">pushClip</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clip<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="push-clip.html"><span class="token function">pushClip</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clip<span class="token operator">: </span><a href="../../../kanvas/com.juul.krayon.kanvas/-clip/index.html">Clip</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Pushes a <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/push-clip.html">clip</a> to the canvas. Remove it with <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/pop.html">pop</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1409467997%2FFunctions%2F-1417192123" anchor-label="pushTransform" id="-1409467997%2FFunctions%2F-1417192123" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain">
+<a data-name="333028750%2FFunctions%2F1579457457" anchor-label="pushTransform" id="333028750%2FFunctions%2F1579457457" data-filterable-set=":kanvas/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="push-transform.html"><span>push</span><wbr><span><span>Transform</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1409467997%2FFunctions%2F-1417192123"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="333028750%2FFunctions%2F1579457457"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas:dokkaHtmlPartial/appleMain" data-filterable-set=":kanvas:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":kanvas:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="push-transform.html"><span class="token function">pushTransform</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kanvas/appleMain" data-filterable-set=":kanvas/appleMain" data-active="" data-toggle=":kanvas/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/appleMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="push-transform.html"><span class="token function">pushTransform</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><a href="../../../kanvas/com.juul.krayon.kanvas/-transform/index.html">Transform</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Pushes a <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/push-transform.html">transform</a> to the canvas. Remove it with <a href="../../../kanvas/com.juul.krayon.kanvas/-kanvas/pop.html">pop</a>.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1114184085%2FFunctions%2F-2113762085" anchor-label="withClip" id="-1114184085%2FFunctions%2F-2113762085" data-filterable-set=":kanvas/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":kanvas/commonMain" data-filterable-set=":kanvas/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../with-clip.html"><span>with</span><wbr><span><span>Clip</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1114184085%2FFunctions%2F-2113762085"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><a href="../with-clip.html"><span class="token function">withClip</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clip<span class="token operator">: </span><a href="../-clip/index.html">Clip</a><span class="token punctuation">, </span></span><span class="parameter ">actions<span class="token operator">: </span><a href="../-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Invokes <a href="../with-clip.html">actions</a> inside of a <a href="../-kanvas/push-clip.html">Kanvas.pushClip</a>/<a href="../-kanvas/pop.html">Kanvas.pop</a> pair.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="927890043%2FFunctions%2F-2113762085" anchor-label="withTransform" id="927890043%2FFunctions%2F-2113762085" data-filterable-set=":kanvas/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":kanvas/commonMain" data-filterable-set=":kanvas/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../with-transform.html"><span>with</span><wbr><span><span>Transform</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="927890043%2FFunctions%2F-2113762085"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kanvas/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><a href="../with-transform.html"><span class="token function">withTransform</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><a href="../-transform/index.html">Transform</a><span class="token punctuation">, </span></span><span class="parameter ">actions<span class="token operator">: </span><a href="../-kanvas/index.html">Kanvas</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Invokes <a href="../with-transform.html">actions</a> inside of a <a href="../-kanvas/push-transform.html">Kanvas.pushTransform</a>/<a href="../-kanvas/pop.html">Kanvas.pop</a> pair.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -355,17 +392,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
