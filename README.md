@@ -5,7 +5,47 @@
 
 # Krayon
 
-Multiplatform drawing library. Provides a multiplatform canvas and chart rendering framework.
+Multiplatform drawing library. Provides a multiplatform canvas and chart rendering framework,
+heavily inspired by [D3](https://d3js.org/).
+
+# Documentation
+
+Guides, live examples, and the API reference are published at
+**[juullabs.github.io/krayon](https://juullabs.github.io/krayon/)**:
+
+- [What is Krayon?](https://juullabs.github.io/krayon/) — introduction and comparison to D3
+- [Getting started](https://juullabs.github.io/krayon/#getting-started) — installation and your first chart
+- [Gallery](https://juullabs.github.io/krayon/#gallery) — live, interactive examples with source code
+- [API reference](https://juullabs.github.io/krayon/api/) — Dokka documentation for every module
+
+# Modules
+
+Krayon is published as small, focused modules under the `com.juul.krayon` group:
+
+| Module | Description |
+|---|---|
+| `box` | Aggregate module exporting all other published modules (except `compose`) |
+| `core` | Shared internals |
+| `color` | Multiplatform color representation and operations |
+| `kanvas` | `Kanvas` drawing interface with platform-specific (Android, HTML, Core Graphics) and multiplatform (SVG) implementations |
+| `element` | Retained tree of drawing elements — Krayon's stand-in for the DOM |
+| `selection` | Data-driven transformation of the element tree (à la [d3-selection]) |
+| `scale` | Mapping data domains to visual ranges (à la [d3-scale]) |
+| `shape` | Line, area, pie, and arc generators (à la [d3-shape]) |
+| `axis` | Reference marks for scales (à la [d3-axis]) |
+| `hierarchy` | Hierarchical data and treemap layout (à la [d3-hierarchy]) |
+| `interpolate` | Blending/picking values between start and stop values (à la [d3-interpolate]) |
+| `time` | Calendar intervals for time-based ticks (à la [d3-time]) |
+| `compose` | Compose Multiplatform `Kanvas` and `ElementView` composables |
+| `element-view` | Android `View` for rendering an element tree off the main thread |
+
+[d3-selection]: https://d3js.org/d3-selection
+[d3-scale]: https://d3js.org/d3-scale
+[d3-shape]: https://d3js.org/d3-shape
+[d3-axis]: https://d3js.org/d3-axis
+[d3-hierarchy]: https://d3js.org/d3-hierarchy
+[d3-interpolate]: https://d3js.org/d3-interpolate
+[d3-time]: https://d3js.org/d3-time
 
 # License
 
