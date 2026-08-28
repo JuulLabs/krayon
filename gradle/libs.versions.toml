@@ -8,7 +8,7 @@ coroutines = "1.11.0"
 jacoco = "0.8.15"
 jvm-toolchain = "11"
 kotlin = "2.4.10"
-markdown-renderer = "0.44.0"
+markdown-renderer = "0.45.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.13.0" }
