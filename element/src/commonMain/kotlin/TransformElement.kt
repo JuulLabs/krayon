@@ -1,9 +1,11 @@
 package com.juul.krayon.element
 
+import androidx.compose.runtime.Stable
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Transform
 import com.juul.krayon.kanvas.withTransform
 
+@Stable
 public class TransformElement : Element() {
 
     override val tag: String get() = "transform"

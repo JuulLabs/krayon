@@ -19,7 +19,9 @@ public sealed class Transform {
         public val vertical: Float = 1f,
         public val pivotX: Float = 0f,
         public val pivotY: Float = 0f,
-    ) : Transform()
+    ) : Transform() {
+        public val isPivoted: Boolean get() = pivotX != 0f || pivotY != 0f
+    }
 
     /**
      * Rotate by [degrees]. If [pivotX] or [pivotY] is specified as
@@ -29,7 +31,9 @@ public sealed class Transform {
         public val degrees: Float,
         public val pivotX: Float = 0f,
         public val pivotY: Float = 0f,
-    ) : Transform()
+    ) : Transform() {
+        public val isPivoted: Boolean get() = pivotX != 0f || pivotY != 0f
+    }
 
     /** Translate by [horizontal] and [vertical]. */
     public data class Translate(
