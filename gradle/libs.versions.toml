@@ -1,5 +1,5 @@
 [versions]
-agp = "9.3.2"
+agp = "9.4.0"
 android-compile = "37"
 android-min = "23"
 android-target = "36"
@@ -8,7 +8,7 @@ coroutines = "1.11.0"
 jacoco = "0.8.15"
 jvm-toolchain = "11"
 kotlin = "2.4.20"
-markdown-renderer = "0.44.0"
+markdown-renderer = "0.45.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.13.0" }
@@ -33,7 +33,7 @@ robolectric = { module = "org.robolectric:robolectric", version = "4.16.1" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
-api = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.18.1" }
+api = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.18.2" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version = "2.2.0" }
