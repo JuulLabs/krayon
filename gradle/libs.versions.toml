@@ -7,7 +7,7 @@ compose = "1.11.1"
 coroutines = "1.11.0"
 jacoco = "0.8.15"
 jvm-toolchain = "11"
-kotlin = "2.4.10"
+kotlin = "2.4.20"
 markdown-renderer = "0.44.0"
 
 [libraries]
