@@ -5,6 +5,10 @@ plugins {
 }
 
 kotlin {
+    js {
+        binaries.executable()
+    }
+
     sourceSets {
         all {
             languageSettings.optIn("com.juul.krayon.core.InternalKrayonApi")
