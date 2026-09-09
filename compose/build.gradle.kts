@@ -4,8 +4,12 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
+@OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
 kotlin {
     js {
+        binaries.executable()
+    }
+    wasmJs {
         binaries.executable()
     }
 
