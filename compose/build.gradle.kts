@@ -4,7 +4,15 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
+@OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
 kotlin {
+    js {
+        binaries.executable()
+    }
+    wasmJs {
+        binaries.executable()
+    }
+
     sourceSets {
         all {
             languageSettings.optIn("com.juul.krayon.core.InternalKrayonApi")
