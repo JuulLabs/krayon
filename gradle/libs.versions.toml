@@ -28,7 +28,7 @@ markdown-renderer-code = { module = "com.mikepenz:multiplatform-markdown-rendere
 markdown-renderer-m2 = { module = "com.mikepenz:multiplatform-markdown-renderer-m2", version.ref = "markdown-renderer" }
 material = { module = "com.google.android.material:material", version = "1.14.0" }
 navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version = "2.9.2" }
-robolectric = { module = "org.robolectric:robolectric", version = "4.16.1" }
+robolectric = { module = "org.robolectric:robolectric", version = "4.17" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
