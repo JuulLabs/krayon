@@ -490,6 +490,8 @@ sealed class com.juul.krayon.kanvas/Transform { // com.juul.krayon.kanvas/Transf
 
         final val degrees // com.juul.krayon.kanvas/Transform.Rotate.degrees|{}degrees[0]
             final fun <get-degrees>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Rotate.degrees.<get-degrees>|<get-degrees>(){}[0]
+        final val isPivoted // com.juul.krayon.kanvas/Transform.Rotate.isPivoted|{}isPivoted[0]
+            final fun <get-isPivoted>(): kotlin/Boolean // com.juul.krayon.kanvas/Transform.Rotate.isPivoted.<get-isPivoted>|<get-isPivoted>(){}[0]
         final val pivotX // com.juul.krayon.kanvas/Transform.Rotate.pivotX|{}pivotX[0]
             final fun <get-pivotX>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Rotate.pivotX.<get-pivotX>|<get-pivotX>(){}[0]
         final val pivotY // com.juul.krayon.kanvas/Transform.Rotate.pivotY|{}pivotY[0]
@@ -509,6 +511,8 @@ sealed class com.juul.krayon.kanvas/Transform { // com.juul.krayon.kanvas/Transf
 
         final val horizontal // com.juul.krayon.kanvas/Transform.Scale.horizontal|{}horizontal[0]
             final fun <get-horizontal>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Scale.horizontal.<get-horizontal>|<get-horizontal>(){}[0]
+        final val isPivoted // com.juul.krayon.kanvas/Transform.Scale.isPivoted|{}isPivoted[0]
+            final fun <get-isPivoted>(): kotlin/Boolean // com.juul.krayon.kanvas/Transform.Scale.isPivoted.<get-isPivoted>|<get-isPivoted>(){}[0]
         final val pivotX // com.juul.krayon.kanvas/Transform.Scale.pivotX|{}pivotX[0]
             final fun <get-pivotX>(): kotlin/Float // com.juul.krayon.kanvas/Transform.Scale.pivotX.<get-pivotX>|<get-pivotX>(){}[0]
         final val pivotY // com.juul.krayon.kanvas/Transform.Scale.pivotY|{}pivotY[0]

@@ -6,6 +6,10 @@
 // - Show declarations: true
 
 // Library unique name: <com.juul.krayon:core>
+open annotation class com.juul.krayon.core/ExperimentalKrayonApi : kotlin/Annotation { // com.juul.krayon.core/ExperimentalKrayonApi|null[0]
+    constructor <init>() // com.juul.krayon.core/ExperimentalKrayonApi.<init>|<init>(){}[0]
+}
+
 open annotation class com.juul.krayon.core/InternalKrayonApi : kotlin/Annotation { // com.juul.krayon.core/InternalKrayonApi|null[0]
     constructor <init>() // com.juul.krayon.core/InternalKrayonApi.<init>|<init>(){}[0]
 }

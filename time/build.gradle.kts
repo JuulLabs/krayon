@@ -5,6 +5,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            api(projects.core)
             api(libs.datetime)
         }
     }
