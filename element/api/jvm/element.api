@@ -1,4 +1,5 @@
 public final class com/juul/krayon/element/CircleElement : com/juul/krayon/element/InteractableElement {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/CircleElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
@@ -26,6 +27,7 @@ public abstract interface class com/juul/krayon/element/ClickHandler {
 }
 
 public final class com/juul/krayon/element/ClipElement : com/juul/krayon/element/Element {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/ClipElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
@@ -42,6 +44,7 @@ public final class com/juul/krayon/element/ClipElement$Companion : com/juul/kray
 }
 
 public abstract class com/juul/krayon/element/Element {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/Element$Companion;
 	public fun <init> ()V
 	public fun appendChild (Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
@@ -50,6 +53,7 @@ public abstract class com/juul/krayon/element/Element {
 	public final fun getChildren ()Ljava/util/List;
 	public final fun getData ()Ljava/lang/Object;
 	public final fun getKind ()Ljava/lang/String;
+	public final fun getMutableChildren ()Ljava/util/List;
 	public fun getParent ()Lcom/juul/krayon/element/Element;
 	public abstract fun getTag ()Ljava/lang/String;
 	public fun insertBefore (Lcom/juul/krayon/element/Element;Lcom/juul/krayon/element/Element;)Lcom/juul/krayon/element/Element;
@@ -76,6 +80,7 @@ public abstract interface class com/juul/krayon/element/ElementSelector {
 }
 
 public final class com/juul/krayon/element/GroupElement : com/juul/krayon/element/Element {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/GroupElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
@@ -94,6 +99,7 @@ public abstract interface class com/juul/krayon/element/HoverHandler {
 }
 
 public abstract class com/juul/krayon/element/InteractableElement : com/juul/krayon/element/Element {
+	public static final field $stable I
 	public fun <init> ()V
 	public abstract fun getInteractionPath ()Lcom/juul/krayon/kanvas/Path;
 	public final fun onClick (Lcom/juul/krayon/element/ClickHandler;)V
@@ -101,6 +107,7 @@ public abstract class com/juul/krayon/element/InteractableElement : com/juul/kra
 }
 
 public final class com/juul/krayon/element/KanvasElement : com/juul/krayon/element/Element {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/KanvasElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
@@ -121,6 +128,7 @@ public final class com/juul/krayon/element/KindSelectorKt {
 }
 
 public final class com/juul/krayon/element/LineElement : com/juul/krayon/element/Element {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/LineElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
@@ -145,6 +153,7 @@ public final class com/juul/krayon/element/LineElement$Companion : com/juul/kray
 }
 
 public final class com/juul/krayon/element/PathElement : com/juul/krayon/element/InteractableElement {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/PathElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
@@ -164,6 +173,7 @@ public final class com/juul/krayon/element/PathElement$Companion : com/juul/kray
 }
 
 public final class com/juul/krayon/element/RectangleElement : com/juul/krayon/element/InteractableElement {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/RectangleElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
@@ -189,6 +199,7 @@ public final class com/juul/krayon/element/RectangleElement$Companion : com/juul
 }
 
 public final class com/juul/krayon/element/RootElement : com/juul/krayon/element/Element {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/RootElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
@@ -206,6 +217,7 @@ public final class com/juul/krayon/element/RootElement$Companion : com/juul/kray
 }
 
 public final class com/juul/krayon/element/RoundedRectangleElement : com/juul/krayon/element/InteractableElement {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/RoundedRectangleElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
@@ -239,6 +251,7 @@ public final class com/juul/krayon/element/RoundedRectangleElement$Companion : c
 }
 
 public final class com/juul/krayon/element/TextElement : com/juul/krayon/element/Element {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/TextElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V
@@ -263,6 +276,7 @@ public final class com/juul/krayon/element/TextElement$Companion : com/juul/kray
 }
 
 public final class com/juul/krayon/element/TransformElement : com/juul/krayon/element/Element {
+	public static final field $stable I
 	public static final field Companion Lcom/juul/krayon/element/TransformElement$Companion;
 	public fun <init> ()V
 	public fun draw (Lcom/juul/krayon/kanvas/Kanvas;)V

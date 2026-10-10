@@ -1,5 +1,6 @@
 package com.juul.krayon.element
 
+import androidx.compose.runtime.Stable
 import com.juul.krayon.element.InteractableType.Click
 import com.juul.krayon.element.InteractableType.Hover
 import com.juul.krayon.kanvas.IsPointInPath
@@ -7,6 +8,7 @@ import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.Transform
 import com.juul.krayon.kanvas.Transform.Translate
 
+@Stable
 public class RootElement : Element() {
 
     override val tag: String get() = "root"

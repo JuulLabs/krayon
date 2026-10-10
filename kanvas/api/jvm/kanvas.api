@@ -378,6 +378,7 @@ public final class com/juul/krayon/kanvas/Transform$Rotate : com/juul/krayon/kan
 	public final fun getPivotX ()F
 	public final fun getPivotY ()F
 	public fun hashCode ()I
+	public final fun isPivoted ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -397,6 +398,7 @@ public final class com/juul/krayon/kanvas/Transform$Scale : com/juul/krayon/kanv
 	public final fun getPivotY ()F
 	public final fun getVertical ()F
 	public fun hashCode ()I
+	public final fun isPivoted ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
