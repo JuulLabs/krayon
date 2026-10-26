@@ -27,7 +27,7 @@ highlights = { module = "dev.snipme:highlights", version = "1.1.0" }
 markdown-renderer-code = { module = "com.mikepenz:multiplatform-markdown-renderer-code", version.ref = "markdown-renderer" }
 markdown-renderer-m2 = { module = "com.mikepenz:multiplatform-markdown-renderer-m2", version.ref = "markdown-renderer" }
 material = { module = "com.google.android.material:material", version = "1.14.0" }
-navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version = "2.9.2" }
+navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version = "2.10.0" }
 robolectric = { module = "org.robolectric:robolectric", version = "4.17" }
 
 [plugins]
