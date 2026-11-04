@@ -23,7 +23,7 @@ coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", v
 coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.8.0" }
-highlights = { module = "dev.snipme:highlights", version = "1.1.0" }
+highlights = { module = "dev.snipme:highlights", version = "1.2.0" }
 markdown-renderer-code = { module = "com.mikepenz:multiplatform-markdown-renderer-code", version.ref = "markdown-renderer" }
 markdown-renderer-m2 = { module = "com.mikepenz:multiplatform-markdown-renderer-m2", version.ref = "markdown-renderer" }
 material = { module = "com.google.android.material:material", version = "1.14.0" }
