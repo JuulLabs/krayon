@@ -8,7 +8,7 @@ import com.juul.krayon.kanvas.Kanvas
 @Composable
 public fun Kanvas(
     modifier: Modifier,
-    onDraw: Kanvas.() -> Unit,
+    onDraw: ComposeKanvas.() -> Unit,
 ) {
     Canvas(modifier) {
         onDraw(ComposeKanvas(scope = this))

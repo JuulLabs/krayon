@@ -6,6 +6,16 @@
 // - Show declarations: true
 
 // Library unique name: <com.juul.krayon:compose>
+abstract class com.juul.krayon.compose/ComposableElement : com.juul.krayon.element/Element { // com.juul.krayon.compose/ComposableElement|null[0]
+    constructor <init>() // com.juul.krayon.compose/ComposableElement.<init>|<init>(){}[0]
+
+    abstract fun (androidx.compose.foundation.layout/BoxScope).Content(com.juul.krayon.compose/ImmutableMatrix, androidx.compose.ui/Modifier, androidx.compose.runtime/Composer?, kotlin/Int) // com.juul.krayon.compose/ComposableElement.Content|Content@androidx.compose.foundation.layout.BoxScope(com.juul.krayon.compose.ImmutableMatrix;androidx.compose.ui.Modifier;androidx.compose.runtime.Composer?;kotlin.Int){}[0]
+
+    final class ComposeDefaultImpls { // com.juul.krayon.compose/ComposableElement.ComposeDefaultImpls|null[0]
+        final fun Content$default(com.juul.krayon.compose/ImmutableMatrix, androidx.compose.ui/Modifier?, com.juul.krayon.compose/ComposableElement, androidx.compose.foundation.layout/BoxScope, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.juul.krayon.compose/ComposableElement.ComposeDefaultImpls.Content$default|Content$default#static(com.juul.krayon.compose.ImmutableMatrix;androidx.compose.ui.Modifier?;com.juul.krayon.compose.ComposableElement;androidx.compose.foundation.layout.BoxScope;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+    }
+}
+
 final class com.juul.krayon.compose/ComposeKanvas : com.juul.krayon.kanvas/Kanvas { // com.juul.krayon.compose/ComposeKanvas|null[0]
     final val height // com.juul.krayon.compose/ComposeKanvas.height|{}height[0]
         final fun <get-height>(): kotlin/Float // com.juul.krayon.compose/ComposeKanvas.height.<get-height>|<get-height>(){}[0]
@@ -31,21 +41,37 @@ final class com.juul.krayon.compose/SkiaIsPointInPath : com.juul.krayon.kanvas/I
     final fun isPointInPath(com.juul.krayon.kanvas/Transform, com.juul.krayon.kanvas/Path, kotlin/Float, kotlin/Float): kotlin/Boolean // com.juul.krayon.compose/SkiaIsPointInPath.isPointInPath|isPointInPath(com.juul.krayon.kanvas.Transform;com.juul.krayon.kanvas.Path;kotlin.Float;kotlin.Float){}[0]
 }
 
+final value class com.juul.krayon.compose/ImmutableMatrix { // com.juul.krayon.compose/ImmutableMatrix|null[0]
+    constructor <init>() // com.juul.krayon.compose/ImmutableMatrix.<init>|<init>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.juul.krayon.compose/ImmutableMatrix.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.juul.krayon.compose/ImmutableMatrix.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.juul.krayon.compose/ImmutableMatrix.toString|toString(){}[0]
+    final fun withTransform(androidx.compose.ui.unit/Density, com.juul.krayon.kanvas/Transform): com.juul.krayon.compose/ImmutableMatrix // com.juul.krayon.compose/ImmutableMatrix.withTransform|withTransform(androidx.compose.ui.unit.Density;com.juul.krayon.kanvas.Transform){}[0]
+}
+
 final object com.juul.krayon.compose/ComposePathMarker : com.juul.krayon.kanvas/PathTypeMarker<androidx.compose.ui.graphics/Path> { // com.juul.krayon.compose/ComposePathMarker|null[0]
     final val builder // com.juul.krayon.compose/ComposePathMarker.builder|{}builder[0]
         final fun <get-builder>(): com.juul.krayon.kanvas/PathBuilder<androidx.compose.ui.graphics/Path> // com.juul.krayon.compose/ComposePathMarker.builder.<get-builder>|<get-builder>(){}[0]
 }
 
+final val com.juul.krayon.compose/com_juul_krayon_compose_ComposableElement$stableprop // com.juul.krayon.compose/com_juul_krayon_compose_ComposableElement$stableprop|#static{}com_juul_krayon_compose_ComposableElement$stableprop[0]
 final val com.juul.krayon.compose/com_juul_krayon_compose_ComposeKanvas$stableprop // com.juul.krayon.compose/com_juul_krayon_compose_ComposeKanvas$stableprop|#static{}com_juul_krayon_compose_ComposeKanvas$stableprop[0]
 final val com.juul.krayon.compose/com_juul_krayon_compose_ComposePathMarker$stableprop // com.juul.krayon.compose/com_juul_krayon_compose_ComposePathMarker$stableprop|#static{}com_juul_krayon_compose_ComposePathMarker$stableprop[0]
 final val com.juul.krayon.compose/com_juul_krayon_compose_SkiaIsPointInPath$stableprop // com.juul.krayon.compose/com_juul_krayon_compose_SkiaIsPointInPath$stableprop|#static{}com_juul_krayon_compose_SkiaIsPointInPath$stableprop[0]
 
+final fun (androidx.compose.ui.graphics.drawscope/DrawTransform).com.juul.krayon.compose/transform(com.juul.krayon.compose/ImmutableMatrix) // com.juul.krayon.compose/transform|transform@androidx.compose.ui.graphics.drawscope.DrawTransform(com.juul.krayon.compose.ImmutableMatrix){}[0]
 final fun (androidx.compose.ui.graphics/Color).com.juul.krayon.compose/toKrayon(): com.juul.krayon.color/Color // com.juul.krayon.compose/toKrayon|toKrayon@androidx.compose.ui.graphics.Color(){}[0]
+final fun (androidx.compose.ui.graphics/Path).com.juul.krayon.compose/transform(com.juul.krayon.compose/ImmutableMatrix) // com.juul.krayon.compose/transform|transform@androidx.compose.ui.graphics.Path(com.juul.krayon.compose.ImmutableMatrix){}[0]
+final fun (androidx.compose.ui/Modifier).com.juul.krayon.compose/transform(com.juul.krayon.compose/ImmutableMatrix): androidx.compose.ui/Modifier // com.juul.krayon.compose/transform|transform@androidx.compose.ui.Modifier(com.juul.krayon.compose.ImmutableMatrix){}[0]
 final fun (com.juul.krayon.color/Color).com.juul.krayon.compose/toCompose(): androidx.compose.ui.graphics/Color // com.juul.krayon.compose/toCompose|toCompose@com.juul.krayon.color.Color(){}[0]
+final fun <#A: kotlin/Any?> com.juul.krayon.compose/ComposableElementView(androidx.compose.runtime/State<#A>, com.juul.krayon.element/UpdateElement<#A>, androidx.compose.ui/Modifier?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.juul.krayon.compose/ComposableElementView|ComposableElementView(androidx.compose.runtime.State<0:0>;com.juul.krayon.element.UpdateElement<0:0>;androidx.compose.ui.Modifier?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> com.juul.krayon.compose/ComposableElementView(kotlinx.coroutines.flow/Flow<#A>, com.juul.krayon.element/UpdateElement<#A>, androidx.compose.ui/Modifier?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.juul.krayon.compose/ComposableElementView|ComposableElementView(kotlinx.coroutines.flow.Flow<0:0>;com.juul.krayon.element.UpdateElement<0:0>;androidx.compose.ui.Modifier?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){0§<kotlin.Any?>}[0]
 final fun <#A: kotlin/Any?> com.juul.krayon.compose/ElementView(androidx.compose.runtime/State<#A>, com.juul.krayon.element/UpdateElement<#A>, androidx.compose.ui/Modifier?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.juul.krayon.compose/ElementView|ElementView(androidx.compose.runtime.State<0:0>;com.juul.krayon.element.UpdateElement<0:0>;androidx.compose.ui.Modifier?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){0§<kotlin.Any?>}[0]
 final fun <#A: kotlin/Any?> com.juul.krayon.compose/ElementView(kotlin/Function0<#A>, com.juul.krayon.element/UpdateElement<#A>, androidx.compose.ui/Modifier?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.juul.krayon.compose/ElementView|ElementView(kotlin.Function0<0:0>;com.juul.krayon.element.UpdateElement<0:0>;androidx.compose.ui.Modifier?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){0§<kotlin.Any?>}[0]
 final fun <#A: kotlin/Any?> com.juul.krayon.compose/ElementView(kotlinx.coroutines.flow/Flow<#A>, com.juul.krayon.element/UpdateElement<#A>, androidx.compose.ui/Modifier?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.juul.krayon.compose/ElementView|ElementView(kotlinx.coroutines.flow.Flow<0:0>;com.juul.krayon.element.UpdateElement<0:0>;androidx.compose.ui.Modifier?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){0§<kotlin.Any?>}[0]
-final fun com.juul.krayon.compose/Kanvas(androidx.compose.ui/Modifier, kotlin/Function1<com.juul.krayon.kanvas/Kanvas, kotlin/Unit>, androidx.compose.runtime/Composer?, kotlin/Int) // com.juul.krayon.compose/Kanvas|Kanvas(androidx.compose.ui.Modifier;kotlin.Function1<com.juul.krayon.kanvas.Kanvas,kotlin.Unit>;androidx.compose.runtime.Composer?;kotlin.Int){}[0]
+final fun com.juul.krayon.compose/Kanvas(androidx.compose.ui/Modifier, kotlin/Function1<com.juul.krayon.compose/ComposeKanvas, kotlin/Unit>, androidx.compose.runtime/Composer?, kotlin/Int) // com.juul.krayon.compose/Kanvas|Kanvas(androidx.compose.ui.Modifier;kotlin.Function1<com.juul.krayon.compose.ComposeKanvas,kotlin.Unit>;androidx.compose.runtime.Composer?;kotlin.Int){}[0]
+final fun com.juul.krayon.compose/com_juul_krayon_compose_ComposableElement$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_ComposableElement$stableprop_getter|com_juul_krayon_compose_ComposableElement$stableprop_getter(){}[0]
 final fun com.juul.krayon.compose/com_juul_krayon_compose_ComposeKanvas$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_ComposeKanvas$stableprop_getter|com_juul_krayon_compose_ComposeKanvas$stableprop_getter(){}[0]
 final fun com.juul.krayon.compose/com_juul_krayon_compose_ComposePathMarker$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_ComposePathMarker$stableprop_getter|com_juul_krayon_compose_ComposePathMarker$stableprop_getter(){}[0]
 final fun com.juul.krayon.compose/com_juul_krayon_compose_SkiaIsPointInPath$stableprop_getter(): kotlin/Int // com.juul.krayon.compose/com_juul_krayon_compose_SkiaIsPointInPath$stableprop_getter|com_juul_krayon_compose_SkiaIsPointInPath$stableprop_getter(){}[0]
