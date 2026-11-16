@@ -1,5 +1,5 @@
 [versions]
-agp = "9.5.0"
+agp = "9.5.1"
 android-compile = "37"
 android-min = "23"
 android-target = "36"
@@ -7,7 +7,7 @@ compose = "1.12.1"
 coroutines = "1.11.0"
 jacoco = "0.8.16"
 jvm-toolchain = "11"
-kotlin = "2.4.20"
+kotlin = "2.4.21"
 markdown-renderer = "0.46.0"
 
 [libraries]
@@ -23,7 +23,7 @@ coroutines-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", v
 coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.8.0" }
-highlights = { module = "dev.snipme:highlights", version = "1.1.0" }
+highlights = { module = "dev.snipme:highlights", version = "1.2.0" }
 markdown-renderer-code = { module = "com.mikepenz:multiplatform-markdown-renderer-code", version.ref = "markdown-renderer" }
 markdown-renderer-m2 = { module = "com.mikepenz:multiplatform-markdown-renderer-m2", version.ref = "markdown-renderer" }
 material = { module = "com.google.android.material:material", version = "1.14.0" }
@@ -36,7 +36,7 @@ android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.
 api = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.18.2" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-dokka = { id = "org.jetbrains.dokka", version = "2.2.0" }
+dokka = { id = "org.jetbrains.dokka", version = "2.3.0" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "5.7.0" }
 maven-publish = { id = "com.vanniktech.maven.publish", version = "0.37.0" }
