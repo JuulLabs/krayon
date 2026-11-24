@@ -1,7 +1,9 @@
 package com.juul.krayon.element
 
+import androidx.compose.runtime.Stable
 import com.juul.krayon.kanvas.Kanvas
 
+@Stable
 public class GroupElement : Element() {
 
     override val tag: String get() = "group"

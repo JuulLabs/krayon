@@ -1,5 +1,7 @@
 package com.juul.krayon.kanvas
 
+import com.juul.krayon.core.cache.InfiniteCache
+
 public class Path internal constructor(
     private val instructions: SegmentedPath,
 ) {
@@ -8,7 +10,7 @@ public class Path internal constructor(
         path: PathBuilder<*>.() -> Unit,
     ) : this(SegmentedPathBuilder().apply(path).build())
 
-    private val cache = mutableMapOf<PathTypeMarker<*>, Any>()
+    private val cache = InfiniteCache<PathTypeMarker<*>, Any>()
 
     /**
      * Bridge the gap between this platform-agnostic type and its platform-specific type. The

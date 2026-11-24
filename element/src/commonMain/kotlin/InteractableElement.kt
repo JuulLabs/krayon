@@ -1,5 +1,6 @@
 package com.juul.krayon.element
 
+import androidx.compose.runtime.Stable
 import com.juul.krayon.kanvas.Path
 
 /**
@@ -18,6 +19,7 @@ import com.juul.krayon.kanvas.Path
  * as well as the _press_ or _drag_ state (a mouse pointer on the element, pressed; or, a touch) as
  * hover states. This enables use of hover as a pre-selection indicator on mobile devices.
  */
+@Stable
 public abstract class InteractableElement<T : InteractableElement<T>> : Element() {
 
     internal var clickHandler: ClickHandler<T>? by attributes.withDefault { null }

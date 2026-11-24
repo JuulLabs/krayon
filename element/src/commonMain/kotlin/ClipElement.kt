@@ -1,5 +1,6 @@
 package com.juul.krayon.element
 
+import androidx.compose.runtime.Stable
 import com.juul.krayon.kanvas.Clip
 import com.juul.krayon.kanvas.Kanvas
 import com.juul.krayon.kanvas.withClip
@@ -9,6 +10,7 @@ import com.juul.krayon.kanvas.withClip
  *
  * Note that this does not prevent clipped children from being hit-tested for interactions.
  */
+@Stable
 public class ClipElement : Element() {
 
     override val tag: String get() = "clip"
